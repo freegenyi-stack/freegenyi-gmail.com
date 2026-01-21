@@ -490,22 +490,34 @@
                 <div class="logo-text">FG</div>
             </a>
 
-            <h1 class="login-title" data-i18n="login_welcome">Welcome Back!</h1>
-            <p class="login-subtitle" data-i18n="login_subtitle">Unlock your magic world.</p>
+            <h1 class="login-title" id="auth-title" data-i18n="login_welcome">Welcome Back!</h1>
+            <p class="login-subtitle" id="auth-subtitle" data-i18n="login_subtitle">Unlock your magic world.</p>
 
-            <form onsubmit="return false;">
+            <form id="auth-form" onsubmit="handleAuth(event)">
+                <div id="signup-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" placeholder="Geny">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" placeholder="Spark">
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="username" data-i18n="login_user_label">Username or Email</label>
-                    <input type="text" id="username" placeholder="genius@freegeny.com" autocomplete="email">
+                    <input type="email" id="username" placeholder="genius@freegeny.com" autocomplete="email" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password" data-i18n="login_pass_label">Password</label>
-                    <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
-                    <a href="#" class="forgot-pass" data-i18n="login_forgot">Forgot password?</a>
+                    <input type="password" id="password" placeholder="••••••••" autocomplete="current-password"
+                        required>
+                    <a href="#" class="forgot-pass" id="forgot-link" data-i18n="login_forgot">Forgot password?</a>
                 </div>
 
-                <button class="btn-login-main" data-i18n="btn_login_submit" onclick="mockLogin()">Start
+                <button type="submit" class="btn-login-main" id="btn-submit" data-i18n="btn_login_submit">Start
                     Learning</button>
             </form>
 
@@ -515,7 +527,7 @@
 
             <div class="social-grid">
                 <!-- Google -->
-                <div class="social-btn" title="Google">
+                <div class="social-btn" title="Google" onclick="alert('Google Auth integration coming soon! (Step 3)')">
                     <svg viewBox="0 0 24 24">
                         <path fill="#4285F4"
                             d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -560,8 +572,9 @@
             </div>
 
             <div class="signup-text">
-                <span data-i18n="login_no_acc">Don't have an account?</span>
-                <a href="#" data-i18n="login_signup_link">Sign up</a>
+                <span id="toggle-text" data-i18n="login_no_acc">Don't have an account?</span>
+                <a href="javascript:void(0)" id="toggle-auth" onclick="toggleAuthMode()"
+                    data-i18n="login_signup_link">Sign up</a>
             </div>
 
             <div class="legal-footer">
@@ -753,26 +766,87 @@
         const browserLang = navigator.language.split('-')[0];
         setLang(translations[browserLang] ? browserLang : 'en');
 
-        // MOCK LOGIN FUNCTION
-        function mockLogin() {
-            const btn = document.querySelector('.btn-login-main');
+        let isLoginMode = true;
+
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            const title = document.getElementById('auth-title');
+            const subtitle = document.getElementById('auth-subtitle');
+            const signupFields = document.getElementById('signup-fields');
+            const submitBtn = document.getElementById('btn-submit');
+            const toggleBtn = document.getElementById('toggle-auth');
+            const toggleText = document.getElementById('toggle-text');
+            const forgotLink = document.getElementById('forgot-link');
+
+            if (isLoginMode) {
+                title.innerText = "Welcome Back!";
+                subtitle.innerText = "Unlock your magic world.";
+                signupFields.style.display = 'none';
+                submitBtn.innerText = "Start Learning";
+                toggleBtn.innerText = "Sign up";
+                toggleText.innerText = "Don't have an account?";
+                forgotLink.style.display = 'block';
+            } else {
+                title.innerText = "Create Account";
+                subtitle.innerText = "Join the FreeGeny family.";
+                signupFields.style.display = 'block';
+                submitBtn.innerText = "Join Now";
+                toggleBtn.innerText = "Log in";
+                toggleText.innerText = "Already a member?";
+                forgotLink.style.display = 'none';
+            }
+        }
+
+        async function handleAuth(event) {
+            event.preventDefault();
+            const btn = document.getElementById('btn-submit');
             const originalText = btn.innerText;
 
-            // 1. Loading State
-            btn.innerHTML = '<span style="animation: spin 1s infinite linear; display:inline-block;">⏳</span> Connecting...';
-            btn.style.opacity = '0.8';
-            btn.style.cursor = 'wait';
+            // Loading state
+            btn.innerHTML = '⏳ Processing...';
+            btn.disabled = true;
 
-            // 2. Simulate Delay & Redirection
-            setTimeout(() => {
-                // In the future, this will be: window.location.href = 'https://app.freegeny.com';
-                alert("✨ Redirection vers l'application Flutter (app.freegeny.com) ! \n\n(Ce sera connecté à Supabase plus tard)");
+            const email = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-                // Reset (for demo purposes)
+            const url = isLoginMode ? 'api/login.php' : 'api/signup.php';
+
+            let payload = { email, password };
+
+            if (!isLoginMode) {
+                payload.first_name = document.getElementById('firstname').value;
+                payload.last_name = document.getElementById('lastname').value;
+                payload.role = 'parent'; // Role par défaut
+            }
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    if (isLoginMode) {
+                        alert("🎉 Success! Token: " + result.token.substring(0, 20) + "...");
+                        // Save token and redirect
+                        localStorage.setItem('fg_token', result.token);
+                        window.location.href = 'index.html';
+                    } else {
+                        alert("✨ Account created! You can now log in.");
+                        toggleAuthMode();
+                    }
+                } else {
+                    alert("❌ Error: " + result.message);
+                }
+            } catch (error) {
+                alert("🚨 Connection error. Check your API.");
+            } finally {
                 btn.innerText = originalText;
-                btn.style.opacity = '1';
-                btn.style.cursor = 'pointer';
-            }, 1500);
+                btn.disabled = false;
+            }
         }
     </script>
 </body>
