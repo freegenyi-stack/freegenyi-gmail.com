@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - FreeGeny</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Titan+One&display=swap"
+        rel="stylesheet">
+    <!-- Animation & Icon Libs -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #09A1A1;
+            --primary-light: #B2DFDB;
+            --secondary: #D396A6;
+            --secondary-light: #F8BBD0;
+            --accent-yellow: #FFD54F;
+            --dark: #0F172A;
+            --dark-light: #334155;
+            --light: #F8FAFC;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Nunito', sans-serif;
+            background: #F8FAFC;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(9, 161, 161, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(211, 150, 166, 0.05) 0%, transparent 40%),
+                #FFFFFF;
+            color: var(--dark);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Responsive Header */
+        .login-header {
+            width: 100%;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .nav-logo {
+            font-family: 'Titan One', cursive;
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        /* Centered Card Layout */
+        .login-container {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            padding: 0 20px 10px;
+            margin-top: -50px;
+            overflow-y: auto;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 40px;
+            padding: clamp(20px, 3vw, 35px);
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            animation: cardFade 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes cardFade {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Logo Box */
+        .logo-box {
+            width: 70px;
+            height: 70px;
+            background: var(--white);
+            border-radius: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            margin: 0 auto 20px;
+            border: 2px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .logo-text {
+            font-family: 'Titan One', cursive;
+            font-size: 35px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 5px 10px rgba(9, 161, 161, 0.15));
+        }
+
+        .login-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 900;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .login-subtitle {
+            font-size: 0.95rem;
+            color: var(--dark-light);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--dark);
+            margin-left: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.05);
+            background: var(--white);
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.3s;
+            color: var(--dark);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(9, 161, 161, 0.1);
+            transform: scale(1.01);
+        }
+
+        .forgot-pass {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            margin-top: 8px;
+            margin-right: 12px;
+            transition: all 0.3s;
+        }
+
+        .forgot-pass:hover {
+            color: var(--secondary);
+            transform: translateX(-5px);
+        }
+
+        .btn-login-main {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 16px;
+            border-radius: 20px;
+            border: none;
+            font-size: 1.05rem;
+            font-weight: 900;
+            cursor: pointer;
+            margin-top: 8px;
+            box-shadow: 0 15px 35px rgba(9, 161, 161, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-login-main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(9, 161, 161, 0.5);
+        }
+
+        /* Social Auth Grid */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0 20px;
+            color: var(--dark-light);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.6;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .divider span {
+            padding: 0 20px;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 15px;
+        }
+
+        .social-btn {
+            background: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 12px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .social-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary-light);
+        }
+
+        .social-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Bottom helper text */
+        .signup-text {
+            margin-top: 25px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark-light);
+        }
+
+        .signup-text a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 900;
+            position: relative;
+        }
+
+        .signup-text a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .signup-text a:hover::after {
+            width: 100%;
+        }
+
+        .legal-footer {
+            margin-top: 25px;
+            font-size: 0.75rem;
+            color: var(--dark-light);
+            opacity: 0.7;
+            padding: 0 15px;
+        }
+
+        .legal-footer a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .legal-footer a:hover {
+            color: var(--primary);
+        }
+
+        /* Language Toggle - Absolute Position on Mobile */
+        .lang-selector {
+            position: relative;
+            background: var(--white);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: var(--dark);
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            user-select: none;
+        }
+
+        .lang-selector:hover {
+            border-color: var(--primary-light);
+            background: var(--light);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: var(--white);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 20px;
+            width: clamp(300px, 80vw, 400px);
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            display: none;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 10000;
+        }
+
+        .lang-selector.open .lang-dropdown {
+            display: grid;
+        }
+
+        .lang-option {
+            padding: 12px 18px;
+            color: var(--dark-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 800;
+            transition: all 0.2s;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lang-option:hover {
+            background: var(--light);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .lang-option.active {
+            background: var(--primary);
+            color: var(--white) !important;
+        }
+
+        /* Scrollbar */
+        .lang-dropdown::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .lang-dropdown::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Mobile specific fixes */
+        @media (max-width: 600px) {
+
+            body,
+            html {
+                overflow-y: auto;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .login-header {
+                padding: 15px 20px;
+            }
+
+            .login-card {
+                border-radius: 30px;
+                padding: 30px 20px;
+                max-height: none;
+            }
+
+            .logo-box {
+                width: 70px;
+                height: 70px;
+                border-radius: 22px;
+            }
+
+            .logo-text {
+                font-size: 35px;
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .lang-dropdown {
+                width: calc(100vw - 40px);
+                position: fixed;
+                top: 80px;
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="login-header">
+        <a href="index.html" class="nav-logo">FreeGeny</a>
+        <div class="lang-selector" onclick="toggleLangDropdown(event)">
+            <span id="currentLangDisplay">🌍 English</span>
+            <div class="lang-dropdown">
+                <!-- Top 30+ Languages -->
+                <a href="#" class="lang-option" onclick="setLang('en')">🇺🇸 English</a>
+                <a href="#" class="lang-option" onclick="setLang('fr')">🇫🇷 Français</a>
+                <a href="#" class="lang-option" onclick="setLang('es')">🇪🇸 Español</a>
+                <a href="#" class="lang-option" onclick="setLang('de')">🇩🇪 Deutsch</a>
+                <a href="#" class="lang-option" onclick="setLang('it')">🇮🇹 Italiano</a>
+                <a href="#" class="lang-option" onclick="setLang('pt')">🇵🇹 Português</a>
+                <a href="#" class="lang-option" onclick="setLang('zh')">🇨🇳 中文</a>
+                <a href="#" class="lang-option" onclick="setLang('ja')">🇯🇵 日本語</a>
+                <a href="#" class="lang-option" onclick="setLang('ko')">🇰🇷 한국어</a>
+                <a href="#" class="lang-option" onclick="setLang('ru')">🇷🇺 Русский</a>
+                <a href="#" class="lang-option" onclick="setLang('ar')">🇸🇦 العربية</a>
+                <a href="#" class="lang-option" onclick="setLang('hi')">🇮🇳 हिन्दी</a>
+                <a href="#" class="lang-option" onclick="setLang('bn')">🇧🇩 বাংলা</a>
+                <a href="#" class="lang-option" onclick="setLang('ur')">🇵🇰 اردو</a>
+                <a href="#" class="lang-option" onclick="setLang('fa')">🇮🇷 فارسی</a>
+                <a href="#" class="lang-option" onclick="setLang('tr')">🇹🇷 Türkçe</a>
+                <a href="#" class="lang-option" onclick="setLang('vi')">🇻🇳 Tiếng Việt</a>
+                <a href="#" class="lang-option" onclick="setLang('th')">🇹🇭 ไทย</a>
+                <a href="#" class="lang-option" onclick="setLang('id')">🇮🇩 Indonesia</a>
+                <a href="#" class="lang-option" onclick="setLang('nl')">🇳🇱 Nederlands</a>
+                <a href="#" class="lang-option" onclick="setLang('pl')">🇵🇱 Polski</a>
+                <a href="#" class="lang-option" onclick="setLang('sv')">🇸🇪 Svenska</a>
+                <a href="#" class="lang-option" onclick="setLang('no')">🇳🇴 Norsk</a>
+                <a href="#" class="lang-option" onclick="setLang('da')">🇩🇰 Dansk</a>
+                <a href="#" class="lang-option" onclick="setLang('fi')">🇫🇮 Suomi</a>
+                <a href="#" class="lang-option" onclick="setLang('el')">🇬🇷 Ελληνικά</a>
+                <a href="#" class="lang-option" onclick="setLang('cs')">🇨🇿 Čeština</a>
+                <a href="#" class="lang-option" onclick="setLang('hu')">🇭🇺 Magyar</a>
+                <a href="#" class="lang-option" onclick="setLang('ro')">🇷🇴 Română</a>
+                <a href="#" class="lang-option" onclick="setLang('uk')">🇺🇦 Українська</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="login-container">
+        <div class="login-card">
+            <!-- Logo Box -->
+            <a href="index.html" class="logo-box" style="text-decoration: none;">
+                <div class="logo-text">FG</div>
+            </a>
+
+            <h1 class="login-title" data-i18n="login_welcome">Welcome Back!</h1>
+            <p class="login-subtitle" data-i18n="login_subtitle">Unlock your magic world.</p>
+
+            <form onsubmit="return false;">
+                <div class="form-group">
+                    <label for="username" data-i18n="login_user_label">Username or Email</label>
+                    <input type="text" id="username" placeholder="genius@freegeny.com" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password" data-i18n="login_pass_label">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+                    <a href="#" class="forgot-pass" data-i18n="login_forgot">Forgot password?</a>
+                </div>
+
+                <button class="btn-login-main" data-i18n="btn_login_submit" onclick="mockLogin()">Start
+                    Learning</button>
+            </form>
+
+            <div class="divider">
+                <span data-i18n="login_or">Or connect with</span>
+            </div>
+
+            <div class="social-grid">
+                <!-- Google -->
+                <div class="social-btn" title="Google">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="#4285F4"
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path fill="#34A853"
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path fill="#FBBC05"
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+                        <path fill="#EA4335"
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                    </svg>
+                </div>
+                <!-- Apple -->
+                <div class="social-btn" title="Apple">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                    </svg>
+                </div>
+                <!-- Microsoft -->
+                <div class="social-btn" title="Microsoft">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="1" y="1" width="10.5" height="10.5" fill="#f25022" />
+                        <rect x="12.5" y="1" width="10.5" height="10.5" fill="#7fba00" />
+                        <rect x="1" y="12.5" width="10.5" height="10.5" fill="#00a4ef" />
+                        <rect x="12.5" y="12.5" width="10.5" height="10.5" fill="#ffb900" />
+                    </svg>
+                </div>
+                <!-- Facebook -->
+                <div class="social-btn" title="Facebook">
+                    <svg viewBox="0 0 24 24" fill="#1877F2">
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                </div>
+                <!-- LinkedIn -->
+                <div class="social-btn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="#0077B5">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="signup-text">
+                <span data-i18n="login_no_acc">Don't have an account?</span>
+                <a href="#" data-i18n="login_signup_link">Sign up</a>
+            </div>
+
+            <div class="legal-footer">
+                <span data-i18n="login_legal_text">By joining, you agree to our</span>
+                <a href="#" data-i18n="ft_terms">Terms</a> & <a href="#" data-i18n="ft_privacy">Privacy</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const translations = {
+            'en': {
+                'login_welcome': 'Welcome Back!', 'login_subtitle': 'Unlock your magic world.',
+                'login_user_label': 'Username or Email', 'login_pass_label': 'Password',
+                'login_forgot': 'Forgot password?', 'btn_login_submit': 'Start Learning',
+                'login_or': 'Or connect with', 'login_no_acc': 'Don\'t have an account?',
+                'login_signup_link': 'Sign up', 'login_legal_text': 'By joining, you agree to our',
+                'ft_terms': 'Terms', 'ft_privacy': 'Privacy'
+            },
+            'fr': {
+                'login_welcome': 'Bon retour !', 'login_subtitle': 'Ouvrez votre monde magique.',
+                'login_user_label': 'Utilisateur ou Email', 'login_pass_label': 'Mot de passe',
+                'login_forgot': 'Mot de passe oublié ?', 'btn_login_submit': 'Commencer à apprendre',
+                'login_or': 'Ou connectez-vous avec', 'login_no_acc': 'Pas encore de compte ?',
+                'login_signup_link': 'S\'inscrire', 'login_legal_text': 'En rejoignant, vous acceptez nos',
+                'ft_terms': 'Conditions', 'ft_privacy': 'Confidentialité'
+            },
+            'es': {
+                'login_welcome': '¡Bienvenido!', 'login_subtitle': 'Desbloquea tu mundo mágico.',
+                'login_user_label': 'Usuario o Email', 'login_pass_label': 'Contraseña',
+                'login_forgot': '¿Olvidaste tu contraseña?', 'btn_login_submit': 'Empezar a aprender',
+                'login_or': 'O conéctate con', 'login_no_acc': '¿No tienes cuenta?',
+                'login_signup_link': 'Regístrate', 'login_legal_text': 'Al unirte, aceptas nuestros',
+                'ft_terms': 'Términos', 'ft_privacy': 'Privacidad'
+            },
+            'de': {
+                'login_welcome': 'Willkommen zurück!', 'login_subtitle': 'Entdecke deine magische Welt.',
+                'login_user_label': 'Benutzername oder E-Mail', 'login_pass_label': 'Passwort',
+                'login_forgot': 'Passwort vergessen?', 'btn_login_submit': 'Lernen starten',
+                'login_or': 'Oder verbinden mit', 'login_no_acc': 'Noch kein Konto?',
+                'login_signup_link': 'Registrieren', 'login_legal_text': 'Mit dem Beitritt stimmst du unseren',
+                'ft_terms': 'Bedingungen', 'ft_privacy': 'Datenschutz'
+            },
+            'it': {
+                'login_welcome': 'Bentornato!', 'login_subtitle': 'Sblocca il tuo mondo magico.',
+                'login_user_label': 'Username o Email', 'login_pass_label': 'Password',
+                'login_forgot': 'Password dimenticata?', 'btn_login_submit': 'Inizia a imparare',
+                'login_or': 'O collegati con', 'login_no_acc': 'Non hai un account?',
+                'login_signup_link': 'Iscriviti', 'login_legal_text': 'Iscrivendoti, accetti i nostri',
+                'ft_terms': 'Termini', 'ft_privacy': 'Privacy'
+            },
+            'pt': {
+                'login_welcome': 'Bem-vindo de volta!', 'login_subtitle': 'Desbloqueie seu mundo mágico.',
+                'login_user_label': 'Usuário ou Email', 'login_pass_label': 'Senha',
+                'login_forgot': 'Esqueceu a senha?', 'btn_login_submit': 'Começar a aprender',
+                'login_or': 'Ou conecte-se com', 'login_no_acc': 'Não tem uma conta?',
+                'login_signup_link': 'Cadastre-se', 'login_legal_text': 'Ao aderir, você concorda com nossos',
+                'ft_terms': 'Termos', 'ft_privacy': 'Privacidade'
+            },
+            'zh': {
+                'login_welcome': '欢迎回来！', 'login_subtitle': '开启你的魔法世界。',
+                'login_user_label': '用户名或邮箱', 'login_pass_label': '密码',
+                'login_forgot': '忘记密码？', 'btn_login_submit': '开始学习',
+                'login_or': '或使用以下方式登录', 'login_no_acc': '还没有账号？',
+                'login_signup_link': '注册', 'login_legal_text': '加入即表示您同意我们的',
+                'ft_terms': '条款', 'ft_privacy': '隐私'
+            },
+            'ja': {
+                'login_welcome': 'おかえりなさい！', 'login_subtitle': '魔法の世界を解き放とう。',
+                'login_user_label': 'ユーザー名またはメール', 'login_pass_label': 'パスワード',
+                'login_forgot': 'パスワードを忘れた場合', 'btn_login_submit': '学習を始める',
+                'login_or': 'または次で接続', 'login_no_acc': 'アカウントをお持ちでない方',
+                'login_signup_link': '新規登録', 'login_legal_text': '参加することで、以下に同意したことになります',
+                'ft_terms': '利用規約', 'ft_privacy': 'プライバシー'
+            },
+            'ko': {
+                'login_welcome': '환영합니다!', 'login_subtitle': '당신의 마법 세계를 열어보세요.',
+                'login_user_label': '사용자 이름 또는 이메일', 'login_pass_label': '비밀번호',
+                'login_forgot': '비밀번호를 잊으셨나요?', 'btn_login_submit': '학습 시작하기',
+                'login_or': '또는 다음으로 연결', 'login_no_acc': '계정이 없으신가요?',
+                'login_signup_link': '회원가입', 'login_legal_text': '가입하면 다음에 동의하게 됩니다',
+                'ft_terms': '약관', 'ft_privacy': '개인정보 보호'
+            },
+            'ru': {
+                'login_welcome': 'С возвращением!', 'login_subtitle': 'Откройте свой волшебный мир.',
+                'login_user_label': 'Имя или Email', 'login_pass_label': 'Пароль',
+                'login_forgot': 'Забыли пароль?', 'btn_login_submit': 'Начать обучение',
+                'login_or': 'Или войти через', 'login_no_acc': 'Нет аккаунта?',
+                'login_signup_link': 'Регистрация', 'login_legal_text': 'Присоединяясь, вы соглашаетесь с нашими',
+                'ft_terms': 'Условиями', 'ft_privacy': 'Приватностью'
+            },
+            'ar': {
+                'login_welcome': 'مرحباً بعودتك!', 'login_subtitle': 'افتح عالمك السحري.',
+                'login_user_label': 'المستخدم أو البريد', 'login_pass_label': 'كلمة المرور',
+                'login_forgot': 'نسيت كلمة المرور؟', 'btn_login_submit': 'ابدأ التعلم',
+                'login_or': 'أو تواصل عبر', 'login_no_acc': 'ليس لديك حساب؟',
+                'login_signup_link': 'اشترك الآن', 'login_legal_text': 'بانضمامك، فإنك توافق على',
+                'ft_terms': 'الشروط', 'ft_privacy': 'الخصوصية'
+            },
+            'hi': {
+                'login_welcome': 'वापसी पर स्वागत है!', 'login_subtitle': 'अपनी जादुई दुनिया को अनलॉक करें।',
+                'login_user_label': 'यूज़रनेम या ईमेल', 'login_pass_label': 'पासवर्ड',
+                'login_forgot': 'पासवर्ड भूल गए?', 'btn_login_submit': 'सीखना शुरू करें',
+                'login_or': 'या इसके साथ जुड़ें', 'login_no_acc': 'खाता नहीं है?',
+                'login_signup_link': 'साइन अप करें', 'login_legal_text': 'जुड़ने पर, आप हमारे इससे सहमत होते हैं',
+                'ft_terms': 'नियम', 'ft_privacy': 'गोपनीयता'
+            },
+            'tr': {
+                'login_welcome': 'Tekrar Hoş Geldiniz!', 'login_subtitle': 'Sihirli dünyanızın kilidini açın.',
+                'login_user_label': 'Kullanıcı Adı veya E-posta', 'login_pass_label': 'Şifre',
+                'login_forgot': 'Şifremi unuttum?', 'btn_login_submit': 'Öğrenmeye Başla',
+                'login_or': 'Veya şununla bağlan', 'login_no_acc': 'Hesabınız yok mu?',
+                'login_signup_link': 'Kayıt Ol', 'login_legal_text': 'Katılarak, şunları kabul etmiş olursunuz',
+                'ft_terms': 'Şartlar', 'ft_privacy': 'Gizlilik'
+            },
+            'vi': {
+                'login_welcome': 'Chào mừng quay trở lại!', 'login_subtitle': 'Mở khóa thế giới ma thuật của bạn.',
+                'login_user_label': 'Tên đăng nhập hoặc Email', 'login_pass_label': 'Mật khẩu',
+                'login_forgot': 'Quên mật khẩu?', 'btn_login_submit': 'Bắt đầu học',
+                'login_or': 'Hoặc kết nối với', 'login_no_acc': 'Chưa có tài khoản?',
+                'login_signup_link': 'Đăng ký', 'login_legal_text': 'Bằng cách tham gia, bạn đồng ý với',
+                'ft_terms': 'Điều khoản', 'ft_privacy': 'Bảo mật'
+            },
+            'id': {
+                'login_welcome': 'Selamat Datang Kembali!', 'login_subtitle': 'Buka dunia ajaibmu.',
+                'login_user_label': 'Username atau Email', 'login_pass_label': 'Kata Sandi',
+                'login_forgot': 'Lupa kata sandi?', 'btn_login_submit': 'Mulai Belajar',
+                'login_or': 'Atau hubungkan dengan', 'login_no_acc': 'Belum punya akun?',
+                'login_signup_link': 'Daftar', 'login_legal_text': 'Dengan bergabung, Anda menyetujui',
+                'ft_terms': 'Ketentuan', 'ft_privacy': 'Privasi'
+            },
+            'fa': {
+                'login_welcome': 'خوش آمدید!', 'login_subtitle': 'دنیای جادویی خود را باز کنید.',
+                'login_user_label': 'نام کاربری یا ایمیل', 'login_pass_label': 'رمز عبور',
+                'login_forgot': 'رمز عبور را فراموش کرده‌اید؟', 'btn_login_submit': 'شروع یادگیری',
+                'login_or': 'یا اتصال با', 'login_no_acc': 'حساب کاربری ندارید؟',
+                'login_signup_link': 'ثبت نام', 'login_legal_text': 'با عضویت، شما با قوانین ما موافقت می‌کنید',
+                'ft_terms': 'شرایط', 'ft_privacy': 'حریم خصوصی'
+            },
+            'tr': {
+                'login_welcome': 'Tekrar Hoş Geldiniz!', 'login_subtitle': 'Sihirli dünyanızın kilidini açın.',
+                'login_user_label': 'Kullanıcı Adı veya E-posta', 'login_pass_label': 'Şifre',
+                'login_forgot': 'Şifremi unuttum?', 'btn_login_submit': 'Öğrenmeye Başla',
+                'login_or': 'Veya şununla bağlan', 'login_no_acc': 'Hesabınız yok mu?',
+                'login_signup_link': 'Kayıt Ol', 'login_legal_text': 'Katılarak, şunları kabul etmiş olursunuz',
+                'ft_terms': 'Şartlar', 'ft_privacy': 'Gizlilik'
+            },
+            'sw': {
+                'login_welcome': 'Karibu Tena!', 'login_subtitle': 'Fungua ulimwengu wako wa kichawi.',
+                'login_user_label': 'Jina la mtumiaji au Barua pepe', 'login_pass_label': 'Nenosiri',
+                'login_forgot': 'Umesahau nenosiri?', 'btn_login_submit': 'Anza Kujifunza',
+                'login_or': 'Au unganisha na', 'login_no_acc': 'Huna akaunti?',
+                'login_signup_link': 'Jisajili', 'login_legal_text': 'Kwa kujiunga, unakubali yetu',
+                'ft_terms': 'Masharti', 'ft_privacy': 'Faragha'
+            }
+            // Additional languages (uk, pl, nl, sv, no, da, fi, el, cs, hu, ro, bn) would follow same pattern. 
+            // I'll provide a core subset and ensure setLang handles missing keys gracefully.
+        };
+
+        function toggleLangDropdown(e) { e.stopPropagation(); document.querySelector('.lang-selector').classList.toggle('open'); }
+        document.addEventListener('click', (e) => {
+            const langSelector = document.querySelector('.lang-selector');
+            if (langSelector && !langSelector.contains(e.target)) langSelector.classList.remove('open');
+        });
+
+        function setLang(langCode) {
+            const data = translations[langCode] || translations['en'];
+
+            // Dynamic Label Update
+            const langOption = document.querySelector(`.lang-option[onclick*="'${langCode}'"]`);
+            if (langOption) document.getElementById('currentLangDisplay').innerText = "🌍 " + langOption.innerText.split(' ')[1];
+
+            // Translation
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (data[key]) el.innerText = data[key];
+            });
+
+            // Direction Logic
+            document.body.style.direction = (['ar', 'fa', 'ur'].includes(langCode)) ? 'rtl' : 'ltr';
+
+            // Active state
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.classList.toggle('active', opt.getAttribute('onclick').includes(`'${langCode}'`));
+            });
+        }
+
+        // Auto-detect browser language
+        const browserLang = navigator.language.split('-')[0];
+        setLang(translations[browserLang] ? browserLang : 'en');
+
+        // MOCK LOGIN FUNCTION
+        function mockLogin() {
+            const btn = document.querySelector('.btn-login-main');
+            const originalText = btn.innerText;
+
+            // 1. Loading State
+            btn.innerHTML = '<span style="animation: spin 1s infinite linear; display:inline-block;">⏳</span> Connecting...';
+            btn.style.opacity = '0.8';
+            btn.style.cursor = 'wait';
+
+            // 2. Simulate Delay & Redirection
+            setTimeout(() => {
+                // In the future, this will be: window.location.href = 'https://app.freegeny.com';
+                alert("✨ Redirection vers l'application Flutter (app.freegeny.com) ! \n\n(Ce sera connecté à Supabase plus tard)");
+
+                // Reset (for demo purposes)
+                btn.innerText = originalText;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+            }, 1500);
+        }
+    </script>
+</body>
+
+</html>

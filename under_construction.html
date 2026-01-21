@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeGeny | Something Magical is Coming</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Titan+One&display=swap"
+        rel="stylesheet">
+    <!-- GSAP & AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #09A1A1;
+            --primary-light: #B2DFDB;
+            --secondary: #D396A6;
+            --secondary-light: #F8BBD0;
+            --accent-yellow: #FFD54F;
+            --dark: #0F172A;
+            --dark-light: #334155;
+            --light: #F8FAFC;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: 'Nunito', sans-serif;
+            overflow: hidden;
+            background: #F8FAFC;
+            /* Light gray background to make white cards pop */
+            color: var(--dark);
+        }
+
+        /* PREMIUM MESH GRADIENT BACKGROUND */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(9, 161, 161, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(211, 150, 166, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 213, 79, 0.03) 0%, transparent 60%);
+            animation: meshFlow 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes meshFlow {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1) translate(-2%, -2%);
+            }
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            position: relative;
+            z-index: 2;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* LOGO BOX */
+        .logo-box {
+            width: 120px;
+            height: 120px;
+            background: var(--white);
+            border-radius: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            border: 2px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .logo-text {
+            font-family: 'Titan One', cursive;
+            font-size: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 10px 15px rgba(9, 161, 161, 0.2));
+        }
+
+        /* MAIN CARD */
+        .coming-card {
+            background: rgba(255, 255, 255, 0.85);
+            /* Slightly less transparent */
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 40px;
+            padding: 60px 40px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+            /* More pronounced shadow */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.15rem;
+            color: var(--dark);
+            /* Darker text for contrast */
+            font-weight: 700;
+            max-width: 480px;
+            line-height: 1.6;
+            opacity: 1;
+            /* Full opacity */
+        }
+
+        /* ANIMATION AREA */
+        .anim-box {
+            margin: 20px 0;
+            position: relative;
+        }
+
+        /* SOCIAL FOOTER */
+        .social-links {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 15px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-light);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.01);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 15px 30px rgba(9, 161, 161, 0.2);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 30px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--dark-light);
+            opacity: 0.8;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        /* BADGE */
+        .status-badge {
+            background: rgba(9, 161, 161, 0.1);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 rgba(9, 161, 161, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(9, 161, 161, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(9, 161, 161, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(9, 161, 161, 0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .coming-card {
+                padding: 40px 20px;
+            }
+
+            .logo-box {
+                width: 100px;
+                height: 100px;
+                border-radius: 30px;
+            }
+
+            .logo-text {
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="bg-canvas"></div>
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <!-- Logo Area -->
+        <div class="logo-box" data-aos="fade-down">
+            <div class="logo-text">FG</div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="coming-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="status-badge">
+                <div class="pulse"></div>
+                Development in Progress
+            </div>
+
+            <h1>Something Magical is Unfolding.</h1>
+
+            <div class="anim-box">
+                <!-- A mystical Lottie Animation -->
+                <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_jcikwtux.json"
+                    background="transparent" speed="0.8" style="width: 250px; height: 250px;" loop
+                    autoplay></lottie-player>
+            </div>
+
+            <p>Our architects are building a new era of intelligence for the next generation. Stay tuned for the reveal
+                of <strong>FreeGeny</strong>.</p>
+
+            <!-- Social Media -->
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
+                    </svg>
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            &copy; 2026 FREEGENY.COM | ALL RIGHTS RESERVED
+        </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+
+        // Particles.js Config for "Magical Dust"
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#00897B", "#D396A6", "#FFD54F"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "bubble" } },
+                "modes": { "bubble": { "distance": 200, "size": 6, "duration": 2 } }
+            }
+        });
+    </script>
+</body>
+
+</html>
