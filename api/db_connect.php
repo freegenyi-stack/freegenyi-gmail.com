@@ -18,7 +18,7 @@ $password = "Yousr4568520&";
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ATTR_ERRMODE_EXCEPTION);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // Supprimer cette ligne en production si tout marche
     // echo json_encode(["message" => "Connexion réussie !"]); 
 } catch (PDOException $e) {
