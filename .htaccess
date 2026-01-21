@@ -1,3 +1,19 @@
 RewriteEngine On
+
+# 1. Forcer le HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. Mode MAINTENANCE (Masquer le site au public)
+# On n'applique pas la redirection si c'est la page de maintenance elle-même
+RewriteCond %{REQUEST_URI} !/under_construction.html$ [NC]
+# On laisse passer les assets (images, css) pour que la page de maintenance soit belle
+RewriteCond %{REQUEST_URI} !/assets/ [NC]
+RewriteCond %{REQUEST_URI} !/api/ [NC]
+# --- OPTIONNEL : VOTRE IP ---
+# Si vous voulez voir le site normalement sans être bloqué par la maintenance, 
+# décommentez la ligne suivante et remplacez les X par votre IP (trouvable sur monip.com)
+# RewriteCond %{REMOTE_ADDR} !=XXX.XXX.XXX.XXX
+
+# Rediriger tout le reste vers la page de construction
+RewriteRule ^(.*)$ /under_construction.html [L,R=302]
