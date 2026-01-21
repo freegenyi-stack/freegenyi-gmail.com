@@ -1,5 +1,8 @@
 <?php
 // db_connect.php - Connexion centrale à la base de données
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
@@ -18,7 +21,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ATTR_ERRMODE_EXCEPTION);
     // Supprimer cette ligne en production si tout marche
     // echo json_encode(["message" => "Connexion réussie !"]); 
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     echo json_encode(["error" => "Erreur de connexion : " . $e->getMessage()]);
     exit();
 }
