@@ -9,6 +9,8 @@ on:
       - '*.html'
       - '*.css'
       - '*.js'
+      - '*.php'
+      - 'api/**'
       - 'assets/**'
 
 jobs:
