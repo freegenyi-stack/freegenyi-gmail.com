@@ -1,24 +1,11 @@
 RewriteEngine On
 
-# 1. Forcer le HTTPS
+# 1. FORCE HTTPS
 RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 2. Mode MAINTENANCE (Masquer le site au public)
-# On n'applique pas la redirection pour les pages essentielles au test :
-RewriteCond %{REQUEST_URI} !/under_construction.html$ [NC]
-RewriteCond %{REQUEST_URI} !/login.html$ [NC]
-RewriteCond %{REQUEST_URI} !/parent_dashboard.html$ [NC]
-RewriteCond %{REQUEST_URI} !/school_dashboard.html$ [NC]
-RewriteCond %{REQUEST_URI} !/institution_dashboard.html$ [NC]
+# 2. DO NOT REDIRECT THE FOLLOWING PATHS (White List)
+RewriteRule ^(under_construction\.html|login\.html|parent_dashboard\.html|school_dashboard\.html|institution_dashboard\.html|assets/|api/) - [L,NC]
 
-# On laisse passer les assets et les APIs
-RewriteCond %{REQUEST_URI} !/assets/ [NC]
-RewriteCond %{REQUEST_URI} !/api/ [NC]
-
-# --- OPTIONNEL : VOTRE IP (Moyen le plus sûr) ---
-# Si vous me donnez votre IP, on peut tout débloquer juste pour vous.
-# RewriteCond %{REMOTE_ADDR} !=XXX.XXX.XXX.XXX
-
-# Rediriger tout le reste vers la page de construction
-RewriteRule ^(.*)$ /under_construction.html [L,R=302]
+# 3. REDIRECT EVERYTHING ELSE TO MAINTENANCE PAGE
+RewriteRule !^under_construction\.html$ /under_construction.html [L,R=302]
