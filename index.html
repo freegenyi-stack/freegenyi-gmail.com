@@ -262,58 +262,65 @@
 
         /* 
            CHARACTER SPRITE ANIMATION 
+           Image: 1024x1024, Grid: 3 columns x 2 rows
+           Each frame: ~341px x 512px (using top row for walk cycle)
         */
         .character-walk {
             position: absolute;
             bottom: 40px;
-            left: -200px;
-            width: 180px;
-            height: 180px;
+            left: -180px;
+            width: 170px;
+            /* Display size (scaled down from 341) */
+            height: 256px;
+            /* Display size (scaled down from 512) */
             background-image: url('assets/geny_walk.png');
             background-repeat: no-repeat;
-            background-size: 300% 200%;
+            /* Scale the 1024px image so 3 frames fit across our 170px * 3 = 510px display width */
+            background-size: 510px 512px;
             background-position: 0 0;
             z-index: 10;
             animation:
-                walk-cycle 0.5s steps(3) infinite,
-                move-across 22s linear infinite;
+                walk-cycle 0.6s steps(3) infinite,
+                move-across 20s linear infinite;
             pointer-events: none;
-            filter: drop-shadow(0 10px 10px rgba(114, 9, 183, 0.1));
+            filter: drop-shadow(0 10px 10px rgba(114, 9, 183, 0.15));
         }
 
         @keyframes walk-cycle {
+
+            /* Move background left by 3 frames (170px each) */
             from {
                 background-position: 0 0;
             }
 
             to {
-                background-position: -300% 0;
+                background-position: -510px 0;
             }
         }
 
         @keyframes move-across {
             0% {
-                left: -220px;
+                left: -180px;
                 transform: scaleX(1);
             }
 
             45% {
-                left: 110%;
+                left: 105%;
                 transform: scaleX(1);
             }
 
             50% {
-                left: 110%;
+                left: 105%;
                 transform: scaleX(-1);
             }
 
             95% {
-                left: -220px;
+                left: -180px;
                 transform: scaleX(-1);
             }
 
             100% {
-                left: -220px;
+                left: -180px;
                 transform: scaleX(1);
             }
         }
