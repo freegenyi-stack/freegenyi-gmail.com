@@ -4,8 +4,15 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 2. DO NOT REDIRECT THE FOLLOWING PATHS (White List)
-RewriteRule ^(under_construction\.html|login\.html|parent_dashboard\.html|school_dashboard\.html|institution_dashboard\.html|assets/|api/) - [L,NC]
+# 2. THE "ELITE" BYPASS (Stop redirection for these specific files)
+RewriteCond %{REQUEST_URI} ^/login\.html [NC,OR]
+RewriteCond %{REQUEST_URI} ^/parent_dashboard\.html [NC,OR]
+RewriteCond %{REQUEST_URI} ^/school_dashboard\.html [NC,OR]
+RewriteCond %{REQUEST_URI} ^/institution_dashboard\.html [NC,OR]
+RewriteCond %{REQUEST_URI} ^/under_construction\.html [NC,OR]
+RewriteCond %{REQUEST_URI} ^/api/ [NC,OR]
+RewriteCond %{REQUEST_URI} ^/assets/ [NC]
+RewriteRule ^ - [L]
 
-# 3. REDIRECT EVERYTHING ELSE TO MAINTENANCE PAGE
+# 3. REDIRECT EVERYTHING ELSE TO MAINTENANCE
 RewriteRule !^under_construction\.html$ /under_construction.html [L,R=302]
