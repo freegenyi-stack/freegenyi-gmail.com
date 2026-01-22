@@ -261,66 +261,43 @@
         }
 
         /* 
-           CHARACTER SPRITE ANIMATION 
-           Image: 1024x1024, Grid: 3 columns x 2 rows
-           Each frame: ~341px x 512px (using top row for walk cycle)
+           PROFESSIONAL MASCOT ANIMATION 
+           Using Lottie for smooth, vector-based animation like Duolingo/Kahoot
         */
-        .character-walk {
+        .mascot-container {
             position: absolute;
-            bottom: 40px;
-            left: -180px;
-            width: 170px;
-            /* Display size (scaled down from 341) */
-            height: 256px;
-            /* Display size (scaled down from 512) */
-            background-image: url('assets/geny_walk.png');
-            background-repeat: no-repeat;
-            /* Scale the 1024px image so 3 frames fit across our 170px * 3 = 510px display width */
-            background-size: 510px 512px;
-            background-position: 0 0;
+            bottom: 30px;
+            left: -150px;
+            width: 120px;
+            height: 120px;
             z-index: 10;
-            animation:
-                walk-cycle 0.6s steps(3) infinite,
-                move-across 20s linear infinite;
+            animation: move-across 25s linear infinite;
             pointer-events: none;
-            filter: drop-shadow(0 10px 10px rgba(114, 9, 183, 0.15));
-        }
-
-        @keyframes walk-cycle {
-
-            /* Move background left by 3 frames (170px each) */
-            from {
-                background-position: 0 0;
-            }
-
-            to {
-                background-position: -510px 0;
-            }
         }
 
         @keyframes move-across {
             0% {
-                left: -180px;
+                left: -150px;
                 transform: scaleX(1);
             }
 
             45% {
-                left: 105%;
+                left: calc(100% + 20px);
                 transform: scaleX(1);
             }
 
             50% {
-                left: 105%;
+                left: calc(100% + 20px);
                 transform: scaleX(-1);
             }
 
             95% {
-                left: -180px;
+                left: -150px;
                 transform: scaleX(-1);
             }
 
             100% {
-                left: -180px;
+                left: -150px;
                 transform: scaleX(1);
             }
         }
@@ -332,8 +309,12 @@
     <div id="bg-canvas"></div>
     <div id="particles-js"></div>
 
-    <!-- Animated Character -->
-    <div class="character-walk"></div>
+    <!-- Animated Mascot (Lottie) -->
+    <div class="mascot-container">
+        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_1pqxhfpf.json" background="transparent"
+            speed="1" style="width: 120px; height: 120px;" loop autoplay>
+        </lottie-player>
+    </div>
 
     <div class="container">
         <!-- Logo Area -->
