@@ -1,4 +1,11 @@
 RewriteEngine On
 
-# HTTPS and Maintenance temporarily disabled per user request to facilitate testing.
-# No redirects active.
+# 1. FORCE HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. FULL MAINTENANCE LOCK (User request)
+# Redirect everything to under_construction.html
+RewriteCond %{REQUEST_URI} !/under_construction.html$ [NC]
+RewriteCond %{REQUEST_URI} !/assets/ [NC]
+RewriteRule ^(.*)$ /under_construction.html [L,R=302]
