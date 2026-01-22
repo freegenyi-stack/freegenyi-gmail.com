@@ -4,14 +4,5 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 2. WHITELIST (Allow these files/folders to load directly)
-RewriteRule ^login\.html$ - [L,NC]
-RewriteRule ^parent_dashboard\.html$ - [L,NC]
-RewriteRule ^school_dashboard\.html$ - [L,NC]
-RewriteRule ^institution_dashboard\.html$ - [L,NC]
-RewriteRule ^under_construction\.html$ - [L,NC]
-RewriteRule ^api/ - [L,NC]
-RewriteRule ^assets/ - [L,NC]
-
-# 3. MAINTENANCE REDIRECT (Redirect everything else)
-RewriteRule ^(.*)$ /under_construction.html [L,R=302]
+# Redirection rules removed to allow direct access to login and dashboards.
+# The main site is hidden because 'index.html' is now the 'Under Construction' page.
