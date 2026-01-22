@@ -1,8 +1,8 @@
 RewriteEngine On
 
-# 1. FORCE HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# 1. TEMPORARILY DISABLED HTTPS FORCE (Diagnosing Timeout)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Redirection rules removed to allow direct access to login and dashboards.
 # The main site is hidden because 'index.html' is now the 'Under Construction' page.
