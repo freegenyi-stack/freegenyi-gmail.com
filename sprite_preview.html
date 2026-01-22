@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Animation Preview - FreeGeny</title>
+    <style>
+        :root {
+            --bg-color: #f0f0f0;
+            --primary-teal: #09A1A1;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--primary-teal);
+            margin-bottom: 30px;
+        }
+
+        /* 
+           SPRITE ANIMATION SETTINGS
+           Note: We are using the "walking" row from the provided image.
+           Approximate frame size: 140px x 180px
+        */
+        .sprite-box {
+            width: 130px;
+            /* Width of one frame */
+            height: 180px;
+            /* Height of one frame */
+            background-image: url('assets/character_sprites.jpg');
+            background-repeat: no-repeat;
+            margin: 0 auto;
+            border: 2px dashed #ddd;
+            /* Just for visualization */
+            background-size: 1000px auto;
+            /* Scale based on the original image width */
+        }
+
+        /* WALKING ANIMATION (Row 5 in the original image) */
+        .walk {
+            background-position: 0px -680px;
+            /* Position to the start of the walk row */
+            animation: walk-cycle 0.8s steps(7) infinite;
+        }
+
+        @keyframes walk-cycle {
+            from {
+                background-position: 0px -680px;
+            }
+
+            to {
+                background-position: -910px -680px;
+            }
+
+            /* 7 frames * 130px */
+        }
+
+        /* RUNNING ANIMATION (Row 7-8 area) */
+        .run {
+            width: 140px;
+            background-position: -580px -900px;
+            animation: run-cycle 0.6s steps(6) infinite;
+            margin-top: 50px;
+        }
+
+        @keyframes run-cycle {
+            from {
+                background-position: -580px -1120px;
+            }
+
+            to {
+                background-position: -1420px -1120px;
+            }
+        }
+
+        .label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #666;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .info {
+            margin-top: 40px;
+            max-width: 400px;
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Animation Preview</h1>
+
+        <div class="sprite-box walk"></div>
+        <div class="label">Walking Cycle</div>
+
+        <div class="info">
+            This is a <strong>CSS Sprite Sheet Animation</strong> test.
+            We are using a single image and moving it rapidly using <code>steps()</code>
+            to create the illusion of movement.
+        </div>
+
+        <button onclick="location.reload()"
+            style="margin-top: 20px; padding: 10px 20px; border: none; background: var(--primary-teal); color: white; border-radius: 10px; cursor: pointer;">
+            Reload Preview
+        </button>
+    </div>
+
+</body>
+
+</html>
