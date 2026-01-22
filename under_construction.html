@@ -259,6 +259,63 @@
                 font-size: 50px;
             }
         }
+
+        /* 
+           CHARACTER SPRITE ANIMATION 
+        */
+        .character-walk {
+            position: absolute;
+            bottom: 60px;
+            left: -150px;
+            width: 130px;
+            height: 180px;
+            background-image: url('assets/character_sprites.jpg');
+            background-repeat: no-repeat;
+            background-size: 1000px auto;
+            background-position: 0px -680px;
+            z-index: 10;
+            animation:
+                walk-cycle 0.8s steps(7) infinite,
+                move-across 25s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes walk-cycle {
+            from {
+                background-position: 0px -680px;
+            }
+
+            to {
+                background-position: -910px -680px;
+            }
+        }
+
+        @keyframes move-across {
+            0% {
+                left: -150px;
+                transform: scaleX(1);
+            }
+
+            45% {
+                left: 110%;
+                transform: scaleX(1);
+            }
+
+            50% {
+                left: 110%;
+                transform: scaleX(-1);
+            }
+
+            95% {
+                left: -150px;
+                transform: scaleX(-1);
+            }
+
+            100% {
+                left: -150px;
+                transform: scaleX(1);
+            }
+        }
     </style>
 </head>
 
@@ -266,6 +323,9 @@
 
     <div id="bg-canvas"></div>
     <div id="particles-js"></div>
+
+    <!-- Animated Character -->
+    <div class="character-walk"></div>
 
     <div class="container">
         <!-- Logo Area -->

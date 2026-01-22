@@ -591,6 +591,67 @@
             }
         }
 
+        /* 
+           CHARACTER SPRITE ANIMATION 
+           Elite character "Geny" walking across the screen
+        */
+        .character-walk {
+            position: absolute;
+            bottom: 10%;
+            left: -150px;
+            /* Start off-screen */
+            width: 130px;
+            height: 180px;
+            background-image: url('assets/character_sprites.jpg');
+            background-repeat: no-repeat;
+            background-size: 1000px auto;
+            background-position: 0px -680px;
+            /* Walk row */
+            z-index: 5;
+            animation:
+                walk-cycle 0.8s steps(7) infinite,
+                move-across 15s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes walk-cycle {
+            from {
+                background-position: 0px -680px;
+            }
+
+            to {
+                background-position: -910px -680px;
+            }
+        }
+
+        @keyframes move-across {
+            from {
+                left: -150px;
+                transform: scaleX(1);
+            }
+
+            49% {
+                left: 110%;
+                transform: scaleX(1);
+            }
+
+            50% {
+                left: 110%;
+                transform: scaleX(-1);
+            }
+
+            /* Turn around */
+            99% {
+                left: -150px;
+                transform: scaleX(-1);
+            }
+
+            100% {
+                left: -150px;
+                transform: scaleX(1);
+            }
+        }
+
         /* Brand Slogan Details */
         .slogan-container {
             margin-top: 40px;
@@ -633,6 +694,67 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        /* 
+           CHARACTER SPRITE ANIMATION 
+           Elite character "Geny" walking across the screen
+        */
+        .character-walk {
+            position: absolute;
+            bottom: 50px;
+            left: -150px;
+            /* Start off-screen */
+            width: 130px;
+            height: 180px;
+            background-image: url('assets/character_sprites.jpg');
+            background-repeat: no-repeat;
+            background-size: 1000px auto;
+            background-position: 0px -680px;
+            /* Walk row */
+            z-index: 5;
+            animation:
+                walk-cycle 0.8s steps(7) infinite,
+                move-across 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes walk-cycle {
+            from {
+                background-position: 0px -680px;
+            }
+
+            to {
+                background-position: -910px -680px;
+            }
+        }
+
+        @keyframes move-across {
+            0% {
+                left: -150px;
+                transform: scaleX(1);
+            }
+
+            45% {
+                left: 110%;
+                transform: scaleX(1);
+            }
+
+            50% {
+                left: 110%;
+                transform: scaleX(-1);
+            }
+
+            /* Turn around */
+            95% {
+                left: -150px;
+                transform: scaleX(-1);
+            }
+
+            100% {
+                left: -150px;
+                transform: scaleX(1);
             }
         }
 
@@ -1069,6 +1191,8 @@
 
     <!-- Hero Section (Centered) -->
     <section id="hero">
+        <!-- Animated Character -->
+        <div class="character-walk"></div>
         <div id="vanta-bg" style="position: absolute; inset:0; z-index:0;"></div>
         <div class="hero-content"
             style="position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:20px;">
