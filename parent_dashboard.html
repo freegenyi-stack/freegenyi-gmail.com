@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+    FREEGENY PARENT DASHBOARD 
+    Author: FreeGeny Development Team
+    Version: 1.0.0
+    Description: Premium monitoring interface for parents and guardians.
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Portal - FreeGeny</title>
+
+    <!-- External Fonts: Nunito for readability, Titan One for branding -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Titan+One&display=swap"
+        rel="stylesheet">
+    <!-- Animation Layer -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* 
+           CORE DESIGN SYSTEM
+           Color Palette: Teal (#09A1A1) and Rose (#D396A6)
+           Theme: Premium Glassmorphism
+        */
+        :root {
+            --primary: #09A1A1;
+            --primary-soft: rgba(9, 161, 161, 0.1);
+            --secondary: #D396A6;
+            --secondary-soft: rgba(211, 150, 166, 0.1);
+            --dark: #0F172A;
+            --light-bg: #F8FAFC;
+            --white: #FFFFFF;
+            --glass: rgba(255, 255, 255, 0.85);
+            --border: rgba(0, 0, 0, 0.05);
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            background:
+                radial-gradient(circle at 0% 0%, var(--primary-soft) 0%, transparent 30%),
+                radial-gradient(circle at 100% 100%, var(--secondary-soft) 0%, transparent 30%);
+            min-height: 100vh;
+            display: flex;
+            color: var(--dark);
+        }
+
+        /* 
+           SIDEBAR NAVIGATION 
+           Fixed position with premium glass effect
+        */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--white);
+            border-right: 1px solid var(--border);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+
+        .sidebar-logo {
+            font-family: 'Titan One', cursive;
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 50px;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-radius: 18px;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            gap: 15px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary-soft);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .nav-link svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* 
+           MAIN CONTENT AREA 
+        */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 40px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .welcome-text h1 {
+            font-size: 28px;
+            font-weight: 900;
+        }
+
+        .welcome-text p {
+            color: #64748B;
+            font-weight: 600;
+        }
+
+        /* 
+           STATS CARDS 
+        */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .icon-teal {
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+
+        .icon-rose {
+            background: var(--secondary-soft);
+            color: var(--secondary);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 900;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #64748B;
+            font-weight: 700;
+        }
+
+        /* 
+           CHARTS & ACTIVITY LIST 
+        */
+        .dashboard-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+
+        .card-panel {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 35px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border);
+        }
+
+        .panel-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        /* Progress List Mockup */
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            gap: 15px;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .child-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: #eee;
+        }
+
+        .activity-info h4 {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .activity-info p {
+            font-size: 12px;
+            color: #94A3B8;
+        }
+
+        .status-badge {
+            margin-left: auto;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .bg-success {
+            background: #DCFCE7;
+            color: #166534;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 80px;
+                padding: 20px 10px;
+            }
+
+            .sidebar-logo,
+            .nav-link span {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 80px;
+            }
+
+            .dashboard-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRIMARY SIDEBAR NAVIGATION -->
+    <nav class="sidebar">
+        <a href="#" class="sidebar-logo">FreeGeny</a>
+
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <span>Children</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    <span>Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+
+        <a href="#" class="nav-link" style="margin-top: auto; color: #EF4444;">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            <span>Logout</span>
+        </a>
+    </nav>
+
+    <!-- CONTENT WRAPPER -->
+    <main class="main-content">
+        <!-- TOP HEADER SECTION -->
+        <div class="header-top">
+            <div class="welcome-text">
+                <h1>Welcome back, Parent!</h1>
+                <p>Here is what your explorers are doing today.</p>
+            </div>
+            <div class="user-profile" style="display: flex; align-items: center; gap: 15px;">
+                <div style="text-align: right;">
+                    <span style="display: block; font-weight: 800; font-size: 14px;">Yousr B.</span>
+                    <span style="font-size: 12px; color: var(--primary); font-weight: 700;">Premium Member</span>
+                </div>
+                <div style="width: 50px; height: 50px; border-radius: 15px; background: var(--border);"></div>
+            </div>
+        </div>
+
+        <!-- KPI SUMMARY GRID -->
+        <div class="stats-grid">
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="stat-icon icon-teal">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="stat-value">2.5 Hours</span>
+                <span class="stat-label">Total Time Today</span>
+            </div>
+
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-icon icon-rose">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <span class="stat-value">84%</span>
+                <span class="stat-label">Avg. Accuracy Rate</span>
+            </div>
+
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-icon icon-teal">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                </div>
+                <span class="stat-value">12</span>
+                <span class="stat-label">Modules Completed</span>
+            </div>
+        </div>
+
+        <!-- MAIN DATA VISUALIZATION AREA -->
+        <div class="dashboard-row">
+            <!-- Learning Evolution Chart Mockup -->
+            <div class="card-panel" data-aos="fade-up">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Learning Evolution</h2>
+                    <select style="border: none; font-weight: 800; color: var(--primary);">
+                        <option>Last 7 Days</option>
+                        <option>Last 30 Days</option>
+                    </select>
+                </div>
+                <div
+                    style="height: 300px; display: flex; align-items: flex-end; justify-content: space-between; padding: 20px 0;">
+                    <!-- Simple CSS Bar Chart Mockup -->
+                    <div style="width: 12%; height: 40%; background: var(--primary-soft); border-radius: 10px;"></div>
+                    <div style="width: 12%; height: 60%; background: var(--primary-soft); border-radius: 10px;"></div>
+                    <div style="width: 12%; height: 50%; background: var(--primary-soft); border-radius: 10px;"></div>
+                    <div style="width: 12%; height: 80%; background: var(--primary); border-radius: 10px;"></div>
+                    <div style="width: 12%; height: 70%; background: var(--primary-soft); border-radius: 10px;"></div>
+                    <div style="width: 12%; height: 90%; background: var(--secondary); border-radius: 10px;"></div>
+                    <div style="width: 12%; height: 100%; background: var(--primary); border-radius: 10px;"></div>
+                </div>
+            </div>
+
+            <!-- RECENT ACTIVITY FEED -->
+            <div class="card-panel" data-aos="fade-up" data-aos-delay="200">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Recent Activity</h2>
+                </div>
+
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="child-avatar"
+                            style="background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Felix') center/cover;">
+                        </div>
+                        <div class="activity-info">
+                            <h4>Felix Spark</h4>
+                            <p>Completed: Basic Math 101</p>
+                        </div>
+                        <span class="status-badge bg-success">Done</span>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="child-avatar"
+                            style="background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Luna') center/cover;">
+                        </div>
+                        <div class="activity-info">
+                            <h4>Luna Spark</h4>
+                            <p>Started: Logic Puzzles</p>
+                        </div>
+                        <span class="status-badge" style="background: #FEF9C3; color: #854D0E;">In Progress</span>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="child-avatar"
+                            style="background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Felix') center/cover;">
+                        </div>
+                        <div class="activity-info">
+                            <h4>Felix Spark</h4>
+                            <p>Unlocked: "Math Wizard" Badge</p>
+                        </div>
+                        <span class="status-badge" style="background: #E0F2FE; color: #075985;">Award</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- UI Interaction Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initializing Animation Library
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Dashboard Security Logic: Redirect if no session token is found
+        window.addEventListener('load', () => {
+            const token = localStorage.getItem('fg_token');
+            // if (!token) window.location.href = 'login.html';
+        });
+    </script>
+</body>
+
+</html>
