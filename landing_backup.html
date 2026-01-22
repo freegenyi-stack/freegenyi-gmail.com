@@ -593,44 +593,49 @@
 
         /* 
            CHARACTER SPRITE ANIMATION 
-           Elite character "Geny" walking across the screen
+           Official "Geny" mascot walking across the screen
         */
         .character-walk {
             position: absolute;
-            bottom: 10%;
-            left: -150px;
+            bottom: 60px;
+            left: -220px;
             /* Start off-screen */
-            width: 130px;
-            height: 180px;
-            background-image: url('assets/character_sprites.jpg');
+            width: 200px;
+            /* Width of one Geny frame */
+            height: 200px;
+            /* Height of one Geny frame */
+            background-image: url('assets/geny_walk.png');
             background-repeat: no-repeat;
-            background-size: 1000px auto;
-            background-position: 0px -680px;
-            /* Walk row */
+            background-size: 300% 200%;
+            /* 3 columns, 2 rows */
+            background-position: 0 0;
             z-index: 5;
             animation:
-                walk-cycle 0.8s steps(7) infinite,
-                move-across 15s linear infinite;
+                walk-cycle 0.5s steps(3) infinite,
+                move-across 18s linear infinite;
             pointer-events: none;
+            filter: drop-shadow(0 10px 15px rgba(114, 9, 183, 0.2));
         }
 
         @keyframes walk-cycle {
             from {
-                background-position: 0px -680px;
+                background-position: 0 0;
             }
 
             to {
-                background-position: -910px -680px;
+                background-position: -300% 0;
             }
+
+            /* 3 frames x 100% width each */
         }
 
         @keyframes move-across {
-            from {
-                left: -150px;
+            0% {
+                left: -220px;
                 transform: scaleX(1);
             }
 
-            49% {
+            45% {
                 left: 110%;
                 transform: scaleX(1);
             }
@@ -641,13 +646,13 @@
             }
 
             /* Turn around */
-            99% {
-                left: -150px;
+            95% {
+                left: -220px;
                 transform: scaleX(-1);
             }
 
             100% {
-                left: -150px;
+                left: -220px;
                 transform: scaleX(1);
             }
         }

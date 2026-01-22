@@ -265,34 +265,35 @@
         */
         .character-walk {
             position: absolute;
-            bottom: 60px;
-            left: -150px;
-            width: 130px;
+            bottom: 40px;
+            left: -200px;
+            width: 180px;
             height: 180px;
-            background-image: url('assets/character_sprites.jpg');
+            background-image: url('assets/geny_walk.png');
             background-repeat: no-repeat;
-            background-size: 1000px auto;
-            background-position: 0px -680px;
+            background-size: 300% 200%;
+            background-position: 0 0;
             z-index: 10;
             animation:
-                walk-cycle 0.8s steps(7) infinite,
-                move-across 25s linear infinite;
+                walk-cycle 0.5s steps(3) infinite,
+                move-across 22s linear infinite;
             pointer-events: none;
+            filter: drop-shadow(0 10px 10px rgba(114, 9, 183, 0.1));
         }
 
         @keyframes walk-cycle {
             from {
-                background-position: 0px -680px;
+                background-position: 0 0;
             }
 
             to {
-                background-position: -910px -680px;
+                background-position: -300% 0;
             }
         }
 
         @keyframes move-across {
             0% {
-                left: -150px;
+                left: -220px;
                 transform: scaleX(1);
             }
 
@@ -307,12 +308,12 @@
             }
 
             95% {
-                left: -150px;
+                left: -220px;
                 transform: scaleX(-1);
             }
 
             100% {
-                left: -150px;
+                left: -220px;
                 transform: scaleX(1);
             }
         }
