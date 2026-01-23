@@ -30,9 +30,10 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        # Port standard FTP ou 21
         port: 21
-        # Dossier de destination sur votre cPanel (modifiez si besoin)
         server-dir: public_html/
-        # Force re-upload all files (including .htaccess)
-        dangerous-clean-slate: true
+        # Exclude nothing - upload everything from git including .htaccess
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
