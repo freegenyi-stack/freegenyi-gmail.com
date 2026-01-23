@@ -272,12 +272,12 @@
                 </svg>
                 <span>Classes</span>
             </a>
-            <a href="#" class="nav-link">
+            <a href="javascript:void(0)" onclick="logout()" class="nav-link" style="margin-top: auto; color: #F87171;">
                 <svg width="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
-                <span>Reports</span>
+                <span>Logout</span>
             </a>
         </nav>
     </aside>
@@ -285,8 +285,8 @@
     <main class="app-view">
         <div class="top-bar">
             <div>
-                <h1 style="font-weight: 900;">Elite Academy School</h1>
-                <p style="color: #64748B; font-weight: 700;">Academic Year 2025/2026</p>
+                <h1 style="font-weight: 900;" id="school-name">Elite Academy School</h1>
+                <p style="color: #64748B; font-weight: 700;">Admin: <span id="display-name">Loading...</span></p>
             </div>
 
             <div class="search-box">
@@ -383,6 +383,36 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });
+
+        // Dashboard Security & Data Logic
+        window.addEventListener('load', () => {
+            const token = localStorage.getItem('fg_token');
+            const userData = localStorage.getItem('fg_user');
+
+            if (!token || !userData) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const user = JSON.parse(userData);
+
+            // Role Security
+            if (user.role.toLowerCase() !== 'school') {
+                if (user.role.toLowerCase() === 'parent') window.location.href = 'parent_dashboard.html';
+                else if (user.role.toLowerCase() === 'institution') window.location.href = 'institution_dashboard.html';
+                return;
+            }
+
+            // Fill Dynamic Data
+            const displayName = user.first_name + ' ' + (user.last_name || '');
+            document.getElementById('display-name').innerText = displayName;
+        });
+
+        function logout() {
+            localStorage.removeItem('fg_token');
+            localStorage.removeItem('fg_user');
+            window.location.href = 'login.html';
+        }
     </script>
 </body>
 
