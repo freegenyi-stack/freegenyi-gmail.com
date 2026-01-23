@@ -5,10 +5,9 @@ RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # 2. FULL MAINTENANCE LOCK (User request)
-# 2. FULL MAINTENANCE LOCK except whitelist
-# Do nothing for whitelisted files/folders
-RewriteRule ^(under_construction\.html|assets/|api/|login\.html|parent_dashboard\.html|school_dashboard\.html|institution_dashboard\.html) - [L]
+# MAINTENANCE MODE DISABLED - Site is now live
+# Uncomment the lines below to re-enable maintenance mode
 
-# Redirect everything else
-RewriteCond %{REQUEST_URI} !/under_construction.html$ [NC]
-RewriteRule ^(.*)$ /under_construction.html [L,R=302]
+# RewriteRule ^(under_construction\.html|assets/|api/|login\.html|parent_dashboard\.html|school_dashboard\.html|institution_dashboard\.html) - [L]
+# RewriteCond %{REQUEST_URI} !/under_construction.html$ [NC]
+# RewriteRule ^(.*)$ /under_construction.html [L,R=302]

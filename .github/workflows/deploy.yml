@@ -10,6 +10,7 @@ on:
       - '*.css'
       - '*.js'
       - '*.php'
+      - '.htaccess'
       - 'api/**'
       - 'assets/**'
 
