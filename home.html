@@ -1251,29 +1251,39 @@
         </div>
     </section>
 
-    <!-- App Preview Section -->
+    <!-- App Preview Section (Immersive) -->
     <section id="preview">
-        <h2 class="section-title" data-i18n="preview_title">An immersive experience</h2>
-        <p style="text-align:center; max-width:600px; margin:0 auto 40px; opacity:0.8;" data-i18n="preview_desc">
-            Discover an interface designed
-            to capture attention without over-stimulating the child.</p>
-        <div class="app-preview-container" data-aos="zoom-in">
-            <div class="app-screen">
-                <!-- Representing the App UI with Lottie & CSS -->
-                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_w51pcehl.json"
-                    background="transparent" speed="1" style="width: 400px; height: 400px;" loop
-                    autoplay></lottie-player>
-                <div class="ui-element" style="top:20px; left:20px; width:200px;">
-                    <div
-                        style="height:10px; width:100%; background:var(--secondary); border-radius:5px; margin-bottom:10px;">
-                    </div>
-                    <div style="height:6px; width:60%; background:rgba(255,255,255,0.3); border-radius:5px;"></div>
+        <div class="glass-card"
+            style="display: flex; align-items: center; gap: 80px; flex-wrap: wrap-reverse; padding: 80px; border: none; background: transparent;">
+            <div style="flex: 1.2; min-width: 300px; position: relative;" data-aos="zoom-in-right">
+                <img src="assets/parents_premium.png" alt="FreeGeny Immersive"
+                    style="width: 100%; border-radius: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.15); border: 8px solid white;">
+                <div class="ui-element"
+                    style="top: -30px; left: -30px; background: var(--secondary-light); border: none;">
+                    <span style="font-weight: 800; color: var(--secondary); font-size: 1.2rem;">✨ IMMERSIVE</span>
                 </div>
-                <div class="ui-element" style="bottom:40px; right:30px; animation-delay: 1s;">
-                    <div style="display:flex; gap:10px;">
-                        <div style="width:40px; height:40px; border-radius:10px; background:var(--accent-yellow);">
+            </div>
+            <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 30px; font-size: 3rem;"
+                    data-i18n="preview_title">An immersive experience</h2>
+                <p style="font-size: 1.3rem; line-height: 1.8; color: var(--dark-light); font-weight: 700; margin-bottom: 25px;"
+                    data-i18n="preview_desc">
+                    Discover an interface designed to capture attention without over-stimulating the child. A peaceful
+                    harbor for cognitive growth.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary);"></div>
+                        <span style="font-weight: 800; opacity: 0.8;">Zero Distraction Design</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--secondary);"></div>
+                        <span style="font-weight: 800; opacity: 0.8;">Soft Color Palettes</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent-yellow);">
                         </div>
-                        <div style="width:40px; height:40px; border-radius:10px; background:var(--primary);"></div>
+                        <span style="font-weight: 800; opacity: 0.8;">Focus-First Engineering</span>
                     </div>
                 </div>
             </div>
@@ -1282,15 +1292,28 @@
 
     <!-- Vision Section -->
     <section id="vision">
-        <div class="glass-card" style="padding:80px 40px; border-color:var(--secondary);">
-            <h2 class="section-title" style="margin-bottom:30px;" data-i18n="vision_title">More than an application</h2>
-            <div class="vision-text">
-                <span data-i18n="vision_q">"Will my child log off? Are they on screens too much? Am I doing enough for
-                    their future?"</span>
-                <span class="vision-highlight" data-i18n="vision_highlight">What if learning became a game again, not a
-                    pressure?</span>
-                <span data-i18n="vision_desc">FreeGeny isn't just another application. It is the intellectual foundation
-                    of a generation that learns how to think, not what to think.</span>
+        <div class="glass-card"
+            style="padding: 100px 60px; border-color: var(--secondary-light); overflow: hidden; background: linear-gradient(135deg, white, #fff9fb);">
+            <div style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px; font-size: 3rem;"
+                        data-i18n="vision_title">More than an application</h2>
+                    <div class="vision-text" style="text-align: left;">
+                        <span
+                            style="font-family: 'Titan One', cursive; color: var(--primary); font-size: 1.5rem; display: block; margin-bottom: 20px;"
+                            data-i18n="vision_q">"Will my child log off? Are they on screens too much?"</span>
+                        <span class="vision-highlight"
+                            style="font-size: 1.8rem; line-height: 1.3; margin-bottom: 25px; display: block;"
+                            data-i18n="vision_highlight">What if learning became a game again, not a pressure?</span>
+                        <span style="font-size: 1.1rem; opacity: 0.8; line-height: 1.8; display: block;"
+                            data-i18n="vision_desc">FreeGeny isn't just another application. It is the intellectual
+                            foundation of a generation that learns how to think, not what to think.</span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 300px; text-align: center;" data-aos="zoom-out-left">
+                    <img src="assets/vision_premium.png" alt="FreeGeny Vision"
+                        style="width: 100%; max-width: 500px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));">
+                </div>
             </div>
         </div>
     </section>
@@ -1447,47 +1470,99 @@
         </div>
     </section>
 
-    <section id="mission">
-        <h2 class="section-title" data-i18n="nav_mission">Our Mission</h2>
-        <div class="glass-card">
-            <p style="text-align:center;">
-                To unlock the full potential of every child, fostering critical thinking, creativity, and a lifelong
-                love for learning through innovative technology.
-            </p>
-        </div>
-    </section>
+    <!-- Philosophy: Mission & About Combined -->
+    <section id="philosophy" style="padding: 120px 20px;">
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto;">
 
-    <section id="about">
-        <h2 class="section-title" data-i18n="nav_about">About Us</h2>
-        <div class="glass-card">
-            <p style="text-align:center;">
-                FreeGeny was founded by a team of educators, engineers, and child psychologists dedicated to
-                reimagining early childhood education.
-            </p>
-        </div>
-    </section>
-
-    <section id="download" style="background: rgba(255, 255, 255, 0.05); border-radius: 50px; margin: 60px 20px;">
-        <div style="text-align:center; padding:60px;">
-            <h2 class="section-title">Ready to Start?</h2>
-            <p style="font-size:1.3rem; margin-bottom:40px; opacity:0.8;">Join over 10,000+ tiny geniuses learning with
-                FreeGeny.</p>
-            <div class="app-badges" style="justify-content:center; gap:25px;">
-                <div class="badge" style="padding:15px 30px; font-size:1rem; border:1px solid var(--secondary);">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-                    </svg>
-                    App Store
-                </div>
-                <div class="badge" style="padding:15px 30px; font-size:1rem; border:1px solid var(--accent-yellow);">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.24-.84-.76-.84-1.35zm13.81-6.38l-3.32-1.9L3.38 22.31c.38.18.8.21 1.2.08L18.81 14.12zm.91-3.12l3.32 1.9c.56.32.91.84.91 1.44 0 .6-.35 1.12-.91 1.44l-3.32 1.9-3.31-1.9 3.31-4.78zm-3.31-4.78L3.38 1.69c-.4-.13-.82-.1-1.2.08L13.51 11.9l3.32-1.9-2.42-4.78z" />
-                    </svg>
-                    Google Play
+            <div class="glass-card" id="mission"
+                style="margin: 0; padding: 60px; height: 100%; border-top: 5px solid var(--primary);"
+                data-aos="fade-up">
+                <div
+                    style="font-size: 0.9rem; font-weight: 900; letter-spacing: 4px; color: var(--primary); margin-bottom: 20px; text-transform: uppercase;">
+                    MISSION</div>
+                <h3 style="font-family: 'Titan One', cursive; font-size: 2rem; margin-bottom: 25px;"
+                    data-i18n="nav_mission">Unlock the potential</h3>
+                <p style="font-size: 1.1rem; line-height: 1.9; opacity: 0.8; font-weight: 700;">
+                    To unlock the full potential of every child, fostering critical thinking, creativity, and a lifelong
+                    love for learning through innovative technology.
+                </p>
+                <div style="margin-top: 40px; text-align: center;">
+                    <img src="assets/mission_premium.png" alt="Mission Potential"
+                        style="width: 100%; max-width: 250px; opacity: 0.9;">
                 </div>
             </div>
+
+            <div class="glass-card" id="about"
+                style="margin: 0; padding: 60px; height: 100%; border-top: 5px solid var(--secondary);"
+                data-aos="fade-up" data-aos-delay="100">
+                <div
+                    style="font-size: 0.9rem; font-weight: 900; letter-spacing: 4px; color: var(--secondary); margin-bottom: 20px; text-transform: uppercase;">
+                    WHO WE ARE</div>
+                <h3 style="font-family: 'Titan One', cursive; font-size: 2rem; margin-bottom: 25px;"
+                    data-i18n="nav_about">Reimagining Education</h3>
+                <p style="font-size: 1.1rem; line-height: 1.9; opacity: 0.8; font-weight: 700;">
+                    FreeGeny was founded by a team of educators, engineers, and child psychologists dedicated to
+                    reimagining early childhood education for the 21st century.
+                </p>
+                <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+                    <div
+                        style="background: var(--light); padding: 10px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800;">
+                        👨‍🏫 Educators</div>
+                    <div
+                        style="background: var(--light); padding: 10px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800;">
+                        💻 Engineers</div>
+                    <div
+                        style="background: var(--light); padding: 10px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800;">
+                        🧠 Psychologists</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- App Store / Final CTA -->
+    <section id="download" style="margin: 80px 20px 100px;">
+        <div class="glass-card"
+            style="background: var(--dark); padding: 0; overflow: hidden; border: none; max-width: 1200px; display: flex; align-items: center; flex-wrap: wrap;">
+
+            <div style="flex: 1; padding: 80px; min-width: 400px; color: white; text-align: left;"
+                data-aos="fade-right">
+                <h2 style="font-family: 'Titan One', cursive; font-size: 3.5rem; margin-bottom: 20px; color: white;">
+                    Ready to Start?</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 45px; opacity: 0.8; font-weight: 700; line-height: 1.5;">
+                    Join over 10,000+ tiny geniuses learning with FreeGeny today.</p>
+
+                <div class="app-badges" style="justify-content: flex-start; gap: 20px;">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="badge"
+                            style="padding: 18px 30px; font-size: 1rem; background: white; color: var(--dark); border: none;">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                            </svg>
+                            App Store
+                        </div>
+                    </a>
+                    <a href="#" style="text-decoration: none;">
+                        <div class="badge"
+                            style="padding: 18px 30px; font-size: 1rem; background: transparent; border: 1.5px solid rgba(255,255,255,0.2); color: white;">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.24-.84-.76-.84-1.35zm13.81-6.38l-3.32-1.9L3.38 22.31c.38.18.8.21 1.2.08L18.81 14.12zm.91-3.12l3.32 1.9c.56.32.91.84.91 1.44 0 .6-.35 1.12-.91 1.44l-3.32 1.9-3.31-1.9 3.31-4.78zm-3.31-4.78L3.38 1.69c-.4-.13-.82-.1-1.2.08L13.51 11.9l3.32-1.9-2.42-4.78z" />
+                            </svg>
+                            Google Play
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div style="flex: 1.2; padding: 0; min-width: 400px; display: flex; align-items: flex-end; justify-content: center;"
+                data-aos="fade-up">
+                <img src="assets/download_premium.png" alt="FreeGeny Global"
+                    style="width: 110%; margin-bottom: -50px; filter: drop-shadow(0 0 50px rgba(0,0,0,0.5));">
+            </div>
+
         </div>
     </section>
 
