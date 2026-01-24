@@ -244,32 +244,65 @@
 
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .social-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
         }
 
         .social-btn {
             background: var(--white);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            padding: 12px;
-            border-radius: 18px;
+            border: 1.5px solid #F1F5F9;
+            padding: 14px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
 
         .social-btn:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
             border-color: var(--primary-light);
         }
 
         .social-btn svg {
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
+        }
+
+        .social-btn[title="Google"]:hover {
+            border-color: #4285F4;
+            background: #f8fbff;
+        }
+
+        .social-btn[title="Facebook"]:hover {
+            border-color: #1877F2;
+            background: #f5f9ff;
+        }
+
+        .social-btn[title="Apple"]:hover {
+            border-color: #000;
+            background: #fafafa;
+        }
+
+        .social-btn[title="Microsoft"]:hover {
+            border-color: #00a4ef;
+            background: #f5fcff;
+        }
+
+        .social-btn[title="LinkedIn"]:hover {
+            border-color: #0077b5;
+            background: #f5faff;
         }
 
         /* Bottom helper text */

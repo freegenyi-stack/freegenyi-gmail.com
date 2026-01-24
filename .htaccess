@@ -5,6 +5,5 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 2. PASSWORD GATE DISABLED FOR GOOGLE OAUTH VERIFICATION
-# Uncomment the line below to re-enable password protection:
-# DirectoryIndex index.php
+# 2. PASSWORD GATE ENABLED
+DirectoryIndex index.php
