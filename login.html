@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - FreeGeny</title>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Titan+One&display=swap"
         rel="stylesheet">
@@ -438,6 +441,39 @@
                 left: 20px;
             }
         }
+
+        /* Social Loading Overlay */
+        #social-loader {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 20000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary-light);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
@@ -527,7 +563,7 @@
 
             <div class="social-grid">
                 <!-- Google -->
-                <div class="social-btn" title="Google" onclick="alert('Google Auth integration coming soon! (Step 3)')">
+                <div class="social-btn" title="Google" onclick="loginWithSocial('google')">
                     <svg viewBox="0 0 24 24">
                         <path fill="#4285F4"
                             d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -540,14 +576,14 @@
                     </svg>
                 </div>
                 <!-- Apple -->
-                <div class="social-btn" title="Apple">
+                <div class="social-btn" title="Apple" onclick="loginWithSocial('apple')">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
                     </svg>
                 </div>
                 <!-- Microsoft -->
-                <div class="social-btn" title="Microsoft">
+                <div class="social-btn" title="Microsoft" onclick="loginWithSocial('microsoft')">
                     <svg viewBox="0 0 24 24">
                         <rect x="1" y="1" width="10.5" height="10.5" fill="#f25022" />
                         <rect x="12.5" y="1" width="10.5" height="10.5" fill="#7fba00" />
@@ -556,14 +592,14 @@
                     </svg>
                 </div>
                 <!-- Facebook -->
-                <div class="social-btn" title="Facebook">
+                <div class="social-btn" title="Facebook" onclick="loginWithSocial('facebook')">
                     <svg viewBox="0 0 24 24" fill="#1877F2">
                         <path
                             d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                 </div>
                 <!-- LinkedIn -->
-                <div class="social-btn" title="LinkedIn">
+                <div class="social-btn" title="LinkedIn" onclick="loginWithSocial('linkedin')">
                     <svg viewBox="0 0 24 24" fill="#0077B5">
                         <path
                             d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
@@ -584,7 +620,74 @@
         </div>
     </main>
 
+    <div id="social-loader">
+        <div class="spinner"></div>
+        <div style="font-weight: 800; color: var(--primary);">Securely connecting...</div>
+    </div>
+
     <script>
+        // FIREBASE INITIALIZATION 
+        const firebaseConfig = {
+            apiKey: "AIzaSyBY8aZBDy2JQ4oCIILugB4f-j1U-sh2uFM",
+            authDomain: "freegeny.firebaseapp.com",
+            projectId: "freegeny",
+            storageBucket: "freegeny.firebasestorage.app",
+            messagingSenderId: "252196226558",
+            appId: "1:252196226558:web:79c23c91e7025dd39facaf"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        async function loginWithSocial(providerName) {
+            const loader = document.getElementById('social-loader');
+            loader.style.display = 'flex';
+
+            let provider;
+            if (providerName === 'google') provider = new firebase.auth.GoogleAuthProvider();
+            else if (providerName === 'facebook') provider = new firebase.auth.FacebookAuthProvider();
+            else if (providerName === 'microsoft') provider = new firebase.auth.OAuthProvider('microsoft.com');
+            else if (providerName === 'apple') provider = new firebase.auth.OAuthProvider('apple.com');
+            else if (providerName === 'linkedin') provider = new firebase.auth.OAuthProvider('linkedin.com');
+
+            try {
+                const result = await firebase.auth().signInWithPopup(provider);
+                const user = result.user;
+                const idToken = await user.getIdToken();
+
+                // Send to domestic backend for DB sync & session creation
+                const response = await fetch('api/verify_social.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        token: idToken,
+                        provider: providerName,
+                        email: user.email,
+                        name: user.displayName,
+                        photo: user.photoURL
+                    })
+                });
+
+                const authResult = await response.json();
+                if (response.ok) {
+                    localStorage.setItem('fg_token', authResult.token);
+                    localStorage.setItem('fg_user', JSON.stringify(authResult.user));
+
+                    // Redirect based on role
+                    const role = authResult.user.role.toLowerCase();
+                    if (role === 'child') window.location.href = 'app/index.html';
+                    else if (role === 'school') window.location.href = 'school_dashboard.html';
+                    else if (role === 'institution') window.location.href = 'institution_dashboard.html';
+                    else window.location.href = 'parent_dashboard.html';
+                } else {
+                    alert("❌ Authentication failed: " + authResult.message);
+                }
+            } catch (error) {
+                console.error(error);
+                alert("🚨 Connection error: " + error.message);
+            } finally {
+                loader.style.display = 'none';
+            }
+        }
+
         const translations = {
             'en': {
                 'login_welcome': 'Welcome Back!', 'login_subtitle': 'Unlock your magic world.',
