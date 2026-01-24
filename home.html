@@ -591,88 +591,8 @@
             }
         }
 
-        /* 
-           CHARACTER SPRITE ANIMATION 
-           Image: 1024x1024, Grid: 3 columns x 2 rows
-           Each frame: ~341px x 512px (using top row for walk cycle)
-        */
-        .character-walk {
-            position: absolute;
-            bottom: 60px;
-            left: -180px;
-            width: 170px;
-            /* Display size (scaled down from 341) */
-            height: 256px;
-            /* Display size (scaled down from 512) */
-            background-image: url('assets/geny_walk.png');
-            background-repeat: no-repeat;
-            /* Scale the 1024px image so 3 frames fit across our 170px * 3 = 510px display width */
-            background-size: 510px 512px;
-            background-position: 0 0;
-            z-index: 5;
-            animation:
-                walk-cycle 0.6s steps(3) infinite,
-                move-across 18s linear infinite;
-            pointer-events: none;
-            filter: drop-shadow(0 10px 15px rgba(114, 9, 183, 0.2));
-        }
+        /* CHARACTER SPRITE ANIMATION 1 REMOVED */
 
-        @keyframes walk-cycle {
-
-            /* Move background left by 3 frames (170px each) */
-            from {
-                background-position: 0 0;
-            }
-
-            to {
-                background-position: -510px 0;
-            }
-        }
-
-        @keyframes move-across {
-            0% {
-                left: -180px;
-                transform: scaleX(1);
-            }
-
-            45% {
-                left: 105%;
-                transform: scaleX(1);
-            }
-
-            50% {
-                left: 105%;
-                transform: scaleX(-1);
-            }
-
-            95% {
-                left: -180px;
-                transform: scaleX(-1);
-            }
-
-            100% {
-                left: -180px;
-                transform: scaleX(1);
-            }
-        }
-        }
-
-        50% {
-            left: 110%;
-            transform: scaleX(-1);
-        }
-
-        /* Turn around */
-        95% {
-            left: -220px;
-            transform: scaleX(-1);
-        }
-
-        100% {
-            left: -220px;
-            transform: scaleX(1);
-        }
-        }
 
         /* Brand Slogan Details */
         .slogan-container {
@@ -719,66 +639,8 @@
             }
         }
 
-        /* 
-           CHARACTER SPRITE ANIMATION 
-           Elite character "Geny" walking across the screen
-        */
-        .character-walk {
-            position: absolute;
-            bottom: 50px;
-            left: -150px;
-            /* Start off-screen */
-            width: 130px;
-            height: 180px;
-            background-image: url('assets/character_sprites.jpg');
-            background-repeat: no-repeat;
-            background-size: 1000px auto;
-            background-position: 0px -680px;
-            /* Walk row */
-            z-index: 5;
-            animation:
-                walk-cycle 0.8s steps(7) infinite,
-                move-across 20s linear infinite;
-            pointer-events: none;
-        }
+        /* CHARACTER SPRITE ANIMATION 2 REMOVED */
 
-        @keyframes walk-cycle {
-            from {
-                background-position: 0px -680px;
-            }
-
-            to {
-                background-position: -910px -680px;
-            }
-        }
-
-        @keyframes move-across {
-            0% {
-                left: -150px;
-                transform: scaleX(1);
-            }
-
-            45% {
-                left: 110%;
-                transform: scaleX(1);
-            }
-
-            50% {
-                left: 110%;
-                transform: scaleX(-1);
-            }
-
-            /* Turn around */
-            95% {
-                left: -150px;
-                transform: scaleX(-1);
-            }
-
-            100% {
-                left: -150px;
-                transform: scaleX(1);
-            }
-        }
 
         /* Navigation Bar - Premium High-Contrast Style */
         .navbar {
@@ -1213,8 +1075,6 @@
 
     <!-- Hero Section (Centered) -->
     <section id="hero">
-        <!-- Animated Character -->
-        <div class="character-walk"></div>
         <div id="vanta-bg" style="position: absolute; inset:0; z-index:0;"></div>
         <div class="hero-content"
             style="position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:20px;">

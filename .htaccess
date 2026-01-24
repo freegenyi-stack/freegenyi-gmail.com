@@ -1,3 +1,4 @@
+DirectoryIndex index.php
 RewriteEngine On
 
 # 1. FORCE HTTPS

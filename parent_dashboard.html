@@ -371,105 +371,148 @@
             </div>
         </div>
 
-        <!-- KPI SUMMARY GRID -->
+        <!-- KPI SUMMARY GRID (Scorecards) -->
         <div class="stats-grid">
             <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
                 <div class="stat-icon icon-teal">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                 </div>
-                <span class="stat-value">2.5 Hours</span>
-                <span class="stat-label">Total Time Today</span>
+                <!-- Calculate Score based on backend data later -->
+                <span class="stat-value">92%</span>
+                <span class="stat-label">Accuracy Score</span>
             </div>
 
             <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="stat-icon icon-rose">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
-                <span class="stat-value">84%</span>
-                <span class="stat-label">Avg. Accuracy Rate</span>
+                <span class="stat-value">45m</span>
+                <span class="stat-label">Avg. Daily Session</span>
             </div>
 
             <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="stat-icon icon-teal">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
                 </div>
-                <span class="stat-value">12</span>
-                <span class="stat-label">Modules Completed</span>
+                <span class="stat-value">A+</span>
+                <span class="stat-label">Consistency Grade</span>
             </div>
         </div>
 
         <!-- MAIN DATA VISUALIZATION AREA -->
-        <div class="dashboard-row">
-            <!-- Learning Evolution Chart Mockup -->
-            <div class="card-panel" data-aos="fade-up">
-                <div class="panel-heading">
-                    <h2 class="panel-title">Skills Overview</h2>
-                    <button onclick="createActivity()" style="
-                        background: linear-gradient(135deg, var(--primary), #00C4C4);
-                        color: white;
-                        border: none;
-                        padding: 10px 20px;
-                        border-radius: 15px;
-                        font-weight: 800;
-                        cursor: pointer;
-                        box-shadow: 0 5px 15px rgba(9, 161, 161, 0.3);
-                        transition: transform 0.2s;
-                    " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        + Create Activity
-                    </button>
+        <div class="dashboard-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 25px;">
+
+            <!-- LEFT COLUMN: CHARTS -->
+            <div style="display: flex; flex-direction: column; gap: 25px;">
+
+                <!-- 1. PROGRESS CURVE (Area Chart) -->
+                <div class="card-panel" data-aos="fade-up">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">📈 Learning Velocity</h2>
+                    </div>
+                    <div style="height: 250px;">
+                        <canvas id="progressionChart"></canvas>
+                    </div>
                 </div>
-                <div style="height: 320px; position: relative; padding: 10px;">
-                    <canvas id="skillsChart"></canvas>
+
+                <!-- 2. DOMAIN PERFORMANCE (Bar Chart) -->
+                <div class="card-panel" data-aos="fade-up" data-aos-delay="100">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">📊 Mastery by Subject</h2>
+                    </div>
+                    <div style="height: 250px;">
+                        <canvas id="domainChart"></canvas>
+                    </div>
                 </div>
+
             </div>
 
-            <!-- RECENT ACTIVITY FEED -->
-            <div class="card-panel" data-aos="fade-up" data-aos-delay="200">
-                <div class="panel-heading">
-                    <h2 class="panel-title">Recent Activity</h2>
+            <!-- RIGHT COLUMN: HEATMAP & FEED -->
+            <div style="display: flex; flex-direction: column; gap: 25px;">
+
+                <!-- 3. ERROR HEATMAP -->
+                <div class="card-panel" data-aos="fade-up" data-aos-delay="150">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">🔥 Focus Areas (Error Heatmap)</h2>
+                    </div>
+                    <!-- Custom CSS Grid Heatmap -->
+                    <div class="heatmap-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                        <!-- Logic -->
+                        <div class="heat-box"
+                            style="background: #DCFCE7; padding: 15px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 12px; font-weight: 700;">Logic</div>
+                            <div style="font-size: 10px; opacity: 0.7;">Low Errors</div>
+                        </div>
+                        <!-- Math -->
+                        <div class="heat-box"
+                            style="background: #FEE2E2; padding: 15px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 12px; font-weight: 700;">Math</div>
+                            <div style="font-size: 10px; opacity: 0.7; color: #DC2626;">High Errors</div>
+                        </div>
+                        <!-- Memory -->
+                        <div class="heat-box"
+                            style="background: #FEF9C3; padding: 15px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 12px; font-weight: 700;">Memory</div>
+                            <div style="font-size: 10px; opacity: 0.7;">Med Errors</div>
+                        </div>
+                        <!-- Speed -->
+                        <div class="heat-box"
+                            style="background: #DCFCE7; padding: 15px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 12px; font-weight: 700;">Speed</div>
+                            <div style="font-size: 10px; opacity: 0.7;">Low Errors</div>
+                        </div>
+                        <!-- Focus -->
+                        <div class="heat-box"
+                            style="background: #DCFCE7; padding: 15px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 12px; font-weight: 700;">Focus</div>
+                            <div style="font-size: 10px; opacity: 0.7;">Low Errors</div>
+                        </div>
+                        <!-- Creative -->
+                        <div class="heat-box"
+                            style="background: #FEE2E2; padding: 15px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 12px; font-weight: 700;">Creative</div>
+                            <div style="font-size: 10px; opacity: 0.7; color: #DC2626;">High Errors</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <div class="child-avatar"
-                            style="background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Felix') center/cover;">
-                        </div>
-                        <div class="activity-info">
-                            <h4>Felix Spark</h4>
-                            <p>Completed: Basic Math 101</p>
-                        </div>
-                        <span class="status-badge bg-success">Done</span>
+                <!-- RECENT ACTIVITY -->
+                <div class="card-panel" data-aos="fade-up" data-aos-delay="200" style="flex: 1;">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Recent Activity</h2>
                     </div>
 
-                    <div class="activity-item">
-                        <div class="child-avatar"
-                            style="background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Luna') center/cover;">
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="child-avatar"
+                                style="background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Felix') center/cover;">
+                            </div>
+                            <div class="activity-info">
+                                <h4>Felix Spark</h4>
+                                <p>Math 101 - 100% Score</p>
+                            </div>
+                            <span class="status-badge bg-success">WOW</span>
                         </div>
-                        <div class="activity-info">
-                            <h4>Luna Spark</h4>
-                            <p>Started: Logic Puzzles</p>
-                        </div>
-                        <span class="status-badge" style="background: #FEF9C3; color: #854D0E;">In Progress</span>
-                    </div>
 
-                    <div class="activity-item">
-                        <div class="child-avatar"
-                            style="background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Felix') center/cover;">
+                        <div class="activity-item">
+                            <div class="child-avatar"
+                                style="background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Luna') center/cover;">
+                            </div>
+                            <div class="activity-info">
+                                <h4>Luna Spark</h4>
+                                <p>Logic Puzzle - 2 Retries</p>
+                            </div>
+                            <span class="status-badge" style="background: #FEF9C3; color: #854D0E;">Learning</span>
                         </div>
-                        <div class="activity-info">
-                            <h4>Felix Spark</h4>
-                            <p>Unlocked: "Math Wizard" Badge</p>
-                        </div>
-                        <span class="status-badge" style="background: #E0F2FE; color: #075985;">Award</span>
                     </div>
                 </div>
             </div>
@@ -490,41 +533,65 @@
         });
 
         // Initialize Radar Chart
-        const ctx = document.getElementById('skillsChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'radar',
+        // 1. PROGRESSION CHART (Area Chart)
+        const ctxProgress = document.getElementById('progressionChart').getContext('2d');
+        new Chart(ctxProgress, {
+            type: 'line',
             data: {
-                labels: ['Logique', 'Créativité', 'Mémoire', 'Concentration', 'Vitesse'],
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                 datasets: [{
-                    label: 'Compétences Actuelles',
-                    data: [85, 90, 75, 80, 70],
+                    label: 'Learning Velocity',
+                    data: [12, 19, 15, 25, 22, 30, 35],
                     fill: true,
-                    backgroundColor: 'rgba(9, 161, 161, 0.2)',
+                    backgroundColor: 'rgba(9, 161, 161, 0.1)',
                     borderColor: '#09A1A1',
-                    pointBackgroundColor: '#09A1A1',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#09A1A1'
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#09A1A1',
+                    pointBorderWidth: 2
                 }]
             },
             options: {
-                elements: {
-                    line: { borderWidth: 3 }
-                },
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
                 scales: {
-                    r: {
-                        angleLines: { color: 'rgba(0,0,0,0.1)' },
-                        grid: { color: 'rgba(0,0,0,0.1)' },
-                        pointLabels: {
-                            font: { size: 12, weight: '700', family: 'Nunito' },
-                            color: '#64748B'
-                        },
-                        suggestedMin: 0,
-                        suggestedMax: 100
+                    x: { grid: { display: false } },
+                    y: {
+                        beginAtZero: true,
+                        grid: { borderDash: [5, 5] }
                     }
-                },
-                plugins: {
-                    legend: { display: false }
+                }
+            }
+        });
+
+        // 2. DOMAIN BAR CHART
+        const ctxDomain = document.getElementById('domainChart').getContext('2d');
+        new Chart(ctxDomain, {
+            type: 'bar',
+            data: {
+                labels: ['Math', 'Logic', 'Science', 'Lang', 'Art'],
+                datasets: [{
+                    label: 'Proficiency',
+                    data: [85, 70, 90, 65, 80],
+                    backgroundColor: [
+                        '#09A1A1', '#B2DFDB', '#D396A6', '#F8BBD0', '#FFD54F'
+                    ],
+                    borderRadius: 10,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: {
+                        display: false,
+                        max: 100
+                    }
                 }
             }
         });
