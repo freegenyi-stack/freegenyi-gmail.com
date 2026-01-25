@@ -112,7 +112,7 @@ if (isset($_SESSION['site_unlocked']) && $_SESSION['site_unlocked'] === true) {
 
 <body>
     <div class="lock-card">
-        <div class="logo">FreeGeny</div>
+        <a href="home.html" class="logo" style="text-decoration: none;">FreeGeny</a>
         <p>Ce site est actuellement en accès privé pour le développement.</p>
 
         <?php if (isset($error)): ?>
