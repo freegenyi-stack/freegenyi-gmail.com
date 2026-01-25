@@ -1074,6 +1074,135 @@
             background: rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
+
+        /* ============================================
+           RESPONSIVE DESIGN - COMPREHENSIVE MEDIA QUERIES
+           ============================================ */
+
+        /* TABLET - 1024px and below */
+        @media (max-width: 1024px) {
+            #hero {
+                padding: 80px 40px 40px;
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        /* MOBILE LARGE - 768px and below */
+        @media (max-width: 768px) {
+            #hero {
+                padding: 60px 20px 30px;
+                min-height: auto;
+            }
+
+            .hero-left,
+            .hero-right {
+                flex: 1;
+                text-align: center;
+            }
+
+            .hero-image {
+                max-width: 400px;
+            }
+
+            .navbar {
+                height: 70px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .slogan-main {
+                font-size: 2rem;
+            }
+
+            .slogan-sub {
+                font-size: 1.2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .glass-card {
+                padding: 30px 20px;
+                border-radius: 25px;
+            }
+
+            .logo-box {
+                width: 180px;
+                height: 180px;
+                border-radius: 55px;
+            }
+
+            .logo-text {
+                font-size: 90px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* MOBILE SMALL - 480px and below */
+        @media (max-width: 480px) {
+            #hero {
+                padding: 40px 15px 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .slogan-main {
+                font-size: 1.5rem;
+            }
+
+            .slogan-sub {
+                font-size: 1rem;
+            }
+
+            .logo-box {
+                width: 140px;
+                height: 140px;
+                border-radius: 45px;
+            }
+
+            .logo-text {
+                font-size: 70px;
+            }
+
+            .glass-card {
+                padding: 25px 15px;
+            }
+
+            .btn-premium {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 
