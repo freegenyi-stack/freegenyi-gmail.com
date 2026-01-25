@@ -1077,72 +1077,91 @@
 
         /* ============================================
            RESPONSIVE DESIGN - COMPREHENSIVE MEDIA QUERIES
+           Ensures optimal viewing experience across all devices
            ============================================ */
 
-        /* TABLET - 1024px and below */
+        /* TABLET LAYOUT - Optimized for screens 1024px and below
+           Primary adjustments: Stacked hero layout, simplified navigation */
         @media (max-width: 1024px) {
+
+            /* Hero section: Switch to vertical stack for better readability */
             #hero {
                 padding: 80px 40px 40px;
                 flex-direction: column;
                 gap: 30px;
             }
 
+            /* Navigation: Reduce padding to maximize content space */
             .navbar {
                 padding: 0 20px;
             }
 
+            /* Hide navigation links on tablet to prevent overcrowding */
             .nav-links {
                 display: none;
             }
 
+            /* Card grids: Adjust minimum width for optimal tablet display */
             .card-grid {
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
         }
 
-        /* MOBILE LARGE - 768px and below */
+        /* MOBILE LARGE - Optimized for screens 768px and below
+           Primary adjustments: Single column layouts, reduced typography */
         @media (max-width: 768px) {
+
+            /* Hero section: Compact padding for mobile screens */
             #hero {
                 padding: 60px 20px 30px;
                 min-height: auto;
             }
 
+            /* Hero content: Center align for better mobile presentation */
             .hero-left,
             .hero-right {
                 flex: 1;
                 text-align: center;
             }
 
+            /* Hero image: Constrain size for mobile viewports */
             .hero-image {
                 max-width: 400px;
             }
 
+            /* Navigation: Reduce height for mobile efficiency */
             .navbar {
                 height: 70px;
             }
 
+            /* Typography: Scale down section titles for mobile readability */
             .section-title {
                 font-size: 2.5rem;
             }
 
+            /* Main slogan: Reduce size while maintaining impact */
             .slogan-main {
                 font-size: 2rem;
             }
 
+            /* Sub-slogan: Proportional reduction for hierarchy */
             .slogan-sub {
                 font-size: 1.2rem;
             }
 
+            /* Card grids: Force single column for mobile clarity */
             .card-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
 
+            /* Glass cards: Reduce padding and border radius for compact display */
             .glass-card {
                 padding: 30px 20px;
                 border-radius: 25px;
             }
 
+            /* Logo: Adjust size for mobile proportions */
             .logo-box {
                 width: 180px;
                 height: 180px;
@@ -1153,29 +1172,37 @@
                 font-size: 90px;
             }
 
+            /* Footer: Two-column grid for better mobile organization */
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* MOBILE SMALL - 480px and below */
+        /* MOBILE SMALL - Optimized for screens 480px and below
+           Primary adjustments: Further size reductions, single column layouts */
         @media (max-width: 480px) {
+
+            /* Hero section: Minimal padding for small screens */
             #hero {
                 padding: 40px 15px 20px;
             }
 
+            /* Section titles: Further reduction for small screens */
             .section-title {
                 font-size: 2rem;
             }
 
+            /* Main slogan: Compact size for small viewports */
             .slogan-main {
                 font-size: 1.5rem;
             }
 
+            /* Sub-slogan: Proportional scaling */
             .slogan-sub {
                 font-size: 1rem;
             }
 
+            /* Logo: Smaller dimensions for compact screens */
             .logo-box {
                 width: 140px;
                 height: 140px;
@@ -1186,19 +1213,23 @@
                 font-size: 70px;
             }
 
+            /* Glass cards: Minimal padding for space efficiency */
             .glass-card {
                 padding: 25px 15px;
             }
 
+            /* CTA buttons: Reduce size while maintaining touch targets */
             .btn-premium {
                 padding: 14px 28px;
                 font-size: 1rem;
             }
 
+            /* Footer: Single column for optimal small screen layout */
             .footer-grid {
                 grid-template-columns: 1fr;
             }
 
+            /* Statistics: Reduce number size for compact display */
             .stat-number {
                 font-size: 2.5rem;
             }

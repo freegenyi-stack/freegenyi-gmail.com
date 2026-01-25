@@ -175,8 +175,11 @@
             }
         }
 
-        /* MOBILE - 768px and below */
+        /* MOBILE OPTIMIZATION - Screens 768px and below
+           Strategy: Hidden sidebar, single-column KPI layout, vertical card stacking */
         @media (max-width: 768px) {
+
+            /* Sidebar: Off-canvas navigation for mobile devices */
             .sidebar {
                 position: fixed;
                 left: 0;
@@ -187,24 +190,29 @@
                 z-index: 1000;
             }
 
+            /* Sidebar open state: Slide navigation into view */
             .sidebar.open {
                 transform: translateX(0);
             }
 
+            /* Content area: Full width without sidebar offset */
             .content {
                 margin-left: 0;
                 padding: 30px 20px;
             }
 
+            /* KPI grid: Single column for optimal mobile readability */
             .kpi-row {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
 
+            /* KPI boxes: Reduce padding for compact mobile display */
             .kpi-box {
                 padding: 20px;
             }
 
+            /* Unit cards: Stack content vertically for better mobile layout */
             .unit-card {
                 flex-direction: column;
                 align-items: flex-start;

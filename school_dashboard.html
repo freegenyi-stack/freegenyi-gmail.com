@@ -243,8 +243,11 @@
             }
         }
 
-        /* MOBILE - 768px and below */
+        /* MOBILE OPTIMIZATION - Screens 768px and below
+           Strategy: Off-canvas sidebar with slide-in capability for better mobile UX */
         @media (max-width: 768px) {
+
+            /* Sidebar: Hidden off-screen by default, slides in when activated */
             .sidebar {
                 position: fixed;
                 left: 0;
@@ -256,35 +259,42 @@
                 border-radius: 0;
             }
 
+            /* Sidebar open state: Slide into view */
             .sidebar.open {
                 transform: translateX(0);
             }
 
+            /* Restore sidebar text and logo visibility on mobile */
             .sidebar span,
             .sidebar-logo {
                 display: block;
             }
 
+            /* Main content: Remove left margin to use full width */
             .app-view {
                 margin-left: 0;
                 padding: 20px;
             }
 
+            /* Search box: Expand to full width for better mobile usability */
             .search-box {
                 width: 100%;
                 max-width: 100%;
             }
 
+            /* Top bar: Stack vertically for better mobile layout */
             .top-bar {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 15px;
             }
 
+            /* Class grid: Single column for optimal mobile viewing */
             .class-grid {
                 grid-template-columns: 1fr;
             }
 
+            /* Table container: Enable horizontal scroll for wide tables */
             .table-container {
                 overflow-x: auto;
             }

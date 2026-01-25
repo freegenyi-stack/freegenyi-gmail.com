@@ -292,8 +292,11 @@
             }
         }
 
-        /* MOBILE - 768px and below */
+        /* MOBILE OPTIMIZATION - Screens 768px and below
+           Strategy: Collapsible sidebar, responsive grids, vertical stacking */
         @media (max-width: 768px) {
+
+            /* Sidebar: Off-canvas implementation for mobile navigation */
             .sidebar {
                 position: fixed;
                 left: 0;
@@ -304,29 +307,35 @@
                 z-index: 1000;
             }
 
+            /* Sidebar open state: Slide into viewport */
             .sidebar.open {
                 transform: translateX(0);
             }
 
+            /* Restore sidebar branding and labels on mobile */
             .sidebar-logo,
             .nav-link span {
                 display: block;
             }
 
+            /* Main content: Full width layout without sidebar offset */
             .main-content {
                 margin-left: 0;
                 padding: 20px;
             }
 
+            /* Stats grid: Two-column layout for balanced mobile display */
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
 
+            /* Dashboard grid: Force single column for charts and widgets */
             .dashboard-grid {
                 grid-template-columns: 1fr !important;
             }
 
+            /* Header: Stack elements vertically for mobile clarity */
             .header-top {
                 flex-direction: column;
                 align-items: flex-start;
@@ -334,12 +343,16 @@
             }
         }
 
-        /* MOBILE SMALL - 480px and below */
+        /* MOBILE SMALL - Screens 480px and below
+           Strategy: Single column stats, reduced padding */
         @media (max-width: 480px) {
+
+            /* Stats grid: Single column for small screens */
             .stats-grid {
                 grid-template-columns: 1fr;
             }
 
+            /* Card panels: Reduce padding for compact display */
             .card-panel {
                 padding: 20px;
             }
