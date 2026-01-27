@@ -227,6 +227,73 @@
             font-weight: 900;
         }
 
+        /* Language Toggle - Dashboard Version */
+        .lang-selector {
+            position: relative;
+            background: var(--white);
+            padding: 10px 18px;
+            border-radius: 15px;
+            color: var(--dark);
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 13px;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            user-select: none;
+        }
+
+        .lang-selector:hover {
+            border-color: var(--primary);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 15px;
+            width: 320px;
+            max-height: 350px;
+            overflow-y: auto;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            display: none;
+            grid-template-columns: 1fr;
+            gap: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 10000;
+        }
+
+        .lang-selector.open .lang-dropdown {
+            display: grid;
+        }
+
+        .lang-option {
+            padding: 10px 15px;
+            color: #64748B;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 800;
+            transition: all 0.2s;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lang-option:hover {
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+
+        .lang-option.active {
+            background: var(--primary);
+            color: var(--white) !important;
+        }
+
         @media (max-width: 1024px) {
             .sidebar {
                 width: 90px;
@@ -313,28 +380,28 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
-                <span>Dashboard</span>
+                <span data-i18n="db_dashboard">Dashboard</span>
             </a>
             <a href="#" class="nav-link">
                 <svg width="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
-                <span>Teachers</span>
+                <span data-i18n="db_teachers">Teachers</span>
             </a>
             <a href="#" class="nav-link">
                 <svg width="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                <span>Classes</span>
+                <span data-i18n="db_classes">Classes</span>
             </a>
             <a href="javascript:void(0)" onclick="logout()" class="nav-link" style="margin-top: auto; color: #F87171;">
                 <svg width="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
-                <span>Logout</span>
+                <span data-i18n="db_logout">Logout</span>
             </a>
         </nav>
     </aside>
@@ -343,15 +410,55 @@
         <div class="top-bar">
             <div>
                 <h1 style="font-weight: 900;" id="school-name">Elite Academy School</h1>
-                <p style="color: #64748B; font-weight: 700;">Admin: <span id="display-name">Loading...</span></p>
+                <p style="color: #64748B; font-weight: 700;"><span data-i18n="tag_admin">Admin</span>: <span
+                        id="display-name">Loading...</span></p>
             </div>
 
-            <div class="search-box">
-                <svg width="20" fill="none" stroke="#64748B" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <input type="text" placeholder="Search students, classes...">
+            <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+                <div class="search-box">
+                    <svg width="20" fill="none" stroke="#64748B" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" placeholder="Search..." data-i18n-hold="db_search_ph">
+                </div>
+
+                <!-- Language Selector -->
+                <div class="lang-selector" onclick="toggleLangDropdown(event)">
+                    <span id="currentLangDisplay">🌍 English</span>
+                    <div class="lang-dropdown">
+                        <a href="#" class="lang-option" onclick="setLang('en')">🇺🇸 English</a>
+                        <a href="#" class="lang-option" onclick="setLang('zh')">🇨🇳 中文 (Mandarin)</a>
+                        <a href="#" class="lang-option" onclick="setLang('hi')">🇮🇳 हिन्दी (Hindi)</a>
+                        <a href="#" class="lang-option" onclick="setLang('es')">🇪🇸 Español</a>
+                        <a href="#" class="lang-option" onclick="setLang('ar')">🇸🇦 العربية (Arabic)</a>
+                        <a href="#" class="lang-option" onclick="setLang('fr')">🇫🇷 Français</a>
+                        <a href="#" class="lang-option" onclick="setLang('bn')">🇧🇩 বাংলা (Bengali)</a>
+                        <a href="#" class="lang-option" onclick="setLang('pt')">🇵🇹 Português</a>
+                        <a href="#" class="lang-option" onclick="setLang('ru')">🇷🇺 Русский</a>
+                        <a href="#" class="lang-option" onclick="setLang('id')">🇮🇩 Indonesia</a>
+                        <a href="#" class="lang-option" onclick="setLang('ur')">🇵🇰 اردو (Urdu)</a>
+                        <a href="#" class="lang-option" onclick="setLang('de')">🇩🇪 Deutsch</a>
+                        <a href="#" class="lang-option" onclick="setLang('ja')">🇯🇵 日本語 (Japanese)</a>
+                        <a href="#" class="lang-option" onclick="setLang('pcm')">🇳🇬 Nigerian Pidgin</a>
+                        <a href="#" class="lang-option" onclick="setLang('mr')">🇮🇳 मराठी (Marathi)</a>
+                        <a href="#" class="lang-option" onclick="setLang('te')">🇮🇳 తెలుగు (Telugu)</a>
+                        <a href="#" class="lang-option" onclick="setLang('ha')">🇳🇬 Hausa</a>
+                        <a href="#" class="lang-option" onclick="setLang('tr')">🇹🇷 Türkçe</a>
+                        <a href="#" class="lang-option" onclick="setLang('pnb')">🇵🇰 Punjabi (Western)</a>
+                        <a href="#" class="lang-option" onclick="setLang('sw')">🇹🇿 Kiswahili</a>
+                        <a href="#" class="lang-option" onclick="setLang('tl')">🇵🇭 Tagalog</a>
+                        <a href="#" class="lang-option" onclick="setLang('ta')">🇮🇳 தமிழ் (Tamil)</a>
+                        <a href="#" class="lang-option" onclick="setLang('yue')">🇭🇰 粵語 (Cantonese)</a>
+                        <a href="#" class="lang-option" onclick="setLang('wuu')">🇨🇳 吴语 (Wu Chinese)</a>
+                        <a href="#" class="lang-option" onclick="setLang('fa')">🇮🇷 فارسی (Farsi)</a>
+                        <a href="#" class="lang-option" onclick="setLang('ko')">🇰🇷 한국어 (Korean)</a>
+                        <a href="#" class="lang-option" onclick="setLang('th')">🇹🇭 ไทย (Thai)</a>
+                        <a href="#" class="lang-option" onclick="setLang('jv')">🇮🇩 Basa Jawa (Javanese)</a>
+                        <a href="#" class="lang-option" onclick="setLang('it')">🇮🇹 Italiano</a>
+                        <a href="#" class="lang-option" onclick="setLang('gu')">🇮🇳 ગુજરાતી (Gujarati)</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -446,23 +553,17 @@
             const token = localStorage.getItem('fg_token');
             const userData = localStorage.getItem('fg_user');
 
-            if (!token || !userData) {
-                window.location.href = 'login.html';
-                return;
-            }
+            if (!token || !userData) { window.location.href = 'login.html'; return; }
 
             const user = JSON.parse(userData);
 
-            // Role Security
             if (user.role.toLowerCase() !== 'school') {
                 if (user.role.toLowerCase() === 'parent') window.location.href = 'parent_dashboard.html';
                 else if (user.role.toLowerCase() === 'institution') window.location.href = 'institution_dashboard.html';
                 return;
             }
 
-            // Fill Dynamic Data
-            const displayName = user.first_name + ' ' + (user.last_name || '');
-            document.getElementById('display-name').innerText = displayName;
+            document.getElementById('display-name').innerText = user.first_name + ' ' + (user.last_name || '');
         });
 
         function logout() {
@@ -470,6 +571,78 @@
             localStorage.removeItem('fg_user');
             window.location.href = 'login.html';
         }
+
+        // i18n Engine
+        const translations = {
+            'en': {
+                'db_dashboard': 'Dashboard', 'db_teachers': 'Teachers', 'db_classes': 'Classes', 'db_logout': 'Logout',
+                'db_search_ph': 'Search...', 'tag_admin': 'Admin', 'db_students': 'Students', 'db_settings': 'Settings'
+            },
+            'fr': {
+                'db_dashboard': 'Tableau de bord', 'db_teachers': 'Enseignants', 'db_classes': 'Classes', 'db_logout': 'Déconnexion',
+                'db_search_ph': 'Rechercher...', 'tag_admin': 'Admin', 'db_students': 'Étudiants', 'db_settings': 'Paramètres'
+            },
+            'ar': {
+                'db_dashboard': 'لوحة التحكم', 'db_teachers': 'المعلمون', 'db_classes': 'الصفوف', 'db_logout': 'خروج',
+                'db_search_ph': 'بحث...', 'tag_admin': 'مسؤول', 'db_students': 'الطلاب', 'db_settings': 'الإعدادات'
+            }
+        };
+
+        function toggleLangDropdown(e) {
+            e.stopPropagation();
+            document.querySelector('.lang-selector').classList.toggle('open');
+        }
+
+        document.addEventListener('click', (e) => {
+            const langSelector = document.querySelector('.lang-selector');
+            if (langSelector && !langSelector.contains(e.target)) langSelector.classList.remove('open');
+        });
+
+        function setLang(langCode) {
+            const data = translations[langCode] || translations['en'];
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (data[key]) el.innerText = data[key];
+            });
+
+            document.querySelectorAll('[data-i18n-hold]').forEach(el => {
+                const key = el.getAttribute('data-i18n-hold');
+                if (data[key]) el.placeholder = data[key];
+            });
+
+            const langOption = document.querySelector(`.lang-option[onclick*="'${langCode}'"]`);
+            if (langOption) {
+                const langLabel = langOption.innerText.split('(')[0].trim();
+                document.getElementById('currentLangDisplay').innerText = "🌍 " + langLabel;
+            }
+
+            localStorage.setItem('fg_lang', langCode);
+
+            const isRTL = ['ar', 'fa', 'ur'].includes(langCode);
+            document.body.style.direction = isRTL ? 'rtl' : 'ltr';
+
+            const sidebar = document.querySelector('.sidebar');
+            const main = document.querySelector('.app-view');
+            if (isRTL) {
+                sidebar.style.left = 'auto';
+                sidebar.style.right = '0';
+                sidebar.style.borderRadius = '40px 0 0 40px';
+                main.style.marginLeft = '0';
+                main.style.marginRight = 'var(--sidebar-width)';
+            } else {
+                sidebar.style.left = '0';
+                sidebar.style.right = 'auto';
+                sidebar.style.borderRadius = '0 40px 40px 0';
+                main.style.marginLeft = 'var(--sidebar-width)';
+                main.style.marginRight = '0';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('fg_lang') || 'en';
+            setLang(savedLang);
+        });
     </script>
 </body>
 
