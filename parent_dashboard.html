@@ -766,29 +766,6 @@
         }
 
         // i18n Engine for Dashboard
-        const translations = {
-            'en': {
-                'db_dashboard': 'Dashboard', 'db_children': 'Children', 'db_analytics': 'Analytics', 'db_settings': 'Settings', 'db_logout': 'Logout',
-                'db_welcome': 'Welcome back', 'db_explorers': 'Here is what your explorers are doing today.',
-                'db_premium': 'Premium Member', 'db_accuracy': 'Accuracy Score', 'db_session': 'Avg. Daily Session', 'db_consistency': 'Consistency Grade',
-                'db_velocity': 'Learning Velocity', 'db_mastery': 'Mastery by Subject', 'db_heatmap': 'Focus Areas (Error Heatmap)',
-                'db_recent': 'Recent Activity', 'tag_logic': 'Logic', 'tag_math': 'Math', 'tag_memory': 'Memory', 'low_errors': 'Low Errors', 'med_errors': 'Med Errors', 'high_errors': 'High Errors'
-            },
-            'fr': {
-                'db_dashboard': 'Tableau de bord', 'db_children': 'Enfants', 'db_analytics': 'Analyses', 'db_settings': 'Paramètres', 'db_logout': 'Déconnexion',
-                'db_welcome': 'Bon retour', 'db_explorers': 'Voici ce que vos explorateurs font aujourd\'hui.',
-                'db_premium': 'Membre Premium', 'db_accuracy': 'Taux de précision', 'db_session': 'Session quotidienne moy.', 'db_consistency': 'Niveau de assiduité',
-                'db_velocity': 'Vitesse d\'apprentissage', 'db_mastery': 'Maîtrise par sujet', 'db_heatmap': 'Zones d\'attention (Erreurs)',
-                'db_recent': 'Activité récente', 'tag_logic': 'Logique', 'tag_math': 'Maths', 'tag_memory': 'Mémoire', 'low_errors': 'Peu d\'erreurs', 'med_errors': 'Erreurs moyennes', 'high_errors': 'Erreurs élevées'
-            },
-            'ar': {
-                'db_dashboard': 'لوحة التحكم', 'db_children': 'الأطفال', 'db_analytics': 'التحليلات', 'db_settings': 'الإعدادات', 'db_logout': 'تسجيل الخروج',
-                'db_welcome': 'مرحباً بعودتك', 'db_explorers': 'إليك ما يفعله مستكشفوك اليوم.',
-                'db_premium': 'عضو مميز', 'db_accuracy': 'درجة الدقة', 'db_session': 'متوسط الجلسة اليومية', 'db_consistency': 'درجة الاستمرارية',
-                'db_velocity': 'سرعة التعلم', 'db_mastery': 'الإتقان حسب الموضوع', 'db_heatmap': 'مناطق التركيز (خارطة الأخطاء)',
-                'db_recent': 'النشاط الأخير', 'tag_logic': 'منطق', 'tag_math': 'رياضيات', 'tag_memory': 'ذاكرة', 'low_errors': 'أخطاء قليلة', 'med_errors': 'أخطاء متوسطة', 'high_errors': 'أخطاء كثيرة'
-            }
-        };
 
         function toggleLangDropdown(e) {
             e.stopPropagation();
@@ -800,47 +777,38 @@
             if (langSelector && !langSelector.contains(e.target)) langSelector.classList.remove('open');
         });
 
-        function setLang(langCode) {
-            const data = translations[langCode] || translations['en'];
+    </script>
 
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (data[key]) el.innerText = data[key];
-            });
-
-            const langOption = document.querySelector(`.lang-option[onclick*="'${langCode}'"]`);
-            if (langOption) {
-                const langLabel = langOption.innerText.split('(')[0].trim();
-                document.getElementById('currentLangDisplay').innerText = "🌍 " + langLabel;
-            }
-
-            localStorage.setItem('fg_lang', langCode);
-
-            const isRTL = ['ar', 'fa', 'ur'].includes(langCode);
-            document.body.style.direction = isRTL ? 'rtl' : 'ltr';
-
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        // RTL Layout Adjustment
+        window.addEventListener('langChanged', (e) => {
+            const isRTL = document.documentElement.dir === 'rtl';
             const sidebar = document.querySelector('.sidebar');
             const main = document.querySelector('.main-content');
-            if (isRTL) {
-                sidebar.style.left = 'auto';
-                sidebar.style.right = '0';
-                sidebar.style.borderRight = 'none';
-                sidebar.style.borderLeft = '1px solid var(--border)';
+            
+            // Only apply on desktop where sidebar is fixed
+            if (window.innerWidth > 768 && sidebar && main) {
+                if (isRTL) {
+                    sidebar.style.left = 'auto';
+                    sidebar.style.right = '0';
+                    sidebar.style.borderRight = 'none';
+                    sidebar.style.borderLeft = '1px solid var(--border)';
+                    main.style.marginLeft = '0';
+                    main.style.marginRight = 'var(--sidebar-width)';
+                } else {
+                    sidebar.style.left = '0';
+                    sidebar.style.right = 'auto';
+                    sidebar.style.borderRight = '1px solid var(--border)';
+                    sidebar.style.borderLeft = 'none';
+                    main.style.marginLeft = 'var(--sidebar-width)';
+                    main.style.marginRight = '0';
+                }
+            } else if (sidebar && main) {
+                // Reset for mobile if needed, or rely on CSS media queries
                 main.style.marginLeft = '0';
-                main.style.marginRight = 'var(--sidebar-width)';
-            } else {
-                sidebar.style.left = '0';
-                sidebar.style.right = 'auto';
-                sidebar.style.borderRight = '1px solid var(--border)';
-                sidebar.style.borderLeft = 'none';
-                main.style.marginLeft = 'var(--sidebar-width)';
                 main.style.marginRight = '0';
             }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('fg_lang') || 'en';
-            setLang(savedLang);
         });
     </script>
 </body>

@@ -508,6 +508,7 @@
             }
         }
     </style>
+    <link href="assets/css/responsive.css" rel="stylesheet">
 </head>
 
 <body>
@@ -566,17 +567,17 @@
                 <div id="signup-fields" style="display: none;">
                     <div class="form-group">
                         <label for="firstname" data-i18n="login_fname_label">First Name</label>
-                        <input type="text" id="firstname" placeholder="Geny" data-i18n-hold="login_fname_ph">
+                        <input type="text" id="firstname" placeholder="Geny" data-i18n="login_fname_ph">
                     </div>
                     <div class="form-group">
                         <label for="lastname" data-i18n="login_lname_label">Last Name</label>
-                        <input type="text" id="lastname" placeholder="Spark" data-i18n-hold="login_lname_ph">
+                        <input type="text" id="lastname" placeholder="Spark" data-i18n="login_lname_ph">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="username" data-i18n="login_user_label">Username or Email</label>
-                    <input type="email" id="username" placeholder="genius@freegeny.com" data-i18n-hold="login_user_ph"
+                    <input type="email" id="username" placeholder="genius@freegeny.com" data-i18n="login_user_ph"
                         autocomplete="email" required>
                 </div>
 
@@ -722,84 +723,11 @@
             }
         }
 
-        const translations = {
-            'en': {
-                'login_welcome': 'Welcome Back!', 'login_subtitle': 'Unlock your magic world.',
-                'signup_title': 'Create Account', 'signup_subtitle': 'Join the FreeGeny family.',
-                'login_fname_label': 'First Name', 'login_fname_ph': 'Geny',
-                'login_lname_label': 'Last Name', 'login_lname_ph': 'Spark',
-                'login_user_label': 'Username or Email', 'login_user_ph': 'genius@freegeny.com', 'login_pass_label': 'Password',
-                'login_forgot': 'Forgot password?', 'btn_login_submit': 'Start Learning', 'btn_signup_submit': 'Join Now',
-                'login_or': 'Or connect with', 'login_no_acc': 'Don\'t have an account?',
-                'login_signup_link': 'Sign up', 'login_has_acc': 'Already a member?', 'login_signin_link': 'Log in',
-                'login_legal_text': 'By joining, you agree to our',
-                'ft_terms': 'Terms', 'ft_privacy': 'Privacy', 'login_connecting': 'Securely connecting...'
-            },
-            'fr': {
-                'login_welcome': 'Bon retour !', 'login_subtitle': 'Ouvrez votre monde magique.',
-                'signup_title': 'Créer un compte', 'signup_subtitle': 'Rejoignez la famille FreeGeny.',
-                'login_fname_label': 'Prénom', 'login_fname_ph': 'Geny',
-                'login_lname_label': 'Nom', 'login_lname_ph': 'Spark',
-                'login_user_label': 'Utilisateur ou Email', 'login_user_ph': 'genie@freegeny.com', 'login_pass_label': 'Mot de passe',
-                'login_forgot': 'Mot de passe oublié ?', 'btn_login_submit': 'Commencer à apprendre', 'btn_signup_submit': 'Rejoindre',
-                'login_or': 'Ou connectez-vous avec', 'login_no_acc': 'Pas encore de compte ?',
-                'login_signup_link': 'S\'inscrire', 'login_has_acc': 'Déjà membre ?', 'login_signin_link': 'Connexion',
-                'login_legal_text': 'En rejoignant, vous acceptez nos',
-                'ft_terms': 'Conditions', 'ft_privacy': 'Confidentialité', 'login_connecting': 'Connexion sécurisée...'
-            },
-            'ar': {
-                'login_welcome': 'مرحباً بعودتك!', 'login_subtitle': 'افتح عالمك السحري.',
-                'signup_title': 'إنشاء حساب', 'signup_subtitle': 'انضم إلى عائلة FreeGeny.',
-                'login_fname_label': 'الاسم الأول', 'login_fname_ph': 'عبقري',
-                'login_lname_label': 'اسم العائلة', 'login_lname_ph': 'متألق',
-                'login_user_label': 'المستخدم أو البريد', 'login_user_ph': 'genius@freegeny.com', 'login_pass_label': 'كلمة المرور',
-                'login_forgot': 'نسيت كلمة المرور؟', 'btn_login_submit': 'ابدأ التعلم', 'btn_signup_submit': 'انضم الآن',
-                'login_or': 'أو تواصل عبر', 'login_no_acc': 'ليس لديك حساب؟',
-                'login_signup_link': 'اشترك الآن', 'login_has_acc': 'هل لديك حساب بالفعل؟', 'login_signin_link': 'دخول',
-                'login_legal_text': 'بانضمامك، فإنك توافق على',
-                'ft_terms': 'الشروط', 'ft_privacy': 'الخصوصية', 'login_connecting': 'اتصال آمن جاري...'
-            }
-        };
-
         function toggleLangDropdown(e) { e.stopPropagation(); document.querySelector('.lang-selector').classList.toggle('open'); }
         document.addEventListener('click', (e) => {
             const langSelector = document.querySelector('.lang-selector');
             if (langSelector && !langSelector.contains(e.target)) langSelector.classList.remove('open');
         });
-
-        function setLang(langCode) {
-            const data = translations[langCode] || translations['en'];
-
-            // Dynamic Label Update
-            const langOption = document.querySelector(`.lang-option[onclick*="'${langCode}'"]`);
-            if (langOption) {
-                const langLabel = langOption.innerText.split('(')[0].trim();
-                document.getElementById('currentLangDisplay').innerText = "🌍 " + langLabel;
-            }
-
-            // Translation
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (data[key]) el.innerText = data[key];
-            });
-
-            // Placeholder Translation
-            document.querySelectorAll('[data-i18n-hold]').forEach(el => {
-                const key = el.getAttribute('data-i18n-hold');
-                if (data[key]) el.placeholder = data[key];
-            });
-
-            // Persist choice
-            localStorage.setItem('fg_lang', langCode);
-
-            // Direction Logic
-            document.body.style.direction = (['ar', 'fa', 'ur'].includes(langCode)) ? 'rtl' : 'ltr';
-
-            // Active state
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                opt.classList.toggle('active', opt.getAttribute('onclick').includes(`'${langCode}'`));
-            });
-        }
 
         // Auto-detect browser language
         document.addEventListener('DOMContentLoaded', () => {
@@ -955,6 +883,7 @@
             }
         }
     </script>
+    <script src="assets/js/i18n.js"></script>
 </body>
 
 </html>

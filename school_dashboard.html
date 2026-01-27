@@ -420,7 +420,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
-                    <input type="text" placeholder="Search..." data-i18n-hold="db_search_ph">
+                    <input type="text" placeholder="Search..." data-i18n="db_search_ph">
                 </div>
 
                 <!-- Language Selector -->
@@ -573,20 +573,6 @@
         }
 
         // i18n Engine
-        const translations = {
-            'en': {
-                'db_dashboard': 'Dashboard', 'db_teachers': 'Teachers', 'db_classes': 'Classes', 'db_logout': 'Logout',
-                'db_search_ph': 'Search...', 'tag_admin': 'Admin', 'db_students': 'Students', 'db_settings': 'Settings'
-            },
-            'fr': {
-                'db_dashboard': 'Tableau de bord', 'db_teachers': 'Enseignants', 'db_classes': 'Classes', 'db_logout': 'Déconnexion',
-                'db_search_ph': 'Rechercher...', 'tag_admin': 'Admin', 'db_students': 'Étudiants', 'db_settings': 'Paramètres'
-            },
-            'ar': {
-                'db_dashboard': 'لوحة التحكم', 'db_teachers': 'المعلمون', 'db_classes': 'الصفوف', 'db_logout': 'خروج',
-                'db_search_ph': 'بحث...', 'tag_admin': 'مسؤول', 'db_students': 'الطلاب', 'db_settings': 'الإعدادات'
-            }
-        };
 
         function toggleLangDropdown(e) {
             e.stopPropagation();
@@ -598,50 +584,35 @@
             if (langSelector && !langSelector.contains(e.target)) langSelector.classList.remove('open');
         });
 
-        function setLang(langCode) {
-            const data = translations[langCode] || translations['en'];
+    </script>
 
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (data[key]) el.innerText = data[key];
-            });
-
-            document.querySelectorAll('[data-i18n-hold]').forEach(el => {
-                const key = el.getAttribute('data-i18n-hold');
-                if (data[key]) el.placeholder = data[key];
-            });
-
-            const langOption = document.querySelector(`.lang-option[onclick*="'${langCode}'"]`);
-            if (langOption) {
-                const langLabel = langOption.innerText.split('(')[0].trim();
-                document.getElementById('currentLangDisplay').innerText = "🌍 " + langLabel;
-            }
-
-            localStorage.setItem('fg_lang', langCode);
-
-            const isRTL = ['ar', 'fa', 'ur'].includes(langCode);
-            document.body.style.direction = isRTL ? 'rtl' : 'ltr';
-
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        // RTL Layout Adjustment for School Dashboard
+        window.addEventListener('langChanged', (e) => {
+            const isRTL = document.documentElement.dir === 'rtl';
             const sidebar = document.querySelector('.sidebar');
             const main = document.querySelector('.app-view');
-            if (isRTL) {
-                sidebar.style.left = 'auto';
-                sidebar.style.right = '0';
-                sidebar.style.borderRadius = '40px 0 0 40px';
+            
+            // Only apply on desktop where sidebar is fixed
+            if (window.innerWidth > 768 && sidebar && main) {
+                if (isRTL) {
+                    sidebar.style.left = 'auto';
+                    sidebar.style.right = '0';
+                    sidebar.style.borderRadius = '40px 0 0 40px';
+                    main.style.marginLeft = '0';
+                    main.style.marginRight = 'var(--sidebar-width)';
+                } else {
+                    sidebar.style.left = '0';
+                    sidebar.style.right = 'auto';
+                    sidebar.style.borderRadius = '0 40px 40px 0';
+                    main.style.marginLeft = 'var(--sidebar-width)';
+                    main.style.marginRight = '0';
+                }
+            } else if (sidebar && main) {
                 main.style.marginLeft = '0';
-                main.style.marginRight = 'var(--sidebar-width)';
-            } else {
-                sidebar.style.left = '0';
-                sidebar.style.right = 'auto';
-                sidebar.style.borderRadius = '0 40px 40px 0';
-                main.style.marginLeft = 'var(--sidebar-width)';
                 main.style.marginRight = '0';
             }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('fg_lang') || 'en';
-            setLang(savedLang);
         });
     </script>
 </body>

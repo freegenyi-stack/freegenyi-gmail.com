@@ -448,20 +448,6 @@
         }
 
         // i18n Engine
-        const translations = {
-            'en': {
-                'db_overview': 'Overview', 'db_institutions': 'Institutions', 'db_finance': 'Finance', 'db_logout': 'Logout',
-                'db_oversight': 'Global Oversight', 'db_welcome': 'Welcome'
-            },
-            'fr': {
-                'db_overview': 'Aperçu', 'db_institutions': 'Institutions', 'db_finance': 'Finance', 'db_logout': 'Déconnexion',
-                'db_oversight': 'Supervision Globale', 'db_welcome': 'Bienvenue'
-            },
-            'ar': {
-                'db_overview': 'نظرة عامة', 'db_institutions': 'المؤسسات', 'db_finance': 'المالية', 'db_logout': 'خروج',
-                'db_oversight': 'الرقابة العالمية', 'db_welcome': 'مرحباً'
-            }
-        };
 
         function toggleLangDropdown(e) {
             e.stopPropagation();
@@ -473,47 +459,37 @@
             if (langSelector && !langSelector.contains(e.target)) langSelector.classList.remove('open');
         });
 
-        function setLang(langCode) {
-            const data = translations[langCode] || translations['en'];
+    </script>
 
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (data[key]) el.innerText = data[key];
-            });
-
-            const langOption = document.querySelector(`.lang-option[onclick*="'${langCode}'"]`);
-            if (langOption) {
-                const langLabel = langOption.innerText.split('(')[0].trim();
-                document.getElementById('currentLangDisplay').innerText = "🌍 " + langLabel;
-            }
-
-            localStorage.setItem('fg_lang', langCode);
-
-            const isRTL = ['ar', 'fa', 'ur'].includes(langCode);
-            document.body.style.direction = isRTL ? 'rtl' : 'ltr';
-
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        // RTL Logic for Institution Dashboard
+        window.addEventListener('langChanged', (e) => {
+            const isRTL = document.documentElement.dir === 'rtl';
             const sidebar = document.querySelector('.sidebar');
             const content = document.querySelector('.content');
-            if (isRTL) {
-                sidebar.style.left = 'auto';
-                sidebar.style.right = '0';
-                sidebar.style.borderRight = 'none';
-                sidebar.style.borderLeft = '1px solid rgba(255, 255, 255, 0.05)';
-                content.style.marginLeft = '0';
-                content.style.marginRight = 'var(--sidebar-w)';
-            } else {
-                sidebar.style.left = '0';
-                sidebar.style.right = 'auto';
-                sidebar.style.borderRight = '1px solid rgba(255, 255, 255, 0.05)';
-                sidebar.style.borderLeft = 'none';
-                content.style.marginLeft = 'var(--sidebar-w)';
-                content.style.marginRight = '0';
+            
+            // Only apply on desktop where sidebar is fixed
+            if (window.innerWidth > 768 && sidebar && content) {
+                if (isRTL) {
+                    sidebar.style.left = 'auto';
+                    sidebar.style.right = '0';
+                    sidebar.style.borderRight = 'none';
+                    sidebar.style.borderLeft = '1px solid rgba(255, 255, 255, 0.05)';
+                    content.style.marginLeft = '0';
+                    content.style.marginRight = 'var(--sidebar-w)';
+                } else {
+                    sidebar.style.left = '0';
+                    sidebar.style.right = 'auto';
+                    sidebar.style.borderRight = '1px solid rgba(255, 255, 255, 0.05)';
+                    sidebar.style.borderLeft = 'none';
+                    content.style.marginLeft = 'var(--sidebar-w)';
+                    content.style.marginRight = '0';
+                }
+            } else if (sidebar && content) {
+                 content.style.marginLeft = '0';
+                 content.style.marginRight = '0';
             }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('fg_lang') || 'en';
-            setLang(savedLang);
         });
     </script>
 </body>
