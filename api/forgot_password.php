@@ -9,8 +9,18 @@ if (!empty($data->email)) {
 
     // 1. Check if user exists
     try {
+        // 0. Auto-Fix: Ensure table exists (Prevent 42S02 error)
+        $conn->exec("CREATE TABLE IF NOT EXISTS password_resets (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            email VARCHAR(255) NOT NULL,
+            token VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )");
+
+        // 1. Check if user exists
         $query = "SELECT id FROM users WHERE email = :email";
         $stmt = $conn->prepare($query);
+
         $stmt->bindParam(':email', $email);
         $stmt->execute();
 
