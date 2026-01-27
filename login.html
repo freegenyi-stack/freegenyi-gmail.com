@@ -846,6 +846,51 @@
             }
         }
 
+        // Password Reset Logic
+        async function forgotPassword() {
+            const emailInp = document.getElementById('username');
+            const email = emailInp.value;
+
+            if (!email || !email.includes('@')) {
+                alert("⚠️ Please enter your email address in the username field first.");
+                emailInp.focus();
+                return;
+            }
+
+            const btn = document.getElementById('forgot-link');
+            const originalText = btn.innerText;
+            btn.innerText = "Sending...";
+            btn.style.pointerEvents = "none"; // Prevent double click
+
+            try {
+                const response = await fetch('api/forgot_password.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert("✅ " + result.message);
+                } else {
+                    alert("❌ " + result.message);
+                }
+            } catch (error) {
+                console.error(error);
+                alert("🚨 Network error. Check console.");
+            } finally {
+                btn.innerText = originalText;
+                btn.style.pointerEvents = "auto";
+            }
+        }
+
+        // Attach event listener
+        document.getElementById('forgot-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            forgotPassword();
+        });
+
         async function handleAuth(event) {
             event.preventDefault();
             const btn = document.getElementById('btn-submit');
