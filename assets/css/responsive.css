@@ -139,3 +139,12 @@
 .menu-toggle {
     display: none;
 }
+/* Fix for Arabic text shaping (joining) issue */
+[lang='ar'], [lang='ar'] * {
+    letter-spacing: normal !important;
+}
+
+/* Ensure proper font for Arabic */
+[lang='ar'] {
+    font-family: 'Nunito', sans-serif !important;
+}
