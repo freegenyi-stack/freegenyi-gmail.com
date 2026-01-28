@@ -1171,7 +1171,8 @@
         <div class="hero-left">
             <div class="slogan-container">
                 <a href="home.html" class="nav-logo gs-reveal"
-                    style="font-size: 1.2rem; margin-bottom: 20px; display: block; text-decoration: none;">FUTURE
+                    style="font-size: 1.2rem; margin-bottom: 20px; display: block; text-decoration: none;"
+                    data-i18n="nav_tagline">FUTURE
                     OF EDUCATION</a>
                 <h1 class="slogan-main gs-reveal">
                     <span data-i18n="hero_title_1">Unlocking the</span> <br><span data-i18n="hero_title_2">Genius
@@ -1181,11 +1182,12 @@
                     The cognitive foundation for the <br>leaders of tomorrow.
                 </p>
                 <div class="gs-reveal"
-                    style="margin:25px 0; font-weight:700; opacity:0.8; color:var(--dark-light); font-size: 1.1rem; line-height: 1.6;">
+                    style="margin:25px 0; font-weight:700; opacity:0.8; color:var(--dark-light); font-size: 1.1rem; line-height: 1.6;"
+                    data-i18n="hero_details">
                     Interactive puzzles, logic programming, and <br>emotional intelligence coaching for children 3-12.
                 </div>
                 <a href="#how-it-works" class="btn-premium gs-reveal" style="padding: 18px 35px; font-size: 1.1rem;"
-                    data-i18n="btn_start_adventure">
+                    data-i18n="btn_signup">
                     Get Started Free
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                         <path d="M5 12h14M12 5l7 7-7 7" />
@@ -1216,7 +1218,8 @@
 
     <!-- Trusted By -->
     <div class="trusted-by">
-        <p style="text-transform:uppercase; font-size:0.8rem; letter-spacing:3px; opacity:0.5; font-weight:900;">Trusted
+        <p style="text-transform:uppercase; font-size:0.8rem; letter-spacing:3px; opacity:0.5; font-weight:900;"
+            data-i18n="trusted_title">Trusted
             by Educational Leaders</p>
         <div class="trusted-logos">
             <div class="logo-item">🏛️ STEM Alliance</div>
@@ -1351,8 +1354,10 @@
                         intelligence
                         monitoring.
                     </p>
-                    <p style="margin-top:15px; opacity: 0.7; line-height: 1.6;">
+                    <p style="margin-top:15px; opacity: 0.7; line-height: 1.6;" data-i18n="desc_app_sub">
                         Designed for the geniuses of tomorrow, available today on all platforms.
+                    </p>
+                    <p style="margin-top:15px; opacity: 0.7; line-height: 1.6;" data-i18n="desc_app_extra">
                         Our algorithms adapt to your child's pace, ensuring a stress-free yet challenging environment.
                     </p>
                 </div>
@@ -1383,7 +1388,7 @@
             </div>
         </div>
         <div style="text-align:center; margin-top:40px;">
-            <a href="#" class="btn-premium">Explore Parent Dashboard</a>
+            <a href="#" class="btn-premium" data-i18n="btn_explore_parent">Explore Parent Dashboard</a>
         </div>
     </section>
 
@@ -1451,11 +1456,12 @@
                     Empower your educators with classroom management tools, curriculum alignment, and bulk student
                     accounts.
                 </p>
-                <p style="opacity: 0.7; font-size: 1.1rem; margin-bottom: 30px;">
+                <p style="opacity: 0.7; font-size: 1.1rem; margin-bottom: 30px;" data-i18n="desc_schools_extra">
                     Bring the logic of tomorrow to your institution today. Custom integration for school systems
                     worldwide.
                 </p>
-                <a href="#" class="btn-premium" style="background: var(--dark);">Partner with Us</a>
+                <a href="#" class="btn-premium" style="background: var(--dark);" data-i18n="btn_partner">Partner with
+                    Us</a>
             </div>
             <div style="flex:1.2; min-width:300px; text-align:center;">
                 <img src="assets/schools_premium.png" alt="School Education"
@@ -1474,7 +1480,8 @@
                     Custom solutions for a global impact.
                 </p>
                 <a href="#" class="btn-premium"
-                    style="background:linear-gradient(135deg, var(--primary), var(--secondary));">Request a Proposal</a>
+                    style="background:linear-gradient(135deg, var(--primary), var(--secondary));"
+                    data-i18n="btn_proposal">Request a Proposal</a>
             </div>
             <div style="flex:1; min-width:300px; text-align:center;">
                 <svg width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="var(--accent-yellow)"
@@ -1743,7 +1750,7 @@
             });
         }
 
-</script>
+    </script>
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
@@ -1751,19 +1758,6 @@
             navLinks.classList.toggle('active');
             menuToggle.classList.toggle('open');
         }
-
-        function toggleLangDropdown(event) {
-            event.stopPropagation();
-            document.querySelector('.lang-selector').classList.toggle('open');
-        }
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            const langSelector = document.querySelector('.lang-selector');
-            if (langSelector && !langSelector.contains(e.target)) {
-                langSelector.classList.remove('open');
-            }
-        });
     </script>
 </body>
 

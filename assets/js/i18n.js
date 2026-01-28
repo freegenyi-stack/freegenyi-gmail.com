@@ -64,6 +64,17 @@ const translations = {
         'tag_admin': 'Admin', 'db_students': 'Students',
         'db_overview': 'Overview', 'db_institutions': 'Institutions', 'db_finance': 'Finance',
         'db_oversight': 'Global Oversight',
+        'nav_tagline': 'FUTURE OF EDUCATION',
+        'hero_details': 'Interactive puzzles, logic programming, and emotional intelligence coaching for children 3-12.',
+        'trusted_title': 'Trusted by Educational Leaders',
+        'desc_app_sub': 'Designed for the geniuses of tomorrow, available today on all platforms.',
+        'desc_app_extra': 'Our algorithms adapt to your child\'s pace, ensuring a stress-free yet challenging environment.',
+        'btn_explore_parent': 'Explore Parent Dashboard',
+        'desc_schools_extra': 'Bring the logic of tomorrow to your institution today. Custom integration for school systems worldwide.',
+        'btn_partner': 'Partner with Us',
+        'btn_proposal': 'Request a Proposal',
+        'btn_signup': 'Start Free',
+        'btn_login': 'Login',
     },
     'fr': {
         'nav_home': 'Accueil', 'nav_about': 'À propos', 'nav_method': 'Méthode', 'nav_pricing': 'Tarifs', 'nav_contact': 'Contact', 'nav_login': 'Connexion',
@@ -125,6 +136,17 @@ const translations = {
         'tag_admin': 'Admin', 'db_students': 'Étudiants',
         'db_overview': 'Aperçu', 'db_institutions': 'Institutions', 'db_finance': 'Finance',
         'db_oversight': 'Supervision Globale',
+        'nav_tagline': 'LE FUTUR DE L\'ÉDUCATION',
+        'hero_details': 'Puzzles interactifs, programmation logique et coaching en intelligence émotionnelle pour les enfants de 3 à 12 ans.',
+        'trusted_title': 'Approuvé par les leaders de l\'éducation',
+        'desc_app_sub': 'Conçu pour les génies de demain, disponible aujourd\'hui sur toutes les plateformes.',
+        'desc_app_extra': 'Nos algorithmes s\'adaptent au rythme de votre enfant, garantissant un environnement sans stress mais stimulant.',
+        'btn_explore_parent': 'Explorer le tableau de bord parent',
+        'desc_schools_extra': 'Apportez la logique de demain à votre institution aujourd\'hui. Intégration personnalisée pour les systèmes scolaires du monde entier.',
+        'btn_partner': 'Devenir partenaire',
+        'btn_proposal': 'Demander une proposition',
+        'btn_signup': 'Commencer gratuitement',
+        'btn_login': 'Connexion',
     },
     'ar': {
         'nav_home': 'الرئيسية', 'nav_about': 'عن التطبيق', 'nav_method': 'المنهجية', 'nav_pricing': 'الأسعار', 'nav_contact': 'اتصل بنا', 'nav_login': 'دخول',
@@ -171,20 +193,156 @@ const translations = {
         'tag_admin': 'مسؤول', 'db_students': 'الطلاب',
         'db_overview': 'نظرة عامة', 'db_institutions': 'المؤسسات', 'db_finance': 'المالية',
         'db_oversight': 'الرقابة العالمية',
+        'nav_tagline': 'مستقبل التعليم',
+        'hero_details': 'أحجيات تفاعلية، برمجة منطقية، وتدريب على الذكاء العاطفي للأطفال من سن 3-12 سنة.',
+        'trusted_title': 'موثوق به من قبل قادة التعليم',
+        'desc_app_sub': 'مصمم لعباقرة الغد، متاح اليوم على جميع المنصات.',
+        'desc_app_extra': 'تتكيف خوارزمياتنا مع وتيرة طفلك، مما يضمن بيئة خالية من الإجهاد ولكنها مليئة بالتحديات.',
+        'btn_explore_parent': 'استكشاف لوحة تحكم الوالدين',
+        'desc_schools_extra': 'اجلب منطق الغد إلى مؤسستك اليوم. تكامل مخصص لأنظمة المدارس في جميع أنحاء العالم.',
+        'btn_partner': 'شريك معنا',
+        'btn_proposal': 'طلب اقتراح',
+        'btn_signup': 'ابدأ مجاناً',
+        'btn_login': 'تسجيل الدخول',
     },
     'es': {
         'nav_home': 'Inicio', 'nav_about': 'Nosotros', 'nav_method': 'Método', 'nav_pricing': 'Precios', 'nav_contact': 'Contacto', 'nav_login': 'Entrar',
-        'hero_title_1': 'Desbloquea el Genio', 'hero_title_2': 'Interior', 'hero_subtitle': 'La plataforma educativa más avanzada para niños. Lógica, Matemáticas y Código.',
-        'btn_start_adventure': 'Iniciar Aventura 🚀',
+        'nav_app': 'La App', 'nav_parents': 'Para Padres', 'nav_schools': 'Para Escuelas', 'nav_org': 'Organizaciones', 'nav_mission': 'Nuestra Misión',
+        'hero_title_1': 'Desbloquea el Genio', 'hero_title_2': 'Interior', 'hero_subtitle': 'La plataforma educativa más avanzada para niños de 3 a 12 años. Domino de Lógica, Matemáticas y Código a través del juego.',
+        'btn_start_adventure': 'Iniciar Aventura 🚀', 'btn_learn_more': 'Más información',
+        'slogan_magic': 'Es como magia. Pero con más lógica.',
+        'desc_app': 'FreeGeny simplifica el aprendizaje a través de la gamificación, acertijos lógicos adaptativos y monitoreo de inteligencia emocional. Diseñado para los genios del mañana.',
+        'title_insights': 'Perspectivas', 'desc_insights': 'Siga el progreso de su hijo con análisis detallados e informes semanales enviados directamente a usted.',
+        'title_safety': 'Seguridad', 'desc_safety': 'Entorno 100% libre de publicidad y conforme a COPPA. Los datos de su hijo están cifrados y nunca se venden.',
+        'title_control': 'Control', 'desc_control': 'Administre el tiempo de pantalla de manera efectiva. Establezca límites diarios y programe "horas de enfoque" sin esfuerzo.',
+        'desc_schools': 'Herramientas de gestión de aula, alineación curricular y cuentas de estudiantes en masa. Traiga FreeGeny a su institución.',
+        'desc_org': 'Asóciese con FreeGeny para empoderar a los niños de su comunidad. Ofrecemos precios personalizados para organizaciones sin fines de lucro.',
+        'ft_product': 'Producto', 'ft_company': 'Empresa', 'ft_resources': 'Recursos', 'ft_legal': 'Legal', 'ft_rights': '© 2026 FreeGeny. Todos los derechos reservados.',
+        'ft_about': 'Sobre nosotros', 'ft_contact': 'Contacto', 'ft_careers': 'Carreras', 'ft_press': 'Prensa', 'ft_solutions': 'Soluciones', 'ft_help': 'Ayuda', 'ft_blog': 'Blog', 'ft_safety': 'Seguridad', 'ft_terms': 'Términos', 'ft_privacy': 'Privacidad', 'ft_cookies': 'Cookies', 'ft_access': 'Accesibilidad',
+        'hiw_title': '¿Cómo funciona?', 'hiw_step1_title': 'El niño juega', 'hiw_step1_desc': 'Acertijos lógicos y mini-juegos. No solo consumen contenido; lo resuelven.',
+        'hiw_step2_title': 'La IA se adapta', 'hiw_step2_desc': 'Nuestro algoritmo ajusta la dificultad en tiempo real. Sin frustración, solo progreso.',
+        'hiw_step3_title': 'Los padres guían', 'hiw_step3_desc': 'Acceda a tableros claros y siga la evolución de las fortalezas de su hijo.',
+        'btn_start_session': 'Iniciar sesión infantil',
+        'preview_title': 'Una experiencia inmersiva', 'preview_desc': 'Descubra una interfaz diseñada para captar la atención sin sobreestimular al niño.',
+        'vision_title': 'Más que una aplicación', 'vision_q': '“¿Mi hijo se desconectará? ¿Están demasiado tiempo en las pantallas?”',
         'vision_highlight': 'La educación es encender un fuego.',
+        'vision_text': 'Creemos que cada niño nace con potencial. Nuestra misión es brindar las herramientas para desbloquearlo.',
+        'vision_desc': 'FreeGeny es la base intelectual de una generación que aprende cómo pensar, no qué pensar.',
+        'test_title': 'Prueba Social', 'test1_text': '“Mi hijo de 7 años recuperó la confianza en las matemáticas en solo 2 semanas.”', 'test1_author': 'Sarah Johnson', 'test1_role': 'Madre de dos hijos',
+        'test2_text': '“Utilizado en clase, FreeGeny permite a los estudiantes explorar conceptos de programación sin miedo al error.”', 'test2_author': 'Marc Tremblay', 'test2_role': 'Profesor de primaria',
+        'stat_users': 'Aprendices Felices', 'stat_countries': 'Países', 'stat_rating': 'Calificación',
+        'stat_kids': 'Niños felices', 'stat_psych': 'Psicólogos involucrados', 'stat_puzzles': 'Acertijos lógicos', 'stat_ads': 'Sin anuncios',
+        'badge_appstore': 'App Store', 'badge_googleplay': 'Google Play', 'badge_macstore': 'Mac Store', 'badge_huawei': 'AppGallery',
+        'feat_zero': 'Diseño sin distracciones', 'feat_soft': 'Paletas de colores suaves', 'feat_focus': 'Ingeniería de enfoque',
+        'lbl_mission': 'MISIÓN', 'mission_title': 'Desbloquear el potencial', 'mission_desc': 'Desbloquear el máximo potencial de cada niño, fomentando el pensamiento crítico y la creatividad.',
+        'lbl_who': 'QUIÉNES SOMOS', 'about_title': 'Reimaginando la educación', 'about_desc': 'Fundada por educadores, ingenieros y psicólogos infantiles.',
+        'role_educators': '👨‍🏫 Educadores', 'role_engineers': '💻 Ingenieros', 'role_psych': '🧠 Psicólogos',
+        'ready_title': '¿Listo para empezar?', 'ready_desc': 'Únase a más de 10,000 pequeños genios que aprenden con FreeGeny hoy.',
         'loading': 'Cargando...',
+        'nav_tagline': 'EL FUTURO DE LA EDUCACIÓN',
+        'hero_details': 'Puzzles interactivos, programación lógica y entrenamiento de inteligencia emocional para niños de 3 a 12 años.',
+        'trusted_title': 'Con la confianza de los líderes educativos',
+        'desc_app_sub': 'Diseñado para los genios del mañana, disponible hoy en todas las plataformas.',
+        'desc_app_extra': 'Nuestros algoritmos se adaptan al ritmo de su hijo, garantizando un entorno sin estrés pero desafiante.',
+        'btn_explore_parent': 'Explorar panel de padres',
+        'desc_schools_extra': 'Lleve la lógica del mañana a su institución hoy mismo. Integración personalizada para sistemas escolares de todo el mundo.',
+        'btn_partner': 'Asóciese con nosotros',
+        'btn_proposal': 'Solicitar una propuesta',
+        'btn_signup': 'Empezar gratis',
+        'btn_login': 'Entrar',
     },
     'zh': {
-        'nav_home': '首页', 'nav_about': '关于', 'nav_method': '方法', 'nav_pricing': '价格', 'nav_contact': '联系', 'nav_login': '登录',
-        'hero_title_1': '激发每个孩子的', 'hero_title_2': '内在天赋', 'hero_subtitle': '专为3-12岁儿童打造。通过游戏掌握逻辑、数学和编程。',
-        'btn_start_adventure': '开始冒险 🚀',
+        'nav_home': '首页', 'nav_about': '关于我们', 'nav_method': '教学方法', 'nav_pricing': '价格', 'nav_contact': '联系我们', 'nav_login': '登录',
+        'nav_app': '应用程序', 'nav_parents': '家长端', 'nav_schools': '学校端', 'nav_org': '机构合作', 'nav_mission': '我们的使命',
+        'hero_title_1': '开启每个孩子的', 'hero_title_2': '内在天赋', 'hero_subtitle': '专为3-12岁儿童打造的最先进教育平台。在玩乐中掌握逻辑、数学和编程。',
+        'btn_start_adventure': '开始冒险 🚀', 'btn_learn_more': '了解更多',
+        'slogan_magic': '就像魔法一样，但更具逻辑。',
+        'desc_app': 'FreeGeny 通过游戏化、自适应逻辑谜题和情感智力监测简化学习。为未来的天才设计，现已在所有平台推出。',
+        'title_insights': '洞察', 'desc_insights': '通过发送给您的详细分析和每周报告跟踪您孩子的进度。',
+        'title_safety': '安全', 'desc_safety': '100% 无广告且符合 COPPA 标准的环境。您孩子的数据已加密，绝不出售。',
+        'title_control': '控制', 'desc_control': '有效管理屏幕时间。轻松设置每日限制并安排“专注时间”。',
+        'desc_schools': '课堂管理工具、课程对齐和批量学生帐户。让 FreeGeny 进入您的机构，提高学生在 STEM 科目中的参与度。',
+        'desc_org': '与 FreeGeny 合作，赋能您社区中的孩子。我们为全球非营利组织和教育倡议提供定制价格 and 支持。',
+        'ft_product': '产品', 'ft_company': '公司', 'ft_resources': '资源', 'ft_legal': '法律', 'ft_rights': '© 2026 FreeGeny。保留所有权利。',
+        'ft_about': '关于', 'ft_contact': '联系我们', 'ft_careers': '职业生涯', 'ft_press': '新闻稿', 'ft_solutions': '解决方案', 'ft_help': '帮助中心', 'ft_blog': '博客', 'ft_safety': '安全中心', 'ft_terms': '条款和条件', 'ft_privacy': '隐私政策', 'ft_cookies': 'Cookie 政策', 'ft_access': '无障碍',
+        'hiw_title': '它是如何运作的？', 'hiw_step1_title': '孩子玩耍', 'hiw_step1_desc': '逻辑谜题、编程挑战和适合年龄的小游戏。他们不只是消费内容，而是在解决问题。',
+        'hiw_step2_title': 'AI 自适应', 'hiw_step2_desc': '我们的算法根据孩子的节奏和情感实时调整难度。没有挫败感，只有进步。',
+        'hiw_step3_title': '家长引导', 'hiw_step3_desc': '访问清晰的仪表板、个性化建议并跟踪孩子优势的演变。',
+        'btn_start_session': '开始孩子课时',
+        'preview_title': '沉浸式体验', 'preview_desc': '发现一个旨在吸引注意力而不会过度刺激孩子的界面。认知成长的宁静港湾。',
+        'vision_title': '不仅仅是一个应用程序', 'vision_q': '“我的孩子会下线吗？他们看屏幕的时间太长了吗？”',
+        'vision_highlight': '如果学习再次变成游戏，而不是压力会怎样？',
+        'vision_text': '我们相信每个孩子天生都有潜力。我们的使命是提供开启它的工具。',
+        'vision_desc': 'FreeGeny 不仅仅是另一个应用程序。它是这一代人学会如何思考，而不是思考什么的智力基础。',
+        'test_title': '社会证明', 'test1_text': '“我7岁的儿子在短短2周内就找回了对数学的信心。这种方法与学校截然不同。”', 'test1_author': '莎拉·约翰逊', 'test1_role': '两个孩子的母亲',
+        'test2_text': '“在课堂上作为补救工具使用，FreeGeny 让学生可以无惧错误地探索编程概念。”', 'test2_author': '马克·特伦布莱', 'test2_role': '小学教师',
+        'stat_users': '快乐的学习者', 'stat_countries': '国家', 'stat_rating': '商店评分',
+        'stat_kids': '快乐的孩子', 'stat_psych': '参与的心理学家', 'stat_puzzles': '逻辑谜题', 'stat_ads': '无广告',
+        'badge_appstore': 'App Store', 'badge_googleplay': 'Google Play', 'badge_macstore': 'Mac Store', 'badge_huawei': 'AppGallery',
+        'feat_zero': '零干扰设计', 'feat_soft': '柔和调色板', 'feat_focus': '专注优先工程',
+        'lbl_mission': '使命', 'mission_title': '释放潜力', 'mission_desc': '通过创新技术释放每个孩子的全部潜力，培养批判性思维、创造力和对学习终身的热爱。',
+        'lbl_who': '我们是谁', 'about_title': '重新想象教育', 'about_desc': 'FreeGeny 由教育工作者、工程师和儿童心理学家组成的团队创立，致力于为21世纪重新想象幼儿教育。',
+        'role_educators': '👨‍🏫 教育工作者', 'role_engineers': '💻 工程师', 'role_psych': '🧠 心理学家',
+        'ready_title': '准备好开始了吗？', 'ready_desc': '加入今天与 FreeGeny 一起学习的 10,000 多名小小天才。',
         'loading': '加载中...',
-    }
+        'nav_tagline': '教育的未来',
+        'hero_details': '为 3-12 岁儿童提供互动谜题、逻辑编程和情商辅导。',
+        'trusted_title': '深受教育领袖信赖',
+        'desc_app_sub': '为未来的天才设计，现已在所有平台推出。',
+        'desc_app_extra': '我们的算法会根据您孩子的节奏进行调整，确保一个无压力且充满挑战的环境。',
+        'btn_explore_parent': '探索家长控制面板',
+        'desc_schools_extra': '今天就把未来的逻辑带到您的机构。为全球学校系统提供定制集成。',
+        'btn_partner': '与我们合作',
+        'btn_proposal': '索取提案',
+        'btn_signup': '免费开始',
+        'btn_login': '登录',
+    },
+    'hi': {
+        'nav_home': 'होम', 'nav_about': 'हमारे बारे में', 'nav_method': 'पद्धति', 'nav_pricing': 'मूल्य निर्धारण', 'nav_contact': 'संपर्क करें', 'nav_login': 'लॉगिन',
+        'nav_app': 'ऐप', 'nav_parents': 'माता-पिता के लिए', 'nav_schools': 'स्कूलों के लिए', 'nav_org': 'संस्थाएँ', 'nav_mission': 'हमारा मिशन',
+        'hero_title_1': 'हर बच्चे की', 'hero_title_2': 'छिपी प्रतिभा खोलें', 'hero_subtitle': '3-12 वर्ष के बच्चों के लिए सबसे उन्नत शैक्षिक मंच। खेल के माध्यम से तर्क, गणित और कोडिंग में महारत हासिल करें।',
+        'btn_start_adventure': 'रोमांच शुरू करें 🚀', 'btn_learn_more': 'और जानें',
+        'slogan_magic': 'यह जादू जैसा है। लेकिन अधिक तर्क के साथ।',
+        'desc_app': 'FreeGeny गेमिफिकेशन, एडेप्टिव लॉजिक पहेलियाँ और भावनात्मक बुद्धिमत्ता निगरानी के माध्यम से सीखने को सरल बनाता है। कल के जीनियस के लिए डिज़ाइन किया गया, आज सभी प्लेटफार्मों पर उपलब्ध है।',
+        'title_insights': 'इनसाइट्स', 'desc_insights': 'सीधे आपको भेजी जाने वाली विस्तृत एनालिटिक्स और साप्ताहिक रिपोर्ट के साथ अपने बच्चे की प्रगति को ट्रैक करें।',
+        'title_safety': 'सुरक्षा', 'desc_safety': '100% विज्ञापन-मुक्त और COPPA अनुपालन वातावरण। आपके बच्चे का डेटा एन्क्रिप्टेड है और कभी बेचा नहीं जाता है।',
+        'title_control': 'नियंत्रण', 'desc_control': 'स्क्रीन टाइम को प्रभावी ढंग से प्रबंधित करें। दैनिक सीमाएँ निर्धारित करें और "फोकस घंटे" आसानी से शेड्यूल करें।',
+        'desc_schools': 'कक्षा प्रबंधन उपकरण, पाठ्यक्रम संरेखण, और थोक छात्र खाते। STEM विषयों में छात्र जुड़ाव बढ़ाने के लिए FreeGeny को अपने संस्थान में लाएं।',
+        'desc_org': 'अपने समुदाय में बच्चों को सशक्त बनाने के लिए FreeGeny के साथ साझेदारी करें। हम वैश्विक स्तर पर गैर-लाभकारी और शैक्षिक पहलों के लिए कस्टम मूल्य और सहायता प्रदान करते हैं।',
+        'ft_product': 'उत्पाद', 'ft_company': 'कंपनी', 'ft_resources': 'संसाधन', 'ft_legal': 'कानूनी', 'ft_rights': '© 2026 FreeGeny. सर्वाधिकार सुरक्षित।',
+        'ft_about': 'हमारे बारे में', 'ft_contact': 'संपर्क करें', 'ft_careers': 'करियर', 'ft_press': 'प्रेस', 'ft_solutions': 'समाधान', 'ft_help': 'सहायता केंद्र', 'ft_blog': 'ब्लॉग', 'ft_safety': 'सुरक्षा केंद्र', 'ft_terms': 'नियम और शर्तें', 'ft_privacy': 'गोपनीयता नीति', 'ft_cookies': 'कुकीज़', 'ft_access': 'सुलभता',
+        'hiw_title': 'यह कैसे काम करता है?', 'hiw_step1_title': 'बच्चा खेलता है', 'hiw_step1_desc': 'तर्क पहेलियाँ, कोडिंग चुनौतियाँ और आयु-उपयुक्त मिनी-गेम। वे केवल सामग्री का उपभोग नहीं करते; वे इसे हल करते हैं।',
+        'hiw_step2_title': 'AI अनुकूलित होता है', 'hiw_step2_desc': 'हमारा एल्गोरिदम बच्चे की गति और भावनाओं के आधार पर वास्तविक समय में कठिनाई को समायोजित करता है। कोई निराशा नहीं, बस प्रगति।',
+        'hiw_step3_title': 'माता-पिता मार्गदर्शन करते हैं', 'hiw_step3_desc': 'स्पष्ट डैशबोर्ड, व्यक्तिगत सुझावों तक पहुँचें, और अपने बच्चे की ताकत के विकास को ट्रैक करें।',
+        'btn_start_session': 'बच्चे का सत्र शुरू करें',
+        'preview_title': 'एक immersive अनुभव', 'preview_desc': 'बच्चे को अत्यधिक उत्तेजित किए बिना ध्यान आकर्षित करने के लिए डिज़ाइन किया गया इंटरफ़ेस खोजें। संज्ञानात्मक विकास के लिए एक शांतिपूर्ण बंदरगाह।',
+        'vision_title': 'एक ऐप से बढ़कर', 'vision_q': '"क्या मेरा बच्चा लॉग ऑफ करेगा? क्या वे स्क्रीन पर बहुत अधिक हैं?"',
+        'vision_highlight': 'क्या हो अगर सीखना एक दबाव नहीं, बल्कि फिर से एक खेल बन जाए?',
+        'vision_text': 'हमारा मानना है कि हर बच्चे में क्षमता होती है। हमारा मिशन इसे अनलॉक करने के लिए उपकरण प्रदान करना है।',
+        'vision_desc': 'FreeGeny सिर्फ एक और ऐप नहीं है। यह उस पीढ़ी की बौद्धिक नींव है जो यह सीखती है कि कैसे सोचना है, क्या सोचना है यह नहीं।',
+        'test_title': 'सामाजिक प्रमाण', 'test1_text': '"मेरे 7 वर्षीय बेटे ने केवल 2 सप्ताह में गणित में आत्मविश्वास वापस पा लिया। दृष्टिकोण स्कूल से इतना अलग है।"', 'test1_author': 'सारा जॉनसन', 'test1_role': 'दो बच्चों की माँ',
+        'test2_text': '"कक्षा में सुधार उपकरण के रूप में उपयोग किया जाता है, FreeGeny छात्रों को गलती के डर के बिना कोडिंग अवधारणाओं का पता लगाने की अनुमति देता है।"', 'test2_author': 'मार्क ट्रेमब्ले', 'test2_role': 'प्राथमिक शिक्षक',
+        'stat_users': 'खुश शिक्षार्थी', 'stat_countries': 'देश', 'stat_rating': 'स्टोर रेटिंग',
+        'stat_kids': 'खुश बच्चे', 'stat_psych': 'शामिल मनोवैज्ञानिक', 'stat_puzzles': 'तर्क पहेलियाँ', 'stat_ads': 'विज्ञापन-मुक्त',
+        'badge_appstore': 'ऐप स्टोर', 'badge_googleplay': 'गूगल प्ले', 'badge_macstore': 'मैक स्टोर', 'badge_huawei': 'ऐपगैलरी',
+        'feat_zero': 'शून्य व्याकुलता डिज़ाइन', 'feat_soft': 'नरम रंग पैलेट', 'feat_focus': 'फोकस-फर्स्ट इंजीनियरिंग',
+        'lbl_mission': 'मिशन', 'mission_title': 'क्षमता को अनलॉक करें', 'mission_desc': 'हर बच्चे की पूरी क्षमता को अनलॉक करने के लिए, नवीन प्रौद्योगिकी के माध्यम से महत्वपूर्ण सोच, रचनात्मकता और सीखने के प्रति आजीवन प्रेम को बढ़ावा देना।',
+        'lbl_who': 'हम कौन हैं', 'about_title': 'शिक्षा की पुनर्कल्पना', 'about_desc': 'FreeGeny की स्थापना शिक्षकों, इंजीनियरों और बाल मनोवैज्ञानिकों की एक टीम द्वारा की गई थी जो 21वीं सदी के लिए प्रारंभिक बचपन की शिक्षा की पुनर्कल्पना करने के लिए समर्पित है।',
+        'role_educators': '👨‍🏫 शिक्षक', 'role_engineers': '💻 इंजीनियर', 'role_psych': '🧠 मनोवैज्ञानिक',
+        'ready_title': 'शुरू करने के लिए तैयार हैं?', 'ready_desc': 'आज FreeGeny के साथ सीखने वाले 10,000+ छोटे जीनियस में शामिल हों।',
+        'loading': 'लोड हो रहा है...',
+        'nav_tagline': 'शिक्षा का भविष्य',
+        'hero_details': '3-12 वर्ष के बच्चों के लिए इंटरैक्टिव पहेलियाँ, लॉजिक प्रोग्रामिंग और भावनात्मक बुद्धिमत्ता कोचिंग।',
+        'trusted_title': 'शिक्षा जगत के दिग्गजों द्वारा विश्वसनीय',
+        'desc_app_sub': 'कल के जीनियस के लिए डिज़ाइन किया गया, आज सभी प्लेटफार्मों पर उपलब्ध है।',
+        'desc_app_extra': 'हमारे एल्गोरिदम आपके बच्चे की गति के अनुसार अनुकूलित होते हैं, जो तनाव-मुक्त चुनौतीपूर्ण वातावरण सुनिश्चित करते हैं।',
+        'btn_explore_parent': 'माता-पिता डैशबोर्ड एक्सप्लोर करें',
+        'desc_schools_extra': 'आज ही अपने संस्थान में कल का लॉजिक लाएँ। दुनिया भर के स्कूल प्रणालियों के लिए कस्टम एकीकरण।',
+        'btn_partner': 'हमारे साथ पार्टनर बनें',
+        'btn_proposal': 'प्रपोजल के लिए अनुरोध करें',
+        'btn_signup': 'मुफ्त शुरू करें',
+        'btn_login': 'लॉगिन',
+    },
 };
 
 
@@ -205,12 +363,15 @@ function setLang(lang) {
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                el.placeholder = translations[lang][key];
-            } else {
-                el.innerText = translations[lang][key];
-            }
+        // Fallback to English if key is missing in selected language
+        const translation = (translations[lang] && translations[lang][key])
+            ? translations[lang][key]
+            : (translations['en'][key] || key);
+
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = translation;
+        } else {
+            el.innerText = translation;
         }
     });
 
@@ -221,12 +382,17 @@ function setLang(lang) {
 function updateLanguageUI(lang) {
     document.querySelectorAll('.lang-option').forEach(opt => {
         opt.classList.remove('active');
-        if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes(`'${lang}'`)) {
+        // Standardize the check by comparing the argument of setLang
+        const onclickAttr = opt.getAttribute('onclick');
+        if (onclickAttr && onclickAttr.includes(`'${lang}'`)) {
             opt.classList.add('active');
             const display = document.getElementById('currentLangDisplay');
             if (display) {
-                const label = opt.innerText.split('(')[0].trim();
-                display.innerText = " 🌍 " + label;
+                // Keep the emoji but update the text
+                const currentText = opt.innerText;
+                const emoji = currentText.split(' ')[0]; // Assumes emoji is first
+                const label = currentText.substring(emoji.length).split('(')[0].trim();
+                display.innerText = " " + emoji + " " + (lang.toUpperCase());
             }
         }
     });
@@ -239,4 +405,23 @@ function getLang() {
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = getLang();
     setLang(savedLang);
+});
+
+/**
+ * UI Helper: Toggle drop-down visibility
+ */
+function toggleLangDropdown(e) {
+    if (e) e.stopPropagation();
+    const selector = document.querySelector('.lang-selector');
+    if (selector) selector.classList.toggle('open');
+}
+
+/**
+ * Global Click Listener to close language dropdown when clicking outside
+ */
+document.addEventListener('click', (e) => {
+    const selector = document.querySelector('.lang-selector');
+    if (selector && !selector.contains(e.target)) {
+        selector.classList.remove('open');
+    }
 });
