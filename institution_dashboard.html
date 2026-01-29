@@ -369,6 +369,14 @@
                     <a href="#" class="lang-option" onclick="setLang('jv')">🇮🇩 Basa Jawa (Javanese)</a>
                     <a href="#" class="lang-option" onclick="setLang('it')">🇮🇹 Italiano</a>
                     <a href="#" class="lang-option" onclick="setLang('gu')">🇮🇳 ગુજરાતી (Gujarati)</a>
+                    <a href="#" class="lang-option" onclick="setLang('ro')">🇷🇴 Română</a>
+                    <a href="#" class="lang-option" onclick="setLang('el')">🇬🇷 Ελληνικά</a>
+                    <a href="#" class="lang-option" onclick="setLang('hu')">🇭🇺 Magyar</a>
+                    <a href="#" class="lang-option" onclick="setLang('cs')">🇨🇿 Čeština</a>
+                    <a href="#" class="lang-option" onclick="setLang('sv')">🇸🇪 Svenska</a>
+                    <a href="#" class="lang-option" onclick="setLang('da')">🇩🇰 Dansk</a>
+                    <a href="#" class="lang-option" onclick="setLang('fi')">🇫🇮 Suomi</a>
+                    <a href="#" class="lang-option" onclick="setLang('no')">🇳🇴 Norsk</a>
                 </div>
             </div>
         </header>
@@ -468,7 +476,7 @@
             const isRTL = document.documentElement.dir === 'rtl';
             const sidebar = document.querySelector('.sidebar');
             const content = document.querySelector('.content');
-            
+
             // Only apply on desktop where sidebar is fixed
             if (window.innerWidth > 768 && sidebar && content) {
                 if (isRTL) {
@@ -487,8 +495,8 @@
                     content.style.marginRight = '0';
                 }
             } else if (sidebar && content) {
-                 content.style.marginLeft = '0';
-                 content.style.marginRight = '0';
+                content.style.marginLeft = '0';
+                content.style.marginRight = '0';
             }
         });
     </script>
