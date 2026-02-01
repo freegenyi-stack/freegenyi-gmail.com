@@ -1,0 +1,50 @@
+{
+  "id": "1ap-t2-formes-planes-base",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 2,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "الأشكال المستوية الأساسية",
+      "fr": "Formes Planes de Base"
+    },
+    "difficulty": "moyen",
+    "estimatedTime": "35 min",
+    "order": 7
+  },
+  "objectives": {
+    "ar": [
+      "التعرف على المربع، المستطيل، المثلث، الدائرة",
+      "خصائص بسيطة للأشكال"
+    ],
+    "fr": [
+      "Reconnaître carré, rectangle, triangle, cercle",
+      "Propriétés simples des formes"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t2-formes-planes-base-01",
+    "ex-1ap-t2-formes-planes-base-02"
+  ]
+}

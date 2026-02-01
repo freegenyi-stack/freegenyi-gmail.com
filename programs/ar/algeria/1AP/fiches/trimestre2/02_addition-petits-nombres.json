@@ -1,0 +1,50 @@
+{
+  "id": "1ap-t2-addition-petits-nombres",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 2,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "جمع الأعداد الصغيرة",
+      "fr": "Addition avec Petits Nombres"
+    },
+    "difficulty": "moyen",
+    "estimatedTime": "35 min",
+    "order": 2
+  },
+  "objectives": {
+    "ar": [
+      "الجمع بدون احتفاظ",
+      "استخدام الشريط العددي"
+    ],
+    "fr": [
+      "Addition sans retenue",
+      "Utiliser la bande numérique"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t2-addition-petits-nombres-01",
+    "ex-1ap-t2-addition-petits-nombres-02"
+  ]
+}

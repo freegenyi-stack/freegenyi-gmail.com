@@ -1,0 +1,92 @@
+{
+  "ficheId": "1ap-t2-duree-temps",
+  "metadata": {
+    "title": {
+      "ar": "تمارين المدة والوقت",
+      "fr": "Exercices Durée et Temps"
+    },
+    "totalExercises": 20
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t2-duree-temps-01",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-02",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-03",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-04",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-05",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-06",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-07",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-08",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-09",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-10",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-11",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-12",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-13",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-14",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-15",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-16",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-17",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-18",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-19",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-duree-temps-20",
+      "type": "mixed"
+    }
+  ]
+}

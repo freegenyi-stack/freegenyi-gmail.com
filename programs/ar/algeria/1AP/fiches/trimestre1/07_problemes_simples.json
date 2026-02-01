@@ -1,0 +1,250 @@
+{
+    "id": "1ap-t1-problemes-simples",
+    "metadata": {
+        "grade": "1AP",
+        "trimester": 1,
+        "subject": "mathematics",
+        "country": "algeria",
+        "title": {
+            "ar": "حل المسائل البسيطة",
+            "fr": "Résolution de Problèmes Simples"
+        },
+        "difficulty": "moyen",
+        "estimatedTime": "35 min",
+        "order": 7,
+        "prerequisites": [
+            "operations_simples",
+            "nombres_0_10",
+            "comparaison"
+        ],
+        "relatedTopics": [
+            "addition",
+            "soustraction"
+        ],
+        "officialProgramReferences": [
+            35,
+            36,
+            37,
+            38
+        ]
+    },
+    "objectives": {
+        "ar": [
+            "فهم مسائل رياضية بسيطة من الحياة اليومية",
+            "تحديد العملية المناسبة (جمع أو طرح)",
+            "حل مسائل باستخدام الصور والأشياء الملموسة",
+            "شرح طريقة الحل"
+        ],
+        "fr": [
+            "Comprendre des problèmes mathématiques simples de la vie quotidienne",
+            "Identifier l'opération appropriée (addition ou soustraction)",
+            "Résoudre des problèmes en utilisant des images et objets concrets",
+            "Expliquer sa méthode de résolution"
+        ]
+    },
+    "keyConcepts": [
+        {
+            "concept": {
+                "ar": "مسألة الجمع",
+                "fr": "Problème d'addition"
+            },
+            "explanation": {
+                "ar": "عندما نضيف أشياء أو نجمع مجموعات معاً. كلمات مفتاحية: 'كم مجموع'، 'كم صار عندي'، 'كم بالكل'",
+                "fr": "Quand on ajoute des objets ou combine des groupes. Mots-clés: 'combien en tout', 'combien maintenant', 'quel est le total'"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Situation: 3 pommes + 2 pommes = ? pommes en tout"
+            },
+            "problemStructure": {
+                "ar": "لدي ... + أضفت ... = كم صار المجموع؟",
+                "fr": "J'ai ... + J'ajoute ... = Combien en tout?"
+            }
+        },
+        {
+            "concept": {
+                "ar": "مسألة الطرح",
+                "fr": "Problème de soustraction"
+            },
+            "explanation": {
+                "ar": "عندما نزيل أشياء أو نخسر شيئاً. كلمات مفتاحية: 'كم بقي'، 'كم أعطيت'، 'كم ذهب'",
+                "fr": "Quand on enlève des objets ou on perd quelque chose. Mots-clés: 'combien reste', 'combien donné', 'combien parti'"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Situation: 5 ballons - 2 ballons envolés = ? ballons restants"
+            },
+            "problemStructure": {
+                "ar": "كان لدي ... - أخذت/ذهب ... = كم بقي؟",
+                "fr": "J'avais ... - J'ai pris/perdu ... = Combien reste?"
+            }
+        },
+        {
+            "concept": {
+                "ar": "الخطوات لحل المسألة",
+                "fr": "Étapes de résolution"
+            },
+            "explanation": {
+                "ar": "1) اقرأ المسألة 2) ما الذي أعرفه؟ 3) ما الذي أبحث عنه؟ 4) هل أجمع أم أطرح؟ 5) احسب 6) تحقق من الإجابة",
+                "fr": "1) Lis le problème 2) Qu'est-ce que je sais? 3) Que cherche-je? 4) J'additionne ou soustrais? 5) Calcule 6) Vérifie la réponse"
+            },
+            "visual": {
+                "type": "flowchart",
+                "description": "Diagramme des étapes de résolution avec icônes"
+            }
+        },
+        {
+            "concept": {
+                "ar": "استخدام الصور والأشياء",
+                "fr": "Utiliser images et objets"
+            },
+            "explanation": {
+                "ar": "ارسم الأشياء أو استخدم أشياء حقيقية لتمثيل المسألة. هذا يجعل الحل أسهل",
+                "fr": "Dessine les objets ou utilise de vrais objets pour représenter le problème. Cela rend la résolution plus facile"
+            },
+            "visual": {
+                "type": "demonstration",
+                "description": "Problème écrit → représentation avec dessin → solution"
+            }
+        }
+    ],
+    "examples": [
+        {
+            "title": {
+                "ar": "مثال 1: مسألة جمع",
+                "fr": "Exemple 1: Problème d'addition"
+            },
+            "problem": {
+                "ar": "لدى أحمد 3 سيارات ألعاب. أعطاه والده 2 سيارة أخرى. كم سيارة أصبح لدى أحمد؟",
+                "fr": "Ahmed a 3 voitures jouets. Son père lui en donne 2 autres. Combien de voitures Ahmed a-t-il maintenant?"
+            },
+            "solution": {
+                "ar": "ما أعرفه: 3 سيارات + 2 سيارة. ما أبحث عنه: المجموع. العملية: جمع. الحل: 3 + 2 = 5 سيارات",
+                "fr": "Ce que je sais: 3 voitures + 2 voitures. Ce que je cherche: le total. Opération: addition. Solution: 3 + 2 = 5 voitures"
+            },
+            "visual": "🚗🚗🚗 + 🚗🚗 = 🚗🚗🚗🚗🚗"
+        },
+        {
+            "title": {
+                "ar": "مثال 2: مسألة طرح",
+                "fr": "Exemple 2: Problème de soustraction"
+            },
+            "problem": {
+                "ar": "لدى فاطمة 7 حلويات. أكلت 3 حلويات. كم حلوى بقيت؟",
+                "fr": "Fatima a 7 bonbons. Elle en mange 3. Combien de bonbons reste-t-il?"
+            },
+            "solution": {
+                "ar": "ما أعرفه: 7 حلويات، أكلت 3. ما أبحث عنه: الباقي. العملية: طرح. الحل: 7 - 3 = 4 حلويات",
+                "fr": "Ce que je sais: 7 bonbons, mangé 3. Ce que je cherche: ce qui reste. Opération: soustraction. Solution: 7 - 3 = 4 bonbons"
+            },
+            "visual": "🍬🍬🍬🍬🍬🍬🍬 → mange 3 → 🍬🍬🍬🍬"
+        },
+        {
+            "title": {
+                "ar": "مثال 3: مسألة من الحياة",
+                "fr": "Exemple 3: Problème de la vie quotidienne"
+            },
+            "problem": {
+                "ar": "في الحديقة 4 قطط و 2 كلب. كم حيواناً في الحديقة؟",
+                "fr": "Dans le jardin il y a 4 chats et 2 chiens. Combien d'animaux dans le jardin?"
+            },
+            "solution": {
+                "ar": "ما أعرفه: 4 قطط + 2 كلب. ما أبحث عنه: عدد الحيوانات كلها. العملية: جمع. الحل: 4 + 2 = 6 حيوانات",
+                "fr": "Ce que je sais: 4 chats + 2 chiens. Ce que je cherche: nombre total d'animaux. Opération: addition. Solution: 4 + 2 = 6 animaux"
+            },
+            "visual": "🐱🐱🐱🐱 + 🐶🐶 = 6 animaux"
+        }
+    ],
+    "practicalTips": {
+        "forParents": {
+            "ar": [
+                "اصنع مسائل من الحياة اليومية: 'عندنا 3 تفاحات، اشترينا 2. كم صار عندنا؟'",
+                "دع طفلك يستخدم أصابعه أو ألعابه للحساب",
+                "اطلب من طفلك أن يشرح لك كيف حل المسألة",
+                "ابدأ بأعداد صغيرة (حتى 5) ثم زد تدريجياً",
+                "احتفل بالمحاولات الجيدة حتى لو كانت الإجابة خاطئة"
+            ],
+            "fr": [
+                "Créez des problèmes de la vie quotidienne: 'Nous avons 3 pommes, on en achète 2. Combien avons-nous?'",
+                "Laissez votre enfant utiliser ses doigts ou ses jouets pour calculer",
+                "Demandez à votre enfant de vous expliquer comment il a résolu le problème",
+                "Commencez avec de petits nombres (jusqu'à 5) puis augmentez progressivement",
+                "Célébrez les bonnes tentatives même si la réponse est incorrecte"
+            ]
+        },
+        "forTeachers": {
+            "ar": [
+                "استخدم قصصاً ومسرحيات لتقديم المسائل",
+                "شجع الأطفال على تمثيل المسائل بأجسامهم",
+                "اصنع 'كتاب مسائل' بصور الأطفال في مواقف مختلفة",
+                "استخدم أشياء ملموسة دائماً في البداية",
+                "اعمل في مجموعات صغيرة حيث يمكن للأطفال مناقشة طرق الحل"
+            ],
+            "fr": [
+                "Utilisez des histoires et des jeux de rôle pour présenter les problèmes",
+                "Encouragez les enfants à représenter les problèmes avec leur corps",
+                "Créez un 'livre de problèmes' avec des photos des enfants dans différentes situations",
+                "Utilisez toujours des objets concrets au début",
+                "Travaillez en petits groupes où les enfants peuvent discuter des méthodes de résolution"
+            ]
+        }
+    },
+    "commonMistakes": [
+        {
+            "mistake": {
+                "ar": "عدم قراءة المسألة بعناية",
+                "fr": "Ne pas lire attentivement le problème"
+            },
+            "solution": {
+                "ar": "اقرأ المسألة مرتين. اطلب من الطفل أن يعيد قول المسألة بكلماته الخاصة",
+                "fr": "Lisez le problème deux fois. Demandez à l'enfant de reformuler le problème avec ses propres mots"
+            }
+        },
+        {
+            "mistake": {
+                "ar": "اختيار العملية الخاطئة",
+                "fr": "Choisir la mauvaise opération"
+            },
+            "solution": {
+                "ar": "اسأل: هل الأشياء تزيد (جمع) أم تنقص (طرح)؟ مثّل المسألة بالأشياء",
+                "fr": "Demandez: est-ce que les objets augmentent (addition) ou diminuent (soustraction)? Représentez le problème avec des objets"
+            }
+        }
+    ],
+    "relatedExercises": [
+        "ex-1ap-t1-problemes-01",
+        "ex-1ap-t1-problemes-02",
+        "ex-1ap-t1-problemes-03",
+        "ex-1ap-t1-problemes-04"
+    ],
+    "parentalInvolvement": {
+        "suggestedActivities": {
+            "ar": [
+                "لعبة المتجر: استخدم نقوداً مزيفة وحل مسائل بيع وشراء",
+                "مسائل الطبخ: 'نحتاج 5 بيضات، عندنا 2، كم نحتاج أن نشتري؟'",
+                "رحلات السيارة: عد السيارات الحمراء، ثم الزرقاء، كم بالمجموع؟",
+                "اصنع كتاب مسائل شخصي مع صور العائلة"
+            ],
+            "fr": [
+                "Jeu du magasin: utilisez de faux argent et résolvez des problèmes d'achat-vente",
+                "Problèmes de cuisine: 'Nous avons besoin de 5 œufs, nous en avons 2, combien devons-nous acheter?'",
+                "Trajets en voiture: comptez les voitures rouges, puis les bleues, combien en tout?",
+                "Créez un livre de problèmes personnalisé avec des photos de famille"
+            ]
+        }
+    },
+    "assessmentCriteria": {
+        "mastery": {
+            "ar": "يحل الطفل مسائل بسيطة بشكل مستقل ويشرح طريقة حله",
+            "fr": "L'enfant résout des problèmes simples de manière autonome et explique sa méthode"
+        },
+        "developing": {
+            "ar": "يحل الطفل مسائل بسيطة مع مساعدة ويستخدم الأشياء الملموسة",
+            "fr": "L'enfant résout des problèmes simples avec aide et utilise des objets concrets"
+        },
+        "needsSupport": {
+            "ar": "يحتاج الطفل إلى دعم كبير لفهم وحل المسائل",
+            "fr": "L'enfant a besoin d'un soutien important pour comprendre et résoudre les problèmes"
+        }
+    }
+}

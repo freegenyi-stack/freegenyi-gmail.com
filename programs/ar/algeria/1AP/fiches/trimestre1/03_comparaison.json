@@ -1,0 +1,226 @@
+{
+    "id": "1ap-t1-comparaison",
+    "metadata": {
+        "grade": "1AP",
+        "trimester": 1,
+        "subject": "mathematics",
+        "country": "algeria",
+        "title": {
+            "ar": "المقارنة والعلاقات",
+            "fr": "Comparaison et Relations"
+        },
+        "difficulty": "facile",
+        "estimatedTime": "30 min",
+        "order": 3,
+        "prerequisites": [
+            "operations_simples",
+            "reconnaissance"
+        ],
+        "relatedTopics": [
+            "nombres_0_10"
+        ],
+        "officialProgramReferences": [
+            15,
+            16,
+            17,
+            18,
+            19
+        ]
+    },
+    "objectives": {
+        "ar": [
+            "مقارنة الأعداد باستخدام: أكبر من، أصغر من، يساوي",
+            "فهم مفهوم الضعف (مرتين) والنصف",
+            "التعرف على الكميات وم قارنتها بصرياً",
+            "استخدام رموز المقارنة البسيطة"
+        ],
+        "fr": [
+            "Comparer les nombres en utilisant: plus grand que, plus petit que, égal à",
+            "Comprendre le concept de double (deux fois) et de moitié",
+            "Reconnaître et comparer visuellement les quantités",
+            "Utiliser les symboles de comparaison simples"
+        ]
+    },
+    "keyConcepts": [
+        {
+            "concept": {
+                "ar": "أكبر من وأصغر من",
+                "fr": "Plus grand que et plus petit que"
+            },
+            "explanation": {
+                "ar": "مقارنة عددين أو كميتين. 5 أكبر من 3 لأن 5 فيه أشياء أكثر. 2 أصغر من 4 لأن 2 فيه أشياء أقل",
+                "fr": "Comparer deux nombres ou quantités. 5 est plus grand que 3 car 5 a plus d'objets. 2 est plus petit que 4 car 2 a moins d'objets"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Deux groupes: 5 pommes vs 3 pommes, avec flèche indiquant 5 > 3"
+            }
+        },
+        {
+            "concept": {
+                "ar": "يساوي",
+                "fr": "Égal à"
+            },
+            "explanation": {
+                "ar": "عندما يكون لدى مجموعتين نفس العدد من الأشياء. 4 تفاحات = 4 برتقالات (نفس الكمية)",
+                "fr": "Quand deux groupes ont le même nombre d'objets. 4 pommes = 4 oranges (même quantité)"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "4 cercles rouges = 4 cercles bleus, alignés pour montrer la correspondance un à un"
+            }
+        },
+        {
+            "concept": {
+                "ar": "الضعف",
+                "fr": "Le double"
+            },
+            "explanation": {
+                "ar": "الضعف يعني مرتين. ضعف 2 هو 4 (2 + 2 = 4). ضعف 3 هو 6 (3 + 3 = 6)",
+                "fr": "Le double signifie deux fois. Le double de 2 est 4 (2 + 2 = 4). Le double de 3 est 6 (3 + 3 = 6)"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "2 ballons + 2 ballons = 4 ballons (le double de 2)"
+            }
+        },
+        {
+            "concept": {
+                "ar": "النصف",
+                "fr": "La moitié"
+            },
+            "explanation": {
+                "ar": "النصف يعني تقسيم إلى جزأين متساويين. نصف 4 هو 2. نصف 6 هو 3",
+                "fr": "La moitié signifie diviser en deux parties égales. La moitié de 4 est 2. La moitié de 6 est 3"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "6 cookies divisés en deux groupes égaux de 3 cookies chacun"
+            }
+        }
+    ],
+    "examples": [
+        {
+            "title": {
+                "ar": "مثال 1: المقارنة",
+                "fr": "Exemple 1: La comparaison"
+            },
+            "description": {
+                "ar": "أي مجموعة أكبر؟ المجموعة الأولى بها 7 نجوم. المجموعة الثانية بها 4 نجوم. 7 أكبر من 4",
+                "fr": "Quel groupe est plus grand? Le premier groupe a 7 étoiles. Le deuxième groupe a 4 étoiles. 7 est plus grand que 4"
+            },
+            "visual": "Deux groupes d'étoiles: 7 vs 4"
+        },
+        {
+            "title": {
+                "ar": "مثال 2: الضعف",
+                "fr": "Exemple 2: Le double"
+            },
+            "description": {
+                "ar": "أحمد لديه 3 أقلام. سارة لديها ضعف ما لدى أحمد. كم قلماً لدى سارة؟ 3 + 3 = 6 أقلام",
+                "fr": "Ahmed a 3 crayons. Sara a le double d'Ahmed. Combien de crayons a Sara? 3 + 3 = 6 crayons"
+            },
+            "visual": "Illustration d'Ahmed avec 3 crayons et Sara avec 6 crayons"
+        },
+        {
+            "title": {
+                "ar": "مثال 3: النصف",
+                "fr": "Exemple 3: La moitié"
+            },
+            "description": {
+                "ar": "لديك 8 حلويات. تريد أن تقسمها بالتساوي بينك وبين صديقك. كم ستأخذ؟ نصف 8 = 4 حلويات",
+                "fr": "Tu as 8 bonbons. Tu veux les partager équitablement avec ton ami. Combien en prends-tu? La moitié de 8 = 4 bonbons"
+            },
+            "visual": "8 bonbons divisés en deux groupes de 4"
+        }
+    ],
+    "practicalTips": {
+        "forParents": {
+            "ar": [
+                "استخدم الأشياء المنزلية للمقارنة: أي كوب به ماء أكثر؟",
+                "العب لعبة 'من لديه أكثر؟' مع الألعاب أو الحلويات",
+                "اطوِ الأشياء بالنصف: ورقة، منشفة، بطانية",
+                "اصنع أزواجاً من الأشياء لتوضيح مفهوم الضعف"
+            ],
+            "fr": [
+                "Utilisez des objets ménagers pour comparer: quel verre a plus d'eau?",
+                "Jouez au jeu 'qui en a le plus?' avec des jouets ou bonbons",
+                "Pliez des choses en deux: papier, serviette, couverture",
+                "Créez des paires d'objets pour illustrer le concept de double"
+            ]
+        },
+        "forTeachers": {
+            "ar": [
+                "استخدم الميزان لتوضيح المقارنة والمساواة",
+                "نظم ألعاباً تنافسية: من جمع أكثر/أقل؟",
+                "استخدم حبات الخرز أو المكعبات لبناء أبراج ومقارنة الارتفاعات",
+                "اربط مفاهيم الضعف والنصف بالحياة اليومية: ضعف العمر، نصف الفصل",
+                "استخدم الأغاني والإيقاعات لحفظ الضعف"
+            ],
+            "fr": [
+                "Utilisez une balance pour illustrer la comparaison et l'égalité",
+                "Organisez des jeux compétitifs: qui a collecté plus/moins?",
+                "Utilisez des perles ou cubes pour construire des tours et comparer les hauteurs",
+                "Reliez les concepts de double et moitié à la vie quotidienne: double de l'âge, moitié de la classe",
+                "Utilisez des chansons et rythmes pour mémoriser les doubles"
+            ]
+        }
+    },
+    "commonMistakes": [
+        {
+            "mistake": {
+                "ar": "الخلط بين 'أكبر' (الحجم) و'أكثر' (الكمية)",
+                "fr": "Confondre 'plus grand' (taille) et 'plus' (quantité)"
+            },
+            "solution": {
+                "ar": "وضح الفرق: هذا الكتاب أكبر (حجماً)، لكن هذه المجموعة فيها أكثر (عدداً)",
+                "fr": "Clarifiez la différence: ce livre est plus grand (en taille), mais ce groupe en a plus (en nombre)"
+            }
+        },
+        {
+            "mistake": {
+                "ar": "صعوبة في فهم أن النصف يعني التقسيم المتساوي",
+                "fr": "Difficulté à comprendre que la moitié signifie division égale"
+            },
+            "solution": {
+                "ar": "استخدم أمثلة ملموسة: قطع كعكة، طي ورقة، تقاسم ألعاب - التأكيد على 'نفس الكمية'",
+                "fr": "Utilisez des exemples concrets: couper un gâteau, plier du papier, partager des jouets - insistez sur 'même quantité'"
+            }
+        }
+    ],
+    "relatedExercises": [
+        "ex-1ap-t1-comparaison-01",
+        "ex-1ap-t1-comparaison-02",
+        "ex-1ap-t1-comparaison-03"
+    ],
+    "parentalInvolvement": {
+        "suggestedActivities": {
+            "ar": [
+                "لعبة 'أكثر أو أقل': اعرض مجموعتين من الأشياء واسأل أيهما أكثر",
+                "قسّم الوجبات الخفيفة بالتساوي لتعليم النصف",
+                "اصنع أزواجاً من الجوارب أو الأحذية لتوضيح الضعف",
+                "العب بالليغو: اصنع برجاً ثم اصنع واحداً ضعف ارتفاعه"
+            ],
+            "fr": [
+                "Jeu 'plus ou moins': montrez deux groupes d'objets et demandez lequel a plus",
+                "Divisez les collations équitablement pour enseigner la moitié",
+                "Faites des paires de chaussettes ou chaussures pour illustrer le double",
+                "Jouez avec des Lego: construisez une tour puis une au double de hauteur"
+            ]
+        }
+    },
+    "assessmentCriteria": {
+        "mastery": {
+            "ar": "يمكن للطفل مقارنة الأعداد حتى 10 وحساب الضعف والنصف للأعداد الصغيرة",
+            "fr": "L'enfant peut comparer des nombres jusqu'à 10 et calculer le double et la moitié de petits nombres"
+        },
+        "developing": {
+            "ar": "يمكن للطفل مقارنة الأعداد حتى 5 مع بعض المساعدة",
+            "fr": "L'enfant peut comparer des nombres jusqu'à 5 avec un peu d'aide"
+        },
+        "needsSupport": {
+            "ar": "يحتاج الطفل إلى دعم كبير للمقارنة وفهم الضعف/النصف",
+            "fr": "L'enfant a besoin d'un soutien important pour la comparaison et la compréhension du double/moitié"
+        }
+    }
+}

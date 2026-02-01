@@ -1,0 +1,76 @@
+{
+    "grade": "1AP",
+    "country": "algeria",
+    "subject": "mathematics",
+    "academicYear": "2024-2025",
+    "reform": "2024",
+    "totalTrimesters": 3,
+    "totalRevisionSheets": 24,
+    "totalExercises": 540,
+    "structure": {
+        "trimester1": {
+            "name": {
+                "ar": "الفصل الأول",
+                "fr": "Premier Trimestre"
+            },
+            "period": "Septembre - Décembre",
+            "revisionSheets": 7,
+            "topics": [
+                "operations_simples",
+                "reconnaissance",
+                "comparaison",
+                "nombres_0_10",
+                "geometrie_initiale",
+                "mesures_initiales",
+                "problemes_simples"
+            ]
+        },
+        "trimester2": {
+            "name": {
+                "ar": "الفصل الثاني",
+                "fr": "Deuxième Trimestre"
+            },
+            "period": "Janvier - Mars",
+            "revisionSheets": 8,
+            "topics": [
+                "nombres_jusqu_39",
+                "addition_petits_nombres",
+                "soustraction_petits_nombres",
+                "lignes_points",
+                "tableaux_donnees",
+                "duree_temps",
+                "formes_planes_base",
+                "problemes_etapes"
+            ]
+        },
+        "trimester3": {
+            "name": {
+                "ar": "الفصل الثالث",
+                "fr": "Troisième Trimestre"
+            },
+            "period": "Avril - Juin",
+            "revisionSheets": 9,
+            "topics": [
+                "nombres_jusqu_69",
+                "nombres_jusqu_99",
+                "addition_avancee",
+                "geometrie_solides",
+                "calculatrice",
+                "lecture_heure",
+                "formes_pavages",
+                "jours_semaine",
+                "problemes_varies"
+            ]
+        }
+    },
+    "pedagogicalApproach": {
+        "methodology": "apprentissage progressif et concret",
+        "visualSupport": true,
+        "handsonActivities": true,
+        "gameBasedLearning": true
+    },
+    "officialSources": [
+        "Programme_Officiel.pdf",
+        "Mathématiques.docx"
+    ]
+}

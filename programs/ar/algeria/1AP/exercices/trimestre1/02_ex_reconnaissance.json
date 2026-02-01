@@ -1,0 +1,293 @@
+{
+  "ficheId": "1ap-t1-reconnaissance",
+  "metadata": {
+    "title": {
+      "ar": "تمارين 1ap-t1-reconnaissance",
+      "fr": "Exercices 1ap-t1-reconnaissance"
+    },
+    "totalExercises": 18,
+    "difficultyDistribution": {
+      "facile": 7,
+      "moyen": 7,
+      "difficile": 3
+    },
+    "topics": [
+      "trier",
+      "positions",
+      "sequences",
+      "patterns"
+    ]
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t1-reconnaissance-00",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 5,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 1",
+        "fr": "Exercice 1"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-01",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 10,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 2",
+        "fr": "Exercice 2"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-02",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 15,
+      "estimatedTime": "4 min",
+      "question": {
+        "ar": "تمرين 3",
+        "fr": "Exercice 3"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-03",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 5,
+      "estimatedTime": "5 min",
+      "question": {
+        "ar": "تمرين 4",
+        "fr": "Exercice 4"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-04",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 10,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 5",
+        "fr": "Exercice 5"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-05",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 15,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 6",
+        "fr": "Exercice 6"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-06",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 5,
+      "estimatedTime": "4 min",
+      "question": {
+        "ar": "تمرين 7",
+        "fr": "Exercice 7"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-07",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 10,
+      "estimatedTime": "5 min",
+      "question": {
+        "ar": "تمرين 8",
+        "fr": "Exercice 8"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-08",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 15,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 9",
+        "fr": "Exercice 9"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-09",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 5,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 10",
+        "fr": "Exercice 10"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-10",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 10,
+      "estimatedTime": "4 min",
+      "question": {
+        "ar": "تمرين 11",
+        "fr": "Exercice 11"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-11",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 15,
+      "estimatedTime": "5 min",
+      "question": {
+        "ar": "تمرين 12",
+        "fr": "Exercice 12"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-12",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 5,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 13",
+        "fr": "Exercice 13"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-13",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 10,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 14",
+        "fr": "Exercice 14"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-14",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 15,
+      "estimatedTime": "4 min",
+      "question": {
+        "ar": "تمرين 15",
+        "fr": "Exercice 15"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-15",
+      "type": "interactive",
+      "difficulty": "difficile",
+      "points": 5,
+      "estimatedTime": "5 min",
+      "question": {
+        "ar": "تمرين 16",
+        "fr": "Exercice 16"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-16",
+      "type": "interactive",
+      "difficulty": "difficile",
+      "points": 10,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 17",
+        "fr": "Exercice 17"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-reconnaissance-17",
+      "type": "interactive",
+      "difficulty": "difficile",
+      "points": 15,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 18",
+        "fr": "Exercice 18"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    }
+  ]
+}

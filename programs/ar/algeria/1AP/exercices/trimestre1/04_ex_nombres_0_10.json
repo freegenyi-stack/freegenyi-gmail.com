@@ -1,0 +1,398 @@
+{
+  "ficheId": "1ap-t1-nombres-0-10",
+  "metadata": {
+    "title": {
+      "ar": "تمارين 1ap-t1-nombres-0-10",
+      "fr": "Exercices 1ap-t1-nombres-0-10"
+    },
+    "totalExercises": 25,
+    "difficultyDistribution": {
+      "facile": 10,
+      "moyen": 10,
+      "difficile": 5
+    },
+    "topics": [
+      "reconnaissance",
+      "ecriture",
+      "comptage",
+      "zero"
+    ]
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t1-nombres-0-10-00",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 5,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 1",
+        "fr": "Exercice 1"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-01",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 10,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 2",
+        "fr": "Exercice 2"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-02",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 15,
+      "estimatedTime": "4 min",
+      "question": {
+        "ar": "تمرين 3",
+        "fr": "Exercice 3"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-03",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 5,
+      "estimatedTime": "5 min",
+      "question": {
+        "ar": "تمرين 4",
+        "fr": "Exercice 4"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-04",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 10,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 5",
+        "fr": "Exercice 5"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-05",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 15,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 6",
+        "fr": "Exercice 6"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-06",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 5,
+      "estimatedTime": "4 min",
+      "question": {
+        "ar": "تمرين 7",
+        "fr": "Exercice 7"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-07",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 10,
+      "estimatedTime": "5 min",
+      "question": {
+        "ar": "تمرين 8",
+        "fr": "Exercice 8"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-08",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 15,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 9",
+        "fr": "Exercice 9"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-09",
+      "type": "interactive",
+      "difficulty": "facile",
+      "points": 5,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 10",
+        "fr": "Exercice 10"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-10",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 10,
+      "estimatedTime": "4 min",
+      "question": {
+        "ar": "تمرين 11",
+        "fr": "Exercice 11"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-11",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 15,
+      "estimatedTime": "5 min",
+      "question": {
+        "ar": "تمرين 12",
+        "fr": "Exercice 12"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-12",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 5,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 13",
+        "fr": "Exercice 13"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-13",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 10,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 14",
+        "fr": "Exercice 14"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-14",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 15,
+      "estimatedTime": "4 min",
+      "question": {
+        "ar": "تمرين 15",
+        "fr": "Exercice 15"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-15",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 5,
+      "estimatedTime": "5 min",
+      "question": {
+        "ar": "تمرين 16",
+        "fr": "Exercice 16"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-16",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 10,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 17",
+        "fr": "Exercice 17"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-17",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 15,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 18",
+        "fr": "Exercice 18"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-18",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 5,
+      "estimatedTime": "4 min",
+      "question": {
+        "ar": "تمرين 19",
+        "fr": "Exercice 19"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-19",
+      "type": "interactive",
+      "difficulty": "moyen",
+      "points": 10,
+      "estimatedTime": "5 min",
+      "question": {
+        "ar": "تمرين 20",
+        "fr": "Exercice 20"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-20",
+      "type": "interactive",
+      "difficulty": "difficile",
+      "points": 15,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 21",
+        "fr": "Exercice 21"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-21",
+      "type": "interactive",
+      "difficulty": "difficile",
+      "points": 5,
+      "estimatedTime": "3 min",
+      "question": {
+        "ar": "تمرين 22",
+        "fr": "Exercice 22"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-22",
+      "type": "interactive",
+      "difficulty": "difficile",
+      "points": 10,
+      "estimatedTime": "4 min",
+      "question": {
+        "ar": "تمرين 23",
+        "fr": "Exercice 23"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-23",
+      "type": "interactive",
+      "difficulty": "difficile",
+      "points": 15,
+      "estimatedTime": "5 min",
+      "question": {
+        "ar": "تمرين 24",
+        "fr": "Exercice 24"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    },
+    {
+      "id": "ex-1ap-t1-nombres-0-10-24",
+      "type": "interactive",
+      "difficulty": "difficile",
+      "points": 5,
+      "estimatedTime": "2 min",
+      "question": {
+        "ar": "تمرين 25",
+        "fr": "Exercice 25"
+      },
+      "explanation": {
+        "ar": "شرح مفصهل",
+        "fr": "Explication détaillée"
+      }
+    }
+  ]
+}

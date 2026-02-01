@@ -1,0 +1,47 @@
+{
+  "id": "1ap-t3-addition-avancee",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 3,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "الجمع المتقدم",
+      "fr": "Addition Avancée"
+    },
+    "difficulty": "moyen",
+    "estimatedTime": "40 min",
+    "order": 3
+  },
+  "objectives": {
+    "ar": [
+      "أهداف تعليمية"
+    ],
+    "fr": [
+      "Objectifs pédagogiques"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t3-addition-avancee-01"
+  ]
+}

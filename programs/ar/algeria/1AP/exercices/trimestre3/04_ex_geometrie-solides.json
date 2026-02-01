@@ -1,0 +1,92 @@
+{
+  "ficheId": "1ap-t3-geometrie-solides",
+  "metadata": {
+    "title": {
+      "ar": "تمارين الأجسام الصلبة",
+      "fr": "Exercices Géométrie: Solides"
+    },
+    "totalExercises": 20
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t3-geometrie-solides-01",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-02",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-03",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-04",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-05",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-06",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-07",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-08",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-09",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-10",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-11",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-12",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-13",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-14",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-15",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-16",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-17",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-18",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-19",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-geometrie-solides-20",
+      "type": "mixed"
+    }
+  ]
+}

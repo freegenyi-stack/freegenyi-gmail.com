@@ -1,0 +1,92 @@
+{
+  "ficheId": "1ap-t3-calculatrice",
+  "metadata": {
+    "title": {
+      "ar": "تمارين الآلة الحاسبة",
+      "fr": "Exercices La Calculatrice"
+    },
+    "totalExercises": 20
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t3-calculatrice-01",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-02",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-03",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-04",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-05",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-06",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-07",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-08",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-09",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-10",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-11",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-12",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-13",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-14",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-15",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-16",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-17",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-18",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-19",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-calculatrice-20",
+      "type": "mixed"
+    }
+  ]
+}

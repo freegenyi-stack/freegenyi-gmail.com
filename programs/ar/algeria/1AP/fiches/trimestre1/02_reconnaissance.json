@@ -1,0 +1,227 @@
+{
+    "id": "1ap-t1-reconnaissance",
+    "metadata": {
+        "grade": "1AP",
+        "trimester": 1,
+        "subject": "mathematics",
+        "country": "algeria",
+        "title": {
+            "ar": "التعرف والتصنيف",
+            "fr": "Reconnaissance et Classification"
+        },
+        "difficulty": "facile",
+        "estimatedTime": "30 min",
+        "order": 2,
+        "prerequisites": [
+            "operations_simples"
+        ],
+        "relatedTopics": [
+            "comparaison",
+            "nombres_0_10"
+        ],
+        "officialProgramReferences": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+        ]
+    },
+    "objectives": {
+        "ar": [
+            "ترتيب الأشياء من الأصغر إلى الأكبر",
+            "فهم المفاهيم المكانية: أمام/خلف، قبل/بعد، أعلى/أسفل",
+            "استخدام الترقيم والتلوين لتنظيم الأشياء",
+            "التعرف على الأنماط البسيطة"
+        ],
+        "fr": [
+            "Classer les objets du plus petit au plus grand",
+            "Comprendre les concepts spatiaux: devant/derrière, avant/après, en haut/en bas",
+            "Utiliser la numération et le coloriage pour organiser les objets",
+            "Reconnaître les motifs simples"
+        ]
+    },
+    "keyConcepts": [
+        {
+            "concept": {
+                "ar": "الترتيب حسب الحجم",
+                "fr": "Classement par taille"
+            },
+            "explanation": {
+                "ar": "وضع الأشياء في صف من الأصغر إلى الأكبر أو من الأكبر إلى الأصغر. مثال: ترتيب 3 دببة حسب حجمهم",
+                "fr": "Placer les objets en ligne du plus petit au plus grand ou du plus grand au plus petit. Exemple: ranger 3 ours selon leur taille"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "3 ours de tailles différentes: petit, moyen, grand - montrés en ordre croissant"
+            }
+        },
+        {
+            "concept": {
+                "ar": "المفاهيم المكانية",
+                "fr": "Concepts spatiaux"
+            },
+            "explanation": {
+                "ar": "مكان الأشياء بالنسبة لبعضها. أمام/خلف: القطة أمام الصندوق أو خلفه. أعلى/أسفل: الطائر أعلى الشجرة، الكرة أسفل الطاولة",
+                "fr": "L'emplacement des objets par rapport aux autres. Devant/derrière: le chat devant la boîte ou derrière. En haut/en bas: l'oiseau en haut de l'arbre, la balle sous la table"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Scènes illustrant: chat devant/derrière une boîte, oiseau sur/sous une branche, balle à gauche/à droite d'un cube"
+            }
+        },
+        {
+            "concept": {
+                "ar": "التسلسل الزمني",
+                "fr": "Séquence temporelle"
+            },
+            "explanation": {
+                "ar": "ترتيب الأحداث: ماذا حدث أولاً؟ ماذا حدث بعد ذلك؟ ماذا حدث أخيراً؟ مثال: 1) زرع البذرة 2) سقي النبتة 3) نمو الزهرة",
+                "fr": "Ordre des événements: qu'est-ce qui s'est passé en premier? Ensuite? En dernier? Exemple: 1) planter la graine 2) arroser la plante 3) la fleur pousse"
+            },
+            "visual": {
+                "type": "sequence",
+                "description": "3 images numérotées montrant la croissance d'une plante: graine → pousse → fleur"
+            }
+        },
+        {
+            "concept": {
+                "ar": "الأنماط البسيطة",
+                "fr": "Motifs simples"
+            },
+            "explanation": {
+                "ar": "تسلسل يتكرر. مثال: أحمر، أزرق، أحمر، أزرق... أو دائرة، مربع، دائرة، مربع...",
+                "fr": "Une séquence qui se répète. Exemple: rouge, bleu, rouge, bleu... ou cercle, carré, cercle, carré..."
+            },
+            "visual": {
+                "type": "pattern",
+                "description": "Ligne de formes répétées: ●■●■●■●■ avec une case vide à compléter"
+            }
+        }
+    ],
+    "examples": [
+        {
+            "title": {
+                "ar": "مثال 1: الترتيب",
+                "fr": "Exemple 1: Le classement"
+            },
+            "description": {
+                "ar": "لديك 4 أقلام بأطوال مختلفة. رتبها من الأقصر إلى الأطول. ابدأ بإيجاد الأقصر، ثم الأطول قليلاً، وهكذا",
+                "fr": "Tu as 4 crayons de longueurs différentes. Range-les du plus court au plus long. Commence par trouver le plus court, puis le légèrement plus long, et ainsi de suite"
+            },
+            "visual": "4 crayons désordonnés → 4 crayons rangés par ordre croissant"
+        },
+        {
+            "title": {
+                "ar": "مثال 2: الموضع",
+                "fr": "Exemple 2: La position"
+            },
+            "description": {
+                "ar": "أين الكرة؟ الكرة تحت الطاولة. أين القطة؟ القطة فوق الكرسي",
+                "fr": "Où est la balle? La balle est sous la table. Où est le chat? Le chat est sur la chaise"
+            },
+            "visual": "Scène avec objets à différentes positions avec questions de localisation"
+        },
+        {
+            "title": {
+                "ar": "مثال 3: إكمال النمط",
+                "fr": "Exemple 3: Compléter le motif"
+            },
+            "description": {
+                "ar": "النمط: كبير، صغير، كبير، صغير، كبير، ___. ما الذي يأتي بعد ذلك؟ الإجابة: صغير",
+                "fr": "Le motif: grand, petit, grand, petit, grand, ___. Qu'est-ce qui vient ensuite? Réponse: petit"
+            },
+            "visual": "Séquence de cercles grands et petits avec une case vide à la fin"
+        }
+    ],
+    "practicalTips": {
+        "forParents": {
+            "ar": [
+                "رتب الألعاب معاً حسب الحجم أو اللون",
+                "أثناء المشي، اطلب من طفلك ملاحظة ما هو أعلى/أسفل، أمام/خلف",
+                "استخدم قصص ما قبل النوم لمناقشة تسلسل الأحداث: ماذا حدث أولاً في القصة؟",
+                "ابحث عن الأنماط في الحياة اليومية: البلاط، الملابس، الطبيعة"
+            ],
+            "fr": [
+                "Rangez les jouets ensemble par taille ou couleur",
+                "Pendant la promenade, demandez à votre enfant de remarquer ce qui est en haut/en bas, devant/derrière",
+                "Utilisez les histoires du soir pour discuter de la séquence des événements: qu'est-ce qui s'est passé en premier dans l'histoire?",
+                "Cherchez des motifs dans la vie quotidienne: les carreaux, les vêtements, la nature"
+            ]
+        },
+        "forTeachers": {
+            "ar": [
+                "استخدم ألعاب الفرز: أزرار، مكعبات، أشياء ملونة",
+                "نظم ألعاب حركية: قف أمام/خلف الكرسي، اقفز عالياً/منخفضاً",
+                "أنشئ محطات عمل مختلفة لكل مفهوم مكاني",
+                "استخدم الموسيقى والحركة لتعليم التسلسل والأنماط",
+                "شجع الأطفال على شرح تفكيرهم عند الترتيب"
+            ],
+            "fr": [
+                "Utilisez des jeux de tri: boutons, cubes, objets colorés",
+                "Organisez des jeux de mouvement: se tenir devant/derrière la chaise, sauter haut/bas",
+                "Créez différents ateliers pour chaque concept spatial",
+                "Utilisez la musique et le mouvement pour enseigner les séquences et motifs",
+                "Encouragez les enfants à expliquer leur raisonnement lors du classement"
+            ]
+        }
+    },
+    "commonMistakes": [
+        {
+            "mistake": {
+                "ar": "الخلط بين أمام وخلف",
+                "fr": "Confondre devant et derrière"
+            },
+            "solution": {
+                "ar": "استخدم الطفل نفسه كمرجع: ما الذي أمامك؟ ما الذي خلفك؟ مارس مع أشياء ملموسة",
+                "fr": "Utilisez l'enfant lui-même comme référence: qu'est-ce qui est devant toi? Derrière toi? Pratiquez avec des objets concrets"
+            }
+        },
+        {
+            "mistake": {
+                "ar": "صعوبة في رؤية النمط",
+                "fr": "Difficulté à voir le motif"
+            },
+            "solution": {
+                "ar": "ابدأ بأنماط بسيطة جداً (AB AB AB) قبل الانتقال إلى أنماط أكثر تعقيداً",
+                "fr": "Commencez par des motifs très simples (AB AB AB) avant de passer à des motifs plus complexes"
+            }
+        }
+    ],
+    "relatedExercises": [
+        "ex-1ap-t1-reconnaissance-01",
+        "ex-1ap-t1-reconnaissance-02",
+        "ex-1ap-t1-reconnaissance-03"
+    ],
+    "parentalInvolvement": {
+        "suggestedActivities": {
+            "ar": [
+                "لعبة التخمين: أين اللعبة؟ (تحت الوسادة، فوق الطاولة، إلخ)",
+                "ترتيب أفراد العائلة حسب الطول",
+                "إنشاء قلادة بنمط من الخرز الملون",
+                "لعبة سباق: من الأول؟ من الأخير؟"
+            ],
+            "fr": [
+                "Jeu de devinettes: où est le jouet? (sous l'oreiller, sur la table, etc.)",
+                "Classer les membres de la famille par taille",
+                "Créer un collier avec un motif de perles colorées",
+                "Jeu de course: qui est premier? Qui est dernier?"
+            ]
+        }
+    },
+    "assessmentCriteria": {
+        "mastery": {
+            "ar": "يمكن للطفل ترتيب 5 أشياء حسب الحجم وتحديد المواضع بشكل صحيح",
+            "fr": "L'enfant peut classer 5 objets par taille et identifier les positions correctement"
+        },
+        "developing": {
+            "ar": "يمكن للطفل ترتيب 3 أشياء وتحديد بعض المواضع مع المساعدة",
+            "fr": "L'enfant peut classer 3 objets et identifier certaines positions avec aide"
+        },
+        "needsSupport": {
+            "ar": "يحتاج الطفل إلى دعم كبير للترتيب وتحديد المواضع",
+            "fr": "L'enfant a besoin d'un soutien important pour le classement et l'identification des positions"
+        }
+    }
+}

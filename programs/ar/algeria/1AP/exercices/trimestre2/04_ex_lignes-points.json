@@ -1,0 +1,92 @@
+{
+  "ficheId": "1ap-t2-lignes-points",
+  "metadata": {
+    "title": {
+      "ar": "تمارين الخطوط والنقاط",
+      "fr": "Exercices Lignes et Points"
+    },
+    "totalExercises": 20
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t2-lignes-points-01",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-02",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-03",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-04",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-05",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-06",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-07",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-08",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-09",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-10",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-11",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-12",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-13",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-14",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-15",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-16",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-17",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-18",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-19",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-lignes-points-20",
+      "type": "mixed"
+    }
+  ]
+}

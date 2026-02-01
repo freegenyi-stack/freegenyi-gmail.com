@@ -1,0 +1,485 @@
+{
+    "ficheId": "1ap-t1-operations-simples",
+    "metadata": {
+        "title": {
+            "ar": "تمارين العمليات الحسابية البسيطة",
+            "fr": "Exercices Opérations Mathématiques Simples"
+        },
+        "totalExercises": 20,
+        "difficultyDistribution": {
+            "facile": 8,
+            "moyen": 8,
+            "difficile": 4
+        }
+    },
+    "exercises": [
+        {
+            "id": "ex-1ap-t1-ops-01",
+            "type": "counting",
+            "difficulty": "facile",
+            "points": 5,
+            "estimatedTime": "2 min",
+            "question": {
+                "ar": "انظر إلى الصورة وعد الكرات",
+                "fr": "Regarde l'image et compte les balles"
+            },
+            "visual": {
+                "description": "Image avec 4 balles colorées"
+            },
+            "correctAnswer": "4",
+            "type": "number_input",
+            "explanation": {
+                "ar": "نعد واحدة واحدة: 1، 2، 3، 4. الإجابة: 4 كرات",
+                "fr": "On compte une par une: 1, 2, 3, 4. Réponse: 4 balles"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-02",
+            "type": "counting",
+            "difficulty": "facile",
+            "points": 5,
+            "estimatedTime": "2 min",
+            "question": {
+                "ar": "كم عدد النجوم؟",
+                "fr": "Combien d'étoiles?"
+            },
+            "visual": {
+                "description": "7 étoiles jaunes"
+            },
+            "correctAnswer": "7",
+            "type": "number_input",
+            "explanation": {
+                "ar": "نعد النجوم: 1، 2، 3، 4، 5، 6، 7",
+                "fr": "On compte les étoiles: 1, 2, 3, 4, 5, 6, 7"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-03",
+            "type": "add_objects",
+            "difficulty": "facile",
+            "points": 10,
+            "estimatedTime": "3 min",
+            "question": {
+                "ar": "هناك 3 تفاحات. نريد 5 تفاحات. كم تفاحة يجب أن نضيف؟",
+                "fr": "Il y a 3 pommes. On veut 5 pommes. Combien de pommes faut-il ajouter?"
+            },
+            "visual": {
+                "description": "3 pommes dessinées, avec des cases vides pour en ajouter"
+            },
+            "correctAnswer": "2",
+            "type": "number_input",
+            "explanation": {
+                "ar": "لدينا 3، نريد 5. 5 - 3 = 2. يجب أن نضيف 2 تفاحة",
+                "fr": "Nous avons 3, nous voulons 5. 5 - 3 = 2. Il faut ajouter 2 pommes"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-04",
+            "type": "remove_objects",
+            "difficulty": "facile",
+            "points": 10,
+            "estimatedTime": "3 min",
+            "question": {
+                "ar": "هناك 6 طيور. نريد 4 طيور فقط. كم طائراً يجب أن نحذف؟",
+                "fr": "Il y a 6 oiseaux. On veut seulement 4 oiseaux. Combien d'oiseaux faut-il barrer?"
+            },
+            "visual": {
+                "description": "6 oiseaux dessinés"
+            },
+            "correctAnswer": "2",
+            "type": "number_input",
+            "explanation": {
+                "ar": "لدينا 6، نريد 4. 6 - 4 = 2. يجب أن نحذف 2 طيور",
+                "fr": "Nous avons 6, nous voulons 4. 6 - 4 = 2. Il faut barrer 2 oiseaux"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-05",
+            "type": "color_coding",
+            "difficulty": "moyen",
+            "points": 10,
+            "estimatedTime": "4 min",
+            "question": {
+                "ar": "لون المربعات حسب الرمز: 1=أحمر، 2=أزرق، 3=أخضر",
+                "fr": "Colorie les cases selon le code: 1=rouge, 2=bleu, 3=vert"
+            },
+            "visual": {
+                "description": "Grille de 6 cases avec les chiffres 1, 2, 3, 1, 3, 2"
+            },
+            "correctAnswer": {
+                "case1": "rouge",
+                "case2": "bleu",
+                "case3": "vert",
+                "case4": "rouge",
+                "case5": "vert",
+                "case6": "bleu"
+            },
+            "type": "interactive_coloring",
+            "explanation": {
+                "ar": "نتبع الرمز: المربع الأول فيه 1 → أحمر، الثاني فيه 2 → أزرق، وهكذا",
+                "fr": "On suit le code: la 1ère case a 1 → rouge, la 2ème a 2 → bleu, etc."
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-06",
+            "type": "simple_addition",
+            "difficulty": "moyen",
+            "points": 10,
+            "estimatedTime": "3 min",
+            "question": {
+                "ar": "استخدم الأشياء للحساب: 2 + 3 = ؟",
+                "fr": "Utilise les objets pour calculer: 2 + 3 = ?"
+            },
+            "visual": {
+                "description": "2 cubes rouges + 3 cubes bleus"
+            },
+            "correctAnswer": "5",
+            "type": "number_input",
+            "explanation": {
+                "ar": "نضع المكعبات معاً: 2 مكعب + 3 مكعبات = 5 مكعبات",
+                "fr": "On met les cubes ensemble: 2 cubes + 3 cubes = 5 cubes"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-07",
+            "type": "simple_subtraction",
+            "difficulty": "moyen",
+            "points": 10,
+            "estimatedTime": "3 min",
+            "question": {
+                "ar": "لديك 5 أقلام. أعطيت 2 لصديقك. كم قلماً بقي؟",
+                "fr": "Tu as 5 crayons. Tu en donnes 2 à ton ami. Combien de crayons reste-t-il?"
+            },
+            "visual": {
+                "description": "5 crayons, 2 barrés"
+            },
+            "correctAnswer": "3",
+            "type": "number_input",
+            "explanation": {
+                "ar": "كان لدي 5، أعطيت 2. 5 - 2 = 3 أقلام",
+                "fr": "J'avais 5, j'en ai donné 2. 5 - 2 = 3 crayons"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-08",
+            "type": "mcq",
+            "difficulty": "facile",
+            "points": 5,
+            "estimatedTime": "2 min",
+            "question": {
+                "ar": "أي مجموعة فيها 6 أشياء؟",
+                "fr": "Quel groupe a 6 objets?"
+            },
+            "options": [
+                {
+                    "id": "A",
+                    "visual": "5 fleurs",
+                    "isCorrect": false
+                },
+                {
+                    "id": "B",
+                    "visual": "6 étoiles",
+                    "isCorrect": true
+                },
+                {
+                    "id": "C",
+                    "visual": "7 cercles",
+                    "isCorrect": false
+                }
+            ],
+            "correctAnswer": "B",
+            "explanation": {
+                "ar": "نعد كل مجموعة. المجموعة B فيها 6 نجوم",
+                "fr": "On compte chaque groupe. Le groupe B a 6 étoiles"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-09",
+            "type": "matching",
+            "difficulty": "moyen",
+            "points": 15,
+            "estimatedTime": "5 min",
+            "question": {
+                "ar": "اربط كل مجموعة بالعدد الصحيح",
+                "fr": "Relie chaque groupe au bon nombre"
+            },
+            "pairs": [
+                {
+                    "left": {
+                        "visual": "3 ballons"
+                    },
+                    "right": "3"
+                },
+                {
+                    "left": {
+                        "visual": "5 voitures"
+                    },
+                    "right": "5"
+                },
+                {
+                    "left": {
+                        "visual": "8 étoiles"
+                    },
+                    "right": "8"
+                }
+            ],
+            "type": "drag_and_drop",
+            "explanation": {
+                "ar": "نعد الأشياء في كل مجموعة ونربطها بالعدد المناسب",
+                "fr": "On compte les objets dans chaque groupe et on les relie au nombre approprié"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-10",
+            "type": "fill_blank",
+            "difficulty": "moyen",
+            "points": 10,
+            "estimatedTime": "3 min",
+            "question": {
+                "ar": "أكمل: 4 + __ = 7",
+                "fr": "Complète: 4 + __ = 7"
+            },
+            "correctAnswer": "3",
+            "type": "number_input",
+            "explanation": {
+                "ar": "4 + 3 = 7. نحتاج إلى إضافة 3 للحصول على 7",
+                "fr": "4 + 3 = 7. Il faut ajouter 3 pour obtenir 7"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-11",
+            "type": "counting_objects",
+            "difficulty": "facile",
+            "points": 5,
+            "estimatedTime": "2 min",
+            "question": {
+                "ar": "عد السيارات الحمراء فقط",
+                "fr": "Compte seulement les voitures rouges"
+            },
+            "visual": {
+                "description": "8 voitures: 5 rouges, 3 bleues"
+            },
+            "correctAnswer": "5",
+            "type": "number_input",
+            "explanation": {
+                "ar": "نعد السيارات الحمراء فقط ونتجاهل الزرقاء: 5 سيارات حمراء",
+                "fr": "On compte uniquement les voitures rouges et on ignore les bleues: 5 voitures rouges"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-12",
+            "type": "drawing",
+            "difficulty": "moyen",
+            "points": 10,
+            "estimatedTime": "4 min",
+            "question": {
+                "ar": "ارسم 6 دوائر",
+                "fr": "Dessine 6 cercles"
+            },
+            "correctAnswer": {
+                "count": 6,
+                "shape": "circle"
+            },
+            "type": "drawing_canvas",
+            "explanation": {
+                "ar": "نرسم دائرة ونعد، ثم نرسم أخرى حتى نصل إلى 6",
+                "fr": "On dessine un cercle et on compte, puis un autre jusqu'à arriver à 6"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-13",
+            "type": "visual_addition",
+            "difficulty": "difficile",
+            "points": 15,
+            "estimatedTime": "5 min",
+            "question": {
+                "ar": "في الصندوق الأول 3 ألعاب. في الصندوق الثاني 4 ألعاب. كم لعبة بالمجموع؟",
+                "fr": "Dans la 1ère boîte, il y a 3 jouets. Dans la 2ème boîte, il y a 4 jouets. Combien de jouets en tout?"
+            },
+            "visual": {
+                "description": "Deux boîtes: une avec 3 jouets, une avec 4 jouets"
+            },
+            "correctAnswer": "7",
+            "type": "number_input",
+            "explanation": {
+                "ar": "نجمع الألعاب من الصندوقين: 3 + 4 = 7 ألعاب",
+                "fr": "On additionne les jouets des deux boîtes: 3 + 4 = 7 jouets"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-14",
+            "type": "visual_subtraction",
+            "difficulty": "difficile",
+            "points": 15,
+            "estimatedTime": "5 min",
+            "question": {
+                "ar": "كان في الطبق 9 برتقالات. أكلنا 4 برتقالات. كم برتقالة بقيت؟",
+                "fr": "Il y avait 9 oranges dans le plat. On en a mangé 4. Combien d'oranges restent?"
+            },
+            "visual": {
+                "description": "Assiette avec 9 oranges, 4 barrées"
+            },
+            "correctAnswer": "5",
+            "type": "number_input",
+            "explanation": {
+                "ar": "كان لدينا 9، أكلنا 4. 9 - 4 = 5 برتقالات",
+                "fr": "Nous avions 9, on en a mangé 4. 9 - 4 = 5 oranges"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-15",
+            "type": "pattern_coloring",
+            "difficulty": "moyen",
+            "points": 10,
+            "estimatedTime": "4 min",
+            "question": {
+                "ar": "لون حسب الرمز: 1=أحمر، 2=أصفر، 3=أزرق، 4=أخضر",
+                "fr": "Colorie selon le code: 1=rouge, 2=jaune, 3=bleu, 4=vert"
+            },
+            "visual": {
+                "description": "Image avec sections numérotées 1-4"
+            },
+            "type": "interactive_coloring",
+            "explanation": {
+                "ar": "نتبع رمز الألوان بعناية لكل رقم",
+                "fr": "On suit attentivement le code couleur pour chaque numéro"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-16",
+            "type": "true_false",
+            "difficulty": "facile",
+            "points": 5,
+            "estimatedTime": "2 min",
+            "question": {
+                "ar": "صح أم خطأ: في الصورة 5 قطط",
+                "fr": "Vrai ou faux: il y a 5 chats sur l'image"
+            },
+            "visual": {
+                "description": "Image avec 5 chats"
+            },
+            "correctAnswer": "true",
+            "explanation": {
+                "ar": "نعد القطط: 1، 2، 3، 4، 5. صح، هناك 5 قطط",
+                "fr": "On compte les chats: 1, 2, 3, 4, 5. Vrai, il y a 5 chats"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-17",
+            "type": "multiple_select",
+            "difficulty": "difficile",
+            "points": 15,
+            "estimatedTime": "5 min",
+            "question": {
+                "ar": "اختر جميع المجموعات التي فيها 4 أشياء",
+                "fr": "Choisis tous les groupes qui ont 4 objets"
+            },
+            "options": [
+                {
+                    "id": "A",
+                    "visual": "4 ballons",
+                    "isCorrect": true
+                },
+                {
+                    "id": "B",
+                    "visual": "3 étoiles",
+                    "isCorrect": false
+                },
+                {
+                    "id": "C",
+                    "visual": "4 pommes",
+                    "isCorrect": true
+                },
+                {
+                    "id": "D",
+                    "visual": "5 crayons",
+                    "isCorrect": false
+                }
+            ],
+            "correctAnswers": [
+                "A",
+                "C"
+            ],
+            "explanation": {
+                "ar": "المجموعة A فيها 4 بالونات والمجموعة C فيها 4 تفاحات",
+                "fr": "Le groupe A a 4 ballons et le groupe C a 4 pommes"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-18",
+            "type": "sequencing",
+            "difficulty": "moyen",
+            "points": 10,
+            "estimatedTime": "4 min",
+            "question": {
+                "ar": "رتب الخطوات: كيف نعد الأشياء بشكل صحيح؟",
+                "fr": "Mets les étapes en ordre: comment compter correctement?"
+            },
+            "steps": [
+                {
+                    "id": "1",
+                    "text": {
+                        "ar": "أشر إلى كل شيء",
+                        "fr": "Pointe chaque objet"
+                    },
+                    "correctOrder": 2
+                },
+                {
+                    "id": "2",
+                    "text": {
+                        "ar": "انظر إلى جميع الأشياء",
+                        "fr": "Regarde tous les objets"
+                    },
+                    "correctOrder": 1
+                },
+                {
+                    "id": "3",
+                    "text": {
+                        "ar": "قل العدد النهائي",
+                        "fr": "Dis le nombre final"
+                    },
+                    "correctOrder": 3
+                }
+            ],
+            "type": "drag_and_drop_sequence",
+            "explanation": {
+                "ar": "أولاً ننظر إلى كل الأشياء، ثم نشير ونعد واحداً واحداً، أخيراً نقول العدد الكلي",
+                "fr": "D'abord on regarde tous les objets, puis on pointe et compte un par un, enfin on dit le nombre total"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-19",
+            "type": "word_problem",
+            "difficulty": "difficile",
+            "points": 20,
+            "estimatedTime": "6 min",
+            "question": {
+                "ar": "لدى سارة 3 دمى. أعطتها أمها 2 دمية أخرى. كم دمية أصبح لدى سارة؟",
+                "fr": "Sara a 3 poupées. Sa mère lui en donne 2 autres. Combien de poupées Sara a-t-elle maintenant?"
+            },
+            "correctAnswer": "5",
+            "type": "number_input",
+            "explanation": {
+                "ar": "كان لدى سارة 3 دمى + أعطتها أمها 2 = 3 + 2 = 5 دمى",
+                "fr": "Sara avait 3 poupées + sa mère lui en donne 2 = 3 + 2 = 5 poupées"
+            }
+        },
+        {
+            "id": "ex-1ap-t1-ops-20",
+            "type": "challenge",
+            "difficulty": "difficile",
+            "points": 20,
+            "estimatedTime": "6 min",
+            "question": {
+                "ar": "في الحديقة 5 فراشات و 3 نحلات. كم حشرة في الحديقة بالمجموع؟",
+                "fr": "Dans le jardin il y a 5 papillons et 3 abeilles. Combien d'insectes en tout dans le jardin?"
+            },
+            "correctAnswer": "8",
+            "type": "number_input",
+            "explanation": {
+                "ar": "نجمع جميع الحشرات: 5 فراشات + 3 نحلات = 8 حشرات",
+                "fr": "On additionne tous les insectes: 5 papillons + 3 abeilles = 8 insectes"
+            }
+        }
+    ]
+}

@@ -1,0 +1,226 @@
+{
+    "id": "1ap-t1-operations-simples",
+    "metadata": {
+        "grade": "1AP",
+        "trimester": 1,
+        "subject": "mathematics",
+        "country": "algeria",
+        "title": {
+            "ar": "العمليات الحسابية البسيطة",
+            "fr": "Opérations Mathématiques Simples"
+        },
+        "difficulty": "facile",
+        "estimatedTime": "30 min",
+        "order": 1,
+        "prerequisites": [],
+        "relatedTopics": [
+            "reconnaissance",
+            "comptage",
+            "nombres_0_10"
+        ],
+        "officialProgramReferences": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+        ]
+    },
+    "objectives": {
+        "ar": [
+            "التعرف على الأعداد في الصور",
+            "إضافة أو حذف عناصر للحصول على عدد معين",
+            "تلوين المربعات حسب رمز الألوان المرتبط بالأرقام",
+            "إجراء عمليات جمع وطرح بسيطة باستخدام الأشياء"
+        ],
+        "fr": [
+            "Reconnaître les nombres dans une image",
+            "Ajouter ou rayer des objets pour correspondre à un nombre",
+            "Colorier des cases suivant un code couleur associé à un chiffre",
+            "Effectuer des additions et soustractions simples à l'aide d'objets"
+        ]
+    },
+    "keyConcepts": [
+        {
+            "concept": {
+                "ar": "التعرف على الأعداد",
+                "fr": "Reconnaissance des nombres"
+            },
+            "explanation": {
+                "ar": "القدرة على رؤية مجموعة من الأشياء ومعرفة عددها. مثال: رؤية 3 تفاحات والتعرف على أن العدد هو 3",
+                "fr": "La capacité de voir un groupe d'objets et de connaître leur nombre. Exemple: voir 3 pommes et reconnaître que le nombre est 3"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Image montrant différents groupes d'objets (2 ballons, 5 étoiles, 4 voitures) avec les nombres correspondants écrits à côté"
+            }
+        },
+        {
+            "concept": {
+                "ar": "الإضافة والحذف",
+                "fr": "Ajout et retrait"
+            },
+            "explanation": {
+                "ar": "تغيير عدد الأشياء للوصول إلى عدد معين. إضافة يعني رسم المزيد، حذف يعني شطب بعض الأشياء",
+                "fr": "Modifier le nombre d'objets pour atteindre un nombre donné. Ajouter signifie dessiner plus, retirer signifie barrer certains objets"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Série d'images: 3 cercles → ajouter 2 cercles → 5 cercles au total. Puis 6 triangles → barrer 2 triangles → 4 triangles restants"
+            }
+        },
+        {
+            "concept": {
+                "ar": "رمز الألوان",
+                "fr": "Code couleur"
+            },
+            "explanation": {
+                "ar": "ربط كل رقم بلون معين. مثال: 1=أحمر، 2=أزرق، 3=أصفر، ثم تلوين المربعات حسب الأرقام المكتوبة فيها",
+                "fr": "Associer chaque chiffre à une couleur spécifique. Exemple: 1=rouge, 2=bleu, 3=jaune, puis colorier les cases selon les chiffres écrits dedans"
+            },
+            "visual": {
+                "type": "activity",
+                "description": "Grille avec des cases contenant des chiffres 1, 2, 3 et une légende de couleurs à côté"
+            }
+        },
+        {
+            "concept": {
+                "ar": "الجمع والطرح البسيط",
+                "fr": "Addition et soustraction simples"
+            },
+            "explanation": {
+                "ar": "استخدام الأشياء (مكعبات، أصابع، أقلام) للعد والحساب. جمع = وضع الأشياء معاً. طرح = إزالة بعض الأشياء",
+                "fr": "Utiliser des objets (cubes, doigts, crayons) pour compter et calculer. Addition = mettre les objets ensemble. Soustraction = enlever certains objets"
+            },
+            "visual": {
+                "type": "photo",
+                "description": "Photos d'enfants utilisant leurs doigts: 2 doigts + 3 doigts = 5 doigts. Puis 5 pommes - 2 pommes = 3 pommes"
+            }
+        }
+    ],
+    "examples": [
+        {
+            "title": {
+                "ar": "مثال 1: العد في الصورة",
+                "fr": "Exemple 1: Compter dans l'image"
+            },
+            "description": {
+                "ar": "انظر إلى الصورة. كم عدد الطيور؟ عد واحداً واحداً: 1، 2، 3. الإجابة: 3 طيور",
+                "fr": "Regarde l'image. Combien y a-t-il d'oiseaux? Compte un par un: 1, 2, 3. Réponse: 3 oiseaux"
+            },
+            "visual": "Image avec 3 oiseaux"
+        },
+        {
+            "title": {
+                "ar": "مثال 2: إضافة عناصر",
+                "fr": "Exemple 2: Ajouter des éléments"
+            },
+            "description": {
+                "ar": "هناك 2 نجمة. نريد 5 نجوم. كم نجمة يجب أن نضيف؟ 5 - 2 = 3. ارسم 3 نجوم إضافية",
+                "fr": "Il y a 2 étoiles. Nous voulons 5 étoiles. Combien d'étoiles faut-il ajouter? 5 - 2 = 3. Dessine 3 étoiles supplémentaires"
+            },
+            "visual": "Image montrant 2 étoiles + 3 étoiles dessinées = 5 étoiles"
+        },
+        {
+            "title": {
+                "ar": "مثال 3: التلوين حسب الرمز",
+                "fr": "Exemple 3: Coloriage selon le code"
+            },
+            "description": {
+                "ar": "الرمز: 1=أحمر، 2=أخضر. لون المربع الذي فيه رقم 1 باللون الأحمر والمربع الذي فيه رقم 2 باللون الأخضر",
+                "fr": "Le code: 1=rouge, 2=vert. Colorie la case avec le chiffre 1 en rouge et la case avec le chiffre 2 en vert"
+            },
+            "visual": "Grille simple avec quelques cases numérotées 1 et 2"
+        }
+    ],
+    "practicalTips": {
+        "forParents": {
+            "ar": [
+                "استخدم الأشياء المنزلية (ملاعق، فواكه، ألعاب) لجعل التعلم ممتعاً وملموساً",
+                "اسأل طفلك أن يعد الأشياء في حياته اليومية: كم طبقاً على المائدة؟ كم باباً في المنزل؟",
+                "العب ألعاب العد: اخفِ أشياء واطلب من طفلك العثور عليها وعدها",
+                "كن صبوراً، كل طفل يتعلم بسرعته الخاصة"
+            ],
+            "fr": [
+                "Utilisez des objets ménagers (cuillères, fruits, jouets) pour rendre l'apprentissage amusant et concret",
+                "Demandez à votre enfant de compter les choses dans sa vie quotidienne: combien d'assiettes sur la table? Combien de portes à la maison?",
+                "Jouez à des jeux de comptage: cachez des objets et demandez à votre enfant de les trouver et de les compter",
+                "Soyez patient, chaque enfant apprend à son propre rythme"
+            ]
+        },
+        "forTeachers": {
+            "ar": [
+                "استخدم وسائل بصرية متنوعة: صور، مكعبات، أشياء حقيقية",
+                "نظم أنشطة جماعية: عد الأطفال في الصف، عد الكراسي، إلخ",
+                "شجع الأطفال على استخدام أصابعهم للعد في البداية",
+                "قدم تمارين متدرجة من السهل إلى الصعب",
+                "استخدم الألعاب والأغاني لجعل التعلم ممتعاً"
+            ],
+            "fr": [
+                "Utilisez des supports visuels variés: images, cubes, objets réels",
+                "Organisez des activités collectives: compter les enfants dans la classe, compter les chaises, etc.",
+                "Encouragez les enfants à utiliser leurs doigts pour compter au début",
+                "Proposez des exercices gradués du facile au difficile",
+                "Utilisez les jeux et les chansons pour rendre l'apprentissage ludique"
+            ]
+        }
+    },
+    "commonMistakes": [
+        {
+            "mistake": {
+                "ar": "عدم التأشير على الأشياء أثناء العد",
+                "fr": "Ne pas pointer les objets en comptant"
+            },
+            "solution": {
+                "ar": "علم الطفل أن يلمس أو يشير إلى كل شيء أثناء قول الرقم",
+                "fr": "Apprenez à l'enfant à toucher ou pointer chaque objet en disant le nombre"
+            }
+        },
+        {
+            "mistake": {
+                "ar": "نسيان بعض الأشياء أو عدها مرتين",
+                "fr": "Oublier certains objets ou les compter deux fois"
+            },
+            "solution": {
+                "ar": "استخدم طريقة منظمة: من اليسار إلى اليمين، أو ضع علامة على الأشياء المعدودة",
+                "fr": "Utilisez une méthode organisée: de gauche à droite, ou marquez les objets comptés"
+            }
+        }
+    ],
+    "relatedExercises": [
+        "ex-1ap-t1-ops-simples-01",
+        "ex-1ap-t1-ops-simples-02",
+        "ex-1ap-t1-ops-simples-03"
+    ],
+    "parentalInvolvement": {
+        "suggestedActivities": {
+            "ar": [
+                "لعبة السوق: استخدم نقوداً مزيفة واطلب من طفلك عد الفواكه أو الخضروات",
+                "لعبة البحث عن الكنز: اخفِ 5 أشياء واطلب من طفلك إيجادها وعدها",
+                "وقت الطعام: اطلب من طفلك عد الملاعق أو الأطباق اللازمة للعائلة"
+            ],
+            "fr": [
+                "Jeu du marché: utilisez de faux argent et demandez à votre enfant de compter les fruits ou légumes",
+                "Chasse au trésor: cachez 5 objets et demandez à votre enfant de les trouver et de les compter",
+                "Heure du repas: demandez à votre enfant de compter les cuillères ou assiettes nécessaires pour la famille"
+            ]
+        }
+    },
+    "assessmentCriteria": {
+        "mastery": {
+            "ar": "يمكن للطفل عد ما يصل إلى 10 أشياء بشكل صحيح ومستقل",
+            "fr": "L'enfant peut compter jusqu'à 10 objets correctement et de manière autonome"
+        },
+        "developing": {
+            "ar": "يمكن للطفل عد ما يصل إلى 5 أشياء مع بعض المساعدة",
+            "fr": "L'enfant peut compter jusqu'à 5 objets avec un peu d'aide"
+        },
+        "needsSupport": {
+            "ar": "يحتاج الطفل إلى مساعدة كبيرة للعد",
+            "fr": "L'enfant a besoin d'aide importante pour compter"
+        }
+    }
+}

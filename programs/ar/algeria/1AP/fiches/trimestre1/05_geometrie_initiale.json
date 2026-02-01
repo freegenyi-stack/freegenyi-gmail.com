@@ -1,0 +1,299 @@
+{
+    "id": "1ap-t1-geometrie-initiale",
+    "metadata": {
+        "grade": "1AP",
+        "trimester": 1,
+        "subject": "mathematics",
+        "country": "algeria",
+        "title": {
+            "ar": "الهندسة الأولية",
+            "fr": "Géométrie Initiale"
+        },
+        "difficulty": "facile",
+        "estimatedTime": "35 min",
+        "order": 5,
+        "prerequisites": [
+            "reconnaissance"
+        ],
+        "relatedTopics": [
+            "mesures_initiales"
+        ],
+        "officialProgramReferences": [
+            26,
+            27,
+            28,
+            29,
+            30
+        ]
+    },
+    "objectives": {
+        "ar": [
+            "التعرف على الأشكال الهندسية البسيطة (دائرة، مربع، مثلث)",
+            "رسم خطوط مستقيمة",
+            "التعرف على الأشكال في البيئة المحيطة",
+            "تصنيف الأشكال حسب خصائصها"
+        ],
+        "fr": [
+            "Reconnaître les formes géométriques simples (cercle, carré, triangle)",
+            "Tracer des lignes droites",
+            "Identifier les formes dans l'environnement",
+            "Classer les formes selon leurs propriétés"
+        ]
+    },
+    "keyConcepts": [
+        {
+            "concept": {
+                "ar": "الدائرة",
+                "fr": "Le cercle"
+            },
+            "explanation": {
+                "ar": "شكل مستدير بدون زوايا. كل النقاط على حافة الدائرة على نفس المسافة من المركز",
+                "fr": "Une forme ronde sans angles. Tous les points sur le bord du cercle sont à la même distance du centre"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Cercle avec exemples de la vie quotidienne: roue, assiette, ballon"
+            },
+            "examples": {
+                "ar": [
+                    "عجلة",
+                    "طبق",
+                    "كرة",
+                    "قرص الشمس",
+                    "ساعة"
+                ],
+                "fr": [
+                    "roue",
+                    "assiette",
+                    "balle",
+                    "disque solaire",
+                    "horloge"
+                ]
+            }
+        },
+        {
+            "concept": {
+                "ar": "المربع",
+                "fr": "Le carré"
+            },
+            "explanation": {
+                "ar": "شكل له 4 أضلاع متساوية و4 زوايا قائمة. جميع الأضلاع متساوية الطول",
+                "fr": "Une forme avec 4 côtés égaux et 4 angles droits. Tous les côtés ont la même longueur"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Carré avec exemples: fenêtre, cadre photo, dé"
+            },
+            "examples": {
+                "ar": [
+                    "نافذة",
+                    "إطار صورة",
+                    "حجر النرد",
+                    "بلاطة"
+                ],
+                "fr": [
+                    "fenêtre",
+                    "cadre photo",
+                    "dé",
+                    "carreau"
+                ]
+            }
+        },
+        {
+            "concept": {
+                "ar": "المثلث",
+                "fr": "Le triangle"
+            },
+            "explanation": {
+                "ar": "شكل له 3 أضلاع و3 زوايا. يمكن أن تكون الأضلاع متساوية أو مختلفة",
+                "fr": "Une forme avec 3 côtés et 3 angles. Les côtés peuvent être égaux ou différents"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Triangle avec exemples: panneau de signalisation, toit de maison, sandwich coupé"
+            },
+            "examples": {
+                "ar": [
+                    "علامة طريق",
+                    "سقف منزل",
+                    "شراع قارب",
+                    "قطعة بيتزا"
+                ],
+                "fr": [
+                    "panneau routier",
+                    "toit de maison",
+                    "voile de bateau",
+                    "part de pizza"
+                ]
+            }
+        },
+        {
+            "concept": {
+                "ar": "المستطيل",
+                "fr": "Le rectangle"
+            },
+            "explanation": {
+                "ar": "شكل له 4 أضلاع و4 زوايا قائمة. الأضلاع المتقابلة متساوية",
+                "fr": "Une forme avec 4 côtés et 4 angles droits. Les côtés opposés sont égaux"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Rectangle avec exemples: porte, livre, écran"
+            },
+            "examples": {
+                "ar": [
+                    "باب",
+                    "كتاب",
+                    "شاشة",
+                    "طاولة"
+                ],
+                "fr": [
+                    "porte",
+                    "livre",
+                    "écran",
+                    "table"
+                ]
+            }
+        },
+        {
+            "concept": {
+                "ar": "الخط المستقيم",
+                "fr": "La ligne droite"
+            },
+            "explanation": {
+                "ar": "خط لا ينحني. يربط بين نقطتين بأقصر طريق ممكن",
+                "fr": "Une ligne qui ne courbe pas. Elle relie deux points par le chemin le plus court"
+            },
+            "visual": {
+                "type": "demonstration",
+                "description": "Ligne droite tracée avec une règle vs ligne courbe"
+            }
+        }
+    ],
+    "examples": [
+        {
+            "title": {
+                "ar": "مثال 1: البحث عن الأشكال",
+                "fr": "Exemple 1: Chercher les formes"
+            },
+            "description": {
+                "ar": "انظر حولك في الغرفة. أوجد 3 أشياء دائرية (ساعة، مرآة، زر). أوجد شيئاً مربعاً (نافذة)",
+                "fr": "Regarde autour de toi dans la pièce. Trouve 3 objets ronds (horloge, miroir, bouton). Trouve quelque chose de carré (fenêtre)"
+            },
+            "visual": "Illustration d'une pièce avec différentes formes à identifier"
+        },
+        {
+            "title": {
+                "ar": "مثال 2: رسم خط مستقيم",
+                "fr": "Exemple 2: Tracer une ligne droite"
+            },
+            "description": {
+                "ar": "استخدم المسطرة. ضع المسطرة على الورقة. امسك بقلمك وارسم على طول حافة المسطرة",
+                "fr": "Utilise la règle. Pose la règle sur le papier. Tiens ton crayon et dessine le long du bord de la règle"
+            },
+            "visual": "Étapes illustrées du tracé d'une ligne droite avec une règle"
+        },
+        {
+            "title": {
+                "ar": "مثال 3: عد الأضلاع",
+                "fr": "Exemple 3: Compter les côtés"
+            },
+            "description": {
+                "ar": "كم ضلعاً للمربع؟ نعد: 1، 2، 3، 4. المربع له 4 أضلاع",
+                "fr": "Combien de côtés a le carré? On compte: 1, 2, 3, 4. Le carré a 4 côtés"
+            },
+            "visual": "Carré avec côtés numérotés"
+        }
+    ],
+    "practicalTips": {
+        "forParents": {
+            "ar": [
+                "اصنع 'صيد الأشكال': ابحث عن الأشكال في المنزل أو أثناء المشي",
+                "استخدم قواطع البسكويت بأشكال مختلفة",
+                "ارسم الأشكال في الهواء بإصبعك",
+                "اصنع الأشكال باستخدام العصي أو القش",
+                "العب 'أنا أتجسس شيئاً دائرياً/مربعاً/مثلثاً'"
+            ],
+            "fr": [
+                "Faites une 'chasse aux formes': cherchez des formes à la maison ou en promenade",
+                "Utilisez des emporte-pièces de différentes formes",
+                "Dessinez les formes dans l'air avec votre doigt",
+                "Créez des formes avec des bâtonnets ou des pailles",
+                "Jouez à 'Je vois quelque chose de rond/carré/triangulaire'"
+            ]
+        },
+        "forTeachers": {
+            "ar": [
+                "اصنع مجموعة من بطاقات الأشكال للتصنيف والمطابقة",
+                "استخدم الليغو أو المكعبات لبناء الأشكال",
+                "نظم 'يوم الأشكال': كل يوم شكل مختلف",
+                "اصنع ألبوم صور بأشكال من المجلات",
+                "استخدم الجسم لصنع الأشكال (الأطفال يشكلون دائرة، مثلثاً، إلخ)"
+            ],
+            "fr": [
+                "Créez un ensemble de cartes de formes pour le tri et l'appariement",
+                "Utilisez des Lego ou des blocs pour construire des formes",
+                "Organisez un 'jour des formes': chaque jour une forme différente",
+                "Créez un album de formes à partir de magazines",
+                "Utilisez le corps pour former des formes (les enfants forment un cercle, un triangle, etc.)"
+            ]
+        }
+    },
+    "commonMistakes": [
+        {
+            "mistake": {
+                "ar": "الخلط بين المربع والمستطيل",
+                "fr": "Confondre carré et rectangle"
+            },
+            "solution": {
+                "ar": "وضح أن المربع له جميع الأضلاع متساوية، بينما المستطيل له أضلاع طويلة وأضلاع قصيرة",
+                "fr": "Expliquez que le carré a tous les côtés égaux, tandis que le rectangle a des côtés longs et courts"
+            }
+        },
+        {
+            "mistake": {
+                "ar": "صعوبة في رسم خط مستقيم بدون مسطرة",
+                "fr": "Difficulté à tracer une ligne droite sans règle"
+            },
+            "solution": {
+                "ar": "هذا طبيعي! ابدأ دائماً بالمسطرة. مع الممارسة، سيتحسن الرسم اليدوي",
+                "fr": "C'est normal! Commencez toujours avec la règle. Avec la pratique, le tracé à main levée s'améliorera"
+            }
+        }
+    ],
+    "relatedExercises": [
+        "ex-1ap-t1-geometrie-01",
+        "ex-1ap-t1-geometrie-02",
+        "ex-1ap-t1-geometrie-03"
+    ],
+    "parentalInvolvement": {
+        "suggestedActivities": {
+            "ar": [
+                "اصنع كولاج بالأشكال من الورق الملون",
+                "العب البازل بالأشكال الهندسية",
+                "اصنع بيوتاً باستخدام الأشكال (مثلث للسقف، مربع للجدران)",
+                "ارسم صوراً باستخدام الأشكال فقط (روبوت من المربعات، شجرة من المثلثات)"
+            ],
+            "fr": [
+                "Créez un collage de formes avec du papier coloré",
+                "Jouez aux puzzles de formes géométriques",
+                "Construisez des maisons avec des formes (triangle pour le toit, carré pour les murs)",
+                "Dessinez des images en utilisant uniquement des formes (robot en carrés, arbre en triangles)"
+            ]
+        }
+    },
+    "assessmentCriteria": {
+        "mastery": {
+            "ar": "يتعرف الطفل على جميع الأشكال الأساسية ويمكنه رسمها وإيجادها في البيئة",
+            "fr": "L'enfant reconnaît toutes les formes de base et peut les dessiner et les trouver dans l'environnement"
+        },
+        "developing": {
+            "ar": "يتعرف الطفل على 2-3 أشكال مع بعض المساعدة",
+            "fr": "L'enfant reconnaît 2-3 formes avec un peu d'aide"
+        },
+        "needsSupport": {
+            "ar": "يحتاج الطفل إلى دعم كبير للتعرف على الأشكال",
+            "fr": "L'enfant a besoin d'un soutien important pour reconnaître les formes"
+        }
+    }
+}

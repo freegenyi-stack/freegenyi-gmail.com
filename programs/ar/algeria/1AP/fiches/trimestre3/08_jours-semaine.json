@@ -1,0 +1,47 @@
+{
+  "id": "1ap-t3-jours-semaine",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 3,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "أيام الأسبوع",
+      "fr": "Jours de la Semaine"
+    },
+    "difficulty": "moyen",
+    "estimatedTime": "40 min",
+    "order": 8
+  },
+  "objectives": {
+    "ar": [
+      "أهداف تعليمية"
+    ],
+    "fr": [
+      "Objectifs pédagogiques"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t3-jours-semaine-01"
+  ]
+}

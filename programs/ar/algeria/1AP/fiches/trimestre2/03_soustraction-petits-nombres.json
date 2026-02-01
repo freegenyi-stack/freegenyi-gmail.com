@@ -1,0 +1,50 @@
+{
+  "id": "1ap-t2-soustraction-petits-nombres",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 2,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "طرح الأعداد الصغيرة",
+      "fr": "Soustraction avec Petits Nombres"
+    },
+    "difficulty": "moyen",
+    "estimatedTime": "35 min",
+    "order": 3
+  },
+  "objectives": {
+    "ar": [
+      "الطرح بدون احتفاظ",
+      "مفهوم الفرق"
+    ],
+    "fr": [
+      "Soustraction sans retenue",
+      "Concept de différence"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t2-soustraction-petits-nombres-01",
+    "ex-1ap-t2-soustraction-petits-nombres-02"
+  ]
+}

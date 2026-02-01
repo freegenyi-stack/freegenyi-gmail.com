@@ -1,0 +1,47 @@
+{
+  "id": "1ap-t3-nombres-jusqu-69",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 3,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "الأعداد حتى 69",
+      "fr": "Nombres jusqu'à 69"
+    },
+    "difficulty": "moyen",
+    "estimatedTime": "40 min",
+    "order": 1
+  },
+  "objectives": {
+    "ar": [
+      "أهداف تعليمية"
+    ],
+    "fr": [
+      "Objectifs pédagogiques"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t3-nombres-jusqu-69-01"
+  ]
+}

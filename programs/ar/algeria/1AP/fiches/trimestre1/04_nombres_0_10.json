@@ -1,0 +1,367 @@
+{
+    "id": "1ap-t1-nombres-0-10",
+    "metadata": {
+        "grade": "1AP",
+        "trimester": 1,
+        "subject": "mathematics",
+        "country": "algeria",
+        "title": {
+            "ar": "الأعداد من 0 إلى 10",
+            "fr": "Les Nombres de 0 à 10"
+        },
+        "difficulty": "facile",
+        "estimatedTime": "40 min",
+        "order": 4,
+        "prerequisites": [
+            "operations_simples",
+            "reconnaissance",
+            "comparaison"
+        ],
+        "relatedTopics": [
+            "geometrie_initiale"
+        ],
+        "officialProgramReferences": [
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+        ]
+    },
+    "objectives": {
+        "ar": [
+            "التعرف على الأعداد من 0 إلى 10 وكتابتها",
+            "عد الأشياء حتى 10 بشكل صحيح",
+            "ربط العدد بالكمية المقابلة",
+            "كتابة الأعداد بالأرقام",
+            "فهم مفهوم الصفر (لا شيء)"
+        ],
+        "fr": [
+            "Reconnaître et écrire les nombres de 0 à 10",
+            "Compter les objets jusqu'à 10 correctement",
+            "Associer le nombre à la quantité correspondante",
+            "Écrire les nombres en chiffres",
+            "Comprendre le concept de zéro (rien)"
+        ]
+    },
+    "keyConcepts": [
+        {
+            "concept": {
+                "ar": "الأعداد من 1 إلى 5",
+                "fr": "Les nombres de 1 à 5"
+            },
+            "explanation": {
+                "ar": "الأعداد الأساسية الأولى. 1 (واحد)، 2 (اثنان)، 3 (ثلاثة)، 4 (أربعة)، 5 (خمسة). كل عدد يمثل كمية",
+                "fr": "Les premiers nombres de base. 1 (un), 2 (deux), 3 (trois), 4 (quatre), 5 (cinq). Chaque nombre représente une quantité"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Ligne numérique de 1 à 5 avec des objets correspondants sous chaque nombre"
+            }
+        },
+        {
+            "concept": {
+                "ar": "الأعداد من 6 إلى 10",
+                "fr": "Les nombres de 6 à 10"
+            },
+            "explanation": {
+                "ar": "الأعداد الأكبر. 6 (ستة)، 7 (سبعة)، 8 (ثمانية)، 9 (تسعة)، 10 (عشرة). 10 هو عدد مهم جداً في الرياضيات",
+                "fr": "Les nombres plus grands. 6 (six), 7 (sept), 8 (huit), 9 (neuf), 10 (dix). 10 est un nombre très important en mathématiques"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Ligne numérique de 6 à 10 avec des objets, montrant aussi 10 comme deux groupes de 5"
+            }
+        },
+        {
+            "concept": {
+                "ar": "الصفر",
+                "fr": "Le zéro"
+            },
+            "explanation": {
+                "ar": "الصفر (0) يعني 'لا شيء' أو 'فارغ'. إذا لم يكن هناك أي شيء، العدد هو 0",
+                "fr": "Le zéro (0) signifie 'rien' ou 'vide'. S'il n'y a aucun objet, le nombre est 0"
+            },
+            "visual": {
+                "type": "illustration",
+                "description": "Boîte vide avec le chiffre 0, comparée à des boîtes avec 1, 2, 3 objets"
+            }
+        },
+        {
+            "concept": {
+                "ar": "كتابة الأعداد",
+                "fr": "Écriture des nombres"
+            },
+            "explanation": {
+                "ar": "كل عدد له شكل خاص يجب تعلم كتابته بشكل صحيح. نبدأ من الأعلى ونتبع الاتجاه الصحيح",
+                "fr": "Chaque nombre a une forme spéciale qu'il faut apprendre à écrire correctement. On commence par le haut et on suit la bonne direction"
+            },
+            "visual": {
+                "type": "guide",
+                "description": "Guide d'écriture pour chaque chiffre avec flèches montrant le sens du tracé"
+            }
+        }
+    ],
+    "numberDetails": [
+        {
+            "number": 0,
+            "name": {
+                "ar": "صفر",
+                "fr": "zéro"
+            },
+            "representation": "Aucun objet",
+            "writingTips": {
+                "ar": "دائرة كاملة",
+                "fr": "Un cercle complet"
+            }
+        },
+        {
+            "number": 1,
+            "name": {
+                "ar": "واحد",
+                "fr": "un"
+            },
+            "representation": "● (un point)",
+            "writingTips": {
+                "ar": "خط مستقيم من الأعلى إلى الأسفل",
+                "fr": "Une ligne droite de haut en bas"
+            }
+        },
+        {
+            "number": 2,
+            "name": {
+                "ar": "اثنان",
+                "fr": "deux"
+            },
+            "representation": "●● (deux points)",
+            "writingTips": {
+                "ar": "منحنى ثم خط أفقي",
+                "fr": "Une courbe puis une ligne horizontale"
+            }
+        },
+        {
+            "number": 3,
+            "name": {
+                "ar": "ثلاثة",
+                "fr": "trois"
+            },
+            "representation": "●●● (trois points)",
+            "writingTips": {
+                "ar": "منحنيان متتاليان",
+                "fr": "Deux courbes superposées"
+            }
+        },
+        {
+            "number": 4,
+            "name": {
+                "ar": "أربعة",
+                "fr": "quatre"
+            },
+            "representation": "●●●● (quatre points)",
+            "writingTips": {
+                "ar": "خطان متعامدان، ثم خط عمودي",
+                "fr": "Deux lignes perpendiculaires, puis une ligne verticale"
+            }
+        },
+        {
+            "number": 5,
+            "name": {
+                "ar": "خمسة",
+                "fr": "cinq"
+            },
+            "representation": "●●●●● (cinq points - une main)",
+            "writingTips": {
+                "ar": "خط أفقي، خط عمودي، ونصف دائرة",
+                "fr": "Ligne horizontale, ligne verticale, et demi-cercle"
+            }
+        },
+        {
+            "number": 6,
+            "name": {
+                "ar": "ستة",
+                "fr": "six"
+            },
+            "representation": "●●●●●● (six points - un dé)",
+            "writingTips": {
+                "ar": "منحنى يشكل دائرة في الأسفل",
+                "fr": "Une courbe formant un cercle en bas"
+            }
+        },
+        {
+            "number": 7,
+            "name": {
+                "ar": "سبعة",
+                "fr": "sept"
+            },
+            "representation": "●●●●●●● (sept points)",
+            "writingTips": {
+                "ar": "خط أفقي ثم خط مائل",
+                "fr": "Ligne horizontale puis ligne oblique"
+            }
+        },
+        {
+            "number": 8,
+            "name": {
+                "ar": "ثمانية",
+                "fr": "huit"
+            },
+            "representation": "●●●●●●●● (huit points)",
+            "writingTips": {
+                "ar": "دائرتان متصلتان",
+                "fr": "Deux cercles connectés"
+            }
+        },
+        {
+            "number": 9,
+            "name": {
+                "ar": "تسعة",
+                "fr": "neuf"
+            },
+            "representation": "●●●●●●●●● (neuf points)",
+            "writingTips": {
+                "ar": "دائرة في الأعلى وخط مستقيم للأسفل",
+                "fr": "Cercle en haut et ligne droite vers le bas"
+            }
+        },
+        {
+            "number": 10,
+            "name": {
+                "ar": "عشرة",
+                "fr": "dix"
+            },
+            "representation": "●●●●●●●●●● (dix points - deux mains)",
+            "writingTips": {
+                "ar": "الرقم 1 متبوعاً بالرقم 0",
+                "fr": "Le chiffre 1 suivi du chiffre 0"
+            }
+        }
+    ],
+    "examples": [
+        {
+            "title": {
+                "ar": "مثال 1: العد",
+                "fr": "Exemple 1: Le comptage"
+            },
+            "description": {
+                "ar": "عد السيارات: 🚗 🚗 🚗 🚗 🚗 🚗. نشير إلى كل سيارة ونعد: 1، 2، 3، 4، 5، 6. الإجابة: 6 سيارات",
+                "fr": "Compte les voitures: 🚗 🚗 🚗 🚗 🚗 🚗. On pointe chaque voiture et on compte: 1, 2, 3, 4, 5, 6. Réponse: 6 voitures"
+            },
+            "visual": "6 voitures alignées avec numérotation"
+        },
+        {
+            "title": {
+                "ar": "مثال 2: الربط بين العدد والكمية",
+                "fr": "Exemple 2: Associer nombre et quantité"
+            },
+            "description": {
+                "ar": "ارسم 7 نجوم لتمثيل العدد 7. ⭐⭐⭐⭐⭐⭐⭐",
+                "fr": "Dessine 7 étoiles pour représenter le nombre 7. ⭐⭐⭐⭐⭐⭐⭐"
+            },
+            "visual": "Nombre 7 → 7 étoiles dessinées"
+        },
+        {
+            "title": {
+                "ar": "مثال 3: الصفر",
+                "fr": "Exemple 3: Le zéro"
+            },
+            "description": {
+                "ar": "كم عدد الأسماك في الحوض الفارغ؟ لا توجد أسماك. الإجابة: 0",
+                "fr": "Combien de poissons dans l'aquarium vide? Il n'y a pas de poissons. Réponse: 0"
+            },
+            "visual": "Aquarium vide avec le chiffre 0"
+        }
+    ],
+    "practicalTips": {
+        "forParents": {
+            "ar": [
+                "اعد كل شيء معاً: الدرج، الأشياء في السيارة، الطيور في السماء",
+                "اصنع بطاقات أعداد واطلب من طفلك إحضار ذلك العدد من الأشياء",
+                "استخدم الأصابع للعد - إنها دائماً معك!",
+                "العب لعبة 'أوجد العدد': ابحث عن 3 أشياء حمراء، 5 أشياء مستديرة، إلخ",
+                "مارس كتابة الأعداد في الرمل، بالطباشير، على الورق"
+            ],
+            "fr": [
+                "Comptez tout ensemble: les marches, les objets dans la voiture, les oiseaux dans le ciel",
+                "Créez des cartes de nombres et demandez à votre enfant d'apporter ce nombre d'objets",
+                "Utilisez les doigts pour compter - ils sont toujours avec vous!",
+                "Jouez au jeu 'trouve le nombre': cherche 3 choses rouges, 5 choses rondes, etc.",
+                "Pratiquez l'écriture des nombres dans le sable, à la craie, sur du papier"
+            ]
+        },
+        "forTeachers": {
+            "ar": [
+                "استخدم مواد متنوعة: خرز، مكعبات، أزرار، أقلام",
+                "أنشئ 'محطات أعداد' حيث يمارس الأطفال كل عدد",
+                "استخدم الأغاني والقوافي لحفظ الأعداد",
+                "اصنع لوحة أعداد كبيرة للفصل مع أمثلة بصرية",
+                "نظم ألعاب جماعية: 'دعونا نصنع مجموعة من 7'، إلخ"
+            ],
+            "fr": [
+                "Utilisez des matériaux variés: perles, cubes, boutons, crayons",
+                "Créez des 'stations de nombres' où les enfants pratiquent chaque nombre",
+                "Utilisez des chansons et comptines pour mémoriser les nombres",
+                "Créez un grand tableau de nombres pour la classe avec exemples visuels",
+                "Organisez des jeux collectifs: 'faisons un groupe de 7', etc."
+            ]
+        }
+    },
+    "commonMistakes": [
+        {
+            "mistake": {
+                "ar": "الخلط بين كتابة 6 و 9",
+                "fr": "Confondre l'écriture de 6 et 9"
+            },
+            "solution": {
+                "ar": "تذكر: 6 لها دائرة في الأسفل، 9 لها دائرة في الأعلى. اربطها بالكلمات: 6 = سِتة (دائرة سُفلية)",
+                "fr": "Rappel: 6 a un cercle en bas, 9 a un cercle en haut. Associez avec des mots: 6 = cercle en bas"
+            }
+        },
+        {
+            "mistake": {
+                "ar": "تخطي أعداد أو عدها مرتين",
+                "fr": "Sauter des nombres ou les compter deux fois"
+            },
+            "solution": {
+                "ar": "علم الطفل أن يحرك الأشياء المعدودة جانباً أو يضع علامة عليها",
+                "fr": "Apprenez à l'enfant à déplacer les objets comptés sur le côté ou à les marquer"
+            }
+        }
+    ],
+    "relatedExercises": [
+        "ex-1ap-t1-nombres-0-10-01",
+        "ex-1ap-t1-nombres-0-10-02",
+        "ex-1ap-t1-nombres-0-10-03",
+        "ex-1ap-t1-nombres-0-10-04"
+    ],
+    "parentalInvolvement": {
+        "suggestedActivities": {
+            "ar": [
+                "لعبة البولينج: رقم كل قارورة واعد كم أسقطت",
+                "صيد الأسماك: اصنع أسماكاً ورقية مرقمة واصطادها بمغناطيس",
+                "بينغو الأعداد: اصنع بطاقات بينغو بسيطة",
+                "كتاب الأعداد: اصنع كتاباً حيث كل صفحة تمثل عدداً مع رسومات"
+            ],
+            "fr": [
+                "Jeu de quilles: numérotez chaque bouteille et comptez combien vous avez renversé",
+                "Pêche aux poissons: créez des poissons en papier numérotés et pêchez-les avec un aimant",
+                "Loto des nombres: créez des cartes de loto simples",
+                "Livre des nombres: créez un livre où chaque page représente un nombre avec des dessins"
+            ]
+        }
+    },
+    "assessmentCriteria": {
+        "mastery": {
+            "ar": "يتعرف الطفل ويكتب جميع الأعداد من 0 إلى 10 بشكل صحيح ويعد حتى 10 دون أخطاء",
+            "fr": "L'enfant reconnaît et écrit tous les nombres de 0 à 10 correctement et compte jusqu'à 10 sans erreurs"
+        },
+        "developing": {
+            "ar": "يتعرف الطفل ويكتب الأعداد من 0 إلى 5 مع بعض الأخطاء",
+            "fr": "L'enfant reconnaît et écrit les nombres de 0 à 5 avec quelques erreurs"
+        },
+        "needsSupport": {
+            "ar": "يحتاج الطفل إلى مساعدة كبيرة للتعرف على الأعداد وكتابتها",
+            "fr": "L'enfant a besoin d'aide importante pour reconnaître et écrire les nombres"
+        }
+    }
+}

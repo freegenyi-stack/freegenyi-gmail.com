@@ -1,0 +1,50 @@
+{
+  "id": "1ap-t2-lignes-points",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 2,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "الخطوط والنقاط",
+      "fr": "Lignes et Points"
+    },
+    "difficulty": "facile",
+    "estimatedTime": "35 min",
+    "order": 4
+  },
+  "objectives": {
+    "ar": [
+      "رسم خطوط مستقيمة",
+      "ربط النقاط"
+    ],
+    "fr": [
+      "Tracer des lignes droites",
+      "Relier les points"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t2-lignes-points-01",
+    "ex-1ap-t2-lignes-points-02"
+  ]
+}

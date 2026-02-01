@@ -1,0 +1,47 @@
+{
+  "id": "1ap-t3-geometrie-solides",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 3,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "الأجسام الصلبة",
+      "fr": "Géométrie: Solides"
+    },
+    "difficulty": "moyen",
+    "estimatedTime": "40 min",
+    "order": 4
+  },
+  "objectives": {
+    "ar": [
+      "أهداف تعليمية"
+    ],
+    "fr": [
+      "Objectifs pédagogiques"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t3-geometrie-solides-01"
+  ]
+}

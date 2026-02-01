@@ -1,0 +1,50 @@
+{
+  "id": "1ap-t2-nombres-jusqu-39",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 2,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "الأعداد حتى 39",
+      "fr": "Les Nombres jusqu'à 39"
+    },
+    "difficulty": "moyen",
+    "estimatedTime": "35 min",
+    "order": 1
+  },
+  "objectives": {
+    "ar": [
+      "قراءة وكتابة الأعداد حتى 39",
+      "فهم مفهوم العشرات والآحاد"
+    ],
+    "fr": [
+      "Lire et écrire les nombres jusqu'à 39",
+      "Comprendre le concept de dizaines et unités"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t2-nombres-jusqu-39-01",
+    "ex-1ap-t2-nombres-jusqu-39-02"
+  ]
+}

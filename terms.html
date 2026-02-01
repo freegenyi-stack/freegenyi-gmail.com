@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - FreeGeny</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Titan+One&display=swap"
+        rel="stylesheet">
+    <script src="assets/js/i18n.js"></script>
+    <style>
+        :root {
+            --primary: #09A1A1;
+            --primary-light: #B2DFDB;
+            --secondary: #D396A6;
+            --dark: #0F172A;
+            --dark-light: #334155;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: radial-gradient(circle at 10% 10%, rgba(9, 161, 161, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(211, 150, 166, 0.05) 0%, transparent 40%),
+                #FFFFFF;
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(40px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Titan One', cursive;
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(30px);
+            border-radius: 40px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .last-updated {
+            color: var(--dark-light);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        ul,
+        ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        strong {
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .lang-selector {
+            position: relative;
+            background: var(--white);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 14px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 30px 20px;
+                border-radius: 30px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="home.html" class="nav-logo">FreeGeny</a>
+        <div class="lang-selector" onclick="window.location.href='home.html'">
+            <span id="currentLangDisplay">🌍 Change Language</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 id="page-title">Terms & Conditions</h1>
+        <p class="last-updated" id="last-updated">Last Updated: January 31, 2026</p>
+
+        <div id="content">
+            <!-- Content will be dynamically loaded based on language -->
+        </div>
+    </div>
+
+    <script src="assets/js/terms_content.js"></script>
+    <script>
+        function loadTerms() {
+            const lang = localStorage.getItem('fg_lang') || 'en';
+            const content = window.termsContent[lang] || window.termsContent['en'];
+
+            document.getElementById('page-title').textContent = content.title;
+            document.getElementById('last-updated').textContent = content.lastUpdated;
+            document.getElementById('content').innerHTML = content.content;
+
+            // Set RTL for RTL languages
+            const rtlLangs = ['ar', 'fa', 'he', 'ur', 'dv', 'ps', 'sd', 'ug', 'yi', 'pnb'];
+            if (rtlLangs.includes(lang)) {
+                document.documentElement.dir = 'rtl';
+                document.body.style.direction = 'rtl';
+            } else {
+                document.documentElement.dir = 'ltr';
+                document.body.style.direction = 'ltr';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadTerms);
+    </script>
+</body>
+
+</html>

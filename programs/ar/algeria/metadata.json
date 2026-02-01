@@ -1,0 +1,48 @@
+{
+  "country": "Algeria",
+  "system_description": "Descriptif du Système Algérien d'enseignement",
+  "levels": [
+    {
+      "id": "maternelle",
+      "name": "Préscolaire (Maternelle)",
+      "age_range": "3-6 ans",
+      "short_name": "MAT"
+    },
+    {
+      "id": "1AP",
+      "name": "Première année primaire",
+      "age": 6,
+      "short_name": "1AP"
+    },
+    {
+      "id": "2AP",
+      "name": "Deuxième année primaire",
+      "age": 7,
+      "short_name": "2AP"
+    },
+    {
+      "id": "3AP",
+      "name": "Troisième année primaire",
+      "age": 8,
+      "short_name": "3AP"
+    },
+    {
+      "id": "4AP",
+      "name": "Quatrième année primaire",
+      "age": 9,
+      "short_name": "4AP"
+    },
+    {
+      "id": "5AP",
+      "name": "Cinquième année primaire",
+      "age": 10,
+      "short_name": "5AP"
+    },
+    {
+      "id": "6AP",
+      "name": "Sixième année primaire",
+      "age": 11,
+      "short_name": "6AP"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "ficheId": "1ap-t3-nombres-jusqu-99",
+  "metadata": {
+    "title": {
+      "ar": "تمارين الأعداد حتى 99",
+      "fr": "Exercices Nombres jusqu'à 99"
+    },
+    "totalExercises": 20
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-01",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-02",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-03",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-04",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-05",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-06",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-07",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-08",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-09",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-10",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-11",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-12",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-13",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-14",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-15",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-16",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-17",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-18",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-19",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-nombres-jusqu-99-20",
+      "type": "mixed"
+    }
+  ]
+}

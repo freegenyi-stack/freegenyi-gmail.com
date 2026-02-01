@@ -1,0 +1,39 @@
+name: 🚀 Deploy Website to cPanel
+
+on:
+  push:
+    branches:
+      - main
+    # On n'active le déploiement que si les fichiers HTML/CSS/JS sont modifiés
+    paths:
+      - '*.html'
+      - '*.css'
+      - '*.js'
+      - '*.php'
+      - '.htaccess'
+      - 'api/**'
+      - 'assets/**'
+
+jobs:
+  FTP-Deploy-Action:
+    name: 🚚 Sync Files to Server
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: 📂 Sync files to cPanel
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        port: 21
+        server-dir: public_html/
+        # Exclude nothing - upload everything from git including .htaccess
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**

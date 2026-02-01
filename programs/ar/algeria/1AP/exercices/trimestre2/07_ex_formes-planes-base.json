@@ -1,0 +1,92 @@
+{
+  "ficheId": "1ap-t2-formes-planes-base",
+  "metadata": {
+    "title": {
+      "ar": "تمارين الأشكال المستوية الأساسية",
+      "fr": "Exercices Formes Planes de Base"
+    },
+    "totalExercises": 20
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t2-formes-planes-base-01",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-02",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-03",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-04",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-05",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-06",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-07",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-08",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-09",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-10",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-11",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-12",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-13",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-14",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-15",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-16",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-17",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-18",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-19",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-formes-planes-base-20",
+      "type": "mixed"
+    }
+  ]
+}

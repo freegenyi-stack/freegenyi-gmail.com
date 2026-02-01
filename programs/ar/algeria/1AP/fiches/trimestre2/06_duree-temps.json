@@ -1,0 +1,50 @@
+{
+  "id": "1ap-t2-duree-temps",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 2,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "المدة والوقت",
+      "fr": "Durée et Temps"
+    },
+    "difficulty": "moyen",
+    "estimatedTime": "35 min",
+    "order": 6
+  },
+  "objectives": {
+    "ar": [
+      "مفهوم المدة الزمنية",
+      "الأنشطة اليومية"
+    ],
+    "fr": [
+      "Concept de durée",
+      "Activités quotidiennes"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t2-duree-temps-01",
+    "ex-1ap-t2-duree-temps-02"
+  ]
+}

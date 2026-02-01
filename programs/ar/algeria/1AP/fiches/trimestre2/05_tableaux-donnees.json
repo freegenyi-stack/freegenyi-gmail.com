@@ -1,0 +1,50 @@
+{
+  "id": "1ap-t2-tableaux-donnees",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 2,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "الجداول والبيانات",
+      "fr": "Tableaux et Données"
+    },
+    "difficulty": "moyen",
+    "estimatedTime": "35 min",
+    "order": 5
+  },
+  "objectives": {
+    "ar": [
+      "قراءة جدول بسيط",
+      "تنظيم المعلومات"
+    ],
+    "fr": [
+      "Lire un tableau simple",
+      "Organiser les informations"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t2-tableaux-donnees-01",
+    "ex-1ap-t2-tableaux-donnees-02"
+  ]
+}

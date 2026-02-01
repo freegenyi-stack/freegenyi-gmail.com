@@ -1,0 +1,92 @@
+{
+  "ficheId": "1ap-t3-addition-avancee",
+  "metadata": {
+    "title": {
+      "ar": "تمارين الجمع المتقدم",
+      "fr": "Exercices Addition Avancée"
+    },
+    "totalExercises": 20
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t3-addition-avancee-01",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-02",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-03",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-04",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-05",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-06",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-07",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-08",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-09",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-10",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-11",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-12",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-13",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-14",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-15",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-16",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-17",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-18",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-19",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-addition-avancee-20",
+      "type": "mixed"
+    }
+  ]
+}

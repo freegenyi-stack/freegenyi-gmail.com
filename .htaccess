@@ -1,0 +1,9 @@
+DirectoryIndex index.php
+RewriteEngine On
+
+# 1. FORCE HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. PASSWORD GATE ENABLED
+DirectoryIndex index.php

@@ -1,0 +1,92 @@
+{
+  "ficheId": "1ap-t2-nombres-jusqu-39",
+  "metadata": {
+    "title": {
+      "ar": "تمارين الأعداد حتى 39",
+      "fr": "Exercices Les Nombres jusqu'à 39"
+    },
+    "totalExercises": 20
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-01",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-02",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-03",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-04",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-05",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-06",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-07",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-08",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-09",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-10",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-11",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-12",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-13",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-14",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-15",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-16",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-17",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-18",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-19",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-nombres-jusqu-39-20",
+      "type": "mixed"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "1ap-t2-problemes-etapes",
+  "metadata": {
+    "grade": "1AP",
+    "trimester": 2,
+    "subject": "mathematics",
+    "country": "algeria",
+    "title": {
+      "ar": "مسائل متعددة الخطوات",
+      "fr": "Problèmes à Étapes"
+    },
+    "difficulty": "difficile",
+    "estimatedTime": "35 min",
+    "order": 8
+  },
+  "objectives": {
+    "ar": [
+      "حل مسائل جمع وطرح",
+      "استراتيجيات الحل"
+    ],
+    "fr": [
+      "Résoudre problèmes d'addition et soustraction",
+      "Stratégies de résolution"
+    ]
+  },
+  "keyConcepts": [],
+  "examples": [],
+  "practicalTips": {
+    "forParents": {
+      "ar": [
+        "نصائح للآباء"
+      ],
+      "fr": [
+        "Conseils pour parents"
+      ]
+    },
+    "forTeachers": {
+      "ar": [
+        "نصائح للمعلمين"
+      ],
+      "fr": [
+        "Conseils pour enseignants"
+      ]
+    }
+  },
+  "relatedExercises": [
+    "ex-1ap-t2-problemes-etapes-01",
+    "ex-1ap-t2-problemes-etapes-02"
+  ]
+}

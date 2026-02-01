@@ -1,0 +1,57 @@
+{
+    "level": "3AP",
+    "country": "Algeria",
+    "subjects": [
+        {
+            "id": "arabic",
+            "name": "اللغة العربية",
+            "chapters": [
+                {
+                    "id": "chap-01",
+                    "title": "Introduction",
+                    "competencies": [
+                        {
+                            "id": "DZ-3AP-ARB-01",
+                            "description": "فهم النص المنطوق",
+                            "difficulty": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "math",
+            "name": "الرياضيات",
+            "chapters": [
+                {
+                    "id": "chap-01",
+                    "title": "الأعداد والحساب",
+                    "competencies": [
+                        {
+                            "id": "DZ-3AP-MAT-01",
+                            "description": "الأعداد من 0 إلى 999",
+                            "difficulty": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "french",
+            "name": "Français",
+            "chapters": [
+                {
+                    "id": "chap-01",
+                    "title": "Bonjour / Au revoir",
+                    "competencies": [
+                        {
+                            "id": "DZ-3AP-FR-01",
+                            "description": "Saluer et prendre congé",
+                            "difficulty": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,92 @@
+{
+  "ficheId": "1ap-t2-problemes-etapes",
+  "metadata": {
+    "title": {
+      "ar": "تمارين مسائل متعددة الخطوات",
+      "fr": "Exercices Problèmes à Étapes"
+    },
+    "totalExercises": 20
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t2-problemes-etapes-01",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-02",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-03",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-04",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-05",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-06",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-07",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-08",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-09",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-10",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-11",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-12",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-13",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-14",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-15",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-16",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-17",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-18",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-19",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t2-problemes-etapes-20",
+      "type": "mixed"
+    }
+  ]
+}

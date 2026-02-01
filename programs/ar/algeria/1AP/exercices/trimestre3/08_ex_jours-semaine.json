@@ -1,0 +1,92 @@
+{
+  "ficheId": "1ap-t3-jours-semaine",
+  "metadata": {
+    "title": {
+      "ar": "تمارين أيام الأسبوع",
+      "fr": "Exercices Jours de la Semaine"
+    },
+    "totalExercises": 20
+  },
+  "exercises": [
+    {
+      "id": "ex-1ap-t3-jours-semaine-01",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-02",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-03",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-04",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-05",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-06",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-07",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-08",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-09",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-10",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-11",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-12",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-13",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-14",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-15",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-16",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-17",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-18",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-19",
+      "type": "mixed"
+    },
+    {
+      "id": "ex-1ap-t3-jours-semaine-20",
+      "type": "mixed"
+    }
+  ]
+}

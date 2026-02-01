@@ -1,0 +1,291 @@
+{
+    "id": "1ap-t1-mesures-initiales",
+    "metadata": {
+        "grade": "1AP",
+        "trimester": 1,
+        "subject": "mathematics",
+        "country": "algeria",
+        "title": {
+            "ar": "القياسات الأولية",
+            "fr": "Mesures Initiales"
+        },
+        "difficulty": "facile",
+        "estimatedTime": "30 min",
+        "order": 6,
+        "prerequisites": [
+            "reconnaissance",
+            "comparaison"
+        ],
+        "relatedTopics": [
+            "geometrie_initiale"
+        ],
+        "officialProgramReferences": [
+            31,
+            32,
+            33,
+            34
+        ]
+    },
+    "objectives": {
+        "ar": [
+            "مقارنة الأطوال: طويل، قصير",
+            "مقارنة الأحجام: كبير، صغير",
+            "مقارنة الأوزان: ثقيل، خفيف",
+            "استخدام مفردات القياس في الحياة اليومية"
+        ],
+        "fr": [
+            "Comparer les longueurs: long, court",
+            "Comparer les tailles: grand, petit",
+            "Comparer les poids: lourd, léger",
+            "Utiliser le vocabulaire de mesure dans la vie quotidienne"
+        ]
+    },
+    "keyConcepts": [
+        {
+            "concept": {
+                "ar": "الطول",
+                "fr": "La longueur"
+            },
+            "explanation": {
+                "ar": "قياس المسافة من بداية الشيء إلى نهايته. شيء طويل يمتد أكثر، شيء قصير يمتد أقل",
+                "fr": "Mesure de la distance du début à la fin d'un objet. Quelque chose de long s'étend plus, quelque chose de court s'étend moins"
+            },
+            "visual": {
+                "type": "comparison",
+                "description": "Deux crayons côte à côte: un long, un court"
+            },
+            "vocabulary": {
+                "ar": [
+                    "طويل",
+                    "قصير",
+                    "أطول",
+                    "أقصر",
+                    "نفس الطول"
+                ],
+                "fr": [
+                    "long",
+                    "court",
+                    "plus long",
+                    "plus court",
+                    "même longueur"
+                ]
+            }
+        },
+        {
+            "concept": {
+                "ar": "الحجم",
+                "fr": "La taille"
+            },
+            "explanation": {
+                "ar": "مقدار المساحة التي يشغلها الشيء. كبير = يأخذ مساحة أكبر، صغير = يأخذ مساحة أقل",
+                "fr": "La quantité d'espace qu'occupe un objet. Grand = prend plus d'espace, petit = prend moins d'espace"
+            },
+            "visual": {
+                "type": "comparison",
+                "description": "Deux ballons: un grand, un petit"
+            },
+            "vocabulary": {
+                "ar": [
+                    "كبير",
+                    "صغير",
+                    "أكبر",
+                    "أصغر",
+                    "نفس الحجم"
+                ],
+                "fr": [
+                    "grand",
+                    "petit",
+                    "plus grand",
+                    "plus petit",
+                    "même taille"
+                ]
+            }
+        },
+        {
+            "concept": {
+                "ar": "الوزن",
+                "fr": "Le poids"
+            },
+            "explanation": {
+                "ar": "مدى ثقل الشيء. ثقيل = صعب الحمل، خفيف = سهل الحمل",
+                "fr": "À quel point un objet est lourd. Lourd = difficile à porter, léger = facile à porter"
+            },
+            "visual": {
+                "type": "comparison",
+                "description": "Balance avec une pierre lourde d'un côté et une plume légère de l'autre"
+            },
+            "vocabulary": {
+                "ar": [
+                    "ثقيل",
+                    "خفيف",
+                    "أثقل",
+                    "أخف",
+                    "نفس الوزن"
+                ],
+                "fr": [
+                    "lourd",
+                    "léger",
+                    "plus lourd",
+                    "plus léger",
+                    "même poids"
+                ]
+            }
+        },
+        {
+            "concept": {
+                "ar": "السعة",
+                "fr": "La capacité"
+            },
+            "explanation": {
+                "ar": "كمية السائل التي يمكن أن يحتويها الوعاء. ممتلئ، فارغ، نصف ممتلئ",
+                "fr": "La quantité de liquide qu'un récipient peut contenir. Plein, vide, à moitié plein"
+            },
+            "visual": {
+                "type": "comparison",
+                "description": "Trois verres: un vide, un à moitié plein, un plein"
+            },
+            "vocabulary": {
+                "ar": [
+                    "ممتلئ",
+                    "فارغ",
+                    "نصف ممتلئ",
+                    "أكثر",
+                    "أقل"
+                ],
+                "fr": [
+                    "plein",
+                    "vide",
+                    "à moitié plein",
+                    "plus",
+                    "moins"
+                ]
+            }
+        }
+    ],
+    "examples": [
+        {
+            "title": {
+                "ar": "مثال 1: مقارنة الأطوال",
+                "fr": "Exemple 1: Comparer les longueurs"
+            },
+            "description": {
+                "ar": "قلم الرصاص الأزرق طوله 15 سم. قلم الرصاص الأحمر طوله 10 سم. أي قلم أطول؟ الأزرق أطول",
+                "fr": "Le crayon bleu mesure 15 cm. Le crayon rouge mesure 10 cm. Quel crayon est plus long? Le bleu est plus long"
+            },
+            "visual": "Deux crayons de longueurs différentes alignés"
+        },
+        {
+            "title": {
+                "ar": "مثال 2: الحجم النسبي",
+                "fr": "Exemple 2: Taille relative"
+            },
+            "description": {
+                "ar": "الفيل كبير. الفأر صغير. الفيل أكبر بكثير من الفأر",
+                "fr": "L'éléphant est grand. La souris est petite. L'éléphant est beaucoup plus grand que la souris"
+            },
+            "visual": "Éléphant et souris côte à côte pour montrer la différence de taille"
+        },
+        {
+            "title": {
+                "ar": "مثال 3: الوزن",
+                "fr": "Exemple 3: Le poids"
+            },
+            "description": {
+                "ar": "الحقيبة المدرسية المليئة بالكتب ثقيلة. الحقيبة الفارغة خفيفة",
+                "fr": "Le cartable plein de livres est lourd. Le cartable vide est léger"
+            },
+            "visual": "Deux sacs: un plein (lourd), un vide (léger)"
+        }
+    ],
+    "practicalTips": {
+        "forParents": {
+            "ar": [
+                "قارن الأشياء في المنزل: أي ملعقة أطول؟ أي كتاب أكبر؟",
+                "دع طفلك يحمل أشياء مختلفة ويصف وزنها",
+                "استخدم وقت الطهي: أي كوب يحمل أكثر؟",
+                "قس طول طفلك كل شهر وسجل النمو",
+                "العب لعبة التخمين: هل تعتقد أن هذا ثقيل أم خفيف؟ ثم جرب"
+            ],
+            "fr": [
+                "Comparez des objets à la maison: quelle cuillère est plus longue? Quel livre est plus grand?",
+                "Laissez votre enfant porter différents objets et décrire leur poids",
+                "Utilisez le temps de cuisine: quel verre contient plus?",
+                "Mesurez la taille de votre enfant chaque mois et enregistrez la croissance",
+                "Jouez au jeu de devinettes: penses-tu que c'est lourd ou léger? Puis essaie"
+            ]
+        },
+        "forTeachers": {
+            "ar": [
+                "أنشئ 'محطة قياس' مع ميزان وأشياء مختلفة الوزن",
+                "استخدم الشريط اللاصق لقياس الأطوال على الأرض",
+                "نظم سباق: من يمكنه بناء أطول برج؟",
+                "اصنع رسماً بيانياً للطول: رتب الأطفال من الأقصر إلى الأطول",
+                "استخدم ألعاب الماء والرمل لاستكشاف السعة"
+            ],
+            "fr": [
+                "Créez une 'station de mesure' avec une balance et des objets de poids différents",
+                "Utilisez du ruban adhésif pour mesurer les longueurs au sol",
+                "Organisez une compétition: qui peut construire la tour la plus haute?",
+                "Créez un graphique de taille: rangez les enfants du plus petit au plus grand",
+                "Utilisez des jeux d'eau et de sable pour explorer la capacité"
+            ]
+        }
+    },
+    "commonMistakes": [
+        {
+            "mistake": {
+                "ar": "الخلط بين 'كبير' و'طويل'",
+                "fr": "Confondre 'grand' et 'long'"
+            },
+            "solution": {
+                "ar": "كبير = الحجم العام. طويل = المسافة من طرف لآخر. يمكن أن يكون الشيء طويلاً لكن ليس كبيراً (مثل العصا)",
+                "fr": "'Grand' = taille globale. 'Long' = distance d'un bout à l'autre. Quelque chose peut être long sans être grand (comme un bâton)"
+            }
+        },
+        {
+            "mistake": {
+                "ar": "الاعتقاد أن الأشياء الكبيرة دائماً ثقيلة",
+                "fr": "Penser que les grandes choses sont toujours lourdes"
+            },
+            "solution": {
+                "ar": "أظهر أمثلة: بالون كبير لكنه خفيف، حجر صغير لكنه ثقيل",
+                "fr": "Montrez des exemples: un grand ballon mais léger, une petite pierre mais lourde"
+            }
+        }
+    ],
+    "relatedExercises": [
+        "ex-1ap-t1-mesures-01",
+        "ex-1ap-t1-mesures-02",
+        "ex-1ap-t1-mesures-03"
+    ],
+    "parentalInvolvement": {
+        "suggestedActivities": {
+            "ar": [
+                "سباق القياس: من يجد أطول/أقصر شيء في الغرفة؟",
+                "لعبة الوزن: رتب 5 أشياء من الأخف إلى الأثقل",
+                "تجربة الطفو: ما الذي يطفو؟ ما الذي يغرق؟",
+                "اصنع مخططاً: قارن أطوال أفراد العائلة"
+            ],
+            "fr": [
+                "Course de mesure: qui trouve l'objet le plus long/court dans la pièce?",
+                "Jeu de poids: range 5 objets du plus léger au plus lourd",
+                "Expérience de flottaison: qu'est-ce qui flotte? Qu'est-ce qui coule?",
+                "Créez un diagramme: comparez les tailles des membres de la famille"
+            ]
+        }
+    },
+    "assessmentCriteria": {
+        "mastery": {
+            "ar": "يستخدم الطفل مفردات القياس بشكل صحيح ويمكنه مقارنة الأشياء حسب الطول والحجم والوزن",
+            "fr": "L'enfant utilise correctement le vocabulaire de mesure et peut comparer des objets selon la longueur, la taille et le poids"
+        },
+        "developing": {
+            "ar": "يمكن للطفل مقارنة الأشياء بمساعدة وباستخدام بعض مفردات القياس",
+            "fr": "L'enfant peut comparer des objets avec aide et en utilisant un vocabulaire de mesure de base"
+        },
+        "needsSupport": {
+            "ar": "يحتاج الطفل إلى دعم كبير للمقارنة واستخدام مفردات القياس",
+            "fr": "L'enfant a besoin d'un soutien important pour comparer et utiliser le vocabulaire de mesure"
+        }
+    }
+}
