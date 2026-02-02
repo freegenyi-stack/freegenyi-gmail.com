@@ -2692,14 +2692,13 @@ function setLangWithRedirect(lang, isUser = false) {
 }
 
 async function initI18n() {
-    console.log('Initializing i18n with URL support...');
+    console.log('Initializing i18n...');
 
     // Priority 1: Check URL for language parameter
     const urlLang = getLanguageFromURL();
     if (urlLang) {
         console.log('Using language from URL:', urlLang);
         setLang(urlLang, false);
-        // Save to localStorage for future visits
         localStorage.setItem('fg_lang', urlLang);
         return;
     }
@@ -2708,22 +2707,18 @@ async function initI18n() {
     const savedLang = localStorage.getItem('fg_lang');
     if (savedLang && translations[savedLang]) {
         console.log('Using saved language preference:', savedLang);
-        // Redirect to language-specific URL if not already there
-        if (!getLanguageFromURL()) {
-            redirectToLanguage(savedLang);
-        } else {
-            setLang(savedLang, false);
-        }
+        setLang(savedLang, false);
         return;
     }
 
-    // Priority 3: Detect from browser/IP
-    console.log('No saved language, detecting...');
-    const detectedLang = await detectLanguageByIP();
+    // Priority 3: Detect from browser language
+    console.log('No saved language, detecting from browser...');
+    const browserLang = navigator.language.split('-')[0].toLowerCase();
+    const detectedLang = translations[browserLang] ? browserLang : 'en';
     console.log('Detected language:', detectedLang);
 
-    // Redirect to detected language URL
-    redirectToLanguage(detectedLang);
+    setLang(detectedLang, false);
+    localStorage.setItem('fg_lang', detectedLang);
 }
 
 document.addEventListener('DOMContentLoaded', initI18n);
