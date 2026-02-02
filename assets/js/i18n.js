@@ -2518,6 +2518,11 @@ async function detectLanguageByIP() {
         const countryCode = data.country_code;
         console.log('IP Country detected:', countryCode);
 
+        console.log('IP Country detected:', countryCode);
+
+        // Map IL (Israel) to en (English) instead of he (Hebrew) to remove Hebrew support
+        if (countryCode === 'IL') return 'en';
+
         const detected = countryToLang[countryCode] || 'en';
         return translations[detected] ? detected : 'en';
     } catch (error) {
@@ -2536,6 +2541,7 @@ function setLang(lang, isUser = false) {
     }
 
     const rtlLangs = ['ar', 'fa', 'ur', 'dv', 'ps', 'sd', 'ug', 'yi', 'pnb'];
+    // Hebrew (he) removed from RTL list
     const isRTL = rtlLangs.includes(lang);
 
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
@@ -2601,13 +2607,18 @@ async function initI18n() {
     const isManual = localStorage.getItem('fg_manual') === 'true';
     let savedLang = localStorage.getItem('fg_lang');
 
-    if (isManual && savedLang && translations[savedLang]) {
-        console.log('Using manually selected language:', savedLang);
-        setLang(savedLang, false);
+    // STRICT PERSISTENCE LOGIC:
+    // If we have a saved language that is valid, WE USE IT.
+    // We do NOT care about 'fg_manual' flag for the initial load. 
+    // The user's last choice (or default set previously) is paramount.
+    if (savedLang && translations[savedLang]) {
+        console.log('Using saved language preference:', savedLang);
+        setLang(savedLang, false); // false = don't overwrite manual flag, just apply
     } else {
-        console.log('No manual override, detecting language...');
+        console.log('No valid saved language, detecting...');
         const detectedLang = await detectLanguageByIP();
         console.log('Detected language:', detectedLang);
+        // Only here do we set it without the manual flag
         setLang(detectedLang, false);
     }
 }
