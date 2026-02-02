@@ -43,3 +43,41 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# ===== FreeGeny Web Project =====
+
+# Fichiers de configuration sensibles (NE JAMAIS POUSSER)
+api/config.php
+api/test_db.php
+
+# Fichiers de test temporaires
+test_*.html
+test_*.php
+debug_*.php
+
+# Artifacts (documentation générée par l'IA)
+.gemini/
+
+# Fichiers de base de données
+*.sql
+*.db
+*.sqlite
+
+# Fichiers système
+Thumbs.db
+desktop.ini
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*.tmp
+*.temp
+*~
+
+# Node modules (si utilisé plus tard)
+node_modules/
+package-lock.json
+
+# Environnements
+.env
+.env.local
