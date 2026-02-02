@@ -2606,25 +2606,125 @@ document.addEventListener('click', (e) => {
     }
 });
 
-async function initI18n() {
-    console.log('Initializing i18n...');
-    const isManual = localStorage.getItem('fg_manual') === 'true';
-    let savedLang = localStorage.getItem('fg_lang');
+/**
+ * Extract language code from URL
+ * Supports formats: /fr/, /ar/, ?lang=fr
+ */
+function getLanguageFromURL() {
+    // Check if language was injected by PHP (from URL parameter)
+    if (window.urlLang && translations[window.urlLang]) {
+        console.log('Language from PHP injection:', window.urlLang);
+        return window.urlLang;
+    }
 
-    // STRICT PERSISTENCE LOGIC:
-    // If we have a saved language that is valid, WE USE IT.
-    // We do NOT care about 'fg_manual' flag for the initial load. 
-    // The user's last choice (or default set previously) is paramount.
-    if (savedLang && translations[savedLang]) {
-        console.log('Using saved language preference:', savedLang);
-        setLang(savedLang, false); // false = don't overwrite manual flag, just apply
+    // Check URL path for language code (e.g., /fr/, /ar/)
+    const pathMatch = window.location.pathname.match(/^\/([a-z]{2,3})\/?/);
+    if (pathMatch && translations[pathMatch[1]]) {
+        console.log('Language from URL path:', pathMatch[1]);
+        return pathMatch[1];
+    }
+
+    // Check URL query parameter (e.g., ?lang=fr)
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    if (langParam && translations[langParam]) {
+        console.log('Language from URL parameter:', langParam);
+        return langParam;
+    }
+
+    return null;
+}
+
+/**
+ * Redirect to language-specific URL
+ * Example: redirectToLanguage('fr') -> /fr/
+ */
+function redirectToLanguage(lang) {
+    if (!translations[lang]) {
+        console.warn('Invalid language for redirect:', lang);
+        return;
+    }
+
+    // Get current path without language prefix
+    let currentPath = window.location.pathname;
+    const pathMatch = currentPath.match(/^\/([a-z]{2,3})(\/.*)?$/);
+
+    if (pathMatch) {
+        // Already has language prefix, replace it
+        currentPath = pathMatch[2] || '/';
+    }
+
+    // Ensure path starts with /
+    if (!currentPath.startsWith('/')) {
+        currentPath = '/' + currentPath;
+    }
+
+    // Build new URL with language prefix
+    const newPath = `/${lang}${currentPath === '/' ? '' : currentPath}`;
+    const newUrl = window.location.origin + newPath + window.location.search + window.location.hash;
+
+    console.log('Redirecting to:', newUrl);
+    window.location.href = newUrl;
+}
+
+/**
+ * Enhanced setLang that updates URL when language changes
+ */
+function setLangWithRedirect(lang, isUser = false) {
+    if (!translations[lang]) lang = 'en';
+
+    // Save language preference
+    localStorage.setItem('fg_lang', lang);
+    if (isUser) {
+        localStorage.setItem('fg_manual', 'true');
+    }
+
+    // Check if current URL already has the correct language
+    const urlLang = getLanguageFromURL();
+
+    if (urlLang !== lang && isUser) {
+        // User manually changed language, redirect to new language URL
+        redirectToLanguage(lang);
     } else {
-        console.log('No valid saved language, detecting...');
-        const detectedLang = await detectLanguageByIP();
-        console.log('Detected language:', detectedLang);
-        // Only here do we set it without the manual flag
-        setLang(detectedLang, false);
+        // Just apply the language without redirect
+        setLang(lang, isUser);
     }
 }
 
+async function initI18n() {
+    console.log('Initializing i18n with URL support...');
+
+    // Priority 1: Check URL for language parameter
+    const urlLang = getLanguageFromURL();
+    if (urlLang) {
+        console.log('Using language from URL:', urlLang);
+        setLang(urlLang, false);
+        // Save to localStorage for future visits
+        localStorage.setItem('fg_lang', urlLang);
+        return;
+    }
+
+    // Priority 2: Check localStorage for saved preference
+    const savedLang = localStorage.getItem('fg_lang');
+    if (savedLang && translations[savedLang]) {
+        console.log('Using saved language preference:', savedLang);
+        // Redirect to language-specific URL if not already there
+        if (!getLanguageFromURL()) {
+            redirectToLanguage(savedLang);
+        } else {
+            setLang(savedLang, false);
+        }
+        return;
+    }
+
+    // Priority 3: Detect from browser/IP
+    console.log('No saved language, detecting...');
+    const detectedLang = await detectLanguageByIP();
+    console.log('Detected language:', detectedLang);
+
+    // Redirect to detected language URL
+    redirectToLanguage(detectedLang);
+}
+
 document.addEventListener('DOMContentLoaded', initI18n);
+

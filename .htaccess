@@ -1,9 +1,20 @@
 DirectoryIndex index.php
 RewriteEngine On
+RewriteBase /
 
 # 1. FORCE HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 2. PASSWORD GATE ENABLED
+# 2. LANGUAGE URL ROUTING
+# Skip if requesting actual files or directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Handle language-specific URLs: /fr/, /ar/, /en/, etc.
+# Capture 2-3 letter language codes
+RewriteRule ^(en|fr|ar|es|zh|hi|bn|pt|ru|id|ur|de|ja|pcm|mr|te|ha|tr|pnb|sw|tl|ta|yue|wuu|fa|ko|th|jv|it|gu|ro|el|hu|cs|sv|da|fi|no)/?$ index.php?lang=$1 [L,QSA]
+RewriteRule ^(en|fr|ar|es|zh|hi|bn|pt|ru|id|ur|de|ja|pcm|mr|te|ha|tr|pnb|sw|tl|ta|yue|wuu|fa|ko|th|jv|it|gu|ro|el|hu|cs|sv|da|fi|no)/(.+)$ $2?lang=$1 [L,QSA]
+
+# 3. PASSWORD GATE ENABLED
 DirectoryIndex index.php

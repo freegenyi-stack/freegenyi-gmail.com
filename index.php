@@ -14,7 +14,19 @@ if (isset($_POST['password'])) {
 
 if (isset($_SESSION['site_unlocked']) && $_SESSION['site_unlocked'] === true) {
     // L'utilisateur est autorisé, on affiche le site principal
-    readfile("home.html");
+    // Capture language parameter from URL if present
+    $lang = isset($_GET['lang']) ? htmlspecialchars($_GET['lang']) : '';
+
+    // Read home.html and inject language parameter
+    $content = file_get_contents("home.html");
+
+    // Inject language parameter as a script before closing head tag
+    if ($lang) {
+        $langScript = "<script>window.urlLang = '$lang';</script>\n</head>";
+        $content = str_replace("</head>", $langScript, $content);
+    }
+
+    echo $content;
     exit();
 }
 ?>
