@@ -342,14 +342,14 @@ const translations = {
         'btn_signup': '免费开始',
         'btn_login': '登录',
         'login_welcome': '欢迎回来！', 'login_subtitle': '开启你的魔法世界。',
-        'login_fname_label': '名', 'login_fname_ph': 'Geny', 'login_lname_label': '姓', 'login_lname_ph': 'Spark',
-        'login_user_label': '用户名或电邮', 'login_user_ph': 'genius@freegeny.com', 'login_pass_label': '密码',
+        'login_fname_label': '名字', 'login_fname_ph': '杰尼', 'login_lname_label': '姓氏', 'login_lname_ph': '斯帕克',
+        'login_user_label': '用户名或电子邮箱', 'login_user_ph': 'genius@freegeny.com', 'login_pass_label': '密码',
         'login_forgot': '忘记密码？', 'btn_login_submit': '开始学习',
-        'login_or': '或连接方式', 'login_no_acc': '没有账号？', 'login_signup_link': '注册',
-        'login_legal_text': '加入即表示你同意我们的',
+        'login_or': '或连接方式', 'login_no_acc': '还没有账号？', 'login_signup_link': '注册',
+        'login_legal_text': '加入即表示您同意我们的',
         'login_has_acc': '已经是会员？', 'login_signin_link': '登录',
-        'signup_title': '创建账户', 'signup_subtitle': '加入 FreeGeny 大家庭。',
-        'btn_signup_submit': '现在加入',
+        'signup_title': '创建新账户', 'signup_subtitle': '加入 FreeGeny 大家庭。',
+        'btn_signup_submit': '立即加入',
         'reset_title': '重置密码', 'reset_subtitle': '在下方输入您的新密码。',
         'reset_pass_label': '新密码', 'reset_pass_ph': '最少 6 个字符',
         'reset_confirm_label': '确认密码', 'reset_confirm_ph': '重新输入密码',
@@ -360,7 +360,7 @@ const translations = {
         'db_welcome': '欢迎回来', 'db_explorers': '这是您的探险家们今天的活动。',
         'db_premium': '高级会员', 'db_accuracy': '准确率', 'db_session': '平均每日时长', 'db_consistency': '坚持程度',
         'db_velocity': '学习速度', 'db_mastery': '学科掌握情况', 'db_heatmap': '关注区域（错误热力图）',
-        'db_recent': '近期活动', 'tag_logic': '逻辑', 'tag_math': '数学', 'tag_memory': '记忆',
+        'db_recent': '近期活动', 'tag_logic': '逻辑', 'tag_math': '数学', 'tag_memory': '记忆力',
         'low_errors': '低错误', 'med_errors': '中等错误', 'high_errors': '高错误',
         'db_teachers': '教师', 'db_classes': '班级', 'db_search_ph': '搜索...',
         'tag_admin': '管理员', 'db_students': '学生',
@@ -2557,6 +2557,10 @@ function setLang(lang, isUser = false) {
         const translation = (translations[lang] && translations[lang][key])
             ? translations[lang][key]
             : (translations['en'][key] || key);
+
+        if (key === 'login_welcome') {
+            console.log(`[DEBUG] setLang: lang=${lang}, key=${key}, translation=${translation}, hasZh=${!!translations['zh']}, zhVal=${translations['zh'] ? translations['zh'][key] : 'N/A'}`);
+        }
 
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
             el.placeholder = translation;
