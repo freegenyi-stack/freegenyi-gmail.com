@@ -804,6 +804,7 @@
             const forgotLink = document.getElementById('forgot-link');
 
             if (isLoginMode) {
+                // UPDATE CONTENT
                 title.innerText = data['login_welcome'];
                 subtitle.innerText = data['login_subtitle'];
                 signupFields.style.display = 'none';
@@ -811,7 +812,15 @@
                 toggleBtn.innerText = data['login_signup_link'];
                 toggleText.innerText = data['login_no_acc'];
                 forgotLink.style.display = 'block';
+
+                // UPDATE ATTRIBUTES FOR PERSISTENCE
+                title.setAttribute('data-i18n', 'login_welcome');
+                subtitle.setAttribute('data-i18n', 'login_subtitle');
+                submitBtn.setAttribute('data-i18n', 'btn_login_submit');
+                toggleBtn.setAttribute('data-i18n', 'login_signup_link');
+                toggleText.setAttribute('data-i18n', 'login_no_acc');
             } else {
+                // UPDATE CONTENT
                 title.innerText = data['signup_title'];
                 subtitle.innerText = data['signup_subtitle'];
                 signupFields.style.display = 'block';
@@ -819,6 +828,13 @@
                 toggleBtn.innerText = data['login_signin_link'];
                 toggleText.innerText = data['login_has_acc'];
                 forgotLink.style.display = 'none';
+
+                // UPDATE ATTRIBUTES FOR PERSISTENCE
+                title.setAttribute('data-i18n', 'signup_title');
+                subtitle.setAttribute('data-i18n', 'signup_subtitle');
+                submitBtn.setAttribute('data-i18n', 'btn_signup_submit');
+                toggleBtn.setAttribute('data-i18n', 'login_signin_link');
+                toggleText.setAttribute('data-i18n', 'login_has_acc');
             }
         }
 
