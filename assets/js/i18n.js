@@ -440,7 +440,7 @@ const translations = {
         'err_pass_mismatch': 'পাসওয়ার্ড মিলছে না!', 'err_invalid_token': 'অবৈধ লিঙ্ক। টোকেন অনুপস্থিত।',
     },
     'pt': {
-        'nav_home': 'Início', 'nav_about': 'Sobre nós', 'nav_method': 'Método', 'nav_pricing': 'Preços', 'nav_contact': 'Contato', 'nav_login': 'Login',
+        'nav_home': 'Início', 'nav_about': 'Sobre nós', 'nav_method': 'Método', 'nav_pricing': 'Preços', 'nav_contact': 'Contato', 'nav_login': 'Entrar',
         'nav_app': 'O App', 'nav_parents': 'Para Pais', 'nav_schools': 'Para Escolas', 'nav_org': 'Organizações', 'nav_mission': 'Nossa Missão',
         'hero_title_1': 'Desbloqueando o', 'hero_title_2': 'Gênio Interior', 'hero_subtitle': 'A plataforma educacional mais avançada para crianças de 3 a 12 anos. Dominando Lógica, Matemática e Código através do jogo.',
         'btn_start_adventure': 'Comece a Aventura 🚀', 'btn_learn_more': 'Saiba Mais',
