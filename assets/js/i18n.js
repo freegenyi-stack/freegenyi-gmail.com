@@ -2631,6 +2631,13 @@ function setLang(lang, isUser = false) {
     localStorage.setItem('fg_lang', lang);
     if (isUser) {
         localStorage.setItem('fg_manual', 'true');
+
+        // Redirect to new URL if different
+        const currentUrlLang = getLanguageFromURL();
+        if (currentUrlLang !== lang) {
+            redirectToLanguage(lang);
+            return;
+        }
     }
 
     const rtlLangs = ['ar', 'fa', 'ur', 'dv', 'ps', 'sd', 'ug', 'yi', 'pnb'];
@@ -2760,29 +2767,7 @@ function redirectToLanguage(lang) {
     window.location.href = newUrl;
 }
 
-/**
- * Enhanced setLang that updates URL when language changes
- */
-function setLangWithRedirect(lang, isUser = false) {
-    if (!translations[lang]) lang = 'en';
 
-    // Save language preference
-    localStorage.setItem('fg_lang', lang);
-    if (isUser) {
-        localStorage.setItem('fg_manual', 'true');
-    }
-
-    // Check if current URL already has the correct language
-    const urlLang = getLanguageFromURL();
-
-    if (urlLang !== lang && isUser) {
-        // User manually changed language, redirect to new language URL
-        redirectToLanguage(lang);
-    } else {
-        // Just apply the language without redirect
-        setLang(lang, isUser);
-    }
-}
 
 async function initI18n() {
     console.log('Initializing i18n with URL routing...');
