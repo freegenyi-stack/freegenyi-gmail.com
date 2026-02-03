@@ -50,24 +50,27 @@
 
     <style>
         :root {
-            /* V1B: LIGHT PREMIUM - Sophisticated and high-contrast theme */
-            --primary: #09A1A1;
-            /* Deep Teal - Primary brand */
-            --primary-light: #B2DFDB;
-            /* Mint Mist - Light accent */
-            --secondary: #D396A6;
-            /* Rose Petal - Brand secondary */
-            --secondary-light: #F8BBD0;
-            /* Soft Pink - Light accent */
-            --accent-yellow: #FFD54F;
-            /* Golden Sun - Warm accent */
-            --success-green: #00897B;
-            --coral: #FFAB91;
-            --dark: #0F172A;
-            /* slate-900 - Deepest text */
-            --dark-light: #334155;
-            /* slate-700 - Mid text */
-            --light: #F8FAFC;
+            /* V2: HYBRID PLAYFUL PREMIUM - Clean for adults, Vibrant for kids */
+            --primary: #00C2CB;
+            /* Bright Sea Blue - Primary brand */
+            --primary-light: #E0F7FA;
+            /* Ice Blue - Light accent */
+            --secondary: #FF6B9D;
+            /* Warm Raspberry - Friendly accent */
+            --secondary-light: #FFE4EC;
+            /* Soft Rose - Light accent */
+            --accent-yellow: #FFD93D;
+            /* Sunshine - Encouragement/CTAs */
+            --success-green: #4ADE80;
+            /* Soft Green */
+            --coral: #FF8A65;
+            /* Warm Orange */
+            --dark: #334155;
+            /* Slate 700 - Softer than black for text */
+            --dark-light: #64748B;
+            /* Slate 500 - Secondary text */
+            --light: #F0F9FF;
+            /* Alice Blue - Fresh background */
             --white: #FFFFFF;
         }
 
@@ -79,17 +82,19 @@
             min-height: 100%;
             overflow-x: hidden;
             overflow-y: auto;
-            /* PREMIUM MESH GRADIENT EFFECT */
-            background:
-                radial-gradient(circle at 10% 10%, rgba(9, 161, 161, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 10%, rgba(211, 150, 166, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(255, 213, 79, 0.02) 0%, transparent 50%),
-                var(--white);
+            /* HYBRID FRESH BACKGROUND - Clean but not boring */
+            background: var(--light);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(0, 194, 203, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 107, 157, 0.08) 0%, transparent 40%);
             background-attachment: fixed;
             color: var(--dark);
             font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            /* Bolder by default for readability */
             display: block;
             scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
         /* Hero Section - Split Layout for Premium Feel */
@@ -137,9 +142,11 @@
             }
 
             50% {
-                transform: translateY(-20px) rotate(1deg);
+                transform: translateY(-25px) rotate(2deg);
             }
         }
+
+
 
         .mesh-gradient {
             position: fixed;
@@ -177,42 +184,42 @@
             filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.05));
         }
 
-        /* Premium Glass Cards with Under-Glow */
+        /* Playful Cards - Clean with "Pop" */
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 35px;
+            background: var(--white);
+            border: 2px solid rgba(0, 0, 0, 0.03);
+            /* Subtle definition */
+            border-radius: 30px;
             padding: 40px;
             margin: 20px auto;
             max-width: 1000px;
             box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.02),
-                inset 0 0 10px rgba(255, 255, 255, 0.5);
-            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+                0 10px 30px rgba(0, 0, 0, 0.04),
+                0 4px 6px rgba(0, 0, 0, 0.02);
+            /* Soft depth */
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            /* Bouncy transition */
             position: relative;
+            overflow: hidden;
         }
 
         .glass-card::before {
             content: '';
             position: absolute;
-            inset: -1px;
-            border-radius: 35px;
-            padding: 1px;
-            background: linear-gradient(135deg, var(--white), rgba(255, 255, 255, 0.1));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0.8;
         }
 
         .glass-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-8px) scale(1.01);
             box-shadow:
-                0 30px 60px rgba(0, 0, 0, 0.05),
-                0 0 20px rgba(9, 161, 161, 0.1);
+                0 20px 40px rgba(0, 0, 0, 0.08),
+                0 10px 15px rgba(0, 194, 203, 0.1);
+            border-color: rgba(0, 194, 203, 0.2);
         }
 
         .card-grid {
@@ -269,43 +276,42 @@
         }
 
         /* CTA Buttons */
+        /* CTA Buttons - Juicy & Clickable */
         .btn-premium {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--primary);
             color: var(--white);
-            padding: 16px 36px;
+            padding: 18px 40px;
             border-radius: 50px;
             font-weight: 900;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(9, 161, 161, 0.3);
-            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow:
+                0 4px 0 #009CA4,
+                /* 3D effect bottom border */
+                0 10px 20px rgba(0, 194, 203, 0.3);
+            font-size: 1.2rem;
             margin-top: 30px;
             border: none;
             position: relative;
-            overflow: hidden;
-        }
-
-        .btn-premium::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn-premium:hover::after {
-            left: 100%;
+            letter-spacing: 0.5px;
         }
 
         .btn-premium:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 15px 40px rgba(9, 161, 161, 0.5);
+            transform: translateY(-4px);
+            box-shadow:
+                0 6px 0 #009CA4,
+                0 15px 30px rgba(0, 194, 203, 0.4);
+            background: #00D5DF;
+        }
+
+        .btn-premium:active {
+            transform: translateY(2px);
+            box-shadow:
+                0 0 0 #009CA4,
+                0 5px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* Testimonials */
@@ -426,11 +432,12 @@
 
             0%,
             100% {
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
 
             50% {
-                transform: translateY(-15px);
+                transform: translateY(-15px) scale(1.02);
+                /* Breathe effect */
             }
         }
 
@@ -778,19 +785,16 @@
 
         .nav-links a:hover,
         .nav-links a.active {
+            background: rgba(0, 0, 0, 0.05);
+            /* Highlight pill instead of just color */
+            border-radius: 20px;
             color: var(--dark) !important;
             transform: translateY(-2px);
         }
 
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--primary);
-            transition: width 0.3s;
+            display: none;
+            /* Remove underline for pill style */
         }
 
         .nav-links a:hover::after {
