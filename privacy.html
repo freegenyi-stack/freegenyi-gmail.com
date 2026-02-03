@@ -5,535 +5,214 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - FreeGeny</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Titan+One&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Nunito:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
-    <script src="assets/js/i18n.js"></script>
+    <link href="assets/css/responsive.css" rel="stylesheet">
     <style>
         :root {
             --primary: #09A1A1;
-            --primary-light: #B2DFDB;
             --secondary: #D396A6;
             --dark: #0F172A;
-            --dark-light: #334155;
-            --white: #FFFFFF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --light: #F8FAFC;
         }
 
         body {
             font-family: 'Nunito', sans-serif;
-            background: radial-gradient(circle at 10% 10%, rgba(9, 161, 161, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 10%, rgba(211, 150, 166, 0.05) 0%, transparent 40%),
-                #FFFFFF;
             color: var(--dark);
-            line-height: 1.8;
+            background: var(--light);
+            margin: 0;
         }
 
-        .header {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(40px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        .legal-header {
             padding: 20px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .nav-logo {
             font-family: 'Titan One', cursive;
-            font-size: 28px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
             text-decoration: none;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(30px);
-            border-radius: 40px;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, var(--dark), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .last-updated {
-            color: var(--dark-light);
-            font-size: 0.9rem;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            font-size: 24px;
             color: var(--dark);
         }
 
-        p {
-            margin-bottom: 20px;
-            font-weight: 600;
+        .legal-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
         }
 
-        ul,
-        ol {
-            margin-left: 30px;
-            margin-bottom: 20px;
+        h1 {
+            font-family: 'Titan One', cursive;
+            color: var(--secondary);
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
         }
 
-        li {
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        strong {
-            color: var(--primary);
+        h2 {
+            color: var(--dark);
             font-weight: 900;
+            margin-top: 30px;
+        }
+
+        p,
+        li {
+            line-height: 1.8;
+            color: #475569;
+            font-size: 1.1rem;
         }
 
         .lang-selector {
             position: relative;
-            background: var(--white);
+            cursor: pointer;
             padding: 10px 20px;
             border-radius: 50px;
-            cursor: pointer;
+            background: #f1f5f9;
             font-weight: 800;
-            font-size: 14px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                margin: 20px;
-                padding: 30px 20px;
-                border-radius: 30px;
-            }
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            grid-template-columns: 1fr;
+            z-index: 100;
+        }
 
-            h1 {
-                font-size: 2rem;
-            }
+        .lang-selector.open .lang-dropdown {
+            display: grid;
+        }
 
-            h2 {
-                font-size: 1.5rem;
-            }
+        .lang-option {
+            padding: 10px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .lang-option:hover {
+            background: #e2e8f0;
+            color: var(--primary);
         }
     </style>
 </head>
 
 <body>
-    <div class="header">
+    <nav class="legal-header">
         <a href="home.html" class="nav-logo">FreeGeny</a>
-        <div class="lang-selector" onclick="window.location.href='home.html'">
-            <span id="currentLangDisplay">🌍 Change Language</span>
+        <div class="lang-selector" onclick="this.classList.toggle('open')">
+            <span id="currentLangDisplay">🌍 English</span>
+            <div class="lang-dropdown">
+                <!-- 24 Strategic Languages -->
+                <a href="#" class="lang-option" onclick="setLang('en')">🇺🇸 English</a>
+                <a href="#" class="lang-option" onclick="setLang('zh')">🇨🇳 中文</a>
+                <a href="#" class="lang-option" onclick="setLang('hi')">🇮🇳 हिन्दी</a>
+                <a href="#" class="lang-option" onclick="setLang('es')">🇪🇸 Español</a>
+                <a href="#" class="lang-option" onclick="setLang('ar')">🇸🇦 العربية</a>
+                <a href="#" class="lang-option" onclick="setLang('fr')">🇫🇷 Français</a>
+                <a href="#" class="lang-option" onclick="setLang('bn')">🇧🇩 বাংলা</a>
+                <a href="#" class="lang-option" onclick="setLang('pt')">🇵🇹 Português</a>
+                <a href="#" class="lang-option" onclick="setLang('ru')">🇷🇺 Русский</a>
+                <a href="#" class="lang-option" onclick="setLang('id')">🇮🇩 Indonesia</a>
+                <a href="#" class="lang-option" onclick="setLang('ur')">🇵🇰 اردو</a>
+                <a href="#" class="lang-option" onclick="setLang('de')">🇩🇪 Deutsch</a>
+                <a href="#" class="lang-option" onclick="setLang('ja')">🇯🇵 日本語</a>
+                <a href="#" class="lang-option" onclick="setLang('pcm')">🇳🇬 Nigerian Pidgin</a>
+                <a href="#" class="lang-option" onclick="setLang('sw')">🇹🇿 Kiswahili</a>
+                <a href="#" class="lang-option" onclick="setLang('tl')">🇵🇭 Tagalog</a>
+                <a href="#" class="lang-option" onclick="setLang('ha')">🇳🇬 Hausa</a>
+                <a href="#" class="lang-option" onclick="setLang('tr')">🇹🇷 Türkçe</a>
+                <a href="#" class="lang-option" onclick="setLang('pnb')">🇵🇰 Punjabi</a>
+                <a href="#" class="lang-option" onclick="setLang('fa')">🇮🇷 فارسی</a>
+                <a href="#" class="lang-option" onclick="setLang('ko')">🇰🇷 한국어</a>
+                <a href="#" class="lang-option" onclick="setLang('th')">🇹🇭 ไทย</a>
+                <a href="#" class="lang-option" onclick="setLang('jv')">🇮🇩 Basa Jawa</a>
+                <a href="#" class="lang-option" onclick="setLang('it')">🇮🇹 Italiano</a>
+                <a href="#" class="lang-option" onclick="setLang('vi')">🇻🇳 Tiếng Việt</a>
+                <a href="#" class="lang-option" onclick="setLang('nl')">🇳🇱 Nederlands</a>
+                <a href="#" class="lang-option" onclick="setLang('pl')">🇵🇱 Polski</a>
+                <a href="#" class="lang-option" onclick="setLang('uk')">🇺🇦 Українська</a>
+                <a href="#" class="lang-option" onclick="setLang('ca')">🇪🇸 Català</a>
+                <a href="#" class="lang-option" onclick="setLang('ga')">🇮🇪 Gaeilge</a>
+                <a href="#" class="lang-option" onclick="setLang('sv')">🇸🇪 Svenska</a>
+                <a href="#" class="lang-option" onclick="setLang('da')">🇩🇰 Dansk</a>
+                <a href="#" class="lang-option" onclick="setLang('no')">🇳🇴 Norsk</a>
+                <a href="#" class="lang-option" onclick="setLang('ro')">🇷🇴 Română</a>
+                <a href="#" class="lang-option" onclick="setLang('el')">🇬🇷 Ελληνικά</a>
+                <a href="#" class="lang-option" onclick="setLang('cs')">🇨🇿 Čeština</a>
+                <a href="#" class="lang-option" onclick="setLang('fi')">🇫🇮 Suomi</a>
+                <a href="#" class="lang-option" onclick="setLang('hu')">🇭🇺 Magyar</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="legal-container">
+        <h1 data-i18n="privacy_title">Privacy Policy</h1>
+
+        <div id="legal-content">
+            <!-- PLACEHOLDER CONTENT -->
+            <p><strong>Last Updated:</strong> February 2026</p>
+
+            <div
+                style="background: #ecfdf5; padding: 20px; border-radius: 15px; border-left: 5px solid #10b981; margin-bottom: 30px;">
+                <strong style="color: #047857;">For Parents of children under 13:</strong>
+                <p style="margin-bottom:0; font-size: 0.95rem;">Please review our specific COPPA disclosure.</p>
+            </div>
+
+            <h2>1. Information Collection</h2>
+            <p>[Insert data collection details here]</p>
+
+            <h2>2. How We Use Data</h2>
+            <p>[Insert usage details here]</p>
+
+            <h2>3. Children's Privacy (COPPA & GDPR-K)</h2>
+            <p>[Insert child protection clauses here]</p>
+
+            <h2>4. Contact Us</h2>
+            <p>If you have any questions, please contact us at: <strong>legal@freegenyi.com</strong></p>
         </div>
     </div>
 
-    <div class="container">
-        <h1 id="page-title">Privacy Policy</h1>
-        <p class="last-updated" id="last-updated">Last Updated: January 31, 2026</p>
-
-        <div id="content">
-            <!-- Content will be dynamically loaded based on language -->
-        </div>
-    </div>
-
+    <script src="assets/js/i18n.js"></script>
     <script>
-        const privacyContent = {
-            'en': {
-                title: 'Privacy Policy',
-                lastUpdated: 'Last Updated: January 31, 2026',
-                content: `
-                    <h2>1. Introduction</h2>
-                    <p>FreeGeny ("we", "our", or "us") is committed to protecting the privacy of children and their families. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Platform.</p>
-
-                    <h2>2. Information We Collect</h2>
-                    <h3>2.1 Information from Parents/Guardians</h3>
-                    <ul>
-                        <li>Name and email address</li>
-                        <li>Payment information (processed securely by third-party providers)</li>
-                        <li>Account preferences and settings</li>
-                    </ul>
-
-                    <h3>2.2 Information from Children</h3>
-                    <p>We collect minimal information from children, including:</p>
-                    <ul>
-                        <li>First name (no last name required)</li>
-                        <li>Age range</li>
-                        <li>Learning progress and activity data</li>
-                        <li>Interaction patterns (for adaptive learning)</li>
-                    </ul>
-
-                    <h2>3. How We Use Your Information</h2>
-                    <p>We use the collected information to:</p>
-                    <ul>
-                        <li>Provide and improve our educational services</li>
-                        <li>Personalize learning experiences</li>
-                        <li>Send progress reports to parents</li>
-                        <li>Ensure platform security and prevent fraud</li>
-                        <li>Comply with legal obligations</li>
-                    </ul>
-
-                    <h2>4. COPPA Compliance</h2>
-                    <p>FreeGeny is fully compliant with the Children's Online Privacy Protection Act (COPPA). We:</p>
-                    <ul>
-                        <li>Obtain verifiable parental consent before collecting children's data</li>
-                        <li>Provide parents with access to their child's information</li>
-                        <li>Allow parents to request deletion of their child's data</li>
-                        <li>Never share children's data with third parties for marketing</li>
-                    </ul>
-
-                    <h2>5. Data Security</h2>
-                    <p>We implement industry-standard security measures including:</p>
-                    <ul>
-                        <li>End-to-end encryption for data transmission</li>
-                        <li>Secure data storage with regular backups</li>
-                        <li>Regular security audits and penetration testing</li>
-                        <li>Strict access controls and employee training</li>
-                    </ul>
-
-                    <h2>6. Data Retention</h2>
-                    <p>We retain your information only as long as necessary to provide our services and comply with legal obligations. Parents may request deletion of their child's account and associated data at any time.</p>
-
-                    <h2>7. Third-Party Services</h2>
-                    <p>We may use trusted third-party services for:</p>
-                    <ul>
-                        <li>Payment processing (Stripe, PayPal)</li>
-                        <li>Analytics (anonymized data only)</li>
-                        <li>Cloud infrastructure (AWS, Google Cloud)</li>
-                    </ul>
-                    <p>These providers are contractually obligated to protect your data and use it only for specified purposes.</p>
-
-                    <h2>8. Your Rights</h2>
-                    <p>You have the right to:</p>
-                    <ul>
-                        <li>Access your personal information</li>
-                        <li>Correct inaccurate data</li>
-                        <li>Request deletion of your data</li>
-                        <li>Opt-out of marketing communications</li>
-                        <li>Export your data in a portable format</li>
-                    </ul>
-
-                    <h2>9. International Data Transfers</h2>
-                    <p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your data in accordance with this Privacy Policy.</p>
-
-                    <h2>10. Changes to This Policy</h2>
-                    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes via email or through the Platform.</p>
-
-                    <h2>11. Contact Us</h2>
-                    <p>For privacy-related questions or to exercise your rights, contact us at:</p>
-                    <p><strong>Email:</strong> privacy@freegeny.com</p>
-                    <p><strong>Address:</strong> FreeGeny Privacy Team, [Address]</p>
-                `
-            },
-            'fr': {
-                title: 'Politique de Confidentialité',
-                lastUpdated: 'Dernière mise à jour : 31 janvier 2026',
-                content: `
-                    <h2>1. Introduction</h2>
-                    <p>FreeGeny (« nous », « notre » ou « nos ») s'engage à protéger la vie privée des enfants et de leurs familles. Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez notre Plateforme.</p>
-
-                    <h2>2. Informations que Nous Collectons</h2>
-                    <h3>2.1 Informations des Parents/Tuteurs</h3>
-                    <ul>
-                        <li>Nom et adresse e-mail</li>
-                        <li>Informations de paiement (traitées en toute sécurité par des fournisseurs tiers)</li>
-                        <li>Préférences et paramètres du compte</li>
-                    </ul>
-
-                    <h3>2.2 Informations des Enfants</h3>
-                    <p>Nous collectons un minimum d'informations auprès des enfants, notamment :</p>
-                    <ul>
-                        <li>Prénom (pas de nom de famille requis)</li>
-                        <li>Tranche d'âge</li>
-                        <li>Progrès d'apprentissage et données d'activité</li>
-                        <li>Modèles d'interaction (pour l'apprentissage adaptatif)</li>
-                    </ul>
-
-                    <h2>3. Comment Nous Utilisons Vos Informations</h2>
-                    <p>Nous utilisons les informations collectées pour :</p>
-                    <ul>
-                        <li>Fournir et améliorer nos services éducatifs</li>
-                        <li>Personnaliser les expériences d'apprentissage</li>
-                        <li>Envoyer des rapports de progrès aux parents</li>
-                        <li>Assurer la sécurité de la plateforme et prévenir la fraude</li>
-                        <li>Se conformer aux obligations légales</li>
-                    </ul>
-
-                    <h2>4. Conformité COPPA</h2>
-                    <p>FreeGeny est entièrement conforme à la loi sur la protection de la vie privée des enfants en ligne (COPPA). Nous :</p>
-                    <ul>
-                        <li>Obtenons le consentement parental vérifiable avant de collecter les données des enfants</li>
-                        <li>Fournissons aux parents l'accès aux informations de leur enfant</li>
-                        <li>Permettons aux parents de demander la suppression des données de leur enfant</li>
-                        <li>Ne partageons jamais les données des enfants avec des tiers à des fins marketing</li>
-                    </ul>
-
-                    <h2>5. Sécurité des Données</h2>
-                    <p>Nous mettons en œuvre des mesures de sécurité conformes aux normes de l'industrie, notamment :</p>
-                    <ul>
-                        <li>Chiffrement de bout en bout pour la transmission des données</li>
-                        <li>Stockage sécurisé des données avec sauvegardes régulières</li>
-                        <li>Audits de sécurité réguliers et tests de pénétration</li>
-                        <li>Contrôles d'accès stricts et formation des employés</li>
-                    </ul>
-
-                    <h2>6. Conservation des Données</h2>
-                    <p>Nous conservons vos informations uniquement aussi longtemps que nécessaire pour fournir nos services et nous conformer aux obligations légales. Les parents peuvent demander la suppression du compte de leur enfant et des données associées à tout moment.</p>
-
-                    <h2>7. Services Tiers</h2>
-                    <p>Nous pouvons utiliser des services tiers de confiance pour :</p>
-                    <ul>
-                        <li>Traitement des paiements (Stripe, PayPal)</li>
-                        <li>Analyses (données anonymisées uniquement)</li>
-                        <li>Infrastructure cloud (AWS, Google Cloud)</li>
-                    </ul>
-                    <p>Ces fournisseurs sont contractuellement tenus de protéger vos données et de les utiliser uniquement aux fins spécifiées.</p>
-
-                    <h2>8. Vos Droits</h2>
-                    <p>Vous avez le droit de :</p>
-                    <ul>
-                        <li>Accéder à vos informations personnelles</li>
-                        <li>Corriger les données inexactes</li>
-                        <li>Demander la suppression de vos données</li>
-                        <li>Vous désabonner des communications marketing</li>
-                        <li>Exporter vos données dans un format portable</li>
-                    </ul>
-
-                    <h2>9. Transferts Internationaux de Données</h2>
-                    <p>Vos informations peuvent être transférées et traitées dans des pays autres que le vôtre. Nous veillons à ce que des garanties appropriées soient en place pour protéger vos données conformément à cette Politique de Confidentialité.</p>
-
-                    <h2>10. Modifications de Cette Politique</h2>
-                    <p>Nous pouvons mettre à jour cette Politique de Confidentialité de temps à autre. Nous vous informerons des changements importants par e-mail ou via la Plateforme.</p>
-
-                    <h2>11. Nous Contacter</h2>
-                    <p>Pour les questions relatives à la confidentialité ou pour exercer vos droits, contactez-nous à :</p>
-                    <p><strong>E-mail :</strong> privacy@freegeny.com</p>
-                    <p><strong>Adresse :</strong> Équipe Confidentialité FreeGeny, [Adresse]</p>
-                `
-            },
-            'ar': {
-                title: 'سياسة الخصوصية',
-                lastUpdated: 'آخر تحديث: 31 يناير 2026',
-                content: `
-                    <h2>1. المقدمة</h2>
-                    <p>تلتزم FreeGeny ("نحن" أو "لنا") بحماية خصوصية الأطفال وعائلاتهم. توضح سياسة الخصوصية هذه كيفية جمع معلوماتك واستخدامها والكشف عنها وحمايتها عند استخدام منصتنا.</p>
-
-                    <h2>2. المعلومات التي نجمعها</h2>
-                    <h3>2.1 المعلومات من الآباء/الأوصياء</h3>
-                    <ul>
-                        <li>الاسم وعنوان البريد الإلكتروني</li>
-                        <li>معلومات الدفع (تتم معالجتها بشكل آمن من قبل مزودي الطرف الثالث)</li>
-                        <li>تفضيلات وإعدادات الحساب</li>
-                    </ul>
-
-                    <h3>2.2 المعلومات من الأطفال</h3>
-                    <p>نجمع الحد الأدنى من المعلومات من الأطفال، بما في ذلك:</p>
-                    <ul>
-                        <li>الاسم الأول (لا يلزم اسم العائلة)</li>
-                        <li>الفئة العمرية</li>
-                        <li>تقدم التعلم وبيانات النشاط</li>
-                        <li>أنماط التفاعل (للتعلم التكيفي)</li>
-                    </ul>
-
-                    <h2>3. كيف نستخدم معلوماتك</h2>
-                    <p>نستخدم المعلومات المجمعة من أجل:</p>
-                    <ul>
-                        <li>توفير وتحسين خدماتنا التعليمية</li>
-                        <li>تخصيص تجارب التعلم</li>
-                        <li>إرسال تقارير التقدم إلى الآباء</li>
-                        <li>ضمان أمان المنصة ومنع الاحتيال</li>
-                        <li>الامتثال للالتزامات القانونية</li>
-                    </ul>
-
-                    <h2>4. الامتثال لقانون COPPA</h2>
-                    <p>تمتثل FreeGeny بالكامل لقانون حماية خصوصية الأطفال على الإنترنت (COPPA). نحن:</p>
-                    <ul>
-                        <li>نحصل على موافقة الوالدين القابلة للتحقق قبل جمع بيانات الأطفال</li>
-                        <li>نوفر للآباء إمكانية الوصول إلى معلومات أطفالهم</li>
-                        <li>نسمح للآباء بطلب حذف بيانات أطفالهم</li>
-                        <li>لا نشارك أبدًا بيانات الأطفال مع أطراف ثالثة لأغراض تسويقية</li>
-                    </ul>
-
-                    <h2>5. أمان البيانات</h2>
-                    <p>نطبق تدابير أمنية متوافقة مع معايير الصناعة بما في ذلك:</p>
-                    <ul>
-                        <li>التشفير من طرف إلى طرف لنقل البيانات</li>
-                        <li>تخزين آمن للبيانات مع نسخ احتياطية منتظمة</li>
-                        <li>عمليات تدقيق أمنية منتظمة واختبارات الاختراق</li>
-                        <li>ضوابط وصول صارمة وتدريب الموظفين</li>
-                    </ul>
-
-                    <h2>6. الاحتفاظ بالبيانات</h2>
-                    <p>نحتفظ بمعلوماتك فقط طالما كان ذلك ضروريًا لتقديم خدماتنا والامتثال للالتزامات القانونية. يمكن للآباء طلب حذف حساب طفلهم والبيانات المرتبطة به في أي وقت.</p>
-
-                    <h2>7. خدمات الطرف الثالث</h2>
-                    <p>قد نستخدم خدمات طرف ثالث موثوقة من أجل:</p>
-                    <ul>
-                        <li>معالجة الدفع (Stripe، PayPal)</li>
-                        <li>التحليلات (بيانات مجهولة المصدر فقط)</li>
-                        <li>البنية التحتية السحابية (AWS، Google Cloud)</li>
-                    </ul>
-                    <p>هؤلاء المزودون ملزمون تعاقديًا بحماية بياناتك واستخدامها فقط للأغراض المحددة.</p>
-
-                    <h2>8. حقوقك</h2>
-                    <p>لديك الحق في:</p>
-                    <ul>
-                        <li>الوصول إلى معلوماتك الشخصية</li>
-                        <li>تصحيح البيانات غير الدقيقة</li>
-                        <li>طلب حذف بياناتك</li>
-                        <li>إلغاء الاشتراك في الاتصالات التسويقية</li>
-                        <li>تصدير بياناتك بتنسيق محمول</li>
-                    </ul>
-
-                    <h2>9. نقل البيانات الدولية</h2>
-                    <p>قد يتم نقل معلوماتك ومعالجتها في بلدان غير بلدك. نضمن وجود ضمانات مناسبة لحماية بياناتك وفقًا لسياسة الخصوصية هذه.</p>
-
-                    <h2>10. التغييرات على هذه السياسة</h2>
-                    <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سنخطرك بالتغييرات الهامة عبر البريد الإلكتروني أو من خلال المنصة.</p>
-
-                    <h2>11. اتصل بنا</h2>
-                    <p>للأسئلة المتعلقة بالخصوصية أو لممارسة حقوقك، اتصل بنا على:</p>
-                    <p><strong>البريد الإلكتروني:</strong> privacy@freegeny.com</p>
-                    <p><strong>العنوان:</strong> فريق الخصوصية FreeGeny، [العنوان]</p>
-                `
-            },
-            'es': {
-                title: 'Política de Privacidad',
-                lastUpdated: 'Última actualización: 31 de enero de 2026',
-                content: `
-                    <h2>1. Introducción</h2>
-                    <p>FreeGeny ("nosotros", "nuestro" o "nos") está comprometido a proteger la privacidad de los niños y sus familias. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando usa nuestra Plataforma.</p>
-
-                    <h2>2. Información que Recopilamos</h2>
-                    <h3>2.1 Información de Padres/Tutores</h3>
-                    <ul>
-                        <li>Nombre y dirección de correo electrónico</li>
-                        <li>Información de pago (procesada de forma segura por proveedores terceros)</li>
-                        <li>Preferencias y configuraciones de cuenta</li>
-                    </ul>
-
-                    <h3>2.2 Información de Niños</h3>
-                    <p>Recopilamos información mínima de los niños, incluyendo:</p>
-                    <ul>
-                        <li>Nombre (no se requiere apellido)</li>
-                        <li>Rango de edad</li>
-                        <li>Progreso de aprendizaje y datos de actividad</li>
-                        <li>Patrones de interacción (para aprendizaje adaptativo)</li>
-                    </ul>
-
-                    <h2>3. Cómo Usamos Su Información</h2>
-                    <p>Usamos la información recopilada para:</p>
-                    <ul>
-                        <li>Proporcionar y mejorar nuestros servicios educativos</li>
-                        <li>Personalizar experiencias de aprendizaje</li>
-                        <li>Enviar informes de progreso a los padres</li>
-                        <li>Garantizar la seguridad de la plataforma y prevenir fraudes</li>
-                        <li>Cumplir con obligaciones legales</li>
-                    </ul>
-
-                    <h2>4. Cumplimiento de COPPA</h2>
-                    <p>FreeGeny cumple completamente con la Ley de Protección de la Privacidad Infantil en Línea (COPPA). Nosotros:</p>
-                    <ul>
-                        <li>Obtenemos consentimiento parental verificable antes de recopilar datos de niños</li>
-                        <li>Proporcionamos a los padres acceso a la información de sus hijos</li>
-                        <li>Permitimos a los padres solicitar la eliminación de los datos de sus hijos</li>
-                        <li>Nunca compartimos datos de niños con terceros con fines de marketing</li>
-                    </ul>
-
-                    <h2>5. Seguridad de Datos</h2>
-                    <p>Implementamos medidas de seguridad estándar de la industria que incluyen:</p>
-                    <ul>
-                        <li>Cifrado de extremo a extremo para la transmisión de datos</li>
-                        <li>Almacenamiento seguro de datos con copias de seguridad regulares</li>
-                        <li>Auditorías de seguridad regulares y pruebas de penetración</li>
-                        <li>Controles de acceso estrictos y capacitación de empleados</li>
-                    </ul>
-
-                    <h2>6. Retención de Datos</h2>
-                    <p>Retenemos su información solo el tiempo necesario para proporcionar nuestros servicios y cumplir con las obligaciones legales. Los padres pueden solicitar la eliminación de la cuenta de su hijo y los datos asociados en cualquier momento.</p>
-
-                    <h2>7. Servicios de Terceros</h2>
-                    <p>Podemos usar servicios de terceros confiables para:</p>
-                    <ul>
-                        <li>Procesamiento de pagos (Stripe, PayPal)</li>
-                        <li>Análisis (solo datos anonimizados)</li>
-                        <li>Infraestructura en la nube (AWS, Google Cloud)</li>
-                    </ul>
-                    <p>Estos proveedores están contractualmente obligados a proteger sus datos y usarlos solo para los fines especificados.</p>
-
-                    <h2>8. Sus Derechos</h2>
-                    <p>Usted tiene derecho a:</p>
-                    <ul>
-                        <li>Acceder a su información personal</li>
-                        <li>Corregir datos inexactos</li>
-                        <li>Solicitar la eliminación de sus datos</li>
-                        <li>Optar por no recibir comunicaciones de marketing</li>
-                        <li>Exportar sus datos en un formato portable</li>
-                    </ul>
-
-                    <h2>9. Transferencias Internacionales de Datos</h2>
-                    <p>Su información puede ser transferida y procesada en países distintos al suyo. Nos aseguramos de que existan salvaguardas apropiadas para proteger sus datos de acuerdo con esta Política de Privacidad.</p>
-
-                    <h2>10. Cambios a Esta Política</h2>
-                    <p>Podemos actualizar esta Política de Privacidad de vez en cuando. Le notificaremos de cambios significativos por correo electrónico o a través de la Plataforma.</p>
-
-                    <h2>11. Contáctenos</h2>
-                    <p>Para preguntas relacionadas con la privacidad o para ejercer sus derechos, contáctenos en:</p>
-                    <p><strong>Correo electrónico:</strong> privacy@freegeny.com</p>
-                    <p><strong>Dirección:</strong> Equipo de Privacidad de FreeGeny, [Dirección]</p>
-                `
-            }
-        };
-
-        function loadPrivacy() {
-            const lang = localStorage.getItem('fg_lang') || 'en';
-            const content = privacyContent[lang] || privacyContent['en'];
-
-            document.getElementById('page-title').textContent = content.title;
-            document.getElementById('last-updated').textContent = content.lastUpdated;
-            document.getElementById('content').innerHTML = content.content;
-
-            // Set RTL for Arabic
-            if (lang === 'ar' || lang === 'ur' || lang === 'fa') {
-                document.documentElement.dir = 'rtl';
-                document.body.style.direction = 'rtl';
-            } else {
-                document.documentElement.dir = 'ltr';
-                document.body.style.direction = 'ltr';
-            }
+        // Custom setLang for legal pages
+        function setLang(code) {
+            localStorage.setItem('fg_lang', code);
+            location.reload();
         }
 
-        document.addEventListener('DOMContentLoaded', loadPrivacy);
+        // Simple display update
+        const langCode = localStorage.getItem('fg_lang') || 'en';
+        const displayMap = {
+            'en': '🌍 English', 'fr': '🌍 Français', 'ar': '🌍 العربية', 'es': '🌍 Español'
+        };
+        document.getElementById('currentLangDisplay').innerText = displayMap[langCode] || '🌍 Link';
+
+        // Handle RTL
+        if (['ar', 'ur', 'fa', 'pnb', 'ha'].includes(langCode)) {
+            document.body.dir = 'rtl';
+            document.querySelector('.nav-logo').style.marginLeft = '20px';
+        }
     </script>
 </body>
 

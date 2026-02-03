@@ -5,190 +5,211 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms & Conditions - FreeGeny</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Titan+One&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Nunito:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
-    <script src="assets/js/i18n.js"></script>
+    <link href="assets/css/responsive.css" rel="stylesheet">
     <style>
         :root {
             --primary: #09A1A1;
-            --primary-light: #B2DFDB;
             --secondary: #D396A6;
             --dark: #0F172A;
-            --dark-light: #334155;
-            --white: #FFFFFF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --light: #F8FAFC;
         }
 
         body {
             font-family: 'Nunito', sans-serif;
-            background: radial-gradient(circle at 10% 10%, rgba(9, 161, 161, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 10%, rgba(211, 150, 166, 0.05) 0%, transparent 40%),
-                #FFFFFF;
             color: var(--dark);
-            line-height: 1.8;
+            background: var(--light);
+            margin: 0;
         }
 
-        .header {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(40px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        .legal-header {
             padding: 20px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .nav-logo {
             font-family: 'Titan One', cursive;
-            font-size: 28px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
             text-decoration: none;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(30px);
-            border-radius: 40px;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, var(--dark), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .last-updated {
-            color: var(--dark-light);
-            font-size: 0.9rem;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            font-size: 24px;
             color: var(--dark);
         }
 
-        p {
-            margin-bottom: 20px;
-            font-weight: 600;
+        .legal-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
         }
 
-        ul,
-        ol {
-            margin-left: 30px;
-            margin-bottom: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        strong {
+        h1 {
+            font-family: 'Titan One', cursive;
             color: var(--primary);
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--dark);
             font-weight: 900;
+            margin-top: 30px;
+        }
+
+        p,
+        li {
+            line-height: 1.8;
+            color: #475569;
+            font-size: 1.1rem;
         }
 
         .lang-selector {
             position: relative;
-            background: var(--white);
+            cursor: pointer;
             padding: 10px 20px;
             border-radius: 50px;
-            cursor: pointer;
+            background: #f1f5f9;
             font-weight: 800;
-            font-size: 14px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                margin: 20px;
-                padding: 30px 20px;
-                border-radius: 30px;
-            }
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            grid-template-columns: 1fr;
+            z-index: 100;
+        }
 
-            h1 {
-                font-size: 2rem;
-            }
+        .lang-selector.open .lang-dropdown {
+            display: grid;
+        }
 
-            h2 {
-                font-size: 1.5rem;
-            }
+        .lang-option {
+            padding: 10px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .lang-option:hover {
+            background: #e2e8f0;
+            color: var(--primary);
         }
     </style>
 </head>
 
 <body>
-    <div class="header">
+    <nav class="legal-header">
         <a href="home.html" class="nav-logo">FreeGeny</a>
-        <div class="lang-selector" onclick="window.location.href='home.html'">
-            <span id="currentLangDisplay">🌍 Change Language</span>
+        <div class="lang-selector" onclick="this.classList.toggle('open')">
+            <span id="currentLangDisplay">🌍 English</span>
+            <div class="lang-dropdown">
+                <!-- 24 Strategic Languages -->
+                <a href="#" class="lang-option" onclick="setLang('en')">🇺🇸 English</a>
+                <a href="#" class="lang-option" onclick="setLang('zh')">🇨🇳 中文</a>
+                <a href="#" class="lang-option" onclick="setLang('hi')">🇮🇳 हिन्दी</a>
+                <a href="#" class="lang-option" onclick="setLang('es')">🇪🇸 Español</a>
+                <a href="#" class="lang-option" onclick="setLang('ar')">🇸🇦 العربية</a>
+                <a href="#" class="lang-option" onclick="setLang('fr')">🇫🇷 Français</a>
+                <a href="#" class="lang-option" onclick="setLang('bn')">🇧🇩 বাংলা</a>
+                <a href="#" class="lang-option" onclick="setLang('pt')">🇵🇹 Português</a>
+                <a href="#" class="lang-option" onclick="setLang('ru')">🇷🇺 Русский</a>
+                <a href="#" class="lang-option" onclick="setLang('id')">🇮🇩 Indonesia</a>
+                <a href="#" class="lang-option" onclick="setLang('ur')">🇵🇰 اردو</a>
+                <a href="#" class="lang-option" onclick="setLang('de')">🇩🇪 Deutsch</a>
+                <a href="#" class="lang-option" onclick="setLang('ja')">🇯🇵 日本語</a>
+                <a href="#" class="lang-option" onclick="setLang('pcm')">🇳🇬 Nigerian Pidgin</a>
+                <a href="#" class="lang-option" onclick="setLang('sw')">🇹🇿 Kiswahili</a>
+                <a href="#" class="lang-option" onclick="setLang('tl')">🇵🇭 Tagalog</a>
+                <a href="#" class="lang-option" onclick="setLang('ha')">🇳🇬 Hausa</a>
+                <a href="#" class="lang-option" onclick="setLang('tr')">🇹🇷 Türkçe</a>
+                <a href="#" class="lang-option" onclick="setLang('pnb')">🇵🇰 Punjabi</a>
+                <a href="#" class="lang-option" onclick="setLang('fa')">🇮🇷 فارسی</a>
+                <a href="#" class="lang-option" onclick="setLang('ko')">🇰🇷 한국어</a>
+                <a href="#" class="lang-option" onclick="setLang('th')">🇹🇭 ไทย</a>
+                <a href="#" class="lang-option" onclick="setLang('jv')">🇮🇩 Basa Jawa</a>
+                <a href="#" class="lang-option" onclick="setLang('it')">🇮🇹 Italiano</a>
+                <a href="#" class="lang-option" onclick="setLang('vi')">🇻🇳 Tiếng Việt</a>
+                <a href="#" class="lang-option" onclick="setLang('nl')">🇳🇱 Nederlands</a>
+                <a href="#" class="lang-option" onclick="setLang('pl')">🇵🇱 Polski</a>
+                <a href="#" class="lang-option" onclick="setLang('uk')">🇺🇦 Українська</a>
+                <a href="#" class="lang-option" onclick="setLang('ca')">🇪🇸 Català</a>
+                <a href="#" class="lang-option" onclick="setLang('ga')">🇮🇪 Gaeilge</a>
+                <a href="#" class="lang-option" onclick="setLang('sv')">🇸🇪 Svenska</a>
+                <a href="#" class="lang-option" onclick="setLang('da')">🇩🇰 Dansk</a>
+                <a href="#" class="lang-option" onclick="setLang('no')">🇳🇴 Norsk</a>
+                <a href="#" class="lang-option" onclick="setLang('ro')">🇷🇴 Română</a>
+                <a href="#" class="lang-option" onclick="setLang('el')">🇬🇷 Ελληνικά</a>
+                <a href="#" class="lang-option" onclick="setLang('cs')">🇨🇿 Čeština</a>
+                <a href="#" class="lang-option" onclick="setLang('fi')">🇫🇮 Suomi</a>
+                <a href="#" class="lang-option" onclick="setLang('hu')">🇭🇺 Magyar</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="legal-container">
+        <h1 data-i18n="terms_title">Terms & Conditions</h1>
+
+        <div id="legal-content">
+            <!-- PLACEHOLDER CONTENT -->
+            <p><strong>Last Updated:</strong> February 2026</p>
+
+            <h2>1. Introduction</h2>
+            <p>[Insert introduction text here in the selected language]</p>
+
+            <h2>2. User Accounts & COPPA Compliance</h2>
+            <p>[Insert text about child accounts and parental consent here]</p>
+
+            <h2>3. Intellectual Property</h2>
+            <p>[Insert IP rights text here]</p>
+
+            <h2>4. Termination</h2>
+            <p>[Insert termination clauses here]</p>
         </div>
     </div>
 
-    <div class="container">
-        <h1 id="page-title">Terms & Conditions</h1>
-        <p class="last-updated" id="last-updated">Last Updated: January 31, 2026</p>
-
-        <div id="content">
-            <!-- Content will be dynamically loaded based on language -->
-        </div>
-    </div>
-
-    <script src="assets/js/terms_content.js"></script>
+    <script src="assets/js/i18n.js"></script>
     <script>
-        function loadTerms() {
-            const lang = localStorage.getItem('fg_lang') || 'en';
-            const content = window.termsContent[lang] || window.termsContent['en'];
-
-            document.getElementById('page-title').textContent = content.title;
-            document.getElementById('last-updated').textContent = content.lastUpdated;
-            document.getElementById('content').innerHTML = content.content;
-
-            // Set RTL for RTL languages
-            const rtlLangs = ['ar', 'fa', 'he', 'ur', 'dv', 'ps', 'sd', 'ug', 'yi', 'pnb'];
-            if (rtlLangs.includes(lang)) {
-                document.documentElement.dir = 'rtl';
-                document.body.style.direction = 'rtl';
-            } else {
-                document.documentElement.dir = 'ltr';
-                document.body.style.direction = 'ltr';
-            }
+        // Custom setLang for legal pages to avoid redirect loops
+        function setLang(code) {
+            localStorage.setItem('fg_lang', code);
+            // In a real scenario, this would load the specific MD/HTML file for that language
+            // For now, we just update the display logic or reload
+            location.reload();
         }
 
-        document.addEventListener('DOMContentLoaded', loadTerms);
+        // Simple display update
+        const langCode = localStorage.getItem('fg_lang') || 'en';
+        const displayMap = {
+            'en': '🌍 English', 'fr': '🌍 Français', 'ar': '🌍 العربية', 'es': '🌍 Español'
+            // Add other mappings as needed
+        };
+        document.getElementById('currentLangDisplay').innerText = displayMap[langCode] || '🌍 Link';
+
+        // Handle RTL
+        if (['ar', 'ur', 'fa', 'pnb', 'ha'].includes(langCode)) {
+            document.body.dir = 'rtl';
+            document.querySelector('.nav-logo').style.marginLeft = '20px';
+        }
     </script>
 </body>
 
