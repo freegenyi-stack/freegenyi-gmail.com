@@ -2632,12 +2632,15 @@ function setLang(lang, isUser = false) {
     if (isUser) {
         localStorage.setItem('fg_manual', 'true');
 
+        // Redirect disabled to fix asset loading issues
+        /*
         // Redirect to new URL if different
         const currentUrlLang = getLanguageFromURL();
         if (currentUrlLang !== lang) {
             redirectToLanguage(lang);
             return;
         }
+        */
     }
 
     const rtlLangs = ['ar', 'fa', 'ur', 'dv', 'ps', 'sd', 'ug', 'yi', 'pnb'];
@@ -2786,12 +2789,14 @@ async function initI18n() {
     if (savedLang && translations[savedLang]) {
         console.log('Using saved language preference:', savedLang);
         // Only redirect if we're not already on a language-specific URL
+        /*
         const currentPath = window.location.pathname;
         if (!currentPath.match(/^\/[a-z]{2,3}\//)) {
             console.log('Redirecting to saved language URL:', savedLang);
             redirectToLanguage(savedLang);
             return;
         }
+        */
         setLang(savedLang, false);
         return;
     }
