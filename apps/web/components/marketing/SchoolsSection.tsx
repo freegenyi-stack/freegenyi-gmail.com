@@ -81,10 +81,10 @@ export default function SchoolsSection() {
                         </ul>
 
                         <a
-                            href="#"
+                            href="/schools"
                             className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:gap-3 hover:shadow-xl hover:shadow-primary/30"
                         >
-                            Demander une démo
+                            🏫 Demander une démo pour mon école
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                         </a>
                     </div>

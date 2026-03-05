@@ -11,6 +11,7 @@ import SchoolsSection from "@/components/marketing/SchoolsSection";
 import Testimonials from "@/components/marketing/Testimonials";
 import AboutSection from "@/components/marketing/AboutSection";
 import CtaSection from "@/components/marketing/CtaSection";
+import NgoBanner from "@/components/marketing/NgoBanner";
 
 import { unstable_setRequestLocale } from 'next-intl/server';
 
@@ -51,6 +52,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <SchoolsSection />
       <Testimonials />
       <AboutSection />
+      <NgoBanner />
       <CtaSection />
     </>
   );

@@ -6,7 +6,7 @@ import { Heart, Globe, Lightbulb, Users } from "lucide-react"
 
 const VALUES = [
     { icon: Heart, title: "Passion", desc: "Chaque enfant mérite une éducation de qualité, peu importe où il vit." },
-    { icon: Globe, title: "Accessibilité", desc: "Entièrement gratuit, disponible dans 38+ pays et 50+ langues." },
+    { icon: Globe, title: "Accessibilité", desc: "Gratuit pour ceux qui en ont le plus besoin : Notre engagement est de soutenir les ONG en mettant à leur disposition l'intégralité de la plateforme, sans aucun frais." },
     { icon: Lightbulb, title: "Innovation", desc: "Les dernières recherches en psychologie, au service de la pédagogie." },
     { icon: Users, title: "Communauté", desc: "Parents, enseignants et experts collaborent pour l'avenir des enfants." },
 ]

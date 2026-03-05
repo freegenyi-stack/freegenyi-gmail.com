@@ -347,3 +347,41 @@ model Resource {
   downloadCount Int       @default(0)
   createdAt     DateTime  @default(now())
 }
+
+// ==========================================
+// Form Requests (Leads / Onboarding)
+// ==========================================
+
+enum RequestStatus {
+  PENDING
+  REVIEWING
+  APPROVED
+  REJECTED
+}
+
+model SchoolRequest {
+  id            String        @id @default(cuid())
+  role          String        // Principal, Teacher, Other
+  schoolName    String
+  contactName   String
+  email         String
+  phone         String?
+  requestType   String        // Demo, Brochure, Call
+  status        RequestStatus @default(PENDING)
+  notes         String?       @db.Text
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model NgoRequest {
+  id               String        @id @default(cuid())
+  organizationName String
+  website          String
+  mission          String        @db.Text
+  intendedUse      String        @db.Text
+  contactEmail     String
+  status           RequestStatus @default(PENDING)
+  notes            String?       @db.Text
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+}

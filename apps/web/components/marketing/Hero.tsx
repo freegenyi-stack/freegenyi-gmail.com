@@ -97,10 +97,10 @@ export default function Hero() {
                     {/* CTA */}
                     <div className="animate-reveal delay-300 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
                         <a
-                            href="./onboarding"
+                            href="./signup"
                             className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-xl shadow-primary/20 transition-all hover:gap-3 hover:shadow-2xl hover:shadow-primary/30"
                         >
-                            Essayer gratuitement
+                            📲 Créer l{"'"}espace de mon enfant
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                         </a>
                         <button
