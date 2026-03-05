@@ -13,18 +13,15 @@ interface ClientLayoutProps {
 import { usePathname } from 'next/navigation';
 
 export default function ClientLayout({ children, isRTL }: ClientLayoutProps) {
-    const pathname = usePathname();
-    const isAuthPage = pathname?.includes('/auth');
-    const dashboardRoutes = ['/parent', '/teacher', '/ngo', '/ong', '/admin', '/school', '/dashboard'];
-    const isDashboard = dashboardRoutes.some(route => pathname?.includes(route));
+    const isAccessPage = pathname?.includes('/site-access');
 
     return (
         <div dir={isRTL ? 'rtl' : 'ltr'} className={`min-h-screen flex flex-col ${isRTL ? 'rtl' : 'ltr'}`}>
-            {!isAuthPage && !isDashboard && <AppBar />}
+            {!isAuthPage && !isDashboard && !isAccessPage && <AppBar />}
             <main className="flex-grow language-transition">
                 {children}
             </main>
-            {!isAuthPage && !isDashboard && <Footer />}
+            {!isAuthPage && !isDashboard && !isAccessPage && <Footer />}
             <FreeGenyCookieBanner />
         </div>
     );
