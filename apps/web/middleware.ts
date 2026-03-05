@@ -51,6 +51,7 @@ export default function middleware(req: NextRequest) {
         pathname.includes('/images/') ||
         pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|css|js)$/);
 
+    /* 
     if (!siteAccessToken && !isPublicPath) {
         // Redirect to /site-access with the current locale
         // We look for the locale in the URL or default to 'en'
@@ -59,6 +60,7 @@ export default function middleware(req: NextRequest) {
         const redirectUrl = new URL(`/${locale}/site-access`, req.url);
         return NextResponse.redirect(redirectUrl);
     }
+    */
 
     const dashboardRoutes = ['/parent', '/teacher', '/school', '/ngo', '/ong', '/admin', '/ecole'];
     // Use pathWithoutLocale for cleaner check
