@@ -1,0 +1,23 @@
+{
+    "id": "dz-2ap-math-calcul-ex001",
+    "type": "calcul",
+    "difficulte": "moyenne",
+    "consigne": "أجرِ عملية الجمع التالية بوضع الاحتفاظ في مكانه الصحيح:",
+    "chapitre": "nombres_calcul",
+    "operation": {
+        "terme1": 27,
+        "terme2": 15,
+        "operateur": "+",
+        "solution": 42
+    },
+    "etapes_aide": [
+        "اجمع الوحدات أولاً: 7 + 5 = 12",
+        "ضع 2 في الوحدات واحتفظ بـ 1 فوق العشرات",
+        "اجمع العشرات: 1 + 2 + 1 = 4"
+    ],
+    "tags": [
+        "الجمع",
+        "الاحتفاظ"
+    ],
+    "points": 2
+}

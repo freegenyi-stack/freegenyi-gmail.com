@@ -1,0 +1,4554 @@
+{
+  "_file_info": {
+    "file_id": "FG-DZ-1AP-AR-EX-V2",
+    "schema_version": "2.0.0",
+    "content_language": "ar",
+    "ui_language": "ar",
+    "text_direction": "rtl",
+    "encoding": "UTF-8",
+    "platform": "FreeGeny",
+    "environment": [
+      "web",
+      "mobile_ios",
+      "mobile_android",
+      "offline"
+    ],
+    "last_reviewed_by": "Comité Pédagogique FreeGeny MENA",
+    "review_date": "2026-03-03",
+    "status": "approved",
+    "__ANNOTATION_FILE_INFO__": "This header defines the schema version, environment targets, and review status. It is crucial for FreeGeny backend platforms to know how to parse this file securely and accurately."
+  },
+  "metadata": {
+    "country": "DZ",
+    "country_name_fr": "Algérie",
+    "level": "1AP",
+    "subject": "ar",
+    "curriculum": "Programme Officiel Algérien — Ministère de l'Éducation Nationale 2016",
+    "target_age_min": 5,
+    "target_age_max": 7,
+    "total_lessons": 18,
+    "exercise_types": {
+      "fill_blank": {
+        "label_fr": "Compléter les trous",
+        "component": "FillBlankExercise"
+      },
+      "multiple_choice": {
+        "label_fr": "Choix multiple (QCM)",
+        "component": "MultipleChoiceExercise"
+      },
+      "letter_recognition": {
+        "label_fr": "Reconnaissance de lettres",
+        "component": "LetterRecognitionExercise"
+      },
+      "matching": {
+        "label_fr": "Association / Reliage",
+        "component": "MatchingExercise"
+      },
+      "true_false": {
+        "label_fr": "Vrai ou Faux",
+        "component": "TrueFalseExercise"
+      },
+      "open_ended": {
+        "label_fr": "Production libre",
+        "component": "OpenEndedExercise"
+      },
+      "islamic_recitation": {
+        "label_fr": "Récitation islamique",
+        "component": "IslamicRecitationExercise",
+        "sensitivity": "religious_content_verified"
+      },
+      "civic_exercise": {
+        "label_fr": "Éducation civique",
+        "component": "CivicExercise"
+      },
+      "ordering": {
+        "label_fr": "Remettre dans l'ordre",
+        "component": "OrderingExercise"
+      }
+    },
+    "difficulty_levels": {
+      "1": {
+        "label_fr": "Facile",
+        "default_points": 5,
+        "time_limit_seconds": 30
+      },
+      "2": {
+        "label_fr": "Intermédiaire",
+        "default_points": 10,
+        "time_limit_seconds": 45
+      },
+      "3": {
+        "label_fr": "Avancé",
+        "default_points": 15,
+        "time_limit_seconds": 90
+      }
+    },
+    "__ANNOTATION_METADATA__": "This metadata configures the UI components that should be utilized by the frontend when rendering this specific curriculum. DeepSeek should adapt `exercise_types` if a new country curriculum introduces a novel testing method."
+  },
+  "lessons": [
+    {
+      "lesson_id": "ar_1ap_l01",
+      "lesson_title": "أَهْلاً وَسَهْلاً",
+      "lesson_title_fr": "Bienvenue",
+      "lesson_theme": "التعرف والتقديم",
+      "semester": 1,
+      "sequence_number": 1,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l01_ex001",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "أ",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ أ؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أ"
+            },
+            {
+              "id": "b",
+              "text": "ب"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ أ",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ أ 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l01_ex002",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "أ",
+            "أسد"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "أ",
+              "right": "أسد"
+            },
+            {
+              "id": "p2",
+              "left": "ب",
+              "right": "بطة"
+            }
+          ],
+          "explanation": "الكَلِمَة أسد تَبْدَأُ بِحَرْف أ",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l01_ex003",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـسد",
+          "correct_answer": "أ",
+          "accept_variants": [
+            "أ",
+            "أَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ أ.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "أسد.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l01_ex004",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "البسملة",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (البسملة)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع البسملة.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l01_ex005",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "البسملة"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (البسملة). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ البسملة مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l01_ex006",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "احترام الكبير",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (احترام الكبير)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ احترام الكبير دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ احترام الكبير لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l01_ex007",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "احترام الكبير"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (احترام الكبير) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ احترام الكبير.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l02",
+      "lesson_title": "مَنْ فِي مَنْزِلِنَا؟",
+      "lesson_title_fr": "Qui est dans notre maison?",
+      "lesson_theme": "العائلة والمنزل",
+      "semester": 1,
+      "sequence_number": 2,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l02_ex008",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ت",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ت؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ت"
+            },
+            {
+              "id": "b",
+              "text": "ث"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ت",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ت 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l02_ex009",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ت",
+            "تفاحة"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ت",
+              "right": "تفاحة"
+            },
+            {
+              "id": "p2",
+              "left": "ث",
+              "right": "ثعلب"
+            }
+          ],
+          "explanation": "الكَلِمَة تفاحة تَبْدَأُ بِحَرْف ت",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l02_ex010",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـفاحة",
+          "correct_answer": "ت",
+          "accept_variants": [
+            "ت",
+            "تَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ت.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "تفاحة.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l02_ex011",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "سورة الفاتحة",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (سورة الفاتحة)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع سورة الفاتحة.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l02_ex012",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "سورة الفاتحة"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (سورة الفاتحة). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ سورة الفاتحة مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l02_ex013",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "التعاون في المنزل",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (التعاون في المنزل)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ التعاون في المنزل دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ التعاون في المنزل لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l02_ex014",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "التعاون في المنزل"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (التعاون في المنزل) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ التعاون في المنزل.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l03",
+      "lesson_title": "فِي المَدْرَسَةِ",
+      "lesson_title_fr": "À l'école",
+      "lesson_theme": "المدرسة",
+      "semester": 1,
+      "sequence_number": 3,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l03_ex015",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ج",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ج؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ج"
+            },
+            {
+              "id": "b",
+              "text": "ح"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ج",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ج 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l03_ex016",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ج",
+            "جمل"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ج",
+              "right": "جمل"
+            },
+            {
+              "id": "p2",
+              "left": "ح",
+              "right": "حصان"
+            }
+          ],
+          "explanation": "الكَلِمَة جمل تَبْدَأُ بِحَرْف ج",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l03_ex017",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـمل",
+          "correct_answer": "ج",
+          "accept_variants": [
+            "ج",
+            "جَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ج.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "جمل.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l03_ex018",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "سورة الناس",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (سورة الناس)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع سورة الناس.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l03_ex019",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "سورة الناس"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (سورة الناس). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ سورة الناس مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l03_ex020",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "النظافة المدرسية",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (النظافة المدرسية)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ النظافة المدرسية دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ النظافة المدرسية لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l03_ex021",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "النظافة المدرسية"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (النظافة المدرسية) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ النظافة المدرسية.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l04",
+      "lesson_title": "فِي السَّاحَةِ",
+      "lesson_title_fr": "Dans la cour",
+      "lesson_theme": "المدرسة",
+      "semester": 1,
+      "sequence_number": 4,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l04_ex022",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "خ",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ خ؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "خ"
+            },
+            {
+              "id": "b",
+              "text": "د"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ خ",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ خ 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l04_ex023",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "خ",
+            "خروف"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "خ",
+              "right": "خروف"
+            },
+            {
+              "id": "p2",
+              "left": "د",
+              "right": "دب"
+            }
+          ],
+          "explanation": "الكَلِمَة خروف تَبْدَأُ بِحَرْف خ",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l04_ex024",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـروف",
+          "correct_answer": "خ",
+          "accept_variants": [
+            "خ",
+            "خَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ خ.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "خروف.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l04_ex025",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "الصدق",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (الصدق)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع الصدق.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l04_ex026",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "الصدق"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (الصدق). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ الصدق مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l04_ex027",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "احترام الزملاء",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (احترام الزملاء)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ احترام الزملاء دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ احترام الزملاء لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l04_ex028",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "احترام الزملاء"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (احترام الزملاء) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ احترام الزملاء.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l05",
+      "lesson_title": "فِي الحَدِيقَةِ",
+      "lesson_title_fr": "Dans le jardin",
+      "lesson_theme": "البيئة والحي",
+      "semester": 1,
+      "sequence_number": 5,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l05_ex029",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ذ",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ذ؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ذ"
+            },
+            {
+              "id": "b",
+              "text": "ر"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ذ",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ذ 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l05_ex030",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ذ",
+            "ذئب"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ذ",
+              "right": "ذئب"
+            },
+            {
+              "id": "p2",
+              "left": "ر",
+              "right": "رمان"
+            }
+          ],
+          "explanation": "الكَلِمَة ذئب تَبْدَأُ بِحَرْف ذ",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l05_ex031",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـئب",
+          "correct_answer": "ذ",
+          "accept_variants": [
+            "ذ",
+            "ذَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ذ.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "ذئب.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l05_ex032",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "سورة الإخلاص",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (سورة الإخلاص)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع سورة الإخلاص.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l05_ex033",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "سورة الإخلاص"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (سورة الإخلاص). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ سورة الإخلاص مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l05_ex034",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "حماية البيئة",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (حماية البيئة)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ حماية البيئة دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ حماية البيئة لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l05_ex035",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "حماية البيئة"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (حماية البيئة) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ حماية البيئة.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l06",
+      "lesson_title": "فِي القَرْيَةِ",
+      "lesson_title_fr": "Au village",
+      "lesson_theme": "البيئة والحي",
+      "semester": 1,
+      "sequence_number": 6,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l06_ex036",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ز",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ز؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ز"
+            },
+            {
+              "id": "b",
+              "text": "س"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ز",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ز 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l06_ex037",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ز",
+            "زرافة"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ز",
+              "right": "زرافة"
+            },
+            {
+              "id": "p2",
+              "left": "س",
+              "right": "سمكة"
+            }
+          ],
+          "explanation": "الكَلِمَة زرافة تَبْدَأُ بِحَرْف ز",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l06_ex038",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـرافة",
+          "correct_answer": "ز",
+          "accept_variants": [
+            "ز",
+            "زَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ز.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "زرافة.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l06_ex039",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "الرفق بالحيوان",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (الرفق بالحيوان)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع الرفق بالحيوان.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l06_ex040",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "الرفق بالحيوان"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (الرفق بالحيوان). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ الرفق بالحيوان مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l06_ex041",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "العلم الوطني",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (العلم الوطني)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ العلم الوطني دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ العلم الوطني لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l06_ex042",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "العلم الوطني"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (العلم الوطني) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ العلم الوطني.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l07",
+      "lesson_title": "مُبَارَاةٌ",
+      "lesson_title_fr": "Un match",
+      "lesson_theme": "الرياضة",
+      "semester": 1,
+      "sequence_number": 7,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l07_ex043",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ش",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ش؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ش"
+            },
+            {
+              "id": "b",
+              "text": "ص"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ش",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ش 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l07_ex044",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ش",
+            "شمس"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ش",
+              "right": "شمس"
+            },
+            {
+              "id": "p2",
+              "left": "ص",
+              "right": "صقر"
+            }
+          ],
+          "explanation": "الكَلِمَة شمس تَبْدَأُ بِحَرْف ش",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l07_ex045",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـمس",
+          "correct_answer": "ش",
+          "accept_variants": [
+            "ش",
+            "شَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ش.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "شمس.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l07_ex046",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "سورة الفلق",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (سورة الفلق)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع سورة الفلق.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l07_ex047",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "سورة الفلق"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (سورة الفلق). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ سورة الفلق مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l07_ex048",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "الروح الرياضية",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (الروح الرياضية)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ الروح الرياضية دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ الروح الرياضية لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l07_ex049",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "الروح الرياضية"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (الروح الرياضية) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ الروح الرياضية.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l08",
+      "lesson_title": "فِي المَلْعَبِ",
+      "lesson_title_fr": "Au stade",
+      "lesson_theme": "الرياضة",
+      "semester": 1,
+      "sequence_number": 8,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l08_ex050",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ض",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ض؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ض"
+            },
+            {
+              "id": "b",
+              "text": "ط"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ض",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ض 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l08_ex051",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ض",
+            "ضفدع"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ض",
+              "right": "ضفدع"
+            },
+            {
+              "id": "p2",
+              "left": "ط",
+              "right": "طائرة"
+            }
+          ],
+          "explanation": "الكَلِمَة ضفدع تَبْدَأُ بِحَرْف ض",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l08_ex052",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـفدع",
+          "correct_answer": "ض",
+          "accept_variants": [
+            "ض",
+            "ضَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ض.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "ضفدع.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l08_ex053",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "النظافة من الإيمان",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (النظافة من الإيمان)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع النظافة من الإيمان.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l08_ex054",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "النظافة من الإيمان"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (النظافة من الإيمان). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ النظافة من الإيمان مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l08_ex055",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "النشيد الوطني",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (النشيد الوطني)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ النشيد الوطني دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ النشيد الوطني لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l08_ex056",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "النشيد الوطني"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (النشيد الوطني) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ النشيد الوطني.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l09",
+      "lesson_title": "عِنْدَ الطَّبِيبِ",
+      "lesson_title_fr": "Chez le médecin",
+      "lesson_theme": "الصحة",
+      "semester": 1,
+      "sequence_number": 9,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l09_ex057",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ظ",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ظ؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ظ"
+            },
+            {
+              "id": "b",
+              "text": "ع"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ظ",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ظ 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l09_ex058",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ظ",
+            "ظرف"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ظ",
+              "right": "ظرف"
+            },
+            {
+              "id": "p2",
+              "left": "ع",
+              "right": "عصفور"
+            }
+          ],
+          "explanation": "الكَلِمَة ظرف تَبْدَأُ بِحَرْف ظ",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l09_ex059",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـرف",
+          "correct_answer": "ظ",
+          "accept_variants": [
+            "ظ",
+            "ظَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ظ.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "ظرف.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l09_ex060",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "سورة الكوثر",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (سورة الكوثر)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع سورة الكوثر.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l09_ex061",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "سورة الكوثر"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (سورة الكوثر). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ سورة الكوثر مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l09_ex062",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "الدفتر الصحي",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (الدفتر الصحي)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ الدفتر الصحي دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ الدفتر الصحي لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l09_ex063",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "الدفتر الصحي"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (الدفتر الصحي) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ الدفتر الصحي.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l10",
+      "lesson_title": "فِي السُّوقِ",
+      "lesson_title_fr": "Au marché",
+      "lesson_theme": "المهن",
+      "semester": 2,
+      "sequence_number": 10,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l10_ex064",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "غ",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ غ؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "غ"
+            },
+            {
+              "id": "b",
+              "text": "ف"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ غ",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ غ 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l10_ex065",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "غ",
+            "غزالة"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "غ",
+              "right": "غزالة"
+            },
+            {
+              "id": "p2",
+              "left": "ف",
+              "right": "فأر"
+            }
+          ],
+          "explanation": "الكَلِمَة غزالة تَبْدَأُ بِحَرْف غ",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l10_ex066",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـزالة",
+          "correct_answer": "غ",
+          "accept_variants": [
+            "غ",
+            "غَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ غ.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "غزالة.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l10_ex067",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "الأمانة",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (الأمانة)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع الأمانة.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l10_ex068",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "الأمانة"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (الأمانة). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ الأمانة مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l10_ex069",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "احترام المهن",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (احترام المهن)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ احترام المهن دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ احترام المهن لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l10_ex070",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "احترام المهن"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (احترام المهن) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ احترام المهن.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l11",
+      "lesson_title": "فِي المَزْرَعَةِ",
+      "lesson_title_fr": "À la ferme",
+      "lesson_theme": "الطبيعة",
+      "semester": 2,
+      "sequence_number": 11,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l11_ex071",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ق",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ق؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ق"
+            },
+            {
+              "id": "b",
+              "text": "ك"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ق",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ق 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l11_ex072",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ق",
+            "قرد"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ق",
+              "right": "قرد"
+            },
+            {
+              "id": "p2",
+              "left": "ك",
+              "right": "كتاب"
+            }
+          ],
+          "explanation": "الكَلِمَة قرد تَبْدَأُ بِحَرْف ق",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l11_ex073",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـرد",
+          "correct_answer": "ق",
+          "accept_variants": [
+            "ق",
+            "قَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ق.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "قرد.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l11_ex074",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "شكر الله",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (شكر الله)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع شكر الله.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l11_ex075",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "شكر الله"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (شكر الله). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ شكر الله مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l11_ex076",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "العمل الجاد",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (العمل الجاد)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ العمل الجاد دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ العمل الجاد لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l11_ex077",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "العمل الجاد"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (العمل الجاد) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ العمل الجاد.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l12",
+      "lesson_title": "النَّبَاتَاتُ",
+      "lesson_title_fr": "Les plantes",
+      "lesson_theme": "الطبيعة",
+      "semester": 2,
+      "sequence_number": 12,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l12_ex078",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ل",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ل؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ل"
+            },
+            {
+              "id": "b",
+              "text": "م"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ل",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ل 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l12_ex079",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ل",
+            "ليمون"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ل",
+              "right": "ليمون"
+            },
+            {
+              "id": "p2",
+              "left": "م",
+              "right": "موز"
+            }
+          ],
+          "explanation": "الكَلِمَة ليمون تَبْدَأُ بِحَرْف ل",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l12_ex080",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـيمون",
+          "correct_answer": "ل",
+          "accept_variants": [
+            "ل",
+            "لَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ل.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "ليمون.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l12_ex081",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "سورة النصر",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (سورة النصر)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع سورة النصر.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l12_ex082",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "سورة النصر"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (سورة النصر). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ سورة النصر مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l12_ex083",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "زراعة الأشجار",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (زراعة الأشجار)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ زراعة الأشجار دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ زراعة الأشجار لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l12_ex084",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "زراعة الأشجار"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (زراعة الأشجار) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ زراعة الأشجار.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l13",
+      "lesson_title": "الحَيَوَانَاتُ",
+      "lesson_title_fr": "Les animaux",
+      "lesson_theme": "الطبيعة",
+      "semester": 2,
+      "sequence_number": 13,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l13_ex085",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ن",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ن؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ن"
+            },
+            {
+              "id": "b",
+              "text": "هـ"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ن",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ن 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l13_ex086",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ن",
+            "نمر"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ن",
+              "right": "نمر"
+            },
+            {
+              "id": "p2",
+              "left": "هـ",
+              "right": "هدهد"
+            }
+          ],
+          "explanation": "الكَلِمَة نمر تَبْدَأُ بِحَرْف ن",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l13_ex087",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـمر",
+          "correct_answer": "ن",
+          "accept_variants": [
+            "ن",
+            "نَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ن.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "نمر.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l13_ex088",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "رحمة الله",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (رحمة الله)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع رحمة الله.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l13_ex089",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "رحمة الله"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (رحمة الله). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ رحمة الله مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l13_ex090",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "العطف على الصغير",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (العطف على الصغير)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ العطف على الصغير دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ العطف على الصغير لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l13_ex091",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "العطف على الصغير"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (العطف على الصغير) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ العطف على الصغير.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l14",
+      "lesson_title": "فَصْلُ الرَّبِيعِ",
+      "lesson_title_fr": "Le printemps",
+      "lesson_theme": "الفصول",
+      "semester": 2,
+      "sequence_number": 14,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l14_ex092",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "و",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ و؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "و"
+            },
+            {
+              "id": "b",
+              "text": "ي"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ و",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ و 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l14_ex093",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "و",
+            "وردة"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "و",
+              "right": "وردة"
+            },
+            {
+              "id": "p2",
+              "left": "ي",
+              "right": "يد"
+            }
+          ],
+          "explanation": "الكَلِمَة وردة تَبْدَأُ بِحَرْف و",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l14_ex094",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـردة",
+          "correct_answer": "و",
+          "accept_variants": [
+            "و",
+            "وَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ و.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "وردة.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l14_ex095",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "سبحان الله",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (سبحان الله)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع سبحان الله.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l14_ex096",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "سبحان الله"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (سبحان الله). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ سبحان الله مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l14_ex097",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "التنزه الآمن",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (التنزه الآمن)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ التنزه الآمن دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ التنزه الآمن لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l14_ex098",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "التنزه الآمن"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (التنزه الآمن) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ التنزه الآمن.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l15",
+      "lesson_title": "فَصْلُ الصَّيْفِ",
+      "lesson_title_fr": "L'été",
+      "lesson_theme": "الفصول",
+      "semester": 2,
+      "sequence_number": 15,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l15_ex099",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "أ",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ أ؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أ"
+            },
+            {
+              "id": "b",
+              "text": "ب"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ أ",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ أ 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l15_ex100",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "أ",
+            "بحر"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "أ",
+              "right": "بحر"
+            },
+            {
+              "id": "p2",
+              "left": "ب",
+              "right": "شاطئ"
+            }
+          ],
+          "explanation": "الكَلِمَة بحر تَبْدَأُ بِحَرْف أ",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l15_ex101",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـحر",
+          "correct_answer": "أ",
+          "accept_variants": [
+            "أ",
+            "أَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ أ.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "بحر.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l15_ex102",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "آداب السفر",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (آداب السفر)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع آداب السفر.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l15_ex103",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "آداب السفر"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (آداب السفر). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ آداب السفر مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l15_ex104",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "نظافة ชاطئ",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (نظافة ชاطئ)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ نظافة ชاطئ دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ نظافة ชاطئ لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l15_ex105",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "نظافة ชاطئ"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (نظافة ชاطئ) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ نظافة ชاطئ.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l16",
+      "lesson_title": "فَصْلُ الخَرِيفِ",
+      "lesson_title_fr": "L'automne",
+      "lesson_theme": "الفصول",
+      "semester": 2,
+      "sequence_number": 16,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l16_ex106",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ت",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ت؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ت"
+            },
+            {
+              "id": "b",
+              "text": "ث"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ت",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ت 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l16_ex107",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ت",
+            "مطر"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ت",
+              "right": "مطر"
+            },
+            {
+              "id": "p2",
+              "left": "ث",
+              "right": "غيوم"
+            }
+          ],
+          "explanation": "الكَلِمَة مطر تَبْدَأُ بِحَرْف ت",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l16_ex108",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـطر",
+          "correct_answer": "ت",
+          "accept_variants": [
+            "ت",
+            "تَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ت.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "مطر.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l16_ex109",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "دعاء المطر",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (دعاء المطر)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع دعاء المطر.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l16_ex110",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "دعاء المطر"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (دعاء المطر). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ دعاء المطر مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l16_ex111",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "مساعدة الجار",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (مساعدة الجار)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ مساعدة الجار دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ مساعدة الجار لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l16_ex112",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "مساعدة الجار"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (مساعدة الجار) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ مساعدة الجار.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l17",
+      "lesson_title": "فَصْلُ الشِّتَاءِ",
+      "lesson_title_fr": "L'hiver",
+      "lesson_theme": "الفصول",
+      "semester": 2,
+      "sequence_number": 17,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l17_ex113",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "ج",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ ج؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "ج"
+            },
+            {
+              "id": "b",
+              "text": "ح"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ ج",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ ج 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l17_ex114",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "ج",
+            "ثلج"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "ج",
+              "right": "ثلج"
+            },
+            {
+              "id": "p2",
+              "left": "ح",
+              "right": "نار"
+            }
+          ],
+          "explanation": "الكَلِمَة ثلج تَبْدَأُ بِحَرْف ج",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l17_ex115",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـلج",
+          "correct_answer": "ج",
+          "accept_variants": [
+            "ج",
+            "جَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ ج.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "ثلج.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l17_ex116",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "آداب الأكل",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (آداب الأكل)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع آداب الأكل.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l17_ex117",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "آداب الأكل"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (آداب الأكل). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ آداب الأكل مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l17_ex118",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "التضامن",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (التضامن)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ التضامن دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ التضامن لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l17_ex119",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "التضامن"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (التضامن) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ التضامن.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    },
+    {
+      "lesson_id": "ar_1ap_l18",
+      "lesson_title": "نِهَايَةُ العَامِ",
+      "lesson_title_fr": "Fin de l'année",
+      "lesson_theme": "المراجعة",
+      "semester": 3,
+      "sequence_number": 18,
+      "__ANNOTATION_LESSON__": "Each lesson node binds its exercises to it. DeepSeek should read `lesson_title` to align generated exercises perfectly with this chunk.",
+      "exercises": [
+        {
+          "id": "ar_1ap_l18_ex120",
+          "type": "letter_recognition",
+          "domaine": "arabe",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C2",
+          "bloom_level": "1_remember",
+          "tags": [
+            "حرف",
+            "خ",
+            "alphabet"
+          ],
+          "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ خ؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "خ"
+            },
+            {
+              "id": "b",
+              "text": "د"
+            },
+            {
+              "id": "c",
+              "text": "م"
+            },
+            {
+              "id": "d",
+              "text": "ص"
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "هَذَا هُوَ حَرْفُ خ",
+          "feedback": {
+            "correct": "رَائِع! هَذَا هُوَ حَرْفُ خ 🌟",
+            "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+          },
+          "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+          "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+          "parent_tip_en": "Help your child visualize the letter shape.",
+          "__ANNOTATION__": "Letter recognition exercise testing the first phoneme taught in this lesson."
+        },
+        {
+          "id": "ar_1ap_l18_ex121",
+          "type": "matching",
+          "domaine": "arabe",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C3",
+          "bloom_level": "2_understand",
+          "tags": [
+            "association",
+            "خ",
+            "نجاح"
+          ],
+          "statement": "صِلِ الحَرْفَ بِالكَلِمَةِ الَّتِي تَبْدَأُ بِهِ:",
+          "pairs": [
+            {
+              "id": "p1",
+              "left": "خ",
+              "right": "نجاح"
+            },
+            {
+              "id": "p2",
+              "left": "د",
+              "right": "عطلة"
+            }
+          ],
+          "explanation": "الكَلِمَة نجاح تَبْدَأُ بِحَرْف خ",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🌟",
+            "incorrect": "فَكِّرْ: مَا هُوَ الحَرْف الأَوَّل؟"
+          },
+          "parent_tip_fr": "Faites-lui répéter le premier son du mot à voix haute.",
+          "parent_tip_ar": "اجعله يردد الصوت الأول من الكلمة بصوت عالٍ.",
+          "parent_tip_en": "Have them repeat the first sound of the word out loud.",
+          "__ANNOTATION__": "Matching exercise connecting the learned letter to a vocabulary word."
+        },
+        {
+          "id": "ar_1ap_l18_ex122",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "difficulty": 3,
+          "points": 15,
+          "competency": "C4",
+          "bloom_level": "3_apply",
+          "tags": [
+            "complétion",
+            "écriture"
+          ],
+          "statement": "أَكْمِلِ الكَلِمَة التي تدل على الصورة: ...ـجاح",
+          "correct_answer": "خ",
+          "accept_variants": [
+            "خ",
+            "خَ"
+          ],
+          "explanation": "يَنْقُصُ الحَرْفُ الأَوَّل وَهُوَ خ.",
+          "feedback": {
+            "correct": "مَمْتَاز! 💎",
+            "incorrect": "رَاجِعْ حُرُوفَ الدَّرْسِ."
+          },
+          "parent_tip_fr": "Si l'enfant bloque, écrivez le mot en entier sur un brouillon.",
+          "parent_tip_ar": "إذا تعذر على الطفل الإجابة، اكتب الكلمة كاملة على مسودة.",
+          "parent_tip_en": "If the child gets stuck, write the full word on a scrap paper.",
+          "media_hints": {
+            "image": "نجاح.png"
+          },
+          "__ANNOTATION__": "Fill-in-the-blank evaluating active recall of phonemes."
+        },
+        {
+          "id": "ar_1ap_l18_ex123",
+          "type": "islamic_recitation",
+          "domaine": "islamique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "1_remember",
+          "skill_focus": "memorization",
+          "tags": [
+            "islamic",
+            "الحمد لله",
+            "memorization"
+          ],
+          "statement": "رَتِّبْ كَلِمَات المَقْطَع التَّالِي: (الحمد لله)",
+          "options": [
+            "الكَلِمَة١",
+            "الكَلِمَة٢",
+            "الكَلِمَة٣"
+          ],
+          "correct_order": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "هَذَا التَّرْتِيب صَحِيح لِمَوْضُوع الحمد لله.",
+          "feedback": {
+            "correct": "بَارَكَ اللهُ فِيكَ! 🕌",
+            "incorrect": "حَاوِلْ تَرْتِيبَهَا بِشَكْلٍ صَحِيحٍ."
+          },
+          "parent_tip_fr": "Répétez la sourate ou l'invocation ensemble avant de faire l'exercice.",
+          "parent_tip_ar": "ردد السورة أو الدعاء مع طفلك قبل حل التمرين.",
+          "parent_tip_en": "Recite the sourate or invocation together before attempting the exercise.",
+          "__ANNOTATION__": "Islamic memorization check. Often ordering words or selecting the correct next word of a Dua/Sourate."
+        },
+        {
+          "id": "ar_1ap_l18_ex124",
+          "type": "true_false",
+          "domaine": "islamique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "values",
+          "tags": [
+            "islamic",
+            "values",
+            "الحمد لله"
+          ],
+          "statement": "الإِسْلَامُ يُعَلِّمُنَا (الحمد لله). هَلْ هَذَا صَحِيح؟",
+          "correct_answer": true,
+          "explanation": "تَعَلَّمْنَا أَنَّ الحمد لله مِنْ صِفَاتِ المُسْلِم.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ صُنْعًا! ✅",
+            "incorrect": "بَلْ هُوَ صَحِيحٌ يَا بَطَل."
+          },
+          "parent_tip_fr": "Discutez de l'importance de cette valeur au quotidien.",
+          "parent_tip_ar": "ناقش أهمية هذه القيمة في الحياة اليومية.",
+          "parent_tip_en": "Discuss the importance of this value in daily life.",
+          "__ANNOTATION__": "Values verification. Boolean checks if the student understands the practical application of Islamic values taught."
+        },
+        {
+          "id": "ar_1ap_l18_ex125",
+          "type": "civic_exercise",
+          "domaine": "civique",
+          "difficulty": 2,
+          "points": 10,
+          "competency": "C6",
+          "bloom_level": "3_apply",
+          "skill_focus": "citizenship",
+          "tags": [
+            "civic",
+            "الاجتهاد",
+            "citizenship"
+          ],
+          "statement": "اخْتَرْ السُّلُوك الصَّحِيح: كَيْفَ نُطَبِّقُ (الاجتهاد)؟",
+          "options": [
+            {
+              "id": "a",
+              "text": "أَقُومُ بِـ الاجتهاد دَائِمًا."
+            },
+            {
+              "id": "b",
+              "text": "أَفْعَلُ عَكْسَ ذَلِكَ."
+            },
+            {
+              "id": "c",
+              "text": "لَا أَهْتَمُّ بِذَلِكَ."
+            }
+          ],
+          "correct_option_id": "a",
+          "explanation": "يَجِبُ عَلَيْنَا أَنْ نَلْتَزِمَ بِـ الاجتهاد لِنَكُونَ مُوَاطِنِينَ صَالِحِينَ.",
+          "feedback": {
+            "correct": "أَنْتَ مُوَاطِنٌ صَالِحٌ! 🇩🇿",
+            "incorrect": "فَكِّرْ فِي السُّلُوك الأَحْسَن."
+          },
+          "parent_tip_fr": "Encouragez votre enfant à donner un exemple concret.",
+          "parent_tip_ar": "شجع طفلك على إعطاء مثال واقعي.",
+          "parent_tip_en": "Encourage your child to give a real-world example.",
+          "__ANNOTATION__": "Civic behavior application. Evaluates situational awareness and civic duty."
+        },
+        {
+          "id": "ar_1ap_l18_ex126",
+          "type": "true_false",
+          "domaine": "civique",
+          "difficulty": 1,
+          "points": 5,
+          "competency": "C6",
+          "bloom_level": "2_understand",
+          "skill_focus": "rules",
+          "tags": [
+            "civic",
+            "rules",
+            "الاجتهاد"
+          ],
+          "statement": "السُّلُوك المُتَعَلِّق بِـ (الاجتهاد) هُوَ قَاعِدَةٌ مُهِمَّةٌ.",
+          "correct_answer": true,
+          "explanation": "مِنْ أَهَمِّ القَوَاعِد السُّلُوكِيَّة هِيَ الاجتهاد.",
+          "feedback": {
+            "correct": "أَحْسَنْتَ! 🏛️",
+            "incorrect": "رَاجِعْ قَوَاعِدَ التَّرْبِيَة المَدَنِيَّة."
+          },
+          "parent_tip_fr": "Rappelez-lui comment agir dans une situation similaire.",
+          "parent_tip_ar": "ذكّره بكيفية التصرف في موقع مشابه.",
+          "parent_tip_en": "Remind them how to act in a similar situation.",
+          "__ANNOTATION__": "Evaluates foundational understanding of civic rules and principles."
+        }
+      ]
+    }
+  ]
+}

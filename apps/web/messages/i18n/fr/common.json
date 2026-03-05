@@ -1,0 +1,14 @@
+{
+    "buttons": {
+        "getStarted": "Commencer",
+        "learnMore": "En savoir plus",
+        "watchDemo": "Voir la démo",
+        "ctaFinal": "Inscrivez-vous maintenant",
+        "contactSupport": "Contacter le support"
+    },
+    "labels": {
+        "newsletter": "Abonnez-vous à notre newsletter",
+        "emailPlaceholder": "votre@email.com",
+        "footerBaseline": "L'éducation de demain, dès aujourd'hui."
+    }
+}

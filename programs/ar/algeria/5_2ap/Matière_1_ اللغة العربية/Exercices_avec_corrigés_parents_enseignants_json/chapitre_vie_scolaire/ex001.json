@@ -1,0 +1,18 @@
+{
+  "id": "dz-2ap-arabe-vie_scolaire-ex001",
+  "type": "qcm",
+  "difficulte": "facile",
+  "consigne": "اختر الإجابة الصحيحة:",
+  "chapitre": "vie_scolaire",
+  "corrige_inclus": true,
+  "items": [
+    {
+      "question": "أين نجلس لسماع شرح المعلم؟",
+      "options": ["في الساحة", "في القسم", "في المكتبة"],
+      "bonne_reponse": 1,
+      "explication": "نجلس في القسم للدراسة، أما الساحة فهي للعب والمكتبة للمطالعة."
+    }
+  ],
+  "tags": ["الحياة المدرسية", "مرافق المدرسة"],
+  "points": 1
+}

@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - Револуција у образовању",
+        "description": "Придружите се милионима који уче уз FreeGeny иновативну платформу"
+    },
+    "home": {
+        "hero": {
+            "title": "Учите без граница",
+            "subtitle": "Приступ образовању светске класе бесплатно",
+            "cta": "Започните учење"
+        },
+        "features": {
+            "title": "Зашто FreeGeny?",
+            "items": {
+                "free": "Потпуно бесплатно",
+                "global": "Глобална заједница",
+                "quality": "Врхунски садржај"
+            }
+        }
+    },
+    "common": {
+        "loading": "Учитавање...",
+        "error": "Нешто је пошло наопако",
+        "retry": "Покушајте поново",
+        "language": "Језик"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "Ко смо ми",
+            "mission": "Наша мисија",
+            "app": "Апликација",
+            "parents": {
+                "main": "Родитељи",
+                "dropdown": {
+                    "dashboard": "Контролна табла за родитеље",
+                    "progress": "Праћење напретка",
+                    "communication": "Комуникација са наставником",
+                    "resources": "Образовни ресурси",
+                    "security": "Безбедност и приватност"
+                }
+            },
+            "schools": {
+                "main": "Школе",
+                "dropdown": {
+                    "management": "Управљање школом",
+                    "curriculum": "Школски програми",
+                    "teachers": "Наставнички простор",
+                    "analytics": "Аналитика и извештаји"
+                }
+            },
+            "ongs": {
+                "main": "НВО",
+                "dropdown": {
+                    "projects": "Образовни пројекти",
+                    "impact": "Мерење утицаја",
+                    "partnership": "Партнерства"
+                }
+            },
+            "pricing": {
+                "main": "Цене",
+                "dropdown": {
+                    "individual": "Индивидуално",
+                    "family": "Породично",
+                    "institutional": "Институционално"
+                }
+            },
+            "freeTrial": "Бесплатна пробна верзија",
+            "login": "Пријава"
+        }
+    },
+    "cookies": {
+        "title": "Управљање колачићима",
+        "description": "Користимо колачиће да побољшамо ваше искуство.",
+        "learnMore": "Сазнајте више",
+        "rejectAll": "Одбиј све",
+        "customize": "Прилагоди",
+        "acceptAll": "Прихвати све"
+    },
+    "footer": {
+        "baseline": "Револуција у образовању за све",
+        "rights": "Сва права задржана.",
+        "about": {
+            "title": "О нама",
+            "education": "Образовање",
+            "nationalCurriculum": "Национални наставни план",
+            "internationalCurriculum": "Међународни наставни план",
+            "mission": "Наша мисија",
+            "methodology": "Методологија",
+            "research": "Образовно истраживање",
+            "brand": "О бренду",
+            "news": "Вести",
+            "press": "Штампа",
+            "contact": "Контактирајте нас"
+        },
+        "apps": {
+            "title": "Наше апликације",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "Помоћ и подршка",
+            "faqGeneral": "Честа питања о FreeGeny",
+            "faqSchools": "Честа питања за школе",
+            "faqNgos": "Честа питања за НВО"
+        },
+        "legal": {
+            "title": "Правно",
+            "guidelines": "Смернице за кориснике",
+            "terms": "Услови коришћења",
+            "privacy": "Политика приватности",
+            "communityRules": "Правила заједнице",
+            "cookiePreferences": "Центар за подешавање колачића",
+            "accessibility": "Изјава о приступачности",
+            "sitemap": "Мапа сајта"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

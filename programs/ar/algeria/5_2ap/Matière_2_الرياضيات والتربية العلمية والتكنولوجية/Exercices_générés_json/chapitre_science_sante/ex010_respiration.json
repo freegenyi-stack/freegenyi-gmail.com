@@ -1,0 +1,22 @@
+{
+    "id": "dz-2ap-science-sante-ex010",
+    "type": "association",
+    "difficulte": "سهلة",
+    "consigne": "اربط بين حركة التنفس وما يحدث للصدر:",
+    "chapitre": "science_sante",
+    "items": [
+        {
+            "left": "الشهيق (دخول الهواء)",
+            "right": "يرتفع الصدر"
+        },
+        {
+            "left": "الزفير (خروج الهواء)",
+            "right": "ينخفض الصدر"
+        }
+    ],
+    "tags": [
+        "التنفس",
+        "الصحة"
+    ],
+    "points": 2
+}

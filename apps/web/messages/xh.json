@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - Ukuguqula Imfundo",
+        "description": "Joyina izigidi eziqhuba ukufunda ngeqonga elitsha leFreeGeny"
+    },
+    "home": {
+        "hero": {
+            "title": "Funda Ngaphandle Kwemida",
+            "subtitle": "Fikelela kwimfundo ekumgangatho wehlabathi simahla",
+            "cta": "Qala Ukufunda"
+        },
+        "features": {
+            "title": "Kutheni iFreeGeny?",
+            "items": {
+                "free": "Simahla Ngokupheleleyo",
+                "global": "Uluntu Lwehlabathi",
+                "quality": "Umxholo Ekumgangatho Ophezulu"
+            }
+        }
+    },
+    "common": {
+        "loading": "iyalayisha...",
+        "error": "Kukho into onakalayo",
+        "retry": "Zama Kwakhona",
+        "language": "Ulwimi"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "Singobani",
+            "mission": "Injongo Yethu",
+            "app": "I-App",
+            "parents": {
+                "main": "Abazali",
+                "dropdown": {
+                    "dashboard": "Idashbhodi Yabazali",
+                    "progress": "Ukulandelwa Kwenkqubela",
+                    "communication": "Unxibelelwano Lwetitshala",
+                    "resources": "Izixhobo Zokufunda",
+                    "security": "Ukhuseleko & Nobumfihlo"
+                }
+            },
+            "schools": {
+                "main": "Izikolo",
+                "dropdown": {
+                    "management": "Ulawulo Lwesikolo",
+                    "curriculum": "Iinkqubo Zesikolo",
+                    "teachers": "Indawo Yootitshala",
+                    "analytics": "Uhla lolo Nengxelo"
+                }
+            },
+            "ongs": {
+                "main": "Ii-NGO",
+                "dropdown": {
+                    "projects": "Iiprojekthi Zokufunda",
+                    "impact": "Umlinganiselo Wempembelelo",
+                    "partnership": "Intsebenziswano"
+                }
+            },
+            "pricing": {
+                "main": "Amaxabiso",
+                "dropdown": {
+                    "individual": "Umntu ngamnye",
+                    "family": "Usapho",
+                    "institutional": "Iziko"
+                }
+            },
+            "freeTrial": "Isilingo Sasimahla",
+            "login": "Ngena"
+        }
+    },
+    "cookies": {
+        "title": "Ulawulo Lweekuki",
+        "description": "Sisebenzisa iikuki ukuphucula amava akho.",
+        "learnMore": "Funda ngakumbi",
+        "rejectAll": "Yala Zonke",
+        "customize": "Yenza ngokwezifiso",
+        "acceptAll": "Yamkela Zonke"
+    },
+    "footer": {
+        "baseline": "Ukuguqula imfundo kumntu wonke",
+        "rights": "Onke amalungelo agciniwe.",
+        "about": {
+            "title": "Malunga",
+            "education": "Imfundo",
+            "nationalCurriculum": "Umxholo Wekharityhulam Yesizwe",
+            "internationalCurriculum": "Umxholo Wekharityhulam Yamazwe Ngamazwe",
+            "mission": "Injongo Yethu",
+            "methodology": "Indlela yokusebenza",
+            "research": "Uphando Lwezemfundo",
+            "brand": "Malunga Ne-Brand",
+            "news": "Iindaba",
+            "press": "Amaphephandaba",
+            "contact": "Qhagamshelana Nathi"
+        },
+        "apps": {
+            "title": "Ii-Apps Zethu",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "Uncedo & Inkxaso",
+            "faqGeneral": "Ii-FAQ malunga neFreeGeny",
+            "faqSchools": "Imibuzo yezikolo",
+            "faqNgos": "Imibuzo yee-NGO"
+        },
+        "legal": {
+            "title": "Ezomthetho",
+            "guidelines": "Izikhokelo Zomsebenzisi",
+            "terms": "Imigaqo Yenkonzo",
+            "privacy": "Umgaqo-nkqubo Wabucala",
+            "communityRules": "Imithetho Yoluntu",
+            "cookiePreferences": "Iziko Lokukhetha Iikuki",
+            "accessibility": "Ingxelo Yokufikeleleka",
+            "sitemap": "IMaphu Yesayithi"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

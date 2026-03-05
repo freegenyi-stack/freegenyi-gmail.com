@@ -1,0 +1,349 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum ExerciseType {
+  MATH
+  FRENCH
+  ENGLISH
+  SCIENCE
+  HISTORY
+  GEOGRAPHY
+}
+
+enum DifficultyLevel {
+  EASY
+  MEDIUM
+  HARD
+  EXPERT
+}
+
+enum MessageType {
+  TEXT
+  AUDIO
+  VIDEO
+  FILE
+}
+
+enum NotificationType {
+  MESSAGE
+  PROGRESS
+  ACHIEVEMENT
+  SYSTEM
+  REMINDER
+}
+
+enum Role {
+  PARENT
+  TEACHER
+  NGO
+  ORGANIZATION
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String?
+  role          Role      @default(PARENT)
+  image         String?
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Profile Specific Relations
+  parentProfile    ParentProfile?
+  teacherProfile   TeacherProfile?
+  schoolProfile    SchoolProfile?
+  ngoProfile       NgoProfile?
+  orgProfile       OrgProfile?
+
+  // Messages & Notifications
+  sentMessages     Message[]      @relation("SentMessages")
+  receivedMessages Message[]      @relation("ReceivedMessages")
+  notifications    Notification[]
+
+  // Accounts for NextAuth
+  accounts         Account[]
+  sessions         Session[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model ParentProfile {
+  userId        String    @id
+  user          User      @relation(fields: [userId], references: [id])
+  students      Student[]
+  preferences   Json?
+}
+
+model Student {
+  id               String            @id @default(cuid())
+  name             String
+  level            String
+  avatar           String?
+  parentId         String
+  parent           ParentProfile     @relation(fields: [parentId], references: [userId])
+  progress         Progress[]
+  achievements     Achievement[]
+  exerciseAttempts ExerciseAttempt[]
+  createdAt        DateTime          @default(now())
+}
+
+model TeacherProfile {
+  userId        String     @id
+  user          User       @relation(fields: [userId], references: [id])
+  schoolId      String?
+  school        SchoolProfile? @relation(fields: [schoolId], references: [userId])
+  classes       Class[]
+  exercises     Exercise[]
+  createdAt     DateTime   @default(now())
+}
+
+model SchoolProfile {
+  userId        String     @id
+  user          User       @relation(fields: [userId], references: [id])
+  name          String
+  address       String?
+  city          String?
+  country       String     @default("Sénégal")
+  teachers      TeacherProfile[]
+  classes       Class[]
+  students      Int        @default(0)
+  createdAt     DateTime   @default(now())
+}
+
+model Class {
+  id            String          @id @default(cuid())
+  name          String
+  level         String
+  teacherId     String
+  teacher       TeacherProfile  @relation(fields: [teacherId], references: [userId])
+  schoolId      String
+  school        SchoolProfile   @relation(fields: [schoolId], references: [userId])
+  exercises     Exercise[]
+  schedule      ClassSchedule[]
+  createdAt     DateTime        @default(now())
+}
+
+model ClassSchedule {
+  id          String   @id @default(cuid())
+  classId     String
+  class       Class    @relation(fields: [classId], references: [id])
+  dayOfWeek   Int
+  startTime   String
+  endTime     String
+  subject     String
+  room        String?
+}
+
+model Exercise {
+  id            String          @id @default(cuid())
+  title         String
+  description   String?
+  type          ExerciseType
+  difficulty    DifficultyLevel
+  content       Json
+  solution      Json?
+  maxScore      Int             @default(20)
+  timeLimit     Int?
+  teacherId     String
+  teacher       TeacherProfile  @relation(fields: [teacherId], references: [userId])
+  classId       String?
+  class         Class?          @relation(fields: [classId], references: [id])
+  attempts      ExerciseAttempt[]
+  isPublic      Boolean         @default(false)
+  tags          String[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model ExerciseAttempt {
+  id          String     @id @default(cuid())
+  exerciseId  String
+  exercise    Exercise   @relation(fields: [exerciseId], references: [id])
+  studentId   String
+  student     Student    @relation(fields: [studentId], references: [id])
+  answers     Json
+  score       Int?
+  feedback    String?
+  timeSpent   Int
+  completedAt DateTime?
+  createdAt   DateTime   @default(now())
+}
+
+model Progress {
+  id            String   @id @default(cuid())
+  studentId       String
+  student         Student  @relation(fields: [studentId], references: [id])
+  subject         String
+  topic           String?
+  score           Int
+  maxScore        Int      @default(20)
+  exerciseCount   Int      @default(1)
+  date            DateTime @default(now())
+}
+
+model Achievement {
+  id            String   @id @default(cuid())
+  studentId       String
+  student         Student  @relation(fields: [studentId], references: [id])
+  title           String
+  description     String
+  icon            String?
+  points          Int      @default(10)
+  unlockedAt      DateTime @default(now())
+}
+
+model NgoProfile {
+  userId            String        @id
+  user              User          @relation(fields: [userId], references: [id])
+  organizationName  String
+  description       String?
+  website           String?
+  impactKPIs        ImpactKPI[]
+  beneficiaries     Beneficiary[]
+  regions           String[]
+  createdAt         DateTime      @default(now())
+}
+
+model Beneficiary {
+  id            String      @id @default(cuid())
+  ngoId         String
+  ngo           NgoProfile  @relation(fields: [ngoId], references: [userId])
+  name          String
+  type          String
+  region        String
+  status        String      @default("active")
+  joinDate      DateTime    @default(now())
+  impactScore     Float       @default(0)
+}
+
+model OrgProfile {
+  userId        String    @id
+  user          User      @relation(fields: [userId], references: [id])
+  department    String?
+  permissions   Json?
+  createdAt     DateTime  @default(now())
+}
+
+model ImpactKPI {
+  id            String      @id @default(cuid())
+  ngoId         String
+  ngo           NgoProfile  @relation(fields: [ngoId], references: [userId])
+  title         String
+  description   String?
+  value         Float
+  target        Float?
+  unit          String
+  region        String?
+  date          DateTime    @default(now())
+}
+
+model Message {
+  id            String      @id @default(cuid())
+  senderId      String
+  sender        User        @relation("SentMessages", fields: [senderId], references: [id])
+  receiverId    String
+  receiver      User        @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  type          MessageType @default(TEXT)
+  content       String      @db.Text
+  attachments   Json?
+  isRead        Boolean     @default(false)
+  readAt        DateTime?
+  createdAt     DateTime    @default(now())
+}
+
+model Notification {
+  id            String           @id @default(cuid())
+  userId        String
+  user          User             @relation(fields: [userId], references: [id])
+  type          NotificationType
+  title         String
+  message       String
+  data          Json?
+  isRead        Boolean          @default(false)
+  actionUrl     String?
+  createdAt     DateTime         @default(now())
+}
+
+model CalendarEvent {
+  id            String    @id @default(cuid())
+  title         String
+  description   String?
+  type          String
+  startDate     DateTime
+  endDate       DateTime?
+  allDay        Boolean   @default(false)
+  location      String?
+  userId        String
+  relatedId     String?
+  color         String?
+  createdAt     DateTime  @default(now())
+}
+
+model Report {
+  id            String    @id @default(cuid())
+  title         String
+  type          String
+  format        String    @default("pdf")
+  content       Json
+  generatedBy   String
+  fileUrl       String?
+  parameters    Json?
+  createdAt     DateTime  @default(now())
+}
+
+model Resource {
+  id            String    @id @default(cuid())
+  title         String
+  description   String?
+  type          String
+  url           String
+  fileSize      Int?
+  mimeType      String?
+  uploadedBy    String
+  tags          String[]
+  isPublic      Boolean   @default(false)
+  downloadCount Int       @default(0)
+  createdAt     DateTime  @default(now())
+}

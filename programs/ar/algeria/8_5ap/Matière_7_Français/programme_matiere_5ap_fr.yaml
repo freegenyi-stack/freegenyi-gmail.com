@@ -1,0 +1,1197 @@
+# ============================================================
+# PROGRAMME OFFICIEL DE LANGUE FRANÇAISE
+# 5ÈME ANNÉE PRIMAIRE - ALGÉRIE - GÉNÉRATION 2
+# ============================================================
+
+# MÉTADONNÉES PRINCIPALES
+matiere: langue_francaise
+niveau: 5ap
+programme: "Algérie - Génération 2"
+description: "Programme officiel de langue française pour la 5ème année primaire - Système éducatif algérien"
+langue_enseignement: "français"
+age_cible: "10-11 ans"
+annee_scolaire: "2024-2025"
+statut_document: "Officiel - Ministère de l'Éducation Nationale Algérie"
+
+# ============================================================
+# OBJECTIFS PÉDAGOGIQUES GLOBAUX
+# ============================================================
+objectifs_generaux:
+  - "Consolider et approfondir les compétences en communication orale et écrite"
+  - "Maîtriser les structures grammaticales intermédiaires du français"
+  - "Développer la compréhension de textes variés et authentiques"
+  - "Enrichir le vocabulaire dans des domaines thématiques spécifiques"
+  - "Renforcer l'expression créative et personnelle en français"
+  - "Développer l'esprit critique et l'argumentation simple"
+
+# ============================================================
+# COMPÉTENCES TRANSVERSALES PRIORITAIRES
+# ============================================================
+competences_transversales:
+  - "Communication orale fluide et articulée"
+  - "Lecture expressive et compréhension approfondie"
+  - "Expression écrite structurée et cohérente"
+  - "Maîtrise de la grammaire et conjugaison avancées"
+  - "Orthographe et respect des conventions"
+  - "Mémorisation et restitution de textes"
+  - "Exploitation de documents variés (textes, images, dialogues)"
+  - "Production de textes authentiques et contextualisés"
+
+# ============================================================
+# STRUCTURE DU PROGRAMME - 4 PROJETS PÉDAGOGIQUES
+# ============================================================
+projets:
+
+# ============================================================
+# PROJET 1 : AU ZOO !
+# ============================================================
+  - id: projet_01
+    titre: "Au Zoo !"
+    ordre: 1
+    trimestre: 1
+    duree_estimee: "3-4 semaines"
+    theme_principal: "faune_animaux_domestication"
+    niveau_difficulte: "moyen"
+    couleur_code: "corail"
+    
+    description_pedagogique: |
+      Ce projet permet aux élèves de découvrir le monde animal à travers des observations et des 
+      descriptions. Les apprenants développent leurs compétences de description et de caractérisation 
+      tout en enrichissant leur vocabulaire relatif aux animaux, leurs habitats et leurs comportements.
+    
+    # SÉQUENCE 1
+    sequences:
+      - id: seq_01_s1
+        titre_sequence: "Pauvre petite gazelle !"
+        page_reference: "p.11"
+        objectifs:
+          - "Décrire un animal"
+          - "Utiliser les adjectifs cardinaux et descriptifs"
+          - "Identifier les complements d'objet"
+        
+        actes_de_parole:
+          - "Décrire un animal"
+          - "Exprimer une émotion face à l'observation"
+        
+        contenu_grammatical:
+          - titre: "Le sujet (pronom personnel / GN)"
+            type: "syntaxe"
+            description: "Identification et fonction du sujet dans la phrase"
+            exemples:
+              - "La gazelle est gracieuse"
+              - "Elle court rapidement"
+          
+          - titre: "Le verbe de la phrase"
+            type: "verbe"
+            description: "Rôle du verbe comme noyau de la phrase"
+            categories: ["verbes d'action", "verbes d'état"]
+            exemples:
+              - "courir, sauter, observer"
+              - "être, paraître"
+          
+          - titre: "Le complément d'objet"
+            type: "complément"
+            sous_type: "COD/COI"
+            description: "Complément direct et indirect du verbe"
+            distinction:
+              - nom: "COD (Complément d'Objet Direct)"
+                reponse: "quoi/qui"
+                exemple: "Je regarde la gazelle"
+              - nom: "COI (Complément d'Objet Indirect)"
+                reponse: "à quoi/à qui"
+                exemple: "Je parle au gardien"
+          
+          - titre: "Négation simple"
+            type: "structure"
+            forme: "ne...plus"
+            description: "Expression de la suppression ou de l'absence"
+            exemples:
+              - "La gazelle ne saute plus"
+              - "Je n'aime plus attendre"
+        
+        contenu_lexical:
+          categorie: "Les adjectifs descriptifs (couleurs, formes, états)"
+          vocabulaire_specifique:
+            - groupe: "Adjectifs de couleurs"
+              mots: ["blanc", "noir", "fauve", "tacheté", "roux"]
+            - groupe: "Adjectifs de taille et forme"
+              mots: ["gracieux", "élancé", "fin", "délicat", "léger"]
+            - groupe: "Adjectifs cardinaux"
+              mots: ["premier", "deuxième", "dernier", "prochain"]
+        
+        ressources_textes:
+          - titre: "Dialogue : Pauvre petite gazelle !"
+            type: "dialogue"
+            source: "manuel p.11"
+            competences: ["compréhension orale", "intonation", "expression dramatisée"]
+          
+          - titre: "Extrait narratif"
+            type: "narrative"
+            theme: "Observation d'une gazelle au zoo"
+            longueur: "court à moyen"
+        
+        ressources_orthographe:
+          - "Le féminin en 'e'"
+          - "Les adjectifs de couleurs"
+          - "Les accents (é, è, ê)"
+          - "La dictée régulière"
+        
+        taches_production:
+          - id: tache_1_01
+            titre: "Suite à la visite, écrire des devinettes pour décrire les animaux vus au zoo"
+            type: "production_écrite"
+            niveau_difficulte: "moyen"
+            competences_visees: 
+              - "Description précise"
+              - "Respect de la structure d'énigme"
+              - "Orthographe et grammaire"
+            criteres_evaluation:
+              - "Clarté de la description"
+              - "Utilisation correcte des adjectifs"
+              - "Respect de la ponctuation"
+        
+        evaluation:
+          type: "formative"
+          outils:
+            - "Exercices d'identification grammaticale"
+            - "Production de phrases descriptives"
+            - "Dictée de mots-clés"
+            - "Questionnaire de compréhension"
+
+      # SÉQUENCE 2
+      - id: seq_01_s2
+        titre_sequence: "C'est un vrai fennec ?"
+        page_reference: "p.23"
+        objectifs:
+          - "Présenter l'état d'un animal"
+          - "Utiliser les adjectifs ordinaux"
+          - "Maîtriser les pronoms-substituts"
+        
+        actes_de_parole:
+          - "Présenter un animal"
+          - "Exprimer une appréciation"
+          - "Poser des questions sur un animal"
+        
+        contenu_grammatical:
+          - titre: "Le verbe d'état"
+            type: "verbe"
+            liste: ["être", "avoir", "sembler", "paraître", "devenir"]
+            description: "Verbes qui décrivent l'état ou la condition"
+            usage: "Caractérisation de l'animal"
+            exemples:
+              - "Le fennec est un petit animal"
+              - "Il a de grandes oreilles"
+              - "Il paraît timide"
+          
+          - titre: "L'adjectif attribut"
+            type: "adjectif"
+            position: "après le verbe d'état"
+            structure: "Sujet + verbe d'état + adjectif attribut"
+            exemples:
+              - "Le fennec est nocturne"
+              - "Ces oreilles sont très développées"
+            accord: "S'accorde avec le sujet"
+          
+          - titre: "Le complément d'objet indirect"
+            type: "syntaxe"
+            structure: "Verbe + préposition (à, de) + GN"
+            exemples:
+              - "On parle du fennec"
+              - "Il ressemble à un renard"
+          
+          - titre: "Les pronoms-substituts"
+            type: "pronom"
+            categories:
+              - nom: "Pronoms de 3e personne"
+                singulier: ["il", "elle", "le", "la", "lui"]
+                pluriel: ["ils", "elles", "les", "leur"]
+            usage: "Éviter la répétition du nom"
+            exemples:
+              - "Le fennec est rapide. Il court très vite"
+              - "J'aime les animaux. Je les observe souvent"
+        
+        contenu_lexical:
+          categorie: "Les adjectifs ordinaux et descriptifs avancés"
+          vocabulaire_specifique:
+            - groupe: "Adjectifs ordinaux"
+              mots: ["premier", "deuxième", "troisième", "quatrième", "dernier"]
+            - groupe: "Adjectifs qualificatifs spécialisés"
+              mots: ["nocturne", "diurne", "farouche", "apprivoisé", "sauvage", "docile"]
+            - groupe: "Caractéristiques physiques"
+              mots: ["grand", "petit", "massif", "svelte", "vigoureux", "fragile"]
+        
+        ressources_textes:
+          - titre: "Dialogue : C'est un vrai fennec ?"
+            type: "dialogue"
+            source: "manuel p.23"
+            contexte: "Conversation entre visiteurs et gardien du zoo"
+          
+          - titre: "Extrait informatif"
+            type: "descriptif"
+            theme: "Caractéristiques du fennec"
+            source: "Encyclopédie berbère, 1997"
+          
+          - titre: "Extrait littéraire"
+            type: "narrative"
+            source: "Le dromadaire, Alphonse Daudet, Tartarin de Tarascon, 1872"
+            but: "Enrichissement culturel et lexical"
+        
+        ressources_orthographe:
+          - "L'accord de l'adjectif attribut"
+          - "Le féminin -eur, -euse, -trice"
+          - "Les homophones : a / à, on / ont"
+          - "La dictée thématique"
+        
+        taches_production:
+          - id: tache_2_01
+            titre: "Fabriquer des posters d'animaux sauvages"
+            type: "production_multimodale"
+            competences_visees:
+              - "Description structurée"
+              - "Utilisation d'adjectifs variés"
+              - "Mise en page et lisibilité"
+            elements_requis:
+              - "Nom de l'animal"
+              - "Habitat"
+              - "Caractéristiques physiques (3-4 adjectifs)"
+              - "Comportement"
+              - "Photo ou dessin"
+        
+        evaluation:
+          type: "formative + sommative"
+          composantes:
+            - "Compréhension du dialogue"
+            - "Utilisation des pronoms"
+            - "Accord de l'adjectif"
+            - "Production écrite courte"
+
+# ============================================================
+# PROJET 2 : C'EST UN LIEU EXCEPTIONNEL !
+# ============================================================
+  - id: projet_02
+    titre: "C'est un lieu exceptionnel !"
+    ordre: 2
+    trimestre: 1
+    duree_estimee: "3-4 semaines"
+    theme_principal: "lieux_patrimoine_voyage"
+    niveau_difficulte: "moyen-difficile"
+    couleur_code: "lilas"
+    
+    description_pedagogique: |
+      Ce projet conduit les élèves à explorer différents lieux remarquables et à développer 
+      leurs compétences de narration et de description de lieux. Il favorise l'expression 
+      du déplacement, la localisation spatiale et l'appréciation du patrimoine.
+    
+    sequences:
+      - id: seq_02_s1
+        titre_sequence: "Nous allons au musée"
+        page_reference: "p.36"
+        objectifs:
+          - "Raconter un événement"
+          - "Localiser et se déplacer"
+          - "Utiliser les déterminants possessifs"
+        
+        actes_de_parole:
+          - "Raconter un événement passé"
+          - "Exprimer un projet futur"
+          - "Décrire un lieu"
+        
+        contenu_grammatical:
+          - titre: "Le complément de lieu"
+            type: "complément"
+            structure: "Verbe + préposition + GN"
+            prepositions: ["à", "en", "dans", "devant", "derrière", "près de", "loin de"]
+            exemples:
+              - "Nous allons au musée"
+              - "Elle entre dans la salle d'exposition"
+              - "Le tableau est pendu à côté de la porte"
+          
+          - titre: "Les déterminants possessifs"
+            type: "determinant"
+            tableau:
+              - personne: "1re sing (je)"
+                masculin: "mon"
+                feminin: "ma"
+                pluriel: "mes"
+              - personne: "2e sing (tu)"
+                masculin: "ton"
+                feminin: "ta"
+                pluriel: "tes"
+              - personne: "3e sing (il/elle)"
+                masculin: "son"
+                feminin: "sa"
+                pluriel: "ses"
+              - personne: "1re plur (nous)"
+                masculin: "notre"
+                feminin: "notre"
+                pluriel: "nos"
+              - personne: "2e plur (vous)"
+                masculin: "votre"
+                feminin: "votre"
+                pluriel: "vos"
+              - personne: "3e plur (ils/elles)"
+                masculin: "leur"
+                feminin: "leur"
+                pluriel: "leurs"
+            regles_accord: "S'accorde avec le nom possédé en genre et nombre"
+            exemples:
+              - "Mon musée préféré est le Louvre"
+              - "Ses objets d'art sont magnifiques"
+        
+        contenu_lexical:
+          categorie: "Vocabulaire de la visite : lieux, déplacement, observation"
+          vocabulaire_specifique:
+            - groupe: "Lieux du musée"
+              mots: ["hall", "couloir", "salle d'exposition", "galerie", "escalier", "ascenseur"]
+            - groupe: "Verbes de déplacement"
+              mots: ["aller", "marcher", "entrer", "traverser", "monter", "descendre", "avancer"]
+            - groupe: "Verbes d'observation"
+              mots: ["voir", "regarder", "observer", "contempler", "admirer"]
+        
+        ressources_textes:
+          - titre: "Dialogue : Nous allons au musée"
+            type: "dialogue"
+            source: "manuel p.36"
+          
+          - titre: "Document informatif"
+            type: "brochure"
+            theme: "Une brochure d'un musée"
+            competences: ["lecture informationnelle", "extraction de données"]
+          
+          - titre: "Extrait littéraire"
+            type: "narrative"
+            source: "Au musée, Antoine de Schuyter, Mystère au Musée, Édition Mijadé, 2006"
+          
+          - titre: "Comptine"
+            type: "poétique"
+            titre_comptine: "Le grand musée"
+            fonction: "Mémorisation et plaisir de la langue"
+        
+        ressources_orthographe:
+          - "La dictée thématique"
+          - "L'accord des déterminants possessifs"
+        
+        taches_production:
+          - id: tache_3_01
+            titre: "Préparer le programme de la visite du musée. Raconter la visite"
+            type: "production_écrite_orale"
+            elements:
+              - "Itinéraire (ordre des salles)"
+              - "Descriptions des œuvres clés"
+              - "Impressions personnelles"
+            longueur: "court à moyen (5-8 phrases)"
+        
+        evaluation:
+          outils: ["questionnaire de compréhension", "production de dialogue", "exercices de localisation"]
+
+      - id: seq_02_s2
+        titre_sequence: "J'aime voyager en famille"
+        page_reference: "p.47"
+        objectifs:
+          - "Situer un événement dans le temps"
+          - "Utiliser les synonymes et antonymes"
+          - "Maîtriser le passé composé"
+        
+        actes_de_parole:
+          - "Raconter un voyage"
+          - "Exprimer une préférence"
+          - "Parler du passé"
+        
+        contenu_grammatical:
+          - titre: "Le complément de temps"
+            type: "complément"
+            structure: "Verbe + adverbe/GN de temps"
+            indicateurs_temporels:
+              - groupe: "Adverbes de temps"
+                exemples: ["hier", "aujourd'hui", "demain", "toujours", "jamais", "souvent"]
+              - groupe: "GN de temps"
+                exemples: ["le matin", "l'après-midi", "la semaine dernière", "dans deux jours"]
+            usage: "Situer l'action dans le temps"
+          
+          - titre: "Les synonymes"
+            type: "lexique"
+            definition: "Mots de sens proche mais non identique"
+            exemples:
+              - "petit = minuscule, minuscule"
+              - "beau = joli, merveilleux"
+              - "aimer = adorer, préférer"
+            fonction: "Enrichissement lexical et style"
+          
+          - titre: "Les antonymes"
+            type: "lexique"
+            definition: "Mots de sens opposé"
+            exemples:
+              - "grand ↔ petit"
+              - "avant ↔ après"
+              - "haut ↔ bas"
+          
+          - titre: "Les trois groupes de verbes au passé composé"
+            type: "conjugaison"
+            structure: "Auxiliaire (avoir/être) + participe passé"
+            regles:
+              - groupe: "1er groupe (verbes en -er)"
+                formation: "parlé, regardé, marché"
+                auxiliaire: "avoir (généralement)"
+              - groupe: "2e groupe (verbes en -ir)"
+                formation: "fini, choisi, bâti"
+                auxiliaire: "avoir (généralement)"
+              - groupe: "3e groupe (verbes irréguliers)"
+                formation: "eu, fait, allé, venu"
+                auxiliaire: "avoir ou être"
+            exemples_phrases:
+              - "J'ai visité le Louvre"
+              - "Elle a admiré les tableaux"
+              - "Nous sommes allés en Bretagne"
+        
+        contenu_lexical:
+          categorie: "Vocabulaire du voyage, des préférences et des événements"
+          vocabulaire_specifique:
+            - groupe: "Moyens de transport"
+              mots: ["voiture", "train", "avion", "autobus", "bateau"]
+            - groupe: "Destinations et paysages"
+              mots: ["montagne", "plage", "mer", "campagne", "ville", "désert"]
+            - groupe: "Verbes de voyage"
+              mots: ["partir", "arriver", "revenir", "visiter", "découvrir", "explorer"]
+        
+        ressources_textes:
+          - titre: "Dialogue : J'aime voyager en famille"
+            type: "dialogue"
+            source: "manuel p.47"
+          
+          - titre: "Extrait narratif"
+            type: "récit"
+            theme: "Un voyage en famille dans les Pyrénées"
+          
+          - titre: "Comptine"
+            type: "poétique"
+            titre_comptine: "Monsieur le Cordonnier"
+            auteur: "traditionnel"
+          
+          - titre: "Extrait poétique"
+            type: "poésie"
+            titre_poeme: "La petite étoile"
+            fonction: "Travail de mémorisation et d'intonation"
+        
+        ressources_orthographe:
+          - "La dictée thématique"
+          - "L'accord du participe passé (cas simples)"
+        
+        taches_production:
+          - id: tache_4_01
+            titre: "Fabriquer un panneau pour présenter un lieu spécial choisi par le groupe"
+            type: "production_multimodale"
+            elements:
+              - "Localisation du lieu"
+              - "Description des caractéristiques principales"
+              - "Activités possibles"
+              - "Photos ou illustrations"
+            competences: ["synthèse", "communication", "collaboration"]
+        
+        evaluation:
+          type: "formative"
+          outils: ["production d'un récit court", "exercices de localisation temporelle", "dictée"]
+
+# ============================================================
+# PROJET 3 : QU'EST-CE QU'UNE CATASTROPHE NATURELLE ?
+# ============================================================
+  - id: projet_03
+    titre: "Qu'est-ce qu'une catastrophe naturelle ?"
+    ordre: 3
+    trimestre: 2
+    duree_estimee: "4-5 semaines"
+    theme_principal: "environnement_risques_naturels"
+    niveau_difficulte: "difficile"
+    couleur_code: "vert-pale"
+    
+    description_pedagogique: |
+      Ce projet sensibilise les élèves aux risques naturels et aux catastrophes environnementales 
+      tout en développant leurs compétences de documentation, d'explication scientifique et 
+      d'argumentation. Les apprenants apprennent à informer et à expliquer les phénomènes naturels.
+    
+    sequences:
+      - id: seq_03_s1
+        titre_sequence: "Quand je serai grand"
+        page_reference: "p.58"
+        objectifs:
+          - "Donner des informations sur un fait"
+          - "Utiliser les noms composés"
+          - "Maîtriser le futur simple"
+        
+        actes_de_parole:
+          - "Informer sur un phénomène"
+          - "Exprimer un projet personnel"
+          - "Évoquer l'avenir"
+        
+        contenu_grammatical:
+          - titre: "Le complément de but (place et forme)"
+            type: "complément"
+            fonction: "Indiquer le but, l'objectif d'une action"
+            structures:
+              - "Verbe + pour + infinitif"
+              - "Verbe + pour + GN"
+              - "Verbe + afin de + infinitif"
+            exemples:
+              - "Je travaille pour réussir"
+              - "Elle étudie pour son examen"
+              - "Nous marchons pour arriver plus vite"
+        
+          - titre: "L'infinitif après un verbe / une préposition"
+            type: "syntaxe"
+            usage: "Exprimer une action future ou un but"
+            structure: "Préposition + infinitif"
+            exemples:
+              - "Je vais devenir savant"
+              - "C'est intéressant de découvrir"
+              - "Elle commence à comprendre"
+        
+          - titre: "Les noms composés"
+            type: "morphologie"
+            definition: "Noms formés de deux mots ou plus"
+            categories:
+              - "nom + nom : chef-lieu, arc-en-ciel"
+              - "adjectif + nom : basse-cour"
+              - "préposition + nom : sans-abri"
+            accord: "Règles complexes selon la composition"
+            exemples:
+              - "une catastrophe naturelle"
+              - "une inondation"
+              - "une tempête"
+        
+          - titre: "Le futur simple des verbes 1er et 2e groupes"
+            type: "conjugaison"
+            formation: "Infinitif + terminaisons (-ai, -as, -a, -ons, -ez, -ont)"
+            tableau:
+              - verbe: "parler"
+                conjugaison: ["je parlerai", "tu parleras", "il parlera", "nous parlerons", "vous parlerez", "ils parleront"]
+              - verbe: "finir"
+                conjugaison: ["je finirai", "tu finiras", "il finira", "nous finirons", "vous finirez", "ils finiront"]
+            exemples:
+              - "Je deviendrai ingénieur"
+              - "Elle découvrira des secrets"
+        
+        contenu_lexical:
+          categorie: "Lexique des professions et de l'avenir"
+          vocabulaire_specifique:
+            - groupe: "Professions"
+              mots: ["ingénieur", "savant", "scientifique", "inventeur", "chercheur"]
+            - groupe: "Verbes de profession"
+              mots: ["travailler", "inventer", "découvrir", "créer", "diriger"]
+        
+        ressources_textes:
+          - titre: "Dialogue : Quand je serai grand"
+            type: "dialogue"
+            source: "manuel p.58"
+          
+          - titre: "Extrait narratif"
+            type: "récit"
+            theme: "Projets d'avenir des enfants"
+          
+          - titre: "Document informatif"
+            type: "informatif"
+            titre: "Les sauveteurs"
+            source: "Emmanuelle Figueras, Les catastrophes naturelles, Toulouse, Milan, 2017"
+          
+          - titre: "Comptine"
+            type: "poétique"
+            titre_comptine: "Quand je serai grand"
+            fonction: "Mémorisation et expression des rêves"
+        
+        ressources_orthographe:
+          - "La dictée thématique"
+          - "Les homophones courants"
+        
+        taches_production:
+          - id: tache_5_01
+            titre: "Présenter son métier préféré"
+            type: "production_orale_ecrite"
+            contenu_requis:
+              - "Nom du métier"
+              - "Activités principales"
+              - "Qualités requises"
+              - "Raisons du choix"
+            longueur: "court (4-6 phrases)"
+
+      - id: seq_03_s2
+        titre_sequence: "C'est une inondation"
+        page_reference: "p.68"
+        objectifs:
+          - "Expliquer un événement"
+          - "Utiliser les adverbes de manière"
+          - "Maîtriser la coordination"
+        
+        actes_de_parole:
+          - "Expliquer un phénomène naturel"
+          - "Rapporter des faits"
+          - "Utiliser une chronologie"
+        
+        contenu_grammatical:
+          - titre: "Le complément de manière"
+            type: "complément"
+            fonction: "Indiquer comment l'action se déroule"
+            structures:
+              - "Adverbe de manière"
+              - "GN prépositionnel (avec, par, de, en)"
+              - "adjectif attribut"
+            adverbes: ["lentement", "rapidement", "doucement", "fortement", "violemment"]
+            exemples:
+              - "L'eau montait rapidement"
+              - "La pluie tombait avec violence"
+              - "Les habitants restaient calmes"
+          
+          - titre: "La coordination : mais"
+            type: "connecteur"
+            usage: "Exprimer une opposition ou une restriction"
+            position: "entre deux propositions de même nature"
+            exemples:
+              - "Il fait beau mais le vent souffle fort"
+              - "C'est un phénomène rare mais dangereux"
+          
+          - titre: "Les verbes du 1er et 2e groupes à l'imparfait"
+            type: "conjugaison"
+            formation: "Radical du présent + terminaisons (-ais, -ait, -ions, -iez, -aient)"
+            usage: "Décrire le contexte du passé, actions habituelles ou continues"
+            tableau:
+              - verbe: "tomber"
+                conjugaison: ["je tombais", "tu tombais", "il tombait", "nous tombions", "vous tombiez", "ils tombaient"]
+              - verbe: "avoir"
+                conjugaison: ["j'avais", "tu avais", "il avait", "nous avions", "vous aviez", "ils avaient"]
+            exemples:
+              - "La pluie tombait abondamment"
+              - "Les gens avaient peur"
+        
+        contenu_lexical:
+          categorie: "Vocabulaire des catastrophes naturelles et des phénomènes météorologiques"
+          vocabulaire_specifique:
+            - groupe: "Phénomènes climatiques"
+              mots: ["pluie", "tempête", "cyclone", "orage", "grêle", "neige", "inondation"]
+            - groupe: "Verbes de phénomènes naturels"
+              mots: ["tomber", "souffler", "gronder", "inonder", "dévaster", "emporter"]
+            - groupe: "Adverbes de manière et d'intensité"
+              mots: ["doucement", "vigoureusement", "progressivement", "soudainement", "graduellement"]
+        
+        ressources_textes:
+          - titre: "Dialogue : C'est une inondation"
+            type: "dialogue"
+            source: "manuel p.68"
+          
+          - titre: "Extrait informatif"
+            type: "texte_informatif"
+            theme: "Explication d'un phénomène naturel"
+            source: "Mieux connaître les risques des catastrophes naturelles pour se protéger, 2004"
+          
+          - titre: "Comptine"
+            type: "poétique"
+            titre_comptine: "Gouttes, Goutelettes"
+            auteur: "Rondes, chansons et comptines, Scarabéa, 2005"
+            fonction: "Travail de mémorisation sur le thème de l'eau"
+          
+          - titre: "Bande dessinée"
+            type: "BD"
+            titre_BD: "Il pleut !"
+            fonction: "Approche narrative et visuelle"
+        
+        ressources_orthographe:
+          - "La dictée thématique"
+          - "Le pluriel : s, x"
+          - "Les lettres muettes et les sons : -euil, euille, -ion, -ation"
+        
+        taches_production:
+          - id: tache_6_01
+            titre: "Réaliser un panneau de photos et de textes pour expliquer comment agir face à une catastrophe naturelle"
+            type: "production_multimodale"
+            elements:
+              - "Photos ou images représentatives"
+              - "Texte explicatif (causes, conséquences)"
+              - "Conseils de prévention"
+              - "Mise en page claire et attrayante"
+            competences: ["recherche", "synthèse", "communication"]
+        
+        evaluation:
+          type: "formative"
+          outils: ["questionnaire de compréhension", "exercices d'explication", "production écrite"]
+
+# ============================================================
+# PROJET 4 : PROTÉGEONS LA NATURE !
+# ============================================================
+  - id: projet_04
+    titre: "Protégeons la nature !"
+    ordre: 4
+    trimestre: 2
+    duree_estimee: "5-6 semaines"
+    theme_principal: "environnement_responsabilite_civique"
+    niveau_difficulte: "difficile"
+    couleur_code: "bleu"
+    
+    description_pedagogique: |
+      Ce projet final développe la conscience écologique des élèves tout en consolidant 
+      toutes les compétences grammaticales et lexicales. Les apprenants apprennent à argumenter, 
+      à convaincre et à proposer des solutions aux problèmes environnementaux.
+    
+    sequences:
+      - id: seq_04_s1
+        titre_sequence: "Pourquoi notre terre est-elle en danger ?"
+        page_reference: "p.80"
+        objectifs:
+          - "Dire quoi faire"
+          - "Utiliser le suffixe -tion"
+          - "Maîtriser la coordination : car"
+        
+        actes_de_parole:
+          - "Expliquer un problème"
+          - "Argumenter avec des causes"
+          - "Proposer des solutions"
+        
+        contenu_grammatical:
+          - titre: "La coordination : car"
+            type: "connecteur"
+            usage: "Exprimer la cause ou la raison"
+            position: "entre deux propositions"
+            distinction: "Relie la conséquence à sa cause"
+            exemples:
+              - "La terre est en danger car on la pollue"
+              - "Nous devons agir car c'est notre responsabilité"
+              - "Les forêts disparaissent car on les coupe"
+          
+          - titre: "La phrase complexe avec « parce que »"
+            type: "syntaxe"
+            structure: "Proposition principale + parce que + proposition subordonnée"
+            usage: "Exprimer la cause plus fortement que « car »"
+            exemples:
+              - "Je protège la nature parce que j'aime les animaux"
+              - "Les déchet polluent les mers parce qu'on les jette à l'eau"
+        
+          - titre: "Le suffixe -tion"
+            type: "morphologie"
+            definition: "Suffixe formant des noms à partir de verbes"
+            regles:
+              - "Verbes en -er → -tion : créer → création, polluer → pollution"
+              - "Verbes en -ir → -ion : partir → partition, finir → finition"
+            listes:
+              - mots: ["création", "pollution", "protection", "solution", "pollution", "déchets"]
+            accord: "Toujours féminin, pluriel en -s"
+            exemples:
+              - "La création d'une aire protégée"
+              - "La pollution de l'air et de l'eau"
+              - "La protection des espèces menacées"
+        
+          - titre: "Le verbe avoir/être à l'imparfait (révision)"
+            type: "conjugaison"
+            usage: "Raconter comment était la situation avant"
+            tableau:
+              - verbe: "avoir"
+                conjugaison: ["j'avais", "tu avais", "il avait", "nous avions", "vous aviez", "ils avaient"]
+              - verbe: "être"
+                conjugaison: ["j'étais", "tu étais", "il était", "nous étions", "vous étiez", "ils étaient"]
+            exemples:
+              - "Autrefois, il y avait plus de forêts"
+              - "Les rivières étaient plus pures"
+        
+        contenu_lexical:
+          categorie: "Vocabulaire de l'environnement et de la protection"
+          vocabulaire_specifique:
+            - groupe: "Problèmes environnementaux"
+              mots: ["pollution", "déchets", "extinction", "déforestation", "changement climatique"]
+            - groupe: "Actions de protection"
+              mots: ["protéger", "préserver", "conserver", "recycler", "restaurer"]
+            - groupe: "Mots dérivés du suffixe -tion"
+              mots: ["création", "protection", "pollution", "gestion", "solution", "biodiversité"]
+        
+        ressources_textes:
+          - titre: "Dialogue : Pourquoi notre terre est-elle en danger ?"
+            type: "dialogue"
+            source: "manuel p.80"
+          
+          - titre: "Extrait informatif"
+            type: "article"
+            theme: "Pourquoi les déchets sont-ils dangereux"
+            source: "Emmanuelle Paroissien, L'écologie, Fleurus, 2009"
+          
+          - titre: "Extrait documentaire"
+            type: "documentaire"
+            titre: "La forêt"
+            source: "Notre planète la terre, Hatier"
+            competences: ["lecture informationnelle", "extraction de données scientifiques"]
+        
+        ressources_orthographe:
+          - "La dictée thématique"
+          - "Le pluriel : x"
+          - "Le redoublement des consonnes"
+          - "Les sons : eil, iel, io, ia"
+        
+        taches_production:
+          - id: tache_7_01
+            titre: "Réaliser une affiche pour sensibiliser les camarades à la protection de la terre"
+            type: "production_multimodale"
+            elements:
+              - "Titre accrocheur et clair"
+              - "Problème identifié"
+              - "Raisons du problème (min. 2)"
+              - "Solutions proposées"
+              - "Appel à l'action"
+              - "Illustration"
+            criteres:
+              - "Clarté du message"
+              - "Utilisation d'arguments (car, parce que)"
+              - "Respect de la langue française"
+        
+        evaluation:
+          type: "formative"
+          outils: ["questionnaire de compréhension", "production d'arguments", "exercices de coordination"]
+
+      - id: seq_04_s2
+        titre_sequence: "Ne gaspillons pas l'eau !"
+        page_reference: "p.91"
+        objectifs:
+          - "Donner des conseils"
+          - "Utiliser les pronoms compléments"
+          - "Maîtriser l'impératif"
+        
+        actes_de_parole:
+          - "Donner des conseils pratiques"
+          - "Exprimer un impératif"
+          - "Convaincre et persuader"
+        
+        contenu_grammatical:
+          - titre: "Les pronoms compléments"
+            type: "pronom"
+            categories:
+              - nom: "Pronoms COD (direct)"
+                formes: ["le", "la", "les", "l'", "me", "te", "nous", "vous"]
+                position: "avant le verbe"
+                exemple: "Je le regarde, Elle nous écoute"
+              - nom: "Pronoms COI (indirect)"
+                formes: ["lui", "leur"]
+                position: "avant le verbe"
+                exemple: "Je lui parle, Nous leur expliquons"
+            accord: "Variable selon le GN remplacé"
+            exemples:
+              - "Je vois l'eau → Je la vois"
+              - "Il parle aux enfants → Il leur parle"
+              - "Tu m'aides → Oui, je t'aide"
+          
+          - titre: "La coordination : donc"
+            type: "connecteur"
+            usage: "Exprimer une conséquence logique"
+            structure: "Proposition 1 + donc + proposition 2"
+            exemple: "Il faut, il ne faut pas → conséquence"
+            exemplos:
+              - "L'eau est précieuse, donc ne la gaspillons pas"
+              - "Le gaspillage est mauvais, donc faisons attention"
+        
+          - titre: "L'impératif pour donner un conseil"
+            type: "mode"
+            formation: "Radical du présent + pas de pronom personnel sujet"
+            conjugaison_1ergroupe:
+              - "Parler → Parle ! Parlons ! Parlez !"
+            conjugaison_2egroupe:
+              - "Finir → Finis ! Finissons ! Finissez !"
+            conjugaison_3egroupe:
+              - "Aller → Va ! Allons ! Allez !"
+              - "Avoir → Aie ! Ayons ! Ayez !"
+              - "Être → Sois ! Soyons ! Soyez !"
+            usage: "Donner des ordres, des conseils, des recommandations"
+            exemples:
+              - "Ne gaspille pas l'eau !"
+              - "Ferme bien le robinet !"
+              - "Soyez responsables !"
+              - "Protégeons notre planète !"
+        
+        contenu_lexical:
+          categorie: "Vocabulaire de l'eau, de l'écologie et des conseils"
+          vocabulaire_specifique:
+            - groupe: "Mots liés à l'eau"
+              mots: ["eau", "robinet", "goutte", "source", "rivière", "puits"]
+            - groupe: "Verbes de consommation"
+              mots: ["gaspiller", "économiser", "utiliser", "consommer", "épargner"]
+            - groupe: "Mots du suffixe -ee"
+              mots: ["eau", "goutte", "assiette", "bouillie"]
+        
+        ressources_textes:
+          - titre: "Dialogue : Ne gaspillons pas l'eau !"
+            type: "dialogue"
+            source: "manuel p.91"
+          
+          - titre: "Extrait informatif"
+            type: "article"
+            theme: "Pourquoi ne faut-il pas gaspiller l'eau"
+            source: "Stéphanie Ledu, L'écologie, Milan, 2011"
+          
+          - titre: "Affiche"
+            type: "document_visuel"
+            titre: "Pourquoi ne faut-il pas gaspiller l'eau ?"
+            fonction: "Étude de documents authentiques"
+          
+          - titre: "Comptine"
+            type: "poétique"
+            titre_comptine: "D'après Stéphanie Ledu, L'écologie, Milan, 2011"
+            fonction: "Mémorisation ludique"
+        
+        ressources_orthographe:
+          - "La dictée thématique"
+          - "Le pluriel : al, ail"
+          - "Les homophones : ou, où, ous, oû"
+          - "La ponctuation : la virgule, les deux points"
+        
+        taches_production:
+          - id: tache_8_01
+            titre: "Réaliser une affiche pour sensibiliser les camarades contre le gaspillage d'eau"
+            type: "production_multimodale"
+            elements:
+              - "Titre accrocheur"
+              - "Problème du gaspillage expliqué"
+              - "Conséquences (min. 2)"
+              - "Conseils pratiques (min. 3)"
+              - "Message positif et moteur"
+              - "Illustrations pertinentes"
+            presentation: "Travail de groupe possible"
+            competences: ["collaboration", "communication", "créativité"]
+        
+        evaluation:
+          type: "sommative"
+          composantes:
+            - "Compréhension du dialogue"
+            - "Utilisation des pronoms compléments"
+            - "Compréhension de l'impératif"
+            - "Expression écrite avec conseils"
+            - "Production créative multimodale"
+
+# ============================================================
+# RÉCAPITULATIF DES COMPÉTENCES TERMINALES ATTENDUES
+# ============================================================
+competences_finales_attendues:
+  competences_orales:
+    expression_orale:
+      - "S'exprimer avec clarté et assurance en français classique correct"
+      - "Raconter un événement personnel ou un récit entendu"
+      - "Décrire une personne, un objet, un lieu, un animal"
+      - "Exprimer des sensations, des émotions et des opinions"
+      - "Participer à un dialogue ou une conversation simple"
+      - "Répondre à des questions variées avec cohérence"
+    comprehension_orale:
+      - "Comprendre un dialogue ou une conversation à vitesse normale"
+      - "Identifier les informations principales d'un texte lu à voix haute"
+      - "Comprendre les instructions et les explications"
+      - "Saisir le ton et l'intention de l'interlocuteur"
+  
+  competences_ecrites:
+    lecture:
+      - "Lire couramment un texte adapté au niveau 5AP"
+      - "Comprendre un texte narratif, descriptif ou informatif"
+      - "Identifier les idées principales et les détails importants"
+      - "Répondre à des questions de compréhension"
+      - "Utiliser le contexte pour deviner le sens de mots inconnus"
+    
+    ecriture:
+      - "Écrire des phrases grammaticalement correctes et bien ponctuées"
+      - "Produire un texte court (8-12 phrases) cohérent sur un sujet donné"
+      - "Respecter les règles d'accord et d'orthographe"
+      - "Utiliser une ponctuation appropriée"
+      - "Produire des textes variés (dialogue, description, narration, conseil)"
+  
+  competences_grammaticales:
+    structures:
+      - "Identifier et utiliser correctement les trois temps (passé, présent, futur)"
+      - "Construire des phrases simples et des phrases complexes coordonnées"
+      - "Former et utiliser le singulier, duel et pluriel"
+      - "Utiliser les verbes d'état et les verbes d'action"
+      - "Maîtriser les compléments (COD, COI, lieu, temps, manière, but)"
+      - "Utiliser les connecteurs (et, mais, car, donc, parce que, pour)"
+    
+    morphologie:
+      - "Former les féminins réguliers et irréguliers"
+      - "Reconnaître et utiliser les suffixes (-tion, -eur, -euse, etc.)"
+      - "Utiliser les déterminants (articles, possessifs, démonstratifs)"
+      - "Utiliser les pronoms (personnels, possessifs, compléments, relatifs)"
+      - "Conjuguer régulièrement au présent, imparfait, futur, passé composé"
+    
+    syntaxe:
+      - "Construire des phrases bien structurées avec sujet, verbe, compléments"
+      - "Créer des phrases avec des adjectifs épithètes et attributs"
+      - "Utiliser les adverbes de manière, de temps et de lieu"
+      - "Maîtriser l'ordre des mots en français"
+  
+  competences_lexicales:
+    vocabulaire:
+      - "Maîtriser environ 1200-1500 mots"
+      - "Utiliser le vocabulaire thématique des quatre projets"
+      - "Reconnaître et utiliser les synonymes et antonymes"
+      - "Comprendre les mots par le contexte et la morphologie"
+      - "Utiliser correctement des mots de même famille"
+    
+    richesse_expression:
+      - "Varier son vocabulaire pour éviter les répétitions"
+      - "Utiliser des adjectifs variés pour la description"
+      - "Employer des verbes précis et appropriés au contexte"
+      - "Enrichir ses énoncés avec des adverbes"
+  
+  competences_transversales:
+    comprehension_et_analyse:
+      - "Identifier le genre et le type de texte"
+      - "Extraire les informations essentielles"
+      - "Faire des inférences simples"
+      - "Reconnaître le point de vue et l'intention du texte"
+    
+    production_et_creation:
+      - "Planifier avant d'écrire"
+      - "Organiser ses idées de manière logique"
+      - "Réviser et corriger son travail"
+      - "Enrichir son texte avec des détails pertinents"
+    
+    collaboration_et_partage:
+      - "Écouter activement ses camarades"
+      - "Participer constructivement aux activités"
+      - "Accepter les corrections et suggestions"
+      - "Partager ses productions avec confiance"
+
+# ============================================================
+# STRATÉGIES PÉDAGOGIQUES ET RESSOURCES
+# ============================================================
+ressources_pedagogiques:
+  manuels_officiels:
+    - titre: "Manuel de français 5AP - Génération 2"
+      editeur: "ONPS - Algérie"
+      annee: "2024"
+      conformite: "Officiel"
+    
+    - titre: "Cahier d'activités français 5AP"
+      editeur: "ONPS - Algérie"
+      competences: ["exercices", "activités", "évaluations"]
+  
+  supports_numeriques:
+    - type: "Exercices interactifs"
+      themes: ["grammaire", "conjugaison", "vocabulaire", "compréhension"]
+      plateforme: "en ligne ou application mobile"
+    
+    - type: "Enregistrements audio"
+      contenu: ["dialogues du manuel", "textes de lecture", "comptines", "prononciation"]
+      fonction: "Amélioration de la compréhension orale et prononciation"
+    
+    - type: "Vidéos éducatives"
+      themes: ["explications grammaticales", "conjugaison animée", "contextualisation culturelle"]
+      duree: "3-5 minutes par vidéo"
+    
+    - type: "Textes numériques"
+      contenu: ["textes supplémentaires", "articles jeunesse", "histoires courtes"]
+      fonction: "Enrichissement et lecture libre"
+  
+  materiel_complementaire:
+    - "Flashcards vocabulaire thématique"
+    - "Affiches avec règles de grammaire clé"
+    - "Jeux éducatifs (mots croisés, mots mêlés, bingo linguistique)"
+    - "Images de documentation (photos, illustrations)"
+    - "Posters thématiques (animaux, lieux, catastrophes naturelles)"
+    - "Documents authentiques (affiches, brochures, articles)"
+  
+  ressources_enseignant:
+    - "Guide pédagogique du manuel"
+    - "Banque d'exercices supplémentaires"
+    - "Propositions d'évaluations"
+    - "Corrigés des exercices"
+    - "Suggestions de différenciation"
+
+# ============================================================
+# ÉVALUATIONS PRÉVUES
+# ============================================================
+evaluations_structures:
+  evaluations_formatives:
+    frequence: "Continue - chaque semaine"
+    outils:
+      - "Exercices de grammaire et vocabulaire"
+      - "Production orale (dialogues, exposés)"
+      - "Dictées de mots-clés"
+      - "Questionnaires de compréhension"
+      - "Observations durant les activités"
+    fonction: "Mesurer la progression et adapter l'enseignement"
+  
+  evaluations_sommatives:
+    frequence: "Fin de chaque projet"
+    composantes_evaluees:
+      - "Compréhension écrite (lecture)"
+      - "Compréhension orale (écoute)"
+      - "Expression écrite"
+      - "Expression orale"
+      - "Grammaire, conjugaison et orthographe"
+    outils:
+      - "Tests écrits"
+      - "Enregistrements oraux"
+      - "Productions écrites"
+      - "Présentation orale"
+    duree: "30-45 minutes"
+  
+  evaluations_diagnostiques:
+    moment: "Début d'année"
+    objectif: "Identifier les forces et lacunes de chaque élève"
+    outils: ["test de positionnement", "observations", "travaux d'entrée"]
+  
+  evaluations_certificatives:
+    moment: "Fin d'année"
+    objectif: "Valider les apprentissages de l'année"
+    format: "Examen intégrant tous les domaines"
+    duree: "1-2 heures"
+
+# ============================================================
+# CONSEILS POUR L'APPLICATION PÉDAGOGIQUE
+# ============================================================
+conseils_implementation:
+  progressivite:
+    - "Respecter l'ordre des projets pour une progression logique et cohérente"
+    - "Permettre à chaque élève son rythme personnel d'apprentissage"
+    - "Offrir des révisions régulières des notions précédentes"
+    - "Anticiper les difficultés communes et proposer de la remédiation"
+    - "Consolider les acquis avant d'aborder de nouvelles notions"
+  
+  differentiation:
+    - "Proposer des exercices de niveaux différenciés (facile, moyen, difficile)"
+    - "Adapter le rythme selon les besoins de chaque élève"
+    - "Offrir des défis supplémentaires aux élèves avancés"
+    - "Fournir du soutien additionnel aux élèves en difficulté"
+    - "Utiliser la pédagogie par projet pour engager tous les niveaux"
+  
+  multimodalite:
+    - "Varier les modalités : lecture, écoute, parlé, écrit"
+    - "Utiliser des supports divers : textes, images, vidéos, audio"
+    - "Intégrer le jeu et la créativité dans l'apprentissage"
+    - "Permettre les productions multimodales (affiche, vidéo, etc.)"
+    - "Exploiter la technologie quand elle est disponible"
+  
+  engagement_et_motivation:
+    - "Choisir des thèmes proches de la réalité des élèves"
+    - "Favoriser l'apprentissage actif plutôt que passif"
+    - "Valoriser chaque réussite et progression"
+    - "Créer un environnement bienveillant et stimulant"
+    - "Encourager la collaboration et l'entraide"
+  
+  competences_du_21e_siecle:
+    - "Développer la pensée critique et l'analyse"
+    - "Favoriser la collaboration et le travail d'équipe"
+    - "Encourager la créativité et l'innovation"
+    - "Développer la conscience civique et environnementale"
+    - "Utiliser les technologies de manière responsable"
+
+# ============================================================
+# METADATA TECHNIQUES FINALES
+# ============================================================
+metadata_technique:
+  version: "2.0 - LUXE EDITION"
+  derniere_mise_a_jour: "Février 2026"
+  auteur_adaptation: "Équipe pédagogique spécialisée - IA"
+  conformite_programme_officiel: "Algérie - Génération 2 - 2024-2025"
+  sources_document_original: "PDF officiel du programme de français 5AP"
+  langues_interface: ["français", "arabe"]
+  niveau_cefr_equivalent: "A2-B1 (pour le français)"
+  accessibilite: "Conforme aux standards pédagogiques"
+  usage_principal: "Génération d'exercices et de ressources pour IA"
+  notes_qualite: |
+    Ce fichier YAML a été créé avec une attention particulière à:
+    - L'extraction fidèle et complète du programme officiel
+    - L'annotation pédagogique précise et utile pour l'IA
+    - La structuration logique et hiérarchique
+    - La richesse des informations de contexte
+    - La pertinence des exemples et des ressources
+    - L'intégration de la réalité du système éducatif algérien
+    Ce travail est conçu pour permettre à une IA de générer des exercices 
+    pédagogiques de haute qualité, cohérents avec le curriculum officiel.
+
+# ============================================================
+# FIN DU FICHIER
+# ============================================================

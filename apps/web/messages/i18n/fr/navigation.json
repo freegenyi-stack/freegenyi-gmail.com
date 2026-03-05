@@ -1,0 +1,51 @@
+{
+    "logo": "FreeGeny",
+    "menu": {
+        "about": "Qui sommes nous",
+        "mission": "Notre mission",
+        "app": "L'Application",
+        "parents": {
+            "main": "Parents",
+            "dropdown": {
+                "dashboard": "Tableau de bord parents",
+                "progress": "Suivi des progrès",
+                "communication": "Communication enseignants",
+                "resources": "Ressources éducatives",
+                "security": "Sécurité et confidentialité"
+            }
+        },
+        "schools": {
+            "main": "Écoles",
+            "dropdown": {
+                "management": "Gestion d'établissement",
+                "curriculum": "Programmes scolaires",
+                "teachers": "Espace enseignants",
+                "analytics": "Analyses et rapports"
+            }
+        },
+        "ongs": {
+            "main": "ONG",
+            "dropdown": {
+                "projects": "Projets éducatifs",
+                "impact": "Mesure d'impact",
+                "partnership": "Partenariats"
+            }
+        },
+        "pricing": {
+            "main": "Tarifs",
+            "dropdown": {
+                "individual": "Individuel",
+                "family": "Famille",
+                "institutional": "Institutionnel"
+            }
+        },
+        "freeTrial": "Essai Gratuit",
+        "login": "Connexion"
+    },
+    "languages": {
+        "fr": "Français",
+        "en": "English",
+        "es": "Español",
+        "ar": "العربية"
+    }
+}

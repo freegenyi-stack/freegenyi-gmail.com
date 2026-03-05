@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+    FREEGENY INSTITUTION DASHBOARD 
+    Author: FreeGeny Development Team
+    Version: 1.0.0
+    Description: Corporate/Government oversight panel for multiple educational entities.
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institution Oversight - FreeGeny</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Titan+One&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #09A1A1;
+            --secondary: #D396A6;
+            --dark-navy: #0F172A;
+            --glass-bg: rgba(15, 23, 42, 0.9);
+            --sidebar-w: 260px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: #0F172A;
+            /* Elegant Dark Theme for Institutions */
+            color: #E2E8F0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* PREMIUM DARK SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-w);
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 25px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .logo-area {
+            font-family: 'Titan One', cursive;
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 60px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: #94A3B8;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 15px;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+            gap: 15px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link.active {
+            border-left: 4px solid var(--primary);
+            border-radius: 0 15px 15px 0;
+            background: linear-gradient(90deg, rgba(9, 161, 161, 0.1), transparent);
+            color: var(--primary);
+        }
+
+        /* MAIN CONTENT SECTION */
+        .content {
+            margin-left: var(--sidebar-w);
+            flex: 1;
+            padding: 60px;
+        }
+
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .kpi-box {
+            background: rgba(30, 41, 59, 0.4);
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .kpi-label {
+            color: #64748B;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .kpi-value {
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+        }
+
+        /* DATA GRID FOR SCHOOL UNITS */
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .unit-card {
+            background: rgba(30, 41, 59, 0.3);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .unit-info h3 {
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .unit-info p {
+            color: #64748B;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .growth-indicator {
+            padding: 8px 15px;
+            border-radius: 12px;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+            font-weight: 900;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1200px) {
+            .kpi-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .units-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MOBILE OPTIMIZATION - Screens 768px and below
+           Strategy: Hidden sidebar, single-column KPI layout, vertical card stacking */
+        @media (max-width: 768px) {
+
+            /* Sidebar: Off-canvas navigation for mobile devices */
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 260px;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+            }
+
+            /* Sidebar open state: Slide navigation into view */
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            /* Content area: Full width without sidebar offset */
+            .content {
+                margin-left: 0;
+                padding: 30px 20px;
+            }
+
+            /* KPI grid: Single column for optimal mobile readability */
+            .kpi-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            /* KPI boxes: Reduce padding for compact mobile display */
+            .kpi-box {
+                padding: 20px;
+            }
+
+            /* Unit cards: Stack content vertically for better mobile layout */
+            .unit-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+        /* Language Toggle - Dashboard Version */
+        .lang-selector {
+            position: relative;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 10px 18px;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 13px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            user-select: none;
+        }
+
+        .lang-selector:hover {
+            border-color: var(--primary);
+            background: rgba(30, 41, 59, 1);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: #1E293B;
+            border-radius: 12px;
+            padding: 15px;
+            width: 320px;
+            max-height: 350px;
+            overflow-y: auto;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            display: none;
+            grid-template-columns: 1fr;
+            gap: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 10000;
+        }
+
+        .lang-selector.open .lang-dropdown {
+            display: grid;
+        }
+
+        .lang-option {
+            padding: 10px 15px;
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 800;
+            transition: all 0.2s;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lang-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .lang-option.active {
+            background: var(--primary);
+            color: white !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="sidebar">
+        <a href="home.html" class="logo-area" style="text-decoration: none;">FreeGeny</a>
+
+        <a href="#" class="nav-link active">
+            <svg width="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+            </svg>
+            <span data-i18n="db_overview">Overview</span>
+        </a>
+        <a href="#" class="nav-link">
+            <svg width="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            <span data-i18n="db_institutions">Institutions</span>
+        </a>
+        <a href="#" class="nav-link">
+            <svg width="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span data-i18n="db_finance">Finance</span>
+        </a>
+        <a href="javascript:void(0)" onclick="logout()" class="nav-link" style="margin-top: auto; color: #F87171;">
+            <svg width="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            <span data-i18n="db_logout">Logout</span>
+        </a>
+    </nav>
+
+    <main class="content">
+        <header style="margin-bottom: 50px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1 style="font-size: 36px; font-weight: 900;" data-i18n="db_oversight">Global Oversight</h1>
+                <p style="color: #64748B; font-weight: 700;"><span data-i18n="db_welcome">Welcome</span>, <span
+                        id="display-name" style="color: var(--primary);">Loading...</span></p>
+            </div>
+
+            <!-- Language Selector -->
+            <div class="lang-selector" onclick="toggleLangDropdown(event)">
+                <span id="currentLangDisplay">🌍 English</span>
+                <div class="lang-dropdown">
+                    <a href="#" class="lang-option" onclick="setLang('en', true)">🇺🇸 English</a>
+                    <a href="#" class="lang-option" onclick="setLang('zh', true)">🇨🇳 中文 (Mandarin)</a>
+                    <a href="#" class="lang-option" onclick="setLang('hi', true)">🇮🇳 हिन्दी (Hindi)</a>
+                    <a href="#" class="lang-option" onclick="setLang('es', true)">🇪🇸 Español</a>
+                    <a href="#" class="lang-option" onclick="setLang('ar', true)">🇸🇦 العربية (Arabic)</a>
+                    <a href="#" class="lang-option" onclick="setLang('fr', true)">🇫🇷 Français</a>
+                    <a href="#" class="lang-option" onclick="setLang('bn', true)">🇧🇩 বাংলা (Bengali)</a>
+                    <a href="#" class="lang-option" onclick="setLang('pt', true)">🇵🇹 Português</a>
+                    <a href="#" class="lang-option" onclick="setLang('ru', true)">🇷🇺 Русский</a>
+                    <a href="#" class="lang-option" onclick="setLang('id', true)">🇮🇩 Indonesia</a>
+                    <a href="#" class="lang-option" onclick="setLang('ur', true)">🇵🇰 اردو (Urdu)</a>
+                    <a href="#" class="lang-option" onclick="setLang('de', true)">🇩🇪 Deutsch</a>
+                    <a href="#" class="lang-option" onclick="setLang('ja', true)">🇯🇵 日本語 (Japanese)</a>
+                    <a href="#" class="lang-option" onclick="setLang('pcm', true)">🇳🇬 Nigerian Pidgin</a>
+                    <a href="#" class="lang-option" onclick="setLang('ha', true)">🇳🇬 Hausa</a>
+                    <a href="#" class="lang-option" onclick="setLang('tr', true)">🇹🇷 Türkçe</a>
+                    <a href="#" class="lang-option" onclick="setLang('pnb', true)">🇵🇰 Punjabi (Western)</a>
+                    <a href="#" class="lang-option" onclick="setLang('sw', true)">🇹🇿 Kiswahili</a>
+                    <a href="#" class="lang-option" onclick="setLang('tl', true)">🇵🇭 Tagalog</a>
+                    <a href="#" class="lang-option" onclick="setLang('fa', true)">🇮🇷 فارسی (Farsi)</a>
+                    <a href="#" class="lang-option" onclick="setLang('ko', true)">🇰🇷 한국어 (Korean)</a>
+                    <a href="#" class="lang-option" onclick="setLang('th', true)">🇹🇭 ไทย (Thai)</a>
+                    <a href="#" class="lang-option" onclick="setLang('jv', true)">🇮🇩 Basa Jawa (Javanese)</a>
+                    <a href="#" class="lang-option" onclick="setLang('it', true)">🇮🇹 Italiano</a>
+                    <a href="#" class="lang-option" onclick="setLang('vi', true)">🇻🇳 Tiếng Việt</a>
+                    <a href="#" class="lang-option" onclick="setLang('nl', true)">🇳🇱 Nederlands</a>
+                    <a href="#" class="lang-option" onclick="setLang('pl', true)">🇵🇱 Polski</a>
+                    <a href="#" class="lang-option" onclick="setLang('uk', true)">🇺🇦 Українська</a>
+                    <a href="#" class="lang-option" onclick="setLang('ca', true)">🏴󠁥󠁳󠁣󠁴󠁿 Català</a>
+                    <a href="#" class="lang-option" onclick="setLang('ga', true)">🇮🇪 Gaeilge</a>
+                    <a href="#" class="lang-option" onclick="setLang('sv', true)">🇸🇪 Svenska</a>
+                    <a href="#" class="lang-option" onclick="setLang('da', true)">🇩🇰 Dansk</a>
+                    <a href="#" class="lang-option" onclick="setLang('no', true)">🇳🇴 Norsk</a>
+                    <a href="#" class="lang-option" onclick="setLang('ro', true)">🇷🇴 Română</a>
+                    <a href="#" class="lang-option" onclick="setLang('el', true)">🇬🇷 Ελληνικά</a>
+                    <a href="#" class="lang-option" onclick="setLang('cs', true)">🇨🇿 Čeština</a>
+                    <a href="#" class="lang-option" onclick="setLang('fi', true)">🇫🇮 Suomi</a>
+                    <a href="#" class="lang-option" onclick="setLang('hu', true)">🇭🇺 Magyar</a>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="kpi-row">
+            <div class="kpi-box" data-aos="zoom-in">
+                <span class="kpi-label">Active Users</span>
+                <span class="kpi-value">12,450</span>
+            </div>
+            <div class="kpi-box" data-aos="zoom-in" data-aos-delay="100">
+                <span class="kpi-label">School Units</span>
+                <span class="kpi-value">14</span>
+            </div>
+            <div class="kpi-box" data-aos="zoom-in" data-aos-delay="200">
+                <span class="kpi-label">Global Health</span>
+                <span class="kpi-value" style="color: var(--primary);">Excellent</span>
+            </div>
+            <div class="kpi-box" data-aos="zoom-in" data-aos-delay="300">
+                <span class="kpi-label">Annual Growth</span>
+                <span class="kpi-value">+28%</span>
+            </div>
+        </div>
+
+        <section>
+            <h2 style="margin-bottom: 30px; font-weight: 900;">Regional Performance</h2>
+            <div class="units-grid">
+                <div class="unit-card" data-aos="fade-up">
+                    <div class="unit-info">
+                        <h3>North Academy Sector</h3>
+                        <p>5 Institutions • 4,200 Students</p>
+                    </div>
+                    <div class="growth-indicator">↑ 14.2%</div>
+                </div>
+
+                <div class="unit-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="unit-info">
+                        <h3>East Excellence Hub</h3>
+                        <p>3 Institutions • 2,800 Students</p>
+                    </div>
+                    <div class="growth-indicator">↑ 9.8%</div>
+                </div>
+
+                <div class="unit-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="unit-info">
+                        <h3>West Innovation Park</h3>
+                        <p>6 Institutions • 5,450 Students</p>
+                    </div>
+                    <div class="growth-indicator" style="background: rgba(59, 130, 246, 0.1); color: #3B82F6;">NEW UNIT
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800 });
+
+        // Dashboard Security & Data Logic
+        window.addEventListener('load', () => {
+            const token = localStorage.getItem('fg_token');
+            const userData = localStorage.getItem('fg_user');
+            if (!token || !userData) { window.location.href = 'login.html'; return; }
+            const user = JSON.parse(userData);
+            if (user.role.toLowerCase() !== 'institution') {
+                if (user.role.toLowerCase() === 'parent') window.location.href = 'parent_dashboard.html';
+                else if (user.role.toLowerCase() === 'school') window.location.href = 'school_dashboard.html';
+                return;
+            }
+            document.getElementById('display-name').innerText = user.first_name + ' ' + (user.last_name || '');
+        });
+
+        function logout() {
+            localStorage.removeItem('fg_token');
+            localStorage.removeItem('fg_user');
+            window.location.href = 'login.html';
+        }
+
+        // i18n Engine
+
+        function toggleLangDropdown(e) {
+            e.stopPropagation();
+            document.querySelector('.lang-selector').classList.toggle('open');
+        }
+
+        document.addEventListener('click', (e) => {
+            const langSelector = document.querySelector('.lang-selector');
+            if (langSelector && !langSelector.contains(e.target)) langSelector.classList.remove('open');
+        });
+
+    </script>
+
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        // RTL Logic for Institution Dashboard
+        window.addEventListener('langChanged', (e) => {
+            const isRTL = document.documentElement.dir === 'rtl';
+            const sidebar = document.querySelector('.sidebar');
+            const content = document.querySelector('.content');
+
+            // Only apply on desktop where sidebar is fixed
+            if (window.innerWidth > 768 && sidebar && content) {
+                if (isRTL) {
+                    sidebar.style.left = 'auto';
+                    sidebar.style.right = '0';
+                    sidebar.style.borderRight = 'none';
+                    sidebar.style.borderLeft = '1px solid rgba(255, 255, 255, 0.05)';
+                    content.style.marginLeft = '0';
+                    content.style.marginRight = 'var(--sidebar-w)';
+                } else {
+                    sidebar.style.left = '0';
+                    sidebar.style.right = 'auto';
+                    sidebar.style.borderRight = '1px solid rgba(255, 255, 255, 0.05)';
+                    sidebar.style.borderLeft = 'none';
+                    content.style.marginLeft = 'var(--sidebar-w)';
+                    content.style.marginRight = '0';
+                }
+            } else if (sidebar && content) {
+                content.style.marginLeft = '0';
+                content.style.marginRight = '0';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+{
+    "__TEMPLATE_INSTRUCTIONS__": [
+        "DEEPSEEK: Use this schema as the absolute blueprint for generating FreeGeny curriculum files.",
+        "This schema is universal. It must be adapted for ANY country, ANY level, and ANY subject.",
+        "Do not deviate from the JSON keys provided here. If a field is not applicable, use null or empty array [].",
+        "All '__ANNOTATION__' keys and comments are for your understanding and SHOULD NOT be included in your final output.",
+        "You must generate 4 files per subject: 1) curriculum.json, 2) competences.json, 3) exercises.json, 4) evaluations.json.",
+        "The scope of generation MUST be exhaustive. Generate 'tons' of exercises and evaluations to cover every single sub-skill."
+    ],
+    "__FILE_TYPES__": {
+        "1_CURRICULUM_JSON": {
+            "purpose": "Define the pedagogical progression (Scope and Sequence).",
+            "structure": {
+                "_documentation": {
+                    "_fichier": "[country]_[level]_[subject]_curriculum.json",
+                    "_description": "Brief description of the official curriculum."
+                },
+                "metadata": {
+                    "country": "ISO-2 code (e.g., DZ, FR, MA)",
+                    "level": "Grade level (e.g., 1ap, 2ap, cp, ce1)",
+                    "subject": "Subject code (e.g., ar, math, fr)",
+                    "domaines": [
+                        {
+                            "code": "Sub-subject code (e.g., arabe, islamique, civique, algebre, geometrie)"
+                        }
+                    ]
+                },
+                "maqaate": [
+                    {
+                        "__ANNOTATION__": "A maqta is a teaching sequence (typically 3-5 weeks). Name it appropriately for the country.",
+                        "maqta_id": "mq01",
+                        "titre": "Theme Title",
+                        "education_[domaine_1]": [
+                            {
+                                "titre": "Concept taught",
+                                "type": "e.g., sourate, value, grammar_rule",
+                                "learning_objectives": [
+                                    "Obj 1",
+                                    "Obj 2",
+                                    "Obj 3"
+                                ],
+                                "bloom_level": "1_remember | 2_understand | 3_apply",
+                                "parent_activity": "How parents can help at home"
+                            }
+                        ],
+                        "education_[domaine_2]": []
+                    }
+                ]
+            }
+        },
+        "2_COMPETENCES_JSON": {
+            "purpose": "Define the skills matrix for evaluation and reporting.",
+            "structure": {
+                "metadata": {
+                    "platform": "FreeGeny",
+                    "module_id": "FG-[COUNTRY]-[LEVEL]-[SUBJECT]"
+                },
+                "global_skills_[domaine]": [
+                    {
+                        "skill_id": "GS_[DOMAINE]_01",
+                        "skill_type": "LINGUISTIC | ISLAMIC | CIVIC | LOGICAL | SCIENTIFIC",
+                        "domaine": "[domaine_code]",
+                        "name_fr": "Macro competence name in French",
+                        "name_ar": "Macro competence name in Arabic",
+                        "indicators": [
+                            {
+                                "indicator_id": "IND_01",
+                                "text": "Measurable indicator",
+                                "bloom_level": "Level of taxonomy"
+                            }
+                        ]
+                    }
+                ],
+                "skills_by_theme_[domaine]": [
+                    {
+                        "theme_id": "1",
+                        "skills": [
+                            {
+                                "skill_id": "S_[THEME]_[SEQ]",
+                                "domaine": "[domaine_code]",
+                                "name": "Specific skill name"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "3_EXERCISES_JSON": {
+            "purpose": "Provide a massive bank of interactive practice items.",
+            "structure": {
+                "metadata": {
+                    "total_exercises": "MUST BE A LARGE NUMBER (e.g., 100+ per level)"
+                },
+                "lessons": [
+                    {
+                        "lesson_id": "[country]_[level]_l01",
+                        "exercises": [
+                            {
+                                "__ANNOTATION__": "You must generate AT LEAST 5 exercises per lesson, spanning ALL domaines.",
+                                "id": "ex_001",
+                                "type": "multiple_choice | fill_blank | true_false | matching | ordering",
+                                "domaine": "[domaine_code]",
+                                "difficulty": "1 | 2 | 3",
+                                "points": "5 | 10 | 15",
+                                "competency": "References a skill_id from competences.json",
+                                "bloom_level": "Taxonomy level matches difficulty",
+                                "statement": "The question text",
+                                "options": [],
+                                "correct_answer": "The answer",
+                                "explanation": "Why it is correct",
+                                "feedback": {
+                                    "correct": "Positive reinforcement",
+                                    "incorrect": "Constructive hint"
+                                },
+                                "parent_tip_fr": "Guidance for the parent",
+                                "media_hints": {
+                                    "image": "Optional image request concept.png"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "4_EVALUATIONS_JSON": {
+            "purpose": "Provide formal assessment templates (Flash, Weekly, Diagnostic).",
+            "structure": {
+                "evaluations": [
+                    {
+                        "__ANNOTATION__": "Generate Flash (short) evals after every lesson, and Diagnostique (long) evals at the end of every term.",
+                        "evaluation_id": "eval_001",
+                        "type": "Flash | Hebdomadaire | Diagnostique",
+                        "duration": "10 minutes",
+                        "questions": [
+                            {
+                                "q_id": "q1",
+                                "type": "fill_blank | multiple_choice | etc",
+                                "domaine": "[domaine_code]",
+                                "points": 5,
+                                "enonce": "The question",
+                                "correct": "The absolute answer",
+                                "explanation": "Why",
+                                "bloom_level": "taxonomy level",
+                                "skill_ref": "ID from competences"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "__QUALITY_CHECKLIST__": [
+        "Are there 'tons' of exercises? (A minimum of 5 per concept, preferably more).",
+        "Are all texts fully translated into the necessary languages (e.g., UI in French/Arabic, content in target language)?",
+        "Have you strictly respected the 'domaine' splitting so the frontend can filter by sub-subject?",
+        "Do the evaluations have comprehensive answers and explanations so parents can grade them?",
+        "Is every JSON output valid?"
+    ]
+}

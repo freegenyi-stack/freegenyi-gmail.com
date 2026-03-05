@@ -1,0 +1,159 @@
+matiere: mathematiques_et_education_scientifique
+niveau: 2ap
+programme: "Algérie - Génération 2"
+description: "Programme officiel de Mathématiques et Éducation Scientifique et Technologique pour la 2ème année primaire - Système éducatif algérien - الجيل الثاني"
+langue_enseignement: "arabe"
+age_cible: "7-8 ans"
+annee_scolaire: "2025-2026"
+manuel: "كتابي في الرياضيات والتربية العلمية والتكنولوجية للسنة الثانية ابتدائي الجيل الثاني"
+cahier: "دفتر الأنشطة رياضيات و تربية علمية و تكنولوجية للسنة الثانية ابتدائي الجيل الثاني"
+
+objectifs_generaux:
+  - "Maîtriser la numération jusqu'à 999 (lecture, écriture, décomposition, comparaison)"
+  - "Effectuer les opérations de base (addition, soustraction, multiplication introductive)"
+  - "Résoudre des problèmes additifs, soustractifs et multiplicatifs simples"
+  - "Développer les notions de géométrie (repérage, formes, symétrie, quadrillage)"
+  - "Mesurer des longueurs, masses, durées et capacités"
+  - "Découvrir les êtres vivants, la nutrition, la respiration, la reproduction et les états de la matière"
+
+competences_transversales:
+  - "Raisonnement logique et résolution de problèmes"
+  - "Observation et expérimentation scientifique"
+  - "Utilisation du quadrillage et du matériel de manipulation"
+  - "Travail en équipe et projets (plantation, fête...)"
+  - "Calcul mental et posé"
+
+situations:
+  - id: situation_01
+    titre: "الوضعية الانطلاقية (1): أستعد للعودة إلى المدرسة"
+    ordre: 1
+    semestre: 1
+    duree_estimee: "8 semaines"
+    lecons:
+      - numero: 1
+        titre: "كتابات صغيرة"
+        objectifs: "البحث عن عدد عناصر مجموعة معبرة أو منتظمة في بنات أقل من 10 عناصر"
+      - numero: 2
+        titre: "ظاهر التنفس"
+        objectifs: "يتعرف على القواعد الصحية للتنفس ويميز بين الشهيق والزفير"
+      - numero: 3
+        titre: "كتابات صغيرة أستعمل الأرقام"
+        objectifs: "إعطاء معنى للجمع والطرح، واستخدام آليات الحساب المتضمن فيه إضافة أو طرح عدد أصغر من 10"
+      - numero: 4
+        titre: "مقارنة الأعداد من 0 إلى 29"
+        objectifs: "قراءة وكتابة وترتيب الأعداد من 0 إلى 29"
+      - numero: 5
+        titre: "الجدول ذو مدخلين"
+        objectifs: "قراءة جدول ذو مدخلين في وضعيات بسيطة"
+      - numero: 6
+        titre: "تعيين مواقع في الفضاء"
+        objectifs: "استعمال المصطلحات المناسبة (أمام، وراء، تحت، فوق، يمين، يسار...)"
+      - numero: 7
+        titre: "أنا ألبو وجسمي يتطور (1)"
+        objectifs: "يتعرف على بعض القواعد الصحية المساعدة على نمو سليم"
+      - numero: 8
+        titre: "مقارنة الأعداد من 0 إلى 29"
+        objectifs: "مقارنة الأعداد من 0 إلى 29 باستعمال الرمزين < و >"
+      - numero: 9
+        titre: "وضعيات جمعية و/أو طرحية"
+        objectifs: "التعرف على وضعية جمعية أو طرحية وحلها بإجراءات شخصية"
+      - numero: 10
+        titre: "مشكلات جمعية أو طرحية"
+        objectifs: "حل مشكلات جمعية بإجراءات شخصية"
+      - numero: 11
+        titre: "أنا ألبو وجسمي يتطور (2)"
+        objectifs: "يدرك نموه من خلال التغيرات التي تطرأ على جسمه"
+      - numero: 12
+        titre: "نقل رسم على مرصوفة"
+        objectifs: "نقل رسم على مرصوفة حسب نموذج معطى"
+      - integration: true
+        titre: "إدماج"
+      - bilan: true
+        titre: "الحصيلة (1)"
+      - vie_quotidienne: true
+        titre: "الرياضيات في حياتنا اليومية (1)"
+
+  - id: situation_02
+    titre: "الوضعية الانطلاقية (2): حملة التشجير"
+    ordre: 2
+    semestre: 1
+    duree_estimee: "10 semaines"
+    lecons:
+      - numero: 13
+        titre: "الأعداد إلى 69"
+        objectifs: "قراءة وكتابة وترتيب الأعداد إلى 69"
+      - numero: 14
+        titre: "الوحدات والعشرات في الأعداد إلى 69"
+        objectifs: "التمييز بين رتب الوحدات ورتب العشرات، تفكيك وتركيب أعداد"
+      - numero: 15
+        titre: "النبات الأخضر يفيض الحياة (1)"
+        objectifs: "يتعرف على أهمية النبات لحياة الكائنات"
+      # ... (tous les leçons 16 à 34 inclus, avec integration, bilan, vie_quotidienne)
+
+  - id: situation_03
+    titre: "الوضعية الانطلاقية (3): في ساحة البريد المركزي"
+    ordre: 3
+    semestre: 2
+    duree_estimee: "10 semaines"
+    lecons:
+      - numero: 50
+        titre: "الساعة (تحديد الأوقات)"
+        objectifs: "قراءة الساعة وتعليم أحداث في اليوم"
+      # ... (leçons 51 à 62 + integration, bilan, vie_quotidienne)
+
+  - id: situation_04
+    titre: "الوضعية الانطلاقية (4): التحضير لحفل نهاية السنة الدراسية"
+    ordre: 4
+    semestre: 2
+    duree_estimee: "12 semaines"
+    lecons:
+      - numero: 63
+        titre: "التفصيل النهائي"
+        objectifs: "استخراج معطيات من تعطيل..."
+      # ... (leçons 64 à 98 + integration, bilan, vie_quotidienne)
+
+# ============================================================
+# COMPÉTENCES FINALES ATTENDUES EN FIN D'ANNÉE
+# ============================================================
+competences_fin_annee:
+  mathematiques:
+    - "Numération jusqu'à 999"
+    - "Addition et soustraction avec/sans retenue (jusqu'à 100 puis 999)"
+    - "Multiplication tables 2, 3, 4, 5, 10 + multiplication par 10"
+    - "Géométrie : quadrillage, symétrie, figures planes, solides"
+    - "Mesures : longueur (cm/m), masse, temps (heure, minute), monnaie"
+  education_scientifique:
+    - "Respiration et hygiène"
+    - "Nutrition et reproduction chez plantes et animaux"
+    - "États de la matière, flottaison, transformations (fusion)"
+    - "Air et ses propriétés"
+
+ressources_pedagogiques:
+  materiel:
+    - "Matériel de base 10, jetons, bâtonnets"
+    - "Règles graduées, mètres, balances, sabliers"
+    - "Quadrillages, compas, équerres"
+    - "Images de plantes, animaux, expériences simples"
+
+implementation_app:
+  progression_adaptative: true
+  gamification:
+    - "Badges : Calculateur rapide, Petit scientifique, Géomètre"
+  interaction:
+    - "Simulations de mesure et expériences"
+    - "Créateur de quadrillage interactif"
+    - "Jeux de décomposition et opérations"
+  accessibilite:
+    - "Audio des énoncés en arabe"
+    - "Animations des expériences scientifiques"
+
+metadonnees:
+  version: "1.0"
+  date_creation: "2026"
+  conforme_a: "Programme officiel algérien - Génération 2 (2AP Math + Sciences)"
+  total_lecons: 98
+  total_situations: 4
+  total_heures_estimees: "≈ 160 heures"
+  repartition_semestrielle:
+    semestre_1: "Situations 1 et 2"
+    semestre_2: "Situations 3 et 4"

@@ -1,0 +1,18 @@
+{
+    "id": "dz-2ap-math-calcul-ex001",
+    "type": "calcul",
+    "difficulte": "moyenne",
+    "consigne": "أجرِ عملية الجمع التالية بوضع الاحتفاظ في مكانه الصحيح:",
+    "chapitre": "nombres_calcul",
+    "corrige_inclus": true,
+    "solution_detaillee": {
+        "resultat": 42,
+        "explication": "بدأنا بجمع الوحدات (7+5=12)، وضعنا الرقم 2 في الأسفل وكتبنا الـ 1 فوق رقم العشرات. ثم جمعنا العشرات (1+2+1=4) فكانت النتيجة 42.",
+        "visualisation": "  (1)\n  2 7\n+ 1 5\n-----\n  4 2"
+    },
+    "tags": [
+        "الجمع",
+        "الاحتفاظ"
+    ],
+    "points": 2
+}

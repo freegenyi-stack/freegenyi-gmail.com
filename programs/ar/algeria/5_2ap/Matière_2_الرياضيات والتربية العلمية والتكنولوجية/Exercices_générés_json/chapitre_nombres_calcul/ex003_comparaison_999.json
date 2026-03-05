@@ -1,0 +1,34 @@
+{
+    "id": "dz-2ap-math-nombres-ex003",
+    "type": "comparaison",
+    "difficulte": "moyenne",
+    "consigne": "قارن بين الأعداد التالية باستعمال الرمز المناسب (< أو >):",
+    "chapitre": "nombres_calcul",
+    "pairs": [
+        {
+            "left": 456,
+            "right": 512,
+            "bonne_reponse": "<"
+        },
+        {
+            "left": 789,
+            "right": 782,
+            "bonne_reponse": ">"
+        },
+        {
+            "left": 102,
+            "right": 99,
+            "bonne_reponse": ">"
+        },
+        {
+            "left": 350,
+            "right": 360,
+            "bonne_reponse": "<"
+        }
+    ],
+    "tags": [
+        "الأعداد",
+        "المقارنة"
+    ],
+    "points": 4
+}

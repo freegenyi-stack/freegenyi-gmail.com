@@ -1,0 +1,24 @@
+{
+    "id": "dz-2ap-civique-environnement-ex006",
+    "type": "qcm",
+    "difficulte": "facile",
+    "consigne": "كيف تتصرف للمحافظة على نظافة الحي؟",
+    "chapitre": "environnement_proprete",
+    "items": [
+        {
+            "question": "ماذا تفعل بالقمامة المنزلية؟",
+            "options": [
+                "أرميها في الساحة",
+                "أضعها في كيس مغلق وفي الحاوية",
+                "أتركها أمام باب الجار"
+            ],
+            "bonne_reponse": 1,
+            "explication": "المكان الصحيح للقمامة هو الحاوية المخصصة لها لضمان نظافة المحيط."
+        }
+    ],
+    "tags": [
+        "البيئة",
+        "النظافة"
+    ],
+    "points": 1
+}

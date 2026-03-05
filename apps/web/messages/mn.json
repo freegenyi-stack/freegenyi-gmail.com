@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - Боловсролын хувьсгал",
+        "description": "FreeGeny-ийн шинэлэг платформтой суралцаж буй сая сая хүмүүстэй нэгдээрэй"
+    },
+    "home": {
+        "hero": {
+            "title": "Хязгааргүй суралц",
+            "subtitle": "Дэлхийн жишигт нийцсэн боловсролыг үнэ төлбөргүй аваарай",
+            "cta": "Суралцаж эхлэх"
+        },
+        "features": {
+            "title": "Яагаад FreeGeny гэж?",
+            "items": {
+                "free": "Бүрэн үнэ төлбөргүй",
+                "global": "Дэлхийн олон нийт",
+                "quality": "Өндөр чанартай контент"
+            }
+        }
+    },
+    "common": {
+        "loading": "Уншиж байна...",
+        "error": "Ямар нэг зүйл буруу боллоо",
+        "retry": "Дахин оролдоно уу",
+        "language": "Хэл"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "Бид хэн бэ",
+            "mission": "Бидний эрхэм зорилго",
+            "app": "Апп",
+            "parents": {
+                "main": "Эцэг эхчүүд",
+                "dropdown": {
+                    "dashboard": "Эцэг эхийн хяналтын самбар",
+                    "progress": "Ахиц дэвшлийг хянах",
+                    "communication": "Багштай харилцах",
+                    "resources": "Боловсролын нөөц",
+                    "security": "Аюулгүй байдал ба нууцлал"
+                }
+            },
+            "schools": {
+                "main": "Сургуулиуд",
+                "dropdown": {
+                    "management": "Сургуулийн менежмент",
+                    "curriculum": "Сургуулийн хөтөлбөр",
+                    "teachers": "Багш нарын орон зай",
+                    "analytics": "Аналитик ба тайлан"
+                }
+            },
+            "ongs": {
+                "main": "ТББ-ууд",
+                "dropdown": {
+                    "projects": "Боловсролын төслүүд",
+                    "impact": "Нөлөөллийг хэмжих",
+                    "partnership": "Түншлэл"
+                }
+            },
+            "pricing": {
+                "main": "Үнэ",
+                "dropdown": {
+                    "individual": "Хувь хүн",
+                    "family": "Гэр бүл",
+                    "institutional": "Байгууллага"
+                }
+            },
+            "freeTrial": "Үнэгүй туршилт",
+            "login": "Нэвтрэх"
+        }
+    },
+    "cookies": {
+        "title": "Күүки менежмент",
+        "description": "Бид таны туршлагыг сайжруулахын тулд күүки ашигладаг.",
+        "learnMore": "Дэлгэрэнгүй",
+        "rejectAll": "Бүгдийг татгалзах",
+        "customize": "Тохируулах",
+        "acceptAll": "Бүгдийг зөвшөөрөх"
+    },
+    "footer": {
+        "baseline": "Бүх нийтийн боловсролын хувьсгал",
+        "rights": "Бүх эрх хуулиар хамгаалагдсан.",
+        "about": {
+            "title": "Тухай",
+            "education": "Боловсрол",
+            "nationalCurriculum": "Үндэсний сургалтын хөтөлбөр",
+            "internationalCurriculum": "Олон улсын сургалтын хөтөлбөр",
+            "mission": "Бидний эрхэм зорилго",
+            "methodology": "Арга зүй",
+            "research": "Боловсролын судалгаа",
+            "brand": "Брэндийн тухай",
+            "news": "Мэдээ",
+            "press": "Хэвлэл",
+            "contact": "Бидэнтэй холбоо барих"
+        },
+        "apps": {
+            "title": "Бидний аппууд",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "Тусламж ба дэмжлэг",
+            "faqGeneral": "FreeGeny-ийн тухай түгээмэл асуултууд",
+            "faqSchools": "Сургуулиудад зориулсан асуултууд",
+            "faqNgos": "ТББ-уудад зориулсан асуултууд"
+        },
+        "legal": {
+            "title": "Хууль эрх зүй",
+            "guidelines": "Хэрэглэгчийн удирдамж",
+            "terms": "Үйлчилгээний нөхцөл",
+            "privacy": "Нууцлалын бодлого",
+            "communityRules": "Олон нийтийн дүрэм",
+            "cookiePreferences": "Күүки тохиргооны төв",
+            "accessibility": "Хүртээмжтэй байдлын мэдэгдэл",
+            "sitemap": "Сайтын бүтэц"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

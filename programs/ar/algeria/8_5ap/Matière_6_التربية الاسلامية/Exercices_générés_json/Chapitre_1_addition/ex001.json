@@ -1,0 +1,12 @@
+EXEMPLE
+
+{
+  "id": "dz-1ap-maths-ch1-ex001",
+  "type": "qcm",
+  "difficulte": "facile",
+  "consigne": "Choisis la bonne réponse : 2 + 3 = ?",
+  "options": ["4", "5", "6"],
+  "reponse": 1,
+  "chapitre_id": "ch1",
+  "tags": ["addition", "calcul mental"]
+}

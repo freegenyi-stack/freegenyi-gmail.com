@@ -1,0 +1,35 @@
+{
+    "hero": {
+        "title": "Boostez le potentiel éducatif de vos enfants",
+        "subtitle": "FreeGeny est une plateforme innovante qui connecte parents, écoles et ONG pour un parcours éducatif d'excellence.",
+        "cta": "Essai Gratuit"
+    },
+    "values": {
+        "innovation": {
+            "title": "Innovation pédagogique",
+            "description": "Des outils modernes adaptés aux nouveaux modes d'apprentissage."
+        },
+        "accessibility": {
+            "title": "Accessibilité",
+            "description": "Une plateforme intuitive accessible partout et pour tous."
+        },
+        "security": {
+            "title": "Sécurité des données",
+            "description": "Nous garantissons la protection et la confidentialité de vos informations."
+        }
+    },
+    "publics": {
+        "parents": "Pour les Parents",
+        "schools": "Pour les Écoles",
+        "ongs": "Pour les ONG"
+    },
+    "faq": {
+        "title": "Questions fréquentes",
+        "items": [
+            {
+                "question": "Comment s'inscrire ?",
+                "answer": "Cliquez sur 'Essai Gratuit' et suivez les étapes."
+            }
+        ]
+    }
+}

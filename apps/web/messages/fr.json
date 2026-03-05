@@ -1,0 +1,337 @@
+{
+    "metadata": {
+        "title": "FreeGeny - Révolutionner l'éducation",
+        "description": "Rejoignez des millions d'apprenants avec la plateforme innovante de FreeGeny"
+    },
+    "home": {
+        "hero": {
+            "title": "Apprendre sans limites",
+            "subtitle": "Accédez gratuitement à une éducation de classe mondiale",
+            "cta": "Commencer à apprendre"
+        },
+        "features": {
+            "title": "Pourquoi FreeGeny ?",
+            "items": {
+                "free": "Complètement gratuit",
+                "global": "Communauté mondiale",
+                "quality": "Contenu de haute qualité"
+            }
+        },
+        "values": {
+            "innovation": {
+                "title": "Innovation",
+                "description": "Des outils de pointe pour un apprentissage moderne."
+            },
+            "accessibility": {
+                "title": "Accessibilité",
+                "description": "L'éducation pour tous, partout, n'importe quand."
+            },
+            "security": {
+                "title": "Sécurité",
+                "description": "Vos données et votre vie privée sont nos priorités."
+            }
+        },
+        "publics": {
+            "title": "Une solution pour chaque acteur",
+            "parents": "Parents",
+            "schools": "Écoles",
+            "ongs": "ONG"
+        },
+        "faq": {
+            "title": "Questions Fréquentes",
+            "items": [
+                {
+                    "question": "Qu'est-ce que FreeGeny ?",
+                    "answer": "FreeGeny est une plateforme éducative mondiale gratuite."
+                }
+            ]
+        }
+    },
+    "common": {
+        "loading": "Chargement...",
+        "error": "Une erreur est survenue",
+        "retry": "Réessayer",
+        "language": "Langue",
+        "watchDemo": "Voir la démo",
+        "learnMore": "En savoir plus"
+    },
+    "navigation": {
+        "features": "Fonctionnalités",
+        "method": "Méthode",
+        "schools": "Écoles",
+        "testimonials": "Témoignages",
+        "getStarted": "Commencer",
+        "getStartedFree": "Commencer gratuitement",
+        "login": "Se connecter",
+        "menu": {
+            "about": "Qui sommes nous",
+            "mission": "Notre mission",
+            "app": "L'Application",
+            "parents": {
+                "main": "Parents",
+                "dropdown": {
+                    "dashboard": "Tableau de bord parents",
+                    "progress": "Suivi des progrès",
+                    "communication": "Communication enseignants",
+                    "resources": "Ressources éducatives",
+                    "security": "Security and Privacy",
+                    "description": "Découvrez comment FreeGeny aide les parents à accompagner le parcours éducatif de leurs enfants grâce à {{title}}."
+                }
+            },
+            "schools": {
+                "main": "Écoles",
+                "dropdown": {
+                    "management": "Gestion d'établissement",
+                    "curriculum": "Programmes scolaires",
+                    "teachers": "Espace enseignants",
+                    "analytics": "Analyses et rapports",
+                    "description": "Donner aux institutions éducatives des outils de pointe pour {{title}}."
+                }
+            },
+            "ongs": {
+                "main": "ONG",
+                "dropdown": {
+                    "projects": "Projets éducatifs",
+                    "impact": "Mesure d'impact",
+                    "partnership": "Partenariats",
+                    "description": "Partenariat avec les ONG pour apporter l'éducation aux quatre coins du monde."
+                }
+            },
+            "pricing": {
+                "main": "Tarifs",
+                "dropdown": {
+                    "individual": "Individuel",
+                    "family": "Famille",
+                    "institutional": "Institutionnel",
+                    "description": "Des plans flexibles conçus pour les besoins de type {{title}}."
+                }
+            },
+            "freeTrial": "Essai Gratuit",
+            "login": "Connexion"
+        }
+    },
+    "cookies": {
+        "title": "Gestion des cookies",
+        "description": "Nous utilisons des cookies pour améliorer votre expérience.",
+        "learnMore": "En savoir plus",
+        "rejectAll": "Rejeter tout",
+        "customize": "Personnaliser",
+        "acceptAll": "Accepter tout"
+    },
+    "footer": {
+        "baseline": "Notre mission : rendre l'éducation accessible, engageante et amusante pour chaque enfant, partout dans le monde.",
+        "rights": "Tous droits réservés.",
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        },
+        "about": {
+            "title": "Entreprise",
+            "education": "Enseignement",
+            "nationalCurriculum": "Programmes scolaires nationaux",
+            "internationalCurriculum": "Programmes scolaires internationaux",
+            "mission": "Notre vision",
+            "methodology": "Méthode",
+            "research": "Recherche en éducation",
+            "brand": "A propos de la marque",
+            "news": "Actualités",
+            "press": "Presse",
+            "contact": "Contact"
+        },
+        "apps": {
+            "title": "Nos applis",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "Aide et support",
+            "faqGeneral": "FAQ au tour de FreeGeny",
+            "faqSchools": "FAQ sur Écoles",
+            "faqNgos": "FAQ autour des ONG"
+        },
+        "legal": {
+            "title": "Légal",
+            "guidelines": "Lignes directrices utilisateur",
+            "terms": "Conditions",
+            "privacy": "Confidentialité",
+            "communityRules": "Règles de la communauté",
+            "cookiePreferences": "Cookies",
+            "accessibility": "Accessibilité",
+            "sitemap": "Plan du site"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "roles": {
+            "parent": "Parent",
+            "teacher": "Enseignant",
+            "school": "École",
+            "ngo": "ONG",
+            "admin": "Administrateur"
+        },
+        "noRoleFound": "Aucun rôle trouvé",
+        "nav": {
+            "home": "Accueil",
+            "programs": "Programmes",
+            "donors": "Donateurs",
+            "finances": "Finances",
+            "volunteers": "Bénévoles",
+            "impact": "Impact",
+            "communication": "Communication",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres",
+            "achievements": "Réussites",
+            "classes": "Classes",
+            "create": "Créer",
+            "grading": "Notation",
+            "analytics": "Analytiques",
+            "planning": "Planification",
+            "resources": "Ressources",
+            "teachers": "Enseignants",
+            "students": "Élèves",
+            "schedule": "Emploi du temps",
+            "schools": "Écoles",
+            "beneficiaries": "Bénéficiaires",
+            "kpi": "Indicateurs",
+            "map": "Carte",
+            "reports": "Rapports",
+            "sponsorship": "Parrainage",
+            "users": "Utilisateurs",
+            "compliance": "Conformité",
+            "api": "API",
+            "support": "Support"
+        },
+        "childSwitcher": {
+            "title": "Mes enfants",
+            "active": "Actif",
+            "addChild": "Ajouter un enfant",
+            "newProfile": "Créer un nouveau profil",
+            "never": "Jamais",
+            "today": "Aujourd'hui",
+            "yesterday": "Hier",
+            "daysAgo": "Il y a {days} jours",
+            "age": "{age} ans",
+            "level": "Niv. {level}",
+            "points": "{points} pts",
+            "slogan": "Liberté · Égalité · FG"
+        },
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {name} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants actifs",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "navbar": {
+        "profile": "Profil",
+        "settings": "Paramètres",
+        "logout": "Déconnexion"
+    },
+    "notifications": {
+        "title": "Notifications",
+        "markAllRead": "Tout marquer comme lu",
+        "noNotifications": "Aucune notification",
+        "dismiss": "Ignorer",
+        "priority": {
+            "low": "Basse",
+            "medium": "Moyenne",
+            "high": "Haute",
+            "urgent": "Urgente"
+        }
+    },
+    "search": {
+        "placeholder": "Rechercher...",
+        "searching": "Recherche en cours",
+        "noResults": "Aucun résultat trouvé",
+        "type": {
+            "exercise": "Exercice",
+            "student": "Élève",
+            "class": "Classe",
+            "message": "Message",
+            "resource": "Ressource"
+        }
+    },
+    "defaultLanguage": "fr",
+    "placeholders": {
+        "untranslated": "Contenu non traduit"
+    },
+    "auth": {
+        "welcomeBack": "Bon retour !",
+        "loginSubtitle": "Débloquez votre monde magique.",
+        "joinAdventure": "Rejoignez l'aventure",
+        "signupTitle": "Rejoignez l'aventure !",
+        "signupSubtitle": "Créez votre compte magique aujourd'hui.",
+        "emailLabel": "Nom d'utilisateur ou Email",
+        "email": "Adresse email",
+        "passwordLabel": "Mot de passe",
+        "password": "Mot de passe",
+        "firstNameLabel": "Prénom",
+        "lastNameLabel": "Nom",
+        "fullName": "Nom complet",
+        "createPassword": "Créer un mot de passe",
+        "orEmail": "ou par email",
+        "signIn": "Se connecter",
+        "createAccount": "Créer mon compte",
+        "signUpFree": "S'inscrire gratuitement",
+        "termsText": "En créant un compte, vous acceptez nos",
+        "termsLink": "Conditions d'utilisation",
+        "privacyLink": "Politique de confidentialité",
+        "forgotPassword": "Mot de passe oublié ?",
+        "loginButton": "Commencer à apprendre",
+        "signupButton": "Créer un compte",
+        "noAccount": "Vous n'avez pas de compte ?",
+        "hasAccount": "Vous avez déjà un compte ?",
+        "signupLink": "S'inscrire",
+        "signinLink": "Se connecter",
+        "or": "Ou se connecter avec",
+        "legalText": "En rejoignant, vous acceptez nos",
+        "connecting": "Connexion sécurisée...",
+        "processing": "Traitement...",
+        "emailPlaceholder": "genie@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Conditions",
+        "privacy": "Confidentialité",
+        "roleSelection": "Vous êtes :",
+        "roles": {
+            "parent": "Parent",
+            "teacher": "École",
+            "ngo": "ONG"
+        },
+        "trustItems": {
+            "certified": "Programmes certifiés par des experts en pédagogie",
+            "countries": "Disponible dans plus de 38 pays",
+            "learners": "Plus de 500 000 enfants apprennent chaque jour"
+        },
+        "quote": "Chaque enfant est un génie qui sommeille.",
+        "quoteSubtext": "FreeGeny transforme chaque moment en opportunité d'apprendre, de grandir et de s'émerveiller.",
+        "illustrationAlt": "Enfant apprenant en s'amusant"
+    }
+}

@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - ပညာရေးတွင် တော်လှန်ပြောင်းလဲမှု",
+        "description": "FreeGeny ၏ ဆန်းသစ်တီထွင်သော ပလက်ဖောင်းဖြင့် သင်ယူနေကြသည့် သန်းပေါင်းများစွာသော လူများနှင့် ပူးပေါင်းလိုက်ပါ"
+    },
+    "home": {
+        "hero": {
+            "title": "အတားအဆီးမရှိ လေ့လာပါ",
+            "subtitle": "ကမ္ဘာ့အဆင့်မီ ပညာရေးကို အခမဲ့ ရယူပါ",
+            "cta": "လေ့လာသင်ယူမှု စတင်ပါ"
+        },
+        "features": {
+            "title": "ဘာကြောင့် FreeGeny လဲ?",
+            "items": {
+                "free": "လုံးဝ အခမဲ့",
+                "global": "ကမ္ဘာလုံးဆိုင်ရာ အသိုင်းအဝိုင်း",
+                "quality": "ထိပ်တန်း အရည်အသွေးရှိသော အကြောင်းအရာ"
+            }
+        }
+    },
+    "common": {
+        "loading": "ဖွင့်နေသည်...",
+        "error": "တစ်ခုခု မှားယွင်းသွားပါသည်",
+        "retry": "ထပ်မံကြိုးစားပါ",
+        "language": "ဘာသာစကား"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "ကျွန်ုပ်တို့အကြောင်း",
+            "mission": "ကျွန်ုပ်တို့၏ ရည်မှန်းချက်",
+            "app": "အက်ပ်",
+            "parents": {
+                "main": "မိဘများ",
+                "dropdown": {
+                    "dashboard": "မိဘများအတွက် ဒက်ရှ်ဘုတ်",
+                    "progress": "တိုးတက်မှု ခြေရာခံခြင်း",
+                    "communication": "ဆရာနှင့် ဆက်သွယ်ရေး",
+                    "resources": "ပညာရေးဆိုင်ရာ အရင်းအမြစ်များ",
+                    "security": "လုံခြုံရေးနှင့် ကိုယ်ရေးလုံခြုံမှု"
+                }
+            },
+            "schools": {
+                "main": "ကျောင်းများ",
+                "dropdown": {
+                    "management": "ကျောင်း စီမံခန့်ခွဲမှု",
+                    "curriculum": "ကျောင်း သင်ရိုးညွှန်းတမ်းများ",
+                    "teachers": "ဆရာများအတွက် နေရာ",
+                    "analytics": "ဆန်းစစ်ချက်များနှင့် အစီရင်ခံစာများ"
+                }
+            },
+            "ongs": {
+                "main": "NGOများ",
+                "dropdown": {
+                    "projects": "ပညာရေးဆိုင်ရာ စီမံကိန်းများ",
+                    "impact": "သက်ရောက်မှု တိုင်းတာခြင်း",
+                    "partnership": "မိတ်ဖက်ဆက်ဆံရေးများ"
+                }
+            },
+            "pricing": {
+                "main": "ဈေးနှုန်း",
+                "dropdown": {
+                    "individual": "တစ်ဦးချင်း",
+                    "family": "မိသားစု",
+                    "institutional": "အဖွဲ့အစည်း"
+                }
+            },
+            "freeTrial": "အခမဲ့ စမ်းသပ်ခြင်း",
+            "login": "အကောင့်ဝင်ပါ"
+        }
+    },
+    "cookies": {
+        "title": "Cookie စီမံခန့်ခွဲမှု",
+        "description": "သင့်အတွေ့အကြုံကို မြှင့်တင်ရန် ကျွန်ုပ်တို့သည် cookie များကို အသုံးပြုပါသည်။",
+        "learnMore": "ပိုမိုလေ့လာရန်",
+        "rejectAll": "အားလုံးကို ငြင်းပယ်ရန်",
+        "customize": "စိတ်ကြိုက်ပြင်ဆင်ရန်",
+        "acceptAll": "အားလုံးကို လက်ခံရန်"
+    },
+    "footer": {
+        "baseline": "လူတိုင်းအတွက် ပညာရေးကို တော်လှန်ပြောင်းလဲခြင်း",
+        "rights": "မူပိုင်ခွင့်များ ရယူထားပြီး။",
+        "about": {
+            "title": "အကြောင်း",
+            "education": "ပညာရေး",
+            "nationalCurriculum": "အမျိုးသား သင်ရိုးညွှန်းတမ်း အကြောင်းအရာ",
+            "internationalCurriculum": "နိုင်ငံတကာ သင်ရိုးညွှန်းတမ်း အကြောင်းအရာ",
+            "mission": "ကျွန်ုပ်တို့၏ ရည်မှန်းချက်",
+            "methodology": "နည်းစနစ်",
+            "research": "ပညာရေး သုတေသန",
+            "brand": "အမှတ်တံဆိပ် အကြောင်း",
+            "news": "သတင်းများ",
+            "press": "စာနယ်ဇင်း",
+            "contact": "ဆက်သွယ်ရန်"
+        },
+        "apps": {
+            "title": "ကျွန်ုပ်တို့၏ အက်ပ်များ",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "အကူအညီနှင့် ပံ့ပိုးမှု",
+            "faqGeneral": "FreeGeny အကြောင်း မေးလေ့ရှိသော မေးခွန်းများ",
+            "faqSchools": "ကျောင်းများအတွက် မေးခွန်းများ",
+            "faqNgos": "NGOများအတွက် မေးခွန်းများ"
+        },
+        "legal": {
+            "title": "ဥပဒေရေးရာ",
+            "guidelines": "အသုံးပြုသူ လမ်းညွှန်ချက်များ",
+            "terms": "ဝန်ဆောင်မှု စည်းမျဉ်းများ",
+            "privacy": "ကိုယ်ရေးလုံခြုံမှု မူဝါဒ",
+            "communityRules": "အသိုင်းအဝိုင်း စည်းကမ်းများ",
+            "cookiePreferences": "Cookie ဦးစားပေး ဗဟိုဌာန",
+            "accessibility": "အသုံးပြုရလွယ်ကူမှု ထုတ်ပြန်ချက်",
+            "sitemap": "ဆိုက်မြေပုံ"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

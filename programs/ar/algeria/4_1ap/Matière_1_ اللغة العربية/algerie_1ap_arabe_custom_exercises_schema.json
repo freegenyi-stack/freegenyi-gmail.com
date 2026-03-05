@@ -1,0 +1,561 @@
+{
+    "_file_info": {
+        "file_id": "FG-DZ-1AP-AR-CUSTOM-EX-V1",
+        "schema_version": "1.0.0",
+        "platform": "FreeGeny",
+        "country": "DZ",
+        "level": "1AP",
+        "subject": "ar",
+        "type": "custom_exercises_schema",
+        "status": "MASTER_TEMPLATE",
+        "__ANNOTATION_PURPOSE__": "This file defines the schema for PARENT-GENERATED EXERCISES. Parents select specific lessons from the curriculum, choose exercise types, and FreeGeny generates a personalized exercise sheet on demand. DeepSeek must replicate this schema for every subject and level deployed on the platform.",
+        "__ANNOTATION_HOW_IT_WORKS__": "1. Parent opens 'Créer un exercice' in the FreeGeny dashboard. 2. Parent selects one or more lessons by lesson_id. 3. Parent selects desired exercise_types and difficulty range. 4. FreeGeny generates a JSON payload matching this schema. 5. The frontend renders the exercise set. 6. Results are saved to the child's progress tracker."
+    },
+    "lesson_selector": {
+        "__ANNOTATION__": "The lesson_selector lists all available lessons the parent can choose from. Each entry maps to a lesson in algerie_1ap_arabe_lessons.md and algerie_1ap_arabe_exercises.json.",
+        "available_lessons": [
+            {
+                "lesson_id": "ar_1ap_l01",
+                "title_ar": "أَهْلاً وَسَهْلاً",
+                "title_fr": "Bienvenue",
+                "theme": "الأسرة",
+                "semester": 1
+            },
+            {
+                "lesson_id": "ar_1ap_l02",
+                "title_ar": "مَنْ فِي مَنْزِلِنَا؟",
+                "title_fr": "Qui est dans notre maison?",
+                "theme": "الأسرة",
+                "semester": 1
+            },
+            {
+                "lesson_id": "ar_1ap_l03",
+                "title_ar": "فِي المَدْرَسَةِ",
+                "title_fr": "À l'école",
+                "theme": "المدرسة",
+                "semester": 1
+            },
+            {
+                "lesson_id": "ar_1ap_l04",
+                "title_ar": "فِي السَّاحَةِ",
+                "title_fr": "Dans la cour",
+                "theme": "المدرسة",
+                "semester": 1
+            },
+            {
+                "lesson_id": "ar_1ap_l05",
+                "title_ar": "فِي الحَدِيقَةِ",
+                "title_fr": "Dans le jardin",
+                "theme": "البيئة",
+                "semester": 1
+            },
+            {
+                "lesson_id": "ar_1ap_l06",
+                "title_ar": "فِي القَرْيَةِ",
+                "title_fr": "Au village",
+                "theme": "البيئة",
+                "semester": 1
+            },
+            {
+                "lesson_id": "ar_1ap_l07",
+                "title_ar": "مُبَارَاةٌ",
+                "title_fr": "Un match",
+                "theme": "الرياضة",
+                "semester": 1
+            },
+            {
+                "lesson_id": "ar_1ap_l08",
+                "title_ar": "فِي الحَمَّامِ",
+                "title_fr": "À la salle de bains",
+                "theme": "الصحة",
+                "semester": 1
+            },
+            {
+                "lesson_id": "ar_1ap_l09",
+                "title_ar": "فِي المَسْجِدِ",
+                "title_fr": "À la mosquée",
+                "theme": "القيم",
+                "semester": 1
+            },
+            {
+                "lesson_id": "ar_1ap_l10",
+                "title_ar": "الغَابَةُ الجَمِيلَة",
+                "title_fr": "La belle forêt",
+                "theme": "الطبيعة",
+                "semester": 2
+            },
+            {
+                "lesson_id": "ar_1ap_l11",
+                "title_ar": "عِنْدَ الجَدِّ",
+                "title_fr": "Chez grand-père",
+                "theme": "العائلة",
+                "semester": 2
+            },
+            {
+                "lesson_id": "ar_1ap_l12",
+                "title_ar": "الكِتَابَة",
+                "title_fr": "L'écriture",
+                "theme": "التعلم",
+                "semester": 2
+            },
+            {
+                "lesson_id": "ar_1ap_l13",
+                "title_ar": "عِنْدَ الطَّبِيب",
+                "title_fr": "Chez le médecin",
+                "theme": "الصحة",
+                "semester": 2
+            },
+            {
+                "lesson_id": "ar_1ap_l14",
+                "title_ar": "عِيد المِيلَاد",
+                "title_fr": "L'anniversaire",
+                "theme": "المناسبات",
+                "semester": 2
+            },
+            {
+                "lesson_id": "ar_1ap_l15",
+                "title_ar": "فِي حَدِيقَةِ المَنْزِل",
+                "title_fr": "Dans le jardin de la maison",
+                "theme": "الطبيعة",
+                "semester": 2
+            },
+            {
+                "lesson_id": "ar_1ap_l16",
+                "title_ar": "الفَحْص الطِّبِّي",
+                "title_fr": "Le bilan médical",
+                "theme": "الصحة",
+                "semester": 3
+            },
+            {
+                "lesson_id": "ar_1ap_l17",
+                "title_ar": "الغِذَاء الصَّحِّي",
+                "title_fr": "L'alimentation saine",
+                "theme": "الصحة",
+                "semester": 3
+            },
+            {
+                "lesson_id": "ar_1ap_l18",
+                "title_ar": "أُحَافِظ عَلَى أَسْنَانِي",
+                "title_fr": "Je prends soin de mes dents",
+                "theme": "الصحة",
+                "semester": 3
+            }
+        ]
+    },
+    "exercise_type_selector": {
+        "__ANNOTATION__": "The parent selects which exercise types to include. Each type maps to a React component on the FreeGeny frontend.",
+        "available_types": [
+            {
+                "type_id": "letter_recognition",
+                "label_fr": "Reconnaissance de lettres",
+                "label_ar": "التعرف على الحروف",
+                "description_fr": "L'enfant identifie la bonne lettre parmi 4 options",
+                "component": "LetterRecognitionExercise",
+                "domains": [
+                    "arabe"
+                ],
+                "bloom_levels": [
+                    "1_remember"
+                ],
+                "default_count": 3,
+                "icon": "🔤"
+            },
+            {
+                "type_id": "fill_blank",
+                "label_fr": "Compléter les trous",
+                "label_ar": "أَكْمِل الكَلِمَة",
+                "description_fr": "L'enfant complète le mot manquant",
+                "component": "FillBlankExercise",
+                "domains": [
+                    "arabe"
+                ],
+                "bloom_levels": [
+                    "3_apply"
+                ],
+                "default_count": 3,
+                "icon": "✏️"
+            },
+            {
+                "type_id": "matching",
+                "label_fr": "Association lettre-mot",
+                "label_ar": "صِل الحَرْف بِالكَلِمَة",
+                "description_fr": "L'enfant relie chaque lettre à une image ou un mot",
+                "component": "MatchingExercise",
+                "domains": [
+                    "arabe"
+                ],
+                "bloom_levels": [
+                    "2_understand"
+                ],
+                "default_count": 3,
+                "icon": "🔗"
+            },
+            {
+                "type_id": "true_false",
+                "label_fr": "Vrai ou Faux",
+                "label_ar": "صَحِيح أَوْ خَطَأ",
+                "description_fr": "L'enfant juge si une affirmation est vraie ou fausse",
+                "component": "TrueFalseExercise",
+                "domains": [
+                    "arabe",
+                    "islamique",
+                    "civique"
+                ],
+                "bloom_levels": [
+                    "2_understand"
+                ],
+                "default_count": 3,
+                "icon": "✅"
+            },
+            {
+                "type_id": "multiple_choice",
+                "label_fr": "Choix multiple",
+                "label_ar": "اخْتَر الإِجَابَة الصَّحِيحَة",
+                "description_fr": "L'enfant choisit la bonne réponse parmi 3 options",
+                "component": "MultipleChoiceExercise",
+                "domains": [
+                    "arabe",
+                    "islamique",
+                    "civique"
+                ],
+                "bloom_levels": [
+                    "2_understand",
+                    "3_apply"
+                ],
+                "default_count": 3,
+                "icon": "❓"
+            },
+            {
+                "type_id": "islamic_recitation",
+                "label_fr": "Récitation islamique",
+                "label_ar": "التَّرْتِيب الصَّحِيح",
+                "description_fr": "L'enfant remet des mots d'un dua ou d'une sourate dans l'ordre",
+                "component": "IslamicRecitationExercise",
+                "domains": [
+                    "islamique"
+                ],
+                "bloom_levels": [
+                    "1_remember",
+                    "2_understand"
+                ],
+                "default_count": 2,
+                "icon": "🕌",
+                "sensitivity": "religious_content_verified"
+            },
+            {
+                "type_id": "civic_exercise",
+                "label_fr": "Éducation civique",
+                "label_ar": "السُّلُوك المَدَنِي الصَّحِيح",
+                "description_fr": "L'enfant identifie le bon comportement civique dans une situation",
+                "component": "CivicExercise",
+                "domains": [
+                    "civique"
+                ],
+                "bloom_levels": [
+                    "3_apply"
+                ],
+                "default_count": 2,
+                "icon": "🏛️"
+            },
+            {
+                "type_id": "ordering",
+                "label_fr": "Remets dans l'ordre",
+                "label_ar": "رَتِّب الكَلِمَات",
+                "description_fr": "L'enfant remet des mots dans le bon ordre pour former une phrase",
+                "component": "OrderingExercise",
+                "domains": [
+                    "arabe"
+                ],
+                "bloom_levels": [
+                    "3_apply",
+                    "4_analyze"
+                ],
+                "default_count": 2,
+                "icon": "🔀"
+            },
+            {
+                "type_id": "image_word_matching",
+                "label_fr": "Associer image et mot",
+                "label_ar": "صِل الصُّورَة بِالكَلِمَة",
+                "description_fr": "L'enfant relie une image à son mot en arabe",
+                "component": "ImageWordMatchingExercise",
+                "domains": [
+                    "arabe"
+                ],
+                "bloom_levels": [
+                    "2_understand"
+                ],
+                "default_count": 4,
+                "icon": "🖼️",
+                "requires_assets": true
+            }
+        ]
+    },
+    "difficulty_selector": {
+        "__ANNOTATION__": "The parent sets a difficulty range for the generated exercises. The platform auto-adjusts depth and point values accordingly.",
+        "available_difficulties": [
+            {
+                "level": 1,
+                "label_fr": "Facile 🟢",
+                "label_ar": "سَهْل",
+                "points": 5,
+                "time_limit_seconds": 30
+            },
+            {
+                "level": 2,
+                "label_fr": "Intermédiaire 🟡",
+                "label_ar": "مُتَوَسِّط",
+                "points": 10,
+                "time_limit_seconds": 45
+            },
+            {
+                "level": 3,
+                "label_fr": "Avancé 🔴",
+                "label_ar": "صَعْب",
+                "points": 15,
+                "time_limit_seconds": 90
+            }
+        ]
+    },
+    "domain_selector": {
+        "__ANNOTATION__": "The parent can filter exercises by domain. All 3 domains (Arabic, Islamic, Civic) apply to Algeria 1AP. For other subjects like Math, only the 'math' domain applies.",
+        "available_domains": [
+            {
+                "domain_id": "arabe",
+                "label_fr": "Arabe",
+                "label_ar": "اللغة العربية",
+                "icon": "📖",
+                "color": "#3b52d4"
+            },
+            {
+                "domain_id": "islamique",
+                "label_fr": "Islamique",
+                "label_ar": "التربية الإسلامية",
+                "icon": "🕌",
+                "color": "#1a8a4a"
+            },
+            {
+                "domain_id": "civique",
+                "label_fr": "Civique",
+                "label_ar": "التربية المدنية",
+                "icon": "🏛️",
+                "color": "#c0392b"
+            }
+        ]
+    },
+    "generation_config": {
+        "__ANNOTATION__": "This object configures how the exercise generation engine behaves. These are the defaults and constraints for the custom exercise generator.",
+        "min_lessons_per_generation": 1,
+        "max_lessons_per_generation": 6,
+        "min_exercises_per_lesson": 2,
+        "max_exercises_per_lesson": 10,
+        "default_exercises_per_lesson": 5,
+        "max_total_exercises": 30,
+        "shuffle_exercises": true,
+        "include_parent_tips": true,
+        "include_bloom_level": true,
+        "output_format": "pdf_and_json",
+        "supported_output_formats": [
+            "json",
+            "pdf",
+            "printable_html"
+        ],
+        "include_answer_key": true,
+        "include_progress_tracking": true
+    },
+    "output_schema": {
+        "__ANNOTATION__": "This is the structure of the JSON output that FreeGeny generates when a parent requests custom exercises. It mirrors the format of algerie_1ap_arabe_exercises.json but is dynamically populated based on parent selections. DeepSeek: always Output generated exercises matching this exact schema.",
+        "generated_set_id": "GENERATED_UUID",
+        "generated_at": "ISO8601_TIMESTAMP",
+        "child_id": "CHILD_UUID",
+        "parent_id": "PARENT_UUID",
+        "selections": {
+            "lesson_ids": [
+                "ar_1ap_l01",
+                "ar_1ap_l03"
+            ],
+            "exercise_types": [
+                "letter_recognition",
+                "fill_blank",
+                "true_false"
+            ],
+            "domains": [
+                "arabe",
+                "islamique"
+            ],
+            "difficulty_range": [
+                1,
+                2
+            ],
+            "total_exercises_requested": 10
+        },
+        "exercises": [
+            {
+                "id": "GENERATED_EX_001",
+                "source_lesson_id": "ar_1ap_l01",
+                "type": "letter_recognition",
+                "domaine": "arabe",
+                "difficulty": 1,
+                "points": 5,
+                "competency": "C2",
+                "bloom_level": "1_remember",
+                "statement": "أَيُّ هَذِهِ الحُرُوف هُوَ حَرْفُ أ؟",
+                "options": [
+                    {
+                        "id": "a",
+                        "text": "أ"
+                    },
+                    {
+                        "id": "b",
+                        "text": "ب"
+                    },
+                    {
+                        "id": "c",
+                        "text": "م"
+                    },
+                    {
+                        "id": "d",
+                        "text": "ص"
+                    }
+                ],
+                "correct_option_id": "a",
+                "explanation": "هَذَا هُوَ حَرْفُ أ",
+                "feedback": {
+                    "correct": "رَائِع! 🌟",
+                    "incorrect": "حَاوِلْ مَرَّةً أُخْرَى!"
+                },
+                "parent_tip_fr": "Aidez votre enfant à visualiser la forme de la lettre.",
+                "parent_tip_ar": "ساعد طفلك في تخيل شكل الحرف.",
+                "parent_tip_en": "Help your child visualize the letter shape."
+            }
+        ],
+        "summary": {
+            "total_exercises": 10,
+            "total_points": 65,
+            "domains_covered": [
+                "arabe",
+                "islamique"
+            ],
+            "lessons_covered": [
+                "ar_1ap_l01",
+                "ar_1ap_l03"
+            ],
+            "estimated_duration_minutes": 15
+        }
+    },
+    "preset_packages": {
+        "__ANNOTATION__": "Preset packages are pre-built selections that parents can choose with one click. They represent the most common use cases. DeepSeek: always include 3-5 preset packages per subject/level.",
+        "packages": [
+            {
+                "package_id": "pkg_revision_week",
+                "label_fr": "📝 Révision de la semaine",
+                "label_ar": "مراجعة أسبوعية",
+                "description_fr": "5 exercices couvrant les 2 dernières leçons — idéal pour la fin de semaine",
+                "default_lesson_range": "last_2_lessons",
+                "exercise_types": [
+                    "letter_recognition",
+                    "fill_blank",
+                    "true_false"
+                ],
+                "domains": [
+                    "arabe",
+                    "islamique",
+                    "civique"
+                ],
+                "difficulty_range": [
+                    1,
+                    2
+                ],
+                "total_exercises": 5
+            },
+            {
+                "package_id": "pkg_letter_drill",
+                "label_fr": "🔤 Entraînement lettres",
+                "label_ar": "تدريب مكثف على الحروف",
+                "description_fr": "Exercices intensifs sur les lettres arabes — pour consolider la lecture",
+                "default_lesson_range": "custom",
+                "exercise_types": [
+                    "letter_recognition",
+                    "matching",
+                    "fill_blank",
+                    "ordering"
+                ],
+                "domains": [
+                    "arabe"
+                ],
+                "difficulty_range": [
+                    1,
+                    3
+                ],
+                "total_exercises": 8
+            },
+            {
+                "package_id": "pkg_values_focus",
+                "label_fr": "💚 Valeurs islamiques & civiques",
+                "label_ar": "تركيز على القيم",
+                "description_fr": "Exercices sur les valeurs islamiques et civiques pour tous les niveaux",
+                "default_lesson_range": "all",
+                "exercise_types": [
+                    "true_false",
+                    "civic_exercise",
+                    "islamic_recitation"
+                ],
+                "domains": [
+                    "islamique",
+                    "civique"
+                ],
+                "difficulty_range": [
+                    1,
+                    2
+                ],
+                "total_exercises": 6
+            },
+            {
+                "package_id": "pkg_full_exam_prep",
+                "label_fr": "🏆 Préparation examen trimestriel",
+                "label_ar": "تحضير للتقييم الفصلي",
+                "description_fr": "30 exercices couvrant tout un trimestre — pour une révision complète",
+                "default_lesson_range": "full_semester",
+                "exercise_types": [
+                    "letter_recognition",
+                    "fill_blank",
+                    "matching",
+                    "true_false",
+                    "multiple_choice",
+                    "civic_exercise",
+                    "islamic_recitation"
+                ],
+                "domains": [
+                    "arabe",
+                    "islamique",
+                    "civique"
+                ],
+                "difficulty_range": [
+                    1,
+                    3
+                ],
+                "total_exercises": 30
+            },
+            {
+                "package_id": "pkg_quick_quiz",
+                "label_fr": "⚡ Quiz rapide (5 min)",
+                "label_ar": "اختبار سريع ٥ دقائق",
+                "description_fr": "3 exercices express pour tester la leçon du jour",
+                "default_lesson_range": "last_1_lesson",
+                "exercise_types": [
+                    "letter_recognition",
+                    "true_false",
+                    "multiple_choice"
+                ],
+                "domains": [
+                    "arabe"
+                ],
+                "difficulty_range": [
+                    1,
+                    1
+                ],
+                "total_exercises": 3
+            }
+        ]
+    }
+}

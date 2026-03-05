@@ -1,0 +1,20 @@
+{
+    "pays": "Algérie",
+    "code_iso": "dz",
+    "systeme": "DZ-PRIMARY",
+    "niveaux": [
+        {
+            "code": "1ap",
+            "nom": "Première Année Primaire",
+            "matieres": [
+                "arabe",
+                "math"
+            ]
+        }
+    ],
+    "configuration": {
+        "direction_ecriture": "RTL",
+        "langue_principale": "ar",
+        "generation_programme": "Génération 2"
+    }
+}

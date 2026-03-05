@@ -1,0 +1,26 @@
+{
+    "id": "dz-2ap-civique-droits_devoirs-ex002",
+    "type": "vrai_faux",
+    "difficulte": "facile",
+    "consigne": "ضع ص (صحيح) أو خ (خطأ):",
+    "chapitre": "droits_devoirs",
+    "items": [
+        {
+            "question": "من حقي أن أذهب إلى المدرسة لأتعلم.",
+            "reponse": true
+        },
+        {
+            "question": "واجبي هو احترام والدي ومعلمي.",
+            "reponse": true
+        },
+        {
+            "question": "الطفل ليس له الحق في اللعب.",
+            "reponse": false
+        }
+    ],
+    "tags": [
+        "الحقوق",
+        "الواجبات"
+    ],
+    "points": 1
+}

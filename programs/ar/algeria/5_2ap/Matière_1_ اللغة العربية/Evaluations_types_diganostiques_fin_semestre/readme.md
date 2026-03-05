@@ -1,0 +1,1 @@
+Évaluations types (diagnostiques, fin de semestre) au format JSON ou PDF.

@@ -1,0 +1,39 @@
+{
+    "id": "dz-2ap-science-botanique-ex004",
+    "type": "choix_multiples",
+    "difficulte": "سهلة",
+    "consigne": "ما هي الأشياء التي يحتاجها النبات الأخضر لكي يعيش وينمو؟ (اختر كل الإجابات الصحيحة)",
+    "chapitre": "science_botanique",
+    "corrige_inclus": true,
+    "options": [
+        {
+            "label": "الماء",
+            "correct": true,
+            "explication": "الماء ضروري لسقي النبتة."
+        },
+        {
+            "label": "الضوء",
+            "correct": true,
+            "explication": "النبات يحتاج لضوء الشمس لينمو."
+        },
+        {
+            "label": "الحليب",
+            "correct": false,
+            "explication": "الحليب ليس موجهاً لسقي النباتات."
+        },
+        {
+            "label": "الشوكولاتة",
+            "correct": false
+        },
+        {
+            "label": "التربة",
+            "correct": true,
+            "explication": "التربة توفر الغذاء وتثبت الجذور."
+        }
+    ],
+    "tags": [
+        "النبات",
+        "النمو"
+    ],
+    "points": 3
+}

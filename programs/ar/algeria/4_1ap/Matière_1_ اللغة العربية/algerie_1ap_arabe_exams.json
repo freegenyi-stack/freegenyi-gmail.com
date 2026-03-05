@@ -1,0 +1,4245 @@
+{
+  "metadata": {
+    "file_id": "freegeny_1ap_arabe_master_v3",
+    "country": "algerie",
+    "country_code": "DZ",
+    "level": "1ap",
+    "level_label": "السنة الأولى ابتدائي",
+    "subject": "arabe",
+    "subject_full": "اللغة العربية / التربية الإسلامية / التربية المدنية",
+    "curriculum": "الجيل الثاني",
+    "curriculum_label": "Programme National Génération 2 — Algérie",
+    "academic_year": "2025-2026",
+    "version": "3.0.0",
+    "last_update": "2026-02-28",
+    "authors": [
+      "Équipe Pédagogique FreeGeny",
+      "Experts curriculum algérien 1AP"
+    ],
+    "language": "ar",
+    "rtl": true,
+    "exam_structure": {
+      "trimestre1": {
+        "name": "الفصل الأول",
+        "label_fr": "1er Trimestre — Septembre à Décembre",
+        "maqata": [
+          "mq01",
+          "mq02",
+          "mq03",
+          "mq04"
+        ],
+        "theme_global": "العائلة والمدرسة والحي والرياضة",
+        "midterm_count": 5,
+        "final_count": 5,
+        "total_exams": 10
+      },
+      "trimestre2": {
+        "name": "الفصل الثاني",
+        "label_fr": "2ème Trimestre — Janvier à Mars",
+        "maqata": [
+          "mq05",
+          "mq06",
+          "mq07",
+          "mq08"
+        ],
+        "theme_global": "البيئة والصحة والتواصل والموروث الحضاري",
+        "midterm_count": 5,
+        "final_count": 5,
+        "total_exams": 10
+      },
+      "trimestre3": {
+        "name": "الفصل الثالث",
+        "label_fr": "3ème Trimestre — Avril à Juin",
+        "maqata": [
+          "mq09_revision",
+          "mq10_synthesis"
+        ],
+        "theme_global": "المراجعة الشاملة والهوية الوطنية",
+        "midterm_count": 1,
+        "final_count": 5,
+        "total_exams": 6
+      }
+    },
+    "grading_scale": {
+      "total": 20,
+      "pass_threshold": 10,
+      "scale_description": "كل تمرين بعلامته المذكورة - المجموع الكلي: 20 نقطة",
+      "grades": {
+        "excellent": {
+          "min": 18,
+          "max": 20,
+          "label": "ممتاز"
+        },
+        "very_good": {
+          "min": 16,
+          "max": 17,
+          "label": "جيد جداً"
+        },
+        "good": {
+          "min": 14,
+          "max": 15,
+          "label": "جيد"
+        },
+        "average": {
+          "min": 10,
+          "max": 13,
+          "label": "مقبول"
+        },
+        "fail": {
+          "min": 0,
+          "max": 9,
+          "label": "راسب"
+        }
+      }
+    },
+    "annual_competencies": [
+      {
+        "id": "comp_01",
+        "domain": "langue",
+        "description_ar": "التعرف على الحروف الهجائية الثمانية والعشرين وكتابتها في مواضعها الأربعة",
+        "description_fr": "Reconnaître et écrire les 28 lettres de l'alphabet arabe dans leurs 4 positions"
+      },
+      {
+        "id": "comp_02",
+        "domain": "langue",
+        "description_ar": "قراءة مقاطع ومفردات من مقطعين وثلاثة مقاطع",
+        "description_fr": "Lire des syllabes et mots de 2 à 3 syllabes"
+      },
+      {
+        "id": "comp_03",
+        "domain": "langue",
+        "description_ar": "استخدام الضمائر: أنا - أنتَ - أنتِ - هو - هي - نحن",
+        "description_fr": "Utiliser correctement les pronoms personnels"
+      },
+      {
+        "id": "comp_04",
+        "domain": "langue",
+        "description_ar": "التمييز بين ال الشمسية وال القمرية",
+        "description_fr": "Distinguer l'article solaire et l'article lunaire"
+      },
+      {
+        "id": "comp_05",
+        "domain": "langue",
+        "description_ar": "إنتاج جمل بسيطة من 3 إلى 5 كلمات",
+        "description_fr": "Produire des phrases simples de 3 à 5 mots"
+      },
+      {
+        "id": "comp_06",
+        "domain": "islamique",
+        "description_ar": "حفظ سور: الفاتحة - الناس - الإخلاص - الفلق - الكوثر - النصر",
+        "description_fr": "Mémoriser les sourates : Al-Fatiha, An-Nas, Al-Ikhlas, Al-Falaq, Al-Kawtar, An-Nasr"
+      },
+      {
+        "id": "comp_07",
+        "domain": "islamique",
+        "description_ar": "ترديد الأدعية اليومية (النوم - الأكل - الدخول والخروج)",
+        "description_fr": "Réciter les invocations quotidiennes (sommeil, repas, entrée/sortie)"
+      },
+      {
+        "id": "comp_08",
+        "domain": "civique",
+        "description_ar": "التعرف على رموز الهوية الوطنية: العلم - النشيد - العملة - الأعياد",
+        "description_fr": "Identifier les symboles de l'identité nationale : drapeau, hymne, monnaie, fêtes"
+      },
+      {
+        "id": "comp_09",
+        "domain": "civique",
+        "description_ar": "تطبيق قواعد الحياة الاجتماعية: الاحترام - التعاون - النظافة - الصدق",
+        "description_fr": "Appliquer les règles de la vie sociale : respect, coopération, propreté, vérité"
+      }
+    ]
+  },
+  "curriculum": {
+    "semestre1": {
+      "id": "S1",
+      "label": "الفصل الأول",
+      "period": "Septembre — Décembre",
+      "description": "Pose les fondations de la lecture, de l'écriture, des valeurs islamiques et civiques. Introduction aux 20 premières lettres, au vocabulaire de la famille, de l'école et du quartier.",
+      "objectifs_generaux": {
+        "langue": [
+          "Apprendre 20 lettres arabes (م ب ر ل ت د / ع هـ ج ح س ش / ص ض ق ك ط ظ) dans leurs 4 positions",
+          "Reconnaître et tracer les lettres sur lignes",
+          "Copier des syllabes et mots simples (2-3 lettres)",
+          "Introduire les démonstratifs هذا (masc.) / هذه (fém.)",
+          "Mémoriser et comprendre 6 poèmes du programme"
+        ],
+        "islamique": [
+          "Mémoriser سورة الفاتحة (intégralement)",
+          "Mémoriser سورة الناس et سورة الإخلاص",
+          "Apprendre les invocations : بسملة، الحمد لله، avant/après repas",
+          "Intégrer les valeurs : obéissance aux parents, permission, vérité, coopération, propreté"
+        ],
+        "civique": [
+          "Maîtriser les formules de politesse et de salutation",
+          "Connaître les éléments de la carte d'identité scolaire",
+          "Adopter des comportements respectueux envers les aînés",
+          "Découvrir le drapeau algérien (couleurs, symbolique)"
+        ]
+      },
+      "lettres": {
+        "groupe1": {
+          "lettres": [
+            "م",
+            "ب",
+            "ر",
+            "ل",
+            "ت",
+            "د"
+          ],
+          "maqta": "mq01",
+          "remarque": "Lettres d'introduction — formes simples, bien distinctes"
+        },
+        "groupe2": {
+          "lettres": [
+            "ع",
+            "هـ",
+            "ج",
+            "ح",
+            "س",
+            "ش"
+          ],
+          "maqta": "mq03",
+          "remarque": "Lettres pharyngales et sibilantes — attention à ج/ح/خ"
+        },
+        "groupe3": {
+          "lettres": [
+            "ص",
+            "ض",
+            "ق",
+            "ك",
+            "ط",
+            "ظ"
+          ],
+          "maqta": "mq04",
+          "remarque": "Lettres emphatiques — prononciation spécifique, vigilance requise"
+        }
+      },
+      "poesies": [
+        {
+          "titre": "التحية وردها",
+          "maqta": "mq01",
+          "objectif": "Salutations et réponses"
+        },
+        {
+          "titre": "بطاقتي المدرسية",
+          "maqta": "mq01",
+          "objectif": "Présentation personnelle"
+        },
+        {
+          "titre": "مدرستي",
+          "maqta": "mq02",
+          "objectif": "Vocabulaire de l'école"
+        },
+        {
+          "titre": "رفيقي الرفيق",
+          "maqta": "mq03",
+          "objectif": "Amitié et coopération"
+        },
+        {
+          "titre": "لعبة الغميضة",
+          "maqta": "mq04",
+          "objectif": "Jeux et loisirs"
+        },
+        {
+          "titre": "الملابس الرياضية",
+          "maqta": "mq04",
+          "objectif": "Sport et hygiène"
+        }
+      ],
+      "maqata": [
+        {
+          "id": "mq01",
+          "titre_ar": "العائلة والمدرسة",
+          "titre_fr": "La Famille et l'École",
+          "periode": "Septembre",
+          "duree_semaines": 4,
+          "unites": [
+            "أحمد يرحب بكم",
+            "تعرف على عائلتي",
+            "في منزلنا",
+            "العائلة مجتمعة"
+          ],
+          "lettres": [
+            "م",
+            "ب",
+            "ر",
+            "ل",
+            "ت",
+            "د"
+          ],
+          "vocabulaire": {
+            "famille": [
+              "أب",
+              "أم",
+              "أخ",
+              "أخت",
+              "جد",
+              "جدة"
+            ],
+            "ecole": [
+              "مدرسة",
+              "كتاب",
+              "قلم",
+              "دفتر"
+            ]
+          },
+          "grammaire": [
+            {
+              "notion": "أسماء الإشارة",
+              "regle": "هذا للمذكر / هذه للمؤنث",
+              "exemples": [
+                "هذا أب",
+                "هذه أم",
+                "هذا كتاب",
+                "هذه مدرسة"
+              ]
+            }
+          ],
+          "islamique": {
+            "valeurs": [
+              "أطيع والدي",
+              "أستأذن",
+              "أحب عائلتي"
+            ],
+            "sourates": [
+              "سورة الفاتحة (الآية الأولى)"
+            ],
+            "invocations": [
+              "بسم الله الرحمن الرحيم",
+              "الحمد لله"
+            ]
+          },
+          "civique": {
+            "notions": [
+              "بطاقة التعريف المدرسية",
+              "الحمد لله",
+              "قراءة سورة الناس"
+            ],
+            "formules_politesse": [
+              "السلام عليكم",
+              "صباح الخير",
+              "مساء الخير",
+              "شكراً",
+              "من فضلك"
+            ]
+          },
+          "projets": [
+            "Dessiner sa maison et sa classe",
+            "Réaliser l'arbre généalogique de sa famille",
+            "Fabriquer son cartable en papier",
+            "Remplir sa carte d'identité scolaire"
+          ],
+          "competences_visees": [
+            "Reconnaître et écrire م، ب، ر، ل، ت، د",
+            "Nommer les membres de la famille",
+            "Utiliser هذا/هذه dans des phrases simples",
+            "Réciter la Fatiha et les invocations de base"
+          ]
+        },
+        {
+          "id": "mq02",
+          "titre_ar": "المدرسة",
+          "titre_fr": "L'École",
+          "periode": "Octobre",
+          "duree_semaines": 4,
+          "unites": [
+            "أحمد في المدرسة",
+            "في ساحة المدرسة",
+            "أدواتي المدرسية"
+          ],
+          "lettres": {
+            "consolidation": [
+              "م",
+              "ب",
+              "ر",
+              "ل",
+              "ت",
+              "د"
+            ],
+            "note": "Pas de nouvelles lettres — approfondissement du groupe 1"
+          },
+          "vocabulaire": {
+            "personnel_ecole": [
+              "معلم",
+              "تلميذ"
+            ],
+            "materiel": [
+              "سبورة",
+              "كراس",
+              "محفظة",
+              "مقلمة",
+              "ألوان"
+            ]
+          },
+          "islamique": {
+            "invocations": [
+              "بسم الله",
+              "الحمد لله"
+            ],
+            "sourates": [
+              "سورة الناس (révision et sens)"
+            ]
+          },
+          "civique": {
+            "regles_vie_scolaire": [
+              "الحضور في الوقت المحدد",
+              "رفع اليد قبل الكلام",
+              "احترام الزملاء والمعلم"
+            ],
+            "carte_scolaire": {
+              "champs": [
+                "الاسم",
+                "اللقب",
+                "تاريخ الميلاد",
+                "العنوان",
+                "القسم"
+              ],
+              "erreur_frequente": "Confusion اسم (prénom) / لقب (nom de famille)"
+            }
+          },
+          "projets": [
+            "Fabriquer son cartable",
+            "Compléter sa carte scolaire avec ses vraies informations"
+          ],
+          "competences_visees": [
+            "Consolider les lettres م ب ر ل ت د",
+            "Maîtriser le vocabulaire de l'école",
+            "Appliquer les règles de politesse en classe"
+          ]
+        },
+        {
+          "id": "mq03",
+          "titre_ar": "الحي والقرية",
+          "titre_fr": "Le Quartier et le Village",
+          "periode": "Novembre",
+          "duree_semaines": 5,
+          "unites": [
+            "في القرية",
+            "مدينتنا",
+            "في الحقل"
+          ],
+          "lettres": [
+            "ع",
+            "هـ",
+            "ج",
+            "ح",
+            "س",
+            "ش"
+          ],
+          "vocabulaire": {
+            "lieux": [
+              "بيت",
+              "مسجد",
+              "سوق",
+              "حديقة",
+              "حقل"
+            ],
+            "nature": [
+              "شجرة"
+            ],
+            "animaux": [
+              "بقرة",
+              "دجاجة",
+              "حصان"
+            ]
+          },
+          "islamique": {
+            "valeurs": [
+              "الصدق (la vérité)",
+              "أتعاون مع غيري"
+            ],
+            "sourates": [
+              "سورة الإخلاص"
+            ],
+            "hadith": "إن الصدق يهدي إلى البر وإن البر يهدي إلى الجنة"
+          },
+          "civique": {
+            "valeurs": [
+              "أحترم الكبير (respect des aînés)",
+              "التعاون في الحي (coopération dans le quartier)"
+            ],
+            "hadith_civique": "ليس منا من لم يرحم صغيرنا ويوقر كبيرنا"
+          },
+          "projets": [
+            "Réaliser des arbres en papier",
+            "Dessiner son quartier ou son village"
+          ],
+          "competences_visees": [
+            "Distinguer les lettres ج / ح / خ (vigilance particulière)",
+            "Décrire son environnement proche en arabe",
+            "Comprendre les valeurs de coopération et de respect des aînés"
+          ]
+        },
+        {
+          "id": "mq04",
+          "titre_ar": "الرياضة والتسلية",
+          "titre_fr": "Le Sport et les Loisirs",
+          "periode": "Décembre",
+          "duree_semaines": 4,
+          "unites": [
+            "في معرض الكتاب",
+            "مباراة في كرة القدم",
+            "أنواع الرياضة"
+          ],
+          "lettres": [
+            "ص",
+            "ض",
+            "ق",
+            "ك",
+            "ط",
+            "ظ"
+          ],
+          "note_lettres": "Lettres emphatiques (مفخمة) — exigent un travail oral intensif",
+          "vocabulaire": {
+            "sport_loisirs": [
+              "كرة",
+              "ملعب",
+              "كتاب",
+              "لعبة",
+              "سباحة",
+              "دراجة"
+            ]
+          },
+          "islamique": {
+            "valeurs": [
+              "أطهر جسمي (hygiène corporelle)",
+              "أطهر مكاني (propreté de l'environnement)"
+            ],
+            "reference_coranique": "آية الاستئذان (verset de la permission)"
+          },
+          "civique": {
+            "valeurs": [
+              "أعطف على الصغار (compassion envers les plus jeunes)"
+            ],
+            "sante": "Règles d'hygiène corporelle de base"
+          },
+          "projets": [
+            "Fabriquer son ballon en papier",
+            "Réaliser une affiche sur les différents sports"
+          ],
+          "competences_visees": [
+            "Maîtriser les lettres emphatiques et leur prononciation",
+            "Exprimer ses activités sportives préférées",
+            "Intégrer les règles d'hygiène et de respect des plus jeunes"
+          ]
+        }
+      ],
+      "erreurs_frequentes": [
+        {
+          "domaine": "langue",
+          "erreur": "Confusion ب / ت / ث (lettres à points sous/sur la lettre de base)",
+          "frequence": "très élevée",
+          "remediation": "Exercices de comptage de points, jeux de discrimination visuelle, cartes flash"
+        },
+        {
+          "domaine": "langue",
+          "erreur": "Non-reconnaissance de la forme médiane d'une lettre",
+          "frequence": "élevée",
+          "remediation": "Décomposition de mots, mise en surbrillance de la lettre cible, lecture guidée"
+        },
+        {
+          "domaine": "langue",
+          "erreur": "Confusion ج / ح (lettres de base identique, différence = point)",
+          "frequence": "élevée",
+          "remediation": "Dictée comparative, mnémotechnique visuelle"
+        },
+        {
+          "domaine": "civique",
+          "erreur": "Inversion الاسم (prénom) / اللقب (nom) sur la carte scolaire",
+          "frequence": "très élevée",
+          "remediation": "Exemples concrets : أحمد = الاسم, بن علي = اللقب, exercices de tri"
+        },
+        {
+          "domaine": "civique",
+          "erreur": "Confusion des salutations temporelles (صباح الخير le soir)",
+          "frequence": "moyenne",
+          "remediation": "Horloge interactive, association moment/formule, jeux de rôle"
+        },
+        {
+          "domaine": "civique",
+          "erreur": "Couleurs du drapeau inversées (blanc à gauche au lieu de droite)",
+          "frequence": "élevée",
+          "remediation": "Coloriage guidé avec modèle, mnémotechnique « vert côté mât »"
+        },
+        {
+          "domaine": "islamique",
+          "erreur": "Récitation incomplète de la بسملة",
+          "frequence": "moyenne",
+          "remediation": "Répétition quotidienne, chants, affichages en classe et à la maison"
+        }
+      ],
+      "conseils_parents_T1": [
+        "Rituel quotidien : 10 minutes de lecture/écriture (revoir les lettres apprises, lire des syllabes)",
+        "Jeux de lettres : cartes flash, pâte à modeler, aimants magnétiques pour former les lettres",
+        "Répétition des invocations dans la vie quotidienne (avant de manger, en sortant, etc.)",
+        "Valoriser les comportements civiques appris (politesse, respect, propreté)",
+        "Nommer les éléments du quartier en arabe lors des promenades",
+        "Consulter les fiches de révision avant chaque évaluation"
+      ]
+    },
+    "semestre2": {
+      "id": "S2",
+      "label": "الفصل الثاني",
+      "period": "Janvier — Mars",
+      "description": "Approfondissement des acquis du S1. Introduction des lettres complexes, des pronoms personnels, de la lecture de textes courts et de thèmes civiques élargis (ville/village, monnaie, métiers).",
+      "objectifs_generaux": {
+        "langue": [
+          "Acquérir les lettres : ث ذ ن ز غ خ / ف و ي الهمزة الشدة / ال القمرية ال الشمسية التنوين",
+          "Maîtriser les pronoms : هو / هي / أنت / أنتِ / أنا / نحن",
+          "Lire et comprendre des textes courts de 3 à 5 phrases",
+          "Enrichir le vocabulaire (environnement, santé, communication)",
+          "Construire des phrases simples (sujet + verbe + complément)"
+        ],
+        "islamique": [
+          "Mémoriser سورة الفلق، سورة الكوثر، سورة النصر",
+          "Consolider les sourates du S1",
+          "Intégrer les valeurs : ne pas nuire, douceur envers les animaux, obéissance aux parents",
+          "Apprendre les rites du sommeil et du repas"
+        ],
+        "civique": [
+          "Comparer ville et village",
+          "Connaître la monnaie nationale (dinar algérien, billets et pièces)",
+          "Identifier les métiers du quotidien",
+          "Adopter des comportements civiques dans tous les contextes"
+        ]
+      },
+      "lettres": {
+        "groupe4": {
+          "lettres": [
+            "ث",
+            "ذ",
+            "ن",
+            "ز",
+            "غ",
+            "خ"
+          ],
+          "maqta": "mq05",
+          "remarque": "Lettres interdentales et fricatives — attention ث/ذ vs ت/د"
+        },
+        "groupe5": {
+          "lettres": [
+            "ف",
+            "و",
+            "ي",
+            "الهمزة",
+            "الشدة"
+          ],
+          "maqta": "mq06",
+          "remarque": "Lettres avec signes diacritiques — la shadda double la consonne"
+        },
+        "groupe6": {
+          "lettres": [
+            "ال القمرية",
+            "ال الشمسية",
+            "التنوين"
+          ],
+          "maqta": "mq07",
+          "remarque": "Notions phonologiques fondamentales — bases pour la lecture fluide"
+        }
+      },
+      "pronoms_personnels": {
+        "tableau": [
+          {
+            "pronom": "أنا",
+            "genre": "masc./fém.",
+            "exemple": "أنا تلميذ / أنا تلميذة"
+          },
+          {
+            "pronom": "أنتَ",
+            "genre": "masc. sing.",
+            "exemple": "أنتَ مجتهد يا خالد"
+          },
+          {
+            "pronom": "أنتِ",
+            "genre": "fém. sing.",
+            "exemple": "أنتِ مجتهدة يا فاطمة"
+          },
+          {
+            "pronom": "هو",
+            "genre": "masc. sing.",
+            "exemple": "هو يذهب إلى المدرسة"
+          },
+          {
+            "pronom": "هي",
+            "genre": "fém. sing.",
+            "exemple": "هي تحب القراءة"
+          },
+          {
+            "pronom": "نحن",
+            "genre": "pluriel",
+            "exemple": "نحن نحب وطننا"
+          }
+        ],
+        "erreur_frequente": "Confusion هو/هي selon le genre grammatical du sujet"
+      },
+      "maqata": [
+        {
+          "id": "mq05",
+          "titre_ar": "البيئة والطبيعة",
+          "titre_fr": "L'Environnement et la Nature",
+          "periode": "Janvier",
+          "duree_semaines": 4,
+          "unites": [
+            "بلادنا الجميلة",
+            "جولة ممتعة",
+            "في حديقة المنزل"
+          ],
+          "lettres": [
+            "ث",
+            "ذ",
+            "ن",
+            "ز",
+            "غ",
+            "خ"
+          ],
+          "vocabulaire": {
+            "nature_paysage": [
+              "غابة",
+              "زهرة",
+              "شجرة",
+              "نهر",
+              "جبل",
+              "حديقة"
+            ],
+            "animaux_foret": [
+              "غزال",
+              "ثعبان",
+              "ذئب",
+              "طاووس"
+            ]
+          },
+          "islamique": {
+            "valeurs": [
+              "إبعاد الأذى عن الطريق",
+              "الرفق بالحيوان"
+            ],
+            "sourates": [
+              "سورة الفلق"
+            ]
+          },
+          "civique": {
+            "notions": [
+              "حماية البيئة (ne pas jeter, arroser les plantes)"
+            ],
+            "revision": "العلم الوطني (révision couleurs et symboles)"
+          },
+          "poesie": "أنا أحب الشجرة",
+          "projets": [
+            "Réaliser une affiche sur la protection de la nature"
+          ],
+          "competences_visees": [
+            "Décrire un paysage naturel en arabe",
+            "Identifier les animaux de la forêt",
+            "Adopter les gestes éco-citoyens"
+          ]
+        },
+        {
+          "id": "mq06",
+          "titre_ar": "التغذية والصحة",
+          "titre_fr": "L'Alimentation et la Santé",
+          "periode": "Février",
+          "duree_semaines": 5,
+          "unites": [
+            "الفحص الطبي",
+            "الغذاء الصحي",
+            "أحافظ على أسناني"
+          ],
+          "lettres": [
+            "ف",
+            "و",
+            "ي",
+            "الهمزة",
+            "الشدة"
+          ],
+          "vocabulaire": {
+            "alimentation": [
+              "فاكهة",
+              "خضروات",
+              "لحم",
+              "حليب",
+              "خبز",
+              "ماء"
+            ],
+            "sante": [
+              "طبيب",
+              "مريض",
+              "أسنان"
+            ]
+          },
+          "islamique": {
+            "valeurs": [
+              "أطهر ثوبي (propreté des vêtements)",
+              "آداب النوم",
+              "آداب الأكل"
+            ],
+            "reference": "آية التحية الصحية"
+          },
+          "civique": {
+            "notions": [
+              "العملة الوطنية — الدينار الجزائري",
+              "التمييز بين الغذاء الصحي وغير الصحي"
+            ],
+            "monnaie": {
+              "billets": [
+                "200 DA",
+                "500 DA",
+                "1000 DA"
+              ],
+              "pieces": [
+                "5 DA",
+                "10 DA",
+                "20 DA",
+                "50 DA"
+              ]
+            }
+          },
+          "poesie": "نظافة الأبدان",
+          "projets": [
+            "Réaliser un plateau de fruits en papier",
+            "Classer des aliments en sains/malsains"
+          ],
+          "competences_visees": [
+            "Distinguer aliments sains et malsains",
+            "Connaître les règles d'hygiène dentaire et corporelle",
+            "Identifier les pièces et billets du dinar algérien"
+          ]
+        },
+        {
+          "id": "mq07",
+          "titre_ar": "التواصل",
+          "titre_fr": "La Communication",
+          "periode": "Mars",
+          "duree_semaines": 4,
+          "unites": [
+            "ما أعجب الحاسوب!",
+            "عودة أبي من السفر",
+            "من أنا؟"
+          ],
+          "lettres": {
+            "al_qamariyya": "Le lam de l'article EST prononcé (القمر، الكتاب، المدرسة)",
+            "al_shamsiyya": "Le lam de l'article N'est PAS prononcé, la lettre suivante est doublée (الشمس، الطريق، النهار)",
+            "tanwin": "Nunation (double haraka finale) — utilisée dans les indéfinis"
+          },
+          "vocabulaire": {
+            "communication_moderne": [
+              "هاتف",
+              "حاسوب",
+              "تلفاز",
+              "رسالة"
+            ],
+            "voyage": [
+              "سفر",
+              "مطار"
+            ]
+          },
+          "islamique": {
+            "notions": [
+              "الشهادتان (présentation)",
+              "آداب التحية",
+              "الصلوات الخمس (introduction — noms des 5 prières)"
+            ]
+          },
+          "civique": {
+            "documents_identite": [
+              {
+                "nom_ar": "بطاقة التعريف الوطنية",
+                "nom_fr": "Carte d'identité nationale",
+                "est_identitaire": true
+              },
+              {
+                "nom_ar": "جواز السفر",
+                "nom_fr": "Passeport",
+                "est_identitaire": true
+              },
+              {
+                "nom_ar": "الدفتر الصحي",
+                "nom_fr": "Carnet de santé",
+                "est_identitaire": true
+              },
+              {
+                "nom_ar": "الدفتر العائلي",
+                "nom_fr": "Carnet familial",
+                "est_identitaire": true
+              },
+              {
+                "nom_ar": "الكتاب المدرسي",
+                "nom_fr": "Manuel scolaire",
+                "est_identitaire": false
+              },
+              {
+                "nom_ar": "المقلمة",
+                "nom_fr": "Boîte à crayons",
+                "est_identitaire": false
+              }
+            ],
+            "note": "Critère clé : un document identitaire contient des informations personnelles"
+          },
+          "poesie": "حاسوبي",
+          "projets": [
+            "Réaliser un train des lettres",
+            "Créer sa propre carte d'identité"
+          ],
+          "competences_visees": [
+            "Distinguer ال الشمسية et ال القمرية (niveau débutant)",
+            "Utiliser les pronoms personnels dans des dialogues",
+            "Identifier les documents d'identité officiels"
+          ]
+        },
+        {
+          "id": "mq08",
+          "titre_ar": "الموروث الحضاري",
+          "titre_fr": "Le Patrimoine Culturel",
+          "periode": "Fin mars",
+          "duree_semaines": 4,
+          "unites": [
+            "أول يوم في رمضان",
+            "عيد الأضحى",
+            "عيد الاستقلال"
+          ],
+          "lettres": {
+            "revision": "Révision de toutes les lettres apprises",
+            "ponctuation": "علامات الوقف (points, virgules) — التعجب والاستفهام"
+          },
+          "vocabulaire": {
+            "fetes_religieuses": [
+              "رمضان",
+              "صوم",
+              "عيد",
+              "أضحية"
+            ],
+            "fetes_nationales": [
+              "استقلال",
+              "علم",
+              "نشيد"
+            ]
+          },
+          "islamique": {
+            "valeurs": [
+              "آداب العيد",
+              "فضل رمضان"
+            ],
+            "sourates": [
+              "سورة الكوثر",
+              "سورة النصر"
+            ]
+          },
+          "civique": {
+            "symboles_nationaux": {
+              "hymne": {
+                "titre": "قسما",
+                "auteur_paroles": "مفدي زكريا",
+                "compositeur": "محمد فوزي",
+                "premier_vers": "قسماً بالنازلات الماحقات"
+              },
+              "drapeau": {
+                "description": "Vert à gauche (côté mât), blanc à droite, croissant et étoile rouges au centre",
+                "signification": {
+                  "vert": "الإسلام",
+                  "blanc": "النقاء والسلام",
+                  "rouge": "دماء الشهداء"
+                }
+              }
+            }
+          },
+          "poesie": "العيد",
+          "projets": [
+            "Réaliser une carte de vœux pour l'Aïd",
+            "Réaliser une carte de vœux pour la fête nationale"
+          ],
+          "competences_visees": [
+            "Comprendre les fêtes religieuses et nationales",
+            "Rédiger une phrase de vœux simple",
+            "Connaître les premiers vers de l'hymne national"
+          ]
+        }
+      ],
+      "erreurs_frequentes": [
+        {
+          "domaine": "langue",
+          "erreur": "Confusion هو / هي selon le genre grammatical du sujet",
+          "frequence": "très élevée",
+          "remediation": "Exercices de classification d'images masculin/féminin, jeux de tri"
+        },
+        {
+          "domaine": "langue",
+          "erreur": "Confusion ص / ض (lettres emphatiques similaires)",
+          "frequence": "élevée",
+          "remediation": "Dictée comparative, comptage de points, exercices de discrimination"
+        },
+        {
+          "domaine": "civique",
+          "erreur": "Confusion billets / pièces du dinar algérien",
+          "frequence": "moyenne",
+          "remediation": "Tri d'images réelles de monnaie, exercice de classification papier/métal"
+        },
+        {
+          "domaine": "civique",
+          "erreur": "Non-distinction entre ال الشمسية et ال القمرية à l'écrit",
+          "frequence": "élevée",
+          "remediation": "Code couleur dans les textes, tableaux de tri, répétition orale guidée"
+        },
+        {
+          "domaine": "islamique",
+          "erreur": "Application du respect uniquement à la maison (ne pas généraliser)",
+          "frequence": "moyenne",
+          "remediation": "Mises en situation variées : rue, école, transports, voisinage"
+        }
+      ],
+      "conseils_parents_T2": [
+        "Lecture quotidienne à voix haute : 5 à 10 min (mots, puis phrases courtes)",
+        "Répéter les nouvelles invocations apprises dans la journée",
+        "Jeux de rôle : au marché, chez le médecin — pour réutiliser le vocabulaire",
+        "Commenter l'actualité autour des symboles nationaux (drapeau, hymne)",
+        "Utiliser les fiches de révision avant chaque évaluation"
+      ]
+    },
+    "semestre3": {
+      "id": "S3",
+      "label": "الفصل الثالث",
+      "period": "Avril — Juin",
+      "description": "Aboutissement de l'année scolaire. Consolidation de tous les acquis. Introduction de notions avancées (pronoms relatifs, أسلوب التعجب). Lecture de textes longs. Production écrite autonome. Maîtrise complète des symboles nationaux.",
+      "organisation_trimestre": [
+        {
+          "periode": "Avril",
+          "contenu": "Révision des lettres + introduction ال الشمسية/القمرية (approfondissement)",
+          "objectif": "Distinguer et appliquer les deux types d'articles"
+        },
+        {
+          "periode": "Mai",
+          "contenu": "Lecture de textes longs + pronoms relatifs (الذي/التي/الذين)",
+          "objectif": "Compréhension fine, production écrite autonome"
+        },
+        {
+          "periode": "Juin",
+          "contenu": "Fêtes nationales, hymne, production écrite + évaluation finale annuelle",
+          "objectif": "Bilan complet des compétences de l'année"
+        }
+      ],
+      "objectifs_generaux": {
+        "langue": [
+          "Maîtriser ال الشمسية / ال القمرية à l'écrit et à l'oral",
+          "Utiliser les pronoms relatifs الذي / التي / الذين",
+          "Produire des exclamations avec أسلوب التعجب (ما أجملَ !)",
+          "Comprendre des textes de 5 à 10 phrases",
+          "Rédiger 3 à 5 phrases cohérentes sur un sujet donné",
+          "Écrire sous dictée avec toutes les lettres (y compris emphatiques)"
+        ],
+        "islamique": [
+          "Consolider toutes les sourates de l'année (avec sens global)",
+          "Comprendre le mois de Ramadan (jeûne, prières, partage)",
+          "Distinguer Aïd el-Fitr et Aïd el-Adha (rites et significations)",
+          "Appliquer les valeurs islamiques dans tous les contextes sociaux"
+        ],
+        "civique": [
+          "Maîtriser parfaitement l'hymne national (titre, auteur, compositeur, premier vers)",
+          "Identifier parfaitement le drapeau algérien (couleurs, disposition, symbolique)",
+          "Reconnaître les billets et pièces du dinar algérien",
+          "Distinguer les documents d'identité officiels",
+          "Connaître les fêtes nationales (dates et signification)"
+        ]
+      },
+      "notions_linguistiques": {
+        "al_qamariyya_vs_shamsiyya": {
+          "titre": "ال القمرية وال الشمسية",
+          "regle_qamariyya": "Le ل de l'article EST prononcé — la lettre suivante reste simple",
+          "regle_shamsiyya": "Le ل de l'article N'EST PAS prononcé — la lettre suivante est doublée (shadda)",
+          "lettres_qamariyya": [
+            "ا",
+            "ب",
+            "ج",
+            "ح",
+            "خ",
+            "ع",
+            "غ",
+            "ف",
+            "ق",
+            "ك",
+            "م",
+            "ه",
+            "و",
+            "ي"
+          ],
+          "lettres_shamsiyya": [
+            "ت",
+            "ث",
+            "د",
+            "ذ",
+            "ر",
+            "ز",
+            "س",
+            "ش",
+            "ص",
+            "ض",
+            "ط",
+            "ظ",
+            "ل",
+            "ن"
+          ],
+          "exemples_qamariyya": [
+            "القمر (al-qamar)",
+            "الكتاب (al-kitāb)",
+            "المدرسة (al-madrasa)"
+          ],
+          "exemples_shamsiyya": [
+            "الشمس (ash-shams)",
+            "الطريق (aṭ-ṭarīq)",
+            "النهار (an-nahār)"
+          ],
+          "exercices_types": [
+            "Classer une liste de mots en deux colonnes",
+            "Ajouter ال à des mots et les réécrire correctement",
+            "Extraire d'un texte les deux catégories (code couleur)"
+          ]
+        },
+        "pronoms_relatifs": {
+          "titre": "أسماء الموصول",
+          "tableau": [
+            {
+              "pronom": "الذي",
+              "genre_nombre": "Masculin singulier",
+              "exemple": "الذي يذاكر ينجح",
+              "traduction": "Celui qui étudie réussit"
+            },
+            {
+              "pronom": "التي",
+              "genre_nombre": "Féminin singulier",
+              "exemple": "التي تجتهد تتفوق",
+              "traduction": "Celle qui s'applique excelle"
+            },
+            {
+              "pronom": "الذين",
+              "genre_nombre": "Masculin pluriel",
+              "exemple": "الذين يحترمون الكبار محبوبون",
+              "traduction": "Ceux qui respectent les aînés sont aimés"
+            }
+          ],
+          "exercices_types": [
+            "Compléter une phrase avec le pronom relatif approprié",
+            "Relier deux phrases simples à l'aide d'un pronom relatif",
+            "Transformer des phrases simples en utilisant الذي/التي"
+          ]
+        },
+        "style_exclamatif": {
+          "titre": "أسلوب التعجب",
+          "structure": "ما أ + racine verbale + َ + complément !",
+          "exemples": [
+            {
+              "phrase": "ما أجمَلَ الرَّبيعَ!",
+              "traduction": "Que le printemps est beau !"
+            },
+            {
+              "phrase": "ما أروَعَ العيدَ!",
+              "traduction": "Quelle merveilleuse fête !"
+            },
+            {
+              "phrase": "ما أحلَى الوطنَ!",
+              "traduction": "Que la patrie est douce !"
+            }
+          ],
+          "exercices_types": [
+            "Transformer une phrase déclarative en exclamation",
+            "Compléter : ما أ......َ الحفلَ !",
+            "Produire librement une exclamation sur un thème donné"
+          ]
+        }
+      },
+      "textes_lecture": [
+        {
+          "titre": "أول يوم في رمضان",
+          "theme": "Ramadan, jeûne, vie familiale",
+          "competences": [
+            "Compréhension, vocabulaire religieux, réponses aux questions"
+          ]
+        },
+        {
+          "titre": "حفل نهاية السنة",
+          "theme": "Cérémonie scolaire, félicitations",
+          "competences": [
+            "Lecture, production écrite de phrases de vœux"
+          ]
+        },
+        {
+          "titre": "عادة أحمد في رمضان",
+          "theme": "Santé, hygiène, visite médicale",
+          "competences": [
+            "Vocabulaire médical, valeurs islamiques et sanitaires"
+          ]
+        },
+        {
+          "titre": "بوساحة — صديق النجار",
+          "theme": "Technologie, ordinateur",
+          "competences": [
+            "Vocabulaire moderne, description, production de phrases"
+          ]
+        }
+      ],
+      "questions_types_lecture": [
+        "ما عنوان النص المناسب؟",
+        "استخرج كلمة فيها ال الشمسية / ال القمرية",
+        "لماذا كان [الشخصية] خائفاً / سعيداً؟",
+        "رتب الأحداث حسب ورودها في النص",
+        "أعط عنواناً آخر مناسباً للنص"
+      ],
+      "islamique_avance": {
+        "ramadan": {
+          "definition": "شهر الصيام والعبادة والتضامن",
+          "regles": [
+            "الصيام من الفجر إلى المغرب",
+            "كثرة الصلاة والذكر",
+            "الإحسان إلى المحتاجين"
+          ],
+          "invocation_iftar": "اللهم لك صمت وعلى رزقك أفطرت",
+          "valeurs": [
+            "الصبر",
+            "الشكر",
+            "التضامن مع المحتاجين"
+          ]
+        },
+        "eid_adha": {
+          "definition": "عيد التضحية تخليداً لذكرى سيدنا إبراهيم عليه السلام",
+          "rites": [
+            "صلاة العيد",
+            "التكبير",
+            "الأضحية"
+          ],
+          "repartition_viande": [
+            "الأسرة",
+            "الأقارب",
+            "الفقراء والمساكين"
+          ],
+          "valeurs": [
+            "الطاعة",
+            "التضحية",
+            "التضامن"
+          ]
+        },
+        "valeurs_islamiques_finales": [
+          {
+            "valeur": "الصدق",
+            "reference": "إن الصدق يهدي إلى البر وإن البر يهدي إلى الجنة"
+          },
+          {
+            "valeur": "النظافة",
+            "reference": "النظافة من الإيمان"
+          },
+          {
+            "valeur": "الأمانة",
+            "reference": "أدِّ الأمانة إلى من ائتمنك"
+          }
+        ],
+        "sourates_annee_complete": [
+          {
+            "sourate": "سورة الفاتحة",
+            "versets": 7,
+            "trimestre": "T1"
+          },
+          {
+            "sourate": "سورة الناس",
+            "versets": 6,
+            "trimestre": "T1"
+          },
+          {
+            "sourate": "سورة الإخلاص",
+            "versets": 4,
+            "trimestre": "T1"
+          },
+          {
+            "sourate": "سورة الفلق",
+            "versets": 5,
+            "trimestre": "T2"
+          },
+          {
+            "sourate": "سورة الكوثر",
+            "versets": 3,
+            "trimestre": "T2"
+          },
+          {
+            "sourate": "سورة النصر",
+            "versets": 3,
+            "trimestre": "T2"
+          }
+        ]
+      },
+      "civique_identite_nationale": {
+        "hymne_national": {
+          "titre": "قسما",
+          "auteur_paroles": "مفدي زكريا",
+          "compositeur_musique": "محمد فوزي",
+          "premier_vers": "قسماً بالنازلات الماحقات",
+          "nombre_couplets": 5,
+          "erreur_frequente": "Confusion auteur/compositeur — mnemotechnique : مفدي = mots, فوزي = fanfare",
+          "exercice_type_vrai_faux": [
+            {
+              "assertion": "مؤلف النشيد هو محمد فوزي",
+              "correct": false,
+              "explication": "محمد فوزي هو الملحن، مؤلف النشيد هو مفدي زكريا"
+            },
+            {
+              "assertion": "ملحن النشيد هو مفدي زكريا",
+              "correct": false,
+              "explication": "مفدي زكريا هو المؤلف، الملحن هو محمد فوزي"
+            }
+          ]
+        },
+        "drapeau_algerien": {
+          "description_complete": "Le drapeau algérien est divisé verticalement en deux bandes égales : vert (côté mât / gauche) et blanc (côté libre / droite). En son centre se trouvent un croissant et une étoile à cinq branches, tous deux de couleur rouge.",
+          "zones": [
+            {
+              "zone": "Gauche (côté mât)",
+              "couleur_fr": "Vert",
+              "couleur_ar": "أخضر",
+              "symbole": "الإسلام والطبيعة"
+            },
+            {
+              "zone": "Droite",
+              "couleur_fr": "Blanc",
+              "couleur_ar": "أبيض",
+              "symbole": "النقاء والسلام"
+            },
+            {
+              "zone": "Centre",
+              "couleur_fr": "Rouge",
+              "couleur_ar": "أحمر",
+              "symbole": "دماء الشهداء الأبطال"
+            }
+          ],
+          "symboles_centraux": [
+            "هلال (croissant)",
+            "نجمة خماسية (étoile à 5 branches)"
+          ],
+          "erreur_frequente": "Inversion vert/blanc — mnémotechnique : « vert côté mât comme l'herbe qui pousse »",
+          "exercice_coloriage": "Colorier le drapeau avec les bonnes couleurs dans le bon ordre"
+        },
+        "monnaie_nationale": {
+          "nom": "الدينار الجزائري (DA)",
+          "billets": [
+            {
+              "valeur": 200,
+              "type": "ورقي"
+            },
+            {
+              "valeur": 500,
+              "type": "ورقي"
+            },
+            {
+              "valeur": 1000,
+              "type": "ورقي"
+            }
+          ],
+          "pieces": [
+            {
+              "valeur": 5,
+              "type": "معدني"
+            },
+            {
+              "valeur": 10,
+              "type": "معدني"
+            },
+            {
+              "valeur": 20,
+              "type": "معدني"
+            },
+            {
+              "valeur": 50,
+              "type": "معدني"
+            }
+          ],
+          "exercice_type": "Entourer la monnaie algérienne parmi d'autres monnaies — Classer en ورقي / معدني"
+        },
+        "documents_identite_complet": [
+          {
+            "document_ar": "بطاقة التعريف الوطنية",
+            "document_fr": "Carte d'identité nationale",
+            "identitaire": true
+          },
+          {
+            "document_ar": "جواز السفر",
+            "document_fr": "Passeport",
+            "identitaire": true
+          },
+          {
+            "document_ar": "الدفتر الصحي",
+            "document_fr": "Carnet de santé",
+            "identitaire": true
+          },
+          {
+            "document_ar": "الدفتر العائلي",
+            "document_fr": "Carnet familial",
+            "identitaire": true
+          },
+          {
+            "document_ar": "الكتاب المدرسي",
+            "document_fr": "Manuel scolaire",
+            "identitaire": false
+          },
+          {
+            "document_ar": "المقلمة",
+            "document_fr": "Boîte à crayons",
+            "identitaire": false
+          },
+          {
+            "document_ar": "بطاقة التعريف المدرسية",
+            "document_fr": "Carte scolaire",
+            "identitaire": true
+          }
+        ],
+        "fetes_nationales": [
+          {
+            "nom_ar": "عيد الاستقلال",
+            "nom_fr": "Fête de l'Indépendance",
+            "date": "5 juillet",
+            "annee_historique": 1962,
+            "type": "وطنية"
+          },
+          {
+            "nom_ar": "عيد الثورة",
+            "nom_fr": "Fête de la Révolution",
+            "date": "1er novembre",
+            "annee_historique": 1954,
+            "type": "وطنية"
+          },
+          {
+            "nom_ar": "عيد الفطر",
+            "nom_fr": "Aïd el-Fitr",
+            "date": "Variable (fin Ramadan)",
+            "type": "دينية"
+          },
+          {
+            "nom_ar": "عيد الأضحى",
+            "nom_fr": "Aïd el-Adha",
+            "date": "Variable (10 Dhu al-Hijja)",
+            "type": "دينية"
+          }
+        ],
+        "erreur_frequente_dates": "Confusion عيد الاستقلال (5 juillet) / عيد الثورة (1er novembre) — mnémotechnique : juillet = liberté, novembre = naissance de la révolution"
+      },
+      "erreurs_frequentes": [
+        {
+          "domaine": "civique",
+          "erreur": "Confusion مفدي زكريا (auteur) / محمد فوزي (compositeur)",
+          "frequence": "très élevée",
+          "remediation": "Flashcards avec rôles distincts, jingle mnémotechnique"
+        },
+        {
+          "domaine": "langue",
+          "erreur": "ال الشمسية non appliquée à l'oral (le lam est prononcé)",
+          "frequence": "élevée",
+          "remediation": "Lecture à voix haute guidée, répétition orale en chœur"
+        },
+        {
+          "domaine": "civique",
+          "erreur": "Couleurs du drapeau inversées (vert à droite, blanc à gauche)",
+          "frequence": "élevée",
+          "remediation": "Coloriage guidé avec modèle, mnémotechnique visuelle"
+        },
+        {
+          "domaine": "civique",
+          "erreur": "Inclusion de documents non identitaires (manuel, crayon) dans la liste",
+          "frequence": "moyenne",
+          "remediation": "Tri par le critère : « contient-il mes informations personnelles ? »"
+        },
+        {
+          "domaine": "civique",
+          "erreur": "Confusion dates fêtes nationales (5 juillet / 1er novembre)",
+          "frequence": "moyenne",
+          "remediation": "Calendrier interactif, chanson mnémotechnique, frise chronologique"
+        },
+        {
+          "domaine": "islamique",
+          "erreur": "Confusion des rites de l'Aïd el-Fitr et de l'Aïd el-Adha",
+          "frequence": "élevée",
+          "remediation": "Tableau comparatif côte à côte, jeux de tri par fête"
+        }
+      ],
+      "competences_fin_annee": [
+        "Lire couramment des mots de 3 à 4 syllabes",
+        "Distinguer et appliquer ال الشمسية وال القمرية",
+        "Utiliser الذي/التي/الذين dans des phrases simples",
+        "Produire une exclamation (ما أجمَلَ!) à bon escient",
+        "Comprendre un texte de 5 à 10 phrases et répondre à des questions",
+        "Rédiger 3 phrases cohérentes sur un sujet donné",
+        "Réciter l'ensemble des 6 sourates apprises dans l'année",
+        "Connaître l'hymne national, le drapeau, la monnaie, les fêtes nationales",
+        "Adopter un comportement civique et respectueux dans tous les contextes"
+      ],
+      "conseils_parents_T3": [
+        "Lecture quotidienne à voix haute (5 min) — poser 2-3 questions simples après",
+        "Dictée : 3 à 5 mots par jour, puis une phrase courte en fin de semaine",
+        "Discuter des symboles nationaux lors des actualités et fêtes",
+        "Écouter ensemble des récitations coraniques et répéter",
+        "Utiliser les mini-tests de chaque مقطع pour réviser avant les examens",
+        "Encourager l'enfant à écrire une petite phrase sur sa journée"
+      ]
+    }
+  },
+  "exams": {
+    "trimestre1": {
+      "midterm": [
+        {
+          "exam_id": "t1_mid_01",
+          "status": "complete",
+          "name": "إختبار الفصل الأول - الأسبوع 4",
+          "name_fr": "Contrôle formatif T1 — Semaine 4",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01"
+          ],
+          "description": "اختبار في الدروس 1-3 — مقطع العائلة والمدرسة",
+          "difficulty": 1,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "qcm",
+              "points": 2,
+              "difficulty": 1,
+              "competence": "comp_01",
+              "instruction": "اختر الإجابة الصحيحة:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "question": "اسم بطل قصتنا هو:",
+                  "options": [
+                    "خديجة",
+                    "أحمد",
+                    "فاطمة",
+                    "علي"
+                  ],
+                  "correct": "أحمد",
+                  "explanation": "بطل قصتنا في منهج الجيل الثاني هو أحمد"
+                },
+                {
+                  "q_id": "q2",
+                  "question": "أخت أحمد اسمها:",
+                  "options": [
+                    "فاطمة",
+                    "عائشة",
+                    "خديجة",
+                    "مريم"
+                  ],
+                  "correct": "خديجة",
+                  "explanation": "خديجة هي أخت أحمد في القصة"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "matching",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_01",
+              "instruction": "صل الكلمة بالصورة المناسبة:",
+              "pairs": [
+                {
+                  "left": "أب",
+                  "right_image": "father.png",
+                  "answer_key": "father"
+                },
+                {
+                  "left": "أم",
+                  "right_image": "mother.png",
+                  "answer_key": "mother"
+                },
+                {
+                  "left": "جد",
+                  "right_image": "grandfather.png",
+                  "answer_key": "grandfather"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "fill_blank",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكمل بالحرف المناسب (أ - ب - ت - ث):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "...سد",
+                  "answer": "أ",
+                  "mot_complet": "أسد",
+                  "traduction": "lion"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "...اب",
+                  "answer": "ب",
+                  "mot_complet": "باب",
+                  "traduction": "porte"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "...فاحة",
+                  "answer": "ت",
+                  "mot_complet": "تفاحة",
+                  "traduction": "pomme"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "...علب",
+                  "answer": "ث",
+                  "mot_complet": "ثعلب",
+                  "traduction": "renard"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "dictation",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اكتب ما يملى عليك:",
+              "words": [
+                "أنا",
+                "أحمد",
+                "أب",
+                "أم"
+              ],
+              "note_enseignant": "Dicter lentement, en articulant. Prononcer chaque mot deux fois."
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "أكمل الدعاء:",
+              "question": "بسم الله ...، وبسم الله ...، وعلى الله ربنا ...",
+              "correct": [
+                "ولجنا",
+                "خرجنا",
+                "توكلنا"
+              ],
+              "invocation_complete": "بسم الله ولجنا، وبسم الله خرجنا، وعلى الله ربنا توكلنا",
+              "contexte": "دعاء دخول وخروج المنزل"
+            },
+            {
+              "exercise_id": "ex_06",
+              "type": "pronoun",
+              "points": 2,
+              "difficulty": 2,
+              "competence": "comp_03",
+              "instruction": "ضع (أنتَ) أو (أنتِ):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "... مجتهد (لولد)",
+                  "answer": "أنتَ",
+                  "explication": "أنتَ للمذكر"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "... مجتهدة (لبنت)",
+                  "answer": "أنتِ",
+                  "explication": "أنتِ للمؤنث"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_07",
+              "type": "handwriting",
+              "points": 2,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ بخط جميل:",
+              "text_to_copy": "أنا أحب عائلتي",
+              "note_enseignant": "Évaluer : respect des lignes, taille des lettres, liaisons"
+            }
+          ],
+          "parent_exam_tip_fr": "Le tout premier test ! Soyez fier de ses premiers pas à l'école."
+        },
+        {
+          "exam_id": "t1_mid_02",
+          "status": "complete",
+          "name": "إختبار الفصل الأول - الأسبوع 6",
+          "name_fr": "Contrôle formatif T1 — Semaine 6",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02"
+          ],
+          "description": "اختبار في الدروس 4-6 — مقطع المدرسة",
+          "difficulty": 1,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "qcm",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_09",
+              "instruction": "اختر الإجابة الصحيحة:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "question": "أين نتعلم القراءة والكتابة؟",
+                  "options": [
+                    "في السوق",
+                    "في المدرسة",
+                    "في الحديقة",
+                    "في المسجد"
+                  ],
+                  "correct": "في المدرسة"
+                },
+                {
+                  "q_id": "q2",
+                  "question": "من يعلمنا في المدرسة؟",
+                  "options": [
+                    "الطبيب",
+                    "المعلم",
+                    "الشرطي",
+                    "التاجر"
+                  ],
+                  "correct": "المعلم"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "letter_recognition",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكتب الحرف الناقص:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "...درسة",
+                  "answer": "م",
+                  "mot_complet": "مدرسة"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "ك...اب",
+                  "answer": "ت",
+                  "mot_complet": "كتاب"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "...سجد",
+                  "answer": "م",
+                  "mot_complet": "مسجد"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "ص...ح",
+                  "answer": "ب",
+                  "mot_complet": "صبح"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "matching",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_01",
+              "instruction": "صل الأداة باسمها:",
+              "pairs": [
+                {
+                  "left": "كتاب",
+                  "right_image": "book.png",
+                  "answer_key": "book"
+                },
+                {
+                  "left": "قلم",
+                  "right_image": "pen.png",
+                  "answer_key": "pen"
+                },
+                {
+                  "left": "محفظة",
+                  "right_image": "bag.png",
+                  "answer_key": "bag"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 3,
+              "competence": "comp_06",
+              "instruction": "ما هي آية الاستئذان؟ (اكتب بدايتها)",
+              "correct": "يا أيها الذين آمنوا لا تدخلوا بيوتاً غير بيوتكم",
+              "note": "Valoriser toute tentative correcte, même partielle"
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "true_false",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_09",
+              "instruction": "ضع (صحيح) أو (خطأ):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "أدخل إلى القسم بدون استئذان.",
+                  "answer": false,
+                  "explication": "يجب الاستئذان قبل الدخول"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "أحافظ على كتبي ولا أمزقها.",
+                  "answer": true,
+                  "explication": "المحافظة على الكتب واجب"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "في ساحة المدرسة نتعاون مع الأصدقاء.",
+                  "answer": true,
+                  "explication": "التعاون قيمة إيجابية"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_06",
+              "type": "civic",
+              "points": 2,
+              "difficulty": 1,
+              "competence": "comp_08",
+              "instruction": "أذكر معلوماتك في بطاقتك المدرسية:",
+              "expected_fields": [
+                "الاسم",
+                "اللقب",
+                "تاريخ الميلاد",
+                "العنوان",
+                "القسم"
+              ],
+              "min_fields_required": 3
+            },
+            {
+              "exercise_id": "ex_07",
+              "type": "handwriting",
+              "points": 2,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "أحب مدرستي"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est un petit contrôle pour voir si les leçons sont bien comprises. Pas de stress, l'important est de progresser !"
+        },
+        {
+          "exam_id": "t1_mid_03",
+          "status": "complete",
+          "name": "إختبار الفصل الأول - الأسبوع 8",
+          "name_fr": "Contrôle de synthèse T1 — Semaine 8",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02"
+          ],
+          "description": "اختبار شامل لمقاطع 1 و2",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "reading",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اقرأ ثم أجب:",
+              "text": "أنا أحمد. هذه أمي، وهذا أبي. أحب عائلتي.",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "ما اسم البطل؟",
+                  "answer": "أحمد",
+                  "points": 1
+                },
+                {
+                  "q_id": "q2",
+                  "q": "من هذه؟ (يشير إلى أمي)",
+                  "answer": "أمي",
+                  "points": 1
+                },
+                {
+                  "q_id": "q3",
+                  "q": "ماذا يقول عن عائلته؟",
+                  "answer": "أحب عائلتي",
+                  "points": 2
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "أكمل الحديث:",
+              "question": "ليس منا من لم يرحم ... ويوقر ...",
+              "correct": [
+                "صغيرنا",
+                "كبيرنا"
+              ],
+              "hadith_complet": "ليس منا من لم يرحم صغيرنا ويوقر كبيرنا"
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "fill_blank",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكمل بالحرف المناسب:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "ج...مل",
+                  "answer": "م",
+                  "mot_complet": "جمل"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "ح...صان",
+                  "answer": "ص",
+                  "mot_complet": "حصان"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "م...سجد",
+                  "answer": "س",
+                  "mot_complet": "مسجد"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "...لعب",
+                  "answer": "ل",
+                  "mot_complet": "لعب"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "vocabulary",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_01",
+              "instruction": "اكتب الكلمة المناسبة تحت الصورة:",
+              "images": [
+                {
+                  "image": "father.png",
+                  "expected_answer": "أب"
+                },
+                {
+                  "image": "mother.png",
+                  "expected_answer": "أم"
+                },
+                {
+                  "image": "grandfather.png",
+                  "expected_answer": "جد"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "pronoun",
+              "points": 2,
+              "difficulty": 2,
+              "competence": "comp_03",
+              "instruction": "ضع الضمير المناسب:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "... تلميذ مجتهد (لخالد)",
+                  "answer": "أنتَ"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "... تلميذة مجتهدة (لفاطمة)",
+                  "answer": "أنتِ"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_06",
+              "type": "sentence",
+              "points": 2,
+              "difficulty": 2,
+              "competence": "comp_05",
+              "instruction": "رتب الكلمات لتكون جملة:",
+              "words_to_arrange": [
+                "أحب",
+                "عائلتي",
+                "أنا"
+              ],
+              "correct": "أنا أحب عائلتي"
+            },
+            {
+              "exercise_id": "ex_07",
+              "type": "handwriting",
+              "points": 2,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "أحب وطني الجزائر"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est un petit contrôle pour voir si les leçons sont bien comprises. Pas de stress, l'important est de progresser !"
+        },
+        {
+          "exam_id": "t1_mid_04",
+          "status": "complete",
+          "name": "إختبار الفصل الأول - الأسبوع 10",
+          "name_fr": "Contrôle formatif T1 — Semaine 10",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq03"
+          ],
+          "description": "اختبار في الدروس 7-9 — مقطع الحي والقرية",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "letter_recognition",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكمل بالحرف المناسب (ع - غ - خ - ح):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "...ين",
+                  "answer": "ع",
+                  "mot_complet": "عين"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "...راب",
+                  "answer": "غ",
+                  "mot_complet": "غراب"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "...روف",
+                  "answer": "خ",
+                  "mot_complet": "خروف"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "...ديث",
+                  "answer": "ح",
+                  "mot_complet": "حديث"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "vocabulary",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_09",
+              "instruction": "أكمل باسم القرية أو المدينة:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "في ... حقول وحيوانات.",
+                  "answer": "القرية"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "في ... شوارع ومباني عالية.",
+                  "answer": "المدينة"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 3,
+              "competence": "comp_07",
+              "instruction": "ما هو الحديث الذي يعلمنا الصدق؟",
+              "correct": "إن الصدق يهدي إلى البر وإن البر يهدي إلى الجنة",
+              "note": "Accepter les formulations partielles correctes"
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "civic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_09",
+              "instruction": "اذكر حقاً من حقوق الجار:",
+              "correct_examples": [
+                "نحترمه",
+                "لا نؤذيه",
+                "نساعده عند الحاجة"
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "true_false",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_09",
+              "instruction": "ضع (صحيح) أو (خطأ):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "في القرية توجد عمارات عالية.",
+                  "answer": false
+                },
+                {
+                  "q_id": "q2",
+                  "q": "نحترم جيراننا.",
+                  "answer": true
+                },
+                {
+                  "q_id": "q3",
+                  "q": "الصدق يوصلنا إلى الجنة.",
+                  "answer": true
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_06",
+              "type": "handwriting",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "الصدق يهدي إلى البر"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est un petit contrôle pour voir si les leçons sont bien comprises. Pas de stress, l'important est de progresser !"
+        },
+        {
+          "exam_id": "t1_mid_05",
+          "status": "complete",
+          "name": "إختبار الفصل الأول - مراجعة عامة",
+          "name_fr": "Révision générale T1 — Pré-examen",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04"
+          ],
+          "description": "مراجعة عامة وشاملة للفصل الأول",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "dictation",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اكتب ما يملى عليك:",
+              "words": [
+                "أحمد",
+                "مدرسة",
+                "كتاب",
+                "عائلة",
+                "حب"
+              ],
+              "note_enseignant": "Chaque mot vaut 1 point. Tolérer les erreurs de harakat."
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "reading",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اقرأ النص ثم أجب:",
+              "text": "أنا خديجة. هذه جدتي، وهذا جدي. أحب جدي وجدتي.",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "ما اسم البطلة؟",
+                  "answer": "خديجة",
+                  "points": 1
+                },
+                {
+                  "q_id": "q2",
+                  "q": "من هذه؟ (جدتي)",
+                  "answer": "جدتي",
+                  "points": 1
+                },
+                {
+                  "q_id": "q3",
+                  "q": "ماذا تقول عن جدي وجدتي؟",
+                  "answer": "أحب جدي وجدتي",
+                  "points": 3
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "fill_blank",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_05",
+              "instruction": "أكمل بما يناسب:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "أنا ... أحمد.",
+                  "answer": "اسمي"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "هذه ... خديجة.",
+                  "answer": "أختي"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "أحب ... عائلتي.",
+                  "answer": "كل"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "في ... نتعلم.",
+                  "answer": "المدرسة"
+                },
+                {
+                  "q_id": "q5",
+                  "q": "أمي و ... يحبوني.",
+                  "answer": "أبي"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "handwriting",
+              "points": 5,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ بخط جميل:",
+              "text_to_copy": "أنا تلميذ جزائري أحب وطني"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est un petit contrôle pour voir si les leçons sont bien comprises. Pas de stress, l'important est de progresser !"
+        }
+      ],
+      "final": [
+        {
+          "exam_id": "t1_final_01",
+          "status": "complete",
+          "name": "إمتحان الفصل الأول - نموذج أ",
+          "name_fr": "Examen semestriel T1 — Modèle A",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04"
+          ],
+          "description": "امتحان نهاية الفصل الأول — format officiel",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "reading",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اقرأ ثم أجب:",
+              "text": "أنا أحمد. عمري 6 سنوات. أذهب إلى المدرسة كل يوم. في مدرستي أحب معلمتي وأحب أصدقائي. في البيت أحب عائلتي: أبي، أمي، جدي، جدتي وأختي خديجة.",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "كم عمر أحمد؟",
+                  "answer": "6 سنوات",
+                  "points": 1
+                },
+                {
+                  "q_id": "q2",
+                  "q": "ماذا يحب أحمد في المدرسة؟",
+                  "answer": "معلمتي وأصدقائي",
+                  "points": 1
+                },
+                {
+                  "q_id": "q3",
+                  "q": "من هي أخت أحمد؟",
+                  "answer": "خديجة",
+                  "points": 1
+                },
+                {
+                  "q_id": "q4",
+                  "q": "اذكر أفراد عائلة أحمد.",
+                  "answer": "أبي، أمي، جدي، جدتي، خديجة",
+                  "points": 2
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "islamic",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "أكمل الآيات والأحاديث:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "دعاء دخول المنزل: بسم الله ...، وبسم الله ...، وعلى الله ربنا ...",
+                  "correct": [
+                    "ولجنا",
+                    "خرجنا",
+                    "توكلنا"
+                  ],
+                  "points": 2
+                },
+                {
+                  "q_id": "q2",
+                  "q": "حديث الصدق: إن الصدق يهدي إلى ... وإن البر يهدي إلى ...",
+                  "correct": [
+                    "البر",
+                    "الجنة"
+                  ],
+                  "points": 2
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "grammar",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_03",
+              "instruction": "ضع (أنتَ) أو (أنتِ):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "... تلميذ مجتهد. (لخالد)",
+                  "answer": "أنتَ"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "... تلميذة مجتهدة. (لفاطمة)",
+                  "answer": "أنتِ"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "أين ... تسكن يا علي؟",
+                  "answer": "أنتَ"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "ماذا ... تحبين يا مريم؟",
+                  "answer": "أنتِ"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "vocabulary",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_01",
+              "instruction": "اكتب اسم أفراد العائلة تحت الصور:",
+              "images": [
+                {
+                  "image": "father.png",
+                  "expected_answer": "أب"
+                },
+                {
+                  "image": "mother.png",
+                  "expected_answer": "أم"
+                },
+                {
+                  "image": "grandfather.png",
+                  "expected_answer": "جد"
+                },
+                {
+                  "image": "grandmother.png",
+                  "expected_answer": "جدة"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "أنا أحب عائلتي وأحب مدرستي"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t1_final_02",
+          "status": "complete",
+          "name": "إمتحان الفصل الأول - نموذج ب",
+          "name_fr": "Examen semestriel T1 — Modèle B",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04"
+          ],
+          "description": "امتحان نهاية الفصل الأول — نموذج بديل",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "dictation",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اكتب ما يملى عليك:",
+              "words": [
+                "مدرسة",
+                "معلم",
+                "كتاب",
+                "قلم",
+                "محفظة"
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "letter_recognition",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكمل الكلمات بالحرف المناسب من (أ - ب - ت - ث - ج - ح - خ):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "...سد",
+                  "answer": "أ",
+                  "mot_complet": "أسد"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "...اب",
+                  "answer": "ب",
+                  "mot_complet": "باب"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "مس...د",
+                  "answer": "ج",
+                  "mot_complet": "مسجد"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "...صان",
+                  "answer": "ح",
+                  "mot_complet": "حصان"
+                },
+                {
+                  "q_id": "q5",
+                  "q": "ص...اب",
+                  "answer": "ح",
+                  "mot_complet": "صحاب"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "ما هي آية التعاون التي درستها؟",
+              "correct": "وتعاونوا على البر والتقوى"
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "civic",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_08",
+              "instruction": "أكمل بطاقتك المدرسية:",
+              "fields": [
+                {
+                  "label": "الاسم:",
+                  "type": "personal_info",
+                  "note": "L'élève écrit son propre prénom"
+                },
+                {
+                  "label": "اللقب:",
+                  "type": "personal_info",
+                  "note": "L'élève écrit son propre nom"
+                },
+                {
+                  "label": "تاريخ الميلاد:",
+                  "type": "personal_info",
+                  "note": "L'élève écrit sa date de naissance"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "sentence",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_05",
+              "instruction": "رتب الكلمات لتكون جملة مفيدة:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "words": [
+                    "أحمد",
+                    "اسمي"
+                  ],
+                  "correct": "اسمي أحمد"
+                },
+                {
+                  "q_id": "q2",
+                  "words": [
+                    "عائلتي",
+                    "أحب",
+                    "أنا"
+                  ],
+                  "correct": "أنا أحب عائلتي"
+                },
+                {
+                  "q_id": "q3",
+                  "words": [
+                    "في",
+                    "أدرس",
+                    "المدرسة"
+                  ],
+                  "correct": "أدرس في المدرسة"
+                }
+              ]
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t1_final_03",
+          "status": "complete",
+          "name": "إمتحان الفصل الأول - نموذج ج",
+          "name_fr": "Examen semestriel T1 — Modèle C",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04"
+          ],
+          "description": "امتحان نهاية الفصل الأول — نموذج ج (axé sur la compréhension et le vocabulaire)",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "reading",
+              "points": 6,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اقرأ النص ثم أجب:",
+              "text": "في الصباح، أذهب إلى المدرسة مع أخي. أحمل محفظتي فيها كتابي وكراسي وأقلامي. في القسم، أجلس مع أصدقائي. معلمتي تحبنا وتعلمنا القراءة والكتابة.",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "أين يذهب في الصباح؟",
+                  "answer": "إلى المدرسة",
+                  "points": 1
+                },
+                {
+                  "q_id": "q2",
+                  "q": "مع من يذهب؟",
+                  "answer": "مع أخيه",
+                  "points": 1
+                },
+                {
+                  "q_id": "q3",
+                  "q": "ماذا يحمل؟",
+                  "answer": "محفظته",
+                  "points": 1
+                },
+                {
+                  "q_id": "q4",
+                  "q": "ماذا في محفظته؟",
+                  "answer": "كتاب وكراس وأقلام",
+                  "points": 1
+                },
+                {
+                  "q_id": "q5",
+                  "q": "من يحبهم في القسم؟",
+                  "answer": "أصدقاءه",
+                  "points": 1
+                },
+                {
+                  "q_id": "q6",
+                  "q": "ماذا تفعل المعلمة؟",
+                  "answer": "تعلمهم القراءة والكتابة",
+                  "points": 1
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "fill_blank",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكمل بالحرف المناسب:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "م...درسة",
+                  "answer": "د",
+                  "mot_complet": "مدرسة"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "ك...تاب",
+                  "answer": "ت",
+                  "mot_complet": "كتاب"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "ج...دي",
+                  "answer": "د",
+                  "mot_complet": "جدي"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "أ...ي",
+                  "answer": "ب",
+                  "mot_complet": "أبي"
+                },
+                {
+                  "q_id": "q5",
+                  "q": "أ...ي",
+                  "answer": "م",
+                  "mot_complet": "أمي"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "أكمل الدعاء: باسمك ربي ... جنبي وبك ...",
+              "correct": [
+                "وضعت",
+                "أرفعه"
+              ],
+              "invocation_complete": "باسمك ربي وضعت جنبي وبك أرفعه",
+              "contexte": "دعاء النوم"
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "matching",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "صل الكلمة بضدها:",
+              "pairs": [
+                {
+                  "left": "أمام",
+                  "right": "خلف"
+                },
+                {
+                  "left": "كبير",
+                  "right": "صغير"
+                },
+                {
+                  "left": "صباح",
+                  "right": "مساء"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "أحب وطني الجزائر"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t1_final_04",
+          "status": "complete",
+          "name": "إمتحان الفصل الأول - نموذج د",
+          "name_fr": "Examen semestriel T1 — Modèle D",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04"
+          ],
+          "description": "امتحان نهاية الفصل الأول — نموذج د (axé sur les valeurs islamiques et civiques)",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "dictation",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اكتب ما يملى عليك:",
+              "words": [
+                "عائلة",
+                "جد",
+                "جدة",
+                "أخ",
+                "أخت"
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "true_false",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_09",
+              "instruction": "ضع (صحيح) أو (خطأ):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "الجد هو أبو الأم أو أبو الأب.",
+                  "answer": true
+                },
+                {
+                  "q_id": "q2",
+                  "q": "نحن لا نحترم الكبار.",
+                  "answer": false
+                },
+                {
+                  "q_id": "q3",
+                  "q": "التعاون يزيد المحبة بيننا.",
+                  "answer": true
+                },
+                {
+                  "q_id": "q4",
+                  "q": "في المدرسة نلعب فقط ولا ندرس.",
+                  "answer": false
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "islamic",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "أكمل الحديثين الشريفين:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "ليس منا من لم يرحم ... ويوقر ...",
+                  "correct": [
+                    "صغيرنا",
+                    "كبيرنا"
+                  ]
+                },
+                {
+                  "q_id": "q2",
+                  "q": "إن الصدق يهدي إلى ... وإن ... يهدي إلى الجنة",
+                  "correct": [
+                    "البر",
+                    "البر"
+                  ]
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "civic",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_09",
+              "instruction": "ماذا يجب أن تفعل إذا دخلت غرفة والديك؟",
+              "correct": "أستأذن",
+              "explication": "الاستئذان أدب إسلامي وسلوك حضاري"
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "sentence",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_05",
+              "instruction": "رتب الكلمات:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "words": [
+                    "أمي",
+                    "أحب",
+                    "أنا"
+                  ],
+                  "correct": "أنا أحب أمي"
+                },
+                {
+                  "q_id": "q2",
+                  "words": [
+                    "معلمتي",
+                    "تحبني",
+                    "تحترمني",
+                    "و"
+                  ],
+                  "correct": "معلمتي تحبني وتحترمني"
+                }
+              ]
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t1_final_05",
+          "status": "complete",
+          "name": "إمتحان الفصل الأول - نموذج هـ",
+          "name_fr": "Examen semestriel T1 — Modèle E",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04"
+          ],
+          "description": "امتحان نهاية الفصل الأول — نموذج هـ (axé sur la compréhension approfondie)",
+          "difficulty": 3,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "reading",
+              "points": 6,
+              "difficulty": 3,
+              "competence": "comp_02",
+              "instruction": "اقرأ ثم أجب:",
+              "text": "أنا خديجة. أختي الصغيرة عمرها سنتان. أنا أحبها وألعب معها. عندما تبكي، أساعدها. جدتي تقول: 'الرحمة من الله'. أنا أريد أن أكون رحيمة مثل جدتي.",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "كم عمر أخت خديجة؟",
+                  "answer": "سنتان",
+                  "points": 1
+                },
+                {
+                  "q_id": "q2",
+                  "q": "ماذا تفعل خديجة مع أختها؟",
+                  "answer": "تلعب معها وتساعدها",
+                  "points": 2
+                },
+                {
+                  "q_id": "q3",
+                  "q": "ماذا تقول الجدة؟",
+                  "answer": "الرحمة من الله",
+                  "points": 1
+                },
+                {
+                  "q_id": "q4",
+                  "q": "ماذا تريد خديجة أن تكون؟",
+                  "answer": "رحيمة مثل جدتها",
+                  "points": 2
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "islamic",
+              "points": 4,
+              "difficulty": 3,
+              "competence": "comp_07",
+              "instruction": "ما العلاقة بين الحديث والدرس؟ (ليس منا من لم يرحم صغيرنا)",
+              "correct_exemple": "نحن نرحم الصغار مثل أخت خديجة",
+              "note": "Exercice d'analyse — valoriser toute réponse cohérente"
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "letter_recognition",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكتب الحروف التي تعلمتها من الألف إلى الخاء:",
+              "correct": [
+                "أ",
+                "ب",
+                "ت",
+                "ث",
+                "ج",
+                "ح",
+                "خ"
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "vocabulary",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "اذكر كلمات تبدأ بحرف الجيم:",
+              "correct_examples": [
+                "جمل",
+                "جبل",
+                "جبن",
+                "جدة",
+                "جار"
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "الرحمة من الله"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        }
+      ]
+    },
+    "trimestre2": {
+      "midterm": [
+        {
+          "exam_id": "t2_mid_01",
+          "status": "complete",
+          "name": "إختبار الفصل الثاني - الأسبوع 4",
+          "name_fr": "Contrôle formatif T2 — Semaine 4",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq04"
+          ],
+          "description": "اختبار في الدروس 10-12 — مقطع الرياضة والتسلية",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "letter_recognition",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكمل بالحرف المناسب (ص - ض - ط - ظ):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "معر...ض",
+                  "answer": "ض",
+                  "mot_complet": "معرض"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "...ورة",
+                  "answer": "ص",
+                  "mot_complet": "صورة"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "...ائر",
+                  "answer": "ط",
+                  "mot_complet": "طائر"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "...ل",
+                  "answer": "ظ",
+                  "mot_complet": "ظل"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "vocabulary",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_01",
+              "instruction": "صل الكلمة بمعناها:",
+              "pairs": [
+                {
+                  "left": "كرة",
+                  "right_fr": "ballon",
+                  "right_ar": "الكرة"
+                },
+                {
+                  "left": "مباراة",
+                  "right_fr": "match",
+                  "right_ar": "المباراة"
+                },
+                {
+                  "left": "رياضة",
+                  "right_fr": "sport",
+                  "right_ar": "الرياضة"
+                },
+                {
+                  "left": "ملعب",
+                  "right_fr": "stade",
+                  "right_ar": "الملعب"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "islamic",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "أكمل دعاء النوم: باسمك ربي ... جنبي وبك ...",
+              "correct": [
+                "وضعت",
+                "أرفعه"
+              ],
+              "invocation_complete": "باسمك ربي وضعت جنبي وبك أرفعه"
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "preposition",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_05",
+              "instruction": "ضع (أمام) أو (خلف):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "المعلم يقف ... التلاميذ.",
+                  "answer": "أمام"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "الكرسي ... الطاولة.",
+                  "answer": "خلف"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "الكتاب ... المحفظة.",
+                  "answer": "خلف"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "السبورة ... التلاميذ.",
+                  "answer": "أمام"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "الرياضة مفيدة للصحة"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est un petit contrôle pour voir si les leçons sont bien comprises. Pas de stress, l'important est de progresser !"
+        },
+        {
+          "exam_id": "t2_mid_02",
+          "status": "complete",
+          "name": "إختبار الفصل الثاني - الأسبوع 6",
+          "name_fr": "Contrôle formatif T2 — Semaine 6",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq05"
+          ],
+          "description": "اختبار في الدروس 13-15 — مقطع البيئة والطبيعة",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "civic",
+              "points": 5,
+              "difficulty": 1,
+              "competence": "comp_08",
+              "instruction": "أكمل: ألوان علم الجزائر هي ...، ...، ...",
+              "correct": [
+                "أخضر",
+                "أبيض",
+                "أحمر"
+              ],
+              "note": "Ordre important : vert (côté mât), blanc, rouge (croissant+étoile)"
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "civic",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_08",
+              "instruction": "ما عنوان النشيد الوطني الجزائري؟",
+              "correct": "قسماً",
+              "note_bonus": "Si l'élève cite aussi l'auteur مفدي زكريا, valoriser"
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "letter_recognition",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكمل بالحرف المناسب (غ - خ - ف - ق):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "...راب",
+                  "answer": "غ",
+                  "mot_complet": "غراب"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "...روف",
+                  "answer": "خ",
+                  "mot_complet": "خروف"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "ر...يق",
+                  "answer": "ق",
+                  "mot_complet": "رقيق"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "...أر",
+                  "answer": "ف",
+                  "mot_complet": "فأر"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "ماذا يعني الرفق بالحيوان؟",
+              "correct_examples": [
+                "نطعمه ونسقيه ولا نؤذيه",
+                "نعطف على الحيوان",
+                "لا نضرب الحيوان"
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 5,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ المقطع الأول من النشيد الوطني:",
+              "text_to_copy": "قسماً بالنازلات الماحقات"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est un petit contrôle pour voir si les leçons sont bien comprises. Pas de stress, l'important est de progresser !"
+        },
+        {
+          "exam_id": "t2_mid_03",
+          "status": "template",
+          "name": "إختبار الفصل الثاني - الأسبوع 8",
+          "name_fr": "Contrôle formatif T2 — Semaine 8",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq06"
+          ],
+          "description": "اختبار مقطع التغذية والصحة — à compléter par l'équipe pédagogique",
+          "difficulty": 2,
+          "note_equipe": "Couvrir : lettres ف و ي الهمزة الشدة + vocabulaire alimentation/santé + العملة الوطنية",
+          "parent_exam_tip_fr": "C'est un petit contrôle pour voir si les leçons sont bien comprises. Pas de stress, l'important est de progresser !"
+        },
+        {
+          "exam_id": "t2_mid_04",
+          "status": "template",
+          "name": "إختبار الفصل الثاني - الأسبوع 10",
+          "name_fr": "Contrôle formatif T2 — Semaine 10",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq07"
+          ],
+          "description": "اختبار مقطع التواصل — à compléter par l'équipe pédagogique",
+          "difficulty": 2,
+          "note_equipe": "Couvrir : ال الشمسية/القمرية + documents d'identité + pronoms personnels هو/هي",
+          "parent_exam_tip_fr": "C'est un petit contrôle pour voir si les leçons sont bien comprises. Pas de stress, l'important est de progresser !"
+        },
+        {
+          "exam_id": "t2_mid_05",
+          "status": "template",
+          "name": "إختبار الفصل الثاني - مراجعة عامة",
+          "name_fr": "Révision générale T2 — Pré-examen",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "مراجعة شاملة للفصل الثاني — à compléter par l'équipe pédagogique",
+          "difficulty": 2,
+          "note_equipe": "Couvrir tous les thèmes T2 : nature, santé, communication, patrimoine",
+          "parent_exam_tip_fr": "C'est un petit contrôle pour voir si les leçons sont bien comprises. Pas de stress, l'important est de progresser !"
+        }
+      ],
+      "final": [
+        {
+          "exam_id": "t2_final_01",
+          "status": "complete",
+          "name": "إمتحان الفصل الثاني - نموذج أ",
+          "name_fr": "Examen semestriel T2 — Modèle A",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "امتحان نهاية الفصل الثاني",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "reading",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اقرأ ثم أجب:",
+              "text": "في يوم الجمعة، ذهبت مع أسرتي إلى الغابة. كانت الطبيعة جميلة جداً. هناك أشجار عالية وأزهار ملونة. لعبنا معاً وأكلنا الطعام. حافظنا على نظافة المكان ولم نرمِ الأوساخ.",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "أين ذهبت الأسرة؟",
+                  "answer": "إلى الغابة",
+                  "points": 1
+                },
+                {
+                  "q_id": "q2",
+                  "q": "ماذا كان في الغابة؟",
+                  "answer": "أشجار وأزهار",
+                  "points": 1
+                },
+                {
+                  "q_id": "q3",
+                  "q": "ماذا فعلوا هناك؟",
+                  "answer": "لعبوا وأكلوا",
+                  "points": 1
+                },
+                {
+                  "q_id": "q4",
+                  "q": "كيف حافظوا على المكان؟",
+                  "answer": "لم يرمِ الأوساخ",
+                  "points": 1
+                },
+                {
+                  "q_id": "q5",
+                  "q": "هل فعلوا الصواب؟ لماذا؟",
+                  "answer": "نعم، حافظوا على البيئة",
+                  "points": 1
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "civic",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_08",
+              "instruction": "أكمل: ألوان علم الجزائر هي ...، ...، ... ويتوسطه ... و ...",
+              "correct": [
+                "أخضر",
+                "أبيض",
+                "أحمر",
+                "نجمة",
+                "هلال"
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "letter_recognition",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكمل الكلمات بالحرف المناسب (غ - خ - ف - ق):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "...زال",
+                  "answer": "غ",
+                  "mot_complet": "غزال"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "...روف",
+                  "answer": "خ",
+                  "mot_complet": "خروف"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "ر...يق",
+                  "answer": "ق",
+                  "mot_complet": "رقيق"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "...راشة",
+                  "answer": "ف",
+                  "mot_complet": "فراشة"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "اذكر مثالاً عن الرفق بالحيوان:",
+              "correct_examples": [
+                "نطعم القطة ولا نضربها",
+                "نسقي الطير ولا نؤذيه",
+                "نرحم الحيوانات الصغيرة"
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "أحافظ على نظافة الطبيعة"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t2_final_02",
+          "status": "complete",
+          "name": "إمتحان الفصل الثاني - نموذج ب",
+          "name_fr": "Examen semestriel T2 — Modèle B",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "امتحان نهاية الفصل الثاني — نموذج ب",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "dictation",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اكتب ما يملى عليك:",
+              "words": [
+                "غابة",
+                "طبيعة",
+                "علم",
+                "نشيد",
+                "وطن"
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "true_false",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_09",
+              "instruction": "ضع (صحيح) أو (خطأ):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "نحافظ على نظافة الطبيعة.",
+                  "answer": true
+                },
+                {
+                  "q_id": "q2",
+                  "q": "نكسر أغصان الأشجار.",
+                  "answer": false
+                },
+                {
+                  "q_id": "q3",
+                  "q": "نطعم الحيوانات ولا نؤذيها.",
+                  "answer": true
+                },
+                {
+                  "q_id": "q4",
+                  "q": "نرمي الأوساخ في الغابة.",
+                  "answer": false
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "civic",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_08",
+              "instruction": "من كتب النشيد الوطني الجزائري؟",
+              "correct": "مفدي زكريا",
+              "question_bonus": "ومن لحّنه؟",
+              "correct_bonus": "محمد فوزي"
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "matching",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_01",
+              "instruction": "صل الحرف بالصورة:",
+              "pairs": [
+                {
+                  "left": "غ",
+                  "right_image": "crow.png",
+                  "right_word": "غراب"
+                },
+                {
+                  "left": "خ",
+                  "right_image": "sheep.png",
+                  "right_word": "خروف"
+                },
+                {
+                  "left": "ف",
+                  "right_image": "butterfly.png",
+                  "right_word": "فراشة"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "أنا أحب وطني الجزائر"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t2_final_03",
+          "status": "template",
+          "name": "إمتحان الفصل الثاني - نموذج ج",
+          "name_fr": "Examen semestriel T2 — Modèle C",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "À compléter — axer sur التغذية والصحة",
+          "difficulty": 2,
+          "note_equipe": "Inclure : texte sur الغذاء الصحي, exercice العملة الوطنية, آداب الأكل",
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t2_final_04",
+          "status": "template",
+          "name": "إمتحان الفصل الثاني - نموذج د",
+          "name_fr": "Examen semestriel T2 — Modèle D",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "À compléter — axer sur التواصل ووثائق الهوية",
+          "difficulty": 2,
+          "note_equipe": "Inclure : ال الشمسية/القمرية, documents identité, pronoms هو/هي, الشهادتان",
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t2_final_05",
+          "status": "template",
+          "name": "إمتحان الفصل الثاني - نموذج هـ",
+          "name_fr": "Examen semestriel T2 — Modèle E",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "À compléter — axer sur الموروث الحضاري et révision annuelle partielle",
+          "difficulty": 3,
+          "note_equipe": "Inclure : سورة الكوثر et النصر, fêtes nationales et religieuses, عيد الأضحى",
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        }
+      ]
+    },
+    "trimestre3": {
+      "midterm": [
+        {
+          "exam_id": "t3_mid_01",
+          "status": "complete",
+          "name": "إختبار الفصل الثالث - الأسبوع 4",
+          "name_fr": "Contrôle formatif T3 — Semaine 4",
+          "duration": "45 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq06",
+            "mq07"
+          ],
+          "description": "اختبار في الدروس 16-18 — التغذية والتواصل",
+          "difficulty": 2,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "letter_recognition",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكمل بالحرف المناسب (و - ي - ء):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "...رد",
+                  "answer": "و",
+                  "mot_complet": "ورد"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "...د",
+                  "answer": "ي",
+                  "mot_complet": "يد"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "مس...ل",
+                  "answer": "ؤ",
+                  "mot_complet": "مسؤل"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "...ن",
+                  "answer": "ء",
+                  "mot_complet": "ءن (ou autre)"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "islamic",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_07",
+              "instruction": "أكمل: قبل الأكل نقول ... وبعد الأكل نقول ...",
+              "correct": [
+                "بسم الله",
+                "الحمد لله"
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "health",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_09",
+              "instruction": "كيف نحافظ على أسناننا؟",
+              "correct_examples": [
+                "نغسلها بالفرشاة والمعجون مرتين يومياً",
+                "نتجنب السكر الكثير",
+                "نزور الطبيب عند الألم"
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "vocabulary",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_01",
+              "instruction": "اذكر ثلاث فواكه:",
+              "correct_examples": [
+                "تفاح",
+                "موز",
+                "برتقال",
+                "رمان",
+                "عنب",
+                "توت"
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "الصحة تاج على رؤوس الأصحاء"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est un petit contrôle pour voir si les leçons sont bien comprises. Pas de stress, l'important est de progresser !"
+        }
+      ],
+      "final": [
+        {
+          "exam_id": "t3_final_01",
+          "status": "complete",
+          "name": "إمتحان الفصل الثالث - نموذج أ",
+          "name_fr": "Examen annuel — Modèle A",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04",
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "امتحان نهاية السنة الدراسية — بيان الكفاءات السنوية",
+          "difficulty": 3,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "reading",
+              "points": 5,
+              "difficulty": 3,
+              "competence": "comp_02",
+              "instruction": "اقرأ ثم أجب:",
+              "text": "أنا تلميذ في السنة الأولى ابتدائي. اسمي محمد. أذهب إلى المدرسة كل يوم. أحب معلمتي وأحب أصدقائي. في البيت أساعد أمي وأبي. أحافظ على أسناني بالفرشاة والمعجون. أحب وطني الجزائر كثيراً.",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "ما اسم التلميذ؟",
+                  "answer": "محمد",
+                  "points": 1
+                },
+                {
+                  "q_id": "q2",
+                  "q": "ماذا يفعل في المدرسة؟",
+                  "answer": "يحب معلمته وأصدقاءه",
+                  "points": 1
+                },
+                {
+                  "q_id": "q3",
+                  "q": "كيف يحافظ على أسنانه؟",
+                  "answer": "بالفرشاة والمعجون",
+                  "points": 1
+                },
+                {
+                  "q_id": "q4",
+                  "q": "من يساعد في البيت؟",
+                  "answer": "أمه وأباه",
+                  "points": 1
+                },
+                {
+                  "q_id": "q5",
+                  "q": "ماذا يقول عن وطنه؟",
+                  "answer": "يحب وطني الجزائر كثيراً",
+                  "points": 1
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "comprehensive",
+              "points": 5,
+              "difficulty": 3,
+              "competence": "comp_01",
+              "instruction": "أكمل الجدول بالحروف التي تعلمتها خلال السنة:",
+              "table": [
+                {
+                  "group": "حروف الفصل الأول",
+                  "letters": [
+                    "م",
+                    "ب",
+                    "ر",
+                    "ل",
+                    "ت",
+                    "د",
+                    "ع",
+                    "هـ",
+                    "ج",
+                    "ح",
+                    "س",
+                    "ش",
+                    "ص",
+                    "ض",
+                    "ق",
+                    "ك",
+                    "ط",
+                    "ظ"
+                  ]
+                },
+                {
+                  "group": "حروف الفصل الثاني",
+                  "letters": [
+                    "ث",
+                    "ذ",
+                    "ن",
+                    "ز",
+                    "غ",
+                    "خ",
+                    "ف",
+                    "و",
+                    "ي",
+                    "ء"
+                  ]
+                },
+                {
+                  "group": "علامات",
+                  "letters": [
+                    "الهمزة",
+                    "الشدة",
+                    "ال القمرية",
+                    "ال الشمسية",
+                    "التنوين"
+                  ]
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "اذكر ثلاثة أدعية تعلمتها هذا العام:",
+              "correct_examples": [
+                "دعاء دخول المنزل : بسم الله ولجنا وبسم الله خرجنا وعلى الله ربنا توكلنا",
+                "دعاء النوم : باسمك ربي وضعت جنبي وبك أرفعه",
+                "دعاء الأكل : بسم الله / الحمد لله"
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "civic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_08",
+              "instruction": "ما هي ألوان علم الجزائر؟ صِفه.",
+              "correct": "أخضر وأبيض وأحمر — نجمة وهلال أحمران في الوسط"
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "أنا تلميذ جزائري أحب وطني وأفتخر بعلمي"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t3_final_02",
+          "status": "complete",
+          "name": "إمتحان الفصل الثالث - نموذج ب",
+          "name_fr": "Examen annuel — Modèle B",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04",
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "امتحان نهاية السنة الدراسية — نموذج ب",
+          "difficulty": 3,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "dictation",
+              "points": 5,
+              "difficulty": 3,
+              "competence": "comp_02",
+              "instruction": "اكتب ما يملى عليك:",
+              "words": [
+                "جزائر",
+                "وطن",
+                "علم",
+                "نشيد",
+                "حرية"
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "true_false",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_09",
+              "instruction": "ضع (صحيح) أو (خطأ):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "الرياضة تضر بالصحة.",
+                  "answer": false
+                },
+                {
+                  "q_id": "q2",
+                  "q": "نحافظ على نظافة أسناننا.",
+                  "answer": true
+                },
+                {
+                  "q_id": "q3",
+                  "q": "نشرب الماء بعد الأكل مباشرة.",
+                  "answer": false,
+                  "explication": "يُستحسن الانتظار قليلاً — قيمة صحية إسلامية"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "الرفق بالحيوان من الإيمان.",
+                  "answer": true
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "islamic",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "أكمل: قال رسول الله ﷺ: ليس منا من لم يرحم ... ويوقر ...",
+              "correct": [
+                "صغيرنا",
+                "كبيرنا"
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "matching",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_01",
+              "instruction": "صل الكلمة بمرادفها:",
+              "pairs": [
+                {
+                  "left": "أم",
+                  "right": "والدة"
+                },
+                {
+                  "left": "أب",
+                  "right": "والد"
+                },
+                {
+                  "left": "جد",
+                  "right": "أبو الأب أو أبو الأم"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "وعلمنا التعاون والصدق والأمانة"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t3_final_03",
+          "status": "complete",
+          "name": "إمتحان الفصل الثالث - نموذج ج",
+          "name_fr": "Examen annuel — Modèle C",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04",
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "امتحان نهاية السنة الدراسية — نموذج ج",
+          "difficulty": 3,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "letter_recognition",
+              "points": 5,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "أكمل الكلمات بالحروف الناقصة:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "...ـسرة",
+                  "answer": "أ",
+                  "mot_complet": "أسرة"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "...رية",
+                  "answer": "ق",
+                  "mot_complet": "قرية"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "ط...يعة",
+                  "answer": "ب",
+                  "mot_complet": "طبيعة"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "...سلام",
+                  "answer": "إ",
+                  "mot_complet": "إسلام"
+                },
+                {
+                  "q_id": "q5",
+                  "q": "...مانة",
+                  "answer": "أ",
+                  "mot_complet": "أمانة"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "sentence",
+              "points": 5,
+              "difficulty": 3,
+              "competence": "comp_05",
+              "instruction": "رتب الكلمات لتكون جملاً مفيدة:",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "words": [
+                    "وطني",
+                    "أحب",
+                    "أنا"
+                  ],
+                  "correct": "أنا أحب وطني"
+                },
+                {
+                  "q_id": "q2",
+                  "words": [
+                    "بالفرشاة",
+                    "أسناني",
+                    "أغسل"
+                  ],
+                  "correct": "أغسل أسناني بالفرشاة"
+                },
+                {
+                  "q_id": "q3",
+                  "words": [
+                    "في",
+                    "أدرس",
+                    "المدرسة"
+                  ],
+                  "correct": "أدرس في المدرسة"
+                },
+                {
+                  "q_id": "q4",
+                  "words": [
+                    "كبيرنا",
+                    "نحترم"
+                  ],
+                  "correct": "نحترم كبيرنا"
+                },
+                {
+                  "q_id": "q5",
+                  "words": [
+                    "صغيرنا",
+                    "نرحم"
+                  ],
+                  "correct": "نرحم صغيرنا"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_06",
+              "instruction": "ما هي السور والآيات التي حفظتها هذا العام؟",
+              "correct_examples": [
+                "سورة الفاتحة",
+                "سورة الناس",
+                "سورة الإخلاص",
+                "سورة الفلق",
+                "سورة الكوثر",
+                "سورة النصر",
+                "آية الاستئذان",
+                "آية التعاون",
+                "حديث الصدق"
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "civic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_08",
+              "instruction": "لماذا تحب وطنك الجزائر؟",
+              "correct_exemples": [
+                "لأنه بلدي وفيه أهلي وأصدقائي",
+                "لأن علمه جميل ونشيده رائع",
+                "لأن فيه تاريخ عظيم وشهداء أبطال"
+              ],
+              "note": "Valoriser toute réponse cohérente et personnelle"
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "قسماً بالنازلات الماحقات"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t3_final_04",
+          "status": "complete",
+          "name": "إمتحان الفصل الثالث - نموذج د",
+          "name_fr": "Examen annuel — Modèle D",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04",
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "امتحان نهاية السنة الدراسية — نموذج د (texte long + grammaire avancée)",
+          "difficulty": 3,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "reading",
+              "points": 6,
+              "difficulty": 3,
+              "competence": "comp_02",
+              "instruction": "اقرأ النص ثم أجب:",
+              "text": "في عطلة نهاية الأسبوع، ذهبت عائلتي إلى الريف. الريف جميل جداً. هناك حقول خضراء وأزهار ملونة وحيوانات لطيفة. رأيت أرانب تركض ودجاج يبحث عن طعام. لعبت مع أخي الصغير وقطفنا بعض الفواكه. تعلمت أن الريف مختلف عن المدينة. في الريف الهواء نقي والأرض واسعة.",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "أين ذهبت العائلة في العطلة؟",
+                  "answer": "إلى الريف",
+                  "points": 1
+                },
+                {
+                  "q_id": "q2",
+                  "q": "اذكر ثلاث أشياء رأوها في الريف.",
+                  "answer": "حقول، أزهار، حيوانات",
+                  "points": 1
+                },
+                {
+                  "q_id": "q3",
+                  "q": "ماذا فعل مع أخيه؟",
+                  "answer": "لعب وقطف فواكه",
+                  "points": 1
+                },
+                {
+                  "q_id": "q4",
+                  "q": "ما الفرق بين الريف والمدينة؟",
+                  "answer": "الهواء نقي والأرض واسعة",
+                  "points": 2
+                },
+                {
+                  "q_id": "q5",
+                  "q": "هل الريف جميل؟ استخرج من النص.",
+                  "answer": "الريف جميل جداً",
+                  "points": 1
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "grammar",
+              "points": 4,
+              "difficulty": 3,
+              "competence": "comp_03",
+              "instruction": "ضع (أنتَ) أو (أنتِ) أو (أنا) أو (هو) أو (هي):",
+              "questions": [
+                {
+                  "q_id": "q1",
+                  "q": "... تلميذ مجتهد (لخالد، غائب)",
+                  "answer": "هو"
+                },
+                {
+                  "q_id": "q2",
+                  "q": "... تلميذة مجتهدة (لفاطمة، غائبة)",
+                  "answer": "هي"
+                },
+                {
+                  "q_id": "q3",
+                  "q": "... أحب وطني (للمتكلم)",
+                  "answer": "أنا"
+                },
+                {
+                  "q_id": "q4",
+                  "q": "أين ... تسكن يا علي؟",
+                  "answer": "أنتَ"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "vocabulary",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_02",
+              "instruction": "اكتب الكلمات الآتية بالحركات:",
+              "words": [
+                {
+                  "word": "مدرسة",
+                  "with_harakat": "مَدْرَسَة"
+                },
+                {
+                  "word": "كتاب",
+                  "with_harakat": "كِتَاب"
+                },
+                {
+                  "word": "قلم",
+                  "with_harakat": "قَلَم"
+                },
+                {
+                  "word": "محفظة",
+                  "with_harakat": "مِحْفَظَة"
+                }
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "islamic",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "أكمل الحديث: إن الصدق يهدي إلى ... وإن ... يهدي إلى الجنة",
+              "correct": [
+                "البر",
+                "البر"
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 3,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ:",
+              "text_to_copy": "أحب عائلتي وأحب وطني"
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        },
+        {
+          "exam_id": "t3_final_05",
+          "status": "complete",
+          "name": "إمتحان الفصل الثالث - نموذج هـ",
+          "name_fr": "Examen annuel — Modèle E (Bilan annuel complet)",
+          "duration": "60 دقيقة",
+          "total_score": 20,
+          "maqta_coverage": [
+            "mq01",
+            "mq02",
+            "mq03",
+            "mq04",
+            "mq05",
+            "mq06",
+            "mq07",
+            "mq08"
+          ],
+          "description": "امتحان نهاية السنة — نموذج شامل ومتكامل لجميع كفاءات الجيل الثاني",
+          "difficulty": 3,
+          "exercises": [
+            {
+              "exercise_id": "ex_01",
+              "type": "comprehensive",
+              "points": 5,
+              "difficulty": 3,
+              "competence": "comp_05",
+              "instruction": "أكمل الفراغات بالكلمات المناسبة:",
+              "text_with_blanks": "أنا ... في السنة الأولى ابتدائي. اسمي ... أحب ... كثيراً. في المدرسة ... معلمتي. في البيت أساعد ... و ... أحافظ على ... بالفرشاة والمعجون. علم وطني ... و ... و ... . نشيده الوطني اسمه ...",
+              "answers": {
+                "1": "تلميذ",
+                "2": "[اسم l'élève]",
+                "3": "عائلتي",
+                "4": "أحب",
+                "5": "أمي",
+                "6": "أبي",
+                "7": "أسناني",
+                "8": "أخضر",
+                "9": "أبيض",
+                "10": "أحمر",
+                "11": "قسماً"
+              }
+            },
+            {
+              "exercise_id": "ex_02",
+              "type": "islamic",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_07",
+              "instruction": "اكتب الدعاء الذي تقوله قبل النوم:",
+              "correct": "باسمك ربي وضعت جنبي وبك أرفعه",
+              "alternative_accepted": "باسمك اللهم أحيا وباسمك أموت"
+            },
+            {
+              "exercise_id": "ex_03",
+              "type": "civic",
+              "points": 4,
+              "difficulty": 2,
+              "competence": "comp_08",
+              "instruction": "ارسم علم الجزائر واذكر ألوانه:",
+              "correct": "أخضر (يسار / جهة السارية) — أبيض (يمين) — أحمر (هلال ونجمة في الوسط)",
+              "criterias_evaluation": [
+                "Vert côté mât (gauche)",
+                "Blanc côté droit",
+                "Croissant et étoile rouges au centre",
+                "Étoile à 5 branches",
+                "Demi-croissant ouvert vers la droite"
+              ]
+            },
+            {
+              "exercise_id": "ex_04",
+              "type": "vocabulary",
+              "points": 3,
+              "difficulty": 2,
+              "competence": "comp_01",
+              "instruction": "اكتب أربع كلمات تحتوي على حرف العين:",
+              "correct_examples": [
+                "عين",
+                "عنب",
+                "عسل",
+                "عصفور",
+                "عائلة",
+                "علم",
+                "عيد"
+              ]
+            },
+            {
+              "exercise_id": "ex_05",
+              "type": "handwriting",
+              "points": 4,
+              "difficulty": 1,
+              "competence": "comp_05",
+              "instruction": "انسخ بخط جميل:",
+              "text_to_copy": "أنا تلميذ جزائري، أحب لغتي العربية، وأفتخر بديني وإسلامي، وأحافظ على وطني."
+            }
+          ],
+          "parent_exam_tip_fr": "C'est le grand bilan du trimestre ! Célébrez tout ce que votre enfant a appris ces dernières semaines."
+        }
+      ]
+    }
+  }
+}

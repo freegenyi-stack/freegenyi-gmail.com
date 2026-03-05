@@ -1,0 +1,1 @@
+Fiches de révision synthétiques, prêtes à être imprimées. Chaque fiche est un fichier Markdown avec une structure standard.

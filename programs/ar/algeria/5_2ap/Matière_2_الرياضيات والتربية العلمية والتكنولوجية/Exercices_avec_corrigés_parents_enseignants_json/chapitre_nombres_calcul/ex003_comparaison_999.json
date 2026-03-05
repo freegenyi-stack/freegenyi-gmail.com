@@ -1,0 +1,39 @@
+{
+    "id": "dz-2ap-math-nombres-ex003",
+    "type": "comparaison",
+    "difficulte": "moyenne",
+    "consigne": "قارن بين الأعداد التالية باستعمال الرمز المناسب (< أو >):",
+    "chapitre": "nombres_calcul",
+    "corrige_inclus": true,
+    "pairs": [
+        {
+            "left": 456,
+            "right": 512,
+            "bonne_reponse": "<",
+            "explication": "512 أكبر لأن مرتبة المئات (5) أكبر من (4)."
+        },
+        {
+            "left": 789,
+            "right": 782,
+            "bonne_reponse": ">",
+            "explication": "789 أكبر لأن مرتبة الوحدات (9) أكبر من (2)."
+        },
+        {
+            "left": 102,
+            "right": 99,
+            "bonne_reponse": ">",
+            "explication": "أي عدد من 3 أرقام أكبر من عدد من رقمين."
+        },
+        {
+            "left": 350,
+            "right": 360,
+            "bonne_reponse": "<",
+            "explication": "360 أكبر لأن مرتبة العشرات (6) أكبر من (5)."
+        }
+    ],
+    "tags": [
+        "الأعداد",
+        "المقارنة"
+    ],
+    "points": 4
+}

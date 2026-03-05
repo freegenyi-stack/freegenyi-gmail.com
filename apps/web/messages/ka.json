@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - რევოლუცია განათლებაში",
+        "description": "შეუერთდით მილიონებს, რომლებიც სწავლობენ FreeGeny-ის ინოვაციური პლატფორმით"
+    },
+    "home": {
+        "hero": {
+            "title": "ისწავლეთ შეზღუდვების გარეშე",
+            "subtitle": "წვდომა მსოფლიო დონის განათლებაზე უფასოდ",
+            "cta": "დაიწყეთ სწავლა"
+        },
+        "features": {
+            "title": "რატომ FreeGeny?",
+            "items": {
+                "free": "სრულიად უფასო",
+                "global": "გლობალური საზოგადოება",
+                "quality": "უმაღლესი ხარისხის შინაარსი"
+            }
+        }
+    },
+    "common": {
+        "loading": "იტვირთება...",
+        "error": "რაღაც შეცდომაა",
+        "retry": "სცადეთ თავიდან",
+        "language": "ენა"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "ვინ ვართ ჩვენ",
+            "mission": "ჩვენი მისია",
+            "app": "აპლიკაცია",
+            "parents": {
+                "main": "მშობლები",
+                "dropdown": {
+                    "dashboard": "მშობლის დაფა",
+                    "progress": "პროგრესის თვალყურის დევნება",
+                    "communication": "მასწავლებელთან კომუნიკაცია",
+                    "resources": "საგანმანათლებლო რესურსები",
+                    "security": "უსაფრთხოება და კონფიდენციალურობა"
+                }
+            },
+            "schools": {
+                "main": "სკოლები",
+                "dropdown": {
+                    "management": "სკოლის მართვა",
+                    "curriculum": "სასკოლო პროგრამები",
+                    "teachers": "მასწავლებლის სივრცე",
+                    "analytics": "ანალიტიკა და ანგარიშები"
+                }
+            },
+            "ongs": {
+                "main": "არასამთავრობოები",
+                "dropdown": {
+                    "projects": "საგანმანათლებლო პროექტები",
+                    "impact": "გავლენის გაზომვა",
+                    "partnership": "პარტნიორობა"
+                }
+            },
+            "pricing": {
+                "main": "ფასები",
+                "dropdown": {
+                    "individual": "ინდივიდუალური",
+                    "family": "საოჯახო",
+                    "institutional": "ინსტიტუციური"
+                }
+            },
+            "freeTrial": "უფასო საცდელი პერიოდი",
+            "login": "შესვლა"
+        }
+    },
+    "cookies": {
+        "title": "ქუქიების მართვა",
+        "description": "ჩვენ ვიყენებთ ქუქიებს თქვენი გამოცდილების გასაუმჯობესებლად.",
+        "learnMore": "გაიგეთ მეტი",
+        "rejectAll": "ყველას უარყოფა",
+        "customize": "მორგება",
+        "acceptAll": "ყველას მიღება"
+    },
+    "footer": {
+        "baseline": "რევოლუცია განათლებაში ყველასთვის",
+        "rights": "ყველა უფლება დაცულია.",
+        "about": {
+            "title": "შესახებ",
+            "education": "განათლება",
+            "nationalCurriculum": "ეროვნული სასწავლო გეგმა",
+            "internationalCurriculum": "საერთაშორისო სასწავლო გეგმა",
+            "mission": "ჩვენი მისია",
+            "methodology": "მეთოდოლოგია",
+            "research": "საგანმანათლებლო კვლევა",
+            "brand": "ბრენდის შესახებ",
+            "news": "სიახლეები",
+            "press": "პრესა",
+            "contact": "დაგვიკავშირდით"
+        },
+        "apps": {
+            "title": "ჩვენი აპლიკაციები",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "დახმარება და მხარდაჭერა",
+            "faqGeneral": "ხშირად დასმული კითხვები FreeGeny-ზე",
+            "faqSchools": "ხშირად დასმული კითხვები სკოლებისთვის",
+            "faqNgos": "ხშირად დასმული კითხვები არასამთავრობოებისთვის"
+        },
+        "legal": {
+            "title": "იურიდიული",
+            "guidelines": "მომხმარებლის სახელმძღვანელო",
+            "terms": "მომსახურების პირობები",
+            "privacy": "კონფიდენციალურობის პოლიტიკა",
+            "communityRules": "საზოგადოების წესები",
+            "cookiePreferences": "ქუქიების პრეფერენციების ცენტრი",
+            "accessibility": "ხელმისაწვდომობის განცხადება",
+            "sitemap": "საიტის რუკა"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

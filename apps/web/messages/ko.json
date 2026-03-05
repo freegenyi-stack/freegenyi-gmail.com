@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - 교육의 혁명",
+        "description": "FreeGeny의 혁신적인 플랫폼으로 학습하는 수백만 명의 사용자와 함께하세요"
+    },
+    "home": {
+        "hero": {
+            "title": "한계 없는 학습",
+            "subtitle": "세계 수준의 교육을 무료로 이용하세요",
+            "cta": "학습 시작하기"
+        },
+        "features": {
+            "title": "왜 FreeGeny인가요?",
+            "items": {
+                "free": "완전 무료",
+                "global": "글로벌 커뮤니티",
+                "quality": "최고 품질의 콘텐츠"
+            }
+        }
+    },
+    "common": {
+        "loading": "로딩 중...",
+        "error": "오류가 발생했습니다",
+        "retry": "다시 시도",
+        "language": "언어"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "회사 소개",
+            "mission": "우리의 미션",
+            "app": "앱",
+            "parents": {
+                "main": "학부모",
+                "dropdown": {
+                    "dashboard": "학부모 대시보드",
+                    "progress": "학습 진도 추적",
+                    "communication": "교사 소통",
+                    "resources": "교육 리소스",
+                    "security": "보안 및 개인정보 보호"
+                }
+            },
+            "schools": {
+                "main": "학교",
+                "dropdown": {
+                    "management": "학교 관리",
+                    "curriculum": "교과 과정",
+                    "teachers": "교사 전용 공간",
+                    "analytics": "분석 및 보고서"
+                }
+            },
+            "ongs": {
+                "main": "NGO",
+                "dropdown": {
+                    "projects": "교육 프로젝트",
+                    "impact": "영향력 측정",
+                    "partnership": "파트너십"
+                }
+            },
+            "pricing": {
+                "main": "요금 안내",
+                "dropdown": {
+                    "individual": "개인용",
+                    "family": "가족용",
+                    "institutional": "기관용"
+                }
+            },
+            "freeTrial": "무료 체험",
+            "login": "로그인"
+        }
+    },
+    "cookies": {
+        "title": "쿠키 관리",
+        "description": "우리는 귀하의 경험을 향상시키기 위해 쿠키를 사용합니다.",
+        "learnMore": "더 알아보기",
+        "rejectAll": "모두 거부",
+        "customize": "사용자 정의",
+        "acceptAll": "모두 수락"
+    },
+    "footer": {
+        "baseline": "모두를 위한 교육 혁신",
+        "rights": "모든 권리 보유.",
+        "about": {
+            "title": "소개",
+            "education": "교육",
+            "nationalCurriculum": "국가 교육과정 내용",
+            "internationalCurriculum": "국제 교육과정 내용",
+            "mission": "우리의 사명",
+            "methodology": "방법론",
+            "research": "교육 연구",
+            "brand": "브랜드 소개",
+            "news": "뉴스",
+            "press": "언론",
+            "contact": "문의하기"
+        },
+        "apps": {
+            "title": "우리의 앱",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "도움말 및 지원",
+            "faqGeneral": "FreeGeny에 대한 FAQ",
+            "faqSchools": "학교를 위한 FAQ",
+            "faqNgos": "NGO를 위한 FAQ"
+        },
+        "legal": {
+            "title": "법적 고지",
+            "guidelines": "사용자 가이드라인",
+            "terms": "서비스 약관",
+            "privacy": "개인정보 보호정책",
+            "communityRules": "커뮤니티 규칙",
+            "cookiePreferences": "쿠키 설정 센터",
+            "accessibility": "접근성 선언",
+            "sitemap": "사이트맵"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

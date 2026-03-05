@@ -1,0 +1,3184 @@
+{
+  "_documentation": {
+    "_fichier": "algerie_1ap_arabe_curriculum.json",
+    "_projet": "FreeGeny – Plateforme EdTech internationale",
+    "_module": "Curriculum / Référentiel pédagogique",
+    "_version": "2.0.0",
+    "_date_creation": "2026-02-28",
+    "_auteurs": "Équipe pédagogique & technique FreeGeny",
+    "_description": "Curriculum officiel et exhaustif de la 1ère année primaire algérienne (1AP) – Langue arabe, Éducation islamique, Éducation civique – Programme Génération 2 (الجيل الثاني). Ce fichier est la source canonique unique consommée par tous les microservices FreeGeny pour ce niveau.",
+    "_sources": [
+      "Programme officiel algérien – Ministère de l'Éducation nationale (révision 2020)",
+      "Manuel officiel ONPS : كتابي في اللغة العربية للسنة الأولى ابتدائي الجيل الثاني",
+      "Cahier d'activités ONPS : دفتر الأنشطة في اللغة العربية للسنة الأولى ابتدائي الجيل الثاني",
+      "programme_matiere_1ap_ar.yaml – Référentiel interne FreeGeny",
+      "semestre1.md, semestre2.md, semestre3.md – Découpages trimestriels FreeGeny",
+      "algerie_1ap_arabe_curriculum.json v1.0.0 – Base initiale"
+    ],
+    "_utilisation_technique": "Chargé par CurriculumService au démarrage. Clé de routage : metadata.country_code + metadata.level + metadata.subject_code. Référencé par : ExerciseEngine, EvaluationService, ProgressTracker, ParentDashboard, TeacherDashboard.",
+    "_conventions": "IDs en snake_case préfixés par 'ar_1ap_'. Textes bilingues : arabe (champ principal) + français (champ _fr). Booléens : true/false. Listes ordonnées par lesson_order / maqta_order.",
+    "_changelog": [
+      {
+        "version": "1.0.0",
+        "date": "2026-02-28",
+        "description": "Création initiale – 5 thèmes, 18 leçons, structure de base"
+      },
+      {
+        "version": "2.0.0",
+        "date": "2026-02-28",
+        "description": "Refonte complète : fusion avec programme_matiere_1ap_ar.yaml. Ajout des 8 مقاطع officiels, 25 unités, groupe de lettres complet, poésies, projets, éducation islamique et civique détaillées, compétences fin d'année, ressources pédagogiques, configuration FreeGeny, erreurs fréquentes et remédiations, conseils parents, mapping avec les semestres."
+      }
+    ],
+    "__TEMPLATE_INSTRUCTIONS__": "DEEPSEEK: Use this file as a template for curriculum structure. The 'maqaate' array contains the teaching sequences. Each maqta MUST include 'education_islamique' and 'education_civique' arrays fully populated with 'learning_objectives', 'parent_activity', 'bloom_level', and 'assessment_method' as demonstrated here."
+  },
+  "metadata": {
+    "country": "algerie",
+    "country_name": "الجمهورية الجزائرية الديمقراطية الشعبية",
+    "country_name_fr": "République Algérienne Démocratique et Populaire",
+    "country_code": "dz",
+    "country_code_iso3": "DZA",
+    "level": "1ap",
+    "level_name": "السنة الأولى ابتدائي",
+    "level_name_fr": "Première année primaire",
+    "level_description": "Première année de l'enseignement primaire algérien. Enfants de 6 à 7 ans. Première année d'apprentissage formel de la lecture et de l'écriture en arabe classique.",
+    "age_cible_min": 6,
+    "age_cible_max": 7,
+    "subject": "arabe_education_islamique_et_civique",
+    "subject_name": "اللغة العربية (مع التربية الإسلامية والتربية المدنية)",
+    "subject_name_fr": "Langue arabe (avec Éducation islamique et Éducation civique)",
+    "subject_code": "ar",
+    "subject_description_fr": "En 1AP, les trois disciplines (arabe, islamique, civique) sont regroupées dans un seul et même manuel officiel ONPS. FreeGeny les traite comme un module unifié avec des sous-domaines distincts.",
+    "domaines": [
+      {
+        "code": "arabe",
+        "nom": "اللغة العربية",
+        "poids_horaire": "60%"
+      },
+      {
+        "code": "islamique",
+        "nom": "التربية الإسلامية",
+        "poids_horaire": "20%"
+      },
+      {
+        "code": "civique",
+        "nom": "التربية المدنية",
+        "poids_horaire": "20%"
+      }
+    ],
+    "academic_year": "2025-2026",
+    "generation_programme": "الجيل الثاني",
+    "generation_programme_fr": "Génération 2",
+    "version": "2.0.0",
+    "last_update": "2026-02-28",
+    "manuel_officiel": "كتابي في اللغة العربية للسنة الأولى ابتدائي الجيل الثاني",
+    "cahier_officiel": "دفتر الأنشطة في اللغة العربية للسنة الأولى ابتدائي الجيل الثاني",
+    "editeur": "Office National des Publications Scolaires (ONPS)",
+    "freegeny_reference_livre": "DZ-1AP-AR-LIVRE",
+    "freegeny_reference_cahier": "DZ-1AP-AR-CAHIER",
+    "total_maqaate": 8,
+    "total_unites": 25,
+    "total_lessons": 25,
+    "total_themes_logiques": 5,
+    "total_groupes_lettres": 20,
+    "total_projets": 18,
+    "total_poesies": 10,
+    "total_sourates": 8,
+    "total_expected_hours": 200,
+    "repartition_semestrielle": {
+      "semestre_1": {
+        "maqaate": [
+          "mq01",
+          "mq02",
+          "mq03",
+          "mq04"
+        ],
+        "periode": "Septembre – Décembre",
+        "trimestre": "T1"
+      },
+      "semestre_2": {
+        "maqaate": [
+          "mq05",
+          "mq06",
+          "mq07",
+          "mq08"
+        ],
+        "periode": "Janvier – Mars",
+        "trimestre": "T2"
+      },
+      "semestre_3": {
+        "contenu": "Révisions, approfondissement, évaluation finale",
+        "periode": "Avril – Juin",
+        "trimestre": "T3"
+      }
+    },
+    "curriculum_official_reference": "Ministère de l'Éducation Nationale – Programme officiel du cycle primaire 1AP (révision 2020)",
+    "design_philosophy": "Approche par compétences (APC) – Pédagogie différenciée – Apprentissage ludique et interactif – Mémorisation structurée – Progression par séquences (مقاطع)",
+    "langue_enseignement": "arabe_classique",
+    "direction_ecriture": "RTL",
+    "tags": [
+      "1ap",
+      "primaire",
+      "arabe",
+      "islamique",
+      "civique",
+      "algerie",
+      "generation2",
+      "freegeny",
+      "dz"
+    ]
+  },
+  "objectifs_generaux": {
+    "_description_fr": "Objectifs pédagogiques annuels attendus en fin de 1AP, par domaine.",
+    "arabe": [
+      "التعرف على جميع الحروف الهجائية الثمانية والعشرين ونطقها في مواضعها المختلفة (أول، وسط، آخر، منفردة)",
+      "قراءة كلمات وجمل بسيطة بشكل صحيح",
+      "كتابة الحروف والكلمات البسيطة بخط واضح",
+      "فهم نصوص قصيرة من 3 إلى 5 جمل والإجابة عن أسئلة بسيطة",
+      "استخدام الضمائر الأساسية: أنا، أنتَ، أنتِ، هو، هي، نحن",
+      "توظيف أسماء الإشارة: هذا / هذه",
+      "التعبير الشفهي عن النفس والمحيط بجمل بسيطة"
+    ],
+    "islamique": [
+      "حفظ سورة الفاتحة وعدة سور قصيرة من المفصل (الناس، الإخلاص، الفلق، الكوثر، النصر)",
+      "معرفة آداب الصلاة والنوم والأكل والاستئذان والتحية",
+      "اكتساب القيم الإسلامية الأساسية: الصدق، الأمانة، الرحمة، التعاون، الطهارة",
+      "حفظ الأدعية اليومية الأساسية (دخول المنزل، الأكل، النوم)"
+    ],
+    "civique": [
+      "احترام الوالدين والمعلمين والكبار",
+      "تطبيق قواعد النظافة الشخصية والمحيطية",
+      "معرفة رموز الوطن: العلم الوطني، النشيد الوطني (قسماً)، العملة الوطنية (الدينار)",
+      "التعرف على وثائق الهوية الشخصية (بطاقة التعريف، جواز السفر، الدفتر الصحي)",
+      "تطبيق سلوكيات المواطنة: التعاون، التسامح، حب الوطن"
+    ]
+  },
+  "competences_transversales": {
+    "_description_fr": "Compétences transversales travaillées tout au long de l'année, indépendamment du مقطع.",
+    "liste": [
+      {
+        "code": "CT01",
+        "competence": "التعرف على الحروف ونطقها بشكل صحيح",
+        "domaine": "arabe"
+      },
+      {
+        "code": "CT02",
+        "competence": "قراءة كلمات وجمل بسيطة",
+        "domaine": "arabe"
+      },
+      {
+        "code": "CT03",
+        "competence": "كتابة الحروف والكلمات على الأسطر",
+        "domaine": "arabe"
+      },
+      {
+        "code": "CT04",
+        "competence": "الاستماع الجيد والفهم الشفهي",
+        "domaine": "arabe"
+      },
+      {
+        "code": "CT05",
+        "competence": "حفظ وترديد السور والآيات والأدعية",
+        "domaine": "islamique"
+      },
+      {
+        "code": "CT06",
+        "competence": "تطبيق السلوكيات الإسلامية والمدنية في الحياة اليومية",
+        "domaine": "islamique_civique"
+      },
+      {
+        "code": "CT07",
+        "competence": "التعبير الشفهي عن النفس والمحيط",
+        "domaine": "arabe"
+      },
+      {
+        "code": "CT08",
+        "competence": "احترام الآخرين والتعاون معهم",
+        "domaine": "civique"
+      }
+    ]
+  },
+  "alphabet_progression": {
+    "_description_fr": "Progression complète de l'enseignement de l'alphabet arabe sur l'année, organisée par semestre et groupe de lettres. Chaque lettre est enseignée dans ses 4 formes (initiale, médiane, finale, isolée).",
+    "semestre_1": {
+      "mq01_mq02": {
+        "groupe": "G1",
+        "lettres": [
+          "م",
+          "ب",
+          "ر",
+          "ل",
+          "ت",
+          "د"
+        ],
+        "lettres_latin": [
+          "m",
+          "b",
+          "r",
+          "l",
+          "t",
+          "d"
+        ],
+        "notes": "Lettres fondatrices – introduction à la lecture syllabique"
+      },
+      "mq03": {
+        "groupe": "G2",
+        "lettres": [
+          "ع",
+          "هـ",
+          "ج",
+          "ح",
+          "س",
+          "ش"
+        ],
+        "lettres_latin": [
+          "ʕ",
+          "h",
+          "dʒ",
+          "ħ",
+          "s",
+          "ʃ"
+        ],
+        "notes": "Introduction aux lettres gutturales et sibilantes"
+      },
+      "mq04": {
+        "groupe": "G3",
+        "lettres": [
+          "ص",
+          "ض",
+          "ق",
+          "ك",
+          "ط",
+          "ظ"
+        ],
+        "lettres_latin": [
+          "sˤ",
+          "dˤ",
+          "q",
+          "k",
+          "tˤ",
+          "ðˤ"
+        ],
+        "notes": "Lettres emphatiques – difficulté de prononciation accrue"
+      }
+    },
+    "semestre_2": {
+      "mq05": {
+        "groupe": "G4",
+        "lettres": [
+          "ث",
+          "ذ",
+          "ن",
+          "ز",
+          "غ",
+          "خ"
+        ],
+        "lettres_latin": [
+          "θ",
+          "ð",
+          "n",
+          "z",
+          "ɣ",
+          "x"
+        ],
+        "notes": "Lettres interdentales et fricatives"
+      },
+      "mq06": {
+        "groupe": "G5",
+        "lettres": [
+          "ف",
+          "و",
+          "ي",
+          "ء",
+          "ّ"
+        ],
+        "lettres_latin": [
+          "f",
+          "w",
+          "j",
+          "ʔ",
+          "(chadda)"
+        ],
+        "notes": "Lettres semi-voyelles + Hamza + Chadda (signe de redoublement)"
+      },
+      "mq07": {
+        "groupe": "G6",
+        "regles": [
+          "ال القمرية",
+          "ال الشمسية",
+          "التنوين"
+        ],
+        "notes": "Règles orthographiques avancées – article défini solaire/lunaire + tanwin"
+      },
+      "mq08": {
+        "groupe": "G7",
+        "regles": [
+          "علامات الوقف",
+          "علامة التعجب",
+          "علامة الاستفهام",
+          "مراجعة عامة للحروف"
+        ],
+        "notes": "Ponctuation arabe + révision générale de l'alphabet complet"
+      }
+    },
+    "lettres_restantes_a_couvrir": {
+      "note": "Les lettres أ (alif), خ (kha), ذ (dhal), etc. peuvent être introduites dans les unités correspondantes du curriculum logique (5 thèmes) dès le T1.",
+      "integration": "Le curriculum logique (themes) et le curriculum séquentiel (maqaate) se complètent mutuellement dans FreeGeny."
+    }
+  },
+  "maqaate": [
+    {
+      "_description_fr": "Les 8 مقاطع (séquences) constituent la structure officielle du programme algérien. Chaque مقطع dure environ 4 à 5 semaines et intègre arabe, islamique et civique de façon transversale.",
+      "maqta_id": "mq01",
+      "maqta_order": 1,
+      "titre": "المقطع 1: العائلة والمدرسة",
+      "titre_fr": "Séquence 1 : La famille et l'école",
+      "trimestre": "T1",
+      "semestre": "semestre_1",
+      "periode_indicative": "Septembre",
+      "duree_semaines": 5,
+      "couleur_ui": "#4CAF50",
+      "icone": "🏠",
+      "unites": [
+        "أحمد يرحب بكم",
+        "تعرف على عائلتي",
+        "في منزلنا",
+        "العائلة مجتمعة"
+      ],
+      "unites_fr": [
+        "Ahmed vous souhaite la bienvenue",
+        "Découvre ma famille",
+        "Dans notre maison",
+        "La famille réunie"
+      ],
+      "lettres": [
+        {
+          "groupe": "م – ب",
+          "description_fr": "Mim et Ba – premières consonnes labiales"
+        },
+        {
+          "groupe": "ر – ل",
+          "description_fr": "Ra et Lam – consonnes liquides"
+        },
+        {
+          "groupe": "ت – د",
+          "description_fr": "Ta et Dal – occlusives dentales"
+        }
+      ],
+      "vocabulaire_cible": [
+        "أب",
+        "أم",
+        "أخ",
+        "أخت",
+        "جد",
+        "جدة",
+        "مدرسة",
+        "كتاب",
+        "قلم",
+        "دفتر",
+        "بيت"
+      ],
+      "grammaire": [
+        "استخدام هذا / هذه",
+        "ضمير أنا للتعريف بالنفس"
+      ],
+      "education_islamique": [
+        {
+          "titre": "أطيع والدي",
+          "type": "valeur",
+          "description_fr": "Obéissance et respect des parents",
+          "learning_objectives": [
+            "Understand the core concept of أطيع والدي",
+            "Memorize the related verse or hadith for أطيع والدي",
+            "Apply the Islamic principle of أطيع والدي in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى أطيع والدي للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de أطيع والدي pour les enfants.",
+          "parent_activity": "Practice reciting or discussing أطيع والدي before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "سورة الفاتحة (1)",
+          "type": "sourate",
+          "description_fr": "Premier verset de la Fatiha",
+          "learning_objectives": [
+            "Understand the core concept of سورة الفاتحة (1)",
+            "Memorize the related verse or hadith for سورة الفاتحة (1)",
+            "Apply the Islamic principle of سورة الفاتحة (1) in daily life"
+          ],
+          "memorization_text": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ... (نص السورة)",
+          "meaning_ar": "شرح مبسط لمعنى سورة الفاتحة (1) للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de سورة الفاتحة (1) pour les enfants.",
+          "parent_activity": "Practice reciting or discussing سورة الفاتحة (1) before bedtime.",
+          "bloom_level": "1_remember",
+          "assessment_method": "oral_recitation",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "أستأذن",
+          "type": "comportement",
+          "description_fr": "Demander la permission avant d'entrer",
+          "learning_objectives": [
+            "Understand the core concept of أستأذن",
+            "Memorize the related verse or hadith for أستأذن",
+            "Apply the Islamic principle of أستأذن in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى أستأذن للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de أستأذن pour les enfants.",
+          "parent_activity": "Practice reciting or discussing أستأذن before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "أحب عائلتي",
+          "type": "valeur",
+          "description_fr": "Amour de la famille",
+          "learning_objectives": [
+            "Understand the core concept of أحب عائلتي",
+            "Memorize the related verse or hadith for أحب عائلتي",
+            "Apply the Islamic principle of أحب عائلتي in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى أحب عائلتي للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de أحب عائلتي pour les enfants.",
+          "parent_activity": "Practice reciting or discussing أحب عائلتي before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        }
+      ],
+      "education_civique": [
+        {
+          "titre": "بسم الله",
+          "type": "formule",
+          "description_fr": "Formule basmalah – dire bismillah avant de commencer",
+          "learning_objectives": [
+            "Identify the civic rule regarding بسم الله",
+            "Explain why بسم الله is important for the community",
+            "Demonstrate بسم الله in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "بسم",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply بسم الله with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of بسم الله during a family outing.",
+          "national_symbol": null,
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        },
+        {
+          "titre": "الحمد لله",
+          "type": "formule",
+          "description_fr": "Formule alhamdulillah – gratitude",
+          "learning_objectives": [
+            "Identify the civic rule regarding الحمد لله",
+            "Explain why الحمد لله is important for the community",
+            "Demonstrate الحمد لله in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "الحمد",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply الحمد لله with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of الحمد لله during a family outing.",
+          "national_symbol": null,
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        },
+        {
+          "titre": "سورة الناس",
+          "type": "sourate",
+          "description_fr": "Lecture et compréhension du sens de la sourate An-Nas",
+          "learning_objectives": [
+            "Identify the civic rule regarding سورة الناس",
+            "Explain why سورة الناس is important for the community",
+            "Demonstrate سورة الناس in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "سورة",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply سورة الناس with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of سورة الناس during a family outing.",
+          "national_symbol": null,
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        }
+      ],
+      "poesies": [
+        {
+          "titre": "التحية وردها",
+          "theme": "Salutations et politesse"
+        },
+        {
+          "titre": "بطاقتي المدرسية",
+          "theme": "Identité scolaire"
+        },
+        {
+          "titre": "مدرستي",
+          "theme": "L'école et ses valeurs"
+        }
+      ],
+      "projets": [
+        {
+          "titre": "أرسم منزلنا وأصفه",
+          "type": "dessin_description",
+          "description_fr": "Dessiner sa maison et la décrire oralement"
+        },
+        {
+          "titre": "رسم قسما",
+          "type": "dessin",
+          "description_fr": "Dessiner sa salle de classe"
+        },
+        {
+          "titre": "شجرة عائلتي",
+          "type": "projet_creatif",
+          "description_fr": "Réaliser l'arbre généalogique de sa famille"
+        },
+        {
+          "titre": "أنجز محفظتي",
+          "type": "fabrication",
+          "description_fr": "Fabriquer son cartable en papier/carton"
+        },
+        {
+          "titre": "بطاقتي المدرسية",
+          "type": "identite",
+          "description_fr": "Compléter sa carte d'identité scolaire (nom, prénom, classe, école)"
+        }
+      ],
+      "integration_finale": "رسم الخطوط والأشكال",
+      "competences_visees": [
+        "Reconnaître et écrire les lettres م، ب، ر، ل، ت، د dans leurs 4 formes",
+        "Nommer les membres de la famille en arabe",
+        "Utiliser هذا/هذه dans des phrases simples",
+        "Réciter les premières sourates et invocations de base"
+      ],
+      "erreurs_frequentes": [
+        {
+          "erreur": "Confusion ب/ت (lettres à points)",
+          "remédiation": "Exercices de comptage de points, jeux de discrimination visuelle"
+        },
+        {
+          "erreur": "Inversion الاسم / اللقب sur la carte scolaire",
+          "remédiation": "Exemples concrets avec le nom de l'élève"
+        }
+      ],
+      "parent_tip_fr": "Accompagnez votre enfant dans ses découvertes quotidiennes avec bienveillance."
+    },
+    {
+      "maqta_id": "mq02",
+      "maqta_order": 2,
+      "titre": "المقطع 2: المدرسة",
+      "titre_fr": "Séquence 2 : L'école",
+      "trimestre": "T1",
+      "semestre": "semestre_1",
+      "periode_indicative": "Octobre",
+      "duree_semaines": 4,
+      "couleur_ui": "#2196F3",
+      "icone": "🏫",
+      "unites": [
+        "أحمد في المدرسة",
+        "في ساحة المدرسة",
+        "أدواتي المدرسية"
+      ],
+      "unites_fr": [
+        "Ahmed à l'école",
+        "Dans la cour de l'école",
+        "Mes fournitures scolaires"
+      ],
+      "lettres": [
+        {
+          "groupe": "م – ب – ر – ل – ت – د",
+          "description_fr": "Consolidation des lettres du مقطع 1"
+        }
+      ],
+      "vocabulaire_cible": [
+        "معلم",
+        "تلميذ",
+        "سبورة",
+        "كراس",
+        "محفظة",
+        "مقلمة",
+        "ألوان",
+        "مكتبة",
+        "ساحة"
+      ],
+      "grammaire": [
+        "مراجعة هذا / هذه",
+        "جمل بسيطة ذات سياق مدرسي"
+      ],
+      "education_islamique": [
+        {
+          "titre": "بسم الله",
+          "type": "formule",
+          "description_fr": "Révision de la formule basmalah",
+          "learning_objectives": [
+            "Understand the core concept of بسم الله",
+            "Memorize the related verse or hadith for بسم الله",
+            "Apply the Islamic principle of بسم الله in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى بسم الله للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de بسم الله pour les enfants.",
+          "parent_activity": "Practice reciting or discussing بسم الله before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "الحمد لله",
+          "type": "formule",
+          "description_fr": "Révision de la formule alhamdulillah",
+          "learning_objectives": [
+            "Understand the core concept of الحمد لله",
+            "Memorize the related verse or hadith for الحمد لله",
+            "Apply the Islamic principle of الحمد لله in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى الحمد لله للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de الحمد لله pour les enfants.",
+          "parent_activity": "Practice reciting or discussing الحمد لله before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "سورة الناس (مراجعة ومعنى)",
+          "type": "sourate",
+          "description_fr": "Révision et compréhension du sens de An-Nas",
+          "learning_objectives": [
+            "Understand the core concept of سورة الناس (مراجعة ومعنى)",
+            "Memorize the related verse or hadith for سورة الناس (مراجعة ومعنى)",
+            "Apply the Islamic principle of سورة الناس (مراجعة ومعنى) in daily life"
+          ],
+          "memorization_text": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ... (نص السورة)",
+          "meaning_ar": "شرح مبسط لمعنى سورة الناس (مراجعة ومعنى) للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de سورة الناس (مراجعة ومعنى) pour les enfants.",
+          "parent_activity": "Practice reciting or discussing سورة الناس (مراجعة ومعنى) before bedtime.",
+          "bloom_level": "1_remember",
+          "assessment_method": "oral_recitation",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        }
+      ],
+      "education_civique": [
+        {
+          "titre": "قواعد الحياة المدرسية",
+          "type": "regles",
+          "description_fr": "Arriver à l'heure, lever la main, respecter les camarades, silence en classe",
+          "learning_objectives": [
+            "Identify the civic rule regarding قواعد الحياة المدرسية",
+            "Explain why قواعد الحياة المدرسية is important for the community",
+            "Demonstrate قواعد الحياة المدرسية in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "قواعد",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply قواعد الحياة المدرسية with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of قواعد الحياة المدرسية during a family outing.",
+          "national_symbol": null,
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        }
+      ],
+      "poesies": [
+        {
+          "titre": "بطاقتي المدرسية",
+          "theme": "Identité scolaire"
+        },
+        {
+          "titre": "مدرستي",
+          "theme": "L'école"
+        }
+      ],
+      "projets": [
+        {
+          "titre": "أنجز محفظتي",
+          "type": "fabrication",
+          "description_fr": "Finaliser la fabrication du cartable"
+        },
+        {
+          "titre": "بطاقتي المدرسية",
+          "type": "identite",
+          "description_fr": "Compléter et illustrer sa carte scolaire"
+        }
+      ],
+      "competences_visees": [
+        "Consolider la reconnaissance des lettres acquises",
+        "Utiliser le vocabulaire de l'école en contexte",
+        "Appliquer les règles de politesse et de vie en classe"
+      ],
+      "erreurs_frequentes": [
+        {
+          "erreur": "Non-reconnaissance de la forme médiane d'une lettre",
+          "remédiation": "Décomposition de mots, surbrillance de la lettre cible dans des textes"
+        },
+        {
+          "erreur": "Inversion des salutations temporelles (صباح الخير le soir)",
+          "remédiation": "Horloge interactive, association moment/formule"
+        }
+      ],
+      "parent_tip_fr": "Accompagnez votre enfant dans ses découvertes quotidiennes avec bienveillance."
+    },
+    {
+      "maqta_id": "mq03",
+      "maqta_order": 3,
+      "titre": "المقطع 3: الحي والقرية",
+      "titre_fr": "Séquence 3 : Le quartier et le village",
+      "trimestre": "T1",
+      "semestre": "semestre_1",
+      "periode_indicative": "Novembre",
+      "duree_semaines": 4,
+      "couleur_ui": "#FF9800",
+      "icone": "🏘️",
+      "unites": [
+        "في القرية",
+        "مدينتنا",
+        "في الحقل"
+      ],
+      "unites_fr": [
+        "Au village",
+        "Notre ville",
+        "Dans le champ"
+      ],
+      "lettres": [
+        {
+          "groupe": "ع – هـ",
+          "description_fr": "Aïn et Ha – gutturales"
+        },
+        {
+          "groupe": "ج – ح",
+          "description_fr": "Djim et Ha – distinction phonétique importante"
+        },
+        {
+          "groupe": "س – ش",
+          "description_fr": "Sin et Shin – sibilantes"
+        }
+      ],
+      "vocabulaire_cible": [
+        "بيت",
+        "مسجد",
+        "سوق",
+        "حديقة",
+        "حقل",
+        "شجرة",
+        "بقرة",
+        "دجاجة",
+        "حصان",
+        "جار"
+      ],
+      "grammaire": [
+        "وصف المكان بجمل بسيطة",
+        "استخدام في / على / عند"
+      ],
+      "education_islamique": [
+        {
+          "titre": "الصدق",
+          "type": "valeur",
+          "description_fr": "La vérité – hadith : إن الصدق يهدي إلى البر",
+          "hadith": "عليكم بالصدق فإن الصدق يهدي إلى البر",
+          "learning_objectives": [
+            "Understand the core concept of الصدق",
+            "Memorize the related verse or hadith for الصدق",
+            "Apply the Islamic principle of الصدق in daily life"
+          ],
+          "memorization_text": "عليكم بالصدق فإن الصدق يهدي إلى البر",
+          "meaning_ar": "شرح مبسط لمعنى الصدق للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de الصدق pour les enfants.",
+          "parent_activity": "Practice reciting or discussing الصدق before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "أتعاون مع غيري",
+          "type": "valeur",
+          "description_fr": "Coopération – verset : وتعاونوا على البر والتقوى",
+          "learning_objectives": [
+            "Understand the core concept of أتعاون مع غيري",
+            "Memorize the related verse or hadith for أتعاون مع غيري",
+            "Apply the Islamic principle of أتعاون مع غيري in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى أتعاون مع غيري للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de أتعاون مع غيري pour les enfants.",
+          "parent_activity": "Practice reciting or discussing أتعاون مع غيري before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "سورة الإخلاص",
+          "type": "sourate",
+          "description_fr": "Mémorisation et compréhension de l'unicité de Dieu",
+          "learning_objectives": [
+            "Understand the core concept of سورة الإخلاص",
+            "Memorize the related verse or hadith for سورة الإخلاص",
+            "Apply the Islamic principle of سورة الإخلاص in daily life"
+          ],
+          "memorization_text": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ... (نص السورة)",
+          "meaning_ar": "شرح مبسط لمعنى سورة الإخلاص للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de سورة الإخلاص pour les enfants.",
+          "parent_activity": "Practice reciting or discussing سورة الإخلاص before bedtime.",
+          "bloom_level": "1_remember",
+          "assessment_method": "oral_recitation",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        }
+      ],
+      "education_civique": [
+        {
+          "titre": "أحترم الكبير",
+          "type": "comportement",
+          "description_fr": "Respect des aînés et des personnes âgées",
+          "learning_objectives": [
+            "Identify the civic rule regarding أحترم الكبير",
+            "Explain why أحترم الكبير is important for the community",
+            "Demonstrate أحترم الكبير in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "أحترم",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply أحترم الكبير with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of أحترم الكبير during a family outing.",
+          "national_symbol": null,
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        },
+        {
+          "titre": "التعاون في الحي",
+          "type": "valeur",
+          "description_fr": "Solidarité et coopération dans le quartier",
+          "learning_objectives": [
+            "Identify the civic rule regarding التعاون في الحي",
+            "Explain why التعاون في الحي is important for the community",
+            "Demonstrate التعاون في الحي in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "التعاون",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply التعاون في الحي with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of التعاون في الحي during a family outing.",
+          "national_symbol": null,
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        }
+      ],
+      "poesies": [
+        {
+          "titre": "رفيقي الرفيق",
+          "theme": "L'amitié et la coopération"
+        }
+      ],
+      "projets": [
+        {
+          "titre": "أنجز أشجارا",
+          "type": "fabrication",
+          "description_fr": "Réaliser des arbres en papier – décoration de la classe"
+        }
+      ],
+      "competences_visees": [
+        "Acquérir les nouvelles lettres ع، هـ، ج، ح، س، ش et les distinguer",
+        "Décrire son environnement proche (quartier, village)",
+        "Comprendre et appliquer la valeur de la coopération et du respect des aînés"
+      ],
+      "erreurs_frequentes": [
+        {
+          "erreur": "Confusion entre ج / ح / خ (lettres similaires en forme)",
+          "remédiation": "Comparaison visuelle côte à côte, exercices de discrimination"
+        },
+        {
+          "erreur": "Confusion س / ش (sibilantes)",
+          "remédiation": "Écoute audio comparative, répétition guidée"
+        }
+      ],
+      "parent_tip_fr": "Accompagnez votre enfant dans ses découvertes quotidiennes avec bienveillance."
+    },
+    {
+      "maqta_id": "mq04",
+      "maqta_order": 4,
+      "titre": "المقطع 4: الرياضة والتسلية",
+      "titre_fr": "Séquence 4 : Le sport et les loisirs",
+      "trimestre": "T1",
+      "semestre": "semestre_1",
+      "periode_indicative": "Décembre",
+      "duree_semaines": 4,
+      "couleur_ui": "#9C27B0",
+      "icone": "⚽",
+      "unites": [
+        "في معرض الكتاب",
+        "مباراة في كرة القدم",
+        "أنواع الرياضة"
+      ],
+      "unites_fr": [
+        "Au salon du livre",
+        "Un match de football",
+        "Les types de sport"
+      ],
+      "lettres": [
+        {
+          "groupe": "ص – ض",
+          "description_fr": "Sad et Dad – lettres emphatiques (les plus difficiles)"
+        },
+        {
+          "groupe": "ق – ك",
+          "description_fr": "Qaf et Kaf – occlusives vélaires"
+        },
+        {
+          "groupe": "ط – ظ",
+          "description_fr": "Ta et Dha emphatiques"
+        }
+      ],
+      "vocabulaire_cible": [
+        "كرة",
+        "ملعب",
+        "فريق",
+        "فوز",
+        "كتاب",
+        "قراءة",
+        "سباحة",
+        "دراجة",
+        "رياضة",
+        "نظافة"
+      ],
+      "grammaire": [
+        "استخدام كلمات المكان: أمام، خلف، يمين، يسار",
+        "التعبير عن التفضيل: أحب... أكثر من..."
+      ],
+      "education_islamique": [
+        {
+          "titre": "أطهر جسمي",
+          "type": "hygiene",
+          "description_fr": "Prise en soin du corps – importance de la propreté corporelle",
+          "learning_objectives": [
+            "Understand the core concept of أطهر جسمي",
+            "Memorize the related verse or hadith for أطهر جسمي",
+            "Apply the Islamic principle of أطهر جسمي in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى أطهر جسمي للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de أطهر جسمي pour les enfants.",
+          "parent_activity": "Practice reciting or discussing أطهر جسمي before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "أطهر مكاني",
+          "type": "hygiene",
+          "description_fr": "Propreté de son environnement immédiat",
+          "learning_objectives": [
+            "Understand the core concept of أطهر مكاني",
+            "Memorize the related verse or hadith for أطهر مكاني",
+            "Apply the Islamic principle of أطهر مكاني in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى أطهر مكاني للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de أطهر مكاني pour les enfants.",
+          "parent_activity": "Practice reciting or discussing أطهر مكاني before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "آية الاستئذان",
+          "type": "verset",
+          "description_fr": "Verset coranique sur la demande de permission",
+          "reference": "النور:27",
+          "learning_objectives": [
+            "Understand the core concept of آية الاستئذان",
+            "Memorize the related verse or hadith for آية الاستئذان",
+            "Apply the Islamic principle of آية الاستئذان in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى آية الاستئذان للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de آية الاستئذان pour les enfants.",
+          "parent_activity": "Practice reciting or discussing آية الاستئذان before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        }
+      ],
+      "education_civique": [
+        {
+          "titre": "أعطف على الصغار",
+          "type": "comportement",
+          "description_fr": "Compassion et bienveillance envers les plus jeunes",
+          "learning_objectives": [
+            "Identify the civic rule regarding أعطف على الصغار",
+            "Explain why أعطف على الصغار is important for the community",
+            "Demonstrate أعطف على الصغار in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "أعطف",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply أعطف على الصغار with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of أعطف على الصغار during a family outing.",
+          "national_symbol": null,
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        },
+        {
+          "titre": "الروح الرياضية",
+          "type": "valeur",
+          "description_fr": "Accepter la défaite, féliciter le vainqueur, jouer fair-play",
+          "learning_objectives": [
+            "Identify the civic rule regarding الروح الرياضية",
+            "Explain why الروح الرياضية is important for the community",
+            "Demonstrate الروح الرياضية in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "الروح",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply الروح الرياضية with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of الروح الرياضية during a family outing.",
+          "national_symbol": null,
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        }
+      ],
+      "poesies": [
+        {
+          "titre": "لعبة الغميضة",
+          "theme": "Jeux d'enfants"
+        },
+        {
+          "titre": "الملابس الرياضية",
+          "theme": "Sport et hygiène"
+        }
+      ],
+      "projets": [
+        {
+          "titre": "أنجز كرتي",
+          "type": "fabrication",
+          "description_fr": "Fabriquer un ballon en papier journal"
+        }
+      ],
+      "competences_visees": [
+        "Maîtriser les lettres emphatiques ص، ض، ط، ظ et leur prononciation",
+        "Exprimer ses activités préférées",
+        "Intégrer les règles d'hygiène corporelle et de respect des plus jeunes"
+      ],
+      "erreurs_frequentes": [
+        {
+          "erreur": "Confusion ص/س et ض/د (emphatiques vs non-emphatiques)",
+          "remédiation": "Paires minimales, écoute audio, exercices de répétition"
+        },
+        {
+          "erreur": "Confusion ط/ت et ظ/ذ",
+          "remédiation": "Tableau comparatif visuel, dictée ciblée"
+        }
+      ],
+      "parent_tip_fr": "Accompagnez votre enfant dans ses découvertes quotidiennes avec bienveillance."
+    },
+    {
+      "maqta_id": "mq05",
+      "maqta_order": 5,
+      "titre": "المقطع 5: البيئة والطبيعة",
+      "titre_fr": "Séquence 5 : L'environnement et la nature",
+      "trimestre": "T2",
+      "semestre": "semestre_2",
+      "periode_indicative": "Janvier",
+      "duree_semaines": 4,
+      "couleur_ui": "#8BC34A",
+      "icone": "🌳",
+      "unites": [
+        "بلادنا الجميلة",
+        "جولة ممتعة",
+        "في حديقة المنزل"
+      ],
+      "unites_fr": [
+        "Notre beau pays",
+        "Une promenade agréable",
+        "Dans le jardin de la maison"
+      ],
+      "lettres": [
+        {
+          "groupe": "ث – ذ",
+          "description_fr": "Tha et Dhal – interdentales"
+        },
+        {
+          "groupe": "ن – ز",
+          "description_fr": "Nun et Zayn"
+        },
+        {
+          "groupe": "غ – خ",
+          "description_fr": "Ghaïn et Kha – fricatives uvulaires/vélaires"
+        }
+      ],
+      "vocabulaire_cible": [
+        "غابة",
+        "زهرة",
+        "شجرة",
+        "نهر",
+        "جبل",
+        "حديقة",
+        "غزال",
+        "ثعبان",
+        "ذئب",
+        "طاووس",
+        "وطن",
+        "علم"
+      ],
+      "grammaire": [
+        "وصف المشهد الطبيعي",
+        "استخدام الصفات البسيطة: جميل، كبير، صغير، أخضر"
+      ],
+      "education_islamique": [
+        {
+          "titre": "إبعاد الأذى عن الطريق",
+          "type": "valeur",
+          "description_fr": "Ne pas nuire sur le chemin – hadith sur la charité",
+          "hadith": "إماطة الأذى عن الطريق صدقة",
+          "learning_objectives": [
+            "Understand the core concept of إبعاد الأذى عن الطريق",
+            "Memorize the related verse or hadith for إبعاد الأذى عن الطريق",
+            "Apply the Islamic principle of إبعاد الأذى عن الطريق in daily life"
+          ],
+          "memorization_text": "إماطة الأذى عن الطريق صدقة",
+          "meaning_ar": "شرح مبسط لمعنى إبعاد الأذى عن الطريق للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de إبعاد الأذى عن الطريق pour les enfants.",
+          "parent_activity": "Practice reciting or discussing إبعاد الأذى عن الطريق before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "أرفق بالحيوان",
+          "type": "valeur",
+          "description_fr": "Douceur envers les animaux – hadith sur la miséricorde",
+          "learning_objectives": [
+            "Understand the core concept of أرفق بالحيوان",
+            "Memorize the related verse or hadith for أرفق بالحيوان",
+            "Apply the Islamic principle of أرفق بالحيوان in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى أرفق بالحيوان للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de أرفق بالحيوان pour les enfants.",
+          "parent_activity": "Practice reciting or discussing أرفق بالحيوان before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "سورة الفلق",
+          "type": "sourate",
+          "description_fr": "Mémorisation et sens de la sourate Al-Falaq",
+          "learning_objectives": [
+            "Understand the core concept of سورة الفلق",
+            "Memorize the related verse or hadith for سورة الفلق",
+            "Apply the Islamic principle of سورة الفلق in daily life"
+          ],
+          "memorization_text": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ... (نص السورة)",
+          "meaning_ar": "شرح مبسط لمعنى سورة الفلق للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de سورة الفلق pour les enfants.",
+          "parent_activity": "Practice reciting or discussing سورة الفلق before bedtime.",
+          "bloom_level": "1_remember",
+          "assessment_method": "oral_recitation",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        }
+      ],
+      "education_civique": [
+        {
+          "titre": "علم وطني (مراجعة)",
+          "type": "symbole_national",
+          "description_fr": "Révision du drapeau algérien : vert, blanc, rouge (croissant + étoile)",
+          "learning_objectives": [
+            "Identify the civic rule regarding علم وطني (مراجعة)",
+            "Explain why علم وطني (مراجعة) is important for the community",
+            "Demonstrate علم وطني (مراجعة) in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "علم",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply علم وطني (مراجعة) with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of علم وطني (مراجعة) during a family outing.",
+          "national_symbol": "العلم الوطني أو النشيد",
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        },
+        {
+          "titre": "حماية البيئة",
+          "type": "comportement",
+          "description_fr": "Ne pas jeter les déchets, arroser les plantes, protéger la nature",
+          "learning_objectives": [
+            "Identify the civic rule regarding حماية البيئة",
+            "Explain why حماية البيئة is important for the community",
+            "Demonstrate حماية البيئة in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "حماية",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply حماية البيئة with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of حماية البيئة during a family outing.",
+          "national_symbol": null,
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        }
+      ],
+      "poesies": [
+        {
+          "titre": "أنا أحب الشجرة",
+          "theme": "Amour de la nature et de l'environnement"
+        }
+      ],
+      "projets": [
+        {
+          "titre": "أنجز حاملة أقلامي",
+          "type": "fabrication",
+          "description_fr": "Fabriquer un porte-crayons en matériaux recyclés"
+        },
+        {
+          "titre": "أحافظ على محيطي",
+          "type": "sensibilisation",
+          "description_fr": "Affiche sur la protection de la nature et du quartier"
+        }
+      ],
+      "competences_visees": [
+        "Décrire un paysage simple en arabe",
+        "Identifier des animaux de la forêt et de la nature algérienne",
+        "Appliquer les gestes éco-citoyens au quotidien"
+      ],
+      "erreurs_frequentes": [
+        {
+          "erreur": "Confusion ث/ت (interdentale vs dentale)",
+          "remédiation": "Démonstration orale de position de langue, paires minimales"
+        },
+        {
+          "erreur": "Confusion ذ/د",
+          "remédiation": "Même approche phonétique, répétition guidée"
+        }
+      ],
+      "parent_tip_fr": "Accompagnez votre enfant dans ses découvertes quotidiennes avec bienveillance."
+    },
+    {
+      "maqta_id": "mq06",
+      "maqta_order": 6,
+      "titre": "المقطع 6: التغذية والصحة",
+      "titre_fr": "Séquence 6 : L'alimentation et la santé",
+      "trimestre": "T2",
+      "semestre": "semestre_2",
+      "periode_indicative": "Février",
+      "duree_semaines": 4,
+      "couleur_ui": "#F44336",
+      "icone": "🍎",
+      "unites": [
+        "الفحص الطبي",
+        "الغذاء الصحي",
+        "أحافظ على أسناني"
+      ],
+      "unites_fr": [
+        "La visite médicale",
+        "L'alimentation saine",
+        "Je prends soin de mes dents"
+      ],
+      "lettres": [
+        {
+          "groupe": "ف – ث (مراجعة)",
+          "description_fr": "Fa et révision de Tha"
+        },
+        {
+          "groupe": "و – ي",
+          "description_fr": "Waw et Ya – semi-voyelles"
+        },
+        {
+          "groupe": "الهمزة",
+          "description_fr": "La Hamza – complexité orthographique"
+        },
+        {
+          "groupe": "الشدة",
+          "description_fr": "La Chadda – signe de redoublement consonantique"
+        }
+      ],
+      "vocabulaire_cible": [
+        "فاكهة",
+        "خضار",
+        "لحم",
+        "حليب",
+        "خبز",
+        "ماء",
+        "طبيب",
+        "مريض",
+        "أسنان",
+        "فيتامين"
+      ],
+      "grammaire": [
+        "التفريق بين المذكر والمؤنث في سياق الغذاء",
+        "استخدام أفعال بسيطة: يأكل، يشرب، يحافظ"
+      ],
+      "education_islamique": [
+        {
+          "titre": "أطهر ثوبي",
+          "type": "hygiene",
+          "description_fr": "Propreté des vêtements – importance de l'apparence propre",
+          "learning_objectives": [
+            "Understand the core concept of أطهر ثوبي",
+            "Memorize the related verse or hadith for أطهر ثوبي",
+            "Apply the Islamic principle of أطهر ثوبي in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى أطهر ثوبي للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de أطهر ثوبي pour les enfants.",
+          "parent_activity": "Practice reciting or discussing أطهر ثوبي before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "آداب النوم",
+          "type": "adab",
+          "description_fr": "Règles islamiques du coucher : dua avant de dormir, dormir sur le côté droit",
+          "learning_objectives": [
+            "Understand the core concept of آداب النوم",
+            "Memorize the related verse or hadith for آداب النوم",
+            "Apply the Islamic principle of آداب النوم in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى آداب النوم للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de آداب النوم pour les enfants.",
+          "parent_activity": "Practice reciting or discussing آداب النوم before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "آداب الأكل",
+          "type": "adab",
+          "description_fr": "Règles islamiques du repas : commencer par bismillah, manger de la main droite, ne pas gaspiller",
+          "learning_objectives": [
+            "Understand the core concept of آداب الأكل",
+            "Memorize the related verse or hadith for آداب الأكل",
+            "Apply the Islamic principle of آداب الأكل in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى آداب الأكل للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de آداب الأكل pour les enfants.",
+          "parent_activity": "Practice reciting or discussing آداب الأكل before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "آية التحية الصحية",
+          "type": "verset",
+          "description_fr": "Verset ou hadith sur les salutations et la bonne santé",
+          "learning_objectives": [
+            "Understand the core concept of آية التحية الصحية",
+            "Memorize the related verse or hadith for آية التحية الصحية",
+            "Apply the Islamic principle of آية التحية الصحية in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى آية التحية الصحية للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de آية التحية الصحية pour les enfants.",
+          "parent_activity": "Practice reciting or discussing آية التحية الصحية before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        }
+      ],
+      "education_civique": [
+        {
+          "titre": "العملة الوطنية",
+          "type": "symbole_national",
+          "description_fr": "Le dinar algérien – billets (200, 500, 1000 DA) et pièces (5, 10, 20, 50 DA)",
+          "learning_objectives": [
+            "Identify the civic rule regarding العملة الوطنية",
+            "Explain why العملة الوطنية is important for the community",
+            "Demonstrate العملة الوطنية in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "العملة",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply العملة الوطنية with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of العملة الوطنية during a family outing.",
+          "national_symbol": "العلم الوطني أو النشيد",
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        }
+      ],
+      "poesies": [
+        {
+          "titre": "نظافة الأبدان",
+          "theme": "Hygiène corporelle et santé"
+        }
+      ],
+      "projets": [
+        {
+          "titre": "أنجز الفواكه",
+          "type": "fabrication",
+          "description_fr": "Réaliser un plateau de fruits en papier coloré"
+        },
+        {
+          "titre": "غذائي المفيد",
+          "type": "classification",
+          "description_fr": "Classer des images d'aliments en sains/malsains – réaliser une affiche"
+        }
+      ],
+      "competences_visees": [
+        "Distinguer aliments sains et malsains",
+        "Connaître les règles d'hygiène de base (dents, mains, vêtements)",
+        "Utiliser le vocabulaire de la santé et du corps"
+      ],
+      "erreurs_frequentes": [
+        {
+          "erreur": "Mauvaise orthographe de la Hamza selon sa position",
+          "remédiation": "Règles simplifiées par position + exercices ciblés"
+        },
+        {
+          "erreur": "Oubli de la Chadda à l'écrit",
+          "remédiation": "Dictée comparative avec/sans chadda + code couleur"
+        },
+        {
+          "erreur": "Confusion billets / pièces du dinar",
+          "remédiation": "Tri d'images réelles de dinars algériens + jeu du marchand"
+        }
+      ],
+      "parent_tip_fr": "Accompagnez votre enfant dans ses découvertes quotidiennes avec bienveillance."
+    },
+    {
+      "maqta_id": "mq07",
+      "maqta_order": 7,
+      "titre": "المقطع 7: التواصل",
+      "titre_fr": "Séquence 7 : La communication",
+      "trimestre": "T2",
+      "semestre": "semestre_2",
+      "periode_indicative": "Mars",
+      "duree_semaines": 4,
+      "couleur_ui": "#00BCD4",
+      "icone": "💻",
+      "unites": [
+        "ما أعجب الحاسوب!",
+        "عودة أبي من السفر",
+        "من أنا؟"
+      ],
+      "unites_fr": [
+        "Que l'ordinateur est merveilleux !",
+        "Le retour de mon père de voyage",
+        "Qui suis-je ?"
+      ],
+      "lettres": [
+        {
+          "groupe": "ال القمرية",
+          "description_fr": "Article défini lunaire – le لام se prononce clairement (ex: القمر, الكتاب)",
+          "exemples": [
+            "القمر",
+            "الكتاب",
+            "المدرسة",
+            "البيت"
+          ]
+        },
+        {
+          "groupe": "ال الشمسية",
+          "description_fr": "Article défini solaire – le لام est assimilé à la lettre suivante (ex: الشمس → ach-chams)",
+          "exemples": [
+            "الشمس",
+            "الطريق",
+            "النهار",
+            "الدار"
+          ]
+        },
+        {
+          "groupe": "التنوين",
+          "description_fr": "Tanwin – double voyelle finale (ـً ـٍ ـٌ) indiquant l'indétermination",
+          "types": [
+            "تنوين الفتح (ـً)",
+            "تنوين الكسر (ـٍ)",
+            "تنوين الضم (ـٌ)"
+          ]
+        }
+      ],
+      "vocabulaire_cible": [
+        "هاتف",
+        "حاسوب",
+        "تلفاز",
+        "رسالة",
+        "سفر",
+        "مطار",
+        "تواصل",
+        "إنترنت"
+      ],
+      "grammaire": [
+        "التمييز بين ال الشمسية وال القمرية بالنطق والكتابة",
+        "استخدام ضمائر: هو، هي، أنا، أنتَ، أنتِ، نحن",
+        "بناء جمل بسيطة: المبتدأ والخبر"
+      ],
+      "education_islamique": [
+        {
+          "titre": "الشهادتان",
+          "type": "pilier",
+          "description_fr": "Les deux témoignages de foi : أشهد أن لا إله إلا الله وأشهد أن محمداً رسول الله",
+          "learning_objectives": [
+            "Understand the core concept of الشهادتان",
+            "Memorize the related verse or hadith for الشهادتان",
+            "Apply the Islamic principle of الشهادتان in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى الشهادتان للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de الشهادتان pour les enfants.",
+          "parent_activity": "Practice reciting or discussing الشهادتان before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "آداب التحية",
+          "type": "adab",
+          "description_fr": "Règles islamiques des salutations : commencer par السلام عليكم, répondre وعليكم السلام",
+          "learning_objectives": [
+            "Understand the core concept of آداب التحية",
+            "Memorize the related verse or hadith for آداب التحية",
+            "Apply the Islamic principle of آداب التحية in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى آداب التحية للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de آداب التحية pour les enfants.",
+          "parent_activity": "Practice reciting or discussing آداب التحية before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "الصلوات الخمس",
+          "type": "pilier",
+          "description_fr": "Présentation des 5 prières quotidiennes et leurs noms",
+          "learning_objectives": [
+            "Understand the core concept of الصلوات الخمس",
+            "Memorize the related verse or hadith for الصلوات الخمس",
+            "Apply the Islamic principle of الصلوات الخمس in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى الصلوات الخمس للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de الصلوات الخمس pour les enfants.",
+          "parent_activity": "Practice reciting or discussing الصلوات الخمس before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        }
+      ],
+      "education_civique": [
+        {
+          "titre": "وثائق هويتي",
+          "type": "identite",
+          "description_fr": "Documents d'identité : بطاقة التعريف الوطنية, جواز السفر, الدفتر الصحي, الدفتر العائلي",
+          "distinction": "Documents personnels vs objets scolaires (كتاب، مقلمة)",
+          "learning_objectives": [
+            "Identify the civic rule regarding وثائق هويتي",
+            "Explain why وثائق هويتي is important for the community",
+            "Demonstrate وثائق هويتي in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "وثائق",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply وثائق هويتي with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of وثائق هويتي during a family outing.",
+          "national_symbol": null,
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        }
+      ],
+      "poesies": [
+        {
+          "titre": "حاسوبي",
+          "theme": "Technologie et monde moderne"
+        }
+      ],
+      "projets": [
+        {
+          "titre": "أنجز قطارا",
+          "type": "fabrication",
+          "description_fr": "Réaliser un train des lettres en carton – une lettre par wagon"
+        },
+        {
+          "titre": "أستعمل حاسوبي",
+          "type": "numerique",
+          "description_fr": "Initiation à l'utilisation d'un ordinateur ou d'une tablette"
+        }
+      ],
+      "competences_visees": [
+        "Distinguer et appliquer ال الشمسية وال القمرية à l'oral et à l'écrit",
+        "Utiliser les pronoms personnels correctement dans des dialogues",
+        "Connaître les documents d'identité et les distinguer des objets non identitaires"
+      ],
+      "erreurs_frequentes": [
+        {
+          "erreur": "Non-assimilation de ال الشمسية à l'oral (lire al-shams au lieu de ach-chams)",
+          "remédiation": "Lecture à voix haute guidée + code couleur dans les textes"
+        },
+        {
+          "erreur": "Confusion هو / هي (genre grammatical)",
+          "remédiation": "Exercices de classification d'images masculin/féminin"
+        },
+        {
+          "erreur": "Inclure des objets scolaires parmi les documents d'identité",
+          "remédiation": "Tableau tri par critère : contient mes informations personnelles ?"
+        }
+      ],
+      "parent_tip_fr": "Accompagnez votre enfant dans ses découvertes quotidiennes avec bienveillance."
+    },
+    {
+      "maqta_id": "mq08",
+      "maqta_order": 8,
+      "titre": "المقطع 8: الموروث الحضاري",
+      "titre_fr": "Séquence 8 : Le patrimoine culturel",
+      "trimestre": "T2",
+      "semestre": "semestre_2",
+      "periode_indicative": "Fin mars",
+      "duree_semaines": 4,
+      "couleur_ui": "#FF5722",
+      "icone": "🌙",
+      "unites": [
+        "أول يوم في رمضان",
+        "عيد الأضحى",
+        "عيد الاستقلال"
+      ],
+      "unites_fr": [
+        "Premier jour de Ramadan",
+        "L'Aïd el-Adha",
+        "La fête de l'Indépendance"
+      ],
+      "lettres": [
+        {
+          "groupe": "علامات الوقف",
+          "description_fr": "Ponctuation arabe : نقطة (.), فاصلة (،), نقطتان (:)"
+        },
+        {
+          "groupe": "التعجب والاستفهام",
+          "description_fr": "Point d'exclamation (!) et point d'interrogation (?)"
+        },
+        {
+          "groupe": "مراجعة الحروف",
+          "description_fr": "Révision générale des 28 lettres de l'alphabet arabe"
+        }
+      ],
+      "vocabulaire_cible": [
+        "رمضان",
+        "صوم",
+        "سحور",
+        "إفطار",
+        "عيد",
+        "أضحية",
+        "استقلال",
+        "علم",
+        "نشيد",
+        "تهنئة"
+      ],
+      "grammaire": [
+        "مراجعة عامة للمكتسبات النحوية",
+        "بناء جملة تهنئة بسيطة",
+        "كتابة عبارات التهنئة"
+      ],
+      "education_islamique": [
+        {
+          "titre": "آداب الأكل (مراجعة)",
+          "type": "adab",
+          "description_fr": "Révision des règles islamiques du repas",
+          "learning_objectives": [
+            "Understand the core concept of آداب الأكل (مراجعة)",
+            "Memorize the related verse or hadith for آداب الأكل (مراجعة)",
+            "Apply the Islamic principle of آداب الأكل (مراجعة) in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى آداب الأكل (مراجعة) للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de آداب الأكل (مراجعة) pour les enfants.",
+          "parent_activity": "Practice reciting or discussing آداب الأكل (مراجعة) before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "سورة الكوثر",
+          "type": "sourate",
+          "description_fr": "Mémorisation et sens de la sourate Al-Kawthar",
+          "versets": 3,
+          "learning_objectives": [
+            "Understand the core concept of سورة الكوثر",
+            "Memorize the related verse or hadith for سورة الكوثر",
+            "Apply the Islamic principle of سورة الكوثر in daily life"
+          ],
+          "memorization_text": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ... (نص السورة)",
+          "meaning_ar": "شرح مبسط لمعنى سورة الكوثر للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de سورة الكوثر pour les enfants.",
+          "parent_activity": "Practice reciting or discussing سورة الكوثر before bedtime.",
+          "bloom_level": "1_remember",
+          "assessment_method": "oral_recitation",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "سورة النصر",
+          "type": "sourate",
+          "description_fr": "Mémorisation et sens de la sourate An-Nasr",
+          "versets": 3,
+          "learning_objectives": [
+            "Understand the core concept of سورة النصر",
+            "Memorize the related verse or hadith for سورة النصر",
+            "Apply the Islamic principle of سورة النصر in daily life"
+          ],
+          "memorization_text": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ... (نص السورة)",
+          "meaning_ar": "شرح مبسط لمعنى سورة النصر للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de سورة النصر pour les enfants.",
+          "parent_activity": "Practice reciting or discussing سورة النصر before bedtime.",
+          "bloom_level": "1_remember",
+          "assessment_method": "oral_recitation",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        },
+        {
+          "titre": "فضل رمضان",
+          "type": "enseignement",
+          "description_fr": "Signification du mois de Ramadan, du jeûne, de la générosité",
+          "learning_objectives": [
+            "Understand the core concept of فضل رمضان",
+            "Memorize the related verse or hadith for فضل رمضان",
+            "Apply the Islamic principle of فضل رمضان in daily life"
+          ],
+          "memorization_text": "لا يوجد نص للحفظ",
+          "meaning_ar": "شرح مبسط لمعنى فضل رمضان للأطفال.",
+          "meaning_fr": "Explication simplifiée du sens de فضل رمضان pour les enfants.",
+          "parent_activity": "Practice reciting or discussing فضل رمضان before bedtime.",
+          "bloom_level": "3_apply",
+          "assessment_method": "observation_grid",
+          "__ANNOTATION__": "DeepSeek: 'learning_objectives' must be list of 3 actionable items. 'bloom_level' typically 1_remember for sourates, 3_apply for values."
+        }
+      ],
+      "education_civique": [
+        {
+          "titre": "النشيد الوطني (قسماً)",
+          "type": "symbole_national",
+          "description_fr": "L'hymne national algérien",
+          "details": {
+            "titre_hymne": "قسماً",
+            "auteur_paroles": "مفدي زكريا",
+            "compositeur_musique": "محمد فوزي",
+            "premier_vers": "قسماً بالنازلات الماحقات",
+            "nombre_couplets": 5,
+            "freegeny_note": "Erreur fréquente : confondre auteur des paroles (مفدي زكريا) et compositeur (محمد فوزي)"
+          },
+          "learning_objectives": [
+            "Identify the civic rule regarding النشيد الوطني (قسماً)",
+            "Explain why النشيد الوطني (قسماً) is important for the community",
+            "Demonstrate النشيد الوطني (قسماً) in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "النشيد",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply النشيد الوطني (قسماً) with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of النشيد الوطني (قسماً) during a family outing.",
+          "national_symbol": "العلم الوطني أو النشيد",
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        },
+        {
+          "titre": "الأعياد الوطنية",
+          "type": "culture_nationale",
+          "fetes": [
+            {
+              "nom": "عيد الاستقلال",
+              "date": "5 جويلية / 5 juillet",
+              "type": "nationale"
+            },
+            {
+              "nom": "عيد الثورة",
+              "date": "1 نوفمبر / 1er novembre",
+              "type": "nationale"
+            },
+            {
+              "nom": "عيد الفطر",
+              "type": "religieuse",
+              "date": "variable"
+            },
+            {
+              "nom": "عيد الأضحى",
+              "type": "religieuse",
+              "date": "variable"
+            }
+          ],
+          "learning_objectives": [
+            "Identify the civic rule regarding الأعياد الوطنية",
+            "Explain why الأعياد الوطنية is important for the community",
+            "Demonstrate الأعياد الوطنية in a simulated school environment"
+          ],
+          "key_vocabulary": [
+            "الأعياد",
+            "مجتمع",
+            "مدرسة",
+            "وطن"
+          ],
+          "role_play_scenario": "Child acts out a scenario where they must apply الأعياد الوطنية with a sibling or friend.",
+          "parent_activity": "Discuss a real-world example of الأعياد الوطنية during a family outing.",
+          "national_symbol": "العلم الوطني أو النشيد",
+          "bloom_level": "3_apply",
+          "assessment_method": "role_play_observation",
+          "__ANNOTATION__": "DeepSeek: 'role_play_scenario' is critical for civic education. 'bloom_level' is usually 3_apply or 2_understand."
+        }
+      ],
+      "poesies": [
+        {
+          "titre": "العيد",
+          "theme": "Les fêtes religieuses et le partage"
+        }
+      ],
+      "projets": [
+        {
+          "titre": "أنجز بطاقة تهنئة",
+          "type": "production_ecrite_creative",
+          "description_fr": "Fabriquer et décorer une carte de vœux pour l'Aïd ou la fête nationale"
+        },
+        {
+          "titre": "أكتب عبارة التهنئة",
+          "type": "production_ecrite",
+          "description_fr": "Écrire une formule de vœux simple : عيد مبارك / كل عام وأنتم بخير"
+        }
+      ],
+      "competences_visees": [
+        "Comprendre les fêtes religieuses et nationales et leur signification",
+        "Rédiger une phrase de vœux simple",
+        "Connaître le titre, l'auteur et le compositeur de l'hymne national",
+        "Maîtriser la ponctuation arabe de base"
+      ],
+      "erreurs_frequentes": [
+        {
+          "erreur": "Confusion auteur/compositeur du NationalAnthem (مفدي زكريا vs محمد فوزي)",
+          "remédiation": "Flashcards avec rôles distincts : paroles ≠ musique"
+        },
+        {
+          "erreur": "Dates des fêtes nationales confondues (5 juillet / 1er novembre)",
+          "remédiation": "Calendrier interactif + chanson mnémotechnique"
+        },
+        {
+          "erreur": "Rites de l'Aïd el-Fitr mélangés avec ceux de l'Aïd el-Adha",
+          "remédiation": "Tableau comparatif des deux fêtes"
+        }
+      ],
+      "parent_tip_fr": "Accompagnez votre enfant dans ses découvertes quotidiennes avec bienveillance."
+    },
+    {
+      "maqta_id": "mq_lecture",
+      "maqta_order": 9,
+      "titre": "للمطالعة",
+      "titre_fr": "Lecture complémentaire",
+      "trimestre": "T3",
+      "semestre": "semestre_3",
+      "periode_indicative": "Avril–Juin (révisions)",
+      "duree_semaines": null,
+      "couleur_ui": "#607D8B",
+      "icone": "📖",
+      "unites": [
+        "معلمتي الفراشة"
+      ],
+      "unites_fr": [
+        "Mon enseignante le papillon"
+      ],
+      "description_fr": "Texte de lecture complémentaire proposé en fin d'année pour développer le plaisir de lire et consolider la fluidité de lecture.",
+      "competences_visees": [
+        "Lire un texte court avec fluidité",
+        "Comprendre un texte narratif simple",
+        "Enrichir le vocabulaire par la lecture autonome"
+      ],
+      "parent_tip_fr": "Accompagnez votre enfant dans ses découvertes quotidiennes avec bienveillance."
+    }
+  ],
+  "themes": [
+    {
+      "_description_fr": "Les 5 thèmes logiques du curriculum initial, complémentaires aux 8 مقاطع officiels. Ils structurent la progression narrative et thématique du contenu FreeGeny.",
+      "theme_id": 1,
+      "theme_order": 1,
+      "title": "المحور الأول: عائلتي",
+      "title_fr": "Thème 1 : Ma famille",
+      "maqaate_correspondants": [
+        "mq01",
+        "mq02"
+      ],
+      "introduction": "في هذا المحور، سيتعرف التلميذ على أفراد عائلته (أب، أم، أخ، أخت، جد، جدة) وعلى نفسه. سيتعلم كيفية تقديم نفسه والتحية وآدابها، ويكتشف أولى حروف الهجاء. سيدرك أهمية طاعة الوالدين واحترام الكبير من خلال دروس التربية الإسلامية والمدنية.",
+      "introduction_fr": "Dans ce thème, l'élève apprend à connaître les membres de sa famille et à se présenter. Il découvre les premières lettres de l'alphabet arabe et les formules de politesse. Il comprend l'importance d'obéir à ses parents et de respecter les aînés.",
+      "icon": "👨‍👩‍👧‍👦",
+      "color": "#4CAF50",
+      "lessons": [
+        {
+          "lesson_id": "ar_1ap_l01",
+          "lesson_order": 1,
+          "maqta_ref": "mq01",
+          "title": "أهلاً وسهلاً",
+          "title_fr": "Bienvenue !",
+          "description": "التعريف بالشخصيات الرئيسية للكتاب (أحمد وخديجة). نطق وكتابة حرفي الألف والباء.",
+          "description_fr": "Présentation des personnages principaux du manuel (Ahmed et Khadija). Prononciation et écriture des lettres Alif et Ba.",
+          "objectives": [
+            "التعرف على شخصيتي أحمد وخديجة",
+            "نطق حرف الألف (أ) بحركاته الثلاث (أَ، أُ، إِ)",
+            "نطق حرف الباء (ب) بحركاته الثلاث (بَ، بُ، بِ)",
+            "كتابة حرفي الألف والباء كتابة صحيحة في مواضع مختلفة من الكلمة",
+            "استعمال الضمير 'أنا' للتعريف بالنفس (أنا أحمد / أنا خديجة)"
+          ],
+          "objectives_fr": [
+            "Identifier les personnages Ahmed et Khadija",
+            "Prononcer la lettre Alif (أ) avec ses trois voyelles",
+            "Prononcer la lettre Ba (ب) avec ses trois voyelles",
+            "Écrire Alif et Ba dans leurs différentes positions dans le mot",
+            "Utiliser le pronom 'أنا' (je) pour se présenter"
+          ],
+          "prerequisites": [],
+          "duration": "2 heures",
+          "keywords": [
+            "أحمد",
+            "خديجة",
+            "أنا",
+            "ألف",
+            "باء",
+            "تعارف"
+          ],
+          "cross_curricular_links": {
+            "islamic": "مقدمة – التعرف على النفس كمخلوق لله",
+            "civic": "التعريف بالهوية – الاسم واللقب"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "ahmed.png",
+              "khadija.png",
+              "alif_positions.png",
+              "baa_positions.png"
+            ],
+            "audio": [
+              "alef_sound.mp3",
+              "baa_sound.mp3",
+              "intro_ahmed.mp3"
+            ],
+            "exercices_types": [
+              "association_lettre_image",
+              "trace_lettre",
+              "ecoute_repete",
+              "quel_personnage"
+            ]
+          },
+          "freegeny_difficulty": 1,
+          "freegeny_gamification": {
+            "points": 10,
+            "badge_eligible": "lecteur_debutant"
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l02",
+          "lesson_order": 2,
+          "maqta_ref": "mq01",
+          "title": "من في منزلنا؟",
+          "title_fr": "Qui est dans notre maison ?",
+          "description": "التعرف على أفراد العائلة (أب، أم، جد، جدة). نطق وكتابة حرفي التاء والثاء. آداب الدخول إلى المنزل.",
+          "description_fr": "Apprendre les membres de la famille. Prononciation et écriture de Ta et Tha. Règles islamiques d'entrée dans la maison.",
+          "objectives": [
+            "تسمية أفراد العائلة: أب، أم، جد، جدة",
+            "نطق حرف التاء (ت) بحركاته",
+            "نطق حرف الثاء (ث) بحركاته",
+            "كتابة حرفي التاء والثاء",
+            "حفظ وفهم دعاء الدخول إلى المنزل (بسم الله ولجنا...)",
+            "إدراك فضل الوالدين وأهمية احترامهما"
+          ],
+          "objectives_fr": [
+            "Nommer les membres de la famille en arabe",
+            "Prononcer et écrire Ta (ت) et Tha (ث)",
+            "Mémoriser la dua d'entrée dans la maison",
+            "Comprendre l'importance du respect des parents"
+          ],
+          "prerequisites": [
+            "ar_1ap_l01"
+          ],
+          "duration": "3 heures",
+          "keywords": [
+            "أب",
+            "أم",
+            "جد",
+            "جدة",
+            "عائلة",
+            "تاء",
+            "ثاء",
+            "دعاء"
+          ],
+          "cross_curricular_links": {
+            "islamic": "دعاء الدخول إلى المنزل – بر الوالدين",
+            "civic": "أفراد العائلة – احترام الوالدين والكبار"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "family_tree.png",
+              "father.png",
+              "mother.png",
+              "grandfather.png",
+              "grandmother.png"
+            ],
+            "audio": [
+              "door_dua.mp3",
+              "ta_sound.mp3",
+              "tha_sound.mp3"
+            ],
+            "exercices_types": [
+              "arbre_genealogique_interactif",
+              "association_membre_famille",
+              "trace_lettre_ta",
+              "dua_audio_repete"
+            ]
+          },
+          "freegeny_difficulty": 1,
+          "freegeny_gamification": {
+            "points": 15,
+            "badge_eligible": "lecteur_debutant"
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l03",
+          "lesson_order": 3,
+          "maqta_ref": "mq01",
+          "title": "أحب عائلتي",
+          "title_fr": "J'aime ma famille",
+          "description": "التعبير عن المشاعر تجاه العائلة. استعمال ضميري المخاطبة 'أنتَ' و'أنتِ'. مفهوم العطف والرحمة.",
+          "description_fr": "Exprimer ses sentiments envers sa famille. Utiliser les pronoms tu (masc./fém.). Comprendre la compassion islamique.",
+          "objectives": [
+            "استخدام ضمير 'أنتَ' للمذكر و'أنتِ' للمؤنث",
+            "التعبير عن مشاعر المحبة تجاه أفراد العائلة",
+            "فهم معنى العطف والرحمة في الإسلام",
+            "تدريب على حسن معاملة الإخوة الصغار"
+          ],
+          "objectives_fr": [
+            "Utiliser les pronoms أنتَ (tu masc.) et أنتِ (tu fém.) correctement",
+            "Exprimer l'amour pour les membres de la famille",
+            "Comprendre la valeur de la compassion islamique"
+          ],
+          "prerequisites": [
+            "ar_1ap_l01",
+            "ar_1ap_l02"
+          ],
+          "duration": "2 heures",
+          "keywords": [
+            "أحب",
+            "أنتَ",
+            "أنتِ",
+            "رحمة",
+            "عطف",
+            "مشاعر"
+          ],
+          "cross_curricular_links": {
+            "islamic": "الرحمة بالصغير – حديث: ليس منا من لم يرحم صغيرنا",
+            "civic": "التعبير عن المشاعر – العطف والمحبة في الأسرة"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "caring_brother.png",
+              "loving_family.png"
+            ],
+            "audio": [
+              "rahma_hadith.mp3"
+            ],
+            "video": [
+              "respect_family_short.mp4"
+            ],
+            "exercices_types": [
+              "completer_phrase_pronom",
+              "vrai_faux_sentiment",
+              "dialogue_famille"
+            ]
+          },
+          "freegeny_difficulty": 2,
+          "freegeny_gamification": {
+            "points": 15,
+            "badge_eligible": "bon_eleve"
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l04",
+          "lesson_order": 4,
+          "maqta_ref": "mq01",
+          "title": "في المدرسة",
+          "title_fr": "À l'école",
+          "description": "المدرسة وأقسامها. حرف الميم (م). آداب الاستئذان.",
+          "description_fr": "L'école et ses parties. Lettre Mim (م). Les règles islamiques de demande de permission.",
+          "objectives": [
+            "تعريف المدرسة وأقسامها (قسم، مكتبة، ساحة)",
+            "نطق وكتابة حرف الميم (م)",
+            "حفظ وفهم آية الاستئذان",
+            "تطبيق آداب الاستئذان في المدرسة والمنزل"
+          ],
+          "objectives_fr": [
+            "Nommer les parties de l'école",
+            "Prononcer et écrire Mim (م)",
+            "Mémoriser et comprendre le verset de la permission",
+            "Appliquer les règles de demande de permission"
+          ],
+          "prerequisites": [
+            "ar_1ap_l01"
+          ],
+          "duration": "3 heures",
+          "keywords": [
+            "مدرسة",
+            "قسم",
+            "استئذان",
+            "ميم",
+            "آية"
+          ],
+          "cross_curricular_links": {
+            "islamic": "آية الاستئذان – النور:27",
+            "civic": "قواعد الحياة المدرسية – الاستئذان والنظام"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "school_rooms.png",
+              "mim_letter.png"
+            ],
+            "audio": [
+              "istidhan_aya.mp3",
+              "mim_sound.mp3"
+            ],
+            "exercices_types": [
+              "associer_salle_nom",
+              "trace_mim",
+              "dua_permission_memorise"
+            ]
+          },
+          "freegeny_difficulty": 2,
+          "freegeny_gamification": {
+            "points": 15
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l05",
+          "lesson_order": 5,
+          "maqta_ref": "mq02",
+          "title": "في ساحة المدرسة",
+          "title_fr": "Dans la cour de l'école",
+          "description": "اللعب والأنشطة في الساحة. حرف الراء (ر). التعاون.",
+          "description_fr": "Jeux et activités dans la cour. Lettre Ra (ر). La coopération islamique.",
+          "objectives": [
+            "نطق وكتابة حرف الراء (ر)",
+            "قراءة كلمات تحتوي على الراء",
+            "فهم أهمية التعاون من خلال آية 'وتعاونوا على البر والتقوى'"
+          ],
+          "objectives_fr": [
+            "Prononcer et écrire Ra (ر)",
+            "Lire des mots contenant Ra",
+            "Comprendre la valeur de la coopération"
+          ],
+          "prerequisites": [
+            "ar_1ap_l04"
+          ],
+          "duration": "2 heures",
+          "keywords": [
+            "ساحة",
+            "لعب",
+            "تعاون",
+            "راء"
+          ],
+          "cross_curricular_links": {
+            "islamic": "آية التعاون – المائدة:2",
+            "civic": "التعاون والمشاركة في الحياة المدرسية"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "playground.png",
+              "ra_letter.png"
+            ],
+            "audio": [
+              "ra_sound.mp3",
+              "taawun_aya.mp3"
+            ],
+            "exercices_types": [
+              "lecture_mots_ra",
+              "trace_ra",
+              "vrai_faux_taawun"
+            ]
+          },
+          "freegeny_difficulty": 2,
+          "freegeny_gamification": {
+            "points": 10
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l06",
+          "lesson_order": 6,
+          "maqta_ref": "mq02",
+          "title": "أدواتي المدرسية",
+          "title_fr": "Mes fournitures scolaires",
+          "description": "أسماء الأدوات المدرسية. حرف الدال (د). المحافظة على الممتلكات.",
+          "description_fr": "Noms des fournitures scolaires. Lettre Dal (د). Prendre soin de ses affaires.",
+          "objectives": [
+            "تسمية الأدوات المدرسية الأساسية",
+            "نطق وكتابة حرف الدال (د)",
+            "التعرف على بطاقته المدرسية",
+            "إدراك ضرورة المحافظة على أدواته وممتلكات المدرسة"
+          ],
+          "objectives_fr": [
+            "Nommer les fournitures scolaires",
+            "Prononcer et écrire Dal (د)",
+            "Reconnaître les éléments de sa carte scolaire",
+            "Comprendre l'importance de prendre soin de ses affaires"
+          ],
+          "prerequisites": [
+            "ar_1ap_l05"
+          ],
+          "duration": "3 heures",
+          "keywords": [
+            "كتاب",
+            "قلم",
+            "كراس",
+            "محفظة",
+            "دال",
+            "بطاقة مدرسية"
+          ],
+          "cross_curricular_links": {
+            "civic": "المحافظة على الممتلكات – بطاقة التعريف المدرسية"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "school_supplies.png",
+              "carte_scolaire.png",
+              "dal_letter.png"
+            ],
+            "audio": [
+              "dal_sound.mp3"
+            ],
+            "exercices_types": [
+              "associer_outil_nom",
+              "completer_carte_scolaire",
+              "trace_dal",
+              "classer_affaires"
+            ]
+          },
+          "freegeny_difficulty": 2,
+          "freegeny_gamification": {
+            "points": 15
+          }
+        }
+      ]
+    },
+    {
+      "theme_id": 2,
+      "theme_order": 2,
+      "title": "المحور الثاني: الحي والقرية",
+      "title_fr": "Thème 2 : Le quartier et le village",
+      "maqaate_correspondants": [
+        "mq03"
+      ],
+      "introduction": "ينتقل التلميذ من محيط أسرته إلى محيطه الجغرافي الأوسع: الحي والقرية. سيتعرف على مكوناتهما، ويتعلم حروفاً جديدة، وقيماً كالصدق واحترام الجار.",
+      "introduction_fr": "L'élève élargit son horizon de la famille au quartier et au village. Il apprend de nouvelles lettres et des valeurs comme la vérité et le respect du voisin.",
+      "icon": "🏘️",
+      "color": "#2196F3",
+      "lessons": [
+        {
+          "lesson_id": "ar_1ap_l07",
+          "lesson_order": 7,
+          "maqta_ref": "mq03",
+          "title": "في القرية",
+          "title_fr": "Au village",
+          "description": "القرية ومكوناتها. حرف العين (ع). الصدق.",
+          "description_fr": "Le village et ses éléments. Lettre Aïn (ع). La valeur de la vérité.",
+          "objectives": [
+            "نطق وكتابة حرف العين (ع)",
+            "وصف القرية وما فيها",
+            "فهم قيمة الصدق من خلال حديث نبوي"
+          ],
+          "prerequisites": [
+            "ar_1ap_l06"
+          ],
+          "duration": "3 heures",
+          "keywords": [
+            "قرية",
+            "حقل",
+            "صدق",
+            "عين"
+          ],
+          "cross_curricular_links": {
+            "islamic": "حديث الصدق: إن الصدق يهدي إلى البر"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "village.png",
+              "farm_animals.png",
+              "ain_letter.png"
+            ],
+            "audio": [
+              "ain_sound.mp3",
+              "sidq_hadith.mp3"
+            ],
+            "exercices_types": [
+              "decrire_image_village",
+              "trace_ain",
+              "vrai_faux_sidq"
+            ]
+          },
+          "freegeny_difficulty": 2,
+          "freegeny_gamification": {
+            "points": 15
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l08",
+          "lesson_order": 8,
+          "maqta_ref": "mq03",
+          "title": "مدينتنا",
+          "title_fr": "Notre ville",
+          "description": "المدينة ومكوناتها. حرف الحاء (ح). احترام الجار.",
+          "description_fr": "La ville et ses composantes. Lettre Ha (ح). Les droits du voisin en Islam.",
+          "objectives": [
+            "نطق وكتابة حرف الحاء (ح)",
+            "التمييز بين القرية والمدينة",
+            "إدراك حقوق الجار في الإسلام"
+          ],
+          "prerequisites": [
+            "ar_1ap_l07"
+          ],
+          "duration": "3 heures",
+          "keywords": [
+            "مدينة",
+            "شارع",
+            "جار",
+            "حاء"
+          ],
+          "cross_curricular_links": {
+            "islamic": "حق الجار في الإسلام",
+            "civic": "مكونات الحي والمدينة"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "city.png",
+              "haa_letter.png"
+            ],
+            "audio": [
+              "haa_sound.mp3"
+            ],
+            "exercices_types": [
+              "village_vs_ville",
+              "trace_haa",
+              "droits_voisin_quiz"
+            ]
+          },
+          "freegeny_difficulty": 2,
+          "freegeny_gamification": {
+            "points": 15
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l09",
+          "lesson_order": 9,
+          "maqta_ref": "mq03",
+          "title": "في الحفل",
+          "title_fr": "À la fête",
+          "description": "وصف حفل في المدرسة أو القرية. حرف الجيم (ج). الأمانة.",
+          "description_fr": "Décrire une fête scolaire ou villageoise. Lettre Jim (ج). L'honnêteté.",
+          "objectives": [
+            "نطق وكتابة حرف الجيم (ج)",
+            "التعبير عن فرحة المناسبات",
+            "فهم معنى الأمانة وأهميتها"
+          ],
+          "prerequisites": [
+            "ar_1ap_l08"
+          ],
+          "duration": "2 heures",
+          "keywords": [
+            "حفل",
+            "فرح",
+            "أمانة",
+            "جيم"
+          ],
+          "cross_curricular_links": {
+            "islamic": "قيمة الأمانة"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "party.png",
+              "jim_letter.png"
+            ],
+            "audio": [
+              "jim_sound.mp3"
+            ],
+            "exercices_types": [
+              "decrire_fete",
+              "trace_jim",
+              "scenario_amanah"
+            ]
+          },
+          "freegeny_difficulty": 2,
+          "freegeny_gamification": {
+            "points": 10
+          }
+        }
+      ]
+    },
+    {
+      "theme_id": 3,
+      "theme_order": 3,
+      "title": "المحور الثالث: الرياضة والتسلية",
+      "title_fr": "Thème 3 : Le sport et les loisirs",
+      "maqaate_correspondants": [
+        "mq04"
+      ],
+      "introduction": "اكتشاف عالم الرياضة والألعاب. تعلم حروف جديدة. التربية على النظافة والنظام والروح الرياضية.",
+      "introduction_fr": "Découverte du monde du sport et des jeux. Nouvelles lettres. Éducation à l'hygiène, la discipline et l'esprit sportif.",
+      "icon": "⚽",
+      "color": "#FF9800",
+      "lessons": [
+        {
+          "lesson_id": "ar_1ap_l10",
+          "lesson_order": 10,
+          "maqta_ref": "mq04",
+          "title": "في معرض الكتاب",
+          "title_fr": "Au salon du livre",
+          "description": "زيارة معرض الكتاب. حرف الصاد (ص). أهمية القراءة.",
+          "description_fr": "Visite d'un salon du livre. Lettre Sad (ص). L'importance de la lecture.",
+          "objectives": [
+            "نطق وكتابة حرف الصاد (ص)",
+            "التعبير عن حب القراءة والكتب",
+            "تطبيق آداب الحديث والحوار"
+          ],
+          "prerequisites": [
+            "ar_1ap_l09"
+          ],
+          "duration": "2 heures",
+          "keywords": [
+            "كتاب",
+            "قراءة",
+            "معرض",
+            "صاد"
+          ],
+          "ressources_freegeny": {
+            "images": [
+              "book_fair.png",
+              "sad_letter.png"
+            ],
+            "audio": [
+              "sad_sound.mp3"
+            ],
+            "exercices_types": [
+              "lecture_mots_sad",
+              "trace_sad",
+              "j_aime_lire_expression"
+            ]
+          },
+          "freegeny_difficulty": 3,
+          "freegeny_gamification": {
+            "points": 15
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l11",
+          "lesson_order": 11,
+          "maqta_ref": "mq04",
+          "title": "مباراة في كرة القدم",
+          "title_fr": "Un match de football",
+          "description": "وصف مباراة رياضية. حرف القاف (ق). الروح الرياضية.",
+          "description_fr": "Décrire un match. Lettre Qaf (ق). L'esprit sportif et le fair-play.",
+          "objectives": [
+            "نطق وكتابة حرف القاف (ق)",
+            "استخدام كلمات مكانية: أمام، خلف، يمين، يسار",
+            "تعلم الروح الرياضية"
+          ],
+          "prerequisites": [
+            "ar_1ap_l10"
+          ],
+          "duration": "3 heures",
+          "keywords": [
+            "كرة",
+            "مباراة",
+            "فريق",
+            "قاف",
+            "يمين",
+            "يسار"
+          ],
+          "ressources_freegeny": {
+            "images": [
+              "football_match.png",
+              "qaf_letter.png"
+            ],
+            "audio": [
+              "qaf_sound.mp3"
+            ],
+            "exercices_types": [
+              "mots_direction",
+              "trace_qaf",
+              "decrire_match_oral"
+            ]
+          },
+          "freegeny_difficulty": 3,
+          "freegeny_gamification": {
+            "points": 15
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l12",
+          "lesson_order": 12,
+          "maqta_ref": "mq04",
+          "title": "أنواع الرياضة",
+          "title_fr": "Les types de sport",
+          "description": "أنواع مختلفة من الرياضات. حرف الطاء (ط) والظاء (ظ). فوائد الرياضة.",
+          "description_fr": "Différents sports. Lettres emphatiques Ta (ط) et Dha (ظ). Bienfaits du sport.",
+          "objectives": [
+            "نطق وكتابة حرف الطاء (ط) والظاء (ظ)",
+            "تسمية أنواع رياضات مختلفة",
+            "إدراك أهمية الرياضة للصحة"
+          ],
+          "prerequisites": [
+            "ar_1ap_l11"
+          ],
+          "duration": "3 heures",
+          "keywords": [
+            "رياضة",
+            "صحة",
+            "طاء",
+            "ظاء",
+            "سباحة",
+            "جري"
+          ],
+          "cross_curricular_links": {
+            "islamic": "آداب النوم والاستيقاظ"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "sports_types.png",
+              "ta_dha_comparison.png"
+            ],
+            "audio": [
+              "ta_emphatique.mp3",
+              "dha_emphatique.mp3"
+            ],
+            "exercices_types": [
+              "classer_sports",
+              "trace_ta_dha",
+              "sante_sport_lien"
+            ]
+          },
+          "freegeny_difficulty": 3,
+          "freegeny_gamification": {
+            "points": 20
+          }
+        }
+      ]
+    },
+    {
+      "theme_id": 4,
+      "theme_order": 4,
+      "title": "المحور الرابع: البيئة والطبيعة",
+      "title_fr": "Thème 4 : L'environnement et la nature",
+      "maqaate_correspondants": [
+        "mq05"
+      ],
+      "introduction": "حب الطبيعة والحفاظ عليها. تعلم حروف جديدة. الرفق بالحيوان. التعرف على الوطن ورموزه.",
+      "introduction_fr": "Amour de la nature et éco-citoyenneté. Nouvelles lettres. Douceur envers les animaux. Symboles de la patrie.",
+      "icon": "🌳",
+      "color": "#8BC34A",
+      "lessons": [
+        {
+          "lesson_id": "ar_1ap_l13",
+          "lesson_order": 13,
+          "maqta_ref": "mq05",
+          "title": "بلدنا الجميلة",
+          "title_fr": "Notre beau pays",
+          "description": "الجزائر وجمالها. حرف الغين (غ) والخاء (خ). الرموز الوطنية.",
+          "description_fr": "L'Algérie et ses beautés. Lettres Ghaïn (غ) et Kha (خ). Symboles nationaux.",
+          "objectives": [
+            "نطق وكتابة حرف الغين (غ) والخاء (خ)",
+            "التعرف على الرموز الوطنية: العلم، النشيد",
+            "التعبير عن حب الوطن",
+            "حفظ مقاطع من النشيد الوطني 'قسماً'"
+          ],
+          "prerequisites": [
+            "ar_1ap_l12"
+          ],
+          "duration": "3 heures",
+          "keywords": [
+            "جزائر",
+            "وطن",
+            "علم",
+            "نشيد",
+            "غين",
+            "خاء"
+          ],
+          "cross_curricular_links": {
+            "civic": "رموز الوطن – العلم الجزائري والنشيد الوطني"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "algeria_map.png",
+              "flag_algerie.png",
+              "ghayn_kha_letters.png"
+            ],
+            "audio": [
+              "national_anthem.mp3",
+              "ghayn_sound.mp3",
+              "kha_sound.mp3"
+            ],
+            "exercices_types": [
+              "colorier_drapeau",
+              "trace_ghayn_kha",
+              "apprendre_hymne",
+              "quiz_symboles"
+            ]
+          },
+          "freegeny_difficulty": 3,
+          "freegeny_gamification": {
+            "points": 20,
+            "badge_eligible": "champion_lettres"
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l14",
+          "lesson_order": 14,
+          "maqta_ref": "mq05",
+          "title": "جولة ممتعة",
+          "title_fr": "Une promenade agréable",
+          "description": "نزهة في الطبيعة. حرف النون (ن) والزاي (ز). المحافظة على البيئة.",
+          "description_fr": "Promenade dans la nature. Lettres Nun (ن) et Zayn (ز). Protection de l'environnement.",
+          "objectives": [
+            "نطق وكتابة حرف النون (ن) والزاي (ز)",
+            "وصف منظر طبيعي",
+            "فهم أهمية المحافظة على البيئة"
+          ],
+          "prerequisites": [
+            "ar_1ap_l13"
+          ],
+          "duration": "2 heures",
+          "keywords": [
+            "طبيعة",
+            "غابة",
+            "جبل",
+            "بيئة",
+            "نون",
+            "زاي"
+          ],
+          "cross_curricular_links": {
+            "civic": "المحافظة على البيئة – لا ترمِ الأوساخ"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "nature_walk.png",
+              "nun_zay_letters.png"
+            ],
+            "audio": [
+              "nun_sound.mp3",
+              "zay_sound.mp3"
+            ],
+            "exercices_types": [
+              "decrire_paysage",
+              "trace_nun_zay",
+              "gestes_verts_quiz"
+            ]
+          },
+          "freegeny_difficulty": 3,
+          "freegeny_gamification": {
+            "points": 15
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l15",
+          "lesson_order": 15,
+          "maqta_ref": "mq05",
+          "title": "في حديقة المنزل",
+          "title_fr": "Dans le jardin de la maison",
+          "description": "النباتات والأزهار. حرف الفاء (ف). الرفق بالحيوان.",
+          "description_fr": "Plantes et fleurs. Lettre Fa (ف). Douceur envers les animaux.",
+          "objectives": [
+            "نطق وكتابة حرف الفاء (ف)",
+            "تسمية بعض النباتات والأزهار",
+            "تطبيق مبدأ الرفق بالحيوان"
+          ],
+          "prerequisites": [
+            "ar_1ap_l14"
+          ],
+          "duration": "2 heures",
+          "keywords": [
+            "حديقة",
+            "زهرة",
+            "شجرة",
+            "رفق",
+            "فاء"
+          ],
+          "cross_curricular_links": {
+            "islamic": "الرفق بالحيوان – حديث المرأة والقطة"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "garden.png",
+              "fa_letter.png",
+              "animals_gentle.png"
+            ],
+            "audio": [
+              "fa_sound.mp3",
+              "rifq_hadith.mp3"
+            ],
+            "exercices_types": [
+              "nommer_plantes",
+              "trace_fa",
+              "scenario_rifq_animal"
+            ]
+          },
+          "freegeny_difficulty": 3,
+          "freegeny_gamification": {
+            "points": 15
+          }
+        }
+      ]
+    },
+    {
+      "theme_id": 5,
+      "theme_order": 5,
+      "title": "المحور الخامس: الصحة والتغذية",
+      "title_fr": "Thème 5 : La santé et l'alimentation",
+      "maqaate_correspondants": [
+        "mq06"
+      ],
+      "introduction": "تعلم العادات الصحية السليمة. حروف جديدة. آداب الأكل الإسلامية. الحقوق والواجبات الصحية.",
+      "introduction_fr": "Acquérir de bonnes habitudes de santé. Nouvelles lettres. Règles islamiques des repas. Droits et devoirs liés à la santé.",
+      "icon": "🍎",
+      "color": "#F44336",
+      "lessons": [
+        {
+          "lesson_id": "ar_1ap_l16",
+          "lesson_order": 16,
+          "maqta_ref": "mq06",
+          "title": "الفحص الطبي",
+          "title_fr": "La visite médicale",
+          "description": "زيارة الطبيب. حرف الواو (و). النظافة الشخصية.",
+          "description_fr": "Chez le médecin. Lettre Waw (و). L'hygiène personnelle.",
+          "objectives": [
+            "نطق وكتابة حرف الواو (و)",
+            "التعبير عن المشاعر (الخوف، الاطمئنان)",
+            "فهم أهمية النظافة الشخصية"
+          ],
+          "prerequisites": [
+            "ar_1ap_l15"
+          ],
+          "duration": "2 heures",
+          "keywords": [
+            "طبيب",
+            "صحة",
+            "نظافة",
+            "واو"
+          ],
+          "cross_curricular_links": {
+            "islamic": "الطهارة – النظافة من الإيمان",
+            "civic": "الحق في الصحة – الوقاية والعلاج"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "doctor.png",
+              "waw_letter.png",
+              "hygiene_steps.png"
+            ],
+            "audio": [
+              "waw_sound.mp3"
+            ],
+            "exercices_types": [
+              "sentiments_quiz",
+              "trace_waw",
+              "hygiene_ordre_correct"
+            ]
+          },
+          "freegeny_difficulty": 3,
+          "freegeny_gamification": {
+            "points": 15
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l17",
+          "lesson_order": 17,
+          "maqta_ref": "mq06",
+          "title": "الغذاء الصحي",
+          "title_fr": "L'alimentation saine",
+          "description": "أصناف الغذاء. حرف الياء (ي). الغذاء المتوازن.",
+          "description_fr": "Types d'aliments. Lettre Ya (ي). L'alimentation équilibrée.",
+          "objectives": [
+            "نطق وكتابة حرف الياء (ي)",
+            "التفريق بين الغذاء الصحي وغير الصحي",
+            "التعبير عن التفضيل: أحب... أكثر من..."
+          ],
+          "prerequisites": [
+            "ar_1ap_l16"
+          ],
+          "duration": "2 heures",
+          "keywords": [
+            "غذاء",
+            "صحة",
+            "فواكه",
+            "خضار",
+            "ياء"
+          ],
+          "ressources_freegeny": {
+            "images": [
+              "healthy_food.png",
+              "ya_letter.png",
+              "food_pyramid.png"
+            ],
+            "audio": [
+              "ya_sound.mp3"
+            ],
+            "exercices_types": [
+              "trier_aliments",
+              "trace_ya",
+              "preference_alimentaire_dialogue"
+            ]
+          },
+          "freegeny_difficulty": 3,
+          "freegeny_gamification": {
+            "points": 15
+          }
+        },
+        {
+          "lesson_id": "ar_1ap_l18",
+          "lesson_order": 18,
+          "maqta_ref": "mq06",
+          "title": "أحافظ على أسناني",
+          "title_fr": "Je prends soin de mes dents",
+          "description": "طرق العناية بالأسنان. الهمزة (ء). الصحة وقاية.",
+          "description_fr": "Prendre soin de ses dents. La Hamza (ء). Prévention = santé.",
+          "objectives": [
+            "نطق وكتابة الهمزة (ء)",
+            "تعلم طريقة غسل الأسنان الصحيحة",
+            "إدراك أن الوقاية خير من العلاج",
+            "حفظ دعاء قبل الأكل وبعده"
+          ],
+          "prerequisites": [
+            "ar_1ap_l17"
+          ],
+          "duration": "2 heures",
+          "keywords": [
+            "أسنان",
+            "صحة",
+            "همزة",
+            "دعاء"
+          ],
+          "cross_curricular_links": {
+            "islamic": "دعاء الأكل: بسم الله – الحمد لله"
+          },
+          "ressources_freegeny": {
+            "images": [
+              "brushing_teeth.png",
+              "hamza_letter.png"
+            ],
+            "audio": [
+              "meal_dua.mp3",
+              "hamza_sound.mp3"
+            ],
+            "exercices_types": [
+              "ordre_brossage_dents",
+              "trace_hamza",
+              "dua_repas_memo"
+            ]
+          },
+          "freegeny_difficulty": 4,
+          "freegeny_gamification": {
+            "points": 20
+          }
+        }
+      ]
+    }
+  ],
+  "sourates_programme": {
+    "_description_fr": "Liste complète des sourates coraniques au programme de la 1AP, avec leur ordre de mémorisation et leur placement dans le curriculum.",
+    "liste": [
+      {
+        "ordre_memorisation": 1,
+        "nom": "سورة الفاتحة",
+        "maqta": "mq01",
+        "versets": 7,
+        "priorite": "haute"
+      },
+      {
+        "ordre_memorisation": 2,
+        "nom": "سورة الناس",
+        "maqta": "mq01",
+        "versets": 6,
+        "priorite": "haute"
+      },
+      {
+        "ordre_memorisation": 3,
+        "nom": "سورة الإخلاص",
+        "maqta": "mq03",
+        "versets": 4,
+        "priorite": "haute"
+      },
+      {
+        "ordre_memorisation": 4,
+        "nom": "سورة الفلق",
+        "maqta": "mq05",
+        "versets": 5,
+        "priorite": "moyenne"
+      },
+      {
+        "ordre_memorisation": 5,
+        "nom": "سورة الكوثر",
+        "maqta": "mq08",
+        "versets": 3,
+        "priorite": "moyenne"
+      },
+      {
+        "ordre_memorisation": 6,
+        "nom": "سورة النصر",
+        "maqta": "mq08",
+        "versets": 3,
+        "priorite": "moyenne"
+      }
+    ],
+    "note_freegeny": "Le module de mémorisation FreeGeny propose écoute, répétition, et quiz de reconnaissance pour chaque sourate. Badge 'حافظ السور' décerné après mémorisation de 3 sourates."
+  },
+  "symboles_nationaux": {
+    "_description_fr": "Référentiel des symboles nationaux algériens enseignés en 1AP, avec les erreurs fréquentes et les contenus FreeGeny associés.",
+    "drapeau": {
+      "nom": "العلم الوطني الجزائري",
+      "description": "Drapeau algérien bicolore vertical (vert à gauche côté mât, blanc à droite) avec croissant rouge et étoile rouge au centre.",
+      "couleurs": [
+        {
+          "position": "gauche (côté mât)",
+          "couleur": "أخضر",
+          "symbolique": "الإسلام والطبيعة"
+        },
+        {
+          "position": "droite",
+          "couleur": "أبيض",
+          "symbolique": "الطهارة والسلام"
+        },
+        {
+          "position": "centre",
+          "couleur": "أحمر (هلال ونجمة)",
+          "symbolique": "دماء الشهداء"
+        }
+      ],
+      "erreur_frequente": "Inversion des couleurs (blanc à gauche au lieu de vert)",
+      "remédiation": "Coloriage guidé avec modèle + mnémotechnique 'vert côté mât'"
+    },
+    "hymne_national": {
+      "titre": "قسماً",
+      "auteur_paroles": "مفدي زكريا",
+      "compositeur_musique": "محمد فوزي",
+      "premier_vers": "قسماً بالنازلات الماحقات",
+      "nombre_couplets": 5,
+      "erreur_frequente": "Confondre auteur des paroles (مفدي زكريا) et compositeur de la musique (محمد فوزي)",
+      "remédiation": "Flashcards distinctives : rôle paroles ≠ rôle musique"
+    },
+    "monnaie": {
+      "nom": "الدينار الجزائري",
+      "abréviation": "DA",
+      "billets": [
+        "200 DA",
+        "500 DA",
+        "1000 DA"
+      ],
+      "pieces": [
+        "5 DA",
+        "10 DA",
+        "20 DA",
+        "50 DA"
+      ],
+      "erreur_frequente": "Confusion billets / pièces",
+      "remédiation": "Jeu du marchand + tri d'images de dinars algériens authentiques"
+    },
+    "fetes_nationales": [
+      {
+        "nom": "عيد الاستقلال",
+        "date": "5 جويلية",
+        "annee_origine": 1962
+      },
+      {
+        "nom": "عيد الثورة",
+        "date": "1 نوفمبر",
+        "annee_origine": 1954
+      }
+    ]
+  },
+  "ressources_pedagogiques": {
+    "_description_fr": "Référentiel des ressources pédagogiques recommandées pour l'enseignement et l'apprentissage en 1AP arabe.",
+    "materiel_classe": [
+      "كتابي في اللغة العربية (ONPS) + دفتر الأنشطة",
+      "بطاقات الحروف (فلاش كارد) – 28 cartes + formes",
+      "مصحف للتربية الإسلامية (petite taille, vocalisé)",
+      "ألوان، مقص، ورق ملون للمشاريع",
+      "صور العائلة، المدرسة، الطبيعة, الحيوانات",
+      "لوحة الحروف الهجائية (affiche murale)",
+      "كراسة الخط (cahier de calligraphie)"
+    ],
+    "ressources_numeriques_freegeny": [
+      "Fiches de lettres interactives avec animation du tracé",
+      "Enregistrements audio TTS arabe fusha pour chaque lettre, mot et texte",
+      "Exercices interactifs : association, glisser-déposer, complétion",
+      "Module mémorisation sourates : écoute, répétition, quiz",
+      "Générateur d'arbre généalogique illustré",
+      "Jeux de discrimination visuelle des lettres",
+      "Mode 'lecture lente' avec surlignage synchronisé",
+      "Tableau de progression élève pour les parents"
+    ],
+    "implementation_freegeny": {
+      "progression_adaptative": true,
+      "gamification": {
+        "badges": [
+          {
+            "id": "lecteur_debutant",
+            "nom_ar": "قارئ مبتدئ",
+            "condition": "Lire 10 mots correctement"
+          },
+          {
+            "id": "lecteur_courant",
+            "nom_ar": "قارئ صغير",
+            "condition": "Lire 50 mots correctement"
+          },
+          {
+            "id": "hafiz_sourates",
+            "nom_ar": "حافظ السور",
+            "condition": "Mémoriser 3 sourates"
+          },
+          {
+            "id": "bon_eleve",
+            "nom_ar": "تلميذ مهذب",
+            "condition": "Compléter 5 exercices sans erreur"
+          },
+          {
+            "id": "champion_lettres",
+            "nom_ar": "بطل الحروف",
+            "condition": "Reconnaître les 28 lettres de l'alphabet"
+          }
+        ],
+        "defis_quotidiens": [
+          "تعرف على حرف جديد",
+          "احفظ كلمة",
+          "ردد آية"
+        ],
+        "classement": false
+      },
+      "accessibilite": {
+        "tts_vitesse_defaut": 0.85,
+        "tts_vitesse_apprentissage": 0.65,
+        "images_grandes_colorees": true,
+        "mode_nuit": true,
+        "taille_police_min": 18
+      }
+    }
+  },
+  "competences_fin_annee": {
+    "_description_fr": "Compétences attendues en fin de 1AP, utilisées par FreeGeny pour l'évaluation sommative annuelle et le bilan de progression.",
+    "arabe": [
+      {
+        "code": "CA01",
+        "competence": "Reconnaître les 28 lettres de l'alphabet arabe dans leurs 4 positions (initiale, médiane, finale, isolée)",
+        "niveau_maitrise": "maîtrisé"
+      },
+      {
+        "code": "CA02",
+        "competence": "Lire des mots de 2 à 3 syllabes avec voyelles courtes",
+        "niveau_maitrise": "maîtrisé"
+      },
+      {
+        "code": "CA03",
+        "competence": "Écrire les lettres et des mots simples sur les lignes",
+        "niveau_maitrise": "maîtrisé"
+      },
+      {
+        "code": "CA04",
+        "competence": "Comprendre un texte de 3 à 5 phrases et répondre à des questions simples",
+        "niveau_maitrise": "en_cours"
+      },
+      {
+        "code": "CA05",
+        "competence": "Utiliser correctement هذا / هذه et les pronoms personnels de base",
+        "niveau_maitrise": "maîtrisé"
+      }
+    ],
+    "islamique": [
+      {
+        "code": "CI01",
+        "competence": "Réciter la Fatiha et les sourates du programme (Nas, Ikhlas, Falaq, Kawthar, Nasr)",
+        "niveau_maitrise": "maîtrisé"
+      },
+      {
+        "code": "CI02",
+        "competence": "Connaître les adab du repas, du sommeil, de l'entrée dans la maison et des salutations",
+        "niveau_maitrise": "maîtrisé"
+      },
+      {
+        "code": "CI03",
+        "competence": "Appliquer les valeurs islamiques de base : صدق، أمانة، رحمة، تعاون، طهارة",
+        "niveau_maitrise": "en_cours"
+      }
+    ],
+    "civique": [
+      {
+        "code": "CC01",
+        "competence": "Identifier et nommer les symboles nationaux (drapeau, hymne, monnaie)",
+        "niveau_maitrise": "maîtrisé"
+      },
+      {
+        "code": "CC02",
+        "competence": "Nommer les documents d'identité et les distinguer des objets scolaires",
+        "niveau_maitrise": "en_cours"
+      },
+      {
+        "code": "CC03",
+        "competence": "Appliquer les comportements de respect, de politesse et de coopération",
+        "niveau_maitrise": "maîtrisé"
+      }
+    ]
+  },
+  "conseils_parents": {
+    "_description_fr": "Conseils pédagogiques à destination des parents, affichés dans le tableau de bord parent de FreeGeny.",
+    "semestre_1": [
+      "Rituel quotidien : 10 minutes de lecture/écriture chaque jour (revoir les lettres apprises, lire des syllabes)",
+      "Jeux de lettres : cartes, pâte à modeler, aimants sur le réfrigérateur",
+      "Répétition des invocations : intégrez les formules dans la vie quotidienne (avant de manger, en sortant)",
+      "Valorisation des comportements : félicitez votre enfant quand il applique les valeurs apprises",
+      "Exploration du quartier : nommez les éléments (maison, mosquée, arbre...) en arabe classique"
+    ],
+    "semestre_2": [
+      "Lecture quotidienne à voix haute : 5 à 10 minutes – posez 2-3 questions simples",
+      "Jeux de rôle : simulez des situations (au marché, chez le médecin) pour réutiliser le vocabulaire",
+      "Dictée : 3 à 5 mots par jour, puis une phrase courte en fin de semaine",
+      "Fierté nationale : commentez ensemble le drapeau, l'hymne lors des fêtes nationales",
+      "Suivi des révisions : utilisez les fiches FreeGeny avant chaque évaluation"
+    ],
+    "semestre_3": [
+      "Encouragez votre enfant à écrire une petite phrase sur sa journée",
+      "Écoutez ensemble des récitations de sourates et répétez",
+      "Utilisez les évaluations FreeGeny pour identifier les points à renforcer",
+      "Célébrez chaque badge obtenu sur FreeGeny – la valorisation motive l'enfant"
+    ]
+  }
+}

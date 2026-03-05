@@ -1,0 +1,905 @@
+{
+  "metadata": {
+    "_file_info": {
+      "file_id": "FG-DZ-1AP-AR-EVAL-V2",
+      "schema_version": "2.0.0",
+      "content_language": "ar",
+      "ui_language": "ar",
+      "text_direction": "rtl",
+      "platform": "FreeGeny",
+      "__ANNOTATION_EVALUATIONS__": "This file is the gold-standard template for evaluations. DeepSeek MUST follow this precise structure when generating evaluations for other lessons, levels, and countries."
+    },
+    "evaluation_types": {
+      "flash": {
+        "label": "🟡 Flash",
+        "duration": "10 minutes",
+        "purpose": "Quick assessment at the end of a lesson."
+      },
+      "hebdomadaire": {
+        "label": "🟢 Hebdomadaire",
+        "duration": "20 minutes",
+        "purpose": "Weekly review of 2-3 lessons."
+      },
+      "diagnostique": {
+        "label": "🔵 Diagnostique",
+        "duration": "30 minutes",
+        "purpose": "End of Trimestre / Sequence deep assessment."
+      }
+    }
+  },
+  "evaluations": [
+    {
+      "evaluation_id": "eval_001",
+      "type": "🟡 Flash",
+      "duration": "10 minutes",
+      "total_score": "10 points",
+      "title": "تقييم حول الدرس 1",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 3,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ حرف الألف والباء",
+          "correct": "حرف",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 3,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ البسملة أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 4,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ احترام الكبير؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_002",
+      "type": "🟡 Flash",
+      "duration": "10 minutes",
+      "total_score": "10 points",
+      "title": "تقييم حول الدرس 2",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 3,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ حرف التاء والثاء",
+          "correct": "حرف",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 3,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ سورة الفاتحة أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 4,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ التعاون في المنزل؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_003",
+      "type": "🟡 Flash",
+      "duration": "10 minutes",
+      "total_score": "10 points",
+      "title": "تقييم حول الدرس 3",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 3,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ حرف الجيم والحاء",
+          "correct": "حرف",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 3,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ سورة الناس أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 4,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ النظافة المدرسية؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_004",
+      "type": "🟢 Hebdomadaire",
+      "duration": "20 minutes",
+      "total_score": "20 points",
+      "title": "تقييم أسبوعي 1",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ الحروف السابقة",
+          "correct": "الحروف",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 5,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ مراجع أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 5,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ السلوك في المدرسة؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        },
+        {
+          "q_id": "q4",
+          "type": "reading",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "اِقْرَأ الكَلِمَاتِ وَصِلْهَا بِالصُّوَرِ.",
+          "correct": "| Mot | Image |\n|---|---|\n| كتاب | book.png |\n| قلم | pen.png |",
+          "explanation": "Matching words to images gauges reading comprehension.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C3",
+          "parent_tip_fr": "Aidez-le à pointer et prononcer.",
+          "__ANNOTATION__": "DeepSeek should generate markdown tables for matching questions."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_005",
+      "type": "🟡 Flash",
+      "duration": "10 minutes",
+      "total_score": "10 points",
+      "title": "تقييم حول الدرس 4",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 3,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ حرف الخاء والدال",
+          "correct": "حرف",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 3,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ الصدق أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 4,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ احترام الزملاء؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_006",
+      "type": "🟡 Flash",
+      "duration": "10 minutes",
+      "total_score": "10 points",
+      "title": "تقييم حول الدرس 5",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 3,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ حرف الذال والراء",
+          "correct": "حرف",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 3,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ سورة الإخلاص أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 4,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ حماية البيئة؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_007",
+      "type": "🟢 Hebdomadaire",
+      "duration": "20 minutes",
+      "total_score": "20 points",
+      "title": "تقييم أسبوعي 2",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ حروف وكلمات",
+          "correct": "حروف",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 5,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ مراجع أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 5,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ السلوك الأخلاقي؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        },
+        {
+          "q_id": "q4",
+          "type": "reading",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "اِقْرَأ الكَلِمَاتِ وَصِلْهَا بِالصُّوَرِ.",
+          "correct": "| Mot | Image |\n|---|---|\n| كتاب | book.png |\n| قلم | pen.png |",
+          "explanation": "Matching words to images gauges reading comprehension.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C3",
+          "parent_tip_fr": "Aidez-le à pointer et prononcer.",
+          "__ANNOTATION__": "DeepSeek should generate markdown tables for matching questions."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_008",
+      "type": "🔵 Diagnostique",
+      "duration": "30 minutes",
+      "total_score": "20 points",
+      "title": "تقويم الفصل الأول",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ كل الحروف من 1 إلى 5",
+          "correct": "كل",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 5,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ القرآن والأدعية أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 5,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ القواعد المدنية؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        },
+        {
+          "q_id": "q4",
+          "type": "reading",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "اِقْرَأ الكَلِمَاتِ وَصِلْهَا بِالصُّوَرِ.",
+          "correct": "| Mot | Image |\n|---|---|\n| كتاب | book.png |\n| قلم | pen.png |",
+          "explanation": "Matching words to images gauges reading comprehension.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C3",
+          "parent_tip_fr": "Aidez-le à pointer et prononcer.",
+          "__ANNOTATION__": "DeepSeek should generate markdown tables for matching questions."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_009",
+      "type": "🟡 Flash",
+      "duration": "10 minutes",
+      "total_score": "10 points",
+      "title": "تقييم حول الدرس 6",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 3,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ الزاي والسين",
+          "correct": "الزاي",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 3,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ الرفق بالحيوان أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 4,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ العلم الوطني؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_010",
+      "type": "🟡 Flash",
+      "duration": "10 minutes",
+      "total_score": "10 points",
+      "title": "تقييم حول الدرس 7",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 3,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ الشين والصاد",
+          "correct": "الشين",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 3,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ سورة الفلق أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 4,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ الروح الرياضية؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_011",
+      "type": "🟢 Hebdomadaire",
+      "duration": "20 minutes",
+      "total_score": "20 points",
+      "title": "تقييم أسبوعي 3",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ حروف وكلمات جديدة",
+          "correct": "حروف",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 5,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ مراجعة أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 5,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ احترام الآخر؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        },
+        {
+          "q_id": "q4",
+          "type": "reading",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "اِقْرَأ الكَلِمَاتِ وَصِلْهَا بِالصُّوَرِ.",
+          "correct": "| Mot | Image |\n|---|---|\n| كتاب | book.png |\n| قلم | pen.png |",
+          "explanation": "Matching words to images gauges reading comprehension.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C3",
+          "parent_tip_fr": "Aidez-le à pointer et prononcer.",
+          "__ANNOTATION__": "DeepSeek should generate markdown tables for matching questions."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_012",
+      "type": "🟡 Flash",
+      "duration": "10 minutes",
+      "total_score": "10 points",
+      "title": "تقييم حول الدرس 8",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 3,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ الضاد والطاء",
+          "correct": "الضاد",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 3,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ النظافة من الإيمان أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 4,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ النشيد الوطني؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_013",
+      "type": "🟡 Flash",
+      "duration": "10 minutes",
+      "total_score": "10 points",
+      "title": "تقييم حول الدرس 9",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 3,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ الظاء والعين",
+          "correct": "الظاء",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 3,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ سورة الكوثر أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 4,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ الدفتر الصحي؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_014",
+      "type": "🟢 Hebdomadaire",
+      "duration": "20 minutes",
+      "total_score": "20 points",
+      "title": "تقييم أسبوعي 4",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ دمج الحروف",
+          "correct": "دمج",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 5,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ السور القصار أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 5,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ رموز وطنية؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        },
+        {
+          "q_id": "q4",
+          "type": "reading",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "اِقْرَأ الكَلِمَاتِ وَصِلْهَا بِالصُّوَرِ.",
+          "correct": "| Mot | Image |\n|---|---|\n| كتاب | book.png |\n| قلم | pen.png |",
+          "explanation": "Matching words to images gauges reading comprehension.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C3",
+          "parent_tip_fr": "Aidez-le à pointer et prononcer.",
+          "__ANNOTATION__": "DeepSeek should generate markdown tables for matching questions."
+        }
+      ]
+    },
+    {
+      "evaluation_id": "eval_015",
+      "type": "🔵 Diagnostique",
+      "duration": "30 minutes",
+      "total_score": "20 points",
+      "title": "تقويم الفصل الثاني",
+      "questions": [
+        {
+          "q_id": "q1",
+          "type": "fill_blank",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "أَكْمِلِ الكَلِمَة بِالحَرْفِ النَّاقِص: مَوْضُوعنَا هُوَ شامل الفصل الثاني",
+          "correct": "شامل",
+          "explanation": "This tests basic letter recognition and recall.",
+          "bloom_level": "1_remember",
+          "skill_ref": "C2",
+          "parent_tip_fr": "Lisez la question à l'enfant s'il ne sait pas lire la consigne totale.",
+          "__ANNOTATION__": "DeepSeek should generate realistic short fill-in-the-blanks matching the evaluated lesson."
+        },
+        {
+          "q_id": "q2",
+          "type": "true_false",
+          "domaine": "islamique",
+          "points": 5,
+          "enonce": "ضَعْ 'صَحِيح' أَوْ 'خَطَأ': مِنْ جميع السور أَنْ نَكْذِبَ.",
+          "correct": "❌ خَطَأ (Faux)",
+          "explanation": "Evaluates the comprehension of Islamic moral lessons.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Demandez 'Est-ce vrai ou faux?' pour l'encourager à réfléchir sur la valeur.",
+          "__ANNOTATION__": "Islamic context evaluations often use true/false or recitation checks."
+        },
+        {
+          "q_id": "q3",
+          "type": "multiple_choice",
+          "domaine": "civique",
+          "points": 5,
+          "enonce": "مَا هُوَ السُّلُوك الصَّحِيح حَوْلَ التربية المدنية الشاملة؟",
+          "correct_option": 1,
+          "options": [
+            "السُّلُوك الخَاطِئ",
+            "السُّلُوك الصَّحِيح",
+            "لَا شَيْء مِمَّا سَبَق"
+          ],
+          "explanation": "Civic scenarios are best tested with multiple choice behavioral questions.",
+          "bloom_level": "3_apply",
+          "skill_ref": "C6",
+          "parent_tip_fr": "Mettez-le en situation: 'Si tu étais dans cette situation, que ferais-tu?'",
+          "__ANNOTATION__": "DeepSeek should provide 3 realistic options for civic behaviors."
+        },
+        {
+          "q_id": "q4",
+          "type": "reading",
+          "domaine": "arabe",
+          "points": 5,
+          "enonce": "اِقْرَأ الكَلِمَاتِ وَصِلْهَا بِالصُّوَرِ.",
+          "correct": "| Mot | Image |\n|---|---|\n| كتاب | book.png |\n| قلم | pen.png |",
+          "explanation": "Matching words to images gauges reading comprehension.",
+          "bloom_level": "2_understand",
+          "skill_ref": "C3",
+          "parent_tip_fr": "Aidez-le à pointer et prononcer.",
+          "__ANNOTATION__": "DeepSeek should generate markdown tables for matching questions."
+        }
+      ]
+    }
+  ]
+}

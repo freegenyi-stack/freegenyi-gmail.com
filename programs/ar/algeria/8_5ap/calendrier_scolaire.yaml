@@ -1,0 +1,13 @@
+Dates des vacances, examens, etc.
+Dates clés (vacances, examens) pour personnaliser l'expérience.
+
+EXEMPLE
+annee_scolaire: 2025-2026
+vacances:
+  automne: "2025-10-25..2025-11-02"
+  hiver: "2025-12-20..2026-01-04"
+  printemps: "2026-03-28..2026-04-12"
+examens:
+  semestre1: "2025-12-10..2025-12-20"
+  semestre2: "2026-03-15..2026-03-25"
+  semestre3: "2026-06-01..2026-06-15"

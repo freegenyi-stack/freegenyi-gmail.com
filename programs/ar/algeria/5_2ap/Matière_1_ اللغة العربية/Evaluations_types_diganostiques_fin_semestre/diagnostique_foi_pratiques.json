@@ -1,0 +1,57 @@
+{
+    "id": "dz-2ap-diagnostique-foi_pratiques",
+    "type": "diagnostic",
+    "difficulte": "moyenne",
+    "consigne": "أجب على الأسئلة لتقييم فهمك لمبادئ الإيمان والعبادات:",
+    "chapitre": "foi_pratiques",
+    "items": [
+        {
+            "type": "qcm",
+            "question": "كم عدد أركان الإيمان؟",
+            "options": [
+                "5 أركان",
+                "6 أركان",
+                "7 أركان"
+            ],
+            "bonne_reponse": 1
+        },
+        {
+            "type": "vrai_faux",
+            "question": "الوضوء واجب قبل أداء الصلاة.",
+            "reponse": true
+        },
+        {
+            "type": "association",
+            "question": "اربط كل صلاة بعدد ركعاتها:",
+            "items": [
+                {
+                    "left": "الصبح",
+                    "right": "2"
+                },
+                {
+                    "left": "المغرب",
+                    "right": "3"
+                },
+                {
+                    "left": "العشاء",
+                    "right": "4"
+                }
+            ]
+        },
+        {
+            "type": "completion",
+            "text": "الذي أطعمهم من [...] وآمنهم من [...] (سورة قريش).",
+            "reponses": [
+                "جوع",
+                "خوف"
+            ]
+        }
+    ],
+    "bareme": 10,
+    "points": [
+        2,
+        2,
+        3,
+        3
+    ]
+}

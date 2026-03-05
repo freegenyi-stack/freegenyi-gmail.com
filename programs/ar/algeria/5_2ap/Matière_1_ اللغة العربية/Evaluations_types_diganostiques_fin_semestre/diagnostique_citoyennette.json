@@ -1,0 +1,44 @@
+{
+    "id": "dz-2ap-diagnostique-citoyennette",
+    "type": "diagnostic",
+    "difficulte": "moyenne",
+    "consigne": "أجب على الأسئلة لتقييم فهمك لمبادئ المواطنة وحماية البيئة:",
+    "chapitre": "citoyennette",
+    "items": [
+        {
+            "type": "qcm",
+            "question": "ما هي فوائد الشجرة للإنسان؟",
+            "options": [
+                "الظل والثمار فقط",
+                "الهواء النقي فقط",
+                "كل ما سبق"
+            ],
+            "bonne_reponse": 2
+        },
+        {
+            "type": "vrai_faux",
+            "question": "لا يحق لي اللعب في الحديقة العامة لأنها ملكية خاصة.",
+            "reponse": false
+        },
+        {
+            "type": "association",
+            "question": "اربط كل مرفق بنوعه:",
+            "items": [
+                {
+                    "left": "المستشفى",
+                    "right": "ملكية عامة"
+                },
+                {
+                    "left": "ملابسي",
+                    "right": "ملكية خاصة"
+                }
+            ]
+        }
+    ],
+    "bareme": 10,
+    "points": [
+        3,
+        3,
+        4
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "id": "dz-2ap-islamique-noms_allah-ex007",
+    "type": "association",
+    "difficulte": "facile",
+    "consigne": "اربط كل اسم من أسماء الله الحسنى بمعناه:",
+    "chapitre": "noms_allah",
+    "corrige_inclus": true,
+    "items": [
+        {
+            "left": "الخالق",
+            "right": "الذي أوجد كل شيء من العدم",
+            "explication": "الله هو خالق الكون وما فيه."
+        },
+        {
+            "left": "الرازق",
+            "right": "الذي يعطي الطعام والشراب لكل الكائنات",
+            "explication": "الله يرزق الإنسان والحيوان وكل كائن حي."
+        },
+        {
+            "left": "القادر",
+            "right": "الذي لا يعجزه شيء في الأرض ولا في السماء",
+            "explication": "الله على كل شيء قدير."
+        }
+    ],
+    "tags": [
+        "أسماء الله الحسنى",
+        "العقيدة"
+    ],
+    "points": 1
+}

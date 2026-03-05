@@ -1,0 +1,51 @@
+{
+    "logo": "FreeGeny",
+    "menu": {
+        "about": "من نحن",
+        "mission": "مهمتنا",
+        "app": "التطبيق",
+        "parents": {
+            "main": "أولياء الأمور",
+            "dropdown": {
+                "dashboard": "لوحة تحكم الآباء",
+                "progress": "متابعة التقدم",
+                "communication": "التواصل مع المعلمين",
+                "resources": "موارد تعليمية",
+                "security": "الأمن والخصوصية"
+            }
+        },
+        "schools": {
+            "main": "المدارس",
+            "dropdown": {
+                "management": "إدارة المؤسسة",
+                "curriculum": "المناهج الدراسية",
+                "teachers": "فضاء المعلمين",
+                "analytics": "التحليلات والتقارير"
+            }
+        },
+        "ongs": {
+            "main": "المنظمات غير الحكومية",
+            "dropdown": {
+                "projects": "المشاريع التعليمية",
+                "impact": "قياس الأثر",
+                "partnership": "الشراكات"
+            }
+        },
+        "pricing": {
+            "main": "الأسعار",
+            "dropdown": {
+                "individual": "فردي",
+                "family": "عائلي",
+                "institutional": "مؤسساتي"
+            }
+        },
+        "freeTrial": "تجربة مجانية",
+        "login": "تسجيل الدخول"
+    },
+    "languages": {
+        "fr": "Français",
+        "en": "English",
+        "es": "Español",
+        "ar": "العربية"
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "id": "dz-2ap-islamique-wudu-ex005",
+    "type": "classement",
+    "difficulte": "moyenne",
+    "consigne": "رتب مراحل الوضوء حسب تسلسلها الصحيح (من 1 إلى 4):",
+    "chapitre": "wudu",
+    "corrige_inclus": true,
+    "items": [
+        {
+            "text": "غسل الوجه",
+            "ordre": 2,
+            "explication": "بعد المضمضة والاستنشاق، نغسل الوجه."
+        },
+        {
+            "text": "المضمضة",
+            "ordre": 1,
+            "explication": "نبدأ بالمضمضة بعد غسل اليدين إلى الرسغين."
+        },
+        {
+            "text": "غسل اليدين إلى المرفقين",
+            "ordre": 3,
+            "explication": "بعد غسل الوجه، ننتقل لغسل اليدين إلى المرفقين."
+        },
+        {
+            "text": "مسح الرأس",
+            "ordre": 4,
+            "explication": "الخطوة التالية هي مسح الرأس بماء جديد."
+        }
+    ],
+    "tags": [
+        "الوضوء",
+        "الترتيب"
+    ],
+    "points": 2
+}

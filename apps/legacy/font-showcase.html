@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeGeny - Sélection de Polices</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;600;700;900&family=Playfair+Display:wght@400;700;900&family=Merriweather:wght@300;400;700;900&family=Oswald:wght@300;400;500;600;700&family=Bebas+Neue&family=Righteous&family=Fredoka:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Nunito+Sans:wght@300;400;600;700;800;900&family=Sofia+Sans+Extra:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Geologica:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=Urbanist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00C2CB, #FF6B9D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .fonts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .font-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .font-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .font-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #00C2CB;
+            margin-bottom: 5px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .font-category {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .font-preview {
+            margin-bottom: 20px;
+        }
+        
+        .preview-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+            line-height: 1.2;
+        }
+        
+        .preview-body {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .preview-accent {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #FF6B9D;
+            margin-bottom: 10px;
+        }
+        
+        .font-uses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .use-tag {
+            background: linear-gradient(45deg, #00C2CB, #FF6B9D);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .recommended {
+            border: 2px solid #00C2CB;
+            position: relative;
+        }
+        
+        .recommended::before {
+            content: "⭐ RECOMMANDÉ";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: linear-gradient(45deg, #00C2CB, #FF6B9D);
+            color: white;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .tech-modern {
+            border-left: 4px solid #00C2CB;
+        }
+        
+        .playful-education {
+            border-left: 4px solid #FF6B9D;
+        }
+        
+        .professional {
+            border-left: 4px solid #764ba2;
+        }
+        
+        .elegant {
+            border-left: 4px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FreeGeny - Sélection de Polices</h1>
+            <p>Découvrez les polices parfaites pour votre plateforme éducative moderne</p>
+        </div>
+        
+        <div class="fonts-grid">
+            <!-- Tech Modern -->
+            <div class="font-card tech-modern recommended">
+                <div class="font-name">Space Grotesk</div>
+                <div class="font-category">Tech Modern • Géométrique</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Space Grotesk', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Space Grotesk', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Space Grotesk', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Titres</span>
+                    <span class="use-tag">Hero</span>
+                    <span class="use-tag">Logo</span>
+                    <span class="use-tag">Tech</span>
+                </div>
+            </div>
+            
+            <div class="font-card tech-modern">
+                <div class="font-name">Inter</div>
+                <div class="font-category">Tech Modern • Épurée</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Inter', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Inter', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Inter', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Body</span>
+                    <span class="use-tag">UI</span>
+                    <span class="use-tag">Lisibilité</span>
+                    <span class="use-tag">Moderne</span>
+                </div>
+            </div>
+            
+            <div class="font-card tech-modern">
+                <div class="font-name">Plus Jakarta Sans</div>
+                <div class="font-category">Tech Modern • Corporate</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Plus Jakarta Sans', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Plus Jakarta Sans', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Plus Jakarta Sans', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Professionnel</span>
+                    <span class="use-tag">Corporate</span>
+                    <span class="use-tag">Body</span>
+                    <span class="use-tag">Clean</span>
+                </div>
+            </div>
+            
+            <div class="font-card tech-modern">
+                <div class="font-name">Manrope</div>
+                <div class="font-category">Tech Modern • Élégante</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Manrope', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Manrope', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Manrope', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Moderne</span>
+                    <span class="use-tag">Élégant</span>
+                    <span class="use-tag">Versatile</span>
+                    <span class="use-tag">Clean</span>
+                </div>
+            </div>
+            
+            <!-- Playful Education -->
+            <div class="font-card playful-education">
+                <div class="font-name">Nunito</div>
+                <div class="font-category">Playful Education • Amicale</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Nunito', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Nunito', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Nunito', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Éducation</span>
+                    <span class="use-tag">Enfants</span>
+                    <span class="use-tag">Accessible</span>
+                    <span class="use-tag">Doux</span>
+                </div>
+            </div>
+            
+            <div class="font-card playful-education recommended">
+                <div class="font-name">Fredoka</div>
+                <div class="font-category">Playful Education • Fun</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Fredoka', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Fredoka', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Fredoka', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Logo</span>
+                    <span class="use-tag">Enfants</span>
+                    <span class="use-tag">Jeu</span>
+                    <span class="use-tag">Amusant</span>
+                </div>
+            </div>
+            
+            <div class="font-card playful-education">
+                <div class="font-name">Comfortaa</div>
+                <div class="font-category">Playful Education • Douce</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Comfortaa', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Comfortaa', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Comfortaa', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Accents</span>
+                    <span class="use-tag">Doux</span>
+                    <span class="use-tag">Rond</span>
+                    <span class="use-tag">Chaleureux</span>
+                </div>
+            </div>
+            
+            <div class="font-card playful-education">
+                <div class="font-name">Quicksand</div>
+                <div class="font-category">Playful Education • Légère</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Quicksand', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Quicksand', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Quicksand', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Léger</span>
+                    <span class="use-tag">Aéré</span>
+                    <span class="use-tag">Moderne</span>
+                    <span class="use-tag">Accessible</span>
+                </div>
+            </div>
+            
+            <!-- Professional -->
+            <div class="font-card professional">
+                <div class="font-name">Montserrat</div>
+                <div class="font-category">Professional • Urbaine</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Montserrat', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Montserrat', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Montserrat', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Titres</span>
+                    <span class="use-tag">Corporate</span>
+                    <span class="use-tag">Sérieux</span>
+                    <span class="use-tag">Confiant</span>
+                </div>
+            </div>
+            
+            <div class="font-card professional">
+                <div class="font-name">Poppins</div>
+                <div class="font-category">Professional • Amicale</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Poppins', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Poppins', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Poppins', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Versatile</span>
+                    <span class="use-tag">Moderne</span>
+                    <span class="use-tag">Corporate</span>
+                    <span class="use-tag">Amical</span>
+                </div>
+            </div>
+            
+            <div class="font-card professional">
+                <div class="font-name">Raleway</div>
+                <div class="font-category">Professional • Élégante</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Raleway', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Raleway', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Raleway', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Élégant</span>
+                    <span class="use-tag">Sophistiqué</span>
+                    <span class="use-tag">Premium</span>
+                    <span class="use-tag">Clean</span>
+                </div>
+            </div>
+            
+            <!-- Display/Impact -->
+            <div class="font-card elegant">
+                <div class="font-name">Bebas Neue</div>
+                <div class="font-category">Display • Impact</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Bebas Neue', sans-serif;">FREEGENY</div>
+                    <div class="preview-body" style="font-family: 'Inter', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Bebas Neue', sans-serif;">DÉBLOQUER LE GÉNIE INTÉRIEUR</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Hero</span>
+                    <span class="use-tag">Impact</span>
+                    <span class="use-tag">Majuscules</span>
+                    <span class="use-tag">Fort</span>
+                </div>
+            </div>
+            
+            <div class="font-card elegant">
+                <div class="font-name">Righteous</div>
+                <div class="font-category">Display • Fun</div>
+                <div class="font-preview">
+                    <div class="preview-heading" style="font-family: 'Righteous', sans-serif;">FreeGeny</div>
+                    <div class="preview-body" style="font-family: 'Inter', sans-serif;">L'éducation du futur, aujourd'hui</div>
+                    <div class="preview-accent" style="font-family: 'Righteous', sans-serif;">Débloquer le génie intérieur</div>
+                </div>
+                <div class="font-uses">
+                    <span class="use-tag">Logo</span>
+                    <span class="use-tag">Fun</span>
+                    <span class="use-tag">Casual</span>
+                    <span class="use-tag">Amusant</span>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; color: white; margin-top: 40px;">
+            <p style="font-size: 1.1rem; opacity: 0.9;">💡 <strong>Conseil FreeGeny :</strong> Combinez 2-3 polices maximum pour une cohérence visuelle parfaite</p>
+        </div>
+    </div>
+</body>
+</html>

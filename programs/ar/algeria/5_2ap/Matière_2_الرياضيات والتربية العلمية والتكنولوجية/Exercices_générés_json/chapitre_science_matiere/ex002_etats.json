@@ -1,0 +1,38 @@
+{
+    "id": "dz-2ap-science-matiere-ex002",
+    "type": "classification",
+    "difficulte": "سهلة",
+    "consigne": "صنف المواد التالية في الجدول (صلبة أو سائلة):",
+    "chapitre": "science_matiere",
+    "items": [
+        {
+            "label": "حليب",
+            "category": "سائلة"
+        },
+        {
+            "label": "خشب",
+            "category": "صلبة"
+        },
+        {
+            "label": "عصير",
+            "category": "سائلة"
+        },
+        {
+            "label": "حديد",
+            "category": "صلبة"
+        },
+        {
+            "label": "زيت",
+            "category": "سائلة"
+        }
+    ],
+    "categories": [
+        "صلبة",
+        "سائلة"
+    ],
+    "tags": [
+        "المادة",
+        "صلب_سائل"
+    ],
+    "points": 5
+}

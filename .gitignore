@@ -1,0 +1,100 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# ===== FreeGeny Web Project =====
+
+# Fichiers de configuration sensibles (NE JAMAIS POUSSER)
+api/config.php
+api/test_db.php
+
+# Fichiers de test temporaires
+test_*.html
+test_*.php
+debug_*.php
+
+# Artifacts (documentation générée par l'IA)
+.gemini/
+
+# Fichiers de base de données
+*.sql
+*.db
+*.sqlite
+
+# Fichiers système
+Thumbs.db
+desktop.ini
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*.tmp
+*.temp
+*~
+
+# Node modules (si utilisé plus tard)
+node_modules/
+package-lock.json
+
+# Environnements
+.env
+.env.local
+
+# Next.js
+.next/
+out/
+build/
+dist/
+node_modules/
+yarn-error.log
+
+# Temporary and cleanup files
+freegeny_update.zip
+deploy_error.log
+*_search.json
+
+# Large files rejected by GitHub
+01- السنة الأولى الكتاب المدرسي  كتابي في الرياضيات، العلمية.pdf
+

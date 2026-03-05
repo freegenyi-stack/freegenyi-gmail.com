@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - ਸਿੱਖਿਆ ਵਿੱਚ ਕ੍ਰਾਂਤੀ",
+        "description": "FreeGeny ਦੇ ਨਵੀਨਤਮ ਪਲੇਟਫਾਰਮ ਨਾਲ ਸਿੱਖ ਰਹੇ ਲੱਖਾਂ ਲੋਕਾਂ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ"
+    },
+    "home": {
+        "hero": {
+            "title": "ਸੀਮਾਵਾਂ ਤੋਂ ਬਿਨਾਂ ਸਿੱਖੋ",
+            "subtitle": "ਵਿਸ਼ਵ ਪੱਧਰੀ ਸਿੱਖਿਆ ਤੱਕ ਮੁਫਤ ਪਹੁੰਚ ਪ੍ਰਾਪਤ ਕਰੋ",
+            "cta": "ਸਿੱਖਣਾ ਸ਼ੁਰੂ ਕਰੋ"
+        },
+        "features": {
+            "title": "FreeGeny ਕਿਉਂ?",
+            "items": {
+                "free": "ਬਿਲਕੁਲ ਮੁਫਤ",
+                "global": "ਵਿਸ਼ਵਵਿਆਪੀ ਭਾਈਚਾਰਾ",
+                "quality": "ਉੱਚ ਗੁਣਵੱਤਾ ਵਾਲੀ ਸਮੱਗਰੀ"
+            }
+        }
+    },
+    "common": {
+        "loading": "ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...",
+        "error": "ਕੁਝ ਗਲਤ ਹੋ ਗਿਆ",
+        "retry": "ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
+        "language": "ਭਾਸ਼ਾ"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "ਅਸੀਂ ਕੌਣ ਹਾਂ",
+            "mission": "ਸਾਡਾ ਮਿਸ਼ਨ",
+            "app": "ਐਪ",
+            "parents": {
+                "main": "ਮਾਪੇ",
+                "dropdown": {
+                    "dashboard": "ਮਾਪੇ ਡੈਸ਼ਬੋਰਡ",
+                    "progress": "ਤਰੱਕੀ ਟਰੈਕਿੰਗ",
+                    "communication": "ਅਧਿਆਪਕ ਸੰਚਾਰ",
+                    "resources": "ਵਿਦਿਅਕ ਸਰੋਤ",
+                    "security": "ਸੁਰੱਖਿਆ ਅਤੇ ਗੋਪਨੀਯਤਾ"
+                }
+            },
+            "schools": {
+                "main": "ਸਕੂਲ",
+                "dropdown": {
+                    "management": "ਸਕੂਲ ਪ੍ਰਬੰਧਨ",
+                    "curriculum": "ਸਕੂਲ ਪ੍ਰੋਗਰਾਮ",
+                    "teachers": "ਅਧਿਆਪਕ ਖੇਤਰ",
+                    "analytics": "ਵਿਸ਼ਲੇਸ਼ਣ ਅਤੇ ਰਿਪੋਰਟਾਂ"
+                }
+            },
+            "ongs": {
+                "main": "NGOs",
+                "dropdown": {
+                    "projects": "ਵਿਦਿਅਕ ਪ੍ਰੋਜੈਕਟ",
+                    "impact": "ਪ੍ਰਭਾਵ ਮਾਪ",
+                    "partnership": "ਸਾਂਝੇਦਾਰੀ"
+                }
+            },
+            "pricing": {
+                "main": "ਕੀਮਤਾਂ",
+                "dropdown": {
+                    "individual": "ਵਿਅਕਤੀਗਤ",
+                    "family": "ਪਰਿਵਾਰਕ",
+                    "institutional": "ਸੰਸਥਾਗਤ"
+                }
+            },
+            "freeTrial": "ਮੁਫਤ ਅਜ਼ਮਾਇਸ਼",
+            "login": "ਲੌਗ ਇਨ"
+        }
+    },
+    "cookies": {
+        "title": "ਕੂਕੀ ਪ੍ਰਬੰਧਨ",
+        "description": "ਅਸੀਂ ਤੁਹਾਡੇ ਤਜ਼ਰਬੇ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ ਕੂਕੀਜ਼ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਾਂ.",
+        "learnMore": "ਹੋਰ ਜਾਣੋ",
+        "rejectAll": "ਸਭ ਅਸਵੀਕਾਰ ਕਰੋ",
+        "customize": "ਅਨੁਕੂਲਿਤ ਕਰੋ",
+        "acceptAll": "ਸਭ ਸਵੀਕਾਰ ਕਰੋ"
+    },
+    "footer": {
+        "baseline": "ਸਾਰਿਆਂ ਲਈ ਸਿੱਖਿਆ ਵਿੱਚ ਕ੍ਰਾਂਤੀ",
+        "rights": "ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ.",
+        "about": {
+            "title": "ਬਾਰੇ",
+            "education": "ਸਿੱਖਿਆ",
+            "nationalCurriculum": "ਰਾਸ਼ਟਰੀ ਪਾਠਕ੍ਰਮ ਸਮੱਗਰੀ",
+            "internationalCurriculum": "ਅੰਤਰਰਾਸ਼ਟਰੀ ਪਾਠਕ੍ਰਮ ਸਮੱਗਰੀ",
+            "mission": "ਸਾਡਾ ਮਿਸ਼ਨ",
+            "methodology": "ਕਾਰਜਪ੍ਰਣਾਲੀ",
+            "research": "ਵਿਦਿਅਕ ਖੋਜ",
+            "brand": "ਬ੍ਰਾਂਡ ਬਾਰੇ",
+            "news": "ਖ਼ਬਰਾਂ",
+            "press": "ਪ੍ਰੈਸ",
+            "contact": "ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ"
+        },
+        "apps": {
+            "title": "ਸਾਡੇ ਐਪਸ",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "ਮਦਦ ਅਤੇ ਸਹਾਇਤਾ",
+            "faqGeneral": "FreeGeny ਬਾਰੇ ਅਕਸਰ ਪੁੱਛੇ ਜਾਂਦੇ ਸਵਾਲ",
+            "faqSchools": "ਸਕੂਲਾਂ ਲਈ ਸਵਾਲ",
+            "faqNgos": "NGOs ਲਈ ਸਵਾਲ"
+        },
+        "legal": {
+            "title": "ਕਾਨੂੰਨੀ",
+            "guidelines": "ਉਪਭੋਗਤਾ ਦਿਿਸ਼ਾ-ਨਿਰਦੇਸ਼",
+            "terms": "ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ",
+            "privacy": "ਗੋਪਨੀਯਤਾ ਨੀਤੀ",
+            "communityRules": "ਭਾਈਚਾਰਕ ਨਿਯਮ",
+            "cookiePreferences": "ਕੂਕੀ ਤਰਜੀਹ ਕੇਂਦਰ",
+            "accessibility": "ਪਹੁੰਚਯੋਗਤਾ ਬਿਆਨ",
+            "sitemap": "ਸਾਈਟ ਮੈਪ"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - انقلابی در آموزش",
+        "description": "به میلیون‌ها نفری بپیوندید که با پلتفرم نوآورانه FreeGeny در حال یادگیری هستند"
+    },
+    "home": {
+        "hero": {
+            "title": "بدون محدودیت بیاموزید",
+            "subtitle": "دسترسی رایگان به آموزش در سطح جهانی",
+            "cta": "شروع یادگیری"
+        },
+        "features": {
+            "title": "چرا FreeGeny؟",
+            "items": {
+                "free": "کاملاً رایگان",
+                "global": "جامعه جهانی",
+                "quality": "محتوای با کیفیت بالا"
+            }
+        }
+    },
+    "common": {
+        "loading": "در حال بارگذاری...",
+        "error": "مشکلی پیش آمد",
+        "retry": "تلاش مجدد",
+        "language": "زبان"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "ما کی هستیم",
+            "mission": "ماموریت ما",
+            "app": "برنامه",
+            "parents": {
+                "main": "والدین",
+                "dropdown": {
+                    "dashboard": "داشبورد والدین",
+                    "progress": "پیگیری پیشرفت",
+                    "communication": "ارتباط با معلم",
+                    "resources": "منابع آموزشی",
+                    "security": "امنیت و حریم خصوصی"
+                }
+            },
+            "schools": {
+                "main": "مدارس",
+                "dropdown": {
+                    "management": "مدیریت مدرسه",
+                    "curriculum": "برنامه‌های مدرسه",
+                    "teachers": "محیط معلمان",
+                    "analytics": "تحلیل و گزارش‌ها"
+                }
+            },
+            "ongs": {
+                "main": "سازمان‌های مردم‌نهاد",
+                "dropdown": {
+                    "projects": "پروژه‌های آموزشی",
+                    "impact": "سنجش تأثیر",
+                    "partnership": "مشارکت‌ها"
+                }
+            },
+            "pricing": {
+                "main": "قیمت‌گذاری",
+                "dropdown": {
+                    "individual": "فردی",
+                    "family": "خانوادگی",
+                    "institutional": "سازمانی"
+                }
+            },
+            "freeTrial": "آزمایش رایگان",
+            "login": "ورود"
+        }
+    },
+    "cookies": {
+        "title": "مدیریت کوکی‌ها",
+        "description": "ما برای بهبود تجربه شما از کوکی‌ها استفاده می‌کنیم.",
+        "learnMore": "بیشتر بدانید",
+        "rejectAll": "رد همه",
+        "customize": "سفارشی‌سازی",
+        "acceptAll": "پذیرش همه"
+    },
+    "footer": {
+        "baseline": "انقلابی در آموزش برای همه",
+        "rights": "تمامی حقوق محفوظ است.",
+        "about": {
+            "title": "درباره",
+            "education": "آموزش",
+            "nationalCurriculum": "محتوای برنامه درسی ملی",
+            "internationalCurriculum": "محتوای برنامه درسی بین‌المللی",
+            "mission": "ماموریت ما",
+            "methodology": "روش‌شناسی",
+            "research": "تقیقات آموزشی",
+            "brand": "درباره برند",
+            "news": "اخبار",
+            "press": "مطبوعات",
+            "contact": "تماس با ما"
+        },
+        "apps": {
+            "title": "برنامه‌های ما",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "راهنما و پشتیبانی",
+            "faqGeneral": "سوالات متداول درباره FreeGeny",
+            "faqSchools": "سوالات برای مدارس",
+            "faqNgos": "سوالات برای سازمان‌های مردم‌نهاد"
+        },
+        "legal": {
+            "title": "حقوقی",
+            "guidelines": "دستورالعمل‌های کاربر",
+            "terms": "شرایط خدمات",
+            "privacy": "سیاست حفظ حریم خصوصی",
+            "communityRules": "قوانین جامعه",
+            "cookiePreferences": "مرکز ترجیحات کوکی",
+            "accessibility": "بیانیه دسترسی",
+            "sitemap": "نقشه سایت"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

@@ -1,0 +1,954 @@
+# ==============================================================================
+# FICHIER : 1_signaletique.yaml
+# PROJET  : FreeGeny – Plateforme EdTech internationale
+# MODULE  : Référentiel pays / Country Reference Sheet
+# VERSION : 2.0.0
+# AUTEUR  : Équipe pédagogique & technique FreeGeny
+# DATE    : 2026-02-28
+# LICENCE : Propriétaire – Usage interne FreeGeny uniquement
+# ------------------------------------------------------------------------------
+# DESCRIPTION :
+#   Ce fichier constitue la fiche signalétique officielle et exhaustive du
+#   système éducatif algérien, à destination du moteur de personalisation
+#   pédagogique de FreeGeny. Il sert de référence canonique pour :
+#     - l'adaptation du contenu par niveau, langue et cycle
+#     - la configuration des parcours d'apprentissage adaptatifs
+#     - la conformité avec les programmes officiels algériens (Génération 2)
+#     - l'intégration des manuels, évaluations et ressources pédagogiques
+#
+# UTILISATION TECHNIQUE :
+#   - Chargé au démarrage de l'application via le service CountryConfigService
+#   - Clé de routage principale : `code_iso` (valeur : "dz")
+#   - Référencé par les modules : curriculum, evaluation, user_profile, analytics
+#   - Compatible avec le standard FreeGeny Country Schema v3.1
+#
+# CONVENTIONS DE NOMMAGE :
+#   - Clés en snake_case (ex: code_iso, langues_enseignees)
+#   - Valeurs textuelles en français (interface) + arabe (contenu pédagogique)
+#   - Identifiants de niveau en minuscules avec suffixe "ap" (ex: 1ap, 2ap)
+#   - Booléens en minuscules : true / false
+#
+# DÉPENDANCES :
+#   - programme_matiere_1ap_ar.yaml   → programme arabe 1AP
+#   - semestre1.md, semestre2.md, semestre3.md → découpages trimestriels
+#   - algerie_1ap_arabe_curriculum.json → données JSON du curriculum
+#   - algerie_1ap_arabe_competences.json → référentiel de compétences
+#
+# HISTORIQUE DES VERSIONS :
+#   v1.0.0 (2026-02-16) – Création initiale
+#   v2.0.0 (2026-02-28) – Refonte complète : annotations expertes, ajouts
+#                          exhaustifs, conformité FreeGeny Schema v3.1
+# ==============================================================================
+
+
+# ==============================================================================
+# SECTION 1 : IDENTITÉ DU PAYS
+# Données géopolitiques et linguistiques de base utilisées pour le routing
+# de contenu et la configuration régionale de l'application.
+# ==============================================================================
+
+pays: Algérie                  # Nom officiel du pays (affichage UI)
+nom_local: الجمهورية الجزائرية الديمقراطية الشعبية  # Nom officiel en arabe (pour les documents officiels)
+code_iso: dz                   # ISO 3166-1 alpha-2 – clé primaire du pays dans FreeGeny
+code_iso3: DZA                 # ISO 3166-1 alpha-3 – utilisé pour les intégrations API tierces
+region: Afrique du Nord        # Région géographique (pour clustering analytique)
+sous_region: Maghreb           # Sous-région (pour groupement pédagogique régional)
+fuseau_horaire: Africa/Algiers # Timezone IANA – utilisé pour la planification des sessions
+format_date: DD/MM/YYYY        # Format de date affiché dans l'UI
+devise: DZD                    # Dinar Algérien – pour les modules e-commerce/abonnement
+population_scolaire_estimee: 9000000  # Nombre d'élèves primaire (estimation 2025, source UNESCO)
+
+
+# ==============================================================================
+# SECTION 2 : LANGUES
+# Configuration linguistique complète, essentielle pour le moteur de
+# rendu multilingue de FreeGeny et la gestion de l'écriture RTL/LTR.
+# ==============================================================================
+
+langue_officielle: arabe       # Langue principale d'enseignement et de l'État
+direction_ecriture: RTL        # Right-To-Left – impact direct sur le rendu CSS/React Native
+
+langues_enseignees:
+  # ----------------------------------------------------------------------------
+  # Chaque entrée représente une langue enseignée dans le système scolaire.
+  # Le champ `debut` indique le niveau d'introduction dans le parcours.
+  # Le champ `statut` conditionne la priorité d'affichage dans FreeGeny.
+  # ----------------------------------------------------------------------------
+
+  - langue: arabe
+    code_langue: ar             # Code ISO 639-1
+    debut: 1ap                  # Introduit dès la 1ère année primaire
+    fin: 5ap                    # Présente sur tout le cycle primaire
+    statut: officielle          # Langue principale – affichée en priorité
+    type: langue_maternelle_scolaire
+    ecriture: arabe             # Alphabet arabe (28 lettres + signes diacritiques)
+    direction: RTL
+    variante: "arabe_classique" # Arabe fusha (فصحى), pas le dialecte darija
+    note: >
+      L'arabe enseigné est l'arabe classique/littéraire (اللغة العربية الفصحى).
+      Le dialecte algérien (الدارجة) n'est pas utilisé dans les manuels officiels.
+      Important pour FreeGeny : les exercices de prononciation doivent utiliser
+      une voix TTS conforme à l'arabe standard moderne (MSA).
+    obligatoire: true
+    evalue: true
+    coefficient_bilan: 5        # Coefficient pour le calcul de la moyenne (système algérien)
+
+  - langue: francais
+    code_langue: fr
+    debut: 3ap                  # Introduit en 3ème année primaire (≈ 8-9 ans)
+    fin: 5ap
+    statut: premiere_langue_etrangere
+    type: langue_etrangere_1
+    ecriture: latin
+    direction: LTR
+    note: >
+      Le français est la première langue étrangère introduite au primaire.
+      FreeGeny doit activer le module "Français LV1" à partir du niveau 3ap
+      uniquement. Les élèves de 1ap et 2ap ne voient pas ce module.
+    obligatoire: true           # Obligatoire à partir de 3AP
+    evalue: true
+    coefficient_bilan: 3
+
+  - langue: anglais
+    code_langue: en
+    debut: 3ap                  # Introduit en 3ème année, mais souvent optionnel en pratique
+    fin: 5ap
+    statut: deuxieme_langue_etrangere_optionnelle
+    type: langue_etrangere_2
+    ecriture: latin
+    direction: LTR
+    note: >
+      L'anglais est officiellement introduit à partir de 3AP mais reste
+      secondaire. Son enseignement peut varier selon les établissements.
+      FreeGeny le propose en module optionnel activable par l'enseignant.
+    obligatoire: false
+    evalue: false               # Non évalué au bilan dans la majorité des cas
+    coefficient_bilan: null
+
+  - langue: tamazight
+    code_langue: ber            # Code générique berbère (tzm pour tamazight central)
+    debut: variable             # Varie selon la wilaya et l'établissement
+    fin: variable
+    statut: optionnelle
+    type: langue_nationale_optionnelle
+    ecriture: tifinagh          # Écriture officielle tifinagh + transcription latine possible
+    direction: LTR
+    note: >
+      Le tamazight (berbère) est langue nationale et constitutionnelle depuis 2016.
+      Son enseignement au primaire est variable selon les régions (Kabylie, Aurès,
+      Mzab...). FreeGeny doit le proposer comme module activable régionalement,
+      conditionné par la wilaya de l'établissement.
+    obligatoire: false
+    evalue: false
+    coefficient_bilan: null
+    regions_concernees:
+      - Tizi Ouzou
+      - Béjaïa
+      - Bouira
+      - Batna
+      - Khenchela
+      - Ghardaïa
+
+
+# ==============================================================================
+# SECTION 3 : STRUCTURE DU SYSTÈME SCOLAIRE
+# Architecture complète du cycle primaire algérien.
+# Utilisée par FreeGeny pour le routing des niveaux, la progression des
+# élèves et la cohérence des parcours d'apprentissage.
+# ==============================================================================
+
+systeme:
+  appellation: "Enseignement Primaire Algérien"
+  code_systeme: "DZ-PRIMARY"   # Identifiant interne FreeGeny
+  niveaux_couverts: "1AP à 5AP"
+  duree_totale_annees: 5
+  age_entree: 6                # Âge légal d'entrée en 1AP
+  age_sortie: 11               # Âge théorique de fin de 5AP
+  source_officielle: "Ministère de l'Éducation nationale – Programme 2015 (révisé 2020)"
+  lien_officiel: "https://www.education.gov.dz/programmes-primaire"
+  generation_programme: "Génération 2 / الجيل الثاني"
+  annee_reforme: 2015
+  annee_revision: 2020
+  annee_scolaire_reference: "2025-2026"
+
+niveaux:
+  # ----------------------------------------------------------------------------
+  # Chaque niveau correspond à une année scolaire du primaire algérien.
+  # Ces entrées alimentent le sélecteur de niveau de l'UI FreeGeny et
+  # conditionnent le chargement des curricula, exercices et évaluations.
+  # ----------------------------------------------------------------------------
+
+  - code: 1ap
+    nom_fr: "Première année primaire"
+    nom_ar: "السنة الأولى ابتدائي"
+    age_min: 6
+    age_max: 7
+    cycle: cycle1
+    ordre: 1                   # Position dans le cycle pour la progression linéaire
+    actif_freegeny: true       # Ce niveau est disponible sur la plateforme
+    couleur_ui: "#4CAF50"      # Vert – couleur associée à ce niveau dans l'UI FreeGeny
+    icone: "star_1"            # Identifiant d'icône dans le design system FreeGeny
+
+  - code: 2ap
+    nom_fr: "Deuxième année primaire"
+    nom_ar: "السنة الثانية ابتدائي"
+    age_min: 7
+    age_max: 8
+    cycle: cycle1
+    ordre: 2
+    actif_freegeny: true
+    couleur_ui: "#2196F3"
+    icone: "star_2"
+
+  - code: 3ap
+    nom_fr: "Troisième année primaire"
+    nom_ar: "السنة الثالثة ابتدائي"
+    age_min: 8
+    age_max: 9
+    cycle: cycle1
+    ordre: 3
+    actif_freegeny: true
+    couleur_ui: "#FF9800"
+    icone: "star_3"
+
+  - code: 4ap
+    nom_fr: "Quatrième année primaire"
+    nom_ar: "السنة الرابعة ابتدائي"
+    age_min: 9
+    age_max: 10
+    cycle: cycle2
+    ordre: 4
+    actif_freegeny: true
+    couleur_ui: "#9C27B0"
+    icone: "star_4"
+
+  - code: 5ap
+    nom_fr: "Cinquième année primaire"
+    nom_ar: "السنة الخامسة ابتدائي"
+    age_min: 10
+    age_max: 11
+    cycle: cycle2
+    ordre: 5
+    actif_freegeny: true
+    couleur_ui: "#F44336"
+    icone: "star_5"
+    note: >
+      La 5AP est l'année de fin de cycle primaire. Elle se conclut par
+      l'Examen de Fin de Cycle Primaire (شهادة التعليم الابتدائي).
+      FreeGeny doit activer un mode "préparation examen" spécifique à ce niveau.
+    examen_fin_cycle: true
+    nom_examen: "شهادة التعليم الابتدائي"
+    nom_examen_fr: "Brevet de l'Enseignement Primaire (BEP)"
+
+
+# ==============================================================================
+# SECTION 4 : CYCLES PÉDAGOGIQUES
+# Les cycles structurent la progression des apprentissages sur 5 ans.
+# FreeGeny utilise cette structure pour adapter les objectifs et les
+# modalités d'évaluation selon la maturité cognitive de l'élève.
+# ==============================================================================
+
+cycles:
+  cycle1:
+    code: cycle1
+    nom: "Cycle des apprentissages fondamentaux"
+    nom_ar: "دورة التعلمات الأساسية"
+    niveaux: ["1ap", "2ap", "3ap"]
+    objectif_pedagogique: >
+      Acquisition des fondamentaux : lecture, écriture, calcul, socialisation.
+      L'élève passe de l'analphabétisme à la lecture courante et à l'écriture
+      de phrases simples. Éveil scientifique et civique de base.
+    approche_didactique: "Découverte progressive, mémorisation, répétition guidée"
+    modalite_evaluation: "Évaluations formatives fréquentes, pas de redoublement automatique"
+
+  cycle2:
+    code: cycle2
+    nom: "Cycle de consolidation et d'approfondissement"
+    nom_ar: "دورة التعمق والتوسع"
+    niveaux: ["4ap", "5ap"]
+    objectif_pedagogique: >
+      Consolidation et approfondissement de tous les acquis du cycle 1.
+      Introduction à des concepts plus abstraits (raisonnement, argumentation,
+      compréhension de textes complexes). Préparation à l'examen de fin de cycle.
+    approche_didactique: "Résolution de problèmes, production écrite autonome, interdisciplinarité"
+    modalite_evaluation: "Évaluations sommatives + préparation à l'examen national"
+
+
+# ==============================================================================
+# SECTION 5 : MATIÈRES PAR NIVEAU ET PAR CYCLE
+# Référentiel complet des matières enseignées.
+# Utilisé par FreeGeny pour construire le tableau de bord de l'élève
+# et activer/désactiver les modules selon le niveau.
+# ==============================================================================
+
+matieres:
+
+  # Matières communes à tous les niveaux du primaire
+  communes_tous_niveaux:
+    - code: arabe
+      nom_fr: "Langue arabe"
+      nom_ar: "اللغة العربية"
+      inclus_dans_freegeny: true
+      modules_freegeny: ["lecture", "ecriture", "grammaire", "conjugaison", "dictee", "poesie"]
+
+    - code: mathematiques
+      nom_fr: "Mathématiques"
+      nom_ar: "الرياضيات"
+      inclus_dans_freegeny: true
+      modules_freegeny: ["calcul", "geometrie", "problemes", "mesures"]
+
+    - code: education_islamique
+      nom_fr: "Éducation islamique"
+      nom_ar: "التربية الإسلامية"
+      inclus_dans_freegeny: true
+      modules_freegeny: ["sourates", "valeurs", "invocations", "comportements"]
+      note: "Intégrée au module arabe en 1AP et 2AP (même manuel)"
+
+    - code: education_civique
+      nom_fr: "Éducation civique"
+      nom_ar: "التربية المدنية"
+      inclus_dans_freegeny: true
+      modules_freegeny: ["citoyennete", "symboles_nationaux", "comportements_sociaux"]
+      note: "Intégrée au module arabe en 1AP et 2AP (même manuel)"
+
+    - code: education_scientifique
+      nom_fr: "Éducation scientifique et technologique"
+      nom_ar: "التربية العلمية والتكنولوجية"
+      inclus_dans_freegeny: true
+      modules_freegeny: ["sciences_naturelles", "technologie", "experimentation"]
+
+  # Matières spécifiques au cycle 1 (1AP–3AP)
+  cycle1_specifiques:
+    note: >
+      En cycle 1, les mathématiques et l'éducation scientifique sont regroupées
+      dans un seul manuel en 1AP et 2AP. À partir de 3AP, les disciplines
+      se séparent progressivement.
+
+  # Matières spécifiques au cycle 2 (4AP–5AP)
+  cycle2_specifiques:
+    - code: francais
+      nom_fr: "Langue française"
+      nom_ar: "اللغة الفرنسية"
+      niveaux_actifs: ["3ap", "4ap", "5ap"]
+      inclus_dans_freegeny: true
+      modules_freegeny: ["lecture_fr", "ecriture_fr", "grammaire_fr", "vocabulaire_fr"]
+
+    - code: histoire_geographie
+      nom_fr: "Histoire et Géographie"
+      nom_ar: "التاريخ والجغرافيا"
+      niveaux_actifs: ["3ap", "4ap", "5ap"]
+      inclus_dans_freegeny: true
+      modules_freegeny: ["histoire_algerie", "geographie", "cartes"]
+
+    - code: anglais
+      nom_fr: "Langue anglaise"
+      nom_ar: "اللغة الإنجليزية"
+      niveaux_actifs: ["3ap", "4ap", "5ap"]
+      inclus_dans_freegeny: true
+      optionnel: true
+      modules_freegeny: ["anglais_debutant"]
+
+
+# ==============================================================================
+# SECTION 6 : MANUELS OFFICIELS
+# Référentiel complet des manuels scolaires officiels de la Génération 2.
+# Utilisé par FreeGeny pour :
+#   - aligner le contenu sur les manuels en vigueur
+#   - afficher les références aux pages du manuel dans les exercices
+#   - permettre aux parents de retrouver le contenu dans le livre physique
+# ==============================================================================
+
+manuels_officiels:
+
+  1ap:
+    arabe:
+      livre:
+        titre_ar: "كتابي في اللغة العربية للسنة الأولى ابتدائي الجيل الثاني"
+        titre_fr: "Mon livre de langue arabe – 1ère année primaire – Génération 2"
+        isbn: null              # Non disponible publiquement
+        editeur: "Office National des Publications Scolaires (ONPS)"
+        annee_edition: 2016
+        derniere_revision: 2020
+        couverture_couleur: "bleu_clair"
+        freegeny_reference: "DZ-1AP-AR-LIVRE"
+      cahier:
+        titre_ar: "دفتر الأنشطة في اللغة العربية للسنة الأولى ابتدائي الجيل الثاني"
+        titre_fr: "Cahier d'activités de langue arabe – 1ère année primaire – Génération 2"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-1AP-AR-CAHIER"
+
+    mathematiques:
+      livre:
+        titre_ar: "كتابي في الرياضيات والتربية العلمية والتكنولوجية للسنة الأولى ابتدائي الجيل الثاني"
+        titre_fr: "Mon livre de mathématiques et éducation scientifique – 1ère année – Génération 2"
+        editeur: "ONPS"
+        annee_edition: 2016
+        freegeny_reference: "DZ-1AP-MATH-LIVRE"
+      cahier:
+        titre_ar: "دفتر الأنشطة رياضيات و تربية علمية و تكنولوجية للسنة الأولى ابتدائي الجيل الثاني"
+        titre_fr: "Cahier d'activités mathématiques et sciences – 1ère année – Génération 2"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-1AP-MATH-CAHIER"
+
+  2ap:
+    arabe:
+      livre:
+        titre_ar: "كتابي في اللغة العربية للسنة الثانية ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-2AP-AR-LIVRE"
+      cahier:
+        titre_ar: "دفتر الأنشطة في اللغة العربية للسنة الثانية ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-2AP-AR-CAHIER"
+    mathematiques:
+      livre:
+        titre_ar: "كتابي في الرياضيات والتربية العلمية والتكنولوجية للسنة الثانية ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-2AP-MATH-LIVRE"
+      cahier:
+        titre_ar: "دفتر الأنشطة رياضيات و تربية علمية و تكنولوجية للسنة الثانية ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-2AP-MATH-CAHIER"
+
+  3ap:
+    arabe:
+      livre:
+        titre_ar: "كتاب اللغة العربية للسنة الثالثة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-3AP-AR-LIVRE"
+      cahier:
+        titre_ar: "كراس النشاطات في اللغة العربية للسنة الثالثة الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-3AP-AR-CAHIER"
+    mathematiques:
+      livre:
+        titre_ar: "كتاب الرياضيات للسنة الثالثة الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-3AP-MATH-LIVRE"
+      cahier:
+        titre_ar: "كراس النشاطات في الرياضيات للسنة الثالثة الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-3AP-MATH-CAHIER"
+    education_scientifique:
+      livre:
+        titre_ar: "كتاب التربية العلمية والتكنولوجية السنة الثالثة الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-3AP-SCI-LIVRE"
+    education_civique:
+      livre:
+        titre_ar: "كتاب التربية المدنية للسنة الثالثة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-3AP-CIV-LIVRE"
+    histoire_geographie:
+      livre:
+        titre_ar: "كتاب التاريخ والجغرافيا للسنة الثالثة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-3AP-HG-LIVRE"
+    education_islamique:
+      livre:
+        titre_ar: "كتاب التربية الإسلامية للسنة الثالثة الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-3AP-ISL-LIVRE"
+    francais:
+      livre:
+        titre_ar: "كتاب اللغة الفرنسية للسنة الثالثة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-3AP-FR-LIVRE"
+      cahier:
+        titre_ar: "كراس النشاطات في اللغة الفرنسية للسنة الثالثة الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-3AP-FR-CAHIER"
+
+  4ap:
+    arabe:
+      livre:
+        titre_ar: "كتاب اللغة العربية للسنة الرابعة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-4AP-AR-LIVRE"
+      cahier:
+        titre_ar: "كراس النشاطات في اللغة العربية للسنة الرابعة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-4AP-AR-CAHIER"
+    mathematiques:
+      livre:
+        titre_ar: "كتاب الرياضيات للسنة الرابعة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-4AP-MATH-LIVRE"
+      cahier:
+        titre_ar: "كراس النشاطات في الرياضيات للسنة الرابعة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-4AP-MATH-CAHIER"
+    education_scientifique:
+      livre:
+        titre_ar: "كتاب التربية العلمية والتكنولوجيا للسنة الرابعة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-4AP-SCI-LIVRE"
+    education_civique:
+      livre:
+        titre_ar: "كتاب التربية المدنية للسنة الرابعة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-4AP-CIV-LIVRE"
+    histoire_geographie:
+      livre:
+        titre_ar: "كتاب التاريخ والجغرافيا للسنة الرابعة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-4AP-HG-LIVRE"
+    education_islamique:
+      livre:
+        titre_ar: "التربية الإسلامية للسنة الرابعة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-4AP-ISL-LIVRE"
+    francais:
+      livre:
+        titre_ar: "كتاب اللغة الفرنسية للسنة الرابعة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-4AP-FR-LIVRE"
+      cahier:
+        titre_ar: "كراس النشاطات في اللغة الفرنسية للسنة الرابعة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-4AP-FR-CAHIER"
+
+  5ap:
+    arabe:
+      livre:
+        titre_ar: "كتاب اللغة العربية للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-AR-LIVRE"
+        note: "Ce manuel prépare à l'examen de fin de cycle primaire"
+      cahier:
+        titre_ar: "كراس النشاطات في اللغة العربية للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-AR-CAHIER"
+    mathematiques:
+      livre:
+        titre_ar: "كتاب الرياضيات للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-MATH-LIVRE"
+      cahier:
+        titre_ar: "كراس النشاطات في الرياضيات للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-MATH-CAHIER"
+    education_scientifique:
+      livre:
+        titre_ar: "كتاب التربية العلمية والتكنولوجية للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-SCI-LIVRE"
+    education_civique:
+      livre:
+        titre_ar: "كتاب التربية المدنية للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-CIV-LIVRE"
+    histoire_geographie:
+      livre_histoire:
+        titre_ar: "كتاب التاريخ للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-HIST-LIVRE"
+      livre_geographie:
+        titre_ar: "كتاب الجغرافيا للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-GEO-LIVRE"
+        note: "En 5AP, Histoire et Géographie sont parfois dans deux tomes distincts"
+    education_islamique:
+      livre:
+        titre_ar: "كتاب التربية الإسلامية للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-ISL-LIVRE"
+    francais:
+      livre:
+        titre_ar: "كتاب اللغة الفرنسية للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-FR-LIVRE"
+      cahier:
+        titre_ar: "كراس النشاطات في اللغة الفرنسية للسنة الخامسة ابتدائي الجيل الثاني"
+        editeur: "ONPS"
+        freegeny_reference: "DZ-5AP-FR-CAHIER"
+
+
+# ==============================================================================
+# SECTION 7 : CALENDRIER SCOLAIRE
+# Structure temporelle de l'année scolaire algérienne.
+# Utilisée par FreeGeny pour le planning des révisions, la programmation
+# des rappels (notifications push) et les rapports de progression.
+# ==============================================================================
+
+calendrier_scolaire:
+  annee_reference: "2025-2026"
+  debut_annee: "2025-09-05"     # Première rentrée scolaire (indicatif)
+  fin_annee: "2026-06-25"       # Dernier jour des cours (indicatif)
+  nombre_semaines_effectives: 36
+
+  trimestres:
+    - code: T1
+      nom: "Premier trimestre"
+      nom_ar: "الفصل الأول"
+      debut: "2025-09-05"
+      fin: "2025-12-19"
+      maqaate_couverts: ["mq01", "mq02", "mq03", "mq04"]
+      vacances_incluses:
+        - nom: "Vacances de la Toussaint"
+          debut: "2025-10-23"
+          fin: "2025-10-31"
+      freegeny_periode: "S1"
+
+    - code: T2
+      nom: "Deuxième trimestre"
+      nom_ar: "الفصل الثاني"
+      debut: "2026-01-04"
+      fin: "2026-03-27"
+      maqaate_couverts: ["mq05", "mq06", "mq07", "mq08"]
+      vacances_incluses:
+        - nom: "Vacances d'hiver"
+          debut: "2026-02-12"
+          fin: "2026-02-20"
+      freegeny_periode: "S2"
+
+    - code: T3
+      nom: "Troisième trimestre"
+      nom_ar: "الفصل الثالث"
+      debut: "2026-04-05"
+      fin: "2026-06-25"
+      contenu: "Révisions, approfondissement, préparation aux évaluations finales"
+      vacances_incluses:
+        - nom: "Vacances de printemps"
+          debut: "2026-04-16"
+          fin: "2026-04-24"
+      freegeny_periode: "S3"
+
+  fetes_nationales:
+    # Ces dates entraînent des jours fériés qui impactent la progression scolaire
+    - date: "2025-11-01"
+      nom: "Fête de la Révolution"
+      nom_ar: "عيد الثورة"
+    - date: "2026-07-05"
+      nom: "Fête de l'Indépendance"
+      nom_ar: "عيد الاستقلال"
+
+  fetes_religieuses:
+    # Dates variables selon le calendrier hégirien – à mettre à jour chaque année
+    - nom: "Aïd el-Fitr"
+      nom_ar: "عيد الفطر"
+      note: "Date variable (fin du mois de Ramadan)"
+      duree_jours_feries: 3
+    - nom: "Aïd el-Adha"
+      nom_ar: "عيد الأضحى"
+      note: "Date variable (10 Dhul Hijja)"
+      duree_jours_feries: 3
+    - nom: "Mawlid an-Nabawi"
+      nom_ar: "المولد النبوي الشريف"
+      note: "Date variable (12 Rabi' al-Awwal)"
+      duree_jours_feries: 1
+    - nom: "Ras El Am El Hijri"
+      nom_ar: "رأس السنة الهجرية"
+      note: "Date variable (1er Muharram)"
+      duree_jours_feries: 1
+
+
+# ==============================================================================
+# SECTION 8 : CONTEXTE PÉDAGOGIQUE
+# Informations qualitatives sur les pratiques d'enseignement en Algérie.
+# Ces données informent le moteur IA de FreeGeny pour adapter le ton,
+# la difficulté et la fréquence des exercices proposés.
+# ==============================================================================
+
+contexte_pedagogique:
+
+  approche_generale: >
+    L'enseignement primaire algérien repose sur la méthode "Génération 2"
+    (الجيل الثاني), une réforme pédagogique centrée sur l'approche par
+    compétences (APC). L'accent est mis sur la mémorisation structurée,
+    la répétition guidée et la progression par séquences (مقاطع).
+
+  points_cles:
+    - "Approche par compétences (APC) – chaque unité vise une compétence précise"
+    - "Fort accent sur la mémorisation (sourates, poèmes, règles de grammaire)"
+    - "Répétition et consolidation avant d'avancer"
+    - "Évaluations fréquentes : interrogations écrites, devoirs maison, contrôles"
+    - "Manuel officiel ONPS comme référence unique – pas de manuels alternatifs"
+    - "Discipline et respect de l'autorité comme valeurs transversales"
+    - "Intégration des valeurs islamiques et civiques dans toutes les matières"
+
+  profil_apprenant_typique:
+    age_moyen: "6-7 ans (1AP)"
+    langue_maison: "Dialecte algérien (darija) – différent de l'arabe scolaire"
+    acces_technologie: "Variable – certaines familles ont smartphones/tablettes"
+    soutien_familial: "Très important culturellement – les parents suivent activement"
+    difficultes_frecquentes:
+      - "Écart entre l'arabe dialectal parlé à la maison et l'arabe classique enseigné"
+      - "Confusion entre lettres similaires (ب/ت/ث, ح/ج/خ, etc.)"
+      - "Maîtrise des voyelles courtes (harakat) et de la lecture vocalisée"
+      - "Mémorisation de sourates dans une langue non parlée quotidiennement"
+
+  role_parent:
+    implication: "Très forte – accompagnement quotidien attendu"
+    attentes_freegeny:
+      - "Tableau de bord parent pour suivre la progression"
+      - "Notifications de devoirs et évaluations à venir"
+      - "Ressources pour accompagner l'enfant à la maison"
+      - "Rapports hebdomadaires de progression"
+
+  role_enseignant:
+    profil: "Enseignant généraliste – enseigne toutes les matières"
+    formation: "École Normale Supérieure (ENS) ou Institut de Technologie de l'Éducation (ITE)"
+    attentes_freegeny:
+      - "Accès aux fiches de cours alignées sur le programme officiel"
+      - "Génération automatique d'exercices et d'évaluations"
+      - "Suivi de classe en temps réel"
+      - "Export des bulletins et rapports"
+
+
+# ==============================================================================
+# SECTION 9 : SYSTÈME D'ÉVALUATION
+# Structure officielle des évaluations dans le primaire algérien.
+# Utilisée par FreeGeny pour calibrer les tests, calculer les moyennes
+# et générer des bulletins conformes au système national.
+# ==============================================================================
+
+systeme_evaluation:
+
+  echelle_notes:
+    minimum: 0
+    maximum: 20                # Sur 20, système français hérité
+    passage: 10                # Note minimale de passage
+    mention_passable: 10
+    mention_assez_bien: 12
+    mention_bien: 14
+    mention_tres_bien: 16
+    mention_excellent: 18
+
+  frequence_evaluations:
+    type_continu: "Évaluations formatives après chaque مقطع (séquence)"
+    type_trimestriel: "Composition trimestrielle (examen de fin de trimestre)"
+    type_annuel: "Bilan annuel – passage en classe supérieure"
+
+  types_exercices_officiels:
+    - "Lecture à voix haute (évaluation orale)"
+    - "Dictée de mots et de phrases"
+    - "Exercices de complétion (lacunes)"
+    - "Questions de compréhension sur texte"
+    - "Copie et calligraphie"
+    - "Récitation de poèmes et sourates"
+    - "Exercices d'association (image-mot)"
+    - "Vrai/Faux"
+    - "Coloriages guidés (lettres, drapeaux)"
+    - "Production écrite courte (1-3 phrases)"
+
+  coefficients_matieres_1ap:
+    # Coefficients utilisés pour le calcul de la moyenne générale
+    arabe: 5
+    mathematiques: 5
+    education_islamique: 2     # Intégrée au module arabe en 1AP
+    education_civique: 1       # Intégrée au module arabe en 1AP
+    education_scientifique: 2
+
+
+# ==============================================================================
+# SECTION 10 : CONFIGURATION FREEGENY
+# Paramètres spécifiques à l'intégration de l'Algérie dans la plateforme
+# FreeGeny. Ces données sont consommées directement par les microservices
+# de configuration (CountryConfigService, CurriculumService, UIService).
+# ==============================================================================
+
+freegeny_config:
+
+  # Identifiant unique du pays dans la base de données FreeGeny
+  country_id: "DZ"
+  schema_version: "3.1"
+  last_updated: "2026-02-28"
+  updated_by: "FreeGeny Pédagogic Team"
+  statut: "production"         # Valeurs possibles : draft | review | production
+
+  # Niveaux actuellement disponibles sur FreeGeny pour ce pays
+  niveaux_disponibles: ["1ap"]
+  niveaux_en_developpement: ["2ap", "3ap"]
+  niveaux_planifies: ["4ap", "5ap"]
+
+  # Langues de l'interface utilisateur disponibles pour ce pays
+  langues_interface:
+    - code: ar
+      libelle: "العربية"
+      defaut: true
+    - code: fr
+      libelle: "Français"
+      defaut: false
+
+  # Fonctionnalités activées pour ce pays
+  fonctionnalites:
+    progression_adaptative: true
+    tts_audio: true            # Text-to-Speech – voix arabe fusha requise
+    mode_hors_ligne: true      # Essentiel – connectivité internet variable en Algérie
+    gamification: true
+    suivi_parent: true
+    tableau_de_bord_enseignant: true
+    generation_exercices_ia: true
+    reconnaissance_vocale: false  # Désactivé – complexité technique écriture arabe
+    video_cours: false         # Désactivé – contrainte de bande passante
+    mode_nuit: true
+
+  # Paramètres de gamification
+  gamification:
+    systeme_badges: true
+    badges_disponibles:
+      - id: "lecteur_debutant"
+        nom_fr: "Lecteur débutant"
+        nom_ar: "قارئ مبتدئ"
+        condition: "Lire 10 mots correctement"
+      - id: "lecteur_courant"
+        nom_fr: "Lecteur courant"
+        nom_ar: "قارئ صغير"
+        condition: "Lire 50 mots correctement"
+      - id: "hafiz_jr"
+        nom_fr: "Mémorisateur"
+        nom_ar: "حافظ السور"
+        condition: "Mémoriser 3 sourates"
+      - id: "bon_eleve"
+        nom_fr: "Bon élève"
+        nom_ar: "تلميذ مهذب"
+        condition: "Compléter 5 exercices sans erreur"
+      - id: "champion_lettres"
+        nom_fr: "Champion des lettres"
+        nom_ar: "بطل الحروف"
+        condition: "Reconnaître les 28 lettres de l'alphabet"
+    systeme_points: true
+    classement: false          # Désactivé – risque de pression négative pour les jeunes enfants
+    recompenses_visuelles: true
+
+  # Paramètres TTS (Text-to-Speech)
+  tts_config:
+    langue: "ar-DZ"            # Locale arabe algérienne
+    variante_preferee: "ar-MSA" # Modern Standard Arabic – plus adapté au scolaire
+    vitesse_defaut: 0.85       # Légèrement ralenti pour les enfants (1.0 = normal)
+    vitesse_apprentissage: 0.65 # Mode "apprentissage lent"
+    fournisseur_prefere: "Google TTS"  # Fallback : Amazon Polly (Zeina)
+    voix_preferee_feminine: true  # Voix féminine préférée pour 1AP (plus douce)
+
+  # Accessibilité
+  accessibilite:
+    taille_police_min: 18     # Grande taille pour les jeunes enfants
+    images_colorees: true
+    mode_contraste_eleve: false
+    support_dyslexie: false   # Non implémenté pour l'arabe (à roadmap)
+    navigation_simple: true   # Interface simplifiée pour 6-7 ans
+
+  # Analytique et données
+  analytique:
+    tracking_active: true
+    anonymisation_mineurs: true  # RGPD + protection des mineurs
+    retention_donnees_jours: 365
+    export_csv: true
+    dashboard_enseignant: true
+    rapports_automatiques: "hebdomadaire"
+
+  # URLs et ressources
+  ressources_externes:
+    site_ministere: "https://www.education.gov.dz"
+    programmes_officiels: "https://www.education.gov.dz/programmes-primaire"
+    onps: "https://www.onps.dz"   # Office National des Publications Scolaires
+
+
+# ==============================================================================
+# SECTION 11 : OBJECTIFS GÉNÉRAUX DU SYSTÈME ÉDUCATIF ALGÉRIEN
+# Vision macro du système éducatif, utile pour aligner FreeGeny sur les
+# finalités pédagogiques nationales et les présenter aux partenaires.
+# ==============================================================================
+
+objectifs_generaux_systeme:
+
+  objectifs_nationaux:
+    - "Maîtrise de la langue arabe classique à l'écrit et à l'oral"
+    - "Acquisition des bases mathématiques et scientifiques"
+    - "Formation du citoyen algérien : valeurs islamiques, civiques et patriotiques"
+    - "Ouverture progressive sur les langues étrangères (français, anglais)"
+    - "Développement de l'esprit critique et de l'autonomie de l'élève"
+    - "Égalité d'accès à l'éducation sur tout le territoire national"
+
+  objectifs_freegeny_alignes:
+    - "Renforcer les acquis scolaires par la pratique numérique guidée"
+    - "Individualiser l'apprentissage dans le respect du programme officiel"
+    - "Impliquer les parents dans le suivi scolaire"
+    - "Réduire l'écart entre élèves ruraux et urbains grâce au numérique"
+    - "Préparer l'élève aux évaluations officielles"
+
+  specificites_culturelles:
+    - "L'éducation islamique est transversale à toutes les matières"
+    - "Le respect de la hiérarchie (parents, enseignants, aînés) est une valeur centrale"
+    - "La langue arabe est vecteur d'identité nationale et de cohésion sociale"
+    - "Les fêtes nationales (5 juillet, 1er novembre) sont enseignées avec fierté patriotique"
+    - "La solidarité familiale et communautaire est fortement valorisée"
+
+
+# ==============================================================================
+# SECTION 12 : MÉTADONNÉES TECHNIQUES
+# Informations de gestion du fichier pour les systèmes de versioning,
+# de validation et de déploiement de FreeGeny.
+# ==============================================================================
+
+metadonnees:
+  fichier: "1_signaletique.yaml"
+  version: "2.0.0"
+  date_creation: "2026-02-16"
+  date_modification: "2026-02-28"
+  auteur_initial: "Équipe pédagogique FreeGeny"
+  auteur_revision: "Équipe pédagogique & technique FreeGeny"
+  statut_validation: "validé"  # Valeurs : brouillon | en_revue | validé | archivé
+  conforme_a:
+    - "Programme officiel Génération 2 – Ministère de l'Éducation nationale algérien"
+    - "FreeGeny Country Schema v3.1"
+    - "Standard ISO 3166-1 (codes pays)"
+    - "Standard ISO 639-1 (codes langues)"
+  langue_fichier: "fr"
+  encoding: "UTF-8"
+  format: "YAML 1.2"
+
+  fichiers_lies:
+    - fichier: "programme_matiere_1ap_ar.yaml"
+      relation: "Programme détaillé de l'arabe 1AP"
+      requis: true
+    - fichier: "semestre1.md"
+      relation: "Contenu pédagogique T1 (مقاطع 1-4)"
+      requis: true
+    - fichier: "semestre2.md"
+      relation: "Contenu pédagogique T2 (مقاطع 5-8)"
+      requis: true
+    - fichier: "semestre3.md"
+      relation: "Contenu pédagogique T3 (révisions et approfondissement)"
+      requis: true
+    - fichier: "objectifs_annuels.md"
+      relation: "Objectifs annuels détaillés"
+      requis: true
+    - fichier: "algerie_1ap_arabe_curriculum.json"
+      relation: "Données JSON du curriculum – consommées par l'API FreeGeny"
+      requis: true
+    - fichier: "algerie_1ap_arabe_competences.json"
+      relation: "Référentiel de compétences – utilisé pour le scoring adaptatif"
+      requis: true
+    - fichier: "algerie_1ap_arabe_exercises.json"
+      relation: "Banque d'exercices – chargée par le moteur d'exercices FreeGeny"
+      requis: false
+    - fichier: "algerie_1ap_arabe_evaluations.json"
+      relation: "Banque d'évaluations formatrices"
+      requis: false
+    - fichier: "algerie_1ap_arabe_exams.json"
+      relation: "Banque d'examens – mode préparation aux compositions"
+      requis: false
+    - fichier: "algerie_1ap_arabe_lessons.md"
+      relation: "Fiches de cours détaillées"
+      requis: false
+    - fichier: "algerie_1ap_arabe_revisions.html"
+      relation: "Fiches de révision HTML interactives"
+      requis: false
+
+  changelog:
+    - version: "1.0.0"
+      date: "2026-02-16"
+      description: "Création initiale de la fiche signalétique"
+    - version: "2.0.0"
+      date: "2026-02-28"
+      description: >
+        Refonte complète : ajout des sections calendrier, évaluation, configuration
+        FreeGeny, accessibilité, TTS, gamification, matières par cycle, détail
+        des manuels avec références FreeGeny, contexte pédagogique enrichi,
+        annotations expertes exhaustives, conformité FreeGeny Schema v3.1.
+
+# ==============================================================================
+# FIN DU FICHIER 1_signaletique.yaml – FreeGeny | Algérie | v2.0.0
+# ==============================================================================

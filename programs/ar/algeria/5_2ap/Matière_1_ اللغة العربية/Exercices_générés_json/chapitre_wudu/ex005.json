@@ -1,0 +1,30 @@
+{
+    "id": "dz-2ap-islamique-wudu-ex005",
+    "type": "classement",
+    "difficulte": "moyenne",
+    "consigne": "رتب مراحل الوضوء حسب تسلسلها الصحيح (من 1 إلى 4):",
+    "chapitre": "wudu",
+    "items": [
+        {
+            "text": "غسل الوجه",
+            "ordre": 2
+        },
+        {
+            "text": "المضمضة",
+            "ordre": 1
+        },
+        {
+            "text": "غسل اليدين إلى المرفقين",
+            "ordre": 3
+        },
+        {
+            "text": "مسح الرأس",
+            "ordre": 4
+        }
+    ],
+    "tags": [
+        "الوضوء",
+        "الترتيب"
+    ],
+    "points": 2
+}

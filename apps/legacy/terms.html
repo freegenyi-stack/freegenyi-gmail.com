@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - FreeGeny</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Nunito:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #09A1A1;
+            --secondary: #D396A6;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            margin: 0;
+        }
+
+        .legal-header {
+            padding: 20px 40px;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            font-family: 'Titan One', cursive;
+            text-decoration: none;
+            font-size: 24px;
+            color: var(--dark);
+        }
+
+        .legal-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-family: 'Titan One', cursive;
+            color: var(--primary);
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--dark);
+            font-weight: 900;
+            margin-top: 30px;
+        }
+
+        p,
+        li {
+            line-height: 1.8;
+            color: #475569;
+            font-size: 1.1rem;
+        }
+
+        .lang-selector {
+            position: relative;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: #f1f5f9;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            grid-template-columns: 1fr;
+            z-index: 100;
+        }
+
+        .lang-selector.open .lang-dropdown {
+            display: grid;
+        }
+
+        .lang-option {
+            padding: 10px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .lang-option:hover {
+            background: #e2e8f0;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="legal-header">
+        <a href="home.html" class="nav-logo">FreeGeny</a>
+        <div class="lang-selector" onclick="this.classList.toggle('open')">
+            <span id="currentLangDisplay">🌍 English</span>
+            <div class="lang-dropdown">
+                <!-- 24 Strategic Languages -->
+                <a href="#" class="lang-option" onclick="setLang('en')">🇺🇸 English</a>
+                <a href="#" class="lang-option" onclick="setLang('zh')">🇨🇳 中文</a>
+                <a href="#" class="lang-option" onclick="setLang('hi')">🇮🇳 हिन्दी</a>
+                <a href="#" class="lang-option" onclick="setLang('es')">🇪🇸 Español</a>
+                <a href="#" class="lang-option" onclick="setLang('ar')">🇸🇦 العربية</a>
+                <a href="#" class="lang-option" onclick="setLang('fr')">🇫🇷 Français</a>
+                <a href="#" class="lang-option" onclick="setLang('bn')">🇧🇩 বাংলা</a>
+                <a href="#" class="lang-option" onclick="setLang('pt')">🇵🇹 Português</a>
+                <a href="#" class="lang-option" onclick="setLang('ru')">🇷🇺 Русский</a>
+                <a href="#" class="lang-option" onclick="setLang('id')">🇮🇩 Indonesia</a>
+                <a href="#" class="lang-option" onclick="setLang('ur')">🇵🇰 اردو</a>
+                <a href="#" class="lang-option" onclick="setLang('de')">🇩🇪 Deutsch</a>
+                <a href="#" class="lang-option" onclick="setLang('ja')">🇯🇵 日本語</a>
+                <a href="#" class="lang-option" onclick="setLang('pcm')">🇳🇬 Nigerian Pidgin</a>
+                <a href="#" class="lang-option" onclick="setLang('sw')">🇹🇿 Kiswahili</a>
+                <a href="#" class="lang-option" onclick="setLang('tl')">🇵🇭 Tagalog</a>
+                <a href="#" class="lang-option" onclick="setLang('ha')">🇳🇬 Hausa</a>
+                <a href="#" class="lang-option" onclick="setLang('tr')">🇹🇷 Türkçe</a>
+                <a href="#" class="lang-option" onclick="setLang('pnb')">🇵🇰 Punjabi</a>
+                <a href="#" class="lang-option" onclick="setLang('fa')">🇮🇷 فارسی</a>
+                <a href="#" class="lang-option" onclick="setLang('ko')">🇰🇷 한국어</a>
+                <a href="#" class="lang-option" onclick="setLang('th')">🇹🇭 ไทย</a>
+                <a href="#" class="lang-option" onclick="setLang('jv')">🇮🇩 Basa Jawa</a>
+                <a href="#" class="lang-option" onclick="setLang('it')">🇮🇹 Italiano</a>
+                <a href="#" class="lang-option" onclick="setLang('vi')">🇻🇳 Tiếng Việt</a>
+                <a href="#" class="lang-option" onclick="setLang('nl')">🇳🇱 Nederlands</a>
+                <a href="#" class="lang-option" onclick="setLang('pl')">🇵🇱 Polski</a>
+                <a href="#" class="lang-option" onclick="setLang('uk')">🇺🇦 Українська</a>
+                <a href="#" class="lang-option" onclick="setLang('ca')">🇪🇸 Català</a>
+                <a href="#" class="lang-option" onclick="setLang('ga')">🇮🇪 Gaeilge</a>
+                <a href="#" class="lang-option" onclick="setLang('sv')">🇸🇪 Svenska</a>
+                <a href="#" class="lang-option" onclick="setLang('da')">🇩🇰 Dansk</a>
+                <a href="#" class="lang-option" onclick="setLang('no')">🇳🇴 Norsk</a>
+                <a href="#" class="lang-option" onclick="setLang('ro')">🇷🇴 Română</a>
+                <a href="#" class="lang-option" onclick="setLang('el')">🇬🇷 Ελληνικά</a>
+                <a href="#" class="lang-option" onclick="setLang('cs')">🇨🇿 Čeština</a>
+                <a href="#" class="lang-option" onclick="setLang('fi')">🇫🇮 Suomi</a>
+                <a href="#" class="lang-option" onclick="setLang('hu')">🇭🇺 Magyar</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="legal-container">
+        <h1 data-i18n="terms_title">Terms & Conditions</h1>
+
+        <div id="legal-content">
+            <!-- PLACEHOLDER CONTENT -->
+            <p><strong>Last Updated:</strong> February 2026</p>
+
+            <h2>1. Introduction</h2>
+            <p>[Insert introduction text here in the selected language]</p>
+
+            <h2>2. User Accounts & COPPA Compliance</h2>
+            <p>[Insert text about child accounts and parental consent here]</p>
+
+            <h2>3. Intellectual Property</h2>
+            <p>[Insert IP rights text here]</p>
+
+            <h2>4. Termination</h2>
+            <p>[Insert termination clauses here]</p>
+        </div>
+    </div>
+
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        // Custom setLang for legal pages to avoid redirect loops
+        function setLang(code) {
+            localStorage.setItem('fg_lang', code);
+            // In a real scenario, this would load the specific MD/HTML file for that language
+            // For now, we just update the display logic or reload
+            location.reload();
+        }
+
+        // Simple display update
+        const langCode = localStorage.getItem('fg_lang') || 'en';
+        const displayMap = {
+            'en': '🌍 English', 'fr': '🌍 Français', 'ar': '🌍 العربية', 'es': '🌍 Español'
+            // Add other mappings as needed
+        };
+        document.getElementById('currentLangDisplay').innerText = displayMap[langCode] || '🌍 Link';
+
+        // Handle RTL
+        if (['ar', 'ur', 'fa', 'pnb', 'ha'].includes(langCode)) {
+            document.body.dir = 'rtl';
+            document.querySelector('.nav-logo').style.marginLeft = '20px';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+    FREEGENY PARENT DASHBOARD 
+    Author: FreeGeny Development Team
+    Version: 1.0.0
+    Description: Premium monitoring interface for parents and guardians.
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Portal - FreeGeny</title>
+
+    <!-- External Fonts: Nunito for readability, Titan One for branding -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Titan+One&display=swap"
+        rel="stylesheet">
+    <!-- Animation Layer -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* 
+           CORE DESIGN SYSTEM
+           Color Palette: Teal (#09A1A1) and Rose (#D396A6)
+           Theme: Premium Glassmorphism
+        */
+        :root {
+            --primary: #09A1A1;
+            --primary-soft: rgba(9, 161, 161, 0.1);
+            --secondary: #D396A6;
+            --secondary-soft: rgba(211, 150, 166, 0.1);
+            --dark: #0F172A;
+            --light-bg: #F8FAFC;
+            --white: #FFFFFF;
+            --glass: rgba(255, 255, 255, 0.85);
+            --border: rgba(0, 0, 0, 0.05);
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            background:
+                radial-gradient(circle at 0% 0%, var(--primary-soft) 0%, transparent 30%),
+                radial-gradient(circle at 100% 100%, var(--secondary-soft) 0%, transparent 30%);
+            min-height: 100vh;
+            display: flex;
+            color: var(--dark);
+        }
+
+        /* 
+           SIDEBAR NAVIGATION 
+           Fixed position with premium glass effect
+        */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--white);
+            border-right: 1px solid var(--border);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+
+        .sidebar-logo {
+            font-family: 'Titan One', cursive;
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 50px;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-radius: 18px;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            gap: 15px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary-soft);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .nav-link svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* 
+           MAIN CONTENT AREA 
+        */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 40px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .welcome-text h1 {
+            font-size: 28px;
+            font-weight: 900;
+        }
+
+        .welcome-text p {
+            color: #64748B;
+            font-weight: 600;
+        }
+
+        /* 
+           STATS CARDS 
+        */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .icon-teal {
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+
+        .icon-rose {
+            background: var(--secondary-soft);
+            color: var(--secondary);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 900;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #64748B;
+            font-weight: 700;
+        }
+
+        /* 
+           CHARTS & ACTIVITY LIST 
+        */
+        .dashboard-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+
+        .card-panel {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 35px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border);
+        }
+
+        /* Language Toggle - Dashboard Version */
+        .lang-selector {
+            position: relative;
+            background: var(--white);
+            padding: 10px 18px;
+            border-radius: 50px;
+            color: var(--dark);
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 13px;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            user-select: none;
+        }
+
+        .lang-selector:hover {
+            border-color: var(--primary);
+            background: var(--light-bg);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: var(--white);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 15px;
+            width: 320px;
+            max-height: 350px;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            display: none;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 10000;
+        }
+
+        .lang-selector.open .lang-dropdown {
+            display: grid;
+        }
+
+        .lang-option {
+            padding: 10px 15px;
+            color: #64748B;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 800;
+            transition: all 0.2s;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lang-option:hover {
+            background: var(--primary-soft);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .lang-option.active {
+            background: var(--primary);
+            color: var(--white) !important;
+        }
+
+        .panel-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        /* Progress List Mockup */
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            gap: 15px;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .child-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: #eee;
+        }
+
+        .activity-info h4 {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .activity-info p {
+            font-size: 12px;
+            color: #94A3B8;
+        }
+
+        .status-badge {
+            margin-left: auto;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .bg-success {
+            background: #DCFCE7;
+            color: #166534;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 80px;
+                padding: 20px 10px;
+            }
+
+            .sidebar-logo,
+            .nav-link span {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 80px;
+            }
+
+            .dashboard-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* MOBILE OPTIMIZATION - Screens 768px and below
+           Strategy: Collapsible sidebar, responsive grids, vertical stacking */
+        @media (max-width: 768px) {
+
+            /* Sidebar: Off-canvas implementation for mobile navigation */
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 280px;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+            }
+
+            /* Sidebar open state: Slide into viewport */
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            /* Restore sidebar branding and labels on mobile */
+            .sidebar-logo,
+            .nav-link span {
+                display: block;
+            }
+
+            /* Main content: Full width layout without sidebar offset */
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            /* Stats grid: Two-column layout for balanced mobile display */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            /* Dashboard grid: Force single column for charts and widgets */
+            .dashboard-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Header: Stack elements vertically for mobile clarity */
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+        /* MOBILE SMALL - Screens 480px and below
+           Strategy: Single column stats, reduced padding */
+        @media (max-width: 480px) {
+
+            /* Stats grid: Single column for small screens */
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Card panels: Reduce padding for compact display */
+            .card-panel {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRIMARY SIDEBAR NAVIGATION -->
+    <nav class="sidebar">
+        <a href="home.html" class="sidebar-logo">FreeGeny</a>
+
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span data-i18n="db_dashboard">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <span data-i18n="db_children">Children</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    <span data-i18n="db_analytics">Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span data-i18n="db_settings">Settings</span>
+                </a>
+            </li>
+        </ul>
+
+        <a href="javascript:void(0)" onclick="logout()" class="nav-link" style="margin-top: auto; color: #EF4444;">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            <span data-i18n="db_logout">Logout</span>
+        </a>
+    </nav>
+
+    <!-- CONTENT WRAPPER -->
+    <main class="main-content">
+        <!-- TOP HEADER SECTION -->
+        <div class="header-top">
+            <div class="welcome-text">
+                <h1><span data-i18n="db_welcome">Welcome back</span>, <span id="display-name">Parent</span>!</h1>
+                <p data-i18n="db_explorers">Here is what your explorers are doing today.</p>
+            </div>
+            <div class="header-actions" style="display: flex; align-items: center; gap: 20px;">
+                <!-- Language Selector -->
+                <div class="lang-selector" onclick="toggleLangDropdown(event)">
+                    <span id="currentLangDisplay">🌍 English</span>
+                    <div class="lang-dropdown">
+                        <a href="#" class="lang-option" onclick="setLang('en', true)">🇺🇸 English</a>
+                        <a href="#" class="lang-option" onclick="setLang('zh', true)">🇨🇳 中文 (Mandarin)</a>
+                        <a href="#" class="lang-option" onclick="setLang('hi', true)">🇮🇳 हिन्दी (Hindi)</a>
+                        <a href="#" class="lang-option" onclick="setLang('es', true)">🇪🇸 Español</a>
+                        <a href="#" class="lang-option" onclick="setLang('ar', true)">🇸🇦 العربية (Arabic)</a>
+                        <a href="#" class="lang-option" onclick="setLang('fr', true)">🇫🇷 Français</a>
+                        <a href="#" class="lang-option" onclick="setLang('bn', true)">🇧🇩 বাংলা (Bengali)</a>
+                        <a href="#" class="lang-option" onclick="setLang('pt', true)">🇵🇹 Português</a>
+                        <a href="#" class="lang-option" onclick="setLang('ru', true)">🇷🇺 Русский</a>
+                        <a href="#" class="lang-option" onclick="setLang('id', true)">🇮🇩 Indonesia</a>
+                        <a href="#" class="lang-option" onclick="setLang('ur', true)">🇵🇰 اردو (Urdu)</a>
+                        <a href="#" class="lang-option" onclick="setLang('de', true)">🇩🇪 Deutsch</a>
+                        <a href="#" class="lang-option" onclick="setLang('ja', true)">🇯🇵 日本語 (Japanese)</a>
+                        <a href="#" class="lang-option" onclick="setLang('pcm', true)">🇳🇬 Nigerian Pidgin</a>
+                        <a href="#" class="lang-option" onclick="setLang('ha', true)">🇳🇬 Hausa</a>
+                        <a href="#" class="lang-option" onclick="setLang('tr', true)">🇹🇷 Türkçe</a>
+                        <a href="#" class="lang-option" onclick="setLang('pnb', true)">🇵🇰 Punjabi (Western)</a>
+                        <a href="#" class="lang-option" onclick="setLang('sw', true)">🇹🇿 Kiswahili</a>
+                        <a href="#" class="lang-option" onclick="setLang('tl', true)">🇵🇭 Tagalog</a>
+                        <a href="#" class="lang-option" onclick="setLang('fa', true)">🇮🇷 فارسی (Farsi)</a>
+                        <a href="#" class="lang-option" onclick="setLang('ko', true)">🇰🇷 한국어 (Korean)</a>
+                        <a href="#" class="lang-option" onclick="setLang('th', true)">🇹🇭 ไทย (Thai)</a>
+                        <a href="#" class="lang-option" onclick="setLang('jv', true)">🇮🇩 Basa Jawa (Javanese)</a>
+                        <a href="#" class="lang-option" onclick="setLang('it', true)">🇮🇹 Italiano</a>
+                        <a href="#" class="lang-option" onclick="setLang('vi', true)">🇻🇳 Tiếng Việt</a>
+                        <a href="#" class="lang-option" onclick="setLang('nl', true)">🇳🇱 Nederlands</a>
+                        <a href="#" class="lang-option" onclick="setLang('pl', true)">🇵🇱 Polski</a>
+                        <a href="#" class="lang-option" onclick="setLang('uk', true)">🇺🇦 Українська</a>
+                        <a href="#" class="lang-option" onclick="setLang('ca', true)">🏴󠁥󠁳󠁣󠁴󠁿 Català</a>
+                        <a href="#" class="lang-option" onclick="setLang('ga', true)">🇮🇪 Gaeilge</a>
+                        <a href="#" class="lang-option" onclick="setLang('sv', true)">🇸🇪 Svenska</a>
+                        <a href="#" class="lang-option" onclick="setLang('da', true)">🇩🇰 Dansk</a>
+                        <a href="#" class="lang-option" onclick="setLang('no', true)">🇳🇴 Norsk</a>
+                        <a href="#" class="lang-option" onclick="setLang('ro', true)">🇷🇴 Română</a>
+                        <a href="#" class="lang-option" onclick="setLang('el', true)">🇬🇷 Ελληνικά</a>
+                        <a href="#" class="lang-option" onclick="setLang('cs', true)">🇨🇿 Čeština</a>
+                        <a href="#" class="lang-option" onclick="setLang('fi', true)">🇫🇮 Suomi</a>
+                        <a href="#" class="lang-option" onclick="setLang('hu', true)">🇭🇺 Magyar</a>
+
+                    </div>
+                </div>
+
+                <div class="user-profile" style="display: flex; align-items: center; gap: 15px;">
+                    <div style="text-align: right;">
+                        <span style="display: block; font-weight: 800; font-size: 14px;" id="profile-name">User</span>
+                        <span style="font-size: 12px; color: var(--primary); font-weight: 700;"
+                            data-i18n="db_premium">Premium Member</span>
+                    </div>
+                    <div
+                        style="width: 50px; height: 50px; border-radius: 15px; background: var(--border); overflow: hidden;">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Yousr" alt="Avatar"
+                            style="width: 100%; height: 100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KPI SUMMARY GRID (Scorecards) -->
+        <div class="stats-grid">
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="stat-icon icon-teal">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <span class="stat-value">92%</span>
+                <span class="stat-label" data-i18n="db_accuracy">Accuracy Score</span>
+            </div>
+
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-icon icon-rose">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="stat-value">45m</span>
+                <span class="stat-label" data-i18n="db_session">Avg. Daily Session</span>
+            </div>
+
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-icon icon-teal">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                </div>
+                <span class="stat-value">A+</span>
+                <span class="stat-label" data-i18n="db_consistency">Consistency Grade</span>
+            </div>
+        </div>
+
+        <!-- MAIN DATA VISUALIZATION AREA -->
+        <div class="dashboard-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 25px;">
+
+            <!-- LEFT COLUMN: CHARTS -->
+            <div style="display: flex; flex-direction: column; gap: 25px;">
+
+                <!-- 1. PROGRESS CURVE (Area Chart) -->
+                <div class="card-panel" data-aos="fade-up">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">📈 <span data-i18n="db_velocity">Learning Velocity</span></h2>
+                    </div>
+                    <div style="height: 250px;">
+                        <canvas id="progressionChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- 2. DOMAIN PERFORMANCE (Bar Chart) -->
+                <div class="card-panel" data-aos="fade-up" data-aos-delay="100">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">📊 <span data-i18n="db_mastery">Mastery by Subject</span></h2>
+                    </div>
+                    <div style="height: 250px;">
+                        <canvas id="domainChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: HEATMAP & FEED -->
+            <div style="display: flex; flex-direction: column; gap: 25px;">
+
+                <!-- 3. ERROR HEATMAP -->
+                <div class="card-panel" data-aos="fade-up" data-aos-delay="150">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">🔥 <span data-i18n="db_heatmap">Focus Areas (Error Heatmap)</span></h2>
+                    </div>
+                    <!-- Custom CSS Grid Heatmap -->
+                    <div class="heatmap-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                        <!-- Logic -->
+                        <div class="heat-box"
+                            style="background: #DCFCE7; padding: 15px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 12px; font-weight: 700;" data-i18n="tag_logic">Logic</div>
+                            <div style="font-size: 10px; opacity: 0.7;" data-i18n="low_errors">Low Errors</div>
+                        </div>
+                        <!-- Math -->
+                        <div class="heat-box"
+                            style="background: #FEE2E2; padding: 15px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 12px; font-weight: 700;" data-i18n="tag_math">Math</div>
+                            <div style="font-size: 10px; opacity: 0.7; color: #DC2626;" data-i18n="high_errors">High
+                                Errors</div>
+                        </div>
+                        <!-- Memory -->
+                        <div class="heat-box"
+                            style="background: #FEF9C3; padding: 15px; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 12px; font-weight: 700;" data-i18n="tag_memory">Memory</div>
+                            <div style="font-size: 10px; opacity: 0.7;" data-i18n="med_errors">Med Errors</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RECENT ACTIVITY -->
+                <div class="card-panel" data-aos="fade-up" data-aos-delay="200" style="flex: 1;">
+                    <div class="panel-heading">
+                        <h2 class="panel-title" data-i18n="db_recent">Recent Activity</h2>
+                    </div>
+
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="child-avatar"
+                                style="background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Felix') center/cover;">
+                            </div>
+                            <div class="activity-info">
+                                <h4>Felix Spark</h4>
+                                <p>Math 101 - 100% Score</p>
+                            </div>
+                            <span class="status-badge bg-success">WOW</span>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="child-avatar"
+                                style="background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=Luna') center/cover;">
+                            </div>
+                            <div class="activity-info">
+                                <h4>Luna Spark</h4>
+                                <p>Logic Puzzle - 2 Retries</p>
+                            </div>
+                            <span class="status-badge" style="background: #FEF9C3; color: #854D0E;">Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Initialize Charts
+        const ctxProgress = document.getElementById('progressionChart').getContext('2d');
+        new Chart(ctxProgress, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Learning Velocity',
+                    data: [12, 19, 15, 25, 22, 30, 35],
+                    fill: true,
+                    backgroundColor: 'rgba(9, 161, 161, 0.1)',
+                    borderColor: '#09A1A1',
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#09A1A1',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { beginAtZero: true, grid: { borderDash: [5, 5] } }
+                }
+            }
+        });
+
+        const ctxDomain = document.getElementById('domainChart').getContext('2d');
+        new Chart(ctxDomain, {
+            type: 'bar',
+            data: {
+                labels: ['Math', 'Logic', 'Science', 'Lang', 'Art'],
+                datasets: [{
+                    label: 'Proficiency',
+                    data: [85, 70, 90, 65, 80],
+                    backgroundColor: ['#09A1A1', '#B2DFDB', '#D396A6', '#F8BBD0', '#FFD54F'],
+                    borderRadius: 10,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { display: false, max: 100 }
+                }
+            }
+        });
+
+        // Dashboard Logic
+        window.addEventListener('load', () => {
+            const token = localStorage.getItem('fg_token');
+            const userData = localStorage.getItem('fg_user');
+
+            if (!token || !userData) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const user = JSON.parse(userData);
+
+            if (user.role.toLowerCase() !== 'parent') {
+                if (user.role.toLowerCase() === 'school') window.location.href = 'school_dashboard.html';
+                else if (user.role.toLowerCase() === 'institution') window.location.href = 'institution_dashboard.html';
+                else window.location.href = 'index.html';
+                return;
+            }
+
+            document.getElementById('display-name').innerText = user.first_name + ' ' + (user.last_name ? user.last_name.charAt(0) + '.' : '');
+        });
+
+        function logout() {
+            localStorage.removeItem('fg_token');
+            localStorage.removeItem('fg_user');
+            window.location.href = 'login.html';
+        }
+
+        // i18n Engine for Dashboard
+
+        function toggleLangDropdown(e) {
+            e.stopPropagation();
+            document.querySelector('.lang-selector').classList.toggle('open');
+        }
+
+        document.addEventListener('click', (e) => {
+            const langSelector = document.querySelector('.lang-selector');
+            if (langSelector && !langSelector.contains(e.target)) langSelector.classList.remove('open');
+        });
+
+    </script>
+
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        // RTL Layout Adjustment
+        window.addEventListener('langChanged', (e) => {
+            const isRTL = document.documentElement.dir === 'rtl';
+            const sidebar = document.querySelector('.sidebar');
+            const main = document.querySelector('.main-content');
+
+            // Only apply on desktop where sidebar is fixed
+            if (window.innerWidth > 768 && sidebar && main) {
+                if (isRTL) {
+                    sidebar.style.left = 'auto';
+                    sidebar.style.right = '0';
+                    sidebar.style.borderRight = 'none';
+                    sidebar.style.borderLeft = '1px solid var(--border)';
+                    main.style.marginLeft = '0';
+                    main.style.marginRight = 'var(--sidebar-width)';
+                } else {
+                    sidebar.style.left = '0';
+                    sidebar.style.right = 'auto';
+                    sidebar.style.borderRight = '1px solid var(--border)';
+                    sidebar.style.borderLeft = 'none';
+                    main.style.marginLeft = 'var(--sidebar-width)';
+                    main.style.marginRight = '0';
+                }
+            } else if (sidebar && main) {
+                // Reset for mobile if needed, or rely on CSS media queries
+                main.style.marginLeft = '0';
+                main.style.marginRight = '0';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1182 @@
+# ============================================================
+# PROGRAMME OFFICIEL DE LANGUE TAMAZIGHT (AMAZIGHE)
+# 5ÈME ANNÉE PRIMAIRE - ALGÉRIE - GÉNÉRATION 2
+# ============================================================
+
+# MÉTADONNÉES PRINCIPALES
+matiere: tamazight_langue_amazighe
+niveau: 5ap
+programme: "Algérie - Génération 2"
+description: "Programme officiel de langue tamazight pour la 5ème année primaire - Système éducatif algérien"
+langue_enseignement: "tamazight"
+age_cible: "10-11 ans"
+annee_scolaire: "2024-2025"
+statut_document: "Officiel - Ministère de l'Éducation Nationale Algérie"
+code_cours: "Tamazight - Langue amazighe"
+
+# ============================================================
+# OBJECTIFS PÉDAGOGIQUES GLOBAUX
+# ============================================================
+objectifs_generaux:
+  - "Développer les compétences de communication orale et écrite en tamazight"
+  - "Maîtriser les structures grammaticales fondamentales de la langue amazighe"
+  - "Enrichir le vocabulaire spécialisé par thèmes"
+  - "Comprendre et produire des textes simples en tamazight"
+  - "Développer l'expression créative et la culture amazighe"
+  - "Consolider l'identité culturelle berbère/amazighe"
+  - "Favoriser le bilinguisme arabe-tamazight"
+
+# ============================================================
+# COMPÉTENCES TRANSVERSALES PRIORITAIRES
+# ============================================================
+competences_transversales:
+  - "Communication orale fluide et correcte"
+  - "Lecture et compréhension de textes tamazights"
+  - "Expression écrite structurée"
+  - "Grammaire et conjugaison en tamazight"
+  - "Orthographe tifinagh et orthographe arabe du tamazight"
+  - "Enrichissement lexical thématique"
+  - "Compréhension culturelle amazighe"
+  - "Production de textes authentiques"
+
+# ============================================================
+# STRUCTURE DU PROGRAMME - 4 MODULES THÉMATIQUES
+# ============================================================
+modules:
+
+# ============================================================
+# MODULE 1 : ISSAN (LES ANIMAUX)
+# ============================================================
+  - id: module_01
+    titre_tamazight: "Ad d-naskar yissan"
+    titre_francais: "Les animaux"
+    ordre: 1
+    trimestre: 1
+    duree_estimee: "3-4 semaines"
+    theme_principal: "animaux_faune"
+    couleur_code: "bleu"
+    
+    description_pedagogique: |
+      Ce module permet aux élèves de découvrir et décrire les animaux en tamazight.
+      Il développe les vocabulaires spécialisés, les structures descriptives et les 
+      compétences de narration simples sur les animaux.
+    
+    sequences:
+      # LEÇON 1
+      - id: seq_01_01
+        titre_tamazight: "Yabtaw-tan, Yatshah-tan"
+        titre_francais: "Le chat, la chatte"
+        page_reference: 13
+        ordre: 1
+        duree_estimee: "1 semaine"
+        
+        objectifs_specifiques:
+          - "Identifier et nommer les animaux domestiques"
+          - "Décrire les caractéristiques physiques"
+          - "Utiliser les adjectifs descriptifs"
+          - "Former le féminin des noms d'animaux"
+        
+        competences_visees:
+          - "Connaître le vocabulaire des animaux"
+          - "Décrire un animal avec détails"
+          - "Utiliser les accords en genre et nombre"
+          - "Comprendre le féminin régulier (-t)"
+        
+        contenu_grammatical:
+          structures:
+            - nom: "Nom + adjectif descriptif"
+              exemple: "Yabta-w amazuaru (le chat noir)"
+              accord: "L'adjectif s'accorde avec le nom"
+            
+            - nom: "Formation du féminin"
+              type: "Addition de -t au singulier"
+              exemple: "Yabtaw → Yabtaw-t (chattes)"
+              regles: "Règle régulière pour les animaux domestiques"
+            
+            - nom: "Démonstratifs"
+              formes: ["wa", "wi", "wiya", "win"]
+              usage: "Désigner des animaux spécifiques"
+              exemple: "Wa yabta-w (ce chat)"
+          
+          verbes:
+            - nom: "Verbes d'action simples"
+              exemples: ["feg (sauter)", "kkes (gratter)", "azal (dormir)"]
+              temps: "Présent et passé simple"
+        
+        contenu_lexical:
+          vocabulaire_principal:
+            animaux_domestiques: ["yabtaw (chat)", "aγil (chien)", "izimer (chèvre)", "abiyi (mouton)"]
+            caracteristiques:
+              - couleurs: ["amazuaru (noir)", "azeggaγ (blanc)", "aberrani (roux)"]
+              - taille: ["amenzu (petit)", "amezzar (grand)"]
+              - comportement: ["aytlas (docile)", "aγdal (méchant)", "amimutt (rapide)"]
+          
+          verbes_relates:
+            - "feg (sauter)"
+            - "kkes (gratter)"
+            - "azal (dormir)"
+            - "kec (dormir/coucher)"
+            - "ekki (manger)"
+            - "imi (boire)"
+        
+        documents_ressources:
+          - type: "Texte narratif"
+            titre: "Ad d-taluq Amurad n rɛulistaw"
+            page: 13
+            theme: "Rencontre avec un chat"
+            competence: "Compréhension narrative"
+          
+          - type: "Dialogue"
+            titre: "Dialogue sur les animaux"
+            page: 13
+            contenu: "Échange descriptif sur les animaux"
+        
+        activites_proposees:
+          - id: activite_1_1_1
+            titre: "Décrire un animal domestique"
+            type: "production_orale"
+            competence: "Expression descriptive"
+            elements: ["nom", "couleur", "taille", "comportement", "actions"]
+          
+          - id: activite_1_1_2
+            titre: "Écrire une phrase pour décrire un animal"
+            type: "production_ecrite"
+            structure: "Nom + adjectif + verbe"
+            exemple: "Yabtaw amazuaru itedda"
+          
+          - id: activite_1_1_3
+            titre: "Former le féminin des animaux"
+            type: "exercice_grammatical"
+            tache: "Ajouter -t aux noms d'animaux"
+        
+        evaluation:
+          type: "formative"
+          outils: ["Quiz vocabulaire", "Production orale", "Exercices écrits"]
+
+      # LEÇON 2
+      - id: seq_01_02
+        titre_tamazight: "Toumḥent n tfatsusin"
+        titre_francais: "Nourriture des animaux"
+        page_reference: 18
+        ordre: 2
+        duree_estimee: "1 semaine"
+        
+        objectifs_specifiques:
+          - "Connaître la nourriture des animaux"
+          - "Exprimer ce que mangent les animaux"
+          - "Utiliser les verbes d'action (manger, boire)"
+          - "Décrire les habitudes alimentaires"
+        
+        competences_visees:
+          - "Vocabulaire de nourriture et d'alimentation"
+          - "Expressions de nutrition"
+          - "Verbes liés à l'alimentation"
+          - "Construction de phrases simples"
+        
+        contenu_grammatical:
+          structures:
+            - nom: "Verbe ekki (manger) + complément"
+              forme: "Sujet + ekki + objet"
+              exemple: "Yabtaw yekka izaṛ (le chat mange du poisson)"
+            
+            - nom: "Verbe imi (boire) + complément"
+              exemple: "Aγil yimi adzimu (le chien boit du lait)"
+            
+            - nom: "Suffixes d'objet direct"
+              formes: ["t (le/la)", "sen (les)", "n-neγ (notre)"]
+              usage: "Remplacer l'objet par un pronom"
+        
+        contenu_lexical:
+          nourriture_animaux:
+            - animaux_carnivores: ["izaṛ (poisson)", "tajḍemt (viande)", "iγuman (oeufs)"]
+            - animaux_herbivores: ["tasecart (herbe)", "tazaṛ (grain)", "takarut (foin)"]
+            - nourriture_generale: ["taγerfant (pain)", "adzimu (lait)", "aman (eau)"]
+          
+          verbes_alimentation:
+            - "ekki (manger)"
+            - "imi (boire)"
+            - "ssuγ (faire paître)"
+            - "fulli (remplir assiette)"
+        
+        documents_ressources:
+          - type: "Texte informatif"
+            titre: "Asafru - Ce que mangent les animaux"
+            page: 20
+            contenu: "Description des régimes alimentaires"
+        
+          - type: "Liste descriptive"
+            titre: "Les habitudes alimentaires"
+            page: 20-21
+            contenu: "Énumération ce que mangent différents animaux"
+        
+        activites_proposees:
+          - id: activite_1_2_1
+            titre: "Associer animaux et nourriture"
+            type: "exercice_matching"
+            materiel: "Listes d'animaux et nourritures"
+          
+          - id: activite_1_2_2
+            titre: "Décrire ce que mange un animal"
+            type: "production_orale"
+            structure: "[Animal] yekka/yimi [nourriture]"
+          
+          - id: activite_1_2_3
+            titre: "Créer un tableau des régimes"
+            type: "activite_organisationnelle"
+            categories: ["Carnivores", "Herbivores", "Omnivores"]
+        
+        evaluation:
+          type: "formative"
+          outils: ["Vocabulaire", "Associations", "Productions orales"]
+
+      # LEÇON 3
+      - id: seq_01_03
+        titre_tamazight: "Asafru: Ad wi ibdaden"
+        titre_francais: "Légende: Ce que l'animal dit"
+        page_reference: 20
+        ordre: 3
+        duree_estimee: "0.5 semaine"
+        type: "texte_culturel"
+        
+        objectifs_specifiques:
+          - "Connaître les histoires traditionnelles amazighes"
+          - "Comprendre une narration simple"
+          - "Enrichir la culture amazighe"
+        
+        contenu:
+          type: "Légende traditionnelle"
+          theme: "Dialogue entre animaux"
+          fonction: "Transmission culturelle et morale"
+        
+        competences_visees:
+          - "Compréhension narrative"
+          - "Connaissance culturelle amazighe"
+        
+        evaluation:
+          type: "formative"
+          outils: ["Questions de compréhension"]
+
+      # LEÇON 4
+      - id: seq_01_04
+        titre_tamazight: "Ɔnfif d tawurt"
+        titre_francais: "Récit: De la porte"
+        page_reference: 21
+        ordre: 4
+        duree_estimee: "0.5 semaine"
+        type: "texte_narratif"
+        
+        objectifs_specifiques:
+          - "Enrichir le vocabulaire contextuel"
+          - "Comprendre des narrations courtes"
+          - "Identifier les éléments d'une histoire"
+
+# ============================================================
+# MODULE 2 : TAMSAMALT TAGEMMATIN N SNUBAVTAG
+# ============================================================
+  - id: module_02
+    titre_tamazight: "Ad d-naskar tamsamalt tagemmatin n snubavtag"
+    titre_francais: "La famille et la vie communautaire"
+    ordre: 2
+    trimestre: 1
+    duree_estimee: "4-5 semaines"
+    theme_principal: "famille_societe"
+    couleur_code: "orange"
+    
+    description_pedagogique: |
+      Ce module explore la structure familiale amazighe et les relations sociales.
+      Il développe le vocabulaire familial, les relations interpersonnelles et 
+      les valeurs sociales amazighes.
+    
+    sequences:
+      # LEÇON 5
+      - id: seq_02_01
+        titre_tamazight: "Amanzu n yanayan"
+        titre_francais: "Les petits enfants"
+        page_reference: 36
+        ordre: 1
+        duree_estimee: "1-1.5 semaine"
+        
+        objectifs_specifiques:
+          - "Connaître le vocabulaire familial"
+          - "Identifier les relations de parenté"
+          - "Utiliser les termes familiaux en phrases"
+          - "Comprendre la structure familiale amazighe"
+        
+        competences_visees:
+          - "Vocabulaire de la parenté"
+          - "Relations familiales"
+          - "Adjectifs possessifs et relations"
+          - "Expression des liens parentaux"
+        
+        contenu_grammatical:
+          structures:
+            - nom: "Possessifs avec noms familiaux"
+              exemple: "Abubakar n yebuya (le père d'Ahmed)"
+              formes: ["n-w (mon)", "n-k (ton)", "n-s (son/sa)"]
+            
+            - nom: "Noms de parenté"
+              parents: ["abbu (père)", "yemma (mère)", "akli (frère)", "axti (soeur)"]
+              grands_parents: ["baabuh (grand-père)", "tala (grand-mère)"]
+              autres: ["ult (fille)", "argaz (fils)", "yaban (oncle)"]
+            
+            - nom: "Diminutifs pour enfants"
+              suffixes: ["-u", "-i", "-a (pour enfants/petits)"]
+              exemple: "amanzu (petit enfant)"
+        
+        contenu_lexical:
+          termes_familiaux:
+            lignee_ascendante: ["abbu (père)", "yemma (mère)", "baabuh (grand-père)", "tala (grand-mère)"]
+            lignee_descendante: ["ult (fille)", "argaz (fils)", "amanzu (petit enfant)"]
+            relations_laterales: ["akli (frère)", "axti (soeur)", "ayan (cousin)", "ayant (cousine)"]
+            relations_etendues: ["yaban (oncle)", "tazebga (tante)", "aγezzar (cousin eloigné)"]
+          
+          adjectifs_relations:
+            - "amgal (aîné)"
+            - "ajdid (cadet)"
+            - "amenzu (petit)"
+            - "amezzar (grand)"
+        
+        documents_ressources:
+          - type: "Dialogue familial"
+            titre: "Amizzar d tabaẓin"
+            page: 36-40
+            contenu: "Conversations familiales"
+          
+          - type: "Texte descriptif"
+            titre: "Description de famille"
+            page: 41
+            contenu: "Portrait d'une famille amazighe"
+          
+          - type: "Légende"
+            titre: "Asafru - Ari wi ibaden yananayan"
+            page: 43
+            contenu: "Histoire traditionnelle sur enfants"
+        
+        activites_proposees:
+          - id: activite_2_1_1
+            titre: "Créer un arbre généalogique"
+            type: "activite_graphique"
+            competence: "Visualisation des relations"
+            elements: ["Parents", "Enfants", "Grands-parents", "Cousins"]
+          
+          - id: activite_2_1_2
+            titre: "Décrire sa famille"
+            type: "production_orale"
+            structure: "Amghad n w: Abbu-inu..., Yemma-inu..."
+            elements: ["noms", "âges", "caractéristiques"]
+          
+          - id: activite_2_1_3
+            titre: "Jeu de rôle familial"
+            type: "simulation"
+            competence: "Interaction orale"
+        
+        evaluation:
+          type: "formative"
+          outils: ["Quiz vocabulaire familial", "Production orale", "Arbre généalogique"]
+
+      # LEÇON 6
+      - id: seq_02_02
+        titre_tamazight: "Abazin"
+        titre_francais: "Les traditions culinaires"
+        page_reference: 41
+        ordre: 2
+        duree_estimee: "1-1.5 semaine"
+        
+        objectifs_specifiques:
+          - "Connaître la cuisine amazighe traditionnelle"
+          - "Décrire les plats et préparations"
+          - "Utiliser le vocabulaire culinaire"
+          - "Comprendre l'importance culturelle"
+        
+        competences_visees:
+          - "Vocabulaire culinaire spécialisé"
+          - "Description de plats"
+          - "Ingrédients et préparations"
+          - "Occasions spéciales et gastronomie"
+        
+        contenu_lexical:
+          plats_traditionnels:
+            plats_quotidiens: ["taγerfant (pain)", "agjure (couscous)", "tajine (tajine)", "lham (viande)"]
+            occasions_speciales: ["akunfar (fête - nourriture festive)", "aserfus (repas d'honneur)"]
+            ingredients: ["iγd (blé)", "agerzem (orge)", "azeggaγ (beurre)", "azegmur (miel)"]
+            condiments: ["azemmur (sel)", "aγerrum (épice)", "iγ (huile d'olive)"]
+          
+          verbes_culinaires:
+            - "suddes (préparer/cuire)"
+            - "kkes (moudre)"
+            - "ssuγ (verser)"
+            - "ekki (manger)"
+        
+        documents_ressources:
+          - type: "Description gastronomique"
+            titre: "Amizzar d Timasikant"
+            page: 41-42
+            contenu: "Description de repas familiaux"
+          
+          - type: "Texte informatif"
+            titre: "Les traditions culinaires amazighes"
+            page: 42
+            contenu: "Importance culturelle de la gastronomie"
+        
+        activites_proposees:
+          - id: activite_2_2_1
+            titre: "Décrire un plat traditionnel"
+            type: "production_ecrite"
+            elements: ["nom du plat", "ingrédients", "préparation", "occasion"]
+          
+          - id: activite_2_2_2
+            titre: "Lister les ingrédients"
+            type: "exercice_lexical"
+            tache: "Associer plats et ingrédients"
+          
+          - id: activite_2_2_3
+            titre: "Récit: Préparation d'un repas"
+            type: "narration"
+            competence: "Séquence d'actions"
+        
+        evaluation:
+          type: "formative"
+          outils: ["Vocabulaire", "Description", "Productions"]
+
+      # LEÇON 7
+      - id: seq_02_03
+        titre_tamazight: "Tiniegiwa"
+        titre_francais: "Les jeux et loisirs"
+        page_reference: 46
+        ordre: 3
+        duree_estimee: "1 semaine"
+        
+        objectifs_specifiques:
+          - "Connaître les jeux et divertissements amazighs"
+          - "Décrire les activités de loisir"
+          - "Utiliser les verbes d'action et de jeu"
+          - "Comprendre l'importance du jeu"
+        
+        competences_visees:
+          - "Vocabulaire des jeux et loisirs"
+          - "Verbes d'action dynamiques"
+          - "Description d'activités"
+          - "Expressions de plaisir et amusement"
+        
+        contenu_lexical:
+          jeux_traditionnels:
+            jeux_enfants: ["Imaynuren (jeu de bille)", "Tiγerratin (jeu de cours)", "Iseggaten (cache-cache)"]
+            jeux_adultes: ["Taqvlit (jeu de société)", "Ihoyan (lutte)", "Taharubt (course)"]
+            loisirs: ["Agwend (chant)", "Amehen (danse)", "Ammud (sport)"]
+          
+          verbes_jeu:
+            - "deg (jouer)"
+            - "sseγ (rire)"
+            - "reγ (gagner)"
+            - "sfi (perdre)"
+            - "awṛ (dépasser)"
+        
+        documents_ressources:
+          - type: "Description de jeux"
+            titre: "Tamaγra n yananayan"
+            page: 51
+            contenu: "Jeux des enfants"
+          
+          - type: "Légende"
+            titre: "Asafru: Kar i-s n warqigh"
+            page: 53
+            contenu: "Histoire autour d'un jeu"
+        
+        activites_proposees:
+          - id: activite_2_3_1
+            titre: "Expliquer un jeu"
+            type: "production_orale"
+            structure: "Description étape par étape"
+          
+          - id: activite_2_3_2
+            titre: "Jouer ensemble en tamazight"
+            type: "interaction"
+            competence: "Communication orale en contexte"
+          
+          - id: activite_2_3_3
+            titre: "Écrire sur son jeu préféré"
+            type: "production_ecrite"
+            elements: ["nom", "règles", "joueurs", "plaisir"]
+
+      # LEÇON 8
+      - id: seq_02_04
+        titre_tamazight: "I kanui a Lmualin-innu"
+        titre_francais: "Les conseils de nos anciens"
+        page_reference: 54
+        ordre: 4
+        duree_estimee: "0.5 semaine"
+        type: "texte_moral"
+        
+        objectifs_specifiques:
+          - "Comprendre la sagesse amazighe traditionnelle"
+          - "Apprendre des proverbes et maximes"
+          - "Transmettre les valeurs culturelles"
+
+# ============================================================
+# MODULE 3 : TAINIRAOUT TAMAZIANNT N TADART
+# ============================================================
+  - id: module_03
+    titre_tamazight: "Ad d-naskar Tainiraout tamaziannt n tadart"
+    titre_francais: "L'histoire locale amazighe"
+    ordre: 3
+    trimestre: 2
+    duree_estimee: "4-5 semaines"
+    theme_principal: "histoire_patrimoine"
+    couleur_code: "vert"
+    
+    description_pedagogique: |
+      Ce module explore l'histoire et les figures importantes amazighes.
+      Il développe la conscience historique, le respect du patrimoine et 
+      l'identification aux personnalités amazighes.
+    
+    sequences:
+      # LEÇON 9
+      - id: seq_03_01
+        titre_tamazight: "Izakwan iqdiман n watt-rhunna"
+        titre_francais: "Les anciennes forteresses"
+        page_reference: 59
+        ordre: 1
+        duree_estimee: "1-1.5 semaine"
+        
+        objectifs_specifiques:
+          - "Connaître le patrimoine architectural amazigh"
+          - "Localiser les vestiges historiques"
+          - "Décrire les constructions anciennes"
+          - "Comprendre l'importance historique"
+        
+        competences_visees:
+          - "Vocabulaire architectural"
+          - "Description de lieux historiques"
+          - "Expressions de localisation"
+          - "Conscience du patrimoine"
+        
+        contenu_lexical:
+          architecture:
+            forteresses: ["Izakwan (forteresses)", "Taddart (maison fortifiée)", "Taγebalut (tour)"]
+            elements: ["illu (porte)", "tagurust (fenêtre)", "taferkt (mur)", "taddart (maison)"]
+            localisation: ["adagh (montagne)", "tassekrut (colline)", "talemt (vallée)"]
+          
+          verbes_description:
+            - "sseg (être/se situer)"
+            - "aru (être construit)"
+            - "ffeγ (sortir/dominer)"
+        
+        documents_ressources:
+          - type: "Description historique"
+            titre: "Tadart n Tchabrut"
+            page: 64
+            contenu: "Forteresse historique"
+          
+          - type: "Légende"
+            titre: "Asafru: Adrar-u"
+            page: 66
+            contenu: "Histoire des montagnes"
+        
+        activites_proposees:
+          - id: activite_3_1_1
+            titre: "Décrire une forteresse"
+            type: "production_orale"
+            elements: ["localisation", "matériaux", "structure", "histoire"]
+          
+          - id: activite_3_1_2
+            titre: "Localiser sur une carte"
+            type: "activite_cartographique"
+            competence: "Orientation géographique"
+          
+          - id: activite_3_1_3
+            titre: "Visite virtuelle"
+            type: "narration"
+            competence: "Description détaillée"
+        
+        evaluation:
+          type: "formative"
+          outils: ["Descriptions", "Localisation", "Productions"]
+
+      # LEÇON 10
+      - id: seq_03_02
+        titre_tamazight: "Akham n yiddir"
+        titre_francais: "La maison de Yiddir"
+        page_reference: 67
+        ordre: 2
+        duree_estimee: "1 semaine"
+        
+        objectifs_specifiques:
+          - "Connaître la vie dans l'habitat amazigh"
+          - "Décrire l'intérieur d'une maison"
+          - "Utiliser le vocabulaire domestique"
+          - "Comprendre l'organisation spatiale"
+        
+        competences_visees:
+          - "Vocabulaire de la maison"
+          - "Description d'espaces"
+          - "Localisation à l'intérieur"
+          - "Meubles et ustensiles"
+        
+        contenu_lexical:
+          parties_maison:
+            - "taddart (maison)"
+            - "illu (porte)"
+            - "tagurust (fenêtre)"
+            - "taferkt (mur)"
+            - "talemt (cour)"
+            - "izefran (chambres)"
+          
+          meubles:
+            - "taselkit (lit)"
+            - "takerrust (chaise)"
+            - "taγerfant (table)"
+            - "tamuḍḍa (lampe)"
+          
+          ustensiles:
+            - "tajine (plat tajine)"
+            - "tanufra (pot)"
+            - "tissaγ (assiette)"
+        
+        documents_ressources:
+          - type: "Description d'habitation"
+            titre: "Ta hjilla (habitation)"
+            page: 69
+            contenu: "Maison traditionnelle amazighe"
+          
+          - type: "Récit"
+            titre: "Muḥand n Ḥand"
+            page: 74
+            contenu: "Personnage historique"
+
+      # LEÇON 11
+      - id: seq_03_03
+        titre_tamazight: "Nna Ḥajila"
+        titre_francais: "Nna Hajila (personnage historique)"
+        page_reference: 69
+        ordre: 3
+        duree_estimee: "1 semaine"
+        type: "biographie"
+        
+        objectifs_specifiques:
+          - "Connaître les figures historiques amazighes"
+          - "Comprendre les contributions historiques"
+          - "Développer le respect des ancêtres"
+        
+        competences_visees:
+          - "Vocabulaire biographique"
+          - "Narration d'une vie"
+          - "Expressions de respect et hommage"
+        
+        contenu:
+          personnage: "Nna Hajila - figure historique amazighe"
+          contributions: ["Leadership", "Justice", "Sagesse"]
+          période: "Époque historique ancienne"
+        
+        evaluation:
+          type: "formative"
+          outils: ["Questions compréhension", "Présentation orale"]
+
+      # LEÇON 12
+      - id: seq_03_04
+        titre_tamazight: "Muḥand n Ḥand / Ḥamad Umaari / Massinissa"
+        titre_francais: "Grandes figures amazighes (Mohend n Hand, Hamad Oumari, Massinissa)"
+        page_reference: "74-77"
+        ordre: 4
+        duree_estimee: "1.5 semaine"
+        type: "biographies_comparees"
+        
+        objectifs_specifiques:
+          - "Connaître les grands personnages amazighs"
+          - "Comprendre leurs contributions"
+          - "Comparer leurs rôles historiques"
+          - "Développer fierté culturelle"
+        
+        competences_visees:
+          - "Narration biographique"
+          - "Comparaison de figures"
+          - "Expression du respect et admiration"
+          - "Conscience historique"
+        
+        personnages:
+          - nom: "Muḥand n Ḥand (Mouloud Mammeri)"
+            domaine: "Littérature amazighe"
+            importance: "Écrivain et intellectuel majeur"
+          
+          - nom: "Ḥamad Umaari"
+            domaine: "Politique et résistance"
+            importance: "Leader historique"
+          
+          - nom: "Massinissa"
+            domaine: "Royaume numidie antique"
+            importance: "Roi ancien amazigh"
+        
+        documents_ressources:
+          - type: "Biographies"
+            titre: "Asafru - Massinissa / Ḥamad Umaari / Muḥand n Ḥand"
+            page: 76-77
+            contenu: "Récits de vies illustres"
+        
+        activites_proposees:
+          - id: activite_3_4_1
+            titre: "Présenter une figure historique"
+            type: "presentation_orale"
+            elements: ["naissance", "actions", "impact", "héritage"]
+          
+          - id: activite_3_4_2
+            titre: "Comparer deux personnages"
+            type: "analyse_comparative"
+            dimensions: ["époque", "domaine", "contributions", "impact"]
+          
+          - id: activite_3_4_3
+            titre: "Écrire une biographie courte"
+            type: "production_ecrite"
+            longueur: "5-8 phrases"
+
+# ============================================================
+# MODULE 4 : TUZIPISST - GRAMMAIRE ET STRUCTURE
+# ============================================================
+  - id: module_04
+    titre_tamazight: "Ad d-naskar tuzipisst - akân ad nsalfu imdanân"
+    titre_francais: "Grammaire et structure (Applications grammaticales)"
+    ordre: 4
+    trimestre: 2
+    duree_estimee: "5-6 semaines"
+    theme_principal: "grammaire_syntaxe"
+    couleur_code: "rose"
+    
+    description_pedagogique: |
+      Ce module consolide l'apprentissage grammatical du tamazight à travers
+      des applications pratiques et contextualisées. Il réunit les structures
+      apprises dans les modules précédents et développe la maîtrise syntaxique.
+    
+    sequences:
+      # SECTION 1: GRAMMAIRE AVEC CONTEXTE ANIMALIER
+      - id: seq_04_01
+        titre_tamazight: "Ad sakiγ iymiḥan n usimas n tunaḍt"
+        titre_francais: "Grammaire avec contexte animalier (réutilisation Module 1)"
+        page_reference: 82
+        ordre: 1
+        duree_estimee: "1.5 semaine"
+        type: "application_grammaticale"
+        
+        objectifs_specifiques:
+          - "Consolider les structures du Module 1"
+          - "Appliquer la grammaire au vocabulaire animal"
+          - "Produire des phrases complexes"
+          - "Développer la maîtrise syntaxique"
+        
+        competences_visees:
+          - "Formation de phrases sur les animaux"
+          - "Utilisation correcte des accords"
+          - "Application des temps verbaux"
+          - "Construction d'énoncés cohérents"
+        
+        contenu_grammatical:
+          structures_principales:
+            - nom: "Nom + adjectif"
+              contexte_animal: "Yabta-w amazuaru (chat noir)"
+              accord: "L'adjectif s'accorde en genre et nombre"
+            
+            - nom: "Sujet + verbe + objet"
+              exemple: "Yabtaw yekka izaṛ"
+              construction: "SVO (Sujet-Verbe-Objet)"
+            
+            - nom: "Verbes avec compléments"
+              exemple: "Aγil yimi adzimu (le chien boit du lait)"
+              verbes: ["ekki (manger)", "imi (boire)", "feg (sauter)"]
+        
+        activites_proposees:
+          - id: activite_4_1_1
+            titre: "Former des phrases avec animaux"
+            type: "exercice_syntaxique"
+            elements: ["nom animal", "adjectif", "verbe", "complément"]
+          
+          - id: activite_4_1_2
+            titre: "Analyser la structure de phrases"
+            type: "analyse_grammaticale"
+            competence: "Identification des composantes"
+          
+          - id: activite_4_1_3
+            titre: "Production libre: description animal"
+            type: "production_ecrite"
+            longueur: "3-5 phrases"
+        
+        evaluation:
+          type: "formative"
+          outils: ["Exercices syntaxiques", "Analyses", "Productions"]
+
+      # SECTION 2: GRAMMAIRE AVEC CONTEXTE FAMILIAL
+      - id: seq_04_02
+        titre_tamazight: "Ad d-snjouaγ γar iyuin - Tamasikant n tagemmatin n tvâl"
+        titre_francais: "Grammaire avec contexte familial (réutilisation Module 2)"
+        page_reference: 92
+        ordre: 2
+        duree_estimee: "1.5 semaine"
+        type: "application_grammaticale"
+        
+        objectifs_specifiques:
+          - "Consolider les structures du Module 2"
+          - "Appliquer la grammaire au vocabulaire familial"
+          - "Exprimer les relations et parenté"
+          - "Produire des énoncés cohérents"
+        
+        competences_visees:
+          - "Expressions de parenté"
+          - "Utilisation des possessifs"
+          - "Construction de phrases familiales"
+          - "Communication interpersonnelle"
+        
+        contenu_grammatical:
+          structures_principales:
+            - nom: "Possessifs avec noms familiaux"
+              exemple: "Abbu-inu (mon père), Yemma-k (ta mère)"
+              formes: ["Possessifs directs", "Construction avec 'n' (de)"]
+            
+            - nom: "Relations de parenté complexes"
+              exemple: "Akli n yebuya (le frère du père = oncle)"
+              construction: "Nom + de + lien familial"
+            
+            - nom: "Phrases descriptives familiales"
+              exemple: "Yemma-inu tẓḍa, azegmur, tinɛumala"
+              structure: "Sujet + caractéristiques"
+        
+        activites_proposees:
+          - id: activite_4_2_1
+            titre: "Exprimer sa famille"
+            type: "production_orale"
+            competence: "Expression personnelle"
+            elements: ["membres", "caractéristiques", "relations"]
+          
+          - id: activite_4_2_2
+            titre: "Créer des énoncés familiaux"
+            type: "exercice_syntaxique"
+            structure: "Possessif + nom familial + adjectif"
+          
+          - id: activite_4_2_3
+            titre: "Dialogue familial"
+            type: "simulation_orale"
+            competence: "Interaction naturelle"
+        
+        evaluation:
+          type: "formative"
+          outils: ["Dialogues", "Productions", "Exercices"]
+
+      # SECTION 3: GRAMMAIRE AVEC CONTEXTE HISTORIQUE
+      - id: seq_04_03
+        titre_tamazight: "Ad sametraγ adinât fâl azihdav n avama"
+        titre_francais: "Grammaire avec contexte historique (réutilisation Module 3)"
+        page_reference: 98
+        ordre: 3
+        duree_estimee: "1.5 semaine"
+        type: "application_grammaticale"
+        
+        objectifs_specifiques:
+          - "Consolider les structures du Module 3"
+          - "Appliquer la grammaire au vocabulaire historique"
+          - "Produire des narrations"
+          - "Développer le discours historique"
+        
+        competences_visees:
+          - "Narration historique"
+          - "Utilisation du passé"
+          - "Description de lieux historiques"
+          - "Expression respectueuse"
+        
+        contenu_grammatical:
+          structures_principales:
+            - nom: "Passé simple avec contexte historique"
+              exemple: "Massinissa yura tamazgha (Massinissa a fondé un royaume)"
+              verbes_pasé: ["ura (a fait)", "duffa (a établi)", "ssuγ (a versé)"]
+            
+            - nom: "Description de lieux anciens"
+              exemple: "Taddart n tchabrut, yesɛa iluwan imezzran (La maison était grande)"
+              adjectifs: ["imezzran (grand)", "iqdiман (ancien)", "amqran (fort)"]
+            
+            - nom: "Expressions de respect"
+              exemple: "Nna Hajila, d amenṭas n usɛiy (Nna Hajila, d'une grande sagesse)"
+              particules: ["d (est)", "n (de)", "ameslay (parole)"]
+        
+        activites_proposees:
+          - id: activite_4_3_1
+            titre: "Narrer un fait historique"
+            type: "production_orale"
+            structure: "Qui? Quoi? Où? Quand? Pourquoi?"
+          
+          - id: activite_4_3_2
+            titre: "Décrire un personnage historique"
+            type: "production_ecrite"
+            elements: ["traits", "actions", "impact", "respect"]
+          
+          - id: activite_4_3_3
+            titre: "Comparaison de périodes"
+            type: "analyse_comparative"
+            competence: "Discours contrastif"
+        
+        evaluation:
+          type: "formative"
+          outils: ["Narrations", "Descriptions", "Comparaisons"]
+
+# ============================================================
+# GRAMMAIRE SYSTÉMATIQUE TRANSVERSALE
+# ============================================================
+grammaire_systematique:
+  
+  morphologie:
+    # Tableaux de morphologie
+    formation_feminin:
+      description: "Formation du féminin en tamazight"
+      pages: [17, 27, 40, 42, 49, 52, 65, 72, 75, 86, 96]
+      regles:
+        - nom: "Addition de -t au singulier"
+          exemple: "Yabta-w → Yabta-w-t"
+          champ_application: "Noms d'animaux, personnes, objets"
+        
+        - nom: "Changements vocaliques"
+          exemple: "Argaz → Ult (singulier irrégulier)"
+          type: "Formes irrégulières"
+    
+    pluriel:
+      description: "Formation du pluriel"
+      pages: [25, 26, 38, 39, 48, 49, 61, 71, 73, 84, 85, 94, 95]
+      regles:
+        - nom: "Pluriel régulier masculin"
+          suffixes: ["i", "en"]
+          exemple: "Yabta-w → Yabta-win (chats)"
+        
+        - nom: "Pluriel féminin régulier"
+          suffixes: ["in", "tain"]
+          exemple: "Taddart → Taddarin (maisons)"
+    
+    adjectifs:
+      description: "Utilisation et accord des adjectifs"
+      pages: [15, 16, 19, 23, 25, 26, 31, 38, 40, 42, 48, 62, 63, 72, 73, 86]
+      accord: "S'accordent avec le nom en genre et nombre"
+      position: "Généralement après le nom"
+    
+    determinants_possessifs:
+      description: "Pronoms et possessifs"
+      pages: [27, 50, 52, 63, 73, 86]
+      formes:
+        - singulier: ["w (mon)", "k (ton)", "s (son/sa)", "nɣ (notre)"]
+        - pluriel: ["wen (vos)", "sen (leurs)"]
+      construction: "Nom + suffixe possessif"
+    
+    pronoms_demonstratifs:
+      description: "Démonstratifs et anaphoriques"
+      pages: [26, 39, 49, 62, 85]
+      formes: ["wa (ce)", "wi (ceci)", "wiya (cela)", "win (ceux)"]
+      usage: "Désigner des personnes ou objets spécifiques"
+  
+  syntaxe:
+    structures_principales:
+      phrase_simple:
+        description: "Construction basique SVO"
+        pages: [13, 18, 25, 28, 36, 41, 46, 51, 59, 64, 69, 74]
+        structure: "Sujet + Verbe + Objet/Complément"
+        exemple: "Yabta-w yekka izaṛ (Le chat mange du poisson)"
+      
+      complement_direct:
+        description: "Objet direct du verbe"
+        pages: [15, 25, 38, 48, 61]
+        marquage: "Pas de marquage morphologique spécial"
+        exemple: "yekka izaṛ (mange poisson)"
+      
+      complement_circonstanciel:
+        description: "Compléments de lieu, temps, manière"
+        pages: [19, 29, 40, 42, 50, 52, 63, 73, 88, 96]
+        prepositions: ["di (dans)", "ɣ (vers)", "s (avec)", "n (de)"]
+        exemples:
+          - lieu: "di taddart (dans la maison)"
+          - temps: "di umezruy (dans l'histoire)"
+          - manière: "s tiggemmi (en famille)"
+    
+    sequences_narratives:
+      description: "Narration et enchaînement d'actions"
+      pages: [20, 21, 30, 31, 43, 44, 53, 54, 66, 67, 76, 77, 89, 90, 99, 100]
+      connecteurs: ["azekka (puis)", "ɣeff-as (parce que)", "ma d (si)"]
+      temps: ["Passé simple pour narration", "Présent pour description"]
+
+# ============================================================
+# COMPÉTENCES FINALES ATTENDUES
+# ============================================================
+competences_finales_attendues:
+  communication_orale:
+    - "S'exprimer correctement en tamazight"
+    - "Raconter une histoire simple"
+    - "Décrire animaux, personnes, lieux"
+    - "Participer à un dialogue naturel"
+    - "Utiliser le vocabulaire approprié"
+    - "Respecter l'intonation et la prononciation"
+  
+  comprehension_orale:
+    - "Comprendre des textes lus à voix haute"
+    - "Identifier les informations principales"
+    - "Saisir le contexte et l'intention"
+    - "Répondre à des questions de compréhension"
+  
+  expression_ecrite:
+    - "Écrire des phrases grammaticalement correctes"
+    - "Produire des textes courts cohérents (5-10 phrases)"
+    - "Utiliser la ponctuation appropriée"
+    - "Respecter l'orthographe en tifinagh et arabe"
+    - "Maîtriser la calligraphie amazighe"
+  
+  lecture:
+    - "Lire couramment en tifinagh et arabe"
+    - "Comprendre un texte adapté au niveau"
+    - "Identifier les idées principales"
+    - "Répondre à des questions de compréhension"
+  
+  competences_grammaticales:
+    - "Former correctement le féminin et pluriel"
+    - "Utiliser les accords adjectivaux"
+    - "Employer les possessifs et démonstratifs"
+    - "Construire des phrases simples et complexes"
+    - "Utiliser les verbes aux temps appropriés"
+    - "Maîtriser les compléments"
+  
+  competences_culturelles:
+    - "Connaître le vocabulaire amazigh traditionnel"
+    - "Comprendre la culture et l'histoire amazighe"
+    - "Respecter le patrimoine culturel amazigh"
+    - "Développer fierté de l'identité amazighe"
+    - "Transmettre les valeurs culturelles"
+  
+  competences_transversales:
+    - "Utiliser les ressources dictionnaires"
+    - "Collaborer avec les camarades"
+    - "Montrer respect et engagement"
+    - "Participer activement"
+
+# ============================================================
+# RESSOURCES PÉDAGOGIQUES
+# ============================================================
+ressources_pedagogiques:
+  manuels_officiels:
+    - titre: "Manuel de tamazight 5AP"
+      editeur: "ONPS - Algérie"
+      reference: "Officiel"
+      contenu: "Textes, dialogues, exercices"
+    
+    - titre: "Cahier d'activités tamazight 5AP"
+      editeur: "ONPS - Algérie"
+      contenu: "Exercices d'application"
+  
+  outils_linguistiques:
+    - "Dictionnaire tamazight (tifinagh et arabe)"
+    - "Tableaux de conjugaison"
+    - "Cartes d'histoire amazighe"
+    - "Images de patrimoine"
+  
+  supports_numeriques:
+    - type: "Exercices interactifs"
+      contenu: ["Vocabulaire", "Grammaire", "Compréhension"]
+    
+    - type: "Enregistrements audio"
+      contenu: ["Prononciations", "Dialogues", "Histoires"]
+    
+    - type: "Vidéos"
+      contenu: ["Prononciation", "Culture", "Histoire amazighe"]
+  
+  materiel_complementaire:
+    - "Cartes de vocabulaire (flashcards)"
+    - "Affichages de grammaire"
+    - "Photos de patrimoine amazigh"
+    - "Jeux éducatifs en tamazight"
+    - "Contes et légendes amazighes"
+    - "Documents authentiques"
+
+# ============================================================
+# ÉVALUATIONS PRÉVUES
+# ============================================================
+evaluations:
+  evaluations_formatives:
+    frequence: "Continue - chaque leçon"
+    outils:
+      - "Quiz vocabulaire"
+      - "Exercices grammaticaux"
+      - "Production orale"
+      - "Production écrite courte"
+      - "Observations d'activités"
+    fonction: "Vérifier progression, adapter enseignement"
+  
+  evaluations_sommatives:
+    frequence: "Fin de chaque module"
+    composantes:
+      - "Compréhension orale"
+      - "Expression orale"
+      - "Lecture et compréhension"
+      - "Expression écrite"
+      - "Grammaire et vocabulaire"
+    format: "Tests écrits, presentations orales, productions"
+  
+  evaluations_certificatives:
+    moment: "Fin d'année"
+    objectif: "Validation des acquis"
+    format: "Examen intégrant tous les domaines"
+    duree: "1-2 heures"
+    composantes: ["Texte à lire", "Questions", "Production écrite", "Présentation orale"]
+
+# ============================================================
+# CONSEILS D'IMPLÉMENTATION PÉDAGOGIQUE
+# ============================================================
+conseils_implementation:
+  progression:
+    - "Respecter l'ordre des modules"
+    - "Permettre rythme individuel"
+    - "Offrir révisions régulières"
+    - "Consolider avant avancer"
+    - "Anticiper les difficultés"
+  
+  differentiation:
+    - "Exercices niveaux différenciés"
+    - "Adapter rythme selon besoins"
+    - "Défis pour élèves avancés"
+    - "Soutien pour élèves en difficulté"
+    - "Pédagogie projet"
+  
+  multimodalite:
+    - "Varier oral, écrit, visuel"
+    - "Utiliser supports divers"
+    - "Intégrer jeu et créativité"
+    - "Productions multimodales"
+    - "Technologie pédagogique"
+  
+  engagement:
+    - "Thèmes proches réalité élèves"
+    - "Apprentissage actif"
+    - "Valoriser réussites"
+    - "Environnement bienveillant"
+    - "Collaboration"
+  
+  sensibilisation_culturelle:
+    - "Célébrer la culture amazighe"
+    - "Inviter conteurs tradionnels"
+    - "Sorties patrimoine"
+    - "Témoignages familiaux"
+    - "Documents authentiques"
+
+# ============================================================
+# METADATA TECHNIQUES FINALES
+# ============================================================
+metadata_technique:
+  version: "2.0 - ÉDITION LUXE TAMAZIGHT"
+  derniere_mise_a_jour: "Février 2026"
+  auteur_adaptation: "Équipe pédagogique spécialisée - IA"
+  conformite_programme_officiel: "Algérie - Génération 2 - 2024-2025"
+  sources_document_original: "PDF officiel du programme de tamazight 5AP"
+  langue_programme: "tamazight"
+  script_writing_systems: ["Tifinagh", "Caractères arabes"]
+  niveau_cefr_equivalent: "A1-A2"
+  accessibilite: "Conforme normes pédagogiques"
+  usage_principal: "Génération d'exercices tamazight par IA"
+  notes_qualite: |
+    Fichier YAML complet du programme tamazight 5AP incluant:
+    - 4 modules thématiques (Animaux, Famille, Histoire, Grammaire)
+    - 12 leçons détaillées avec objectifs
+    - Vocabulaire exhaustif par champ sémantique
+    - Grammaire systématique avec applications
+    - Ressources culturelles amazighes
+    - Activités pédagogiques proposées
+    - Évaluation et mise en œuvre
+    
+    Optimisé pour génération haute qualité d'exercices par IA.
+
+# ============================================================
+# FIN DU FICHIER TAMAZIGHT
+# ============================================================

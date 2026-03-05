@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - Švietimo revoliucija",
+        "description": "Prisijunkite prie milijonų, besimokančių su FreeGeny novatoriška platforma"
+    },
+    "home": {
+        "hero": {
+            "title": "Mokykitės be ribų",
+            "subtitle": "Gaukite prieigą prie pasaulinio lygio švietimo nemokamai",
+            "cta": "Pradėti mokytis"
+        },
+        "features": {
+            "title": "Kodėl FreeGeny?",
+            "items": {
+                "free": "Visiškai nemokama",
+                "global": "Pasaulinė bendruomenė",
+                "quality": "Aukščiausios kokybės turinys"
+            }
+        }
+    },
+    "common": {
+        "loading": "Įkeliama...",
+        "error": "Kažkas nepavyko",
+        "retry": "Bandyti dar kartą",
+        "language": "Kalba"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "Kas mes esame",
+            "mission": "Mūsų misija",
+            "app": "Programėlė",
+            "parents": {
+                "main": "Tėvai",
+                "dropdown": {
+                    "dashboard": "Tėvų skydelis",
+                    "progress": "Pažangos stebėjimas",
+                    "communication": "Bendravimas su mokytoju",
+                    "resources": "Švietimo ištekliai",
+                    "security": "Saugumas ir privatumas"
+                }
+            },
+            "schools": {
+                "main": "Mokyklos",
+                "dropdown": {
+                    "management": "Mokyklos valdymas",
+                    "curriculum": "Mokyklos programos",
+                    "teachers": "Mokytojų erdvė",
+                    "analytics": "Analizė ir ataskaitos"
+                }
+            },
+            "ongs": {
+                "main": "NVO",
+                "dropdown": {
+                    "projects": "Švietimo projektai",
+                    "impact": "Poveikio vertinimas",
+                    "partnership": "Partnerystės"
+                }
+            },
+            "pricing": {
+                "main": "Kainodara",
+                "dropdown": {
+                    "individual": "Asmeninis",
+                    "family": "Šeima",
+                    "institutional": "Institucinis"
+                }
+            },
+            "freeTrial": "Nemokamas bandomasis laikotarpis",
+            "login": "Prisijungti"
+        }
+    },
+    "cookies": {
+        "title": "Slapukų valdymas",
+        "description": "Mes naudojame slapukus, kad pagerintume jūsų patirtį.",
+        "learnMore": "Sužinoti daugiau",
+        "rejectAll": "Atmesti visus",
+        "customize": "Tinkinti",
+        "acceptAll": "Priimti visus"
+    },
+    "footer": {
+        "baseline": "Švietimo revoliucija visiems",
+        "rights": "Visos teisės saugomos.",
+        "about": {
+            "title": "Apie",
+            "education": "Švietimas",
+            "nationalCurriculum": "Nacionalinė mokymo programa",
+            "internationalCurriculum": "Tarptautinė mokymo programa",
+            "mission": "Mūsų misija",
+            "methodology": "Metodologija",
+            "research": "Švietimo tyrimai",
+            "brand": "Apie prekės ženklą",
+            "news": "Naujienos",
+            "press": "Spaudai",
+            "contact": "Susisiekite su mumis"
+        },
+        "apps": {
+            "title": "Mūsų programėlės",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "Pagalba ir palaikymas",
+            "faqGeneral": "DUK apie FreeGeny",
+            "faqSchools": "Klausimai mokykloms",
+            "faqNgos": "Klausimai NVO"
+        },
+        "legal": {
+            "title": "Teisinė informacija",
+            "guidelines": "Naudotojo gairės",
+            "terms": "Paslaugų teikimo sąlygos",
+            "privacy": "Privatumo politika",
+            "communityRules": "Bendruomenės taisyklės",
+            "cookiePreferences": "Slapukų nustatymai",
+            "accessibility": "Prieinamumo pareiškimas",
+            "sitemap": "Svetainės medis"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - 彻底改变教育",
+        "description": "加入数百万在 FreeGeny 创新平台上学习的人行列"
+    },
+    "home": {
+        "hero": {
+            "title": "学习无止境",
+            "subtitle": "免费获得世界一流的教育",
+            "cta": "开始学习"
+        },
+        "features": {
+            "title": "为什么选择 FreeGeny?",
+            "items": {
+                "free": "完全免费",
+                "global": "全球社区",
+                "quality": "优质内容"
+            }
+        }
+    },
+    "common": {
+        "loading": "加载中...",
+        "error": "出错了",
+        "retry": "重试",
+        "language": "语言"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "关于我们",
+            "mission": "我们的使命",
+            "app": "应用程序",
+            "parents": {
+                "main": "家长",
+                "dropdown": {
+                    "dashboard": "家长控制面板",
+                    "progress": "进度跟踪",
+                    "communication": "与教师沟通",
+                    "resources": "教育资源",
+                    "security": "安全与隐私"
+                }
+            },
+            "schools": {
+                "main": "学校",
+                "dropdown": {
+                    "management": "学校管理",
+                    "curriculum": "课程设置",
+                    "teachers": "教师空间",
+                    "analytics": "分析与报告"
+                }
+            },
+            "ongs": {
+                "main": "非政府组织",
+                "dropdown": {
+                    "projects": "教育项目",
+                    "impact": "影响评估",
+                    "partnership": "合作伙伴关系"
+                }
+            },
+            "pricing": {
+                "main": "价格",
+                "dropdown": {
+                    "individual": "个人版",
+                    "family": "家庭版",
+                    "institutional": "机构版"
+                }
+            },
+            "freeTrial": "免费试用",
+            "login": "登录"
+        }
+    },
+    "cookies": {
+        "title": "Cookie管理",
+        "description": "我们使用cookie来增强您的体验。",
+        "learnMore": "了解更多",
+        "rejectAll": "拒绝全部",
+        "customize": "自定义",
+        "acceptAll": "接受全部"
+    },
+    "footer": {
+        "baseline": "为所有人革新教育",
+        "rights": "保留所有权利。",
+        "about": {
+            "title": "关于",
+            "education": "教育",
+            "nationalCurriculum": "国家课程内容",
+            "internationalCurriculum": "国际课程内容",
+            "mission": "我们的使命",
+            "methodology": "方法论",
+            "research": "教育研究",
+            "brand": "关于品牌",
+            "news": "新闻",
+            "press": "新闻发布",
+            "contact": "联系我们"
+        },
+        "apps": {
+            "title": "我们的应用",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "帮助与支持",
+            "faqGeneral": "关于FreeGeny的常见问题",
+            "faqSchools": "学校常见问题",
+            "faqNgos": "非政府组织常见问题"
+        },
+        "legal": {
+            "title": "法律",
+            "guidelines": "用户指南",
+            "terms": "服务条款",
+            "privacy": "隐私政策",
+            "communityRules": "社区规则",
+            "cookiePreferences": "Cookie偏好设置中心",
+            "accessibility": "无障碍声明",
+            "sitemap": "网站地图"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

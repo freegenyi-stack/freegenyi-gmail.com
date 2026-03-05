@@ -1,0 +1,9 @@
+Exemple : 
+
+{
+  "id": "dz-1ap-maths-diagnostique",
+  "titre": "Évaluation diagnostique – Maths 1AP",
+  "questions": [
+    { "type": "qcm", "consigne": "Combien y a-t-il de pommes ?", "options": ["2", "3", "4"], "reponse": 1, "image": "pommes.png" }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - Mapinduzi katika Elimu",
+        "description": "Jiunge na mamilioni wanaojifunza na jukwaa bunifu la FreeGeny"
+    },
+    "home": {
+        "hero": {
+            "title": "Jifunze Bila Mipaka",
+            "subtitle": "Pata elimu ya kiwango cha kimataifa bila malipo",
+            "cta": "Anza Kujifunza"
+        },
+        "features": {
+            "title": "Kwa nini FreeGeny?",
+            "items": {
+                "free": "Bure Kabisa",
+                "global": "Jumuiya ya Kimataifa",
+                "quality": "Maudhui ya Kiwango cha Juu"
+            }
+        }
+    },
+    "common": {
+        "loading": "Inapakia...",
+        "error": "Kuna kitu kimeenda vibaya",
+        "retry": "Jaribu Tena",
+        "language": "Lugha"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "Kuhusu Sisi",
+            "mission": "Dira Yetu",
+            "app": "Programu",
+            "parents": {
+                "main": "Wazazi",
+                "dropdown": {
+                    "dashboard": "Dashibodi ya Wazazi",
+                    "progress": "Kufuatilia Maendeleo",
+                    "communication": "Mawasiliano na Walimu",
+                    "resources": "Rasilimali za Elimu",
+                    "security": "Usalama na Faragha"
+                }
+            },
+            "schools": {
+                "main": "Shule",
+                "dropdown": {
+                    "management": "Usimamizi wa Shule",
+                    "curriculum": "Mtaala wa Shule",
+                    "teachers": "Nafasi ya Walimu",
+                    "analytics": "Uchambuzi na Ripoti"
+                }
+            },
+            "ongs": {
+                "main": "NGOs",
+                "dropdown": {
+                    "projects": "Miradi ya Elimu",
+                    "impact": "Vipimo vya Matokeo",
+                    "partnership": "Ushirikiano"
+                }
+            },
+            "pricing": {
+                "main": "Bei",
+                "dropdown": {
+                    "individual": "Binafsi",
+                    "family": "Familia",
+                    "institutional": "Taasisi"
+                }
+            },
+            "freeTrial": "Jaribio la Bure",
+            "login": "Ingia"
+        }
+    },
+    "cookies": {
+        "title": "Cookie Management",
+        "description": "We use cookies to enhance your experience.",
+        "learnMore": "Learn more",
+        "rejectAll": "Reject All",
+        "customize": "Customize",
+        "acceptAll": "Accept All"
+    },
+    "footer": {
+        "baseline": "Revolutionizing education for all",
+        "rights": "All rights reserved.",
+        "about": {
+            "title": "About",
+            "education": "Education",
+            "nationalCurriculum": "National Curriculum Content",
+            "internationalCurriculum": "International Curriculum Content",
+            "mission": "Our Mission",
+            "methodology": "Methodology",
+            "research": "Educational Research",
+            "brand": "About the Brand",
+            "news": "News",
+            "press": "Press",
+            "contact": "Contact Us"
+        },
+        "apps": {
+            "title": "Our Apps",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "Help & Support",
+            "faqGeneral": "FAQ about FreeGeny",
+            "faqSchools": "FAQ for Schools",
+            "faqNgos": "FAQ for NGOs"
+        },
+        "legal": {
+            "title": "Legal",
+            "guidelines": "User Guidelines",
+            "terms": "Terms of Service",
+            "privacy": "Privacy Policy",
+            "communityRules": "Community Rules",
+            "cookiePreferences": "Cookie Preferences Center",
+            "accessibility": "Accessibility Statement",
+            "sitemap": "Site Map"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

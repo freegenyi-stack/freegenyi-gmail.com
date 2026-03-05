@@ -1,0 +1,1054 @@
+matiere: education_islamique
+niveau: 5ap
+programme: "Algérie - Génération 2"
+description: "Programme officiel d'éducation islamique pour la 5ème année primaire (Système éducatif algérien)"
+domaine_apprentissage: "Éducation religieuse et morale islamique"
+age_cible: "10-11 ans"
+annee_scolaire: "2024-2025"
+
+# ============================================================
+# MÉTADONNÉES PÉDAGOGIQUES GLOBALES
+# ============================================================
+
+objectifs_generaux:
+  - "Renforcer la foi et l'attachement à l'Islam"
+  - "Connaître les principes fondamentaux de l'Islam"
+  - "Maîtriser les pratiques religieuses (Salat, Zakat, Jeûne, etc.)"
+  - "Mémoriser et comprendre des sourates et hadiths du Coran"
+  - "Développer le caractère moral islamique"
+  - "Respecter les valeurs islamo-arabes"
+  - "Connaître l'histoire des prophètes et sahaba (compagnons)"
+  - "Cultiver la droiture et le bien-vivre ensemble"
+  - "Développer la conscience morale basée sur l'Islam"
+
+competences_transversales:
+  - "Compréhension du Coran et Sunnah"
+  - "Pratique des actes d'adoration"
+  - "Mémorisation et récitation"
+  - "Analyse des valeurs morales"
+  - "Application pratique des enseignements"
+  - "Respect de l'éthique islamique"
+  - "Communication sur les sujets religieux"
+  - "Comportement islamique conforme"
+  - "Développement de la piété (Taqwa)"
+
+# ============================================================
+# STRUCTURE DU PROGRAMME PAR MODULES/THÈMES
+# ============================================================
+
+modules:
+
+# ============================================================
+# SECTION 1 (المقطع الأول) : ENSEIGNEMENTS CORANIQUES ET PRATIQUES
+# ============================================================
+
+  - id: module_01
+    titre_ar: "سورة البلد"
+    titre_fr: "Sourate Al-Balad (La ville)"
+    ordre: 1
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "coran_sourates"
+    numero_lecon: 1
+    page_debut: 8
+    type: "sourate"
+    
+    competences_principales:
+      - "Mémoriser et réciter Al-Balad"
+      - "Comprendre les thèmes de la sourate"
+      - "Appliquer les leçons morales"
+    
+    contenu_apprentissage:
+      sourate_info:
+        numero: "Sourate 90"
+        nombre_versets: "20 versets"
+        periode_revelation: "Période mecquoise"
+        themes_principaux:
+          - "Serment par la ville (La Mecque)"
+          - "Serment par le créateur et la créature"
+          - "Responsabilité personnelle"
+          - "Libre arbitre humain"
+          - "Les deux chemins (bien et mal)"
+          - "Droits des parents et pauvres"
+        
+        versets_importants:
+          - verset: "1-2"
+            thème: "Serment par la ville et ses habitants"
+          
+          - verset: "11-17"
+            thème: "Les deux chemins : celui du bien et celui du mal"
+            contenu: "Description du cheminement vers la vertu"
+          
+          - verset: "18-20"
+            thème: "Droits du pauvre et de celui qui a besoin"
+            contenu: "Importance du don et de l'aide aux nécessiteux"
+      
+      lecons_morales:
+        - "Chaque âme est responsable de ses actes"
+        - "Dieu a montré à l'homme les deux chemins"
+        - "L'obligation de s'entraider et d'aider les pauvres"
+        - "L'importance de la foi et de la droiture"
+      
+      pratique_memorisation:
+        - "Lecture plusieurs fois"
+        - "Écoute de la récitation"
+        - "Mémorisation par versets"
+        - "Récitation en groupe"
+
+  - id: module_02
+    titre_ar: "المسلم يحب الخير"
+    titre_fr: "Le musulman aime le bien"
+    ordre: 2
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "moralite_musulmane"
+    numero_lecon: 2
+    page_debut: 11
+    
+    competences_principales:
+      - "Développer l'amour du bien"
+      - "Comprendre les qualités positives"
+      - "Pratiquer le bien dans la vie quotidienne"
+    
+    contenu_apprentissage:
+      valeurs_islamiques:
+        - nom: "La charité (Al-Sadaqah)"
+          definition: "Donner aux nécessiteux par compassion"
+          importance: "Grande récompense dans l'Islam"
+          types:
+            - "Charité obligatoire (Zakat)"
+            - "Charité volontaire (Sadaqah)"
+          pratique: "Donner à la famille, amis, pauvres"
+        
+        - nom: "L'honnêteté (Al-Sidq)"
+          definition: "Dire la vérité dans paroles et actions"
+          consequences: "Mène au Paradis"
+          contraste: "Le mensonge mène en Enfer"
+        
+        - nom: "Le pardon (Al-Afwa)"
+          definition: "Pardonner les offenses d'autrui"
+          hadith: "Le Prophète recommande le pardon"
+          benefices: "Paix intérieure et sociale"
+        
+        - nom: "La miséricorde (Al-Rahma)"
+          definition: "Compassion envers tous"
+          hadith: "Celui qui n'a pas de miséricorde n'aura pas de miséricorde"
+          application: "Envers humains et animaux"
+      
+      comportements_positifs:
+        - "Aider les parents et les proches"
+        - "Respecter les droits d'autrui"
+        - "Être juste dans les rapports"
+        - "Honorer ses promesses"
+        - "Être loyal et confiant"
+
+  - id: module_03
+    titre_ar: "تفريغ الركعات"
+    titre_fr: "Les mouvements de la prière (Rakaat)"
+    ordre: 3
+    semestre: 1
+    duree_estimee: "3 semaines"
+    theme_principal: "pratique_salat"
+    numero_lecon: 3
+    page_debut: 13
+    
+    competences_principales:
+      - "Maîtriser les mouvements de la prière"
+      - "Comprendre le sens de chaque position"
+      - "Pratiquer la prière correctement"
+    
+    contenu_apprentissage:
+      positions_priere:
+        - position: "Takbir al-Ihram"
+          description: "Lever les mains et dire Allahu Akbar"
+          sens: "Consécration à Dieu"
+          condition: "Intention intérieure (Niyyah)"
+        
+        - position: "Qiyam"
+          description: "Position debout"
+          duree: "Récitation de la Fatiha et autres sourates"
+          importance: "Humilité devant Dieu"
+        
+        - position: "Ruku"
+          description: "Inclinaison depuis la taille"
+          position_corps: "Dos horizontal, mains sur les genoux"
+          dhikr: "Subhana rabbiya al-'azim (Gloire à mon Seigneur Suprême)"
+          sens: "Respect et soumission"
+        
+        - position: "I'tidal"
+          description: "Redressement après Ruku"
+          dhikr: "Sami'allahu liman hamidah, rabbana wa laka al-hamd"
+          sens: "Gratitude"
+        
+        - position: "Sujud"
+          description: "Prosternation au sol"
+          contact_sol: "Front, nez, paumes, genoux, orteils"
+          dhikr: "Subhana rabbiya al-a'la (Gloire à mon Seigneur le Très-Haut)"
+          importance: "Position d'humilité extrême"
+          nombre: "Deux sajdahs par raka'ah"
+        
+        - position: "Julus"
+          description: "Position assise entre deux sajdahs"
+          dhikr: "Du'a et invocations"
+        
+        - position: "Tashahhud"
+          description: "Position assise finale"
+          recitation: "At-Tahiyyat et Salaat Ibrahim"
+          importance: "Acceptation de la prière"
+      
+      structure_priere:
+        priere_maghrib: "3 raka'ahs"
+        priere_asr: "4 raka'ahs"
+        priere_zuhr: "4 raka'ahs"
+        priere_fajr: "2 raka'ahs"
+        priere_isha: "4 raka'ahs"
+      
+      conditions_priere:
+        - "Ablution (Wudu) complète"
+        - "Direction vers La Mecque (Qibla)"
+        - "Couverture convenable"
+        - "Intention sincère"
+        - "Temps approprié pour chaque prière"
+
+  - id: module_04
+    titre_ar: "الإيمان باليوم الآخر"
+    titre_fr: "La foi au Jour du Jugement"
+    ordre: 4
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "eschatologie_islamique"
+    numero_lecon: 4
+    page_debut: 15
+    
+    competences_principales:
+      - "Comprendre les croyances au Jour du Jugement"
+      - "Connaître les étapes de l'Au-delà"
+      - "Développer la conscience de l'Accountability"
+    
+    contenu_apprentissage:
+      piliers_foi_akhira:
+        - pilier: "Résurrection"
+          description: "Tous les morts seront ressuscités"
+          coran: "Sourate Al-Hajj 7"
+          sens: "Nouvelle vie après la mort"
+        
+        - pilier: "Jugement divin"
+          description: "Dieu jugera tous selon leurs actes"
+          coran: "Sourate An-Nahl 111"
+          consequences: "Récompense ou châtiment"
+        
+        - pilier: "Paradis (Al-Jannah)"
+          description: "Demeure éternelle des justes"
+          caracteristiques: ["Joies éternelles", "Absence de souffrance", "Satisfaction complète"]
+          residents: "Ceux qui ont cru et fait le bien"
+        
+        - pilier: "Enfer (An-Naar)"
+          description: "Châtiment pour les incrédules et pécheurs"
+          avertissement: "Lieu de tourment"
+          but: "Incitation à faire le bien"
+      
+      signes_avant_jugement:
+        signes_mineurs:
+          - "Abaissement du savoir"
+          - "Augmentation de l'ignorance"
+          - "Fornication et alcool"
+          - "Tremblement de terre fréquents"
+          - "Immoralité accrue"
+        
+        signes_majeurs:
+          - "Émergence du Dajjal (Anti-Christ)"
+          - "Retour de Jésus"
+          - "Gog et Magog (Yajuj wa Majuj)"
+          - "Le Soleil se lève de l'Ouest"
+          - "L'heure arrive soudainement"
+      
+      etapes_akhira:
+        - etape: "Mort"
+          description: "Séparation de l'âme du corps"
+        
+        - etape: "Barzakh"
+          description: "Période entre mort et résurrection"
+          duree: "Connue de Dieu seul"
+        
+        - etape: "Résurrection"
+          description: "Retour du corps et de l'âme"
+          universel: "Toute créature ressuscitée"
+        
+        - etape: "Rassemblement"
+          description: "Tous réunis pour jugement"
+          lieu: "Terrain du Jugement"
+        
+        - etape: "Jugement"
+          description: "Interrogation et pesée des actes"
+          balance: "Mizan (balance) de la justice divine"
+        
+        - etape: "Paradis ou Enfer"
+          description: "Destination éternelle"
+          permanence: "Éternelle et sans fin"
+
+  - id: module_05
+    titre_ar: "من صفات الله تعالى (العالم)"
+    titre_fr: "Attributs d'Allah (Le Savant)"
+    ordre: 5
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "attributs_divins"
+    numero_lecon: 5
+    page_debut: 18
+    
+    competences_principales:
+      - "Connaître les attributs d'Allah"
+      - "Développer l'amour envers Dieu"
+      - "Comprendre la perfection divine"
+    
+    contenu_apprentissage:
+      attributs_divins:
+        - nom_arabe: "Al-'Alim"
+          nom_francais: "Le Savant/Celui qui sait"
+          definition: "Allah connaît tout : passé, présent, futur"
+          caractéristiques:
+            - "Connaissance absolue et parfaite"
+            - "Science non limitée par le temps et l'espace"
+            - "Connaissance des secrets et intentions"
+          verset_coran: "C'est Lui qui sait ce qui est secret et ce qui est apparent" (Al-An'am 73)
+          implication: "On ne peut rien cacher à Allah"
+        
+        - nom_arabe: "Al-Qadi"
+          nom_francais: "Le Juge"
+          definition: "Allah juge avec justice absolue"
+        
+        - nom_arabe: "Al-Adl"
+          nom_francais: "Le Juste"
+          definition: "Allah ne commet pas d'injustice"
+        
+        - nom_arabe: "Ar-Rahman"
+          nom_francais: "Le Miséricordieux"
+          definition: "Allah a une miséricorde infinie"
+        
+        - nom_arabe: "As-Samit"
+          nom_francais: "Le Celui qui écoute tout"
+          definition: "Allah entend toutes les invocations"
+      
+      consequences_spirituelles:
+        - "Crainte et respect envers Dieu"
+        - "Conscience que Dieu voit tout"
+        - "Confiance en la justice divine"
+        - "Amour envers la miséricorde divine"
+        - "Effort pour plaire à Allah"
+
+  - id: module_06
+    titre_ar: "من مظاهر البر في المجادات: الضحايا"
+    titre_fr: "Manifestations de la piété dans les actes : Le sacrifice"
+    ordre: 6
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "adab_ibadah"
+    numero_lecon: 6
+    page_debut: 20
+    
+    competences_principales:
+      - "Comprendre l'importance du sacrifice"
+      - "Pratiquer l'esprit du sacrifice"
+      - "Connaître les pratiques liées au Hajj"
+    
+    contenu_apprentissage:
+      sacrifice_islamique:
+        definition: "Offrande d'un animal pour satisfaire Allah"
+        periode: "Journées du Hajj (Aïd Al-Adha)"
+        animals_acceptes:
+          - nom: "Bélier"
+            age_minimum: "5 ans"
+          - nom: "Chevre"
+            age_minimum: "2 ans"
+          - nom: "Vache"
+            age_minimum: "2 ans"
+          - nom: "Chameau"
+            age_minimum: "5 ans"
+        
+        conditions:
+          - "Animal sain et sans défaut"
+          - "Intention sincère"
+          - "Effort physique personnellement"
+        
+        distribution:
+          - "Tiers pour soi"
+          - "Tiers pour la famille"
+          - "Tiers pour les pauvres"
+        
+        signification_spirituelle:
+          - "Soumission à Allah"
+          - "Suivi du Prophète Ibrahim"
+          - "Générosité et partage"
+          - "Oubli de ses désirs personnels"
+      
+      spirit_sacrifice:
+        - "Véritable sacrifice n'est pas la viande"
+        - "C'est l'intention du cœur qui compte"
+        - "Piété envers Allah (Taqwa)"
+        - "Charité envers les nécessiteux"
+
+  - id: module_07
+    titre_ar: "الحج (الأركان وفوائده)"
+    titre_fr: "Le Hajj (piliers et bénéfices)"
+    ordre: 7
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "hajj_pillerinage"
+    numero_lecon: 7
+    page_debut: 22
+    
+    competences_principales:
+      - "Connaître les piliers du Hajj"
+      - "Comprendre les bénéfices du pillerinage"
+      - "Respecter la sainteté du Hajj"
+    
+    contenu_apprentissage:
+      pilliers_hajj:
+        - pilier: "Intention (Niyyah) et Ihram"
+          description: "Entrer dans l'état sacré"
+          conditions: ["État de pureté", "Vêtements spéciaux", "Intention sincère"]
+        
+        - pilier: "Circumambulation (Tawaf)"
+          description: "Tourner autour de la Ka'aba 7 fois"
+          sens: "Adoratioon et respect"
+        
+        - pilier: "Sa'y"
+          description: "Marche entre Safa et Marwa"
+          nombre_fois: "7 fois"
+          commemoration: "Recherche de l'eau par Hagar"
+        
+        - pilier: "Wuquf à Arafat"
+          description: "Se tenir à Arafat le 9e jour"
+          importance: "Essence du Hajj"
+          duree: "Depuis midday jusqu'au coucher"
+        
+        - pilier: "Tawaf Al-Ifada"
+          description: "Circumambulation finale après Arafat"
+        
+        - pilier: "Sa'y Final"
+          description: "Dernière marche entre Safa et Marwa"
+      
+      bénéfices_hajj:
+        spirituels:
+          - "Purification des péchés"
+          - "Renforcement de la foi"
+          - "Proximité avec Allah"
+          - "Paix intérieure"
+        
+        sociaux:
+          - "Unité des musulmans (3 millions+)"
+          - "Égalité devant Dieu"
+          - "Fraternité universelle"
+          - "Échange de cultures"
+        
+        personnels:
+          - "Discipline et persévérance"
+          - "Patience et abnégation"
+          - "Humilité"
+          - "Renouveau personnel"
+      
+      restrictions_ihram:
+        - "Interdiction de chasse"
+        - "Interdiction de relations"
+        - "Interdiction de parfum"
+        - "Interdiction de couper les ongles"
+        - "Interdiction de raser la barbe"
+        - "Interdiction de disputer ou insulter"
+
+  - id: module_08
+    titre_ar: "الإيثار"
+    titre_fr: "L'altruisme (Ithar)"
+    ordre: 8
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "valeurs_morales"
+    numero_lecon: 8
+    page_debut: 25
+    
+    competences_principales:
+      - "Développer l'altruisme"
+      - "Préférer autrui à soi-même"
+      - "Pratiquer la générosité inconditionnelle"
+    
+    contenu_apprentissage:
+      concept_ithar:
+        definition: "Préférer le bien d'autrui à son propre bien"
+        origine: "Sourate Al-Hashr 59:9"
+        vers_coran: "Ceux qui Lui ont préféré à eux-mêmes, même s'ils étaient dans le besoin"
+        niveau_piété: "Manifestation de la plus haute piété"
+      
+      exemples_coran:
+        - personnage: "Les Compagnons du Prophète"
+          exemple: "Partage de leurs biens avec les migrants (Muhajiroun)"
+          resultat: "Loué dans le Coran"
+        
+        - personnage: "Ayub (Job)"
+          exemple: "Distribuer à des pauvres malgré sa propre pauvreté"
+          leçon: "Confiance en Allah"
+        
+        - personnage: "Les gens de Madinah"
+          exemple: "Accueil des migrants avec maisons et biens"
+          titre: "Ansars (helpers)"
+      
+      pratique_ithar:
+        - "Donner le meilleur à autrui"
+        - "Partager la nourriture et biens"
+        - "Aider sans espoir de retour"
+        - "Oublier son propre besoin pour celui d'autrui"
+        - "Joie sincère du bien d'autrui"
+      
+      obstacles_ithar:
+        - "Égoïsme"
+        - "Avarice"
+        - "Amour des biens"
+        - "Manque de conscience divine"
+      
+      résultats:
+        - "Amour d'Allah et du Prophète"
+        - "Paix intérieure"
+        - "Communauté unie"
+        - "Récompense éternelle"
+
+  - id: module_09
+    titre_ar: "من زعايا لغمان لإبنه"
+    titre_fr: "Des conseils de Luqman à son fils"
+    ordre: 9
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "sagesse_luqman"
+    numero_lecon: 9
+    page_debut: 27
+    
+    competences_principales:
+      - "Apprendre de la sagesse de Luqman"
+      - "Appliquer les conseils moraux"
+      - "Comprendre l'éducation parentale"
+    
+    contenu_apprentissage:
+      conseils_luqman:
+        - conseil: "Ne pas associer d'autres à Allah"
+          importance: "Cœur du monothéisme"
+          explication: "L'associationnisme est le plus grand péché"
+        
+        - conseil: "Bienveillance envers les parents"
+          versets: "Luqman 14-15"
+          explication: "Respect et soin de la mère et père"
+          age: "Même dans la vieillesse"
+        
+        - conseil: "Gratitude envers Allah"
+          leçon: "Remercier pour chaque bienfait"
+          contraste: "Ingratitude mène à la perte"
+        
+        - conseil: "Établissement de la prière"
+          importance: "Fondation de la vie religieuse"
+          commandement: "Ordonner le bien et interdire le mal"
+        
+        - conseil: "Patience dans l'adversité"
+          caractère: "Marque de la noblesse"
+          exemple: "Les prophètes étaient patients"
+        
+        - conseil: "Humilité et modestie"
+          enseignement: "Ne pas marcher avec fierté"
+          raison: "Allah n'aime pas les orgueilleux"
+        
+        - conseil: "Modération dans la voix"
+          leçon: "La voix la plus douce est celle de l'âne"
+          sens: "Élégance et dignité"
+      
+      sagesse_luqman:
+        style: "Doux, aimant et persuasif"
+        methode: "Éducation progressive et réfléchie"
+        objectif: "Formation du caractère moral"
+        resultat: "Enfant vertueux et respectueux"
+
+  - id: module_10
+    titre_ar: "الطاعة"
+    titre_fr: "L'obéissance"
+    ordre: 10
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "valeur_obeissance"
+    numero_lecon: 10
+    page_debut: 29
+    
+    competences_principales:
+      - "Comprendre l'importance de l'obéissance"
+      - "Obéir aux commandements divins"
+      - "Respecter l'autorité légitime"
+    
+    contenu_apprentissage:
+      obeissance_divine:
+        definition: "Suivre les commandements d'Allah"
+        importance: "Fondation de la vie religieuse"
+        sources:
+          - "Coran"
+          - "Sunnah du Prophète"
+          - "Ijma' (consensus)"
+        
+        types_obéissance:
+          - "Obéissance aux obligations (Wajibat)"
+          - "Obéissance à l'interdiction des péchés"
+          - "Obéissance aux conseils (Mustahabbat)"
+        
+        récompenses:
+          - "Entrée au Paradis"
+          - "Victoire et succès"
+          - "Paix et sérénité"
+          - "Amour d'Allah"
+      
+      obeissance_aux_parents:
+        commandement: "Honorer et obéir aux parents"
+        limite: "Sauf dans le péché"
+        conditions:
+          - "Respect"
+          - "Douceur de parole"
+          - "Patience"
+          - "Aide matérielle"
+      
+      obeissance_aux_leaders:
+        coran: "Obéissez à Allah et au Prophète et à ceux en autorité parmi vous"
+        condition: "Si l'ordre est dans le bien"
+        limite: "Pas d'obéissance dans le péché"
+      
+      consequences:
+        obeissance: "Bénédiction, succès, proximité avec Allah"
+        desobeissance: "Châtiment, troubles, éloignement de Dieu"
+
+# ============================================================
+# SECTION 2 (المقطع الثاني)
+# ============================================================
+
+  - id: module_s2_01
+    titre_ar: "سورة الفجر"
+    titre_fr: "Sourate Al-Fajr (L'aube)"
+    ordre: 11
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "coran_sourates_s2"
+    numero_lecon: 11
+    page_debut: 45
+    type: "sourate"
+    
+    competences_principales:
+      - "Mémoriser Al-Fajr"
+      - "Comprendre les serments et avertissements"
+      - "Développer la crainte révérencielle"
+    
+    contenu_apprentissage:
+      sourate_info:
+        numero: "Sourate 89"
+        nombre_versets: "30 versets"
+        periode_revelation: "Période mecquoise"
+        themes:
+          - "Serments par les phénomènes naturels"
+          - "Châtiment de Ad et Thamud"
+          - "Arrogance de Pharaon"
+          - "Appel à la piété"
+          - "Rappel du Jour du Jugement"
+
+  - id: module_s2_02
+    titre_ar: "التحقق لا يأتي إلا بخير"
+    titre_fr: "La foi et ses bonnes conséquences"
+    ordre: 12
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "foi_consequences"
+    numero_lecon: 12
+    page_debut: 50
+    
+    competences_principales:
+      - "Comprendre les effets bénéfiques de la foi"
+      - "Cultiver la confiance en Allah"
+      - "Appliquer les principes de la foi"
+
+  - id: module_s2_03
+    titre_ar: "من صفات الله تعالى: القادر"
+    titre_fr: "Attributs d'Allah : Le Puissant"
+    ordre: 13
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "attributs_puissance"
+    numero_lecon: 13
+    page_debut: 52
+    
+    competences_principales:
+      - "Connaître la puissance d'Allah"
+      - "Développer la confiance en Allah"
+      - "Reconnaître la grandeur divine"
+
+  - id: module_s2_04
+    titre_ar: "من مظاهر البر في المجادات: الصلاة في المرض"
+    titre_fr: "Manifestations de la piété : Prière lors de la maladie"
+    ordre: 14
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "pratique_maladie"
+    numero_lecon: 14
+    page_debut: 54
+    
+    competences_principales:
+      - "Comprendre les concessions durant la maladie"
+      - "Maintenir la piété même malade"
+      - "Pratiquer la patience face à la maladie"
+
+  - id: module_s2_05
+    titre_ar: "من آثار الإيمان"
+    titre_fr: "Effets et fruits de la foi"
+    ordre: 15
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "fruits_foi"
+    numero_lecon: 15
+    page_debut: 56
+    
+    competences_principales:
+      - "Identifier les effets de la foi"
+      - "Développer une foi sincère"
+      - "Observer les changements moraux"
+    
+    contenu_apprentissage:
+      effets_foi:
+        - effet: "Sérénité du cœur"
+          coran: "C'est par l'invocation d'Allah que se rassurent les cœurs"
+          resultat: "Paix intérieure et tranquillité"
+        
+        - effet: "Patience dans l'adversité"
+          coran: "Ceux qui croient et font le bien"
+          caractere: "Résistance face aux épreuves"
+        
+        - effet: "Espoir et optimisme"
+          explication: "Confiance en la miséricorde d'Allah"
+        
+        - effet: "Moralité et droiture"
+          consequence: "Comportement exemplaire"
+        
+        - effet: "Unité et fraternité"
+          resultat: "Communauté unie"
+        
+        - effet: "Succès dans le vie"
+          promesse: "Allah aide les croyants"
+
+  - id: module_s2_06
+    titre_ar: "العرف"
+    titre_fr: "Le pardon et la bienveillance"
+    ordre: 16
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "pardon_bienveillance"
+    numero_lecon: 16
+    page_debut: 58
+
+# ============================================================
+# SECTION 3 (المقطع الثالث)
+# ============================================================
+
+  - id: module_s3_01
+    titre_ar: "سورة الأعلى"
+    titre_fr: "Sourate Al-A'la (Le Très-Haut)"
+    ordre: 17
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "coran_sourates_s3"
+    numero_lecon: 17
+    page_debut: 76
+    type: "sourate"
+    
+    competences_principales:
+      - "Mémoriser Al-A'la"
+      - "Comprendre la gloire d'Allah"
+      - "Développer l'adoration sincère"
+
+  - id: module_s3_02
+    titre_ar: "ليس للمؤمن بالظلم"
+    titre_fr: "Le croyant ne commet pas d'injustice"
+    ordre: 18
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "justice_foi"
+    numero_lecon: 18
+    page_debut: 79
+    
+    competences_principales:
+      - "Comprendre l'importance de la justice"
+      - "Refuser l'injustice"
+      - "Pratiquer l'équité"
+
+  - id: module_s3_03
+    titre_ar: "من غزة قلبيه فنا"
+    titre_fr: "Purification du cœur"
+    ordre: 19
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "purification_coeur"
+    numero_lecon: 19
+    page_debut: 81
+    
+    competences_principales:
+      - "Nettoyer son cœur du mal"
+      - "Cultiver des sentiments purs"
+      - "Développer la sincérité"
+
+  - id: module_s3_04
+    titre_ar: "من صفات الله تعالى: القديم"
+    titre_fr: "Attributs d'Allah : L'Éternel"
+    ordre: 20
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "eternite_divine"
+    numero_lecon: 20
+    page_debut: 83
+    
+    competences_principales:
+      - "Comprendre l'éternité d'Allah"
+      - "Reconnaître la transcendance divine"
+
+  - id: module_s3_05
+    titre_ar: "من مظاهر البر في المجادات: الصلاة في السفر"
+    titre_fr: "Manifestations de la piété : Prière en voyage"
+    ordre: 21
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "pratique_voyage"
+    numero_lecon: 21
+    page_debut: 85
+    
+    competences_principales:
+      - "Connaître les concessions en voyage"
+      - "Maintenir la prière loin de chez soi"
+      - "Adapter la pratique religieuse"
+
+  - id: module_s3_06
+    titre_ar: "العناية بالمحيط"
+    titre_fr: "Le soin de l'environnement"
+    ordre: 22
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "environnement_islam"
+    numero_lecon: 22
+    page_debut: 88
+    
+    competences_principales:
+      - "Comprendre l'importance de la nature"
+      - "Protéger l'environnement"
+      - "Appliquer les principes islamiques à la nature"
+    
+    contenu_apprentissage:
+      environnement_islam:
+        enseignement_coran:
+          - "Allah a créé tout dans la perfection"
+          - "L'homme est khalifah (régisseur) de la terre"
+          - "Responsabilité envers la création"
+        
+        pratiques_environnementales:
+          - "Ne pas gaspiller les ressources"
+          - "Respecter les animaux"
+          - "Planter des arbres"
+          - "Nettoyer les espaces publics"
+          - "Préserver l'eau"
+        
+        hadith:
+          - "Celui qui plante un arbre aura une récompense chaque fois qu'on le cueillera"
+          - "Miséricorde à tous les animaux : le Prophète a présenté une femme comme exemple"
+          - "La propreté est une partie de la foi"
+
+  - id: module_s3_07
+    titre_ar: "خلقة الودادع"
+    titre_fr: "Éducation des enfants"
+    ordre: 23
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "education_enfants"
+    numero_lecon: 23
+    page_debut: 90
+    
+    competences_principales:
+      - "Comprendre l'importance de l'éducation"
+      - "Appliquer les principes islamiques à l'éducation"
+      - "Cultiver de bonnes habitudes"
+
+  - id: module_s3_08
+    titre_ar: "أسماء ذات الطاقين"
+    titre_fr: "Les noms des vertueux"
+    ordre: 24
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "vertus_noms"
+    numero_lecon: 24
+    page_debut: 92
+    
+    competences_principales:
+      - "Connaître les attributs de la piété"
+      - "Aspirer à la vertu"
+      - "Développer le bon caractère"
+
+  - id: module_s3_09
+    titre_ar: "قصة سليمان عليه الصلاة والسلام رزقه الله عليه"
+    titre_fr: "L'histoire de Salomon et la miséricorde d'Allah"
+    ordre: 25
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "histoires_prophetes"
+    numero_lecon: 25
+    page_debut: 94
+    
+    competences_principales:
+      - "Apprendre de l'histoire de Salomon"
+      - "Comprendre la récompense divine"
+      - "Développer la gratitude"
+    
+    contenu_apprentissage:
+      histoire_salomon:
+        contexte:
+          - "Salomon était le fils de David"
+          - "Dieu lui a donné une sagesse unique"
+          - "Un royaume jamais égalé"
+        
+        invocation:
+          - "Seigneur, pardonne-moi et accorde-moi un royaume tel que nul ne saurait posséder après moi"
+          - "Car c'est Toi qui es l'Accordeur de grâces"
+        
+        miracles:
+          - "Le vent qui souffle selon son ordre"
+          - "Les sources de cuivre en fusion"
+          - "Compréhension des djinns et des oiseaux"
+          - "Une armée de djinns et d'humains"
+        
+        vertu:
+          - "Reconnaissance envers les faveurs divines"
+          - "Justice dans le gouvernement"
+          - "Miséricorde envers les sujets"
+          - "Respect de tous les êtres vivants"
+        
+        leçon_morale:
+          - "La vraie richesse n'est pas matérielle"
+          - "La sagesse et la piété sont plus précieuses"
+          - "Gratitude mène à plus de bénédictions"
+
+# ============================================================
+# ÉVALUATIONS ET SUIVI
+# ============================================================
+
+evaluations:
+  types:
+    - nom: "Évaluation formative"
+      frequence: "Chaque semaine"
+      outils: ["mémorisation", "récitation", "discussions", "application pratique"]
+      objectif: "Évaluer la compréhension et la pratique"
+    
+    - nom: "Évaluation sommative"
+      frequence: "Fin de chaque section"
+      composantes:
+        - "Mémorisation de sourates"
+        - "Compréhension des concepts islamiques"
+        - "Pratique des actes d'adoration"
+        - "Comportement et moralité"
+        - "Application des valeurs"
+      objectif: "Valider les apprentissages religieux"
+    
+    - nom: "Évaluation comportementale"
+      frequence: "Continue"
+      elements:
+        - "Respect des commandements"
+        - "Qualités morales"
+        - "Interaction avec les autres"
+        - "Sincérité et piété"
+
+  competences_finales_attendues:
+    coran_quran: "Mémoriser au moins 25-30 sourates courtes"
+    pratique: "Pratiquer correctement les cinq prières quotidiennes"
+    moralite: "Développer les valeurs islamiques"
+    histoire: "Connaître les prophètes et compagnons"
+    fiqh: "Comprendre les bases de la jurisprudence islamique"
+    spiritualite: "Cultiver une foi sincère et une piété"
+
+# ============================================================
+# RESSOURCES ET SUPPORTS PÉDAGOGIQUES
+# ============================================================
+
+ressources_pedagogiques:
+  coran:
+    - "Coran complet avec traduction"
+    - "Coran pour enfants avec illustrations"
+    - "Enregistrements de récitations"
+    - "Applications Coran numériques"
+  
+  livres_hadith:
+    - "Hadith sahih Al-Bukhari (extraits)"
+    - "Sunan Abu Dawud (extraits)"
+    - "Jami' At-Tirmidhi (extraits)"
+  
+  sira_prophete:
+    - "Biographie du Prophète Muhammad"
+    - "Histoires des prophètes"
+    - "Les dix compagnons promis au Paradis"
+    - "Femmes modèles dans l'Islam"
+  
+  materiel_visuel:
+    - "Posters du Coran"
+    - "Images des mosquées sacrées"
+    - "Cartes historiques islamiques"
+    - "Illustrations des mouvements de prière"
+  
+  supports_numeriques:
+    - "Applications Coran interactives"
+    - "Vidéos pédagogiques islamiques"
+    - "Récitations du Coran"
+    - "Documentaires sur l'Islam"
+
+# ============================================================
+# CONSEILS PÉDAGOGIQUES
+# ============================================================
+
+conseils_implementation:
+  approche_pedagogique:
+    - "Combiner théorie et pratique"
+    - "Emphase sur la mémorisation du Coran"
+    - "Apprendre par les histoires et exemples"
+    - "Développer l'amour envers Allah et le Prophète"
+    - "Cultiver la sincérité des intentions"
+    - "Relier à la vie quotidienne"
+    - "Créer une ambiance respectueuse et pieuse"
+  
+  valeurs_prioritaires:
+    - "Tawhid (L'unicité d'Allah)"
+    - "Taqwa (Piété et crainte révérencielle)"
+    - "Ikhlassa (Sincérité)"
+    - "Adl (Justice)"
+    - "Rahma (Miséricorde)"
+    - "Sabr (Patience)"
+    - "Amanah (Confiance)"
+  
+  engagement_eleves:
+    - "Cercles de mémorisation du Coran"
+    - "Prière collective"
+    - "Débats sur les valeurs islamiques"
+    - "Projets de service communautaire"
+    - "Visites de mosquées"
+    - "Rencontres avec des savants"
+    - "Célébration des fêtes islamiques"
+
+# ============================================================
+# MÉTADONNÉES TECHNIQUES
+# ============================================================
+
+version: "1.0"
+derniere_mise_a_jour: "2025-02-17"
+auteur_adaptation: "Équipe pédagogique d'éducation islamique"
+conforme_programme_officiel: "Algérie - Génération 2 - 2024-2025"
+langue_interface: ["arabe", "français"]
+systeme_educatif: "Algérien - Cursus primaire"
+trimestres: 3
+
+notes_pour_ia:
+  - "Le programme couvre 3 sections (25 leçons au total)"
+  - "Récitation et mémorisation du Coran est central"
+  - "Enseignement du Coran à travers 8 sourates"
+  - "Apprentissage des attibuts divins et histoire des prophètes"
+  - "Pratique correcte de la Salat (prière)"
+  - "Développement du caractère moral islamique"
+  - "Équilibre entre croyance (Aqidah), pratique (Ibadah) et morale (Akhlaq)"
+  - "Inculcation de la piété (Taqwa) et sincérité (Ikhlass)"
+  - "Respect du patrimoine islamique algérien"
+  - "Préparation à une vie de musulman(e) exemplaire"
+  - "Mémorisation progressive des sourates"
+  - "Application pratique des enseignements dans la vie quotidienne"

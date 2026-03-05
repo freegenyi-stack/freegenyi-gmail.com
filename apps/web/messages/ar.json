@@ -1,0 +1,315 @@
+{
+  "metadata": {
+    "title": "فريجيني - ثورة في التعليم",
+    "description": "انضم إلى الملايين الذين يتعلمون مع منصة فريجيني المبتكرة"
+  },
+  "home": {
+    "hero": {
+      "title": "تعلم بلا حدود",
+      "subtitle": "احصل على تعليم عالمي المستوى مجانًا",
+      "cta": "ابدأ التعلم"
+    },
+    "features": {
+      "title": "لماذا فريجيني؟",
+      "items": {
+        "free": "مجاني تمامًا",
+        "global": "مجتمع عالمي",
+        "quality": "محتوى عالي الجودة"
+      }
+    },
+    "values": {
+      "innovation": {
+        "title": "الابتكار",
+        "description": "أدوات متطورة للتعلم الحديث."
+      },
+      "accessibility": {
+        "title": "سهولة الوصول",
+        "description": "التعليم للجميع، في كل مكان، وفي أي وقت."
+      },
+      "security": {
+        "title": "الأمان",
+        "description": "بياناتك وخصوصيتك هي أهم أولوياتنا."
+      }
+    },
+    "publics": {
+      "title": "حل لكل فاعل",
+      "parents": "الآباء",
+      "schools": "المدارس",
+      "ongs": "المنظمات غير الحكومية"
+    },
+    "faq": {
+      "title": "الأسئلة الشائعة",
+      "items": [
+        {
+          "question": "ما هو فريجيني؟",
+          "answer": "فريجيني هي منصة تعليمية عالمية مجانية."
+        }
+      ]
+    }
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ ما",
+    "retry": "حاول مرة أخرى",
+    "language": "اللغة",
+    "watchDemo": "شاهد العرض",
+    "learnMore": "تعلم المزيد"
+  },
+  "navigation": {
+    "features": "المميزات",
+    "method": "المنهجية",
+    "schools": "المدارس",
+    "testimonials": "آراء المستخدمين",
+    "getStarted": "ابدأ الآن",
+    "getStartedFree": "ابدأ مجاناً",
+    "menu": {
+      "about": "من نحن",
+      "mission": "مهمتنا",
+      "app": "التطبيق",
+      "parents": {
+        "main": "الآباء",
+        "dropdown": {
+          "dashboard": "لوحة تحكم الآباء",
+          "progress": "تتبع التقدم",
+          "communication": "التواصل مع المعلمين",
+          "resources": "موارد تعليمية",
+          "security": "الأمان والخصوصية"
+        }
+      },
+      "schools": {
+        "main": "المدارس",
+        "dropdown": {
+          "management": "إدارة المدرسة",
+          "curriculum": "المناهج الدراسية",
+          "teachers": "مساحة المعلمين",
+          "analytics": "التحليلات والتقارير",
+          "description": "تمكين المؤسسات التعليمية بأحدث الأدوات لـ {title}."
+        }
+      },
+      "ongs": {
+        "main": "المنظمات غير الحكومية",
+        "dropdown": {
+          "projects": "مشاريع تعليمية",
+          "impact": "قياس الأثر",
+          "partnership": "الشراكات",
+          "description": "الشراكة مع المنظمات غير الحكومية لإيصال التعليم إلى كل ركن من أركان العالم."
+        }
+      },
+      "pricing": {
+        "main": "الأسعار",
+        "dropdown": {
+          "individual": "فردي",
+          "family": "عائلي",
+          "institutional": "مؤسسي",
+          "description": "خطط مرنة مصممة لاحتياجات {title}."
+        }
+      },
+      "freeTrial": "تجربة مجانية",
+      "login": "تسجيل الدخول"
+    }
+  },
+  "cookies": {
+    "title": "إدارة ملفات تعريف الارتباط",
+    "description": "نستخدم ملفات تعريف الارتباط لتحسين تجربتك.",
+    "learnMore": "تعلم المزيد",
+    "rejectAll": "رفض الكل",
+    "customize": "تخصيص",
+    "acceptAll": "قبول الكل"
+  },
+  "footer": {
+    "baseline": "إحداث ثورة في التعليم للجميع",
+    "rights": "جميع الحقوق محفوظة.",
+    "about": {
+      "title": "حول",
+      "education": "التعليم",
+      "nationalCurriculum": "محتوى المنهج الوطني",
+      "internationalCurriculum": "محتوى المنهج الدولي",
+      "mission": "مهمتنا",
+      "methodology": "المنهجية",
+      "research": "البحث التربوي",
+      "brand": "حول العلامة التجارية",
+      "news": "الأخبار",
+      "press": "الصحافة",
+      "contact": "اتصل بنا"
+    },
+    "apps": {
+      "title": "تطبيقاتنا",
+      "android": "FreeGeny Android",
+      "ios": "FreeGeny iOS"
+    },
+    "support": {
+      "title": "المساعدة والدعم",
+      "faqGeneral": "الأسئلة الشائعة حول FreeGeny",
+      "faqSchools": "الأسئلة الشائعة للمدارس",
+      "faqNgos": "الأسئلة الشائعة للمنظمات غير الحكومية"
+    },
+    "legal": {
+      "title": "قانوني",
+      "guidelines": "إرشادات المستخدم",
+      "terms": "شروط الخدمة",
+      "privacy": "سياسة الخصوصية",
+      "communityRules": "قواعد المجتمع",
+      "cookiePreferences": "مركز تفضيلات ملفات تعريف الارتباط",
+      "accessibility": "بيان إمكانية الوصول",
+      "sitemap": "خريطة الموقع"
+    },
+    "product": {
+      "title": "المنتج",
+      "app": "التطبيق",
+      "parents": "الآباء",
+      "schools": "المدارس",
+      "ngos": "المنظمات"
+    }
+  },
+  "pages": {
+    "comingSoon": "قريباً جداً",
+    "description": "هذه الصفحة قيد الإنشاء حالياً."
+  },
+  "dashboard": {
+    "parent": {
+      "title": "لوحة تحكم الآباء",
+      "welcome": "مرحباً، {name}!",
+      "overview": "إليك نظرة عامة على تقدم أطفالك اليوم.",
+      "stats": {
+        "activeStudents": "الطلاب النشطون",
+        "completedExercises": "التمارين المكتملة",
+        "averageScore": "متوسط الدرجات",
+        "studyTime": "وقت الدراسة"
+      },
+      "recentActivity": "النشاط الأخير",
+      "progressBySubject": "التقدم حسب المادة"
+    },
+    "nav": {
+      "home": "الرئيسية",
+      "progression": "تقدم طفلي",
+      "exercises": "التمارين والأنشطة",
+      "library": "المكتبة التعليمية",
+      "messages": "الرسائل والتنبيهات",
+      "calendar": "الجدول الزمني",
+      "achievements": "الإنجازات والأوسمة",
+      "points": {
+        "title": "نقاط التقدم",
+        "subtitle": "نقاطك المجمعة من التمارين"
+      },
+      "settings": "إعدادات الحساب"
+    },
+    "childSwitcher": {
+      "title": "أطفالي",
+      "active": "نشط",
+      "addChild": "إضافة طفل",
+      "newProfile": "إنشاء ملف جديد",
+      "never": "أبداً",
+      "today": "اليوم",
+      "yesterday": "أمس",
+      "daysAgo": "منذ {days} أيام",
+      "age": "{age} سنوات",
+      "level": "مستوى {level}",
+      "points": "{points} نقطة",
+      "slogan": "حرية · مساواة · فريجيني"
+    },
+    "sidebar": {
+      "home": "الرئيسية",
+      "progression": "التقدم",
+      "exercises": "التمارين",
+      "library": "المكتبة",
+      "messages": "الرسائل",
+      "calendar": "التقويم",
+      "settings": "الإعدادات"
+    }
+  },
+  "auth": {
+    "loginWelcome": "مرحباً بعودتك!",
+    "loginSubtitle": "افتح عالمك السحري.",
+    "signupTitle": "انضم إلى المغامرة!",
+    "signupSubtitle": "أنشئ حسابك السحري اليوم.",
+    "emailLabel": "اسم المستخدم أو البريد الإلكتروني",
+    "passwordLabel": "كلمة المرور",
+    "firstNameLabel": "الاسم الأول",
+    "lastNameLabel": "اسم العائلة",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "loginButton": "ابدأ التعلم",
+    "signupButton": "إنشاء حساب",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "signupLink": "سجل الآن",
+    "signinLink": "تسجيل دخول",
+    "or": "أو تواصل عبر",
+    "legalText": "بانضمامك، أنت توافق على",
+    "connecting": "جاري الاتصال بأمان...",
+    "processing": "جاري المعالجة...",
+    "emailPlaceholder": "genie@freegeny.com",
+    "firstNamePlaceholder": "جيني",
+    "lastNamePlaceholder": "سبارك",
+    "passwordPlaceholder": "••••••••",
+    "privacy": "الخصوصية",
+    "roleSelection": "أنت :",
+    "roles": {
+      "parent": "ولي أمر",
+      "teacher": "مدرسة",
+      "ngo": "منظمة"
+    },
+    "welcomeBack": "مرحباً بعودتك",
+    "joinAdventure": "انضم إلى المغامرة",
+    "fullName": "الاسم الكامل",
+    "createPassword": "أنشئ كلمة مرور",
+    "orEmail": "أو عبر البريد",
+    "signIn": "تسجيل دخول",
+    "createAccount": "إنشاء حسابي",
+    "signUpFree": "سجل مجاناً",
+    "termsText": "بإنشاء حساب، أنت توافق على",
+    "termsLink": "شروط الخدمة",
+    "privacyLink": "سياسة الخصوصية",
+    "trustItems": {
+      "certified": "برامج معتمدة من خبراء التعليم",
+      "countries": "متوفر في أكثر من 38 دولة",
+      "learners": "أكثر من 500,000 طفل يتعلمون يومياً"
+    },
+    "quote": "كل طفل هو عبقري نائم.",
+    "quoteSubtext": "فريجيني يحول كل لحظة إلى فرصة للتعلم والنمو والدهشة.",
+    "illustrationAlt": "طفل يتعلم ويستمتع بوقت",
+    "terms": "شروط الخدمة",
+    "and": "و"
+  },
+  "search": {
+    "placeholder": "بحث...",
+    "searching": "جاري البحث...",
+    "noResults": "لم يتم العثور على نتائج",
+    "type": {
+      "exercise": "تمرين",
+      "student": "طالب",
+      "class": "فصل",
+      "message": "رسالة",
+      "resource": "مورد"
+    }
+  },
+  "navbar": {
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج"
+  },
+  "notifications": {
+    "title": "التنبيهات",
+    "markAllRead": "تحديد الكل كمقروء",
+    "noNotifications": "لا توجد تنبيهات",
+    "dismiss": "تجاهل",
+    "priority": {
+      "low": "منخفض",
+      "medium": "متوسط",
+      "high": "عالي",
+      "urgent": "عاجل"
+    }
+  },
+  "childSwitcher": {
+    "title": "تبديل الملف الشخصي",
+    "active": "نشط",
+    "never": "لم ينشط بعد",
+    "today": "اليوم",
+    "yesterday": "أمس",
+    "daysAgo": "منذ {days} أيام",
+    "age": "{age} سنوات",
+    "level": "المستوى {level}",
+    "points": "{points} نقطة",
+    "addChild": "إضافة طفل",
+    "newProfile": "ملف شخصي جديد"
+  }
+}

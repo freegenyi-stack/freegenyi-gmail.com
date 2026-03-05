@@ -1,0 +1,953 @@
+matiere: education_civique
+niveau: 5ap
+programme: "Algérie - Génération 2"
+description: "Programme officiel d'éducation civique pour la 5ème année primaire (Système éducatif algérien)"
+domaine_apprentissage: "Éducation civique et morale"
+age_cible: "10-11 ans"
+annee_scolaire: "2024-2025"
+
+# ============================================================
+# MÉTADONNÉES PÉDAGOGIQUES GLOBALES
+# ============================================================
+
+objectifs_generaux:
+  - "Développer la conscience citoyenne et les valeurs démocratiques"
+  - "Comprendre les droits et devoirs du citoyen"
+  - "Connaître les institutions et structures de la société"
+  - "Apprendre à vivre ensemble dans le respect d'autrui"
+  - "Développer l'esprit de responsabilité individuelle et collective"
+  - "Promouvoir la tolérance et le respect des différences"
+  - "Comprendre les règles et lois qui régissent la vie en société"
+  - "Cultiver le patriotisme et l'amour de la patrie"
+  - "Développer les valeurs morales et éthiques"
+
+competences_transversales:
+  - "Respect des lois et des règles"
+  - "Responsabilité personnelle et collective"
+  - "Participation citoyenne"
+  - "Respect des droits humains"
+  - "Tolérance et dialogue"
+  - "Solidarité et coopération"
+  - "Sens du devoir"
+  - "Pensée critique citoyenne"
+  - "Conscience morale"
+  - "Compétences de communication sociale"
+
+# ============================================================
+# STRUCTURE DU PROGRAMME PAR MODULES/THÈMES
+# ============================================================
+
+modules:
+
+# ============================================================
+# SECTION 1 : LA VIE COLLECTIVE (الحياة الجماعية)
+# ============================================================
+
+  - id: module_01
+    titre_ar: "المؤسسات الجماهيرية والإدارة الإلكترونية"
+    titre_fr: "Les institutions collectives et l'administration électronique"
+    ordre: 1
+    semestre: 1
+    duree_estimee: "2-3 semaines"
+    theme_principal: "institutions_collectives"
+    numero_lecon: 1
+    page_debut: 7
+    description: "Comprendre les institutions collectives et l'administration moderne"
+    
+    competences_principales:
+      - "Identifier les institutions publiques"
+      - "Comprendre les rôles des administrations"
+      - "Utiliser les services électroniques"
+      - "Respecter les procédures administratives"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "المؤسسات العمومية"
+          titre_fr: "Les institutions publiques"
+          definition: "Organisations au service de l'intérêt public"
+          types:
+            - nom: "Services administratifs"
+              exemples: ["Mairie", "Préfecture", "Douanes"]
+              role: "Gestion des affaires publiques"
+            
+            - nom: "Services sociaux"
+              exemples: ["Hôpitaux", "Écoles", "Centres sociaux"]
+              role: "Bien-être des citoyens"
+            
+            - nom: "Services de sécurité"
+              exemples: ["Police", "Gendarmerie", "Pompiers"]
+              role: "Protection et sécurité"
+        
+        - titre_ar: "الإدارة الإلكترونية"
+          titre_fr: "L'administration électronique"
+          definition: "Utilisation des technologies pour les services publics"
+          avantages:
+            - "Gain de temps"
+            - "Facilité d'accès"
+            - "Transparence accrue"
+            - "Réduction des frais"
+          services_electroniques:
+            - "Demandes en ligne"
+            - "Paiement électronique"
+            - "Consultation de dossiers"
+            - "Signatures numériques"
+          precautions:
+            - "Confidentialité des données"
+            - "Sécurité des transactions"
+            - "Vérification de l'authenticité"
+    
+    activites_apprentissage:
+      - type: "visite_simulation"
+        titre: "Visite d'une institution publique (réelle ou virtuelle)"
+        objectif: "Découvrir le fonctionnement des institutions"
+      
+      - type: "pratique_digitale"
+        titre: "Utiliser des services en ligne"
+        objectif: "Apprendre à naviguer les portails numériques"
+      
+      - type: "discussion"
+        titre: "Débat sur l'impact de la technologie"
+        questions:
+          - "Quels sont les avantages de l'administration électronique ?"
+          - "Quels sont les risques ?"
+          - "Comment protéger ses données ?"
+
+  - id: module_02
+    titre_ar: "الزرع والنواحي"
+    titre_fr: "L'agriculture et les quartiers"
+    ordre: 2
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "environnement_quartiers"
+    numero_lecon: 2
+    page_debut: 10
+    
+    competences_principales:
+      - "Connaître l'importance de l'agriculture"
+      - "Comprendre le rôle des collectivités locales"
+      - "Participer à l'amélioration du quartier"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "الزراعة والمنتجات المحلية"
+          titre_fr: "L'agriculture et les produits locaux"
+          importance:
+            - "Alimentation de la population"
+            - "Économie locale"
+            - "Emploi"
+            - "Patrimoine culturel"
+          produits_algériens:
+            - "Céréales (blé, orge)"
+            - "Fruits (olives, dattes, agrumes)"
+            - "Légumes"
+            - "Viande et produits laitiers"
+        
+        - titre_ar: "تنمية الأحياء والنواحي"
+          titre_fr: "Développement des quartiers et régions"
+          elements:
+            - "Infrastructure (routes, écoles, hôpitaux)"
+            - "Espace vert et parcs"
+            - "Services publics"
+            - "Sécurité et propreté"
+          roles:
+            - nom: "Collectivité locale"
+              responsabilités: ["Planification", "Aménagement", "Services"]
+            
+            - nom: "Citoyens"
+              responsabilités: ["Respect des espaces", "Propreté", "Participation"]
+
+  - id: module_03
+    titre_ar: "وسائل الإعلام"
+    titre_fr: "Les moyens de communication et d'information"
+    ordre: 3
+    semestre: 1
+    duree_estimee: "2-3 semaines"
+    theme_principal: "medias_communication"
+    numero_lecon: 3
+    page_debut: 13
+    
+    competences_principales:
+      - "Identifier les différents médias"
+      - "Analyser les messages médiatiques"
+      - "Utiliser les médias de manière critique"
+      - "Comprendre le rôle du journalisme"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "أنواع وسائل الإعلام"
+          titre_fr: "Types de médias"
+          types:
+            - nom: "Presse écrite"
+              exemples: ["Journaux", "Magazines", "Revues"]
+              caracteristiques: "Informations vérifiées, analyse approfondie"
+            
+            - nom: "Radio"
+              caracteristiques: "Accès facile, instantanéité"
+              avantages: "Peut être écoutée en activité"
+            
+            - nom: "Télévision"
+              caracteristiques: "Images + son, impact fort"
+              influence: "Très influente, formation d'opinion"
+            
+            - nom: "Internet et réseaux sociaux"
+              caracteristiques: "Accès immédiat, participation citoyenne"
+              risques: ["Désinformation", "Fake news", "Cyberbullying"]
+        
+        - titre_ar: "الإعلام المسؤول"
+          titre_fr: "Les médias responsables"
+          principes:
+            - "Vérification des sources"
+            - "Impartialité"
+            - "Respect de la vie privée"
+            - "Éthique professionnelle"
+          role_journaliste:
+            - "Informer le public"
+            - "Investiguer"
+            - "Analyser"
+            - "Critiquer constructivement"
+        
+        - titre_ar: "القراءة النقدية للإعلام"
+          titre_fr: "Lecture critique des médias"
+          competences:
+            - "Identifier la source"
+            - "Vérifier les faits"
+            - "Reconnaître les biais"
+            - "Distinguer information et opinion"
+            - "Détecter la désinformation"
+
+  - id: module_04
+    titre_ar: "وسائل الاتصال"
+    titre_fr: "Les moyens de communication"
+    ordre: 4
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "moyens_communication"
+    numero_lecon: 4
+    page_debut: 15
+    
+    competences_principales:
+      - "Connaître les moyens de communication modernes"
+      - "Utiliser les technologies de manière responsable"
+      - "Développer la communication interpersonnelle"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "التطور التكنولوجي"
+          titre_fr: "Évolution technologique"
+          progression:
+            - "Télégraphe → Téléphone → Mobile"
+            - "Courrier → Email"
+            - "Face à face → Vidéoconférence"
+          impacts:
+            - "Rapprochement des distances"
+            - "Communication instantanée"
+            - "Accès global à l'information"
+        
+        - titre_ar: "الاتصال الفعال"
+          titre_fr: "Communication efficace"
+          elements:
+            - "Écoute active"
+            - "Expression claire"
+            - "Respect mutuel"
+            - "Feedback constructif"
+          challenges_numeriques:
+            - "Surcharge d'information"
+            - "Distraction technologique"
+            - "Perte de communication face-à-face"
+        
+        - titre_ar: "الأمان الرقمي"
+          titre_fr: "Sécurité numérique"
+          precautions:
+            - "Mots de passe forts"
+            - "Confidentialité des données personnelles"
+            - "Prudence sur les réseaux sociaux"
+            - "Vérification des contacts"
+          dangers:
+            - "Cyberharcèlement"
+            - "Usurpation d'identité"
+            - "Escroqueries en ligne"
+
+  - id: module_05
+    titre_ar: "تعليم الإدماج"
+    titre_fr: "Éducation inclusive et intégration"
+    ordre: 5
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "inclusion_integration"
+    numero_lecon: 5
+    page_debut: 18
+    
+    competences_principales:
+      - "Comprendre l'importance de l'inclusion"
+      - "Respecter les différences individuelles"
+      - "Intégrer les personnes en difficulté"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "المساواة والتعويض"
+          titre_fr: "Égalité et compensation"
+          definition: "L'égalité ne signifie pas donner pareil à tous"
+          exemple: "Donner ce dont chacun a besoin pour participer"
+        
+        - titre_ar: "الإعاقة والقدرات الخاصة"
+          titre_fr: "Handicap et capacités spéciales"
+          types_handicaps:
+            - "Handicap moteur"
+            - "Handicap sensoriel (vue, ouïe)"
+            - "Handicap mental"
+            - "Troubles de l'apprentissage"
+          adaptations:
+            - "Rampes d'accès"
+            - "Signalétique adaptée"
+            - "Assistance personnelle"
+            - "Outils pédagogiques spécialisés"
+        
+        - titre_ar: "العيش معا والاحترام"
+          titre_fr: "Vivre ensemble avec respect"
+          valeurs:
+            - "Acceptation de la différence"
+            - "Solidarité"
+            - "Soutien mutuel"
+            - "Participation inclusive"
+
+  - id: module_06
+    titre_ar: "الإدارة الإلكترونية في خدمة النواحي"
+    titre_fr: "Administration électronique au service des citoyens"
+    ordre: 6
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "e_administration_services"
+    numero_lecon: 6
+    page_debut: 19
+    
+    competences_principales:
+      - "Utiliser les services électroniques locaux"
+      - "Signaler les problèmes en ligne"
+      - "Participer au gouvernement électronique"
+
+  - id: module_07
+    titre_ar: "الحالة المدنية الإلكترونية"
+    titre_fr: "État civil électronique"
+    ordre: 7
+    semestre: 1
+    duree_estimee: "2 semaines"
+    theme_principal: "etat_civil_numerique"
+    numero_lecon: 7
+    page_debut: 22
+    
+    competences_principales:
+      - "Comprendre l'importance de l'état civil"
+      - "Connaître les documents officiels"
+      - "Utiliser les services d'état civil en ligne"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "الحالة المدنية"
+          titre_fr: "L'état civil"
+          definition: "Registre officiel des naissances, mariages, décès"
+          importance:
+            - "Preuve d'identité"
+            - "Droits civiques"
+            - "Héritage et succession"
+            - "Validité légale"
+          documents:
+            - "Certificat de naissance"
+            - "Livret de famille"
+            - "Certificat de mariage"
+            - "Certificat de décès"
+
+# ============================================================
+# SECTION 2 : LA VIE CIVILE (الحياة المدنية)
+# ============================================================
+
+  - id: module_11
+    titre_ar: "الولاية الإنشاء"
+    titre_fr: "Les citoyens et leur création"
+    ordre: 11
+    semestre: 2
+    duree_estimee: "2-3 semaines"
+    theme_principal: "citoyennete_creation"
+    numero_lecon: 11
+    page_debut: 30
+    description: "Section 2 : La vie civile et citoyenne"
+    
+    competences_principales:
+      - "Comprendre la notion de citoyen"
+      - "Connaître les droits et devoirs civiques"
+      - "Participer activement à la vie citoyenne"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "المواطنة"
+          titre_fr: "La citoyenneté"
+          definition: "Appartenance à un État et participation à la vie collective"
+          elements:
+            - "Droits civiques"
+            - "Droits politiques"
+            - "Droits sociaux et économiques"
+            - "Devoirs correspondants"
+        
+        - titre_ar: "الحقوق المدنية"
+          titre_fr: "Les droits civils"
+          droits:
+            - "Droit à l'existence et à l'identité"
+            - "Droit à la vie privée"
+            - "Droit à la liberté de conscience"
+            - "Droit à l'égalité devant la loi"
+            - "Droit à l'éducation"
+            - "Droit à la sécurité"
+        
+        - titre_ar: "الحقوق السياسية"
+          titre_fr: "Les droits politiques"
+          droits:
+            - "Droit de vote (à partir de 18 ans)"
+            - "Droit d'éligibilité"
+            - "Droit de libre expression"
+            - "Droit de réunion et association"
+            - "Droit de pétition"
+
+  - id: module_12
+    titre_ar: "حقوق وواجبات النواحي"
+    titre_fr: "Droits et responsabilités des citoyens"
+    ordre: 12
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "droits_devoirs_citoyens"
+    numero_lecon: 12
+    page_debut: 33
+    
+    competences_principales:
+      - "Connaître les devoirs du citoyen"
+      - "Respecter les droits d'autrui"
+      - "Participer au bien commun"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "الواجبات المدنية"
+          titre_fr: "Les devoirs civils"
+          devoirs:
+            - nom: "Respect de la loi"
+              description: "Se conformer aux règlements et lois en vigueur"
+            
+            - nom: "Paiement des impôts"
+              description: "Contribuer aux finances publiques"
+            
+            - nom: "Service militaire (ou civil)"
+              description: "Devoir de défense du pays (selon les pays)"
+            
+            - nom: "Respect des droits d'autrui"
+              description: "Ne pas nuire, respecter la propriété"
+            
+            - nom: "Participation civique"
+              description: "Voter, s'engager dans la vie communautaire"
+        
+        - titre_ar: "التوازن بين الحقوق والواجبات"
+          titre_fr: "Équilibre droits-devoirs"
+          principe: "Les droits et devoirs sont intrinsèquement liés"
+          exemple:
+            - "Droit à l'éducation ↔ Devoir d'aller à l'école"
+            - "Droit de propriété ↔ Devoir de payer les taxes"
+            - "Droit à la liberté d'expression ↔ Responsabilité du contenu"
+
+  - id: module_13
+    titre_ar: "تعليم الإدماج"
+    titre_fr: "Éducation inclusive"
+    ordre: 13
+    semestre: 2
+    duree_estimee: "1-2 semaines"
+    theme_principal: "education_inclusive"
+    numero_lecon: 13
+    page_debut: 35
+
+  - id: module_14
+    titre_ar: "المسؤولية الفردية والجماعية"
+    titre_fr: "Responsabilité individuelle et collective"
+    ordre: 14
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "responsabilite"
+    numero_lecon: 14
+    page_debut: 36
+    
+    competences_principales:
+      - "Prendre conscience de sa responsabilité personnelle"
+      - "Comprendre la responsabilité collective"
+      - "Agir pour le bien commun"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "المسؤولية الشخصية"
+          titre_fr: "Responsabilité personnelle"
+          definition: "Chacun est responsable de ses actes et paroles"
+          implications:
+            - "Conséquences de nos actions"
+            - "Accountability personnelle"
+            - "Développement moral"
+            - "Intégrité personnelle"
+        
+        - titre_ar: "المسؤولية الجماعية"
+          titre_fr: "Responsabilité collective"
+          definition: "La communauté partage la responsabilité du bien commun"
+          exemples:
+            - "Maintien du nettoyage public"
+            - "Respect de l'environnement"
+            - "Aide aux personnes vulnérables"
+            - "Lutte contre la corruption"
+
+  - id: module_15
+    titre_ar: "المشاركة في الحياة المدرسية"
+    titre_fr: "Participation à la vie scolaire"
+    ordre: 15
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "participation_scolaire"
+    numero_lecon: 15
+    page_debut: 38
+    
+    competences_principales:
+      - "Participer activement à la vie scolaire"
+      - "Respecter les règles de l'école"
+      - "Coopérer avec les camarades et enseignants"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "نظام المدرسة"
+          titre_fr: "Le système scolaire"
+          components:
+            - nom: "Directeur/Directrice"
+              role: "Gestion et administration"
+            
+            - nom: "Enseignants"
+              role: "Instruction et éducation"
+            
+            - nom: "Personnel administratif"
+              role: "Support administratif"
+            
+            - nom: "Élèves"
+              role: "Apprentissage et participation"
+        
+        - titre_ar: "الحقوق والواجبات المدرسية"
+          titre_fr: "Droits et devoirs scolaires"
+          droits_eleves:
+            - "Droit à l'éducation de qualité"
+            - "Droit au respect et dignité"
+            - "Droit à la sécurité"
+            - "Droit de participation"
+          devoirs_eleves:
+            - "Respect du règlement"
+            - "Application aux études"
+            - "Respect des camarades"
+            - "Respect du matériel et des locaux"
+
+  - id: module_16
+    titre_ar: "تعليم الإدماج"
+    titre_fr: "Éducation inclusive"
+    ordre: 16
+    semestre: 2
+    duree_estimee: "1 semaine"
+    theme_principal: "education_inclusive_2"
+    numero_lecon: 16
+    page_debut: 40
+
+  - id: module_17
+    titre_ar: "حقوق الطفل"
+    titre_fr: "Les droits de l'enfant"
+    ordre: 17
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "droits_enfant"
+    numero_lecon: 17
+    page_debut: 41
+    
+    competences_principales:
+      - "Connaître les droits de l'enfant"
+      - "Identifier les violations de droits"
+      - "Défendre les droits de tous les enfants"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "اتفاقية حقوق الطفل"
+          titre_fr: "Convention des droits de l'enfant (ONU)"
+          droits_fondamentaux:
+            - "Droit à la vie"
+            - "Droit à l'identité"
+            - "Droit à la famille"
+            - "Droit à l'éducation"
+            - "Droit à la santé"
+            - "Droit à la protection contre les abus"
+            - "Droit à la participation"
+            - "Droit à la libre expression"
+        
+        - titre_ar: "الحماية من الإساءة"
+          titre_fr: "Protection contre l'abus"
+          types_abus:
+            - "Abus physique"
+            - "Abus émotionnel"
+            - "Abus sexuel"
+            - "Négligence"
+            - "Exploitation du travail"
+          actions:
+            - "Signaler à des adultes de confiance"
+            - "Contacter les autorités"
+            - "Soutien psychologique"
+
+# ============================================================
+# SECTION 3 : LA VIE DÉMOCRATIQUE ET LES INSTITUTIONS
+# ============================================================
+
+  - id: module_19
+    titre_ar: "الانتخاب حق وواجب"
+    titre_fr: "L'élection : droit et responsabilité"
+    ordre: 19
+    semestre: 2
+    duree_estimee: "2-3 semaines"
+    theme_principal: "elections_democratic"
+    numero_lecon: 19
+    page_debut: 46
+    description: "Section 3 : La vie démocratique et les institutions"
+    
+    competences_principales:
+      - "Comprendre le processus électoral"
+      - "Connaître les droits politiques"
+      - "Participer responsablement aux élections"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "الديمقراطية"
+          titre_fr: "La démocratie"
+          definition: "Système où le pouvoir vient du peuple"
+          principes:
+            - "Égalité politique"
+            - "Liberté d'expression"
+            - "Participation citoyenne"
+            - "État de droit"
+        
+        - titre_ar: "العملية الانتخابية"
+          titre_fr: "Le processus électoral"
+          etapes:
+            - "Inscription sur les listes électorales"
+            - "Campagne électorale"
+            - "Vote"
+            - "Dépouillement et comptage"
+            - "Proclamation des résultats"
+        
+        - titre_ar: "حق التصويت"
+          titre_fr: "Le droit de vote"
+          conditions_vote_algerie:
+            - "Âge minimum : 18 ans"
+            - "Nationalité algérienne"
+            - "Inscription électorale"
+            - "Pas de privation des droits civils"
+          importance:
+            - "Expression du choix citoyen"
+            - "Légitimité du gouvernement"
+            - "Responsabilité démocratique"
+
+  - id: module_20
+    titre_ar: "المسجل الشرعي الدولي"
+    titre_fr: "L'enregistrement légal international"
+    ordre: 20
+    semestre: 2
+    duree_estimee: "1-2 semaines"
+    theme_principal: "registre_legal"
+    numero_lecon: 20
+    page_debut: 48
+
+  - id: module_21
+    titre_ar: "تعليم الإدماج"
+    titre_fr: "Éducation inclusive"
+    ordre: 21
+    semestre: 2
+    duree_estimee: "1 semaine"
+    theme_principal: "education_inclusive_3"
+    numero_lecon: 21
+    page_debut: 51
+
+  - id: module_22
+    titre_ar: "الشرطة"
+    titre_fr: "La police et l'ordre public"
+    ordre: 22
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "police_ordre_public"
+    numero_lecon: 22
+    page_debut: 52
+    
+    competences_principales:
+      - "Comprendre le rôle de la police"
+      - "Respecter l'autorité publique"
+      - "Connaître les droits face à la police"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "دور الشرطة"
+          titre_fr: "Rôle de la police"
+          fonctions:
+            - "Maintien de l'ordre public"
+            - "Prévention des crimes"
+            - "Investigation et arrestation"
+            - "Protection des citoyens"
+            - "Régulation du trafic"
+        
+        - titre_ar: "الحقوق عند الاحتجاز"
+          titre_fr: "Droits lors de l'arrestation"
+          droits:
+            - "Droit à l'information sur les raisons"
+            - "Droit d'accès à un avocat"
+            - "Droit à la visite médicale"
+            - "Droit à contacter la famille"
+            - "Droit à un procès juste"
+
+  - id: module_23
+    titre_ar: "الدرك الوطني"
+    titre_fr: "La gendarmerie nationale"
+    ordre: 23
+    semestre: 2
+    duree_estimee: "1-2 semaines"
+    theme_principal: "gendarmerie"
+    numero_lecon: 23
+    page_debut: 54
+
+  - id: module_24
+    titre_ar: "الحماية المدنية"
+    titre_fr: "La protection civile et pompiers"
+    ordre: 24
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "protection_civile"
+    numero_lecon: 24
+    page_debut: 56
+    
+    competences_principales:
+      - "Connaître les services de protection civile"
+      - "Appeler les secours correctement"
+      - "Prévenir les accidents et incendies"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "خدمات الحماية المدنية"
+          titre_fr: "Services de protection civile"
+          services:
+            - "Lutte contre les incendies"
+            - "Intervention en cas d'accident"
+            - "Secours d'urgence"
+            - "Prévention des risques"
+        
+        - titre_ar: "الإجراءات الطارئة"
+          titre_fr: "Procédures d'urgence"
+          numero_urgence: "17 en Algérie"
+          info_a_donner:
+            - "Nature de l'urgence"
+            - "Localisation exacte"
+            - "Nombre de victimes"
+            - "Numéro de contact"
+
+  - id: module_25
+    titre_ar: "تعليم الإدماج"
+    titre_fr: "Éducation inclusive"
+    ordre: 25
+    semestre: 2
+    duree_estimee: "1 semaine"
+    theme_principal: "education_inclusive_4"
+    numero_lecon: 25
+    page_debut: 59
+
+  - id: module_26
+    titre_ar: "دور الشيخ الدولي الوالوي"
+    titre_fr: "Le rôle des autorités locales (Wali)"
+    ordre: 26
+    semestre: 2
+    duree_estimee: "1-2 semaines"
+    theme_principal: "autorites_locales"
+    numero_lecon: 26
+    page_debut: 60
+    
+    competences_principales:
+      - "Connaître l'organisation administrative locale"
+      - "Comprendre le rôle du Wali (gouverneur)"
+      - "Respecter les autorités locales"
+    
+    contenu_apprentissage:
+      concepts_cles:
+        - titre_ar: "الإدارة المحلية"
+          titre_fr: "Administration locale"
+          niveaux:
+            - nom: "Wilaya (Province)"
+              dirigeant: "Wali (Gouverneur)"
+              responsabilités:
+                - "Administration générale"
+                - "Sécurité publique"
+                - "Développement local"
+                - "Coordination des services"
+            
+            - nom: "Daïra (Sous-préfecture)"
+              dirigeant: "Chef de Daïra"
+              responsabilités: ["Administration locale", "Services publics"]
+            
+            - nom: "Commune"
+              dirigeant: "Maire"
+              responsabilités: ["Services municipaux", "Développement local"]
+
+  - id: module_27
+    titre_ar: "وصايةإدماج"
+    titre_fr: "Éducation inclusive et tutelle"
+    ordre: 27
+    semestre: 2
+    duree_estimee: "1 semaine"
+    theme_principal: "education_inclusive_tutelle"
+    numero_lecon: 27
+    page_debut: 62
+
+# ============================================================
+# ACTIVITÉS INTÉGRATIVES
+# ============================================================
+
+  - id: module_28
+    titre_ar: "تجدول شرح المصطلحات"
+    titre_fr: "Explication et clarification des termes"
+    ordre: 28
+    semestre: 2
+    duree_estimee: "2 semaines"
+    theme_principal: "vocabulaire_civique"
+    numero_lecon: 28
+    page_debut: 64
+    
+    competences_principales:
+      - "Maîtriser le vocabulaire civique"
+      - "Comprendre les termes institutionnels"
+      - "Utiliser le langage politique correctement"
+    
+    vocabulaire_cles:
+      - titre_ar: "المفاهيم الأساسية"
+        titre_fr: "Concepts fondamentaux"
+        termes:
+          - "Démocratie : Gouvernement du peuple"
+          - "Citoyen : Membre d'un État"
+          - "État : Organisation politique souveraine"
+          - "Nation : Communauté unie par langue, culture, histoire"
+          - "Gouvernement : Autorité exécutive"
+          - "Loi : Règle adoptée par le parlement"
+          - "Constitution : Loi fondamentale"
+          - "Droit : Prérogative légale"
+          - "Devoir : Obligation légale ou morale"
+          - "Solidarité : Responsabilité mutuelle"
+
+# ============================================================
+# ÉVALUATIONS ET SUIVI
+# ============================================================
+
+evaluations:
+  types:
+    - nom: "Évaluation formative"
+      frequence: "Chaque semaine"
+      outils: ["discussions", "cas pratiques", "jeux de rôle"]
+      objectif: "Évaluer la compréhension et adapter l'enseignement"
+    
+    - nom: "Évaluation sommative"
+      frequence: "Fin de chaque section"
+      composantes:
+        - "Connaissance des concepts civiques"
+        - "Compréhension des droits et devoirs"
+        - "Capacité à résoudre des dilemmes éthiques"
+        - "Communication citoyenne"
+      objectif: "Valider les apprentissages"
+    
+    - nom: "Évaluation comportementale"
+      frequence: "Continue"
+      elements:
+        - "Respect des règles"
+        - "Solidarité avec les camarades"
+        - "Participation constructive"
+        - "Responsabilité personnelle"
+
+  competences_finales_attendues:
+    civisme: "Comprendre et pratiquer la vie citoyenne"
+    droits_devoirs: "Connaître ses droits et responsabilités"
+    democratie: "Participer au processus démocratique"
+    inclusion: "Respecter la diversité et l'inclusion"
+    moralite: "Développer l'éthique et la responsabilité morale"
+    participation: "S'engager activement dans la vie collective"
+
+# ============================================================
+# RESSOURCES ET SUPPORTS PÉDAGOGIQUES
+# ============================================================
+
+ressources_pedagogiques:
+  manuels:
+    - "Manuel d'éducation civique 5AP officiel"
+    - "Constitution algérienne simplifiée"
+    - "Recueil de lois et droits"
+  
+  materiel_pedagogique:
+    - "Posters avec droits et devoirs"
+    - "Cartes institutionnelles"
+    - "Documents administratifs (exemples)"
+    - "Images de symboles nationaux"
+  
+  activites_pratiques:
+    - "Simulations électorales"
+    - "Jeux de rôle (débats, tribunaux)"
+    - "Visites d'institutions"
+    - "Rencontres avec des acteurs civiques"
+    - "Projets de service communautaire"
+  
+  supports_numeriques:
+    - "Vidéos éducatives civiques"
+    - "Portail des services électroniques"
+    - "Simulations interactives"
+    - "Ressources gouvernementales en ligne"
+
+# ============================================================
+# CONSEILS PÉDAGOGIQUES
+# ============================================================
+
+conseils_implementation:
+  approche_pedagogique:
+    - "Partir d'exemples concrets et quotidiens"
+    - "Utiliser des cas réels pour l'analyse"
+    - "Favoriser la participation active"
+    - "Développer le débat démocratique"
+    - "Relier à la vie réelle des élèves"
+    - "Valoriser la pensée critique"
+    - "Encourager l'engagement civique"
+  
+  valeurs_cles:
+    - "Respect mutuel et dignité"
+    - "Égalité devant la loi"
+    - "Responsabilité personnelle et collective"
+    - "Solidarité et entraide"
+    - "Tolérance et respect des différences"
+    - "Patriotisme constructif"
+    - "Engagement démocratique"
+  
+  engagement_eleves:
+    - "Créer un conseil de classe participatif"
+    - "Organiser des débats scolaires"
+    - "Projets de citoyenneté active"
+    - "Visite de lieux civiques"
+    - "Rencontre avec des personnalités civiques"
+    - "Étude de cas réels et contemporains"
+
+# ============================================================
+# MÉTADONNÉES TECHNIQUES
+# ============================================================
+
+version: "1.0"
+derniere_mise_a_jour: "2025-02-17"
+auteur_adaptation: "Équipe pédagogique éducation civique"
+conforme_programme_officiel: "Algérie - Génération 2 - 2024-2025"
+langue_interface: ["arabe", "français"]
+systeme_educatif: "Algérien - Cursus primaire"
+trimestres: 3
+
+notes_pour_ia:
+  - "Le programme couvre 3 sections principales (Vie collective, Vie civile, Vie démocratique)"
+  - "28 leçons avec focus sur les concepts pratiques et quotidiens"
+  - "Intégration forte de l'expérience vécue de l'élève"
+  - "Éducation aux droits humains et à la démocratie"
+  - "Accent sur la responsabilité morale et civique"
+  - "Valorisation de la participation citoyenne active"
+  - "Respect des institutions et des lois de l'Algérie"
+  - "Construction d'une conscience civique inclusive"
+  - "Développement de l'empathie et de la solidarité"
+  - "Préparation à une vie de citoyen responsable"

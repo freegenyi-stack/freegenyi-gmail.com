@@ -1,0 +1,26 @@
+{
+    "id": "dz-2ap-islamique-priere-ex008",
+    "type": "association",
+    "difficulte": "moyenne",
+    "consigne": "اربط كل صلاة بعدد ركعاتها:",
+    "chapitre": "priere",
+    "items": [
+        {
+            "left": "صلاة الصبح",
+            "right": "ركعتان (2)"
+        },
+        {
+            "left": "صلاة الظهر",
+            "right": "أربع ركعات (4)"
+        },
+        {
+            "left": "صلاة المغرب",
+            "right": "ثلاث ركعات (3)"
+        }
+    ],
+    "tags": [
+        "الصلاة",
+        "الركعات"
+    ],
+    "points": 1
+}

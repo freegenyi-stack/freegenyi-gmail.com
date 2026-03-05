@@ -1,0 +1,30 @@
+{
+    "id": "dz-2ap-islamique-priere-ex008",
+    "type": "association",
+    "difficulte": "moyenne",
+    "consigne": "اربط كل صلاة بعدد ركعاتها:",
+    "chapitre": "priere",
+    "corrige_inclus": true,
+    "items": [
+        {
+            "left": "صلاة الصبح",
+            "right": "ركعتان (2)",
+            "explication": "صلاة الصبح هي أصغر الصلوات عدداً."
+        },
+        {
+            "left": "صلاة الظهر",
+            "right": "أربع ركعات (4)",
+            "explication": "صلاة الظهر والعصر والعشاء لكل منها 4 ركعات."
+        },
+        {
+            "left": "صلاة المغرب",
+            "right": "ثلاث ركعات (3)",
+            "explication": "صلاة المغرب هي الوحيدة التي تتكون من 3 ركعات."
+        }
+    ],
+    "tags": [
+        "الصلاة",
+        "الركعات"
+    ],
+    "points": 1
+}

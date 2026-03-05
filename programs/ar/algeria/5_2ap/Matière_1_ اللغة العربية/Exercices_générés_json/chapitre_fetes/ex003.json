@@ -1,0 +1,26 @@
+{
+    "id": "dz-2ap-arabe-fetes-ex003",
+    "type": "association",
+    "difficulte": "moyenne",
+    "consigne": "اربط كل مناسبة بتاريخها أو معناها:",
+    "chapitre": "fetes",
+    "items": [
+        {
+            "left": "أول نوفمبر",
+            "right": "عيد الثورة التحريرية"
+        },
+        {
+            "left": "عيد الفطر",
+            "right": "يأتي بعد صيام رمضان"
+        },
+        {
+            "left": "عيد الأضحى",
+            "right": "نذبح فيه الأضحية"
+        }
+    ],
+    "tags": [
+        "المناسبات",
+        "التاريخ"
+    ],
+    "points": 1
+}

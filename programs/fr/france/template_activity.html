@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activité - Modèle</title>
+
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../assets/css/responsive.css">
+
+    <style>
+        .activity-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .activity-area {
+            height: 400px;
+            background: #f8f9fa;
+            border: 3px dashed #e9ecef;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        /* Lottie Container for future animations */
+        #lottie-animation {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- Simple Navigation for Context -->
+    <nav style="padding: 1rem;">
+        <a href="../../../home.html">← Retour à l'accueil</a> |
+        <span>Programme: France 🇫🇷</span>
+    </nav>
+
+    <div class="activity-container">
+        <h1>Titre de l'activité</h1>
+        <p>Consigne : Glisse les éléments dans la bonne case.</p>
+
+        <!-- Zone de jeu / Animation -->
+        <div class="activity-area">
+            <div id="lottie-animation">
+                <!-- L'animation Lottie ou le jeu Rive ira ici -->
+                <p style="color: #adb5bd;">Zone d'activité interactive</p>
+            </div>
+        </div>
+
+        <button class="btn btn-primary">Valider</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../../assets/js/i18n.js"></script>
+    <!-- Lottie Script (example) -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script> -->
+
+</body>
+
+</html>

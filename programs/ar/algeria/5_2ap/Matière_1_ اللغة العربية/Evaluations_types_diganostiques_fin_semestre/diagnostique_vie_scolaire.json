@@ -1,0 +1,44 @@
+{
+    "id": "dz-2ap-diagnostique-vie_scolaire",
+    "type": "diagnostic",
+    "difficulte": "moyenne",
+    "consigne": "أجب على الأسئلة لتقييم فهمك لمقطع الحياة المدرسية:",
+    "chapitre": "vie_scolaire",
+    "items": [
+        {
+            "type": "qcm",
+            "question": "ما هو المكان المخصص للعب في المدرسة؟",
+            "options": [
+                "المكتبة",
+                "القسم",
+                "الساحة"
+            ],
+            "bonne_reponse": 2
+        },
+        {
+            "type": "vrai_faux",
+            "question": "يجب عليّ أن أحترم معلمي وزملائي.",
+            "reponse": true
+        },
+        {
+            "type": "completion",
+            "text": "أنا تلميذ [...] أحب مدرستي و[...].",
+            "reponses": [
+                "مجتهد",
+                "معلمي"
+            ]
+        },
+        {
+            "type": "production",
+            "question": "اكتب جملة قصيرة تصف فيها قسمك.",
+            "reponse_attendue": "قسمي نظيف وجميل ومنظم."
+        }
+    ],
+    "bareme": 10,
+    "points": [
+        2,
+        2,
+        3,
+        3
+    ]
+}

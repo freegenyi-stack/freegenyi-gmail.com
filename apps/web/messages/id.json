@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - Merevolusi Pendidikan",
+        "description": "Bergabunglah dengan jutaan orang yang belajar dengan platform inovatif FreeGeny"
+    },
+    "home": {
+        "hero": {
+            "title": "Belajar Tanpa Batas",
+            "subtitle": "Akses pendidikan kelas dunia secara gratis",
+            "cta": "Mulai Belajar"
+        },
+        "features": {
+            "title": "Mengapa FreeGeny?",
+            "items": {
+                "free": "Sepenuhnya Gratis",
+                "global": "Komunitas Global",
+                "quality": "Konten Kualitas Terbaik"
+            }
+        }
+    },
+    "common": {
+        "loading": "Memuat...",
+        "error": "Terjadi kesalahan",
+        "retry": "Coba Lagi",
+        "language": "Bahasa"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "Tentang Kami",
+            "mission": "Misi Kami",
+            "app": "Aplikasi",
+            "parents": {
+                "main": "Orang Tua",
+                "dropdown": {
+                    "dashboard": "Dasbor Orang Tua",
+                    "progress": "Pelacakan Kemajuan",
+                    "communication": "Komunikasi Guru",
+                    "resources": "Sumber Daya Pendidikan",
+                    "security": "Keamanan & Privasi"
+                }
+            },
+            "schools": {
+                "main": "Sekolah",
+                "dropdown": {
+                    "management": "Manajemen Sekolah",
+                    "curriculum": "Kurikulum Sekolah",
+                    "teachers": "Ruang Guru",
+                    "analytics": "Analisis & Laporan"
+                }
+            },
+            "ongs": {
+                "main": "LSM",
+                "dropdown": {
+                    "projects": "Proyek Pendidikan",
+                    "impact": "Pengukuran Dampak",
+                    "partnership": "Kemitraan"
+                }
+            },
+            "pricing": {
+                "main": "Harga",
+                "dropdown": {
+                    "individual": "Individu",
+                    "family": "Keluarga",
+                    "institutional": "Institusi"
+                }
+            },
+            "freeTrial": "Uji Coba Gratis",
+            "login": "Masuk"
+        }
+    },
+    "cookies": {
+        "title": "Manajemen Cookie",
+        "description": "Kami menggunakan cookie untuk meningkatkan pengalaman Anda.",
+        "learnMore": "Pelajari lebih lanjut",
+        "rejectAll": "Tolak Semua",
+        "customize": "Sesuaikan",
+        "acceptAll": "Terima Semua"
+    },
+    "footer": {
+        "baseline": "Merevolusi pendidikan untuk semua",
+        "rights": "Hak cipta dilindungi.",
+        "about": {
+            "title": "Tentang",
+            "education": "Pendidikan",
+            "nationalCurriculum": "Konten Kurikulum Nasional",
+            "internationalCurriculum": "Konten Kurikulum Internasional",
+            "mission": "Misi Kami",
+            "methodology": "Metodologi",
+            "research": "Penelitian Pendidikan",
+            "brand": "Tentang Merek",
+            "news": "Berita",
+            "press": "Pers",
+            "contact": "Hubungi Kami"
+        },
+        "apps": {
+            "title": "Aplikasi Kami",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "Bantuan & Dukungan",
+            "faqGeneral": "FAQ tentang FreeGeny",
+            "faqSchools": "FAQ untuk Sekolah",
+            "faqNgos": "FAQ untuk NGO"
+        },
+        "legal": {
+            "title": "Hukum",
+            "guidelines": "Pedoman Pengguna",
+            "terms": "Ketentuan Layanan",
+            "privacy": "Kebijakan Privasi",
+            "communityRules": "Aturan Komunitas",
+            "cookiePreferences": "Pusat Preferensi Cookie",
+            "accessibility": "Pernyataan Aksesibilitas",
+            "sitemap": "Peta Situs"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

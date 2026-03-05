@@ -1,0 +1,2145 @@
+# ============================================================
+# PROGRAMME OFFICIEL DE GÉOGRAPHIE
+# 5ÈME ANNÉE PRIMAIRE - ALGÉRIE - GÉNÉRATION 2
+# ============================================================
+
+# MÉTADONNÉES PRINCIPALES
+matiere: geographie
+niveau: 5ap
+programme: "Algérie - Génération 2"
+description: "Programme officiel de géographie pour la 5ème année primaire - Système éducatif algérien"
+langue_enseignement: "arabe"
+age_cible: "10-11 ans"
+annee_scolaire: "2024-2025"
+statut_document: "Officiel - Ministère de l'Éducation Nationale Algérie"
+
+# ============================================================
+# OBJECTIFS PÉDAGOGIQUES GLOBAUX
+# ============================================================
+objectifs_generaux:
+  - "Développer la conscience géographique et spatiale de l'apprenant"
+  - "Situer l'Algérie dans ses contextes local, régional et mondial"
+  - "Comprendre les caractéristiques physiques et humaines de l'Algérie"
+  - "Analyser les relations entre l'environnement et les populations"
+  - "Acquérir les compétences de lecture et d'interprétation de cartes"
+  - "Développer l'esprit critique face aux enjeux géographiques"
+  - "Comprendre l'interdépendance des phénomènes géographiques"
+
+# ============================================================
+# COMPÉTENCES TRANSVERSALES PRIORITAIRES
+# ============================================================
+competences_transversales:
+  - "Lecture et interprétation de cartes et documents géographiques"
+  - "Localisation et orientation spatiale"
+  - "Analyse des phénomènes géographiques"
+  - "Expression écrite et orale argumentée"
+  - "Observation et déduction"
+  - "Travail avec les données et les statistiques"
+  - "Collaboration et participation en groupe"
+  - "Utilisation d'outils géographiques (atlas, cartes, globe)"
+
+# ============================================================
+# STRUCTURE DU PROGRAMME - 3 CHAMPS THÉMATIQUES
+# ============================================================
+champs_thematiques:
+
+# ============================================================
+# CHAMP 1 : LOCALISATION DE L'ALGÉRIE
+# ============================================================
+  - id: champ_01
+    titre_ar: "موقع الجزائر"
+    titre_fr: "Localisation de l'Algérie"
+    ordre: 1
+    duree_estimee: "3-4 semaines"
+    theme_principal: "localisation_spatiale"
+    couleur_code: "vert"
+    objectif_champ: |
+      Ce champ permet aux élèves de situer précisément l'Algérie à trois échelles:
+      locale (dans le Maghreb), régionale (en Afrique du Nord et Méditerranée) 
+      et mondiale. Il développe les compétences d'orientation et de localisation.
+    
+    # LEÇON 1: LOCALISATION LOCALE
+    lecons:
+      - id: lecon_01_local
+        titre_ar: "الموقع محليا"
+        titre_fr: "La localisation locale"
+        page_reference: 14
+        ordre: 1
+        duree_estimee: "1-2 semaines"
+        objectifs_specifiques:
+          - "Situer l'Algérie par rapport aux pays du Maghreb"
+          - "Identifier les frontières de l'Algérie"
+          - "Connaître les pays limitrophes"
+          - "Comprendre l'importance de cette localisation"
+        
+        concepts_cles:
+          - nom: "Le Maghreb"
+            definition: "Région du nord-ouest africain regroupant l'Algérie, le Maroc, la Tunisie, la Mauritanie"
+            caracteristiques: ["historique commune", "liens culturels", "proximité géographique"]
+          
+          - nom: "Les frontières"
+            definition: "Limites délimitant le territoire national"
+            pays_limitrophes:
+              - nom: "Maroc"
+                position: "Ouest"
+                distance: "~1500 km"
+              - nom: "Tunisie"
+                position: "Est"
+                distance: "~800 km"
+              - nom: "Mauritanie"
+                position: "Sud-Ouest"
+                distance: "~2000 km"
+              - nom: "Mali"
+                position: "Sud"
+                distance: "~1400 km"
+              - nom: "Niger"
+                position: "Sud-Est"
+                distance: "~800 km"
+              - nom: "Libye"
+                position: "Est-Sud"
+                distance: "~900 km"
+          
+          - nom: "Mer Méditerranée"
+            definition: "Mer bordant le nord de l'Algérie"
+            importance: ["commerce maritime", "échanges culturels", "ressources halieutiques"]
+          
+          - nom: "Océan Atlantique"
+            definition: "Océan bordant le nord-ouest de l'Algérie"
+            importance: ["commerce", "ressources marines"]
+        
+        contenu_geographique:
+          superficie:
+            valeur: "2,381 millions km²"
+            position: "1er pays d'Afrique du Nord"
+            classement_continental: "2e plus grand pays d'Afrique (après la Libye)"
+          
+          capitale:
+            nom: "Alger"
+            localisation: "Nord du pays, sur la côte méditerranéenne"
+            importance: "Capitale administrative et politique"
+          
+          limites_naturelles:
+            nord: "Mer Méditerranée (~1200 km de côtes)"
+            est: "Frontière avec la Tunisie et la Libye"
+            ouest: "Frontière avec le Maroc et la Mauritanie"
+            sud: "Désert du Sahara (vastitude)"
+        
+        competences_visees:
+          - "Localiser l'Algérie sur une carte du Maghreb"
+          - "Nommer les pays limitrophes et les mers"
+          - "Calculer les distances approximatives"
+          - "Comprendre l'importance stratégique de cette localisation"
+          - "Lire et interpréter une carte politique"
+        
+        documents_et_ressources:
+          - type: "Cartes"
+            contenu:
+              - "Carte du Maghreb avec l'Algérie"
+              - "Carte politique de l'Algérie"
+              - "Carte avec les frontières et pays limitrophes"
+              - "Carte des villes principales"
+          
+          - type: "Images"
+            contenu:
+              - "Photographies de régions frontalières"
+              - "Photos aériennes du Maghreb"
+              - "Images de la côte méditerranéenne"
+          
+          - type: "Tableaux de données"
+            contenu:
+              - "Superficies comparées des pays maghrébins"
+              - "Populations des pays voisins"
+              - "Longueur des frontières"
+        
+        activites_proposees:
+          - id: activite_1_local_1
+            titre: "Localiser l'Algérie sur une carte vierge du Maghreb"
+            type: "activite_pratique"
+            competence: "Localisation spatiale"
+            materiel: ["carte vierge", "crayon", "compas"]
+            instructions:
+              - "Identifier les points cardinaux"
+              - "Marquer l'Algérie et les pays limitrophes"
+              - "Indiquer les mers et océans"
+              - "Localiser la capitale et principales villes"
+          
+          - id: activite_1_local_2
+            titre: "Créer une fiche informative sur le Maghreb"
+            type: "production_ecrite"
+            competence: "Synthèse et communication"
+            elements:
+              - "Nom des pays"
+              - "Capitales"
+              - "Superficies"
+              - "Liens historiques"
+          
+          - id: activite_1_local_3
+            titre: "Comparer l'Algérie avec ses voisins"
+            type: "activite_analytique"
+            competence: "Analyse comparative"
+            criteres_comparaison:
+              - "Superficie"
+              - "Population"
+              - "Capitale"
+              - "Côtes maritimes"
+        
+        evaluation:
+          type: "formative"
+          outils:
+            - "Quiz de localisation sur carte"
+            - "Exercices d'identification des frontières"
+            - "Questions de compréhension"
+            - "Production d'une mini-fiche"
+
+      # LEÇON 2: LOCALISATION RÉGIONALE
+      - id: lecon_01_regional
+        titre_ar: "الموقع إقليميا"
+        titre_fr: "La localisation régionale"
+        page_reference: 21
+        ordre: 2
+        duree_estimee: "1-2 semaines"
+        objectifs_specifiques:
+          - "Situer l'Algérie en Afrique du Nord et en Méditerranée"
+          - "Connaître l'importance géostratégique de sa position"
+          - "Identifier les régions proches et lointaines"
+          - "Comprendre les échanges régionaux"
+        
+        concepts_cles:
+          - nom: "Afrique du Nord"
+            definition: "Région septentrionale de l'Afrique incluant plusieurs pays"
+            pays_inclus: ["Algérie", "Maroc", "Tunisie", "Égypte", "Mauritanie", "Libye"]
+            caracteristiques: ["climat méditerranéen au nord", "désertique au sud", "population côtière"]
+          
+          - nom: "Bassin méditerranéen"
+            definition: "Espace géographique bordé par trois continents"
+            continents: ["Europe", "Asie", "Afrique"]
+            importance: ["route commerciale majeure", "échanges historiques", "zone géopolitique"]
+          
+          - nom: "Région MENA"
+            definition: "Middle East and North Africa"
+            etendue: ["Proche-Orient", "Moyen-Orient", "Afrique du Nord"]
+            caracteristiques: ["cultures musulmanes dominantes", "richesses énergétiques", "zones d'instabilité"]
+          
+          - nom: "Union Africaine"
+            definition: "Organisation regroupant les États africains"
+            siege: "Addis-Abeba (Éthiopie)"
+            role_algerie: "Pays fondateur et membre actif"
+        
+        contenu_geographique:
+          position_continentale:
+            continent: "Afrique"
+            region: "Afrique du Nord"
+            sous_region: "Maghreb"
+            hémisphère: "Hémisphère Nord"
+          
+          distances_aproximatives_vers:
+            Europe_occidentale: "300-400 km via Méditerranée"
+            Moyen_Orient: "3000-4000 km via Méditerranée"
+            Afrique_subsaharienne: "1000+ km"
+            Asie: "5000+ km"
+          
+          routes_commerciales:
+            - nom: "Route méditerranéenne"
+              importance: "Commerce Europe-Asie-Afrique"
+              ports_cles: ["Alger", "Oran", "Annaba"]
+            
+            - nom: "Route transsaharienne"
+              importance: "Commerce avec l'Afrique centrale et occidentale"
+              villes_cles: ["Tamanrasset", "Tombouctou"]
+          
+          contexte_geopolitique:
+            - "Porte d'entrée entre l'Afrique et l'Europe"
+            - "Acteur important dans la Méditerranée"
+            - "Pont entre le Maghreb et le reste de l'Afrique"
+            - "Région d'intérêt stratégique international"
+        
+        competences_visees:
+          - "Situer l'Algérie sur une carte d'Afrique du Nord"
+          - "Localiser l'Algérie par rapport à l'Europe et l'Asie"
+          - "Comprendre l'importance géopolitique"
+          - "Identifier les routes commerciales"
+          - "Analyser les relations régionales"
+        
+        documents_et_ressources:
+          - type: "Cartes"
+            contenu:
+              - "Carte d'Afrique du Nord"
+              - "Carte du bassin méditerranéen"
+              - "Carte politique du monde (localisation)"
+              - "Carte des routes commerciales"
+              - "Carte de l'Union Africaine"
+          
+          - type: "Données statistiques"
+            contenu:
+              - "Distances entre capitales"
+              - "Flux commerciaux régionaux"
+              - "Populations de pays voisins"
+          
+          - type: "Textes informatifs"
+            contenu:
+              - "Importance stratégique de l'Algérie"
+              - "Rôle dans les organisations régionales"
+              - "Échanges commerciaux et culturels"
+        
+        activites_proposees:
+          - id: activite_1_regional_1
+            titre: "Localiser l'Algérie sur une carte du monde"
+            type: "activite_pratique"
+            competence: "Localisation mondiale"
+            tache:
+              - "Marquer l'Afrique du Nord"
+              - "Localiser l'Algérie"
+              - "Situer les continents voisins"
+              - "Indiquer les distances approximatives"
+          
+          - id: activite_1_regional_2
+            titre: "Créer un schéma de position régionale"
+            type: "production_graphique"
+            competence: "Visualisation spatiale"
+            elements:
+              - "L'Algérie au centre"
+              - "Pays voisins et continents"
+              - "Routes commerciales"
+              - "Distances clés"
+          
+          - id: activite_1_regional_3
+            titre: "Rechercher l'importance de l'Algérie en Méditerranée"
+            type: "recherche_documentaire"
+            competence: "Documentation et analyse"
+            questions_guidence:
+              - "Quels sont les enjeux méditerranéens pour l'Algérie?"
+              - "Quels sont les échanges avec les voisins méditerranéens?"
+              - "Quel est le rôle de l'Algérie dans les organisations régionales?"
+        
+        evaluation:
+          type: "formative"
+          outils:
+            - "Localisation sur carte de l'Afrique"
+            - "Questions sur les distances et relations"
+            - "Schéma de position régionale"
+            - "Présentation orale"
+
+      # LEÇON 3: LOCALISATION MONDIALE
+      - id: lecon_01_mondial
+        titre_ar: "الموقع عالميا"
+        titre_fr: "La localisation mondiale"
+        page_reference: 29
+        ordre: 3
+        duree_estimee: "1-2 semaines"
+        objectifs_specifiques:
+          - "Situer l'Algérie sur le globe terrestre"
+          - "Connaître ses coordonnées géographiques"
+          - "Comprendre sa place dans le monde"
+          - "Identifier les relations internationales"
+        
+        concepts_cles:
+          - nom: "Coordonnées géographiques"
+            definition: "Latitude et longitude permettant de localiser précisément un lieu"
+            algerie:
+              - "Latitude: environ 34° N"
+              - "Longitude: environ 2° E"
+              - "Fuseau horaire: UTC+1 (heure d'Europe centrale)"
+          
+          - nom: "Hémisphères terrestres"
+            definition: "Divisions de la Terre"
+            position_algerie:
+              - "Hémisphère Nord"
+              - "Hémisphère Est"
+              - "Tropique du Cancer au sud"
+          
+          - nom: "Continents et océans"
+            definition: "Grandes divisions terrestres et aquatiques"
+            algerie_voisinages:
+              - "Océan Atlantique à l'ouest"
+              - "Mer Méditerranée au nord"
+              - "Continent africain au sud et à l'est"
+              - "Continent européen au nord"
+          
+          - nom: "Organisations internationales"
+            definition: "Structures regroupant les États"
+            algerie_participation:
+              - "Nations Unies (ONU)"
+              - "Union Africaine (UA)"
+              - "Organisation de la Coopération Islamique (OCI)"
+              - "Ligue Arabe"
+              - "Mouvement des non-alignés"
+          
+          - nom: "Fuseaux horaires"
+            definition: "Divisions horaires du globe"
+            algerie:
+              - "Fuseau: UTC+1"
+              - "Heure d'été: UTC+2 (en été)"
+              - "Différence avec autres régions"
+        
+        contenu_geographique:
+          position_absolue:
+            latitude: "34°N (approx)"
+            longitude: "2°E (approx)"
+            zone_climatique: "Zone tempérée chaude"
+            position_zones: "Entre le Tropique du Cancer et l'Équateur (au sud)"
+          
+          relations_internationales:
+            partenaires_majeurs:
+              - "France (ancienne puissance coloniale)"
+              - "Espagne (voisin méditerranéen)"
+              - "Italie (voisin méditerranéen)"
+              - "États arabes (liens culturels)"
+              - "États-Unis (relations diplomatiques)"
+              - "Chine (développement)"
+            
+            organisations_membres:
+              - "ONU - Membre depuis 1962"
+              - "UA - Fondateur et membre actif"
+              - "Ligue Arabe - Membre depuis 1945"
+              - "OCI - Membre depuis 1969"
+          
+          enjeux_mondiaux:
+            - "Sécurité énergétique (gaz naturel, pétrole)"
+            - "Migrations (route vers l'Europe)"
+            - "Lutte contre le terrorisme"
+            - "Commerce international"
+            - "Changement climatique"
+            - "Diplomatie méditerranéenne"
+        
+        competences_visees:
+          - "Localiser l'Algérie sur un globe terrestre"
+          - "Comprendre les coordonnées géographiques"
+          - "Identifier la place de l'Algérie dans les organisations mondiales"
+          - "Analyser les relations internationales"
+          - "Évaluer l'importance géopolitique mondiale"
+        
+        documents_et_ressources:
+          - type: "Cartes et atlas"
+            contenu:
+              - "Globe terrestre avec l'Algérie"
+              - "Carte mondiale montrant l'Algérie"
+              - "Carte des fuseaux horaires"
+              - "Carte des organisations internationales"
+              - "Carte des routes maritimes mondiales"
+          
+          - type: "Données géographiques"
+            contenu:
+              - "Coordonnées précises (latitude/longitude)"
+              - "Distances vers différentes régions du monde"
+              - "Données sur les fuseaux horaires"
+          
+          - type: "Informations diplomatiques"
+            contenu:
+              - "Liste des États partenaires"
+              - "Organisations internationales"
+              - "Relations bilatérales"
+        
+        activites_proposees:
+          - id: activite_1_mondial_1
+            titre: "Localiser l'Algérie sur un globe terrestre"
+            type: "activite_pratique"
+            materiel: ["globe", "pointeur", "compas"]
+            tache:
+              - "Trouver l'Algérie sur le globe"
+              - "Identifier sa position par rapport aux continents"
+              - "Marquer les hémisphères"
+              - "Localiser les coordonnées approximatives"
+          
+          - id: activite_1_mondial_2
+            titre: "Créer une fiche de position mondiale"
+            type: "production_ecrite"
+            contenu:
+              - "Position sur les continents"
+              - "Coordonnées géographiques"
+              - "Organisations d'appartenance"
+              - "Partenaires internationaux clés"
+          
+          - id: activite_1_mondial_3
+            titre: "Analyser l'importance géopolitique mondiale"
+            type: "activite_analytique"
+            questions:
+              - "Pourquoi l'Algérie est-elle importante sur la scène mondiale?"
+              - "Quels sont ses apports à l'Afrique et au monde?"
+              - "Quels sont les enjeux internationaux pour l'Algérie?"
+        
+        evaluation:
+          type: "formative + sommative"
+          outils:
+            - "Quiz de localisation mondiale"
+            - "Identification des coordonnées"
+            - "Questions sur les organisations"
+            - "Production d'une fiche synthétique"
+
+# ============================================================
+# CHAMP 2 : GÉOGRAPHIE DE L'ALGÉRIE
+# ============================================================
+  - id: champ_02
+    titre_ar: "جغرافية الجزائر"
+    titre_fr: "Géographie de l'Algérie"
+    ordre: 2
+    duree_estimee: "4-5 semaines"
+    theme_principal: "caracteristiques_physiques"
+    couleur_code: "rose"
+    objectif_champ: |
+      Ce champ permet aux élèves de découvrir et comprendre les caractéristiques 
+      physiques de l'Algérie: son relief, son climat, sa végétation et ses ressources 
+      naturelles. Il développe la compréhension des écosystèmes et des enjeux 
+      environnementaux.
+    
+    # LEÇON 4: RELIEF DE L'ALGÉRIE
+    lecons:
+      - id: lecon_02_relief
+        titre_ar: "مظاهر السطح في الجزائر"
+        titre_fr: "Le relief de l'Algérie"
+        page_reference: 42
+        ordre: 1
+        duree_estimee: "1.5-2 semaines"
+        objectifs_specifiques:
+          - "Identifier les principales chaînes montagneuses"
+          - "Connaître les plaines et plateaux"
+          - "Comprendre les déserts algériens"
+          - "Analyser l'influence du relief sur l'habitat"
+        
+        concepts_cles:
+          - nom: "Chaînes montagneuses"
+            definition: "Ensembles de montagnes ayant une histoire géologique commune"
+            principales_chaines:
+              - nom: "Atlas Tellien"
+                localisation: "Nord de l'Algérie"
+                altitude_max: "2328 m (Pic Gouraya près de Béjaïa)"
+                caracteristiques: ["montagnes du littoral", "climat humide", "végétation méditerranéenne"]
+              
+              - nom: "Atlas Saharien"
+                localisation: "Sud de l'Atlas Tellien"
+                altitude_max: "2236 m (Aman Guel)"
+                caracteristiques: ["séparation avec le Sahara", "climat semi-aride"]
+              
+              - nom: "Monts de l'Ahaggar"
+                localisation: "Extrême sud du Sahara"
+                altitude_max: "2918 m (Tahat)"
+                caracteristiques: ["massif montagneux ancien", "paysage désertique", "relief accidenté"]
+              
+              - nom: "Monts du Tassili"
+                localisation: "Sud-est du Sahara"
+                altitude: "1500-2000 m"
+                caracteristiques: ["plateau désertique", "formations rocheuses remarquables"]
+          
+          - nom: "Plaines et hauts plateaux"
+            definition: "Zones de relief peu accidenté"
+            principaux:
+              - nom: "Mitidja"
+                localisation: "Algérie du nord (région côtière)"
+                caracteristiques: ["plaine fertile", "agriculture prospère", "population dense"]
+              
+              - nom: "Hauts-Plateaux (Cheliff)"
+                localisation: "Centre de l'Algérie"
+                altitude: "800-1200 m"
+                caracteristiques: ["climat semi-aride", "élevage", "céréales"]
+              
+              - nom: "Plateau de Tlemcen"
+                localisation: "Nord-ouest"
+                altitude: "900-1000 m"
+              
+              - nom: "Vallée du Chéliff"
+                localisation: "Nord-centre"
+                importance: "Plus long fleuve d'Algérie (700 km)"
+          
+          - nom: "Déserts"
+            definition: "Régions arides avec très peu de végétation"
+            type_et_localisation:
+              - nom: "Sahara"
+                surface: "80% du territoire algérien"
+                caracteristiques: ["sables", "rocailles", "oasis isolées"]
+              
+              - nom: "Grand Erg Occidental"
+                localisation: "Ouest du Sahara"
+              
+              - nom: "Grand Erg Oriental"
+                localisation: "Est du Sahara"
+              
+              - nom: "Erg de Bilma"
+                localisation: "Sud-est"
+              
+              - nom: "Ergs du Ténéré"
+                localisation: "Sud"
+          
+          - nom: "Littoral"
+            definition: "Zone côtière"
+            caracteristiques:
+              - "Côte nord: 1200 km de côtes méditerranéennes"
+              - "Côte ouest: 350 km sur l'Atlantique"
+              - "Ports importants: Alger, Oran, Béjaïa, Skikda, Annaba"
+              - "Plages et criques"
+              - "Écosystème méditerranéen"
+        
+        contenu_geographique:
+          division_relief:
+            nord: "Chaînes montagneuses (Atlas Tellien)"
+            centre: "Hauts-plateaux et Cheliff"
+            sud: "Sahara avec montagnes isolées (Ahaggar, Tassili)"
+          
+          caracteristiques_principales:
+            - "Relief très varié et accidenté"
+            - "80% du territoire désertique"
+            - "Plus de 50% à plus de 800 m d'altitude"
+            - "Contrastes nord-sud très marqués"
+          
+          zones_climatiques_liees:
+            nord: "Méditerranéen (humide)"
+            centre: "Semi-aride"
+            sud: "Aride et désertique"
+          
+          impact_sur_population:
+            - "Population concentrée au nord (littoral et montagne)"
+            - "Oasis du Sahara: pôles de peuplement"
+            - "Relief influence les communications"
+            - "Agriculture concentrée dans les plaines"
+        
+        competences_visees:
+          - "Localiser les principales chaînes montagneuses"
+          - "Identifier les plaines et plateaux"
+          - "Comprendre la délimitation des déserts"
+          - "Analyser l'influence du relief sur l'habitat"
+          - "Lire une carte topographique"
+          - "Interpréter un profil de relief"
+        
+        documents_et_ressources:
+          - type: "Cartes"
+            contenu:
+              - "Carte du relief de l'Algérie"
+              - "Carte des chaînes montagneuses"
+              - "Carte des zones climatiques"
+              - "Profils topographiques nord-sud"
+              - "Carte des oasis du Sahara"
+          
+          - type: "Images et photographies"
+            contenu:
+              - "Photos des montagnes du Atlas Tellien"
+              - "Paysages des hauts-plateaux"
+              - "Vue du Sahara"
+              - "Montagnes de l'Ahaggar"
+              - "Côte méditerranéenne"
+          
+          - type: "Données"
+            contenu:
+              - "Altitudes des principaux sommets"
+              - "Longueur des chaînes montagneuses"
+              - "Surfaces des zones désertiques"
+              - "Longueur du littoral"
+        
+        activites_proposees:
+          - id: activite_2_relief_1
+            titre: "Localiser les chaînes montagneuses sur une carte"
+            type: "activite_pratique"
+            materiel: ["carte muette", "crayons de couleur", "légende"]
+            tache:
+              - "Colorier les montagnes"
+              - "Marquer les altitudes"
+              - "Nommer les chaînes principales"
+              - "Ajouter les plaines et déserts"
+          
+          - id: activite_2_relief_2
+            titre: "Tracer un profil topographique nord-sud"
+            type: "activite_technique"
+            competence: "Représentation graphique"
+            étapes:
+              - "Choisir une ligne nord-sud"
+              - "Relever les altitudes"
+              - "Tracer le profil"
+              - "Analyser les variations"
+          
+          - id: activite_2_relief_3
+            titre: "Comparer les reliefs nord et sud"
+            type: "activite_analytique"
+            dimensions_comparaison:
+              - "Altitude moyenne"
+              - "Climat"
+              - "Végétation"
+              - "Densité de population"
+              - "Activités économiques"
+        
+        evaluation:
+          type: "formative"
+          outils:
+            - "Quiz de localisation des montagnes"
+            - "Identification sur carte"
+            - "Questions sur les caractéristiques"
+            - "Profil topographique"
+
+      # LEÇON 5: CLIMAT ET VÉGÉTATION
+      - id: lecon_02_climat_vegetation
+        titre_ar: "المناخ والنبات"
+        titre_fr: "Le climat et la végétation"
+        page_reference: 51
+        ordre: 2
+        duree_estimee: "1.5-2 semaines"
+        objectifs_specifiques:
+          - "Connaître les différents types de climat en Algérie"
+          - "Comprendre la répartition de la végétation"
+          - "Analyser les relations climat-végétation-habitat"
+          - "Évaluer les enjeux de désertification"
+        
+        concepts_cles:
+          - nom: "Climat méditerranéen"
+            localisation: "Littoral et montagnes du nord"
+            caracteristiques:
+              - "Été chaud et sec"
+              - "Hiver doux et humide"
+              - "Précipitations: 400-800 mm/an au littoral"
+              - "Température moyenne: 15-25°C"
+            vegetation_naturelle: ["chêne", "liège", "pin", "olivier", "cèdre"]
+          
+          - nom: "Climat semi-aride"
+            localisation: "Hauts-plateaux et transition sud"
+            caracteristiques:
+              - "Peu de précipitations (200-400 mm/an)"
+              - "Températures variables"
+              - "Sécheresses fréquentes"
+              - "Vent chaud du sud (Sirocco)"
+            vegetation_naturelle: ["chêne vert", "alfa", "armoise", "acacia"]
+          
+          - nom: "Climat aride et désertique"
+            localisation: "Sahara"
+            caracteristiques:
+              - "Très peu de précipitations (<100 mm/an)"
+              - "Températures extrêmes"
+              - "Écarts jour-nuit importants"
+              - "Vents violents (tempêtes de sable)"
+            vegetation_naturelle: ["palmier dattier", "acacia", "roseaux (oasis)"]
+          
+          - nom: "Végétation méditerranéenne"
+            definition: "Ensemble des plantes adaptées au climat méditerranéen"
+            type_foret:
+              - "Forêts denses au nord"
+              - "Résineux (pin d'Alep, cèdre)"
+              - "Feuillus (chêne, liège)"
+            importance: ["ressource économique", "protection du sol", "régulation hydrique"]
+          
+          - nom: "Steppe"
+            definition: "Formation végétale des zones semi-arides"
+            caracteristiques: ["herbes courtes", "arbustes", "moins densité de vegetation"]
+            importance: ["pâturage", "élevage ovin"]
+          
+          - nom: "Oasis"
+            definition: "Zones de végétation autour de sources d'eau dans le désert"
+            vegetations_principales: ["palmiers", "cultures vivrières", "arbres fruitiers"]
+            importance_economique: ["agriculture", "tourisme", "habitation"]
+          
+          - nom: "Désertification"
+            definition: "Processus dégradation des terres, transformation en désert"
+            causes:
+              - "Surpâturage"
+              - "Déboisement"
+              - "Changement climatique"
+              - "Sécheresses récurrentes"
+            consequences: ["perte de biodiversité", "exode rural", "problèmes économiques"]
+        
+        contenu_geographique:
+          zones_climatiques:
+            nord: "Climat méditerranéen humide (10-15% du territoire)"
+            centre: "Climat semi-aride (10-15% du territoire)"
+            sud: "Climat aride/désertique (70-75% du territoire)"
+          
+          vegetations_principales:
+            forets_nord: "Environ 4 millions hectares"
+            steppes_plateau: "Couvre les hauts-plateaux"
+            desert_sahara: "Végétation sparse et adaptée"
+            oasis: "Environ 1000-1500 oasis"
+          
+          ressources_forestieres:
+            - "Liège: production importante"
+            - "Bois de chauffage: consommation locale"
+            - "Fruits secs: amandes, figues, dattes"
+            - "Miel et apiculture"
+          
+          enjeux_environnementaux:
+            - "Déforestation et dégradation des forêts"
+            - "Avancée du désert dans les zones cultivables"
+            - "Diminution des ressources en eau"
+            - "Érosion des sols"
+            - "Changement climatique et sécheresses"
+        
+        competences_visees:
+          - "Localiser les zones climatiques"
+          - "Identifier les types de végétation"
+          - "Comprendre les liens climat-végétation"
+          - "Analyser l'impact sur l'habitat humain"
+          - "Évaluer les enjeux environnementaux"
+          - "Lire des graphiques climatiques"
+        
+        documents_et_ressources:
+          - type: "Cartes"
+            contenu:
+              - "Carte des zones climatiques"
+              - "Carte de distribution de la végétation"
+              - "Carte des zones de désertification"
+              - "Carte des oasis principales"
+              - "Carte des zones forestières"
+          
+          - type: "Graphiques"
+            contenu:
+              - "Diagrammes ombrothermiques (climat)"
+              - "Précipitations par région"
+              - "Températures mensuelles"
+              - "Distribution des espèces végétales"
+          
+          - type: "Images"
+            contenu:
+              - "Paysages des trois zones climatiques"
+              - "Végétation typique de chaque zone"
+              - "Oasis du Sahara"
+              - "Zones désertifiées"
+          
+          - type: "Données statistiques"
+            contenu:
+              - "Précipitations annuelles par région"
+              - "Température moyenne et extrêmes"
+              - "Superficies forestières"
+              - "Dégradation des sols"
+        
+        activites_proposees:
+          - id: activite_2_climat_1
+            titre: "Construire un diagramme climatique pour trois villes"
+            type: "activite_technique"
+            villes_exemple:
+              - "Alger (nord, méditerranéen)"
+              - "Adrar (centre, semi-aride)"
+              - "Tamanrasset (sud, désertique)"
+            tache:
+              - "Collecter les données climatiques"
+              - "Construire les diagrammes ombrothermiques"
+              - "Analyser les différences"
+              - "Déduire la végétation possible"
+          
+          - id: activite_2_climat_2
+            titre: "Créer une fiche de zone climatique"
+            type: "production_ecrite"
+            elements:
+              - "Nom et localisation de la zone"
+              - "Caractéristiques climatiques"
+              - "Végétation typique"
+              - "Activités humaines"
+              - "Enjeux et risques"
+          
+          - id: activite_2_climat_3
+            titre: "Analyser la désertification en Algérie"
+            type: "activite_analytique"
+            questions:
+              - "Quels sont les signes de désertification?"
+              - "Quelles en sont les causes?"
+              - "Quelles en sont les conséquences?"
+              - "Quelles solutions proposer?"
+        
+        evaluation:
+          type: "formative"
+          outils:
+            - "Quiz sur les zones climatiques"
+            - "Identification de végétation"
+            - "Diagramme climatique"
+            - "Questions analytiques"
+            - "Présentation orale"
+
+      # LEÇON 6: RESSOURCES NATURELLES
+      - id: lecon_02_ressources
+        titre_ar: "الموارد الطبيعية"
+        titre_fr: "Les ressources naturelles"
+        page_reference: 63
+        ordre: 3
+        duree_estimee: "1-1.5 semaine"
+        objectifs_specifiques:
+          - "Identifier les principales ressources naturelles"
+          - "Connaître les zones d'exploitation"
+          - "Comprendre l'importance économique"
+          - "Évaluer la durabilité des ressources"
+        
+        concepts_cles:
+          - nom: "Ressources énergétiques"
+            categorie: "Non-renouvelables"
+            principales_ressources:
+              - nom: "Pétrole"
+                localisation: "Bassin d'Hassi Messaoud (sud-est), Hassi R'Mel"
+                importance: "Ressource majeure, principal export"
+                production: "Production importante mais en baisse"
+                reserves: "Estimées à 12-15 milliards de barils"
+              
+              - nom: "Gaz naturel"
+                localisation: "Hassi R'Mel, Timimoun, bassin de Tamanrasset"
+                importance: "Deuxième ressource énergétique"
+                production: "Production commerciale importante"
+                reserves: "Estimées à 4-5 trillions de m³"
+              
+              - nom: "Charbon"
+                localisation: "Oued Fodda, gisements mineurs"
+                importance: "Production limitée"
+                utilisation: "Centrales thermiques"
+          
+          - nom: "Ressources minérales"
+            categorie: "Non-renouvelables"
+            principales_ressources:
+              - nom: "Fer"
+                localisation: "Djebel Hammam, Mecheria"
+                importance: "Industrie sidérurgique"
+              
+              - nom: "Phosphates"
+                localisation: "Djebel Onk, Tébessa"
+                importance: "Ressource agricole majeure"
+                utilisation: "Engrais"
+              
+              - nom: "Zinc et Plomb"
+                localisation: "Gisements nord (Tébessa, Skikda)"
+                importance: "Ressources minérales secondaires"
+              
+              - nom: "Sel"
+                localisation: "Sebkha du Hodna, Chott Melrhir"
+                importance: "Industrie chimique"
+          
+          - nom: "Ressources hydriques"
+            categorie: "Renouvelables (mais limitées)"
+            principales_sources:
+              - nom: "Fleuves et rivières"
+                principaux: ["Chéliff (700 km)", "Draa", "Sahel", "Medjerda"]
+                regime: "Irrégulier, crues saisonnières"
+              
+              - nom: "Nappes souterraines"
+                importance: "Ressource majeure du Sahara"
+                nappes:
+                  - "Nappe du Continental intercalaire"
+                  - "Nappe du Complexe terminal"
+                probleme: "Surexploitation, baisse du niveau"
+              
+              - nom: "Barrages"
+                nombre: "Environ 60 barrages"
+                fonction: ["irrigation", "hydroélectricité", "alimentation en eau"]
+              
+              - nom: "Lacs et zones humides"
+                localisation: "Nord et régions littorales"
+                fonction: "Biodiversité, régulation hydrique"
+          
+          - nom: "Ressources forestières"
+            categorie: "Renouvelables"
+            surfaces:
+              - "Forêts: ~4 millions hectares"
+              - "Maquis et formations ligneuses: ~2 millions hectares"
+            essences_principales: ["chêne", "cèdre", "pin", "liège"]
+            produits: ["bois", "liège", "fruits", "miel"]
+          
+          - nom: "Ressources agricoles"
+            categorie: "Renouvelables"
+            types_culture:
+              - nom: "Céréales"
+                regions: "Hauts-plateaux"
+                production: "Variable selon climat"
+              
+              - nom: "Cultures industrielles"
+                regions: "Littoral et zones d'irrigation"
+                exemples: ["agrumes", "vignes", "olives"]
+              
+              - nom: "Dattes"
+                regions: "Oasis du Sahara"
+                importance: "Ressource saharienne majeure"
+              
+              - nom: "Élevage"
+                type: "Ovin, bovin, caprin"
+                regions: "Hauts-plateaux et Sahara"
+          
+          - nom: "Ressources maritimes"
+            categorie: "Renouvelables"
+            potentiels:
+              - "Pêche: poissons, crustacés, mollusques"
+              - "Algues marines"
+              - "Ressources aquacoles"
+              - "Ressources minérales sous-marines"
+          
+          - nom: "Ressources énergies renouvelables"
+            categorie: "Renouvelables"
+            potentiels:
+              - nom: "Énergie solaire"
+                potentiel: "Très important (Sahara ensoleillé)"
+                developpement: "En cours"
+              
+              - nom: "Énergie éolienne"
+                potentiel: "Exploitable au sud"
+                developpement: "Projets pilotes"
+              
+              - nom: "Énergie hydraulique"
+                potentiel: "Limité par ressources hydriques"
+                utilisation: "Barrages existants"
+        
+        contenu_geographique:
+          distribution_ressources:
+            nord: "Phosphates, minéraux, ressources forestières et agricoles"
+            centre: "Agriculture, élevage"
+            sud: "Pétrole, gaz naturel, ressources hydriques souterraines"
+          
+          principal_export:
+            - "Pétrole et gaz (environ 95% des export)"
+            - "Phosphates et dérivés"
+            - "Produits agricoles"
+          
+          enjeux_de_durabilite:
+            - "Surexploitation des nappes aquifères"
+            - "Épuisement potentiel du pétrole et gaz"
+            - "Déforestation et dégradation"
+            - "Pollution des ressources hydriques"
+            - "Nécessité de diversification économique"
+          
+          strategies_alternatives:
+            - "Développement des énergies renouvelables"
+            - "Gestion durable des ressources"
+            - "Diversification économique"
+            - "Investissement dans la technologie"
+        
+        competences_visees:
+          - "Localiser les principales ressources naturelles"
+          - "Comprendre l'importance économique"
+          - "Analyser les enjeux de durabilité"
+          - "Évaluer les perspectives futures"
+          - "Lire des cartes de ressources"
+        
+        documents_et_ressources:
+          - type: "Cartes"
+            contenu:
+              - "Carte des ressources pétrolières et gazières"
+              - "Carte des ressources minérales"
+              - "Carte des ressources hydriques"
+              - "Carte de zones forestières"
+              - "Carte des zones agricoles"
+          
+          - type: "Graphiques statistiques"
+            contenu:
+              - "Production de pétrole et gaz (historique)"
+              - "Réserves estimées"
+              - "Exports par catégorie"
+              - "Évolution des ressources forestières"
+          
+          - type: "Photographies"
+            contenu:
+              - "Puits de pétrole"
+              - "Installations gazières"
+              - "Mines et carrières"
+              - "Zones forestières"
+              - "Barrages"
+          
+          - type: "Données chiffrées"
+            contenu:
+              - "Production annuelle par ressource"
+              - "Réserves estimées"
+              - "Valeur économique"
+              - "Emplois générés"
+        
+        activites_proposees:
+          - id: activite_2_ressources_1
+            titre: "Localiser les zones d'extraction de ressources"
+            type: "activite_pratique"
+            materiel: ["carte muette", "symboles", "légende"]
+            tache:
+              - "Marquer les gisements de pétrole et gaz"
+              - "Localiser les ressources minérales"
+              - "Indiquer les zones forestières"
+              - "Montrer les barrages et zones agricoles"
+          
+          - id: activite_2_ressources_2
+            titre: "Créer des graphiques sur les ressources"
+            type: "production_graphique"
+            graphiques:
+              - "Production historique de pétrole"
+              - "Distribution des ressources"
+              - "Exportations par catégorie"
+              - "Importance économique"
+          
+          - id: activite_2_ressources_3
+            titre: "Analyser les enjeux de durabilité"
+            type: "activite_analytique"
+            questions:
+              - "Quelles ressources s'épuisent?"
+              - "Quels sont les risques environnementaux?"
+              - "Comment assurer la durabilité?"
+              - "Quels sont les défis pour l'avenir?"
+        
+        evaluation:
+          type: "formative"
+          outils:
+            - "Quiz de localisation"
+            - "Questions sur l'importance économique"
+            - "Graphique ou carte annotée"
+            - "Analyse écrite des enjeux"
+
+# ============================================================
+# CHAMP 3 : POPULATION EN ALGÉRIE
+# ============================================================
+  - id: champ_03
+    titre_ar: "السكان في الجزائر"
+    titre_fr: "Population en Algérie"
+    ordre: 3
+    duree_estimee: "3-4 semaines"
+    theme_principal: "demographic_societe"
+    couleur_code: "bleu"
+    objectif_champ: |
+      Ce champ permet aux élèves de comprendre les caractéristiques démographiques 
+      de l'Algérie, la distribution géographique de la population, les facteurs de 
+      cette distribution et les activités économiques. Il développe l'analyse des 
+      données géographiques et socio-économiques.
+    
+    # LEÇON 7: DENSITÉ ET DISTRIBUTION
+    lecons:
+      - id: lecon_03_densité_distribution
+        titre_ar: "الكثافة وتوزيع السكان في الجزائر"
+        titre_fr: "Densité et distribution de la population"
+        page_reference: 76
+        ordre: 1
+        duree_estimee: "1-1.5 semaine"
+        objectifs_specifiques:
+          - "Connaître la population totale algérienne"
+          - "Comprendre la densité de population"
+          - "Analyser la répartition géographique"
+          - "Identifier les zones fortement peuplées"
+        
+        concepts_cles:
+          - nom: "Population totale"
+            donnees:
+              - "Population: environ 43-45 millions (2024)"
+              - "Évolution: croissance soutenue"
+              - "Taux de croissance: 1.5-2% par an"
+              - "Densité moyenne: 18 hab/km²"
+          
+          - nom: "Densité de population"
+            definition: "Nombre d'habitants par km²"
+            calcul: "Population totale ÷ Superficie"
+            variation_selon_region:
+              - nord: "Très élevée (100-500+ hab/km²)"
+              - centre: "Moyenne (5-50 hab/km²)"
+              - sud: "Très faible (<1 hab/km²)"
+          
+          - nom: "Distribution inégale"
+            caracterisation:
+              - "Concentration dans le littoral et montagne nord"
+              - "Vide démographique au Sahara"
+              - "Côte méditerranéenne: 90% de la population"
+              - "Bande de 100 km du littoral: très densité"
+          
+          - nom: "Zone côtière"
+            caracteristiques:
+              - "Concentration majeure de la population"
+              - "Villes principales: Alger, Oran, Constantine, Annaba"
+              - "Climat favorable"
+              - "Activités économiques concentrées"
+              - "Infrastructure développée"
+          
+          - nom: "Hauts-plateaux"
+            caracteristiques:
+              - "Densité modérée"
+              - "Villes secondaires: Sétif, Tlemcen, Batna"
+              - "Élevage et céréales"
+              - "Population plus dispersée"
+          
+          - nom: "Sahara"
+            caracteristiques:
+              - "Population très faible"
+              - "Oasis comme pôles de peuplement"
+              - "Villes: Tamanrasset, Ouargla, Hassi Messaoud"
+              - "Activités: extraction minière, tourisme"
+              - "Densité: <1 hab/km² (sauf oasis)"
+        
+        contenu_geographique:
+          principales_villes:
+            - nom: "Alger"
+              region: "Littoral nord-centre"
+              population: "Environ 3.5 millions (agglomération)"
+              statut: "Capitale, plus grande ville"
+            
+            - nom: "Oran"
+              region: "Littoral nord-ouest"
+              population: "Environ 800000-900000"
+              statut: "Deuxième port, importante"
+            
+            - nom: "Constantine"
+              region: "Nord-est"
+              population: "Environ 400000-500000"
+              importance: "Centre culturel"
+            
+            - nom: "Annaba"
+              region: "Littoral nord-est"
+              population: "Environ 400000-500000"
+              importance: "Port minéralier"
+            
+            - nom: "Ouargla"
+              region: "Sahara"
+              population: "Environ 200000-300000"
+              importance: "Centre pétrolier"
+            
+            - nom: "Tamanrasset"
+              region: "Sahara sud"
+              population: "Environ 80000"
+              importance: "Centre touristique"
+          
+          zones_densement_peuplees:
+            zone_littoral: "90% de la population dans une bande de 100-200 km du littoral"
+            region_cotiere_nord: "Littoral nord: très densité (100-500 hab/km²)"
+            zone_vide: "Sahara: très peu peuplé (<1 hab/km²)"
+          
+          consequences_distribution:
+            - "Concentration des services en zones côtières"
+            - "Inégalité d'accès aux infrastructures"
+            - "Pression urbaine dans grandes villes"
+            - "Désertification démographique du Sahara"
+            - "Migrations internes (exode rural)"
+        
+        competences_visees:
+          - "Calculer une densité de population"
+          - "Localiser les zones densément peuplées"
+          - "Identifier les grands centres urbains"
+          - "Analyser les raisons de la distribution"
+          - "Lire une carte de densité"
+        
+        documents_et_ressources:
+          - type: "Cartes"
+            contenu:
+              - "Carte de la densité de population"
+              - "Carte des principaux centres urbains"
+              - "Carte de distribution inégale"
+              - "Carte de croissance urbaine"
+          
+          - type: "Graphiques"
+            contenu:
+              - "Diagramme de population par région"
+              - "Évolution historique de la population"
+              - "Comparaison densité régions"
+              - "Croissance urbaine"
+          
+          - type: "Statistiques"
+            contenu:
+              - "Population par ville"
+              - "Densité par région"
+              - "Taux d'urbanisation"
+              - "Migration interne"
+        
+        activites_proposees:
+          - id: activite_3_densite_1
+            titre: "Calculer la densité de différentes régions"
+            type: "activite_mathematique"
+            donnees_fournies: ["population", "superficie"]
+            tache:
+              - "Collecter les données"
+              - "Calculer densité = population/superficie"
+              - "Comparer les résultats"
+              - "Commenter les différences"
+          
+          - id: activite_3_densite_2
+            titre: "Colorier une carte de densité"
+            type: "activite_cartographique"
+            materiel: ["carte muette", "crayon", "légende"]
+            niveaux_densite:
+              - "0-1 hab/km²: très faible"
+              - "1-10 hab/km²: faible"
+              - "10-50 hab/km²: moyen"
+              - "50-100 hab/km²: élevé"
+              - ">100 hab/km²: très élevé"
+          
+          - id: activite_3_densite_3
+            titre: "Analyser les causes de la distribution"
+            type: "activite_analytique"
+            questions:
+              - "Pourquoi la population est concentrée au nord?"
+              - "Quels facteurs influencent la distribution?"
+              - "Quels sont les problèmes de cette inégalité?"
+        
+        evaluation:
+          type: "formative"
+          outils:
+            - "Calcul de densité"
+            - "Quiz de localisation"
+            - "Carte annotée"
+            - "Analyse écrite"
+
+      # LEÇON 8: FACTEURS DE DISTRIBUTION
+      - id: lecon_03_facteurs_distribution
+        titre_ar: "العوامل المتحكمة في توزيع السكان"
+        titre_fr: "Facteurs de distribution de la population"
+        page_reference: 86
+        ordre: 2
+        duree_estimee: "1-1.5 semaine"
+        objectifs_specifiques:
+          - "Identifier les facteurs de distribution"
+          - "Comprendre le climat comme facteur"
+          - "Analyser l'importance du relief"
+          - "Évaluer les ressources et infrastructure"
+        
+        concepts_cles:
+          - nom: "Facteurs climatiques"
+            impact: "Très important"
+            details:
+              - "Climat méditerranéen (nord): attire la population"
+              - "Climat semi-aride (centre): densité modérée"
+              - "Climat désertique (sud): repousse la population"
+              - "Précipitations: facteur majeur"
+              - "Température: influenza la viabilité"
+          
+          - nom: "Facteurs géomorphologiques"
+            impact: "Très important"
+            details:
+              - "Relief côtier: favorable au peuplement"
+              - "Montagnes: obstacle à l'établissement"
+              - "Plaines: attire la population"
+              - "Déserts: peu habitable"
+              - "Accessibilité: influence peuplement"
+          
+          - nom: "Ressources hydriques"
+            impact: "Déterminant"
+            details:
+              - "Proximité côte: eau abondante"
+              - "Fleuves et rivières: pôles de peuplement"
+              - "Nappe aquifère: zones oasis"
+              - "Manque d'eau: zone désertique"
+          
+          - nom: "Ressources économiques"
+            impact: "Important"
+            details:
+              - "Littoral: pêche, commerce"
+              - "Mines: centres miniers"
+              - "Terres cultivables: agriculture"
+              - "Pétrole/gaz: zones d'exploitation"
+          
+          - nom: "Infrastructures"
+            impact: "Important"
+            details:
+              - "Routes et transports: relient populations"
+              - "Ports: importants pour littoral"
+              - "Électricité et eau: services essentiels"
+              - "Communication: facilitées en villes"
+          
+          - nom: "Facteurs historiques"
+            impact: "Modéré mais significatif"
+            details:
+              - "Villes historiques attractives"
+              - "Héritage colonial"
+              - "Centres religieux"
+              - "Antécédents d'établissement"
+          
+          - nom: "Facteurs sociaux et culturels"
+            impact: "Modéré"
+            details:
+              - "Attraction des grandes villes"
+              - "Services de santé et éducation"
+              - "Opportunités d'emploi"
+              - "Regroupement familial"
+        
+        contenu_geographique:
+          interaction_facteurs:
+            zones_attractives: "Nord: climat favorable + ressources + infrastructure"
+            zones_repulsives: "Sahara: climat extrême + peu ressources + infrastructure limitée"
+            equilibre: "Hauts-plateaux: facteurs mixtes"
+          
+          cas_specifiques:
+            littoral: "Tous facteurs favorables = densité très élevée"
+            montagne_atlas: "Difficultés de relief = densité modérée"
+            oasis_sahara: "Eau + ressources minérales = pôles peuplement"
+            hauts_plateaux: "Ressources agricoles = peuplement agricole"
+          
+          dynamiques_recentes:
+            urbanisation: "Migration vers grandes villes"
+            developpement_sahara: "Pétrole et gaz attirent population"
+            changement_climatique: "Sécheresses augmentent" 
+            desertification: "Repousse population des zones fragiles"
+        
+        competences_visees:
+          - "Identifier les facteurs influençant la distribution"
+          - "Analyser l'interrelation des facteurs"
+          - "Expliquer les concentrations de population"
+          - "Évaluer l'impact des facteurs"
+          - "Prévoir les changements probables"
+        
+        documents_et_ressources:
+          - type: "Cartes thématiques"
+            contenu:
+              - "Carte des facteurs climatiques"
+              - "Carte du relief et peuplement"
+              - "Carte des ressources hydriques"
+              - "Carte des ressources économiques"
+              - "Carte d'infrastructure"
+          
+          - type: "Schémas"
+            contenu:
+              - "Diagramme des facteurs causels"
+              - "Schéma d'interaction facteurs"
+          
+          - type: "Études de cas"
+            contenu:
+              - "Cas littoral (très peuplé)"
+              - "Cas Sahara (faiblement peuplé)"
+              - "Cas oasis (pôles isolés)"
+        
+        activites_proposees:
+          - id: activite_3_facteurs_1
+            titre: "Comparer deux régions selon les facteurs"
+            type: "activite_comparative"
+            regions_comparees:
+              - "Littoral nord vs. Sahara"
+              - "Hauts-plateaux vs. Montagne"
+            dimensions:
+              - "Climat"
+              - "Relief"
+              - "Ressources hydriques"
+              - "Ressources économiques"
+              - "Infrastructure"
+          
+          - id: activite_3_facteurs_2
+            titre: "Créer un schéma de causalité"
+            type: "production_graphique"
+            elements:
+              - "Facteurs (climat, relief, etc.)"
+              - "Flèches montrant relations"
+              - "Impact sur distribution"
+              - "Exemple concret"
+          
+          - id: activite_3_facteurs_3
+            titre: "Expliquer la distribution inégale"
+            type: "activite_redactionnelle"
+            tache:
+              - "Identifier les zones concentrées"
+              - "Lister les facteurs favorables"
+              - "Expliquer l'attraction"
+              - "Identifier zones faibles"
+              - "Expliquer le manque de peuplement"
+        
+        evaluation:
+          type: "formative"
+          outils:
+            - "Questions analytiques"
+            - "Tableau comparatif"
+            - "Schéma causal"
+            - "Analyse écrite"
+
+      # LEÇON 9: ACTIVITÉS ÉCONOMIQUES
+      - id: lecon_03_activites_economiques
+        titre_ar: "نشاط السكان الاقتصادي"
+        titre_fr: "Activités économiques de la population"
+        page_reference: 92
+        ordre: 3
+        duree_estimee: "1.5-2 semaines"
+        objectifs_specifiques:
+          - "Connaître les secteurs économiques principaux"
+          - "Comprendre la distribution géographique"
+          - "Analyser l'importance de chaque secteur"
+          - "Évaluer les défis du développement"
+        
+        concepts_cles:
+          - nom: "Secteur primaire (exploitation naturelle)"
+            definition: "Activités d'extraction de ressources naturelles"
+            activites_principales:
+              - nom: "Agriculture"
+                regions: "Littoral, hauts-plateaux, zones irriguées"
+                cultures: ["blé", "orge", "vigne", "agrumes", "olives"]
+                importance: "Emplois, alimentation, export (produits spécialisés)"
+                defis: ["sécheresse", "rendements faibles", "mécanisation limitée"]
+              
+              - nom: "Élevage"
+                regions: "Hauts-plateaux, Sahara"
+                types: ["ovins (moutons)", "bovins (vaches)", "caprins (chèvres)"]
+                importance: "Viande, cuir, lait"
+                defis: ["surpâturage", "variabilité ressources fourragères"]
+              
+              - nom: "Pêche"
+                regions: "Littoral méditerranéen et atlantique"
+                importance: "Ressource halieutique, protéine animale"
+                production: "Pêche artisanale et industrielle"
+                defis: ["surpêche", "pollution marine"]
+              
+              - nom: "Extraction minière"
+                regions: "Différentes selon ressource"
+                ressources: ["phosphates", "fer", "zinc", "plomb"]
+                importance: "Export, emploi régional"
+                impact: "Pollution possible"
+              
+              - nom: "Exploitation forestière"
+                regions: "Montagnes du nord"
+                produits: ["bois", "liège", "fruits"]
+                importance: "Ressource économique locale"
+                defis: ["surexploitation", "reforestation"]
+          
+          - nom: "Secteur secondaire (transformation/industrie)"
+            definition: "Activités de transformation de matières premières"
+            activites_principales:
+              - nom: "Industrie pétrolière et gazière"
+                importance: "Secteur dominant, 95% des exports"
+                regions: "Sud (Sahara)"
+                emplois: "Directs et indirects"
+                impact: "Domination économique"
+              
+              - nom: "Industrie agroalimentaire"
+                regions: "Littoral et régions agricoles"
+                production: ["transformation fruits", "produits laitiers", "huile d'olive"]
+                importance: "Valeur ajoutée agricole"
+              
+              - nom: "Industrie textile et vêtement"
+                regions: "Alger, Oran, régions côtières"
+                production: "Vêtements, textiles"
+                defis: ["concurrence internationale", "coûts main-d'oeuvre"]
+              
+              - nom: "Industries chimiques et dérivées"
+                regions: "Littoral"
+                production: ["engrais", "plastiques", "dérivés pétrole"]
+              
+              - nom: "Construction et BTP"
+                importance: "Secteur en croissance"
+                impact: "Croissance urbaine, logements"
+          
+          - nom: "Secteur tertiaire (services)"
+            definition: "Activités de service et commerce"
+            activites_principales:
+              - nom: "Commerce"
+                regions: "Partout, concentré en villes"
+                importance: "Distribution biens"
+              
+              - nom: "Transport et logistique"
+                regions: "Littoral et axes routiers"
+              
+              - nom: "Tourisme"
+                regions: "Littoral, patrimoine, Sahara"
+                potentiel: "Important mais peu développé"
+                ressources: ["plages", "patrimoine historique", "Sahara", "culture"]
+              
+              - nom: "Éducation et santé"
+                importance: "Services essentiels"
+                development: "En croissance"
+              
+              - nom: "Administrations et services publics"
+                importance: "Emploi majeur"
+              
+              - nom: "Finances et services aux entreprises"
+                regions: "Alger, grandes villes"
+                croissance: "Secteur en développement"
+          
+          - nom: "Emploi et chômage"
+            definition: "État du marché du travail"
+            caracteristiques:
+              - "Taux de chômage: 12-15% (2024)"
+              - "Chômage des jeunes: très élevé"
+              - "Secteur informel: important"
+              - "Sous-emploi: courant"
+              - "Disparité genre: femmes moins employées"
+        
+        contenu_geographique:
+          distribution_sectoriels:
+            primaire: "Environ 10-15% actifs (déclin)"
+            secondaire: "Environ 20-25% actifs"
+            tertiaire: "Environ 60-65% actifs (croissance)"
+          
+          regions_specialisees:
+            littoral: "Commerce, services, pêche, agriculture spécialisée"
+            hauts_plateaux: "Agriculture, élevage"
+            sahara: "Extraction minière, tourisme, oasis"
+          
+          structure_economique:
+            dominante: "Secteur pétrolier et gazier = 30-40% PIB"
+            diversification: "Faible, dépendance énergétique"
+            croissance: "Secteur services et technologie"
+          
+          defis_economiques:
+            - "Dépendance pétrolière"
+            - "Chômage jeunesse"
+            - "Secteur informel important"
+            - "Manque diversification"
+            - "Investissement étranger limité"
+            - "Développement technologique insuffisant"
+          
+          perspectives:
+            - "Diversification économique"
+            - "Développement tourisme"
+            - "Énergies renouvelables"
+            - "Agriculture durable"
+            - "PME et entrepreneuriat"
+        
+        competences_visees:
+          - "Identifier les secteurs économiques"
+          - "Localiser les activités géographiquement"
+          - "Comprendre l'importance de chaque secteur"
+          - "Analyser les interconnections"
+          - "Évaluer les enjeux du développement"
+          - "Lire des graphiques économiques"
+        
+        documents_et_ressources:
+          - type: "Cartes économiques"
+            contenu:
+              - "Carte des zones agricoles"
+              - "Carte des zones minières"
+              - "Carte des zones industrielles"
+              - "Carte des routes commerciales"
+              - "Carte des zones touristiques"
+          
+          - type: "Graphiques et statistiques"
+            contenu:
+              - "Secteurs d'activité (camembert)"
+              - "Répartition emploi par secteur"
+              - "Evolution structure économique"
+              - "Données chômage"
+              - "Évolution exports"
+          
+          - type: "Photographies"
+            contenu:
+              - "Terres agricoles"
+              - "Mines et carrières"
+              - "Installations industrielles"
+              - "Marches et commerce"
+              - "Attractions touristiques"
+          
+          - type: "Données et cas d'étude"
+            contenu:
+              - "Filière céréalière"
+              - "Industrie pétrolière"
+              - "Tourisme potentiel"
+              - "Oasis et économie"
+        
+        activites_proposees:
+          - id: activite_3_economique_1
+            titre: "Localiser les secteurs économiques sur carte"
+            type: "activite_cartographique"
+            tache:
+              - "Marquer zones agricoles"
+              - "Indiquer mines et carrières"
+              - "Localiser centres industriels"
+              - "Montrer routes commerciales"
+              - "Identifier zones touristiques"
+          
+          - id: activite_3_economique_2
+            titre: "Créer graphiques économiques"
+            type: "production_graphique"
+            graphiques:
+              - "Répartition sectoriels"
+              - "Distribution emploi"
+              - "Structure économique"
+              - "Évolution dans le temps"
+          
+          - id: activite_3_economique_3
+            titre: "Analyser les défis économiques"
+            type: "activite_analytique"
+            questions:
+              - "Pourquoi dépendance énergétique?"
+              - "Quels sont les défis de diversification?"
+              - "Comment développer tourisme?"
+              - "Quel rôle pour agriculture?"
+              - "Perspectives d'emploi pour jeunes?"
+          
+          - id: activite_3_economique_4
+            titre: "Cas d'étude: une région économique"
+            type: "etude_cas"
+            exemple_possible:
+              - "Le Sahara pétrolier"
+              - "Les oasis et leur économie"
+              - "Le littoral touristique potentiel"
+              - "Les hauts-plateaux agricoles"
+        
+        evaluation:
+          type: "formative + sommative"
+          outils:
+            - "Carte annotée"
+            - "Graphiques économiques"
+            - "Questions analytiques"
+            - "Étude de cas"
+            - "Présentation orale"
+
+# ============================================================
+# GLOSSAIRE GÉOGRAPHIQUE
+# ============================================================
+glossaire_geographique:
+  page_reference: 105
+  termes_cles:
+    - terme: "Altitude"
+      definition: "Hauteur d'un lieu au-dessus du niveau de la mer"
+    
+    - terme: "Atlas"
+      definition: "Chaîne montagneuse du nord-ouest africain"
+    
+    - terme: "Aride"
+      definition: "Climat très sec avec peu de précipitations"
+    
+    - terme: "Bassin"
+      definition: "Dépression géographique"
+    
+    - terme: "Bassin versant"
+      definition: "Zone dont les eaux s'écoulent vers un même point"
+    
+    - terme: "Barrière"
+      definition: "Formation naturelle ou artificielle qui sépare"
+    
+    - terme: "Bénéfice"
+      definition: "Gain économique"
+    
+    - terme: "Biodiversité"
+      definition: "Variété de formes de vie dans un écosystème"
+    
+    - terme: "Biome"
+      definition: "Grand ensemble écologique caractérisé par climat et végétation"
+    
+    - terme: "Boussole"
+      definition: "Instrument d'orientation utilisant le magnétisme"
+    
+    - terme: "Capitale"
+      definition: "Ville principale d'un pays"
+    
+    - terme: "Carte"
+      definition: "Représentation schématique d'un espace géographique"
+    
+    - terme: "Cartographie"
+      definition: "Science de l'élaboration et lecture de cartes"
+    
+    - terme: "Catastrophe naturelle"
+      definition: "Phénomène naturel violent (tremblement, tempête, etc.)"
+    
+    - terme: "Caténairement"
+      definition: "Disposé en chaîne"
+    
+    - terme: "Climat"
+      definition: "Ensemble des conditions atmosphériques moyennes d'une région"
+    
+    - terme: "Collectivité"
+      definition: "Groupe de personnes associées"
+    
+    - terme: "Colonie"
+      definition: "Territoire dominé par un État étranger"
+    
+    - terme: "Commune"
+      definition: "Division administrative locale"
+    
+    - terme: "Confédération"
+      definition: "Alliance d'États souverains"
+    
+    - terme: "Confluence"
+      definition: "Rencontre de deux cours d'eau"
+    
+    - terme: "Congrès"
+      definition: "Assemblée de délégués"
+    
+    - terme: "Continuit"
+      definition: "État d'un lieu qui continue sans interruption"
+    
+    - terme: "Contour"
+      definition: "Ligne de délimitation"
+    
+    - terme: "Cordillère"
+      definition: "Chaîne montagneuse"
+    
+    - terme: "Côte"
+      definition: "Ligne de jonction entre terre et mer"
+    
+    - terme: "Couchant"
+      definition: "Ouest, direction du coucher du soleil"
+    
+    - terme: "Couloir"
+      definition: "Passage long et étroit"
+    
+    - terme: "Courbe de niveau"
+      definition: "Ligne joignant les points d'égale altitude"
+    
+    - terme: "Densité"
+      definition: "Nombre d'habitants par unité de surface"
+    
+    - terme: "Désert"
+      definition: "Région aride avec peu ou pas de végétation"
+    
+    - terme: "Désertification"
+      definition: "Processus de transformation en désert"
+    
+    - terme: "Diagraphie"
+      definition: "Représentation verticale de terrains"
+    
+    - terme: "Diaspora"
+      definition: "Dispersion d'une population hors de son territoire"
+    
+    - terme: "Directive"
+      definition: "Instruction donnant les directions"
+    
+    - terme: "Diversité"
+      definition: "Caractère de ce qui est varié"
+    
+    - terme: "Doline"
+      definition: "Dépression circulaire provoquée par affaissement"
+    
+    - terme: "Dorsale"
+      definition: "Chaîne de montagnes sous-marines"
+    
+    - terme: "Écart"
+      definition: "Différence entre deux valeurs"
+    
+    - terme: "Échange"
+      definition: "Troc ou commerce de biens"
+    
+    - terme: "Écoumène"
+      definition: "Zones habitées de la Terre"
+    
+    - terme: "Écosystème"
+      definition: "Ensemble des organismes et de l'environnement"
+    
+    - terme: "Écriture"
+      definition: "Système de représentation de la langue"
+    
+    - terme: "Élongation"
+      definition: "État allongé"
+    
+    - terme: "Embouchure"
+      definition: "Lieu où un fleuve se jette à la mer"
+    
+    - terme: "Emmigrant"
+      definition: "Personne qui quitte son pays"
+    
+    - terme: "Emprise"
+      definition: "Domination ou possession"
+    
+    - terme: "Enclave"
+      definition: "Territoire entouré par un autre"
+    
+    - terme: "Épargne"
+      definition: "Partie du revenu non consommée"
+    
+    - terme: "Épidémie"
+      definition: "Propagation rapide d'une maladie"
+    
+    - terme: "Équateur"
+      definition: "Ligne imaginaire divisant la Terre en deux hémisphères"
+    
+    - terme: "Erg"
+      definition: "Massif de dunes de sable dans le désert"
+    
+    - terme: "Érosion"
+      definition: "Usure progressive du relief par agents externes"
+    
+    - terme: "Escargot"
+      definition: "Type de croissance urbaine concentrique"
+    
+    - terme: "Établissement"
+      definition: "Création d'une colonie ou habitants"
+    
+    - terme: "État"
+      definition: "Entité politique avec territoire et gouvernement"
+    
+    - terme: "Éthnique"
+      definition: "Relatif à un groupe humain partageant culture"
+    
+    - terme: "Étuve"
+      definition: "Zone tropicale chaude et humide"
+    
+    - terme: "Excavation"
+      definition: "Creusement du sol"
+    
+    - terme: "Excédent"
+      definition: "Ce qui reste en plus"
+    
+    - terme: "Exode"
+      definition: "Départ massif d'une population"
+    
+    - terme: "Exploration"
+      definition: "Voyage d'investigation"
+    
+    - terme: "Export"
+      definition: "Vente de biens à l'étranger"
+    
+    - terme: "Exposition"
+      definition: "Position face aux éléments (soleil, vent)"
+    
+    - terme: "Expression"
+      definition: "Manifestation d'une idée ou sentiment"
+    
+    - terme: "Exurbia"
+      definition: "Zones de résidence hors de villes denses"
+    
+    - terme: "Façade"
+      definition: "Face exposée vers mer ou route"
+    
+    - terme: "Façonner"
+      definition: "Former selon une forme donnée"
+    
+    - terme: "Facteur"
+      definition: "Élément influençant un phénomène"
+    
+    - terme: "Fadeur"
+      definition: "Manque de saveur ou d'intérêt"
+    
+    - terme: "Fagot"
+      definition: "Faisceau de bois"
+    
+    - terme: "Faillite"
+      definition: "Incapacité de payer les dettes"
+    
+    - terme: "Faim"
+      definition: "Besoin de nourriture"
+    
+    - terme: "Fait"
+      definition: "Événement réel ou observable"
+    
+    - terme: "Falaise"
+      definition: "Pente abrupte au bord de la mer"
+    
+    - terme: "Famille"
+      definition: "Groupe de personnes apparentées"
+    
+    - terme: "Famine"
+      definition: "Manque grave de nourriture"
+    
+    - terme: "Fantôme"
+      definition: "Apparition surnaturelle"
+    
+    - terme: "Farce"
+      definition: "Plaisanterie ou tour joué"
+    
+    - terme: "Farinacé"
+      definition: "Contenant ou ressemblant à la farine"
+    
+    - terme: "Fardeau"
+      definition: "Poids lourd ou obligation pénible"
+    
+    - terme: "Fargue"
+      definition: "Partie d'un navire"
+    
+    - terme: "Farine"
+      definition: "Poudre obtenue par broyage de céréales"
+    
+    - terme: "Farouche"
+      definition: "Sauvage ou difficile d'approche"
+    
+    - terme: "Farrage"
+      definition: "Mélange confus"
+    
+    - terme: "Fasce"
+      definition: "Bande horizontale"
+    
+    - terme: "Fascicule"
+      definition: "Petit livre ou partie d'ouvrage"
+    
+    - terme: "Fascination"
+      definition: "Attrait irrésistible"
+    
+    - terme: "Fascisme"
+      definition: "Mouvement politique autoritaire"
+    
+    - terme: "Faste"
+      definition: "Richesse ostentatoire"
+    
+    - terme: "Fastigium"
+      definition: "Sommet ou point le plus haut"
+    
+    - terme: "Fat"
+      definition: "Vaniteux ou fat"
+    
+    - terme: "Fatal"
+      definition: "Qui entraîne inévitablement la mort"
+    
+    - terme: "Fatalisme"
+      definition: "Croyance en l'inévitabilité du destin"
+    
+    - terme: "Fatima"
+      definition: "Prénom féminin courant en Algérie"
+    
+    - terme: "Fatigue"
+      definition: "État de lassitude physique ou mentale"
+    
+    - terme: "Fatua"
+      definition: "Avis juridique religieux (avis juridique)"
+    
+    - terme: "Fatuité"
+      definition: "Vanité stupide"
+    
+    - terme: "Faubourg"
+      definition: "Quartier périphérique d'une ville"
+    
+    - terme: "Faucarder"
+      definition: "Nettoyer un cours d'eau"
+    
+    - terme: "Fauceille"
+      definition: "Petit outil de récolte"
+    
+    - terme: "Faucer"
+      definition: "Couper à la faucille"
+    
+    - terme: "Fauchage"
+      definition: "Action de faucher l'herbe"
+    
+    - terme: "Fauchaille"
+      definition: "Herbe fauchée"
+    
+    - terme: "Fauche"
+      definition: "Herbe récemment fauchée"
+    
+    - terme: "Fauchée"
+      definition: "Quantité fauchée en une fois"
+    
+    - terme: "Faucher"
+      definition: "Couper l'herbe avec une faux"
+    
+    - terme: "Faucherie"
+      definition: "Droit de faucher"
+    
+    - terme: "Fauchet"
+      definition: "Petit balai ou racloir"
+    
+    - terme: "Faucheux"
+      definition: "Qui a l'aspect d'une fauchée"
+    
+    - terme: "Faucre"
+      definition: "Fourreau d'épée"
+    
+    - terme: "Faucreu"
+      definition: "Faux fourreau"
+    
+    - terme: "Faucure"
+      definition: "Action de faire entrer à force"
+
+# ============================================================
+# COMPÉTENCES FINALES ATTENDUES
+# ============================================================
+competences_finales_attendues:
+  competences_cartographiques:
+    lecture_carte:
+      - "Lire et interpréter les symboles d'une carte"
+      - "Identifier les points cardinaux"
+      - "Localiser des lieux sur une carte"
+      - "Comprendre les légendes cartographiques"
+      - "Analyser plusieurs cartes thématiques"
+    
+    utilisation_atlas:
+      - "Utiliser un atlas de manière autonome"
+      - "Chercher des informations cartographiques"
+      - "Comparer des situations géographiques"
+      - "Produire ses propres cartes simples"
+  
+  competences_spatiales:
+    orientation:
+      - "S'orienter avec une boussole"
+      - "Utiliser les points cardinaux"
+      - "Localiser relationnellement"
+      - "Calculer des distances approximatives"
+    
+    localisation:
+      - "Situer l'Algérie sur le monde"
+      - "Localiser les régions algériennes"
+      - "Identifier les zones géographiques"
+      - "Comprendre l'organisation spatiale"
+  
+  competences_analytiques:
+    analyse_phénomènes:
+      - "Identifier les facteurs géographiques"
+      - "Analyser les relations cause-effet"
+      - "Comprendre l'interdépendance"
+      - "Évaluer les enjeux géographiques"
+    
+    lecture_données:
+      - "Lire et interpréter des graphiques"
+      - "Analyser des statistiques"
+      - "Comprendre des tableaux de données"
+      - "Déduire des tendances"
+  
+  competences_communication:
+    expression_orale:
+      - "Présenter un lieu ou un phénomène"
+      - "Utiliser le vocabulaire géographique"
+      - "Exprimer une analyse personnelle"
+      - "Participer à un débat sur enjeux"
+    
+    expression_écrite:
+      - "Rédiger une description géographique"
+      - "Expliquer les facteurs d'un phénomène"
+      - "Produire une fiche informative"
+      - "Analyser par écrit"
+  
+  competences_transversales:
+    - "Développer l'esprit critique"
+    - "Analyser les enjeux mondiaux"
+    - "Prendre conscience environnementale"
+    - "Respecter la diversité géographique et culturelle"
+    - "Collaborer avec d'autres"
+    - "Utiliser les ressources documentaires"
+
+# ============================================================
+# RESSOURCES PÉDAGOGIQUES
+# ============================================================
+ressources_pedagogiques:
+  manuels_officiels:
+    - titre: "Manuel de géographie 5AP"
+      editeur: "ONPS - Algérie"
+      reference: "Officiel"
+    
+    - titre: "Atlas de l'Algérie"
+      editeur: "Cartographe - ONPS"
+      contenu: ["cartes politiques", "cartes physiques", "cartes thématiques"]
+  
+  outils_cartographiques:
+    - "Cartes muettes (politique, physique)"
+    - "Atlas régionaux"
+    - "Globes terrestres"
+    - "Boussoles"
+    - "Règles et compas géographiques"
+    - "Système d'information géographique (SIG) simple"
+  
+  supports_numeriques:
+    - type: "Cartes interactives"
+      contenu: ["Localisation", "Relief", "Population", "Ressources"]
+    
+    - type: "Vidéos éducatives"
+      themes: ["Présentation régions", "Relief algérien", "Population", "Économie"]
+    
+    - type: "Données statistiques"
+      contenu: ["Données démographiques", "Données économiques", "Données climatiques"]
+    
+    - type: "Images satellites"
+      contenu: ["Régions algériennes", "Villes principales", "Sahara", "Littoral"]
+  
+  materiel_complementaire:
+    - "Photographies régionales"
+    - "Documentaires sur l'Algérie"
+    - "Fiches thématiques"
+    - "Exercices cartographiques"
+    - "Diagrammes et graphiques"
+    - "Cas d'études"
+
+# ============================================================
+# ÉVALUATIONS PRÉVUES
+# ============================================================
+evaluations_structures:
+  evaluations_formatives:
+    frequence: "Continue - chaque leçon"
+    outils:
+      - "Exercices de localisation"
+      - "Quiz de vocabulaire"
+      - "Questionnaires de compréhension"
+      - "Travaux cartographiques"
+      - "Observations d'activités"
+    fonction: "Vérifier progression et adapter"
+  
+  evaluations_sommatives:
+    frequence: "Fin de champ"
+    composantes:
+      - "Localisation géographique"
+      - "Compréhension des phénomènes"
+      - "Lecture de cartes"
+      - "Analyse de données"
+      - "Expression écrite et orale"
+    format: "Test écrit, carte annotée, présentation orale"
+  
+  evaluations_certificatives:
+    moment: "Fin d'année"
+    format: "Examen intégrant tous les domaines"
+    duree: "1-2 heures"
+    composantes: ["Cartes", "Questions d'analyse", "Présentation orale"]
+
+# ============================================================
+# METADATA TECHNIQUES FINALES
+# ============================================================
+metadata_technique:
+  version: "2.0 - ÉDITION LUXE GÉOGRAPHIE"
+  derniere_mise_a_jour: "Février 2026"
+  auteur_adaptation: "Équipe pédagogique spécialisée - IA"
+  conformite_programme_officiel: "Algérie - Génération 2 - 2024-2025"
+  sources_document_original: "PDF officiel du programme de géographie 5AP"
+  langue_programme: "arabe"
+  niveau_cefr_equivalent: "Pour géographie: A2-B1"
+  accessibilite: "Conforme aux standards pédagogiques"
+  usage_principal: "Génération d'exercices et ressources géographiques par IA"
+  notes_qualite: |
+    Ce fichier YAML représente le programme complet de géographie 5AP algérien
+    avec une structure pédagogique complète incluant:
+    - 3 champs thématiques majeurs
+    - 9 leçons détaillées avec objectifs
+    - Concepts géographiques fondamentaux
+    - Contenus régionalisés
+    - Compétences visées
+    - Ressources et activités proposées
+    - Évaluation formative
+    
+    Optimisé pour génération d'exercices de haute qualité par IA.
+
+# ============================================================
+# FIN DU FICHIER
+# ============================================================

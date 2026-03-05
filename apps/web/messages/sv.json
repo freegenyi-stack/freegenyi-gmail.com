@@ -1,0 +1,204 @@
+{
+    "metadata": {
+        "title": "FreeGeny - Revolutionerar utbildning",
+        "description": "Gå med i miljoner som lär sig med FreeGenys innovativa plattform"
+    },
+    "home": {
+        "hero": {
+            "title": "Lär dig utan gränser",
+            "subtitle": "Få tillgång till utbildning i världsklass gratis",
+            "cta": "Börja lära dig"
+        },
+        "features": {
+            "title": "Varför FreeGeny?",
+            "items": {
+                "free": "Helt gratis",
+                "global": "Globalt community",
+                "quality": "Innehåll av toppkvalitet"
+            }
+        }
+    },
+    "common": {
+        "loading": "Laddar...",
+        "error": "Något gick fel",
+        "retry": "Försök igen",
+        "language": "Språk"
+    },
+    "navigation": {
+        "features": "Features",
+        "method": "Method",
+        "schools": "Schools",
+        "testimonials": "Testimonials",
+        "getStarted": "Get Started",
+        "getStartedFree": "Get Started Free",
+        "menu": {
+            "about": "Om oss",
+            "mission": "Vårt uppdrag",
+            "app": "Appen",
+            "parents": {
+                "main": "Föräldrar",
+                "dropdown": {
+                    "dashboard": "Föräldrapanel",
+                    "progress": "Framstegsspårning",
+                    "communication": "Lärarkommunikation",
+                    "resources": "Utbildningsresurser",
+                    "security": "Säkerhet & Integritet"
+                }
+            },
+            "schools": {
+                "main": "Skolor",
+                "dropdown": {
+                    "management": "Skolledning",
+                    "curriculum": "Skolprogram",
+                    "teachers": "Lärarrum",
+                    "analytics": "Analys & Rapporter"
+                }
+            },
+            "ongs": {
+                "main": "NGO:er",
+                "dropdown": {
+                    "projects": "Utbildningsprojekt",
+                    "impact": "Effektmätning",
+                    "partnership": "Partnerskap"
+                }
+            },
+            "pricing": {
+                "main": "Prissättning",
+                "dropdown": {
+                    "individual": "Individuell",
+                    "family": "Familj",
+                    "institutional": "Institutionell"
+                }
+            },
+            "freeTrial": "Gratis testperiod",
+            "login": "Logga in"
+        }
+    },
+    "cookies": {
+        "title": "Cookie-hantering",
+        "description": "Vi använder cookies för att förbättra din upplevelse.",
+        "learnMore": "Läs mer",
+        "rejectAll": "Avvisa alla",
+        "customize": "Anpassa",
+        "acceptAll": "Acceptera alla"
+    },
+    "footer": {
+        "baseline": "Revolutionera utbildning för alla",
+        "rights": "Alla rättigheter förbehållna.",
+        "about": {
+            "title": "Om",
+            "education": "Utbildning",
+            "nationalCurriculum": "Nationellt Läroplaninnehåll",
+            "internationalCurriculum": "Internationellt Läroplaninnehåll",
+            "mission": "Vårt Uppdrag",
+            "methodology": "Metodik",
+            "research": "Utbildningsforskning",
+            "brand": "Om Varumärket",
+            "news": "Nyheter",
+            "press": "Press",
+            "contact": "Kontakta oss"
+        },
+        "apps": {
+            "title": "Våra Appar",
+            "android": "FreeGeny Android",
+            "ios": "FreeGeny iOS"
+        },
+        "support": {
+            "title": "Hjälp och Support",
+            "faqGeneral": "Vanliga frågor om FreeGeny",
+            "faqSchools": "Vanliga frågor för skolor",
+            "faqNgos": "Vanliga frågor för NGO:er"
+        },
+        "legal": {
+            "title": "Juridiskt",
+            "guidelines": "Användarriktlinjer",
+            "terms": "Användarvillkor",
+            "privacy": "Integritetspolicy",
+            "communityRules": "Gemenskapsregler",
+            "cookiePreferences": "Cookie-inställningscenter",
+            "accessibility": "Tillgänglighetsförklaring",
+            "sitemap": "Webbplatskarta"
+        },
+        "product": {
+            "title": "Product",
+            "app": "App",
+            "parents": "Parents",
+            "schools": "Schools",
+            "ngos": "NGOs"
+        }
+    },
+    "pages": {
+        "comingSoon": "Bientôt disponible",
+        "description": "Cette page est en cours de construction. Le contenu sera disponible très prochainement."
+    },
+    "dashboard": {
+        "parent": {
+            "title": "Tableau de Bord Parent",
+            "welcome": "Bonjour, {{name}} !",
+            "overview": "Voici un aperçu de la progression de vos enfants aujourd'hui.",
+            "stats": {
+                "activeStudents": "Enfants activés",
+                "completedExercises": "Exercices terminés",
+                "averageScore": "Moyenne générale",
+                "studyTime": "Temps d'étude"
+            },
+            "recentActivity": "Activités récentes",
+            "progressBySubject": "Progression par matière"
+        },
+        "sidebar": {
+            "home": "Accueil",
+            "progression": "Progression",
+            "exercises": "Exercices",
+            "library": "Bibliothèque",
+            "messages": "Messages",
+            "calendar": "Calendrier",
+            "settings": "Paramètres"
+        }
+    },
+    "auth": {
+        "loginWelcome": "Welcome Back!",
+        "loginSubtitle": "Unlock your magic world.",
+        "signupTitle": "Join the Adventure!",
+        "signupSubtitle": "Create your magical account today.",
+        "emailLabel": "Username or Email",
+        "passwordLabel": "Password",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Start Learning",
+        "signupButton": "Create Account",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signupLink": "Sign up",
+        "signinLink": "Sign in",
+        "or": "Or connect with",
+        "legalText": "By joining, you agree to our",
+        "connecting": "Securely connecting...",
+        "processing": "Processing...",
+        "emailPlaceholder": "genius@freegeny.com",
+        "firstNamePlaceholder": "Geny",
+        "lastNamePlaceholder": "Spark",
+        "passwordPlaceholder": "••••••••",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "welcomeBack": "Welcome back",
+        "joinAdventure": "Join the adventure",
+        "fullName": "Full name",
+        "createPassword": "Create a password",
+        "orEmail": "or by email",
+        "signIn": "Sign in",
+        "createAccount": "Create my account",
+        "signUpFree": "Sign up free",
+        "termsText": "By creating an account, you accept our",
+        "termsLink": "Terms of Service",
+        "privacyLink": "Privacy Policy",
+        "trustItems": {
+            "certified": "Programs certified by education experts",
+            "countries": "Available in more than 38 countries",
+            "learners": "Over 500,000 children learn every day"
+        },
+        "quote": "Every child is a sleeping genius.",
+        "quoteSubtext": "FreeGeny transforms every moment into an opportunity to learn, grow and wonder.",
+        "illustrationAlt": "Child learning while having fun"
+    }
+}

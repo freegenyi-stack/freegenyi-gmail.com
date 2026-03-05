@@ -1,0 +1,1 @@
+Dossier contenant des leçons détaillées (si tu souhaites fournir un contenu plus riche que les simples semestres). Chaque fichier .md correspond à un chapitre.
