@@ -24,9 +24,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['var(--font-bricolage)', ...fontFamily.sans],
-        body: ['var(--font-dm-sans)', ...fontFamily.sans],
-        sans: ['var(--font-dm-sans)', ...fontFamily.sans],
+        heading: ['var(--font-geist-sans)', ...fontFamily.sans],
+        body: ['var(--font-geist-sans)', ...fontFamily.sans],
+        sans: ['var(--font-geist-sans)', ...fontFamily.sans],
+        mono: ['var(--font-geist-mono)', ...fontFamily.mono],
       },
       colors: {
         border: "hsl(var(--border))",

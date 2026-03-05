@@ -6,20 +6,18 @@ import { locales, rtlLocales } from '@/lib/i18n/config';
 import ClientLayout from '@/components/ClientLayout';
 import AccessibilityToolbar from '@/components/ui/AccessibilityToolbar';
 import { ClientProviders } from '@/components/Providers/ClientProviders';
-import { Outfit, Bricolage_Grotesque, Alexandria, Cairo, Tajawal, Scheherazade_New, Lateef, Aref_Ruqaa } from 'next/font/google';
+import { Geist, Geist_Mono, Alexandria, Cairo, Tajawal, Scheherazade_New, Lateef, Aref_Ruqaa } from 'next/font/google';
 import '../globals.css';
 
-const outfit = Outfit({
+const geist = Geist({
   subsets: ['latin'],
-  variable: '--font-outfit',
-  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-geist-sans',
   display: 'swap',
 });
 
-const bricolage = Bricolage_Grotesque({
+const geistMono = Geist_Mono({
   subsets: ['latin'],
-  variable: '--font-bricolage',
-  weight: ['400', '600', '700', '800'],
+  variable: '--font-geist-mono',
   display: 'swap',
 });
 
@@ -97,7 +95,7 @@ export default async function LocaleLayout({
   const isRTL = rtlLocales.includes(locale as any);
 
   return (
-    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} suppressHydrationWarning className={`${outfit.variable} ${bricolage.variable} ${alexandria.variable} ${cairo.variable} ${tajawal.variable} ${scheherazade.variable} ${lateef.variable} ${arefRuqaa.variable}`}>
+    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${alexandria.variable} ${cairo.variable} ${tajawal.variable} ${scheherazade.variable} ${lateef.variable} ${arefRuqaa.variable}`}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
