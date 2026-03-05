@@ -6,42 +6,29 @@
 
 @layer base {
   :root {
-    /* Vercel Light Mode Palette */
-    --background: 0 0% 100%;
-    /* #ffffff */
-    --foreground: 0 0% 4%;
-    /* #0a0a0a */
-
+    /* Premium Palette: Deep Azure and Soft Teal (Restored) */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 4%;
-
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 4%;
-
-    --primary: 0 0% 4%;
-    /* Vercel uses high contrast primary */
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 0 0% 4%;
-
-    --muted: 220 14.3% 95.9%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 210 100% 50%;
+    /* Vibrant Azure */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 170 100% 40%;
+    /* Soft Teal */
+    --secondary-foreground: 170 100% 98%;
+    --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    /* #6b7280 */
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 220 13% 91%;
-    /* #e5e7eb */
-    --input: 220 13% 91%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-    /* Vercel uses sharper corners typically */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 1rem;
 
     /* Premium Gradients */
     --gradient-premium: linear-gradient(135deg, #0070f3 0%, #00dfd8 100%);
@@ -52,11 +39,14 @@
 
   body {
     font-family: var(--font-geist-sans), system-ui, sans-serif;
-    color: #374151;
+    color: hsl(var(--foreground));
     font-size: 15px;
-    /* base 15-16px */
     font-weight: 400;
     line-height: 1.7;
+  }
+
+  body[dir="rtl"] {
+    font-family: var(--font-ibm-plex), system-ui, sans-serif;
   }
 
   code,
@@ -72,21 +62,21 @@
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.05;
-    color: #0a0a0a;
+    color: hsl(var(--foreground));
   }
 
   h2 {
     font-size: clamp(36px, 5vw, 48px);
     font-weight: 600;
     letter-spacing: -0.025em;
-    color: #0a0a0a;
+    color: hsl(var(--foreground));
   }
 
   h3 {
     font-size: clamp(24px, 3vw, 30px);
     font-weight: 600;
     letter-spacing: -0.015em;
-    color: #0a0a0a;
+    color: hsl(var(--foreground));
   }
 
   label,
@@ -118,16 +108,11 @@
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
 
-  .font-arabic {
-    font-family: var(--font-alexandria), sans-serif;
-  }
-
-  .font-cairo {
-    font-family: var(--font-cairo), sans-serif;
-  }
-
-  .font-tajawal {
-    font-family: var(--font-tajawal), sans-serif;
+  .font-arabic,
+  .font-cairo,
+  .font-tajawal,
+  .font-alexandria {
+    font-family: var(--font-ibm-plex), sans-serif;
   }
 
   .font-scheherazade {

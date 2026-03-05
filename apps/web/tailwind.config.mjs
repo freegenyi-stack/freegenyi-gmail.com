@@ -28,6 +28,7 @@ export default {
         body: ['var(--font-geist-sans)', ...fontFamily.sans],
         sans: ['var(--font-geist-sans)', ...fontFamily.sans],
         mono: ['var(--font-geist-mono)', ...fontFamily.mono],
+        arabic: ['var(--font-ibm-plex)', ...fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",

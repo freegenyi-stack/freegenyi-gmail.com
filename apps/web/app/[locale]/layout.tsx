@@ -6,7 +6,7 @@ import { locales, rtlLocales } from '@/lib/i18n/config';
 import ClientLayout from '@/components/ClientLayout';
 import AccessibilityToolbar from '@/components/ui/AccessibilityToolbar';
 import { ClientProviders } from '@/components/Providers/ClientProviders';
-import { Geist, Geist_Mono, Alexandria, Cairo, Tajawal, Scheherazade_New, Lateef, Aref_Ruqaa } from 'next/font/google';
+import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic, Scheherazade_New, Lateef, Aref_Ruqaa } from 'next/font/google';
 import '../globals.css';
 
 const geist = Geist({
@@ -21,24 +21,10 @@ const geistMono = Geist_Mono({
   display: 'swap',
 });
 
-const alexandria = Alexandria({
-  subsets: ['arabic', 'latin'],
-  variable: '--font-alexandria',
-  weight: ['400', '500', '600', '700', '800', '900'],
-  display: 'swap',
-});
-
-const cairo = Cairo({
-  subsets: ['arabic', 'latin'],
-  variable: '--font-cairo',
-  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
-  display: 'swap',
-});
-
-const tajawal = Tajawal({
-  subsets: ['arabic', 'latin'],
-  variable: '--font-tajawal',
-  weight: ['200', '300', '400', '500', '700', '800', '900'],
+const ibmPlexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ['arabic'],
+  variable: '--font-ibm-plex',
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -95,7 +81,7 @@ export default async function LocaleLayout({
   const isRTL = rtlLocales.includes(locale as any);
 
   return (
-    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${alexandria.variable} ${cairo.variable} ${tajawal.variable} ${scheherazade.variable} ${lateef.variable} ${arefRuqaa.variable}`}>
+    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${ibmPlexArabic.variable} ${scheherazade.variable} ${lateef.variable} ${arefRuqaa.variable}`}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
