@@ -9,6 +9,7 @@ export interface ChildProfile {
   country: string;
   motivation?: string;
   timeCommitment?: string;
+  passions?: string[];
 }
 
 interface ChildContextType {
