@@ -89,14 +89,17 @@ export default function Features() {
                     {FEATURES.map((f, i) => (
                         <div
                             key={f.title}
-                            className={`group flex flex-col gap-4 bg-card p-8 lg:p-10 transition-all duration-700 hover:bg-accent/40 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                            className={`group flex flex-col gap-5 bg-card p-8 lg:p-10 transition-all duration-700 hover:bg-accent/40 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
                             style={{ transitionDelay: `${150 + i * 80}ms` }}
                         >
-                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                                <f.icon className="h-6 w-6" />
+                            <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 text-primary transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-primary/20">
+                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-primary to-secondary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                                <f.icon className="h-7 w-7 relative z-10 transition-colors duration-300 group-hover:text-primary-foreground" />
                             </div>
-                            <h3 className="text-lg font-bold text-foreground">{f.title}</h3>
-                            <p className="text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
+                            <div>
+                                <h3 className="text-xl font-bold text-foreground mb-2">{f.title}</h3>
+                                <p className="text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

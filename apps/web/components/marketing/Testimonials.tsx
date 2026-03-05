@@ -6,23 +6,23 @@ import { Star } from "lucide-react"
 const REVIEWS = [
     {
         name: "Marie Dupont",
-        role: "Maman de 2 enfants",
+        role: "Maman de 2 enfants (Casablanca)",
         initials: "MD",
         text: "Mes enfants adorent FreeGeny ! Ils ne se rendent même pas compte qu'ils apprennent. C'est devenu notre rituel du soir.",
         stars: 5,
     },
     {
         name: "Prof. Ahmed Benali",
-        role: "Enseignant, Ecole Pasteur",
+        role: "Enseignant, École Primaire Ibn Sina",
         initials: "AB",
         text: "J'utilise FreeGeny en classe depuis 6 mois. Les résultats sont bluffants : +30% de motivation et des scores en hausse constante.",
         stars: 5,
     },
     {
         name: "Sophie Laurent",
-        role: "Directrice pédagogique",
+        role: "Directrice pédagogique, ONG Éducation Pour Tous",
         initials: "SL",
-        text: "L'approche scientifique est remarquable. Chaque activité est pensée pour maximiser l'apprentissage tout en gardant le plaisir intact.",
+        text: "L'approche scientifique est remarquable. Chaque activité est pensée pour maximiser l'apprentissage et combler les lacunes.",
         stars: 5,
     },
 ]

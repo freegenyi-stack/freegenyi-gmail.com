@@ -178,18 +178,22 @@ export default function Hero() {
 
             {/* Trust marquee */}
             <div className="relative overflow-hidden border-t border-border bg-card/50 py-6">
-                <p className="mb-4 text-center text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                <p className="mb-6 text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                     Ils nous font confiance
                 </p>
-                <div className="flex animate-marquee">
-                    {TRUST.map((name, i) => (
-                        <span
-                            key={`${name}-${i}`}
-                            className="mx-10 shrink-0 whitespace-nowrap text-sm font-semibold text-muted-foreground/40"
-                        >
-                            {name}
-                        </span>
-                    ))}
+                <div className="flex w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                    <div className="flex w-max animate-marquee">
+                        {TRUST.map((name, i) => (
+                            <div
+                                key={`${name}-${i}`}
+                                className="mx-10 flex items-center justify-center grayscale hover:grayscale-0 transition-all opacity-40 hover:opacity-100"
+                            >
+                                <span className="shrink-0 whitespace-nowrap text-lg font-bold text-foreground transition-colors">
+                                    {name}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
