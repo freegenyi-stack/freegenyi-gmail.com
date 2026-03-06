@@ -7,10 +7,10 @@ const createMockPrisma = (): PrismaClient => {
                 return {
                     findUnique: async ({ where }: any) => {
                         const email = where?.email;
-                        if (email === 'parent@demo.com') return { id: 'parent-1', email, password: await require('bcryptjs').hash('password123', 10), role: 'PARENT', name: 'Parent Démo' };
-                        if (email === 'teacher@demo.com') return { id: 'teacher-1', email, password: await require('bcryptjs').hash('password123', 10), role: 'TEACHER', name: 'Enseignant Démo' };
-                        if (email === 'ngo@demo.com') return { id: 'ngo-1', email, password: await require('bcryptjs').hash('password123', 10), role: 'NGO', name: 'ONG Démo' };
-                        if (email === 'admin@demo.com') return { id: 'admin-1', email, password: await require('bcryptjs').hash('password123', 10), role: 'ORGANIZATION', name: 'Administrateur' };
+                        if (email === 'parent@demo.com') return { id: 'parent-1', email, password: 'hashed_password123', role: 'PARENT', name: 'Parent Démo' };
+                        if (email === 'teacher@demo.com') return { id: 'teacher-1', email, password: 'hashed_password123', role: 'TEACHER', name: 'Enseignant Démo' };
+                        if (email === 'ngo@demo.com') return { id: 'ngo-1', email, password: 'hashed_password123', role: 'NGO', name: 'ONG Démo' };
+                        if (email === 'admin@demo.com') return { id: 'admin-1', email, password: 'hashed_password123', role: 'ORGANIZATION', name: 'Administrateur' };
                         return null;
                     },
                     findFirst: async () => null,
