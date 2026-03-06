@@ -52,17 +52,7 @@ export default async function AuthPage({ params }: { params: Promise<{ locale: s
                         <div className="h-2.5 w-2.5 rounded-full bg-primary-foreground/15" />
                     </div>
 
-                    {/* Center - Big quote/message */}
-                    <div className="flex flex-col gap-6">
-                        <blockquote className="font-heading text-4xl font-bold leading-tight tracking-tight text-primary-foreground xl:text-5xl">
-                            {t('quote') || "Chaque enfant est un génie qui sommeille."}
-                        </blockquote>
-                        <p className="max-w-md text-lg leading-relaxed text-primary-foreground/70">
-                            {t('quoteSubtext') || "FreeGeny transforme chaque moment en opportunité d'apprendre, de grandir et de s'émerveiller."}
-                        </p>
-                    </div>
-
-                    {/* Trust items - moved up */}
+                    {/* Trust items */}
                     <div className="flex flex-col gap-4">
                         {TRUST_ITEMS.map((item) => {
                             const Icon = item.icon

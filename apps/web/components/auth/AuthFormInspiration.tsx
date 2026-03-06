@@ -5,7 +5,6 @@ import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { ArrowRight, Eye, EyeOff, Mail, Lock, User } from "lucide-react"
 import { SOCIAL_PROVIDERS } from "./SocialIcons"
-import { createClient } from "@/lib/supabase/client"
 
 interface AuthFormProps {
     mode?: 'login' | 'register'
@@ -26,6 +25,7 @@ export default function AuthForm({ mode: initialMode = 'login' }: AuthFormProps)
     const handleSocialLogin = async (providerId: string) => {
         setLoading(true)
         try {
+            const { createClient } = await import("@/lib/supabase/client")
             const supabase = createClient()
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: providerId as any,
