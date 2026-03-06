@@ -10,6 +10,7 @@ export async function GET(request: Request) {
     if (code) {
         console.log("🔑 Code reçu, échange en cours...");
         const supabase = await createClient()
+        console.log("🛠 Exchanging code for session...");
         const { data: { user }, error } = await supabase.auth.exchangeCodeForSession(code)
 
         if (error) {
@@ -17,6 +18,7 @@ export async function GET(request: Request) {
         }
 
         if (user) {
+            console.log("✅ User found after exchange:", user.id, "Email:", user.email);
             // Sync user to Prisma
             try {
                 const { syncUserToPrisma } = await import('@/lib/auth/sync')
@@ -38,6 +40,13 @@ export async function GET(request: Request) {
                 else targetPath = '/parent';
             }
 
+            // Add locale prefix if missing (default to 'fr' for FreeGeny)
+            const localeMatch = targetPath.match(/^\/([a-z]{2,3})(\/|$)/);
+            if (!localeMatch) {
+                targetPath = `/fr${targetPath.startsWith('/') ? '' : '/'}${targetPath}`;
+            }
+
+            console.log("➡️ Redirecting to target path:", targetPath);
             let redirectUrl: string;
             if (isLocalEnv) {
                 redirectUrl = `${origin}${targetPath}`;
@@ -47,8 +56,13 @@ export async function GET(request: Request) {
                 redirectUrl = `${origin}${targetPath}`;
             }
 
+            console.log("📍 Final redirect URL:", redirectUrl);
             return NextResponse.redirect(redirectUrl)
+        } else {
+            console.warn("⚠️ No user returned from exchangeCodeForSession");
         }
+    } else {
+        console.warn("⚠️ No code found in searchParams");
     }
 
     // return the user to an error page with instructions
