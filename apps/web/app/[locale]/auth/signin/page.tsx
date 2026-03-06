@@ -109,7 +109,7 @@ export default function SignInPage() {
 
     try {
       const supabase = createClient();
-      const { error } = await supabase.auth.signInWithOAuth({
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider: provider as any,
         options: {
           scopes: provider === 'facebook' ? 'email,public_profile' : undefined,
@@ -118,11 +118,15 @@ export default function SignInPage() {
             prompt: 'consent',
           },
           redirectTo: `${window.location.origin}/api/auth/callback`,
-          data: {
-            role: 'PARENT'
-          }
         },
       });
+
+      if (error) throw error;
+
+      // Force redirect if the client doesn't automatically do it
+      if (data?.url) {
+        window.location.href = data.url;
+      }
 
       if (error) throw error;
     } catch (error: any) {

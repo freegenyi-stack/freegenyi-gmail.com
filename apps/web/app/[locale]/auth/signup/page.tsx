@@ -107,12 +107,17 @@ export default function SignUpPage() {
     setLoading(true);
     try {
       const supabase = createClient();
-      const { error } = await supabase.auth.signInWithOAuth({
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider: provider as any,
         options: {
           redirectTo: `${window.location.origin}/api/auth/callback`,
         },
       });
+
+      // Force redirect if the client doesn't automatically do it
+      if (data?.url) {
+        window.location.href = data.url;
+      }
 
       if (error) throw error;
     } catch (error: any) {
