@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { ArrowRight, Eye, EyeOff, Mail, Lock, User } from "lucide-react"
 import { SOCIAL_PROVIDERS } from "./SocialIcons"
+import { createClient } from "@/lib/supabase/client"
 
 interface AuthFormProps {
     mode?: 'login' | 'register'
@@ -18,8 +19,32 @@ export default function AuthForm({ mode: initialMode = 'login' }: AuthFormProps)
     const [password, setPassword] = useState("")
     const [name, setName] = useState("")
     const [focusedField, setFocusedField] = useState<string | null>(null)
+    const [loading, setLoading] = useState(false)
 
     const isLogin = mode === "login"
+
+    const handleSocialLogin = async (providerId: string) => {
+        setLoading(true)
+        try {
+            const supabase = createClient()
+            const { data, error } = await supabase.auth.signInWithOAuth({
+                provider: providerId as any,
+                options: {
+                    redirectTo: `${window.location.origin}/api/auth/callback`,
+                },
+            })
+
+            if (error) throw error
+
+            if (data?.url) {
+                window.location.href = data.url
+            }
+        } catch (error: any) {
+            console.error("Social login error:", error)
+            alert("Erreur de connexion : " + (error.message || "Une erreur est survenue"))
+            setLoading(false)
+        }
+    }
 
     return (
         <div className="w-full max-w-md">
@@ -52,7 +77,9 @@ export default function AuthForm({ mode: initialMode = 'login' }: AuthFormProps)
                         <button
                             key={provider.id}
                             type="button"
-                            className="group flex items-center justify-center rounded-xl border border-border bg-card py-3 transition-all duration-200 hover:border-primary/30 hover:bg-accent hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                            onClick={() => handleSocialLogin(provider.id)}
+                            disabled={loading}
+                            className="group flex items-center justify-center rounded-xl border border-border bg-card py-3 transition-all duration-200 hover:border-primary/30 hover:bg-accent hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 disabled:cursor-not-allowed"
                             aria-label={`Se connecter avec ${provider.label}`}
                         >
                             <Icon />
