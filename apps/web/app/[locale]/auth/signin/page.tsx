@@ -105,10 +105,14 @@ export default function SignInPage() {
   };
 
   const handleSocialLogin = async (provider: 'google' | 'apple' | 'microsoft' | 'facebook' | 'linkedin') => {
+    console.log(`🚀 Social Login started for provider: ${provider}`);
     setLoading(true);
 
     try {
+      console.log("🛠 Initializing Supabase client...");
       const supabase = createClient();
+      console.log(`🔗 RedirectTo configured as: ${window.location.origin}/api/auth/callback`);
+
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: provider as any,
         options: {
@@ -121,20 +125,25 @@ export default function SignInPage() {
         },
       });
 
-      if (error) throw error;
+      console.log("📥 Supabase response received:", { hasData: !!data, hasUrl: !!data?.url, error });
+
+      if (error) {
+        console.error("❌ Supabase Auth Error:", error);
+        throw error;
+      }
 
       // Force redirect if the client doesn't automatically do it
       if (data?.url) {
+        console.log("➡️ Force Redirecting to:", data.url);
         window.location.href = data.url;
+      } else {
+        console.error("⚠️ No redirect URL returned from Supabase. Data:", data);
       }
-
-      if (error) throw error;
     } catch (error: any) {
-      console.error(error);
-      alert("❌ Connexion sociale échouée : " + error.message);
+      console.error("❌ Catch Block - Social login error:", error);
+      alert("❌ Connexion sociale échouée : " + (error.message || JSON.stringify(error)));
       setLoading(false);
     }
-    // Note: Social login redirects the page, so we don't necessarily need to set loading to false here unless error
   };
 
   const handleForgotPassword = async () => {

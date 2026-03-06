@@ -104,9 +104,12 @@ export default function SignUpPage() {
   };
 
   const handleSocialLogin = async (provider: 'google' | 'apple' | 'microsoft' | 'facebook' | 'linkedin') => {
+    console.log(`🚀 Social Signup started for provider: ${provider}`);
     setLoading(true);
     try {
+      console.log("🛠 Initializing Supabase client...");
       const supabase = createClient();
+
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: provider as any,
         options: {
@@ -114,15 +117,23 @@ export default function SignUpPage() {
         },
       });
 
-      // Force redirect if the client doesn't automatically do it
-      if (data?.url) {
-        window.location.href = data.url;
+      console.log("📥 Supabase response received:", { hasData: !!data, hasUrl: !!data?.url, error });
+
+      if (error) {
+        console.error("❌ Supabase Auth Error:", error);
+        throw error;
       }
 
-      if (error) throw error;
+      // Force redirect if the client doesn't automatically do it
+      if (data?.url) {
+        console.log("➡️ Force Redirecting to:", data.url);
+        window.location.href = data.url;
+      } else {
+        console.error("⚠️ No redirect URL returned from Supabase. Data:", data);
+      }
     } catch (error: any) {
-      console.error(error);
-      alert("❌ Social login failed: " + error.message);
+      console.error("❌ Catch Block - Social signup error:", error);
+      alert("❌ Social login failed: " + (error.message || JSON.stringify(error)));
       setLoading(false);
     }
   };
