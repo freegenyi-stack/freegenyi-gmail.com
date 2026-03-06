@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { SmartDashboardNavigation } from '@/components/navigation/SmartDashboardNavigation';
@@ -15,19 +14,17 @@ interface ClientProvidersProps {
 
 export function ClientProviders({ children }: ClientProvidersProps) {
     return (
-        <SessionProvider>
-            <AuthStoreSync>
-                <ChildProvider>
-                    <ThemeProvider
-                        defaultTheme="system"
-                        storageKey="freegeny-theme"
-                    >
-                        <SmartDashboardNavigation />
-                        {children}
-                        <Toaster />
-                    </ThemeProvider>
-                </ChildProvider>
-            </AuthStoreSync>
-        </SessionProvider>
+        <AuthStoreSync>
+            <ChildProvider>
+                <ThemeProvider
+                    defaultTheme="system"
+                    storageKey="freegeny-theme"
+                >
+                    <SmartDashboardNavigation />
+                    {children}
+                    <Toaster />
+                </ThemeProvider>
+            </ChildProvider>
+        </AuthStoreSync>
     );
 }

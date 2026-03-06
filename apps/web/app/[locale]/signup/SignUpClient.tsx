@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Lock, Mail, ShieldCheck } from "lucide-react";
+import { ArrowRight, Lock, Mail, ShieldCheck, Users } from "lucide-react";
 
 export default function SignUpClient({ locale }: { locale: string }) {
     const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState(false);
     const router = useRouter();
 
     const getPasswordStrength = () => {
@@ -24,13 +27,56 @@ export default function SignUpClient({ locale }: { locale: string }) {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        // TODO: Implémentation réelle de l'inscription via Supabase / NextAuth
-        // Pour l'instant, on simule une attente puis redirection vers l'onboarding
-        setTimeout(() => {
+        setError(null);
+
+        try {
+            const { createClient } = await import('@/lib/supabase/client');
+            const supabase = createClient();
+
+            const { data, error: signUpError } = await supabase.auth.signUp({
+                email,
+                password,
+                options: {
+                    data: {
+                        username,
+                        role: 'PARENT',
+                    },
+                    emailRedirectTo: `${window.location.origin}/api/auth/callback`,
+                }
+            });
+
+            if (signUpError) throw signUpError;
+
+            if (data.user) {
+                setSuccess(true);
+            }
+        } catch (err: any) {
+            console.error(err);
+            setError(err.message || "Une erreur est survenue lors de l'inscription.");
+        } finally {
             setIsLoading(false);
-            router.push(`/${locale}/onboarding`);
-        }, 1200);
+        }
     };
+
+    if (success) {
+        return (
+            <div className="text-center space-y-4 py-8 animate-in fade-in zoom-in-95 duration-500">
+                <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center text-green-600">
+                    <ShieldCheck className="h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground">Vérifiez votre boîte mail</h3>
+                <p className="text-muted-foreground text-sm max-w-xs mx-auto">
+                    Nous avons envoyé un lien de confirmation à <span className="font-semibold text-foreground">{email}</span>.
+                </p>
+                <button
+                    onClick={() => router.push(`/${locale}/auth/signin`)}
+                    className="text-primary font-semibold text-sm hover:underline"
+                >
+                    Retour à la connexion
+                </button>
+            </div>
+        );
+    }
 
     return (
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -48,6 +94,23 @@ export default function SignUpClient({ locale }: { locale: string }) {
                             onChange={(e) => setEmail(e.target.value)}
                             className="appearance-none rounded-xl relative block w-full px-4 py-3 pl-10 border border-input bg-background/50 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm transition-all shadow-sm"
                             placeholder="parent@email.com"
+                        />
+                    </div>
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium text-foreground mb-1">Nom d'utilisateur</label>
+                    <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <Users className="h-4 w-4 text-muted-foreground" />
+                        </div>
+                        <input
+                            type="text"
+                            required
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            className="appearance-none rounded-xl relative block w-full px-4 py-3 pl-10 border border-input bg-background/50 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm transition-all shadow-sm"
+                            placeholder="mon_pseudo"
                         />
                     </div>
                 </div>
@@ -76,12 +139,12 @@ export default function SignUpClient({ locale }: { locale: string }) {
                                 <div
                                     key={level}
                                     className={`h-full flex-1 rounded-full transition-colors duration-300 ${strength >= level
-                                            ? strength < 2
-                                                ? "bg-red-500"
-                                                : strength < 3
-                                                    ? "bg-yellow-500"
-                                                    : "bg-green-500"
-                                            : "bg-muted"
+                                        ? strength < 2
+                                            ? "bg-red-500"
+                                            : strength < 3
+                                                ? "bg-yellow-500"
+                                                : "bg-green-500"
+                                        : "bg-muted"
                                         }`}
                                 />
                             ))}
@@ -112,6 +175,12 @@ export default function SignUpClient({ locale }: { locale: string }) {
                     )}
                 </button>
             </div>
+
+            {error && (
+                <div className="p-3 rounded-xl bg-red-50 border border-red-100 text-red-600 text-xs font-medium animate-in slide-in-from-top-2">
+                    {error}
+                </div>
+            )}
 
             <p className="text-center text-xs text-muted-foreground">
                 En vous inscrivant, vous acceptez nos Termes et notre Politique de Confidentialité.

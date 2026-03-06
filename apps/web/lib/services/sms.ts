@@ -40,33 +40,33 @@ export async function sendSMS(options: SMSOptions) {
 function normalizePhoneNumber(phone: string): string {
   // Supprimer espaces et caractères spéciaux
   let cleaned = phone.replace(/[\s\-\.\(\)]/g, '')
-  
+
   // Si commence par 0, ajouter l'indicatif du pays
   if (cleaned.startsWith('0')) {
     // Par défaut Sénégal (+221), peut être configuré
     cleaned = '+221' + cleaned.substring(1)
   }
-  
+
   // Si ne commence pas par +, l'ajouter
   if (!cleaned.startsWith('+')) {
     cleaned = '+' + cleaned
   }
-  
+
   return cleaned
 }
 
 // Templates SMS
 export const smsTemplates = {
-  verificationCode: (code: string) => 
+  verificationCode: (code: string) =>
     `Votre code de vérification FreeGeny est: ${code}. Ne le partagez avec personne.`,
 
-  passwordReset: (token: string) => 
-    `Réinitialisation mot de passe FreeGeny. Cliquez: ${process.env.NEXTAUTH_URL}/auth/reset?token=${token.substring(0, 20)}...`,
+  passwordReset: (token: string) =>
+    `Réinitialisation mot de passe FreeGeny. Cliquez: ${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001'}/auth/reset?token=${token.substring(0, 20)}...`,
 
-  appointmentReminder: (date: string, time: string, title: string) => 
+  appointmentReminder: (date: string, time: string, title: string) =>
     `Rappel FreeGeny: ${title} le ${date} à ${time}.`,
 
-  progressAlert: (studentName: string, subject: string, score: number) => 
+  progressAlert: (studentName: string, subject: string, score: number) =>
     `${studentName} a obtenu ${score}/20 en ${subject} sur FreeGeny. Consultez les détails dans l'app.`,
 }
 
@@ -75,9 +75,9 @@ export async function sendBulkSMS(numbers: string[], message: string) {
   const results = await Promise.allSettled(
     numbers.map(number => sendSMS({ to: number, message }))
   )
-  
+
   const succeeded = results.filter(r => r.status === 'fulfilled').length
   const failed = results.filter(r => r.status === 'rejected').length
-  
+
   return { succeeded, failed, total: numbers.length }
 }

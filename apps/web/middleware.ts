@@ -1,7 +1,7 @@
-import { withAuth } from "next-auth/middleware"
 import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale, rtlLocales } from './lib/i18n/config';
+import { locales, defaultLocale } from './lib/i18n/config';
 import { NextRequest, NextResponse } from 'next/server';
+import { updateSession } from '@/lib/supabase/middleware';
 
 const intlMiddleware = createMiddleware({
     locales,
@@ -15,35 +15,14 @@ function getLocaleFromCountry(country: string | null): string {
     return defaultLocale;
 }
 
-const authMiddleware = withAuth(
-    // Note: If you use withAuth, it augments the request with `nextauth: { token }`
-    function onSuccess(req) {
-        return intlMiddleware(req);
-    },
-    {
-        callbacks: {
-            authorized: ({ token, req }) => {
-                const path = req.nextUrl.pathname;
-                // Basic check: if attempting to access /dashboard/*, need token
-                return !!token;
-            },
-        },
-        pages: {
-            signIn: '/auth/signin',
-        },
-    }
-);
-
-export default function middleware(req: NextRequest) {
+export default async function middleware(req: NextRequest) {
     const pathname = req.nextUrl.pathname;
 
-    // Check for password token cookie
-    const siteAccessToken = req.cookies.get('site-access-token');
+    // 1. Update Supabase session (refresh token if needed)
+    const { supabaseResponse, user } = await updateSession(req);
 
-    // Remove locale prefix to check path (handling 2 or 3 chars locales)
+    // 2. I18n and Public path checks
     const pathWithoutLocale = pathname.replace(/^\/[a-z]{2,3}(\/|$)/, '/') || '/';
-
-    // Allow access to public assets, api, and site-access page itself
     const isPublicPath =
         pathname.startsWith('/api/') ||
         pathname.includes('/site-access') ||
@@ -51,21 +30,10 @@ export default function middleware(req: NextRequest) {
         pathname.includes('/images/') ||
         pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|css|js)$/);
 
-    /* 
-    if (!siteAccessToken && !isPublicPath) {
-        // Redirect to /site-access with the current locale
-        // We look for the locale in the URL or default to 'en'
-        const localeMatch = pathname.match(/^\/([a-z]{2,3})(\/|$)/);
-        const locale = localeMatch ? localeMatch[1] : defaultLocale;
-        const redirectUrl = new URL(`/${locale}/site-access`, req.url);
-        return NextResponse.redirect(redirectUrl);
-    }
-    */
-
     const dashboardRoutes = ['/parent', '/teacher', '/school', '/ngo', '/ong', '/admin', '/ecole'];
-    // Use pathWithoutLocale for cleaner check
     const isProtectedRoute = dashboardRoutes.some(route => pathWithoutLocale === route || pathWithoutLocale.startsWith(route + '/'));
 
+    // Handle Country -> Locale redirect if no locale present
     const country = req.headers.get('x-vercel-ip-country');
     const hasLocale = locales.some(l => pathname === `/${l}` || pathname.startsWith(`/${l}/`));
 
@@ -76,11 +44,22 @@ export default function middleware(req: NextRequest) {
         }
     }
 
-    if (isProtectedRoute) {
-        return (authMiddleware as any)(req);
-    } else {
-        return intlMiddleware(req);
+    // 3. Auth Check for protected routes
+    if (isProtectedRoute && !user) {
+        const localeMatch = pathname.match(/^\/([a-z]{2,3})(\/|$)/);
+        const locale = localeMatch ? localeMatch[1] : defaultLocale;
+        return NextResponse.redirect(new URL(`/${locale}/auth/signin`, req.url));
     }
+
+    // 4. Run i18n middleware (using the response from updateSession to preserve cookies)
+    const response = intlMiddleware(req);
+
+    // Merge Supabase cookies into the i18n response
+    supabaseResponse.cookies.getAll().forEach((cookie) => {
+        response.cookies.set(cookie.name, cookie.value, cookie);
+    });
+
+    return response;
 }
 
 export const config = {

@@ -96,20 +96,42 @@ export default function AuthForm({
                 </div>
             )}
 
-            {/* Email */}
+            {/* Username (signup only) */}
+            {!isLogin && (
+                <div className="flex flex-col gap-1">
+                    <label htmlFor="username" className="text-xs sm:text-sm font-bold text-foreground/80">
+                        {t('usernameLabel')}
+                    </label>
+                    <input
+                        type="text"
+                        id="username"
+                        {...register('username' as any)}
+                        className="w-full px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-[20px] border-2 border-border bg-white
+             font-semibold text-xs sm:text-base text-foreground transition-all duration-300
+             focus:outline-none focus:border-primary focus:shadow-[0_0_20px_rgba(var(--primary),0.1)]
+             focus:scale-[1.01]"
+                        placeholder={t('usernamePlaceholder')}
+                    />
+                    {(errors as any).username && (
+                        <span className="text-xs text-red-500 font-semibold">{(errors as any).username.message}</span>
+                    )}
+                </div>
+            )}
+
+            {/* Email / Identifier */}
             <div className="flex flex-col gap-1">
                 <label htmlFor="email" className="text-xs sm:text-sm font-bold text-foreground/80">
-                    {t('emailLabel')}
+                    {isLogin ? t('identifierLabel') : t('emailLabel')}
                 </label>
                 <input
-                    type="email"
+                    type={isLogin ? "text" : "email"}
                     id="email"
                     {...register('email')}
                     className="w-full px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-[20px] border-2 border-border bg-white
            font-semibold text-xs sm:text-base text-foreground transition-all duration-300
            focus:outline-none focus:border-primary focus:shadow-[0_0_20px_rgba(var(--primary),0.1)]
            focus:scale-[1.01]"
-                    placeholder={t('emailPlaceholder')}
+                    placeholder={isLogin ? t('identifierPlaceholder') : t('emailPlaceholder')}
                 />
                 {errors.email && (
                     <span className="text-xs text-red-500 font-semibold">{errors.email.message}</span>

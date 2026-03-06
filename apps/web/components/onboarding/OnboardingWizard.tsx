@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { ArrowRight, GraduationCap, Palette, Music, FlaskConical, Book, Puzzle, Trophy, Loader2, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useChild } from '@/lib/context/ChildContext';
-import { useSession } from 'next-auth/react';
+import { useAuthStore } from '@/store/useAuthStore';
 
 const PASSIONS = [
     { id: 'art', label: 'Dessin & Art', icon: Palette, color: 'text-pink-500', bg: 'bg-pink-50', border: 'border-pink-200' },
@@ -22,7 +22,7 @@ const AGES = [5, 6, 7, 8, 9, 10, 11, 12];
 
 export function OnboardingWizard() {
     const router = useRouter();
-    const { data: session } = useSession();
+    const { user } = useAuthStore();
     const { setActiveChild } = useChild();
     const [step, setStep] = useState(0);
     const [age, setAge] = useState<number | null>(null);

@@ -47,7 +47,7 @@ export const emailTemplates = {
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h1 style="color: #0f172a;">Bienvenue ${name} !</h1>
         <p>Merci de rejoindre FreeGeny, la plateforme éducative qui transforme l'apprentissage.</p>
-        <a href="${process.env.NEXTAUTH_URL}/dashboard" 
+        <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001'}/dashboard" 
            style="background: #0f172a; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin: 20px 0;">
           Accéder à mon dashboard
         </a>
@@ -61,7 +61,7 @@ export const emailTemplates = {
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h1 style="color: #0f172a;">Réinitialisation du mot de passe</h1>
         <p>Cliquez sur le lien ci-dessous pour réinitialiser votre mot de passe :</p>
-        <a href="${process.env.NEXTAUTH_URL}/auth/reset-password?token=${token}" 
+        <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001'}/auth/reset-password?token=${token}" 
            style="background: #0f172a; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin: 20px 0;">
           Réinitialiser mon mot de passe
         </a>

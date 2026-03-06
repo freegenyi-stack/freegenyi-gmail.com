@@ -2,7 +2,7 @@
 
 import { Link } from '@/lib/i18n/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
-import { signOut } from 'next-auth/react';
+import { createClient } from '@/lib/supabase/client';
 import { useTranslations } from 'next-intl';
 import {
     DropdownMenu,
@@ -19,12 +19,14 @@ import { User, Settings, LogOut, Trophy } from 'lucide-react';
 export function UserMenu() {
     const t = useTranslations('navbar');
     const { user, logout, activeRole } = useAuthStore();
+    const supabase = createClient();
 
     if (!user) return null;
 
     const handleLogout = async () => {
-        await signOut({ redirect: true, callbackUrl: '/' });
+        await supabase.auth.signOut();
         logout();
+        window.location.href = '/';
     };
 
     const userInitials = user.name

@@ -21,7 +21,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { User, Settings, LogOut, HelpCircle, Trophy } from 'lucide-react';
-import { signOut } from 'next-auth/react';
+import { createClient } from '@/lib/supabase/client';
 import { useLocale, useTranslations } from 'next-intl';
 import { rtlLocales } from '@/lib/i18n/config';
 import { cn } from '@/lib/utils';
@@ -30,6 +30,7 @@ export function AppNavbar() {
     const t = useTranslations('navbar');
     const pathname = usePathname();
     const { user, logout, activeRole } = useAuthStore();
+    const supabase = createClient();
     const locale = useLocale();
     const isRTL = rtlLocales.includes(locale as any);
 
@@ -38,8 +39,9 @@ export function AppNavbar() {
     const isDashboardRoute = dashboardRoutes.some(route => pathname?.includes(route));
 
     const handleLogout = async () => {
-        await signOut({ redirect: true, callbackUrl: '/' });
+        await supabase.auth.signOut();
         logout();
+        window.location.href = '/';
     };
 
     const userInitials = user?.name

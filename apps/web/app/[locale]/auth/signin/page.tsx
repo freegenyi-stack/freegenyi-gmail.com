@@ -1,15 +1,15 @@
 'use client';
 
-import { useState, use, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { BookOpen, Sparkles, Globe, ArrowLeft } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import AuthCard from '@/components/auth/AuthCard';
 import AuthForm from '@/components/auth/AuthForm';
 import SocialButtons from '@/components/auth/SocialButtons';
-import { signIn } from 'next-auth/react';
+import { createClient } from '@/lib/supabase/client';
 import LoadingOverlay from '@/components/auth/LoadingOverlay';
 import type { UserRole } from '@/store/useAuthStore';
 import type { LoginInput, SignupInput } from '@/lib/validations/auth-schema';
@@ -29,8 +29,9 @@ const TRUST_ITEMS = [
   },
 ]
 
-export default function SignInPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = use(params);
+export default function SignInPage() {
+  const params = useParams();
+  const locale = (params?.locale as string) || 'fr';
   const [mode, setMode] = useState<'login' | 'signup'>('login');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -51,49 +52,53 @@ export default function SignInPage({ params }: { params: Promise<{ locale: strin
       if (mode === 'login') {
         const loginData = data as LoginInput & { role?: string };
         const selectedRole = loginData.role || 'PARENT';
+        const supabase = createClient();
 
-        // Save to localStorage for next time
-        localStorage.setItem('lastEmail', loginData.email);
-        localStorage.setItem('lastRole', selectedRole);
+        let loginEmail = loginData.email;
 
-        let callbackUrl = `/${locale}/parent`;
-        if (selectedRole === 'TEACHER') callbackUrl = `/${locale}/ecole/dashboard`;
-        if (selectedRole === 'NGO' || selectedRole === 'ORGANIZATION') callbackUrl = `/${locale}/ngo`;
+        // Handle username login
+        if (!loginEmail.includes('@')) {
+          // This assumes the user table is public and readable for this query
+          // Or we use a specific API route to fetch the email associated with the username
+          const { data: userData, error: userError } = await supabase
+            .from('User')
+            .select('email')
+            .eq('username', loginEmail)
+            .single();
 
-        console.log('Attempting sign in with:', { email: loginData.email, role: selectedRole, callbackUrl });
-        const result = await signIn('credentials', {
-          email: loginData.email,
-          password: loginData.password,
-          role: selectedRole,
-          callbackUrl,
-          redirect: true,
-        });
-        console.log('SignIn result:', result);
-      } else {
-        const signupData = data as SignupInput;
-        const response = await fetch('/api/auth/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: signupData.email,
-            password: signupData.password,
-            name: `${signupData.firstName} ${signupData.lastName}`,
-            role: 'PARENT', // Default role for signup in this form
-          }),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          alert("✨ Account created! You can now log in.");
-          setMode('login');
-        } else {
-          alert("❌ Signup failed: " + (result.error || 'Unknown error'));
+          if (userError || !userData) {
+            throw new Error("Compte non trouvé avec ce nom d'utilisateur");
+          }
+          loginEmail = userData.email;
         }
+
+        const { error } = await supabase.auth.signInWithPassword({
+          email: loginEmail,
+          password: loginData.password,
+        });
+
+        if (error) throw error;
+
+        // Sync with Prisma after login
+        try {
+          await fetch('/api/auth/sync', { method: 'POST' });
+        } catch (syncError) {
+          console.error('Prisma sync failed after login:', syncError);
+        }
+
+        // Redirection based on role
+        let redirectPath = `/${locale}/parent`;
+        if (selectedRole === 'TEACHER') redirectPath = `/${locale}/ecole/dashboard`;
+        if (selectedRole === 'NGO' || selectedRole === 'ORGANIZATION') redirectPath = `/${locale}/ngo`;
+
+        router.push(redirectPath);
+      } else {
+        // Redirect to signup page or handle toggle
+        setMode('signup');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert("🚨 An unexpected error occurred.");
+      alert("🚨 Erreur : " + (error.message || "Une erreur inattendue est survenue."));
     } finally {
       setLoading(false);
     }
@@ -103,14 +108,29 @@ export default function SignInPage({ params }: { params: Promise<{ locale: strin
     setLoading(true);
 
     try {
-      // For social login, specify the callbackUrl to redirect back with the correct locale
-      await signIn(provider, { callbackUrl: `/${locale}/parent` });
-    } catch (error) {
+      const supabase = createClient();
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: provider as any,
+        options: {
+          scopes: provider === 'facebook' ? 'email,public_profile' : undefined,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent',
+          },
+          redirectTo: `${window.location.origin}/api/auth/callback`,
+          data: {
+            role: 'PARENT'
+          }
+        },
+      });
+
+      if (error) throw error;
+    } catch (error: any) {
       console.error(error);
-      alert("❌ Social login failed");
-    } finally {
+      alert("❌ Connexion sociale échouée : " + error.message);
       setLoading(false);
     }
+    // Note: Social login redirects the page, so we don't necessarily need to set loading to false here unless error
   };
 
   const handleForgotPassword = async () => {

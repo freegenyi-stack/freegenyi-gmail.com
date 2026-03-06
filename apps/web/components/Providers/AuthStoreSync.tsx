@@ -1,29 +1,34 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { createClient } from '@/lib/supabase/client';
 import { useAuthStore, type UserRole } from '@/store/useAuthStore';
 
 export function AuthStoreSync({ children }: { children: React.ReactNode }) {
-    const { data: session, status } = useSession();
     const { setUser, user } = useAuthStore();
+    const supabase = createClient();
 
     useEffect(() => {
-        if (status === 'authenticated' && session?.user) {
-            // Only update if user has changed
-            if (!user || user.email !== session.user.email) {
-                setUser({
-                    id: session.user.id || '',
-                    email: session.user.email || '',
-                    name: session.user.name || null,
-                    image: session.user.image || null,
-                    roles: [session.user.role as UserRole] // Convert single role to array
-                });
+        const { data: { subscription } } = supabase.auth.onAuthStateChange(
+            async (event, session) => {
+                if (session?.user) {
+                    if (!user || user.id !== session.user.id) {
+                        setUser({
+                            id: session.user.id,
+                            email: session.user.email || '',
+                            name: session.user.user_metadata?.full_name || session.user.user_metadata?.firstName || null,
+                            image: session.user.user_metadata?.avatar_url || null,
+                            roles: [session.user.user_metadata?.role || 'PARENT']
+                        });
+                    }
+                } else {
+                    if (user) setUser(null);
+                }
             }
-        } else if (status === 'unauthenticated' && user) {
-            setUser(null);
-        }
-    }, [session, status, setUser, user]);
+        );
+
+        return () => subscription.unsubscribe();
+    }, [setUser, user, supabase]);
 
     return <>{children}</>;
 }

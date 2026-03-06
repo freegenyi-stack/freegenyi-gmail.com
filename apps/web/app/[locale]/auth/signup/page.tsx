@@ -1,15 +1,16 @@
 'use client';
+// Recompilation trigger
 
-import { useState, use } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { BookOpen, Sparkles, Globe, ArrowLeft } from 'lucide-react';
 import AuthCard from '@/components/auth/AuthCard';
 import AuthForm from '@/components/auth/AuthForm';
 import SocialButtons from '@/components/auth/SocialButtons';
-import { signIn } from 'next-auth/react';
+import { createClient } from '@/lib/supabase/client';
 import LoadingOverlay from '@/components/auth/LoadingOverlay';
 import type { LoginInput, SignupInput } from '@/lib/validations/auth-schema';
 
@@ -28,8 +29,9 @@ const TRUST_ITEMS = [
   },
 ]
 
-export default function SignUpPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = use(params);
+export default function SignUpPage() {
+  const params = useParams();
+  const locale = (params?.locale as string) || 'fr';
   const [mode, setMode] = useState<'login' | 'signup'>('signup');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -40,37 +42,62 @@ export default function SignUpPage({ params }: { params: Promise<{ locale: strin
 
     try {
       if (mode === 'login') {
+        // Redirect to signin page logic or handle it here
         const loginData = data as LoginInput;
-        await signIn('credentials', {
-          email: loginData.email,
+        const supabase = createClient();
+
+        let loginEmail = loginData.email;
+
+        // Handle username login
+        if (!loginEmail.includes('@')) {
+          const { data: userData, error: userError } = await supabase
+            .from('User')
+            .select('email')
+            .eq('username', loginEmail)
+            .single();
+
+          if (userError || !userData) {
+            throw new Error("User not found with this username");
+          }
+          loginEmail = userData.email;
+        }
+
+        const { error } = await supabase.auth.signInWithPassword({
+          email: loginEmail,
           password: loginData.password,
-          callbackUrl: `/${locale}/parent`,
         });
+
+        if (error) throw error;
+
+        router.push(`/${locale}/parent`);
       } else {
         const signupData = data as SignupInput;
-        const response = await fetch('/api/auth/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: signupData.email,
-            password: signupData.password,
-            name: `${signupData.firstName} ${signupData.lastName}`,
-            role: 'PARENT',
-          }),
+        const supabase = createClient();
+
+        const { data, error: signUpError } = await supabase.auth.signUp({
+          email: signupData.email,
+          password: signupData.password,
+          options: {
+            data: {
+              username: signupData.username,
+              firstName: signupData.firstName,
+              lastName: signupData.lastName,
+              role: 'PARENT', // Default role for this form
+            },
+            emailRedirectTo: `${window.location.origin}/api/auth/callback`,
+          }
         });
 
-        const result = await response.json();
+        if (signUpError) throw signUpError;
 
-        if (response.ok) {
-          alert("✨ Account created! You can now log in.");
+        if (data.user) {
+          alert("✨ Inscription réussie ! Vérifiez votre email pour confirmer.");
           setMode('login');
-        } else {
-          alert("❌ Signup failed: " + (result.error || 'Unknown error'));
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert("🚨 An unexpected error occurred.");
+      alert("🚨 Erreur : " + (error.message || "Une erreur inattendue est survenue."));
     } finally {
       setLoading(false);
     }
@@ -79,11 +106,18 @@ export default function SignUpPage({ params }: { params: Promise<{ locale: strin
   const handleSocialLogin = async (provider: 'google' | 'apple' | 'microsoft' | 'facebook' | 'linkedin') => {
     setLoading(true);
     try {
-      await signIn(provider, { callbackUrl: `/${locale}/parent` });
-    } catch (error) {
+      const supabase = createClient();
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: provider as any,
+        options: {
+          redirectTo: `${window.location.origin}/api/auth/callback`,
+        },
+      });
+
+      if (error) throw error;
+    } catch (error: any) {
       console.error(error);
-      alert("❌ Social login failed");
-    } finally {
+      alert("❌ Social login failed: " + error.message);
       setLoading(false);
     }
   };

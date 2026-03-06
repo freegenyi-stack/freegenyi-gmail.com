@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth/next'
+import { createClient } from '@/lib/supabase/server'
 import { prisma } from '@/lib/db'
-import { authOptions } from '@/lib/auth/config'
 
 // GET /api/notifications - Récupérer les notifications de l'utilisateur
 export async function GET(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
 
-    if (!session?.user?.id) {
+    if (!user) {
       return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
     }
 
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
 
     const notifications = await prisma.notification.findMany({
       where: {
-        userId: session.user.id,
+        userId: user.id,
         ...(unreadOnly ? { isRead: false } : {}),
       },
       orderBy: {
@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
 
     const unreadCount = await prisma.notification.count({
       where: {
-        userId: session.user.id,
+        userId: user.id,
         isRead: false,
       },
     })
@@ -47,9 +47,10 @@ export async function GET(request: NextRequest) {
 // POST /api/notifications - Créer une notification
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions)
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
 
-    if (!session?.user?.id) {
+    if (!user) {
       return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
     }
 
@@ -57,7 +58,8 @@ export async function POST(request: NextRequest) {
     const { userId, type, title, message, data, actionUrl } = body
 
     // Vérifier les permissions (admin peut envoyer à n'importe qui)
-    if (userId !== session.user.id && session.user.role !== 'ORGANIZATION') {
+    const userRole = user.user_metadata?.role
+    if (userId !== user.id && userRole !== 'ORGANIZATION') {
       return NextResponse.json({ error: 'Permission refusée' }, { status: 403 })
     }
 

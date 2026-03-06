@@ -1,17 +1,20 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { useAuthStore } from '@/store/useAuthStore';
 import { useRouter, usePathname } from 'next/navigation';
 
-/**
- * Smart navigation component that redirects authenticated users to their appropriate dashboard
- * when they visit the home page or attempt to access a dashboard they don't have access to
- */
 export function SmartDashboardNavigation() {
-    const { data: session, status } = useSession();
+    const { user } = useAuthStore();
     const router = useRouter();
     const pathname = usePathname();
+
+    useEffect(() => {
+        // Redirection logic can be re-enabled here using 'user' instead of 'session'
+        if (user) {
+            // ...
+        }
+    }, [user, router, pathname]);
 
     useEffect(() => {
         // AUTO-REDIRECT DISABLED: Users want to access the home page
@@ -40,7 +43,7 @@ export function SmartDashboardNavigation() {
             }
         }
         */
-    }, [session, status, router, pathname]);
+    }, [router, pathname]);
 
     return null; // This component doesn't render anything
 }

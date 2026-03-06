@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth/next'
+import { createClient } from '@/lib/supabase/server'
 import { prisma } from '@/lib/db'
-import { authOptions } from '@/lib/auth/config'
 
 // POST /api/notifications/[id]/read - Marquer une notification comme lue
 export async function POST(
@@ -9,9 +8,10 @@ export async function POST(
   { params }: { params: { id: string } }
 ) {
   try {
-    const session = await getServerSession(authOptions)
-    
-    if (!session?.user?.id) {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
       return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
     }
 
@@ -21,7 +21,7 @@ export async function POST(
     const notification = await prisma.notification.findFirst({
       where: {
         id,
-        userId: session.user.id,
+        userId: user.id,
       },
     })
 
