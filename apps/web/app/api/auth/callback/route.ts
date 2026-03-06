@@ -8,7 +8,8 @@ export async function GET(request: Request) {
     const next = searchParams.get('next') ?? '/'
 
     if (code) {
-        console.log("🔑 Code reçu, échange en cours...");
+        const host = request.headers.get('host');
+        console.log(`🔑 Code reçu sur Host: ${host}, échange en cours...`);
         const supabase = await createClient()
         console.log("🛠 Exchanging code for session...");
         const { data: { user }, error } = await supabase.auth.exchangeCodeForSession(code)

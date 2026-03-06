@@ -15,13 +15,20 @@ export async function createClient() {
                 setAll(cookiesToSet) {
                     try {
                         cookiesToSet.forEach(({ name, value, options }) =>
-                            cookieStore.set(name, value, options)
+                            cookieStore.set(name, value, {
+                                ...options,
+                                domain: process.env.NODE_ENV === 'production' ? '.freegeny.com' : undefined,
+                            })
                         )
                     } catch {
                         // setAll called from Server Component — can be safely ignored
                     }
                 },
             },
+            cookieOptions: {
+                domain: process.env.NODE_ENV === 'production' ? '.freegeny.com' : undefined,
+                path: '/',
+            }
         }
     )
 }
