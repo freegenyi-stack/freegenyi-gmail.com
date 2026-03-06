@@ -32,7 +32,16 @@ export async function updateSession(request: NextRequest) {
     // Refresh the session — do NOT add logic between createServerClient and supabase.auth.getUser()
     const {
         data: { user },
+        error
     } = await supabase.auth.getUser()
+
+    if (error) {
+        console.error("❌ updateSession getUser error:", error.message);
+    } else if (user) {
+        console.log("✅ updateSession user found:", user.email);
+    } else {
+        console.log("ℹ️ updateSession: No user found in session");
+    }
 
     return { supabaseResponse, user }
 }

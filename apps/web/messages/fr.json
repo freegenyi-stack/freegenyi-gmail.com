@@ -303,6 +303,7 @@
         "signIn": "Se connecter",
         "createAccount": "Créer mon compte",
         "signUpFree": "S'inscrire gratuitement",
+        "signInWith": "Se connecter avec {provider}",
         "termsText": "En créant un compte, vous acceptez nos",
         "termsLink": "Conditions d'utilisation",
         "privacyLink": "Politique de confidentialité",

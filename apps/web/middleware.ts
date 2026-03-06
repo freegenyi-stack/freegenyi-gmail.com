@@ -20,7 +20,10 @@ export default async function middleware(req: NextRequest) {
 
     // 1. Update Supabase session (refresh token if needed)
     const { supabaseResponse, user } = await updateSession(req);
-    console.log(`🛡️ Middleware: Path=${pathname}, User=${user ? user.email : 'NULL'}`);
+
+    // Cookie Debugging
+    const cookieNames = req.cookies.getAll().map(c => c.name).join(', ');
+    console.log(`🛡️ Middleware: Path=${pathname}, User=${user ? user.email : 'NULL'}, Cookies=[${cookieNames}]`);
 
     // 2. I18n and Public path checks
     const pathWithoutLocale = pathname.replace(/^\/[a-z]{2,3}(\/|$)/, '/') || '/';

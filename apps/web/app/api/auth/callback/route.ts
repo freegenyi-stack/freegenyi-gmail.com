@@ -47,14 +47,19 @@ export async function GET(request: Request) {
             }
 
             console.log("➡️ Redirecting to target path:", targetPath);
-            let redirectUrl: string;
-            if (isLocalEnv) {
-                redirectUrl = `${origin}${targetPath}`;
-            } else if (forwardedHost) {
-                redirectUrl = `https://${forwardedHost}${targetPath}`;
-            } else {
-                redirectUrl = `${origin}${targetPath}`;
+
+            // Prefer canonical SITE_URL for redirects in production to avoid domain/cookie mismatch
+            const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+            let baseUrl = origin;
+
+            if (!isLocalEnv && siteUrl && siteUrl.startsWith('http')) {
+                baseUrl = siteUrl.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl;
+                console.log("🌐 Using canonical site URL for base:", baseUrl);
+            } else if (!isLocalEnv && forwardedHost) {
+                baseUrl = `https://${forwardedHost}`;
             }
+
+            const redirectUrl = `${baseUrl}${targetPath}`;
 
             console.log("📍 Final redirect URL:", redirectUrl);
             return NextResponse.redirect(redirectUrl)
