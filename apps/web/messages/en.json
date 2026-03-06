@@ -175,7 +175,7 @@
   "dashboard": {
     "parent": {
       "title": "Parent Dashboard",
-      "welcome": "Hello, {{name}}!",
+      "welcome": "Hello, {name}!",
       "overview": "Here is an overview of your children's progress today.",
       "stats": {
         "activeStudents": "Active students",

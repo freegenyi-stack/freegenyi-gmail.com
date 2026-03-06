@@ -164,11 +164,11 @@ export default function ParentDashboardPage() {
                         </div>
                         <div className="tour-child-switcher scale-90 md:scale-95 origin-left">
                             <ChildSwitcher
-                                children={[{
+                                profiles={[{
                                     id: 'active',
                                     name: activeChild.name,
                                     initials: activeChild.name.substring(0, 2).toUpperCase(),
-                                    age: activeChild.age
+                                    age: activeChild.age || 0
                                 }]}
                                 activeChildId="active"
                                 onSwitch={() => { }}

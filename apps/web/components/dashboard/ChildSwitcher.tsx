@@ -29,7 +29,7 @@ export interface Child {
 }
 
 interface ChildSwitcherProps {
-    children: Child[]
+    profiles: Child[]
     activeChildId?: string
     onSwitch: (childId: string) => void
     onAddChild: () => void
@@ -37,14 +37,14 @@ interface ChildSwitcherProps {
 }
 
 export function ChildSwitcher({
-    children,
+    profiles,
     activeChildId,
     onSwitch,
     onAddChild,
     className
 }: ChildSwitcherProps) {
-    const t = useTranslations("childSwitcher")
-    const active = children.find(c => c.id === activeChildId) || children[0]
+    const t = useTranslations("dashboard.childSwitcher")
+    const active = profiles.find(c => c.id === activeChildId) || profiles[0]
 
     const formatLastActive = (date?: Date) => {
         if (!date) return t("never")
@@ -98,7 +98,7 @@ export function ChildSwitcher({
                 <DropdownMenuLabel className="font-heading text-sm text-muted-foreground px-2">
                     {t("title")}
                 </DropdownMenuLabel>
-                {children.map(child => (
+                {profiles.map(child => (
                     <DropdownMenuItem
                         key={child.id}
                         onClick={() => onSwitch(child.id)}

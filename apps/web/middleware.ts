@@ -73,10 +73,10 @@ export default async function middleware(req: NextRequest) {
     // 5. Merge Supabase cookies into the FINAL response
     // We must iterate over supabaseResponse.cookies because updateSession might have set/deleted cookies
     supabaseResponse.cookies.getAll().forEach((cookie) => {
-        response.cookies.set(cookie.name, cookie.value, {
-            ...cookie,
-            // Ensure we don't accidentally lose domain enforcement if it's there
-            domain: cookie.domain || (process.env.NODE_ENV === 'production' ? '.freegeny.com' : undefined)
+        const { name, value, ...options } = cookie;
+        response.cookies.set(name, value, {
+            ...options,
+            domain: process.env.NODE_ENV === 'production' ? '.freegeny.com' : options.domain
         });
     });
 
