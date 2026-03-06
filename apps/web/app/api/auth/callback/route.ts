@@ -28,6 +28,22 @@ export async function GET(request: Request) {
                 console.error('❌ Erreur de synchronisation Prisma:', syncError)
             }
 
+            // Determine redirect target path
+            let targetPath = next;
+            if (targetPath === '/') {
+                // Determine routing based on user role defaulting to PARENT
+                const role = user.user_metadata?.role;
+                if (role === 'TEACHER') targetPath = '/ecole/dashboard';
+                else if (role === 'NGO' || role === 'ORGANIZATION') targetPath = '/ngo';
+                else targetPath = '/parent';
+            }
+
+            // Add locale prefix if missing (default to 'fr' for FreeGeny)
+            const localeMatch = targetPath.match(/^\/([a-z]{2,3})(\/|$)/);
+            if (!localeMatch) {
+                targetPath = `/fr${targetPath.startsWith('/') ? '' : '/'}${targetPath}`;
+            }
+
             console.log("➡️ Target path after logic:", targetPath);
 
             // 🛠️ ROBUST REDIRECT LOGIC
