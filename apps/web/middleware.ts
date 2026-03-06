@@ -44,11 +44,23 @@ export default async function middleware(req: NextRequest) {
         }
     }
 
+    const localeMatch = pathname.match(/^\/([a-z]{2,3})(\/|$)/);
+    const locale = localeMatch ? localeMatch[1] : defaultLocale;
+
     // 3. Auth Check for protected routes
     if (isProtectedRoute && !user) {
-        const localeMatch = pathname.match(/^\/([a-z]{2,3})(\/|$)/);
-        const locale = localeMatch ? localeMatch[1] : defaultLocale;
         return NextResponse.redirect(new URL(`/${locale}/auth/signin`, req.url));
+    }
+
+    // Prevent authenticated users from seeing the sign-in/up pages again
+    const isAuthRoute = pathname.includes('/auth/signin') || pathname.includes('/auth/signup');
+    if (isAuthRoute && user) {
+        const role = user.user_metadata?.role;
+        let dashboardPath = '/parent';
+        if (role === 'TEACHER') dashboardPath = '/ecole/dashboard';
+        else if (role === 'NGO' || role === 'ORGANIZATION') dashboardPath = '/ngo';
+
+        return NextResponse.redirect(new URL(`/${locale}${dashboardPath}`, req.url));
     }
 
     // 4. Run i18n middleware (using the response from updateSession to preserve cookies)

@@ -28,13 +28,23 @@ export async function GET(request: Request) {
             const isLocalEnv = process.env.NODE_ENV === 'development'
             const forwardedHost = request.headers.get('x-forwarded-host')
 
+            // Determine redirect target path
+            let targetPath = next;
+            if (targetPath === '/') {
+                // Determine routing based on user role defaulting to PARENT
+                const role = user.user_metadata?.role;
+                if (role === 'TEACHER') targetPath = '/ecole/dashboard';
+                else if (role === 'NGO' || role === 'ORGANIZATION') targetPath = '/ngo';
+                else targetPath = '/parent';
+            }
+
             let redirectUrl: string;
             if (isLocalEnv) {
-                redirectUrl = `${origin}${next}`;
+                redirectUrl = `${origin}${targetPath}`;
             } else if (forwardedHost) {
-                redirectUrl = `https://${forwardedHost}${next}`;
+                redirectUrl = `https://${forwardedHost}${targetPath}`;
             } else {
-                redirectUrl = `${origin}${next}`;
+                redirectUrl = `${origin}${targetPath}`;
             }
 
             return NextResponse.redirect(redirectUrl)
