@@ -67,12 +67,17 @@ export default async function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL(`/${locale}${dashboardPath}`, req.url));
     }
 
-    // 4. Run i18n middleware (using the response from updateSession to preserve cookies)
+    // 4. Run i18n middleware
     const response = intlMiddleware(req);
 
-    // Merge Supabase cookies into the i18n response
+    // 5. Merge Supabase cookies into the FINAL response
+    // We must iterate over supabaseResponse.cookies because updateSession might have set/deleted cookies
     supabaseResponse.cookies.getAll().forEach((cookie) => {
-        response.cookies.set(cookie.name, cookie.value, cookie);
+        response.cookies.set(cookie.name, cookie.value, {
+            ...cookie,
+            // Ensure we don't accidentally lose domain enforcement if it's there
+            domain: cookie.domain || (process.env.NODE_ENV === 'production' ? '.freegeny.com' : undefined)
+        });
     });
 
     return response;

@@ -28,42 +28,28 @@ export async function GET(request: Request) {
                 console.error('❌ Erreur de synchronisation Prisma:', syncError)
             }
 
+            console.log("➡️ Target path after logic:", targetPath);
+
+            // 🛠️ ROBUST REDIRECT LOGIC
             const isLocalEnv = process.env.NODE_ENV === 'development'
-            const forwardedHost = request.headers.get('x-forwarded-host')
+            const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 
-            // Determine redirect target path
-            let targetPath = next;
-            if (targetPath === '/') {
-                // Determine routing based on user role defaulting to PARENT
-                const role = user.user_metadata?.role;
-                if (role === 'TEACHER') targetPath = '/ecole/dashboard';
-                else if (role === 'NGO' || role === 'ORGANIZATION') targetPath = '/ngo';
-                else targetPath = '/parent';
+            let baseUrl = origin
+            if (!isLocalEnv && siteUrl) {
+                // Force canonical domain if specified
+                baseUrl = siteUrl.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl
+                console.log("🌐 Production: Using NEXT_PUBLIC_SITE_URL for canonical redirect:", baseUrl)
+            } else if (!isLocalEnv) {
+                const forwardedHost = request.headers.get('x-forwarded-host')
+                const host = request.headers.get('host')
+                baseUrl = `https://${forwardedHost || host}`
+                console.log("🌐 Production: Falling back to headers for base URL:", baseUrl)
             }
 
-            // Add locale prefix if missing (default to 'fr' for FreeGeny)
-            const localeMatch = targetPath.match(/^\/([a-z]{2,3})(\/|$)/);
-            if (!localeMatch) {
-                targetPath = `/fr${targetPath.startsWith('/') ? '' : '/'}${targetPath}`;
-            }
+            const finalUrl = new URL(targetPath, baseUrl)
+            console.log("📍 Final constructed redirect URL:", finalUrl.toString());
 
-            console.log("➡️ Redirecting to target path:", targetPath);
-
-            // Prefer canonical SITE_URL for redirects in production to avoid domain/cookie mismatch
-            const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-            let baseUrl = origin;
-
-            if (!isLocalEnv && siteUrl && siteUrl.startsWith('http')) {
-                baseUrl = siteUrl.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl;
-                console.log("🌐 Using canonical site URL for base:", baseUrl);
-            } else if (!isLocalEnv && forwardedHost) {
-                baseUrl = `https://${forwardedHost}`;
-            }
-
-            const redirectUrl = `${baseUrl}${targetPath}`;
-
-            console.log("📍 Final redirect URL:", redirectUrl);
-            return NextResponse.redirect(redirectUrl)
+            return NextResponse.redirect(finalUrl)
         } else {
             console.warn("⚠️ No user returned from exchangeCodeForSession");
         }
