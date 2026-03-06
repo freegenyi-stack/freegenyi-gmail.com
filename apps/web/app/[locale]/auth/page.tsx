@@ -1,6 +1,6 @@
 import Image from "next/image"
 import type { Metadata } from "next"
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server"
+import { getTranslations } from "next-intl/server"
 import AuthFormInspiration from "@/components/auth/AuthFormInspiration"
 import { BookOpen, Sparkles, Globe, ArrowLeft } from "lucide-react"
 import Link from "next/link"
@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 
 export default async function AuthPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    unstable_setRequestLocale(locale);
     const t = await getTranslations('auth')
 
     const TRUST_ITEMS = [
