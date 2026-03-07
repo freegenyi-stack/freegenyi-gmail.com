@@ -57,26 +57,11 @@ export async function GET(request: Request) {
 
                 // 🛠️ ROBUST REDIRECT LOGIC
                 const isLocalEnv = process.env.NODE_ENV === 'development'
-                const canonicalDomain = 'www.freegeny.com'
-                const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
                 const host = request.headers.get('host');
-
-                let baseUrl = origin
-                // If we are in production but NOT on the canonical domain yet (e.g., Vercel preview),
-                // use the current origin instead of forcing the redirect to the broken domain.
-                if (!isLocalEnv && host === canonicalDomain && siteUrl) {
-                    let formattedUrl = siteUrl;
-                    if (!formattedUrl.startsWith('http')) {
-                        formattedUrl = `https://${formattedUrl}`;
-                    }
-                    baseUrl = formattedUrl.endsWith('/') ? formattedUrl.slice(0, -1) : formattedUrl;
-                    console.log("🌐 Production: Using Canonical NEXT_PUBLIC_SITE_URL:", baseUrl)
-                } else if (!isLocalEnv) {
-                    // Stay on the current Vercel preview URL
-                    const forwardedHost = request.headers.get('x-forwarded-host')
-                    baseUrl = `https://${forwardedHost || host}`
-                    console.log("🌐 Production (Preview/Other): Staying on current host:", baseUrl)
-                }
+                
+                // Always use current host for Vercel previews
+                let baseUrl = isLocalEnv ? origin : `https://${host}`
+                console.log("🌐 Using current host:", baseUrl)
 
                 const finalUrlString = `${baseUrl}${targetPath.startsWith('/') ? '' : '/'}${targetPath}`;
                 console.log("📍 Final redirecting to:", finalUrlString);
