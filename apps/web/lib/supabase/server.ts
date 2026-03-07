@@ -29,6 +29,9 @@ export async function createClient() {
                 },
             },
             cookieOptions: {
+                domain: (await import('next/headers')).headers().get('host')?.includes('freegeny.com')
+                    ? '.freegeny.com'
+                    : undefined,
                 path: '/',
             }
 
