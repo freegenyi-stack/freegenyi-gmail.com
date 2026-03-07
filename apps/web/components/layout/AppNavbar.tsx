@@ -1,5 +1,7 @@
 'use client';
 
+import * as React from 'react';
+
 import { Link } from '@/lib/i18n/navigation';
 import { usePathname } from 'next/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
@@ -29,10 +31,14 @@ import { cn } from '@/lib/utils';
 export function AppNavbar() {
     const t = useTranslations('navbar');
     const pathname = usePathname();
-    const { user, logout, activeRole } = useAuthStore();
     const supabase = createClient();
     const locale = useLocale();
     const isRTL = rtlLocales.includes(locale as any);
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Only show dashboard switcher on dashboard routes
     const dashboardRoutes = ['/parent', '/teacher', '/ngo', '/admin', '/school', '/ecole'];
@@ -85,7 +91,7 @@ export function AppNavbar() {
                     </Button>
 
                     {/* User Menu */}
-                    <UserMenu />
+                    {mounted ? <UserMenu /> : <div className="w-10 h-10 rounded-full bg-slate-100 animate-pulse" />}
                 </div>
             </div>
         </header>

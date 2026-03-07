@@ -19,15 +19,7 @@ import { User, Settings, LogOut, Trophy } from 'lucide-react';
 
 export function UserMenu() {
     const t = useTranslations('navbar');
-    const [mounted, setMounted] = React.useState(false);
-    const { user, logout, activeRole } = useAuthStore();
-    const supabase = createClient();
-
-    React.useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted || !user) return null;
+    if (!user) return null;
 
     const handleLogout = async () => {
         await supabase.auth.signOut();

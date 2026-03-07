@@ -32,7 +32,6 @@ const typeIcons = {
 
 export function NotificationBell() {
     const t = useTranslations('notifications');
-    const [mounted, setMounted] = React.useState(false);
     const {
         notifications,
         unreadCount,
@@ -42,18 +41,6 @@ export function NotificationBell() {
         markAllAsRead,
         removeNotification
     } = useNotificationStore();
-
-    React.useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) {
-        return (
-            <Button variant="ghost" size="icon" className="relative">
-                <Bell className="h-5 w-5" />
-            </Button>
-        );
-    }
 
     return (
         <Popover open={isOpen} onOpenChange={setOpen}>

@@ -1,9 +1,11 @@
 // app/[locale]/(dashboard)/ecole/analytics/page.tsx
 'use client'
 
-import { ClassAnalytics } from '@/components/dashboard/ecole/analytics/ClassAnalytics'
+import dynamic from 'next/dynamic'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { BarChart3, TrendingUp, PieChart } from 'lucide-react'
+
+const ClassAnalytics = dynamic(() => import('@/components/dashboard/ecole/analytics/ClassAnalytics').then(mod => mod.ClassAnalytics), { ssr: false })
 
 export default function EcoleAnalyticsPage() {
     const mockData = [
