@@ -37,6 +37,7 @@ function DashboardLayoutContent({ children }: { children: ReactNode }) {
             <DashboardSidebar />
 
             <div className="flex flex-1 flex-col relative">
+                <AppNavbar />
                 <div className={cn(
                     "flex-1 transition-all duration-300",
                     isRTL ? "lg:pr-20" : "lg:pl-20",

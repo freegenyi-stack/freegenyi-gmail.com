@@ -12,15 +12,20 @@ export function AuthStoreSync({ children }: { children: React.ReactNode }) {
         const { data: { subscription } } = supabase.auth.onAuthStateChange(
             async (event, session) => {
                 if (session?.user) {
-                    if (!user || user.id !== session.user.id) {
-                        setUser({
-                            id: session.user.id,
-                            email: session.user.email || '',
-                            name: session.user.user_metadata?.full_name || session.user.user_metadata?.firstName || null,
-                            image: session.user.user_metadata?.avatar_url || null,
-                            roles: [session.user.user_metadata?.role || 'PARENT']
-                        });
-                    }
+                    const metadata = session.user.user_metadata;
+                    const detectedName = metadata?.full_name ||
+                        metadata?.name ||
+                        metadata?.firstName ||
+                        session.user.email?.split('@')[0] ||
+                        'Utilisateur';
+
+                    setUser({
+                        id: session.user.id,
+                        email: session.user.email || '',
+                        name: detectedName,
+                        image: metadata?.avatar_url || null,
+                        roles: [metadata?.role || 'PARENT']
+                    });
                 } else {
                     if (user) setUser(null);
                 }
