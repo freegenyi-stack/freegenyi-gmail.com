@@ -20,19 +20,29 @@ export async function GET(request: Request) {
 
             if (user) {
                 console.log("✅ User authenticated:", user.email);
+                console.log("📋 User metadata:", user.user_metadata);
+                console.log("📋 App metadata:", user.app_metadata);
 
-                // Sync user to Prisma
+                // Sync user to Prisma with better error handling
                 try {
                     const { syncUserToPrisma } = await import('@/lib/auth/sync')
-                    await syncUserToPrisma(user)
+                    const syncedUser = await syncUserToPrisma(user)
+                    console.log("🔄 User synced to Prisma:", syncedUser?.email);
                 } catch (syncError) {
                     console.error('❌ Prisma sync error:', syncError)
+                    // Continue anyway - auth is still valid
                 }
 
-                // Determine redirect path
+                // Determine redirect path based on role
                 let targetPath = next;
                 if (targetPath === '/') {
-                    const role = user.user_metadata?.role;
+                    // Try multiple sources for role
+                    const role = user.user_metadata?.role || 
+                                user.app_metadata?.role || 
+                                'PARENT';
+                    
+                    console.log("🎭 Determining redirect for role:", role);
+                    
                     if (role === 'TEACHER') targetPath = '/ecole/dashboard';
                     else if (role === 'NGO' || role === 'ORGANIZATION') targetPath = '/ngo';
                     else targetPath = '/parent';

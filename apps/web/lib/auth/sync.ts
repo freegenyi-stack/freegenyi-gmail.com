@@ -5,7 +5,10 @@ export async function syncUserToPrisma(user: {
     id: string
     email?: string
     user_metadata?: any
+    app_metadata?: any
 }) {
+    console.log("🔄 Syncing user to Prisma:", user.email);
+    
     // Some OAuth providers (like specific Facebook accounts) might not return an email.
     // Since our database requires a unique email, we generate a placeholder if missing.
     const effectiveEmail = user.email || `${user.id}@no-email.placeholder`;
@@ -14,21 +17,57 @@ export async function syncUserToPrisma(user: {
         where: { id: user.id },
     })
 
-    if (existingUser) return existingUser
+    if (existingUser) {
+        console.log("✅ User already exists in Prisma:", existingUser.email);
+        return existingUser
+    }
 
-    // Metadata can contain username, firstName, lastName, role etc.
-    const username = user.user_metadata?.username
-    const name = user.user_metadata?.full_name || `${user.user_metadata?.firstName || ''} ${user.user_metadata?.lastName || ''}`.trim()
-    const role = (user.user_metadata?.role as Role) || Role.PARENT
+    // Extract data from multiple metadata sources
+    const metadata = user.user_metadata || {};
+    const appMetadata = user.app_metadata || {};
+    
+    // Try multiple sources for name
+    const name = metadata.full_name || 
+                 metadata.name || 
+                 metadata.userName ||
+                 appMetadata.user_name ||
+                 appMetadata.name ||
+                 `${metadata.firstName || ''} ${metadata.lastName || ''}`.trim() ||
+                 effectiveEmail.split('@')[0];
+    
+    // Try multiple sources for image
+    const image = metadata.avatar_url || 
+                  metadata.picture || 
+                  metadata.image ||
+                  appMetadata.avatar_url ||
+                  null;
+    
+    // Try multiple sources for username
+    const username = metadata.username || 
+                     metadata.preferred_username ||
+                     appMetadata.user_name ||
+                     name.toLowerCase().replace(/\s+/g, '_');
+    
+    const role = (metadata.role as Role) || 
+                 (appMetadata.role as Role) || 
+                 Role.PARENT
+
+    console.log("📝 Creating user with data:", {
+        email: effectiveEmail,
+        name,
+        username,
+        role,
+        image
+    });
 
     return await prisma.user.create({
         data: {
             id: user.id,
             email: effectiveEmail,
             username: username,
-            name: name || effectiveEmail.split('@')[0],
+            name: name,
             role: role,
-            image: user.user_metadata?.avatar_url,
+            image: image,
             // Create initial profile
             ...(role === 'PARENT' && {
                 parentProfile: { create: {} }

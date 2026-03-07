@@ -67,18 +67,31 @@ export default function SignInPage() {
     setLoading(true);
     setError(null);
     try {
+      console.log(`🔐 Starting ${providerId} OAuth flow...`);
       const supabase = createClient();
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: providerId as any,
         options: {
           redirectTo: `${window.location.origin}/api/auth/callback`,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent',
+          }
         },
       });
 
-      if (error) throw error;
-      if (data?.url) window.location.href = data.url;
+      if (error) {
+        console.error(`❌ ${providerId} OAuth error:`, error);
+        throw error;
+      }
+      
+      if (data?.url) {
+        console.log(`✅ Redirecting to ${providerId}:`, data.url);
+        window.location.href = data.url;
+      }
     } catch (err: any) {
-      setError(err.message || 'Une erreur est survenue');
+      console.error(`🔥 ${providerId} login error:`, err);
+      setError(err.message || `Une erreur est survenue avec ${providerId}`);
       setLoading(false);
     }
   }, []);
