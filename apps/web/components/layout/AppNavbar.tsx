@@ -53,9 +53,9 @@ export function AppNavbar() {
 
     const userInitials = user?.name
         ?.split(' ')
-        .map(n => n[0])
-        .join('')
-        .toUpperCase() || '?';
+        ?.map(n => n[0])
+        ?.join('')
+        ?.toUpperCase() || '?';
 
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md">
