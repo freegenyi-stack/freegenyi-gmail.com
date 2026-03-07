@@ -2,62 +2,49 @@
 
 import { useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { useAuthStore, type UserRole } from '@/store/useAuthStore';
+import { useAuthStore } from '@/store/useAuthStore';
+
+function buildUser(supabaseUser: any) {
+    const metadata = supabaseUser.user_metadata || {};
+    const detectedName =
+        metadata.full_name ||
+        metadata.name ||
+        metadata.firstName ||
+        supabaseUser.email?.split('@')[0] ||
+        'Utilisateur';
+
+    return {
+        id: supabaseUser.id,
+        email: supabaseUser.email || '',
+        name: detectedName,
+        image: metadata.avatar_url || null,
+        roles: [metadata.role || 'PARENT'],
+    };
+}
 
 export function AuthStoreSync({ children }: { children: React.ReactNode }) {
-    const { setUser, user } = useAuthStore();
+    const { setUser } = useAuthStore();
     const supabase = createClient();
 
     useEffect(() => {
-        // 1. Check current session immediately on mount
-        const checkSession = async () => {
-            const { data: { session } } = await supabase.auth.getSession();
+        // Check session on mount using getUser() — recommended for security
+        supabase.auth.getUser().then(({ data: { user } }) => {
+            if (user) {
+                setUser(buildUser(user));
+            }
+        });
+
+        // Listen to auth state changes (login, logout, token refresh)
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
             if (session?.user) {
-                const metadata = session.user.user_metadata;
-                const detectedName = metadata?.full_name ||
-                    metadata?.name ||
-                    metadata?.firstName ||
-                    session.user.email?.split('@')[0] ||
-                    'Utilisateur';
-
-                setUser({
-                    id: session.user.id,
-                    email: session.user.email || '',
-                    name: detectedName,
-                    image: metadata?.avatar_url || null,
-                    roles: [metadata?.role || 'PARENT']
-                });
+                setUser(buildUser(session.user));
+            } else if (event === 'SIGNED_OUT') {
+                setUser(null);
             }
-        };
-
-        checkSession();
-
-        // 2. Listen for changes
-        const { data: { subscription } } = supabase.auth.onAuthStateChange(
-            async (event, session) => {
-                if (session?.user) {
-                    const metadata = session.user.user_metadata;
-                    const detectedName = metadata?.full_name ||
-                        metadata?.name ||
-                        metadata?.firstName ||
-                        session.user.email?.split('@')[0] ||
-                        'Utilisateur';
-
-                    setUser({
-                        id: session.user.id,
-                        email: session.user.email || '',
-                        name: detectedName,
-                        image: metadata?.avatar_url || null,
-                        roles: [metadata?.role || 'PARENT']
-                    });
-                } else if (event === 'SIGNED_OUT') {
-                    setUser(null);
-                }
-            }
-        );
+        });
 
         return () => subscription.unsubscribe();
-    }, [supabase, setUser]);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return <>{children}</>;
 }
