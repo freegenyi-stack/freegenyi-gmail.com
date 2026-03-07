@@ -6,9 +6,10 @@ import { updateSession } from '@/lib/supabase/middleware';
 const intlMiddleware = createMiddleware({
     locales,
     defaultLocale,
-    localePrefix: 'always',
-    localeDetection: true, // Réactivé pour détection automatique
+    localePrefix: 'as-needed',
+    localeDetection: true,
 });
+
 
 export default async function middleware(req: NextRequest) {
     const pathname = req.nextUrl.pathname;
@@ -36,12 +37,16 @@ export default async function middleware(req: NextRequest) {
     const country = req.headers.get('x-vercel-ip-country');
     const hasLocale = locales.some(l => pathname === `/${l}` || pathname.startsWith(`/${l}/`));
 
+    // Disabled automatic country -> locale redirect as requested to keep root clean
+    /*
     if (!hasLocale && !isPublicPath) {
         const detectedLocale = getLocaleFromCountry(country);
         if (detectedLocale !== defaultLocale) {
             return NextResponse.redirect(new URL(`/${detectedLocale}${pathname}`, req.url));
         }
     }
+    */
+
 
     const localeMatch = pathname.match(/^\/([a-z]{2,3})(\/|$)/);
     const locale = localeMatch ? localeMatch[1] : defaultLocale;
