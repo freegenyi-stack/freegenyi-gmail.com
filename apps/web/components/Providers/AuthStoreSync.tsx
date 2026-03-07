@@ -23,16 +23,18 @@ function buildUser(supabaseUser: any) {
 }
 
 export function AuthStoreSync({ children }: { children: React.ReactNode }) {
-    const { setUser } = useAuthStore();
+    const { setUser, user } = useAuthStore();
     const supabase = createClient();
 
     useEffect(() => {
-        // Check session on mount using getUser() — recommended for security
-        supabase.auth.getUser().then(({ data: { user } }) => {
-            if (user) {
-                setUser(buildUser(user));
-            }
-        });
+        // Only fetch if we don't already have a trusted user state
+        if (!user) {
+            supabase.auth.getUser().then(({ data: { user: supabaseUser } }) => {
+                if (supabaseUser) {
+                    setUser(buildUser(supabaseUser));
+                }
+            }).catch(console.error);
+        }
 
         // Listen to auth state changes (login, logout, token refresh)
         const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
