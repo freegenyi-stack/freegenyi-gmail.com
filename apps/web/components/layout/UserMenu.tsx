@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { Link } from '@/lib/i18n/navigation';
-import { useAuthStore } from '@/store/useAuthStore';
 import { createClient } from '@/lib/supabase/client';
 import { useTranslations } from 'next-intl';
+import { useState, useEffect } from 'react';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -17,16 +17,58 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { User, Settings, LogOut, Trophy } from 'lucide-react';
 
+interface User {
+    id: string;
+    email: string;
+    name: string | null;
+    image: string | null;
+}
+
 export function UserMenu() {
     const t = useTranslations('navbar');
-    const { user, logout, activeRole } = useAuthStore();
+    const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState(true);
     const supabase = createClient();
 
-    if (!user) return null;
+    useEffect(() => {
+        // Get initial session
+        const getUser = async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session?.user) {
+                setUser({
+                    id: session.user.id,
+                    email: session.user.email || '',
+                    name: session.user.user_metadata?.full_name || session.user.email?.split('@')[0] || null,
+                    image: session.user.user_metadata?.avatar_url || null
+                });
+            }
+            setLoading(false);
+        };
+
+        getUser();
+
+        // Listen for auth changes
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            if (session?.user) {
+                setUser({
+                    id: session.user.id,
+                    email: session.user.email || '',
+                    name: session.user.user_metadata?.full_name || session.user.email?.split('@')[0] || null,
+                    image: session.user.user_metadata?.avatar_url || null
+                });
+            } else {
+                setUser(null);
+            }
+            setLoading(false);
+        });
+
+        return () => subscription.unsubscribe();
+    }, []);
+
+    if (loading || !user) return null;
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
-        logout();
         window.location.href = '/';
     };
 
@@ -66,11 +108,7 @@ export function UserMenu() {
                 {/* Dynamic Dashboard Link */}
                 <DropdownMenuItem asChild>
                     <Link
-                        href={
-                            activeRole === 'TEACHER' ? "/ecole/dashboard" :
-                                activeRole === 'NGO' || activeRole === 'ORGANIZATION' ? "/ngo" :
-                                    "/parent"
-                        }
+                        href="/dashboard"
                         className="cursor-pointer font-bold text-primary"
                     >
                         <Trophy className="me-2 h-4 w-4" />

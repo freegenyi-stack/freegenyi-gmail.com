@@ -9,7 +9,8 @@ import { NavMenu } from "./NavMenu"
 import { LanguageSelector } from "./LanguageSelector"
 import { Button } from "@/components/ui/button"
 import { UserMenu } from "./UserMenu"
-import { useAuthStore } from "@/store/useAuthStore"
+import { createClient } from "@/lib/supabase/client"
+import { useState, useEffect } from "react"
 import {
     Sheet,
     SheetContent,
@@ -21,9 +22,30 @@ import { cn } from "@/lib/utils"
 
 export function AppBar() {
     const t = useTranslations("navigation")
-    const { isAuthenticated } = useAuthStore()
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [loading, setLoading] = useState(true)
     const locale = useLocale()
     const [mounted, setMounted] = React.useState(false)
+    const supabase = createClient()
+
+    useEffect(() => {
+        // Get initial session
+        const getAuth = async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            setIsAuthenticated(!!session);
+            setLoading(false);
+        };
+
+        getAuth();
+
+        // Listen for auth changes
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            setIsAuthenticated(!!session);
+            setLoading(false);
+        });
+
+        return () => subscription.unsubscribe();
+    }, []);
 
     React.useEffect(() => {
         setMounted(true)
@@ -42,11 +64,11 @@ export function AppBar() {
                 <div className="flex items-center gap-2 md:gap-4">
                     <div className="hidden sm:flex items-center gap-2">
                         <LanguageSelector />
-                        {!mounted ? (
+                        {!mounted || loading ? (
                             <div className="w-[100px] h-10 bg-gray-100 animate-pulse rounded-md" />
                         ) : !isAuthenticated ? (
                             <Button variant="ghost" asChild>
-                                <Link href={`/${locale}/auth/signin`}>{t("menu.login")}</Link>
+                                <Link href={`/${locale}/auth`}>{t("menu.login")}</Link>
                             </Button>
                         ) : (
                             <UserMenu />
@@ -84,11 +106,11 @@ export function AppBar() {
 
                                     <div className="mt-4 flex flex-col gap-2">
                                         <Button variant="premium" className="w-full">{t("menu.freeTrial")}</Button>
-                                        {!mounted ? (
+                                        {!mounted || loading ? (
                                             <div className="w-full h-10 bg-gray-100 animate-pulse rounded-md" />
                                         ) : !isAuthenticated ? (
                                             <Button variant="outline" className="w-full" asChild>
-                                                <Link href={`/${locale}/auth/signin`}>{t("menu.login")}</Link>
+                                                <Link href={`/${locale}/auth`}>{t("menu.login")}</Link>
                                             </Button>
                                         ) : (
                                             <div className="flex justify-center py-2">
