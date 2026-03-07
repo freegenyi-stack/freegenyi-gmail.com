@@ -14,10 +14,13 @@ export async function createClient() {
                 },
                 setAll(cookiesToSet) {
                     try {
+
                         cookiesToSet.forEach(({ name, value, options }) =>
                             cookieStore.set(name, value, {
                                 ...options,
-                                domain: process.env.NODE_ENV === 'production' ? '.freegeny.com' : undefined,
+                                // If it's production, we usually want the domain, 
+                                // but only if we are actually on it.
+                                domain: options.domain,
                             })
                         )
                     } catch {
@@ -26,9 +29,9 @@ export async function createClient() {
                 },
             },
             cookieOptions: {
-                domain: process.env.NODE_ENV === 'production' ? '.freegeny.com' : undefined,
                 path: '/',
             }
+
         }
     )
 }
