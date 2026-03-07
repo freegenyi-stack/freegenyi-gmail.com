@@ -12,11 +12,11 @@ import AboutSection from "@/components/marketing/AboutSection";
 import CtaSection from "@/components/marketing/CtaSection";
 import NgoBanner from "@/components/marketing/NgoBanner";
 
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 

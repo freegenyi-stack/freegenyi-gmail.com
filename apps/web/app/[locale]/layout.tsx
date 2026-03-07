@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { locales, rtlLocales } from '@/lib/i18n/config';
 import ClientLayout from '@/components/ClientLayout';
 import AccessibilityToolbar from '@/components/ui/AccessibilityToolbar';
