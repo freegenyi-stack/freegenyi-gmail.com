@@ -1,8 +1,8 @@
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export default async function OngsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
     const t = await getTranslations('navigation.menu.ongs');
 
     return (

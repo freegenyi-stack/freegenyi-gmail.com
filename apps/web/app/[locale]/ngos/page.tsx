@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from 'next-intl/server';
 import NgosClient from "./NgosClient";
 import { Globe2, Heart, Lightbulb, Users } from "lucide-react";
 
@@ -20,7 +20,7 @@ const VALUES = [
 
 export default async function NgosPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     return (
         <div className="min-h-screen bg-background">
