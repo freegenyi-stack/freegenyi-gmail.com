@@ -8,9 +8,15 @@ export const locales = [
 
 export type Locale = (typeof locales)[number];
 
-export const defaultLocale: Locale = 'en';
+export const defaultLocale: Locale = 'fr';
 
 export const rtlLocales: Locale[] = ['ar', 'fa', 'ur', 'dari'];
+
+export function getLocaleFromCountry(country: string | null): string {
+    // Pour l'Algérie et autres pays francophones, utiliser 'fr' par défaut
+    if (country === 'DZ' || country === 'MA' || country === 'TN') return 'fr';
+    return defaultLocale;
+}
 
 export const languageMetadata: Record<Locale, { name: string; nativeName: string; flag: string }> = {
     en: { name: 'English', nativeName: 'English', flag: '🇺🇸' },

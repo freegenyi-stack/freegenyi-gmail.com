@@ -1,5 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from './lib/i18n/config';
+import { locales, defaultLocale, getLocaleFromCountry } from './lib/i18n/config';
 import { NextRequest, NextResponse } from 'next/server';
 import { updateSession } from '@/lib/supabase/middleware';
 
@@ -7,13 +7,8 @@ const intlMiddleware = createMiddleware({
     locales,
     defaultLocale,
     localePrefix: 'always',
-    localeDetection: true,
+    localeDetection: false, // Désactivé pour éviter les redirections automatiques
 });
-
-function getLocaleFromCountry(country: string | null): string {
-    if (country === 'DZ') return 'ar';
-    return defaultLocale;
-}
 
 export default async function middleware(req: NextRequest) {
     const pathname = req.nextUrl.pathname;
