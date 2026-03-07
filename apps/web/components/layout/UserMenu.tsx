@@ -29,11 +29,15 @@ export function UserMenu() {
         window.location.href = '/';
     };
 
-    const userInitials = user.name
-        ?.split(' ')
-        .map(n => n[0])
-        .join('')
-        .toUpperCase() || '?';
+    const getInitials = (displayName: string) => {
+        const parts = displayName.trim().split(/\s+/);
+        if (parts.length >= 2) {
+            return (parts[0][0] + parts[1][0]).toUpperCase();
+        }
+        return displayName.slice(0, 2).toUpperCase();
+    };
+
+    const userInitials = user.name ? getInitials(user.name) : '?';
 
     return (
         <DropdownMenu>
