@@ -65,10 +65,8 @@ export default function AuthForm({ mode: initialMode = 'login' }: AuthFormProps)
             const { createClient } = await import("@/lib/supabase/client")
             const supabase = createClient()
             
-            // Use production URL for Vercel, fallback to origin for local
-            const callbackUrl = process.env.NODE_ENV === 'production' 
-                ? 'https://www.freegeny.com/api/auth/callback'
-                : `${window.location.origin}/api/auth/callback`
+            // Always use current origin to avoid cross-domain cookie issues
+            const callbackUrl = `${window.location.origin}/api/auth/callback`
             
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: providerId as any,
