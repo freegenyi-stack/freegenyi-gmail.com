@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from 'next-intl/server';
 import SchoolsClient from "./SchoolsClient";
 import { CheckCircle2, GraduationCap, LineChart, ShieldCheck, Zap } from "lucide-react";
 import Image from "next/image";
@@ -21,7 +21,7 @@ const FEATURES = [
 
 export default async function SchoolsPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     return (
         <div className="min-h-screen bg-background">
