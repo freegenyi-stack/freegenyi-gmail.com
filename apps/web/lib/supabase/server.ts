@@ -26,9 +26,6 @@ export async function createClient() {
                         // setAll called from Server Component
                     }
                 },
-            },
-            cookieOptions: {
-                path: '/',
             }
         }
     )

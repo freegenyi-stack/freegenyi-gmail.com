@@ -29,11 +29,7 @@ export async function updateSession(request: NextRequest) {
                         })
                     )
                 },
-            },
-            cookieOptions: {
-                path: '/',
             }
-
         }
     )
 
