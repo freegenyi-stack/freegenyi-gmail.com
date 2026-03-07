@@ -10,12 +10,16 @@ export async function GET(request: Request) {
         if (code) {
             const supabase = await createClient()
             console.log("🛠 Exchanging code for session...");
-            const { data: { user }, error } = await supabase.auth.exchangeCodeForSession(code)
+            const { data, error } = await supabase.auth.exchangeCodeForSession(code)
 
             if (error) {
                 console.error("❌ Supabase exchange error:", error.message);
-                throw error;
+                // Redirect directly to the error page so we don't proceed
+                const errorUrl = new URL(`/fr/auth/error?error=OAuthCallbackError`, origin)
+                return NextResponse.redirect(errorUrl)
             }
+
+            const user = data?.user;
 
             if (user) {
                 console.log("✅ User authenticated:", user.email);
@@ -36,12 +40,12 @@ export async function GET(request: Request) {
                 let targetPath = next;
                 if (targetPath === '/') {
                     // Try multiple sources for role
-                    const role = user.user_metadata?.role || 
-                                user.app_metadata?.role || 
-                                'PARENT';
-                    
+                    const role = user.user_metadata?.role ||
+                        user.app_metadata?.role ||
+                        'PARENT';
+
                     console.log("🎭 Determining redirect for role:", role);
-                    
+
                     if (role === 'TEACHER') targetPath = '/ecole/dashboard';
                     else if (role === 'NGO' || role === 'ORGANIZATION') targetPath = '/ngo';
                     else targetPath = '/parent';
