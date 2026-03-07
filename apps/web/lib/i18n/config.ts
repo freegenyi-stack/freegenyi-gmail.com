@@ -13,8 +13,10 @@ export const defaultLocale: Locale = 'fr';
 export const rtlLocales: Locale[] = ['ar', 'fa', 'ur', 'dari'];
 
 export function getLocaleFromCountry(country: string | null): string {
-    // Pour l'Algérie et autres pays francophones, utiliser 'fr' par défaut
-    if (country === 'DZ' || country === 'MA' || country === 'TN') return 'fr';
+    // Pour l'Algérie, utiliser l'arabe par défaut
+    if (country === 'DZ') return 'ar';
+    // Pour les autres pays du Maghreb, utiliser le français
+    if (country === 'MA' || country === 'TN') return 'fr';
     return defaultLocale;
 }
 

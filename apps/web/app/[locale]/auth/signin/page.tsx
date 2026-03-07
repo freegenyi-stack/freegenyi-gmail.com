@@ -1,18 +1,13 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { ArrowRight, Eye, EyeOff, Mail, Lock, User, Sparkles, BookOpen, Globe } from 'lucide-react';
-import dynamic from 'next/dynamic';
 import { createClient } from '@/lib/supabase/client';
 import LoadingOverlay from '@/components/auth/LoadingOverlay';
-
-// Chargement dynamique de Lottie pour éviter les problèmes SSR
-const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
-
-// Animation data chargé dynamiquement
+import LottieAnimation from '@/components/auth/LottieAnimation';
 import animationData from '@/public/lottie/education.json';
 
 // Providers : Google, Facebook, Apple (préparation - disabled)
@@ -301,7 +296,7 @@ export default function SignInPage() {
 
           <div className="relative z-10 max-w-lg text-center">
             <div className="w-80 h-80 mx-auto mb-8">
-              <Lottie animationData={animationData} loop={true} className="w-full h-full" />
+              <LottieAnimation animationData={animationData} className="w-full h-full" />
             </div>
 
             <h2 className="text-3xl font-bold text-white mb-4">

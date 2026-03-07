@@ -7,7 +7,7 @@ const intlMiddleware = createMiddleware({
     locales,
     defaultLocale,
     localePrefix: 'always',
-    localeDetection: false, // Désactivé pour éviter les redirections automatiques
+    localeDetection: true, // Réactivé pour détection automatique
 });
 
 export default async function middleware(req: NextRequest) {
