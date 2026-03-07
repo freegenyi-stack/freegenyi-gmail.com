@@ -3,13 +3,14 @@
 import { motion } from 'framer-motion';
 
 interface SocialButton {
-    name: 'google' | 'apple' | 'microsoft' | 'facebook' | 'linkedin';
+    name: 'google' | 'apple' | 'facebook';
     icon: JSX.Element;
     hoverColor: string;
+    disabled?: boolean;
 }
 
 interface SocialButtonsProps {
-    onSocialLogin: (provider: 'google' | 'apple' | 'microsoft' | 'facebook' | 'linkedin') => void;
+    onSocialLogin: (provider: 'google' | 'apple' | 'facebook') => void;
     loading: boolean;
 }
 
@@ -27,27 +28,6 @@ const socialButtons: SocialButton[] = [
         ),
     },
     {
-        name: 'apple',
-        hoverColor: 'hover:border-black hover:bg-[#fafafa]',
-        icon: (
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6">
-                <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-            </svg>
-        ),
-    },
-    {
-        name: 'microsoft',
-        hoverColor: 'hover:border-[#00a4ef] hover:bg-[#f5fcff]',
-        icon: (
-            <svg viewBox="0 0 24 24" className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6">
-                <rect x="1" y="1" width="10.5" height="10.5" fill="#f25022" />
-                <rect x="12.5" y="1" width="10.5" height="10.5" fill="#7fba00" />
-                <rect x="1" y="12.5" width="10.5" height="10.5" fill="#00a4ef" />
-                <rect x="12.5" y="12.5" width="10.5" height="10.5" fill="#ffb900" />
-            </svg>
-        ),
-    },
-    {
         name: 'facebook',
         hoverColor: 'hover:border-[#1877F2] hover:bg-[#f5f9ff]',
         icon: (
@@ -57,27 +37,28 @@ const socialButtons: SocialButton[] = [
         ),
     },
     {
-        name: 'linkedin',
-        hoverColor: 'hover:border-[#0077B5] hover:bg-[#f5faff]',
+        name: 'apple',
+        hoverColor: 'hover:border-gray-400 hover:bg-gray-50',
         icon: (
-            <svg viewBox="0 0 24 24" fill="#0077B5" className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 text-gray-400">
+                <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
             </svg>
         ),
+        disabled: true,
     },
 ];
 
 export default function SocialButtons({ onSocialLogin, loading }: SocialButtonsProps) {
     return (
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-2 sm:gap-2.5 md:gap-3">
+        <div className="grid grid-cols-3 gap-2 sm:gap-2.5 md:gap-3">
             {socialButtons.map((button) => (
                 <motion.button
                     key={button.name}
                     type="button"
-                    onClick={() => onSocialLogin(button.name)}
-                    disabled={loading}
-                    whileHover={{ y: -4 }}
-                    whileTap={{ y: 0 }}
+                    onClick={() => !button.disabled && onSocialLogin(button.name)}
+                    disabled={loading || button.disabled}
+                    whileHover={button.disabled ? {} : { y: -4 }}
+                    whileTap={button.disabled ? {} : { y: 0 }}
                     className={`
             bg-white border-[1.5px] border-[#F1F5F9] p-2 sm:p-3 md:p-3.5 rounded-lg sm:rounded-2xl md:rounded-[20px]
             flex items-center justify-center cursor-pointer
@@ -87,7 +68,7 @@ export default function SocialButtons({ onSocialLogin, loading }: SocialButtonsP
             disabled:opacity-50 disabled:cursor-not-allowed
             ${button.hoverColor}
           `}
-                    title={button.name.charAt(0).toUpperCase() + button.name.slice(1)}
+                    title={button.disabled ? "Bientôt disponible" : button.name.charAt(0).toUpperCase() + button.name.slice(1)}
                 >
                     {button.icon}
                 </motion.button>
