@@ -26,15 +26,14 @@ export async function updateSession(request: NextRequest) {
                             name,
                             value,
                             ...options,
-                            domain: process.env.NODE_ENV === 'production' ? '.freegeny.com' : undefined,
                         })
                     )
                 },
             },
             cookieOptions: {
-                domain: process.env.NODE_ENV === 'production' ? '.freegeny.com' : undefined,
                 path: '/',
             }
+
         }
     )
 

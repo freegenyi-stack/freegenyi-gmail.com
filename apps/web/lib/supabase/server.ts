@@ -28,7 +28,6 @@ export async function createClient() {
                 },
             },
             cookieOptions: {
-                domain: host.includes('freegeny.com') ? '.freegeny.com' : undefined,
                 path: '/',
             }
         }

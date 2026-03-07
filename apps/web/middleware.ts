@@ -75,12 +75,7 @@ export default async function middleware(req: NextRequest) {
     // We must iterate over supabaseResponse.cookies because updateSession might have set/deleted cookies
     supabaseResponse.cookies.getAll().forEach((cookie) => {
         const { name, value, ...options } = cookie;
-        const host = req.headers.get('host');
-        const isCanonical = host?.includes('freegeny.com');
-        response.cookies.set(name, value, {
-            ...options,
-            domain: isCanonical ? '.freegeny.com' : undefined
-        });
+        response.cookies.set(name, value, options);
     });
 
 
