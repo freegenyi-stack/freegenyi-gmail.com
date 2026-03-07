@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from 'next-intl/server';
 import SignUpClient from "./SignUpClient";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
@@ -12,7 +12,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
 export default async function SignUpPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     return (
         <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">

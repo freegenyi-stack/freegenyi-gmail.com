@@ -68,7 +68,7 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   let messages;
   try {
