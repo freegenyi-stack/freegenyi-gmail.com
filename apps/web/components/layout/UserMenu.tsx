@@ -1,10 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { Link } from '@/lib/i18n/navigation';
+import { Link, useRouter } from '@/lib/i18n/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { useTranslations } from 'next-intl';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -26,6 +26,7 @@ interface User {
 
 export function UserMenu() {
     const t = useTranslations('navbar');
+    const router = useRouter();
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
     const supabase = createClient();
@@ -69,18 +70,22 @@ export function UserMenu() {
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
-        window.location.href = '/';
+        router.push('/');
     };
 
-    const getInitials = (displayName: string) => {
-        const parts = displayName.trim().split(/\s+/);
-        if (parts.length >= 2) {
-            return (parts[0][0] + parts[1][0]).toUpperCase();
-        }
-        return displayName.slice(0, 2).toUpperCase();
-    };
-
-    const userInitials = user.name ? getInitials(user.name) : '?';
+    const userInitials = useMemo(() => {
+        if (!user.name) return '?';
+        
+        const getInitials = (displayName: string) => {
+            const parts = displayName.trim().split(/\s+/);
+            if (parts.length >= 2) {
+                return (parts[0][0] + parts[1][0]).toUpperCase();
+            }
+            return displayName.slice(0, 2).toUpperCase();
+        };
+        
+        return getInitials(user.name);
+    }, [user.name]);
 
     return (
         <DropdownMenu>
