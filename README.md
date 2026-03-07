@@ -54,3 +54,4 @@ Les Pull Requests sont les bienvenues. Assurez-vous que les tests passent avant 
 
 <!-- Small change to triggered deployment -->
 <!-- Triggering again now that GitHub is connected -->
+<!-- Final forced trigger after GitHub connection fix -->
