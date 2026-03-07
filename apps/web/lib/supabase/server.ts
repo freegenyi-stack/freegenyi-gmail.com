@@ -1,8 +1,10 @@
 import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 
 export async function createClient() {
     const cookieStore = await cookies()
+    const headerStack = await headers()
+    const host = headerStack.get('host') || ''
 
     return createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -14,27 +16,21 @@ export async function createClient() {
                 },
                 setAll(cookiesToSet) {
                     try {
-
                         cookiesToSet.forEach(({ name, value, options }) =>
                             cookieStore.set(name, value, {
                                 ...options,
-                                // If it's production, we usually want the domain, 
-                                // but only if we are actually on it.
                                 domain: options.domain,
                             })
                         )
                     } catch {
-                        // setAll called from Server Component — can be safely ignored
+                        // setAll called from Server Component
                     }
                 },
             },
             cookieOptions: {
-                domain: (await import('next/headers')).headers().get('host')?.includes('freegeny.com')
-                    ? '.freegeny.com'
-                    : undefined,
+                domain: host.includes('freegeny.com') ? '.freegeny.com' : undefined,
                 path: '/',
             }
-
         }
     )
 }

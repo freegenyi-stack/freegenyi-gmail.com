@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 import { createClient } from '@/lib/supabase/server'
 
 export async function GET(request: Request) {
@@ -13,10 +14,10 @@ export async function GET(request: Request) {
             console.log(`🔑 Code reçu sur Host: ${host}, échange en cours...`);
             const supabase = await createClient()
 
-            // Log cookies for debugging
-            const cookieStore = await import('next/headers').then(m => m.cookies())
-            const allCookies = (await cookieStore).getAll()
-            console.log(`🍪 Cookies reçus dans le callback: ${allCookies.map(c => c.name).join(', ')}`)
+            // Simple cookie log
+            const cookieStore = await cookies()
+            const cookieNames = cookieStore.getAll().map(c => c.name).join(', ')
+            console.log(`🍪 Cookies in callback: [${cookieNames}]`)
 
             console.log("🛠 Exchanging code for session...");
             const { data: { user }, error } = await supabase.auth.exchangeCodeForSession(code)
