@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
 import { createClient } from '@/lib/supabase/server'
 
 export async function GET(request: Request) {
@@ -63,5 +62,7 @@ export async function GET(request: Request) {
         console.error("🔥 Callback crash:", err.message);
     }
 
-    return NextResponse.redirect(`${origin}/auth/error?error=OAuthCallbackError`)
+    // Fallback: redirect to a localized auth error page
+    const errorUrl = new URL('/fr/auth/error?error=OAuthCallbackError', origin)
+    return NextResponse.redirect(errorUrl)
 }

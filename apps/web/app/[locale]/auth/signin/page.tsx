@@ -69,10 +69,17 @@ export default function SignInPage() {
     try {
       console.log(`🔐 Starting ${providerId} OAuth flow...`);
       const supabase = createClient();
+
+      // Build a stable redirect URL that matches Supabase settings
+      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
+      const redirectUrl = new URL('/api/auth/callback', siteUrl);
+      // Preserve the intended post-login destination (locale-aware)
+      redirectUrl.searchParams.set('next', `/${locale}/parent`);
+
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: providerId as any,
         options: {
-          redirectTo: `${window.location.origin}/api/auth/callback`,
+          redirectTo: redirectUrl.toString(),
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
@@ -94,7 +101,7 @@ export default function SignInPage() {
       setError(err.message || `Une erreur est survenue avec ${providerId}`);
       setLoading(false);
     }
-  }, []);
+  }, [locale]);
 
   const handleEmailAuth = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
