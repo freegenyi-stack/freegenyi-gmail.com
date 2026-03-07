@@ -19,6 +19,9 @@ import { User, Settings, LogOut, Trophy } from 'lucide-react';
 
 export function UserMenu() {
     const t = useTranslations('navbar');
+    const { user, logout, activeRole } = useAuthStore();
+    const supabase = createClient();
+
     if (!user) return null;
 
     const handleLogout = async () => {
