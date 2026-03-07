@@ -53,3 +53,4 @@ Les Pull Requests sont les bienvenues. Assurez-vous que les tests passent avant 
 5. Ouvrez une Pull Request
 
 <!-- Small change to triggered deployment -->
+<!-- Triggering again now that GitHub is connected -->
