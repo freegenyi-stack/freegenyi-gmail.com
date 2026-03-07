@@ -41,20 +41,28 @@ function buildUser(supabaseUser: any) {
 }
 
 export function AuthStoreSync({ children }: { children: React.ReactNode }) {
-    const { setUser, user } = useAuthStore();
+    const { setUser } = useAuthStore();
     const supabase = createClient();
 
     useEffect(() => {
-        // Only fetch if we don't already have a trusted user state
-        if (!user) {
-            supabase.auth.getUser().then(({ data: { user: supabaseUser } }) => {
-                if (supabaseUser) {
-                    setUser(buildUser(supabaseUser));
+        // Force sync on mount
+        const syncSession = async () => {
+            try {
+                // getSession reads the local cookie/storage immediately without an active network request
+                const { data: { session } } = await supabase.auth.getSession();
+                if (session?.user) {
+                    setUser(buildUser(session.user));
+                } else {
+                    setUser(null);
                 }
-            }).catch(console.error);
-        }
+            } catch (error) {
+                console.error("Auth sync error:", error);
+            }
+        };
 
-        // Listen to auth state changes (login, logout, token refresh)
+        syncSession();
+
+        // Listen for all future auth state changes
         const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
             if (session?.user) {
                 setUser(buildUser(session.user));
@@ -64,7 +72,7 @@ export function AuthStoreSync({ children }: { children: React.ReactNode }) {
         });
 
         return () => subscription.unsubscribe();
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [setUser, supabase]);
 
     return <>{children}</>;
 }
