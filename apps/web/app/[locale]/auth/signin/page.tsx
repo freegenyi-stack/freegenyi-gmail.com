@@ -71,7 +71,7 @@ export default function SignInPage() {
       const supabase = createClient();
 
       // Build a stable redirect URL that matches Supabase settings
-      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
+      const siteUrl = window.location.origin;
       const redirectUrl = new URL('/api/auth/callback', siteUrl);
       // Preserve the intended post-login destination (locale-aware)
       redirectUrl.searchParams.set('next', `/${locale}/parent`);
@@ -91,7 +91,7 @@ export default function SignInPage() {
         console.error(`❌ ${providerId} OAuth error:`, error);
         throw error;
       }
-      
+
       if (data?.url) {
         console.log(`✅ Redirecting to ${providerId}:`, data.url);
         window.location.href = data.url;
