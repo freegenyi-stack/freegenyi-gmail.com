@@ -62,10 +62,11 @@ export function useRealtime(userId: string | null) {
         };
     }, [userId, addNotification]);
 
-    // Request notification permission
+    // Request notification permission logic - should ideally be called on user interaction
     useEffect(() => {
-        if ('Notification' in window && Notification.permission === 'default') {
-            Notification.requestPermission();
+        if (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'default') {
+            // We just check permission here, don't force request on mount as it's often blocked
+            console.log("🔔 Desktop notifications are available but permission is not yet granted.");
         }
     }, []);
 }

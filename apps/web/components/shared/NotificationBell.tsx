@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import { Bell } from 'lucide-react';
 import { useNotificationStore } from '@/store/useNotificationStore';
 import { Button } from '@/components/ui/button';
@@ -31,6 +32,7 @@ const typeIcons = {
 
 export function NotificationBell() {
     const t = useTranslations('notifications');
+    const [mounted, setMounted] = React.useState(false);
     const {
         notifications,
         unreadCount,
@@ -40,6 +42,18 @@ export function NotificationBell() {
         markAllAsRead,
         removeNotification
     } = useNotificationStore();
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) {
+        return (
+            <Button variant="ghost" size="icon" className="relative">
+                <Bell className="h-5 w-5" />
+            </Button>
+        );
+    }
 
     return (
         <Popover open={isOpen} onOpenChange={setOpen}>

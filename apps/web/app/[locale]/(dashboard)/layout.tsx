@@ -9,7 +9,6 @@ import { cn } from '@/lib/utils';
 import { DashboardSidebar } from '@/components/dashboard/Sidebar';
 import { AppNavbar } from '@/components/layout/AppNavbar';
 import { Toaster } from '@/components/ui/toaster';
-import { AuthStoreSync } from '@/components/Providers/AuthStoreSync';
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
 import { rtlLocales } from '@/lib/i18n/config';
@@ -57,9 +56,7 @@ function DashboardLayoutContent({ children }: { children: ReactNode }) {
 export default function DashboardLayout({ children }: { children: ReactNode }) {
     return (
         <QueryClientProvider client={queryClient}>
-            <AuthStoreSync>
-                <DashboardLayoutContent>{children}</DashboardLayoutContent>
-            </AuthStoreSync>
+            <DashboardLayoutContent>{children}</DashboardLayoutContent>
         </QueryClientProvider>
     );
 }
