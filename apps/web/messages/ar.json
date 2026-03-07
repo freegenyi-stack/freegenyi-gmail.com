@@ -242,6 +242,9 @@
     "lastNamePlaceholder": "سبارك",
     "passwordPlaceholder": "••••••••",
     "privacy": "الخصوصية",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "rememberMe": "تذكرني",
     "roleSelection": "أنت :",
     "roles": {
       "parent": "ولي أمر",
@@ -262,7 +265,8 @@
     "trustItems": {
       "certified": "برامج معتمدة من خبراء التعليم",
       "countries": "متوفر في أكثر من 38 دولة",
-      "learners": "أكثر من 500,000 طفل يتعلمون يومياً"
+      "learners": "أكثر من 500,000 طفل يتعلمون يومياً",
+      "exercises": "تمارين تفاعلية"
     },
     "quote": "كل طفل هو عبقري نائم.",
     "quoteSubtext": "فريجيني يحول كل لحظة إلى فرصة للتعلم والنمو والدهشة.",
