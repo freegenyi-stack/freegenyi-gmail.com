@@ -31,6 +31,7 @@ import { cn } from '@/lib/utils';
 export function AppNavbar() {
     const t = useTranslations('navbar');
     const pathname = usePathname();
+    const { user, logout, activeRole } = useAuthStore();
     const supabase = createClient();
     const locale = useLocale();
     const isRTL = rtlLocales.includes(locale as any);
