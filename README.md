@@ -51,3 +51,5 @@ Les Pull Requests sont les bienvenues. Assurez-vous que les tests passent avant 
 3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
 4. Pushez vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrez une Pull Request
+
+<!-- Small change to triggered deployment -->
