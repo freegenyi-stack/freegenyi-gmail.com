@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import { Link } from '@/lib/i18n/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
 import { createClient } from '@/lib/supabase/client';
