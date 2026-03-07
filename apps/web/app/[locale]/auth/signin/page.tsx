@@ -1,14 +1,19 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { ArrowRight, Eye, EyeOff, Mail, Lock, User, Sparkles, BookOpen, Globe } from 'lucide-react';
-import Lottie from 'lottie-react';
-import educationAnimation from '@/public/lottie/education.json';
+import dynamic from 'next/dynamic';
 import { createClient } from '@/lib/supabase/client';
 import LoadingOverlay from '@/components/auth/LoadingOverlay';
+
+// Chargement dynamique de Lottie pour éviter les problèmes SSR
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+
+// Animation data chargé dynamiquement
+import animationData from '@/public/lottie/education.json';
 
 // Providers : Google, Facebook, Apple (préparation - disabled)
 const SOCIAL_PROVIDERS = [
@@ -110,11 +115,13 @@ export default function SignInPage() {
     }
   }, [email, password, name, isLogin, locale, router]);
 
+  const isRTL = locale === 'ar';
+
   return (
     <>
       <LoadingOverlay isVisible={loading} message={t('connecting')} />
 
-      <div className="min-h-screen w-full bg-gradient-to-br from-slate-50 via-white to-slate-100 flex">
+      <div className={`min-h-screen w-full bg-gradient-to-br from-slate-50 via-white to-slate-100 flex ${isRTL ? 'rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
         {/* Left side - Form */}
         <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12">
           <div className="w-full max-w-md space-y-8">
@@ -294,7 +301,7 @@ export default function SignInPage() {
 
           <div className="relative z-10 max-w-lg text-center">
             <div className="w-80 h-80 mx-auto mb-8">
-              <Lottie animationData={educationAnimation} loop={true} className="w-full h-full" />
+              <Lottie animationData={animationData} loop={true} className="w-full h-full" />
             </div>
 
             <h2 className="text-3xl font-bold text-white mb-4">
