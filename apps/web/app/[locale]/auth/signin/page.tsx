@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useParams, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -81,9 +81,9 @@ function getDashboardPath(role: UserRole | string | undefined, locale: string): 
   }
 }
 
-// ─── Main Component ───────────────────────────────────────────────────────────
+// ─── Sign In Content (using useSearchParams) ────────────────────────────────
 
-export default function SignInPage() {
+function SignInContent() {
   const params = useParams();
   const searchParams = useSearchParams();
   const locale = (params?.locale as string) || 'fr';
@@ -281,11 +281,10 @@ export default function SignInPage() {
                           key={r.id}
                           type="button"
                           onClick={() => setRole(r.id)}
-                          className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all duration-200 ${
-                            isActive
-                              ? 'border-violet-600 bg-violet-50 shadow-sm'
-                              : 'border-gray-200 bg-white hover:border-violet-300'
-                          }`}
+                          className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all duration-200 ${isActive
+                            ? 'border-violet-600 bg-violet-50 shadow-sm'
+                            : 'border-gray-200 bg-white hover:border-violet-300'
+                            }`}
                         >
                           <Icon className={`h-5 w-5 ${isActive ? 'text-violet-600' : 'text-gray-400'}`} />
                           <span className={`text-[11px] font-semibold ${isActive ? 'text-violet-700' : 'text-gray-600'}`}>
@@ -456,5 +455,19 @@ export default function SignInPage() {
         </div>
       </div>
     </>
+  );
+}
+
+// ─── Default Export (with Suspense wrapper) ──────────────────────────────────
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-violet-600 border-t-transparent" />
+      </div>
+    }>
+      <SignInContent />
+    </Suspense>
   );
 }
