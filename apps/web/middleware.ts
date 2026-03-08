@@ -6,7 +6,7 @@ import { updateSession } from '@/lib/supabase/middleware';
 const intlMiddleware = createMiddleware({
     locales,
     defaultLocale,
-    localePrefix: 'as-needed',
+    localePrefix: 'always',
     localeDetection: false,
 });
 

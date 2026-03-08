@@ -51,7 +51,7 @@ export async function GET(request: Request) {
                     else targetPath = '/parent';
                 }
 
-                // Ensure locale prefix
+                // Ensure locale prefix (standardize to /fr/ if missing or use the one from targetPath)
                 if (!targetPath.match(/^\/([a-z]{2,3})(\/|$)/)) {
                     targetPath = `/fr${targetPath.startsWith('/') ? '' : '/'}${targetPath}`;
                 }
