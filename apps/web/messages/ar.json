@@ -220,6 +220,7 @@
   "auth": {
     "loginWelcome": "مرحباً بعودتك!",
     "loginSubtitle": "افتح عالمك السحري.",
+    "comingSoon": "قريباً",
     "signupTitle": "انضم إلى المغامرة!",
     "signupSubtitle": "أنشئ حسابك السحري اليوم.",
     "emailLabel": "اسم المستخدم أو البريد الإلكتروني",

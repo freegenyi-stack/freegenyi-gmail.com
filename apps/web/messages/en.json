@@ -223,6 +223,7 @@
   "auth": {
     "loginWelcome": "Welcome Back!",
     "loginSubtitle": "Unlock your magic world.",
+    "comingSoon": "Coming Soon",
     "signupTitle": "Join the Adventure!",
     "signupSubtitle": "Create your magic account today.",
     "emailLabel": "Email",
