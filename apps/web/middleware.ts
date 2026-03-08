@@ -49,8 +49,9 @@ export default async function middleware(req: NextRequest) {
     */
 
 
-    const localeMatch = pathname.match(/^\/([a-z]{2,3})(\/|$)/);
-    const locale = localeMatch ? localeMatch[1] : defaultLocale;
+    const pathSegments = pathname.split('/').filter(Boolean);
+    const matchedLocale = locales.find(l => l === pathSegments[0]);
+    const locale = matchedLocale || defaultLocale;
 
     // 3. Auth Check for protected routes
     if (isProtectedRoute && !user) {

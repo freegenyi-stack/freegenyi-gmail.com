@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { locales, defaultLocale } from '@/lib/i18n/config'
 
 export async function GET(request: Request) {
     const { searchParams, origin } = new URL(request.url)
@@ -51,9 +52,12 @@ export async function GET(request: Request) {
                     else targetPath = '/parent';
                 }
 
-                // Ensure locale prefix (standardize to /fr/ if missing or use the one from targetPath)
-                if (!targetPath.match(/^\/([a-z]{2,3})(\/|$)/)) {
-                    targetPath = `/fr${targetPath.startsWith('/') ? '' : '/'}${targetPath}`;
+                // Ensure locale prefix
+                const pathSegments = targetPath.split('/').filter(Boolean);
+                const hasValidLocale = locales.some(l => l === pathSegments[0]);
+
+                if (!hasValidLocale) {
+                    targetPath = `/${defaultLocale}${targetPath.startsWith('/') ? '' : '/'}${targetPath}`;
                 }
 
                 // Robust redirect back to current origin
