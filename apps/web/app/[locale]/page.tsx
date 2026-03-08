@@ -2,6 +2,8 @@ import { createClient } from "@/lib/supabase/server";
 import { Role } from "@prisma/client";
 import { redirect } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+
 // Marketing components
 import Hero from "@/components/marketing/Hero";
 import Features from "@/components/marketing/Features";
@@ -18,7 +20,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   try {
     const { locale } = await params;
     setRequestLocale(locale);
-    
+
     // Try to get Supabase client, but don't fail the whole page if it fails
     let user = null;
     try {

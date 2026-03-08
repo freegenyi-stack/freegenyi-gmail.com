@@ -1,5 +1,7 @@
 import { redirect } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * /auth → redirige vers /auth/signin (formulaire unifié)
  * Plus de doublon de formulaire ici.
