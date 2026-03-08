@@ -66,15 +66,13 @@ export function UserMenu() {
         return () => subscription.unsubscribe();
     }, []);
 
-    if (loading || !user) return null;
-
     const handleLogout = async () => {
         await supabase.auth.signOut();
         router.push('/');
     };
 
     const userInitials = useMemo(() => {
-        if (!user.name) return '?';
+        if (!user?.name) return '?';
         
         const getInitials = (displayName: string) => {
             const parts = displayName.trim().split(/\s+/);
@@ -85,7 +83,12 @@ export function UserMenu() {
         };
         
         return getInitials(user.name);
-    }, [user.name]);
+    }, [user?.name]);
+
+    // Always render the component, but show loading state or nothing when not authenticated
+    if (loading || !user) {
+        return <div className="w-10 h-10" />; // Placeholder to maintain consistent hook usage
+    }
 
     return (
         <DropdownMenu>
