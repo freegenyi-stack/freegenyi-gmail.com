@@ -1,134 +1,94 @@
 <?php
-// ============================================================
-// Page — Login
-// ============================================================
-require_once __DIR__ . '/../../config/app.php';
-initSession();
-requireGuest(); // Redirige si déjà connecté
-
-$lang  = detectLang();
-$isRtl = in_array($lang, RTL_LANGS);
-$translations = loadLang($lang);
-
-$pageTitle       = 'Connexion — FreeGeny';
-$pageDescription = 'Connectez-vous à votre espace FreeGeny pour suivre la progression de vos enfants.';
-
-require_once INCLUDES_PATH . '/header.php';
+$page_title = "Connexion - FreeGeny";
+include_once __DIR__ . '/../../includes/header.php';
 ?>
 
-<div class="auth-container">
-  <div class="auth-card" x-data="loginForm()">
-
-    <!-- Logo -->
-    <div class="auth-logo">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="8" fill="#FF6B35"/>
-        <text x="16" y="22" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Inter">F</text>
-      </svg>
-      FreeGeny
-    </div>
-
-    <h1 class="auth-title"><?= t('auth.login.title') ?></h1>
-    <p class="auth-subtitle">
-      <?= $lang === 'ar' ? 'أدخل بياناتك للوصول إلى لوحة التحكم' : 'Entrez vos identifiants pour accéder à votre espace' ?>
-    </p>
-
-    <!-- Alert erreur -->
-    <div x-show="error" x-text="error" class="alert alert-error" style="margin-bottom:1.5rem;display:none;" x-transition></div>
-
-    <!-- Formulaire -->
-    <form @submit.prevent="submit" id="login-form" novalidate>
-
-      <div class="form-group">
-        <label class="form-label" for="login-email"><?= t('auth.login.email') ?></label>
-        <input
-          type="email"
-          id="login-email"
-          name="email"
-          x-model="form.email"
-          class="form-input"
-          autocomplete="email"
-          placeholder="votre@email.com"
-          required
-        >
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="login-password">
-          <?= t('auth.login.password') ?>
-          <a href="<?= APP_URL ?>/auth/forgot-password" style="float:<?= $isRtl ? 'left' : 'right' ?>;font-size:0.8rem;color:var(--clr-accent);">
-            <?= t('auth.login.forgot') ?>
-          </a>
-        </label>
-        <div style="position:relative;">
-          <input
-            :type="showPassword ? 'text' : 'password'"
-            id="login-password"
-            name="password"
-            x-model="form.password"
-            class="form-input"
-            autocomplete="current-password"
-            placeholder="••••••••"
-            style="padding-right:3rem;"
-            required
-          >
-          <button type="button" @click="showPassword = !showPassword"
-            style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--clr-text-muted);cursor:pointer;"
-            :aria-label="showPassword ? 'Masquer' : 'Afficher'">
-            <svg x-show="!showPassword" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            <svg x-show="showPassword" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-          </button>
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-orange-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-3xl shadow-2xl border border-gray-100">
+        <div>
+            <h2 class="text-center text-3xl font-extrabold text-gray-900">
+                Bienvenue sur FreeGeny
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                L'excellence scolaire pour vos enfants
+            </p>
         </div>
-      </div>
 
-      <button type="submit" class="btn btn-primary w-full btn-lg" id="login-submit" :class="{ 'btn-loading': loading }" :disabled="loading">
-        <span x-show="!loading"><?= t('auth.login.submit') ?></span>
-        <span x-show="loading" style="display:none;"><?= $lang === 'ar' ? 'جاري تسجيل الدخول...' : 'Connexion en cours...' ?></span>
-      </button>
+        <!-- Authentification Sociale (POINT 1) -->
+        <div class="space-y-4">
+            <a href="<?php echo APP_URL; ?>/api/auth/social.php?provider=google" 
+               class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all duration-200">
+                <img class="h-5 w-5 mr-3" src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+                Continuer avec Google
+            </a>
 
-    </form>
+            <a href="<?php echo APP_URL; ?>/api/auth/social.php?provider=facebook" 
+               class="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-xl shadow-sm bg-[#1877F2] text-sm font-medium text-white hover:bg-[#166fe5] transition-all duration-200">
+                <img class="h-5 w-5 mr-3" src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook">
+                Continuer avec Facebook
+            </a>
 
-    <div class="auth-footer">
-      <?= t('auth.login.no_account') ?>
-      <a href="<?= APP_URL ?>/auth/register" style="color:var(--clr-accent);font-weight:600;"><?= t('auth.login.register') ?></a>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="<?php echo APP_URL; ?>/api/auth/social.php?provider=microsoft" 
+                   class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    <img class="h-5 w-5 mr-2" src="https://www.svgrepo.com/show/452062/microsoft.svg" alt="Microsoft">
+                    Microsoft
+                </a>
+                <a href="<?php echo APP_URL; ?>/api/auth/social.php?provider=instagram" 
+                   class="flex items-center justify-center px-4 py-3 border border-transparent rounded-xl shadow-sm bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-sm font-medium text-white">
+                    <img class="h-5 w-5 mr-2" src="https://www.svgrepo.com/show/452229/instagram.svg" alt="Instagram">
+                    Instagram
+                </a>
+            </div>
+        </div>
+
+        <div class="relative py-4">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+                <span class="px-2 bg-white text-gray-500 italic">Ou par e-mail classique</span>
+            </div>
+        </div>
+
+        <form class="space-y-6" action="<?php echo APP_URL; ?>/api/auth/login.php" method="POST">
+            <div class="rounded-md shadow-sm space-y-4">
+                <div>
+                    <label for="email-address" class="block text-sm font-medium text-gray-700">Adresse e-mail</label>
+                    <input id="email-address" name="email" type="email" required 
+                           class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" 
+                           placeholder="papa@maman.com">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+                    <input id="password" name="password" type="password" required 
+                           class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" 
+                           placeholder="••••••••">
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded">
+                    <label for="remember-me" class="ml-2 block text-sm text-gray-900">Se souvenir de moi</label>
+                </div>
+
+                <div class="text-sm">
+                    <a href="#" class="font-medium text-orange-600 hover:text-orange-500">Mot de passe oublié ?</a>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all">
+                    Se connecter
+                </button>
+            </div>
+        </form>
+        
+        <p class="text-center text-xs text-gray-400">
+            En continuant, vous acceptez nos <a href="#" class="underline">Conditions d'Utilisation</a>.
+        </p>
     </div>
-
-  </div>
 </div>
 
-<script>
-function loginForm() {
-  return {
-    form: { email: '', password: '' },
-    error: '',
-    loading: false,
-    showPassword: false,
-
-    async submit() {
-      this.error = '';
-      if (!this.form.email || !this.form.password) {
-        this.error = '<?= $lang === 'ar' ? 'يرجى ملء جميع الحقول.' : 'Veuillez remplir tous les champs.' ?>';
-        return;
-      }
-      this.loading = true;
-      try {
-        const res = await apiFetch('<?= APP_URL ?>/api/auth/login', {
-          method: 'POST',
-          body: JSON.stringify(this.form),
-        });
-        if (res.ok && res.data.success) {
-          window.location.href = res.data.redirect || '<?= APP_URL ?>/dashboard/parent';
-        } else {
-          this.error = res.data.error || '<?= t('auth.login.error') ?>';
-        }
-      } catch (e) {
-        this.error = '<?= t('error.generic') ?>';
-      } finally {
-        this.loading = false;
-      }
-    }
-  };
-}
-</script>
-
-<?php require_once INCLUDES_PATH . '/footer.php'; ?>
+<?php include_once __DIR__ . '/../../includes/footer.php'; ?>

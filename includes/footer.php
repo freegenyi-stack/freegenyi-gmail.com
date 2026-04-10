@@ -1,76 +1,66 @@
 <?php
-// FreeGeny — Footer HTML universel
+/**
+ * footer.php - Pied de page Premium V2
+ */
 ?>
-  </main><!-- /main-content -->
+<footer class="bg-gray-900 text-gray-400 py-12 lg:py-24">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap -mx-4">
+            <div class="w-full lg:w-1/3 px-4 mb-12 lg:mb-0">
+                <a href="<?php echo APP_URL; ?>" class="inline-block text-2xl font-black text-white mb-6">
+                    FreeGeny
+                </a>
+                <p class="max-w-sm text-sm leading-relaxed">
+                    Plateforme leader de soutien scolaire numérique. Nous accompagnons vos enfants vers la réussite grâce à une technologie interactive et pédagogique.
+                </p>
+                <div class="mt-8 flex space-x-4">
+                    <!-- Réseaux sociaux -->
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-lg hover:bg-orange-600 hover:text-white transition group">
+                        <img src="https://www.svgrepo.com/show/512120/facebook-176.svg" class="w-5 h-5 opacity-60 group-hover:opacity-100" alt="Facebook">
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-lg hover:bg-orange-600 hover:text-white transition group">
+                        <img src="https://www.svgrepo.com/show/512399/instagram-167.svg" class="w-5 h-5 opacity-60 group-hover:opacity-100" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="w-1/2 lg:w-1/6 px-4 mb-8 lg:mb-0">
+                <h4 class="text-white font-bold mb-6">Plateforme</h4>
+                <ul class="text-sm space-y-4">
+                    <li><a href="<?php echo APP_URL; ?>/algeria/1ap/arabe" class="hover:text-white transition">Arabe 1AP</a></li>
+                    <li><a href="<?php echo APP_URL; ?>/algeria/1ap/mathematiques" class="hover:text-white transition">Maths 1AP</a></li>
+                    <li><a href="#" class="hover:text-white transition">Jeux éducatifs</a></li>
+                    <li><a href="#" class="hover:text-white transition">Boutique</a></li>
+                </ul>
+            </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
+            <div class="w-1/2 lg:w-1/6 px-4 mb-8 lg:mb-0">
+                <h4 class="text-white font-bold mb-6">Légal</h4>
+                <ul class="text-sm space-y-4">
+                    <li><a href="#" class="hover:text-white transition">Conditions</a></li>
+                    <li><a href="#" class="hover:text-white transition">Confidentialité</a></li>
+                    <li><a href="#" class="hover:text-white transition">Cookies</a></li>
+                    <li><a href="#" class="hover:text-white transition">Mentions</a></li>
+                </ul>
+            </div>
 
-        <!-- Brand -->
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="8" fill="#FF6B35"/>
-              <text x="16" y="22" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Inter">F</text>
-            </svg>
-            <span>FreeGeny</span>
-          </div>
-          <p class="footer-tagline"><?= t('hero.badge') ?></p>
-          <div class="footer-social">
-            <a href="https://facebook.com/freegeny" target="_blank" rel="noopener" aria-label="Facebook" class="social-link">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="https://instagram.com/freegeny" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-            </a>
-          </div>
+            <div class="w-full lg:w-1/3 px-4">
+                <h4 class="text-white font-bold mb-6">Newsletter</h4>
+                <p class="text-sm mb-6 italic">Recevez des conseils pédagogiques gratuits chaque semaine.</p>
+                <form action="#" class="flex">
+                    <input type="email" placeholder="Votre email" class="w-full bg-gray-800 border border-gray-700 rounded-l-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-600">
+                    <button type="submit" class="bg-orange-600 text-white px-6 py-3 rounded-r-xl font-bold hover:bg-orange-700 transition">OK</button>
+                </form>
+            </div>
         </div>
 
-        <!-- Liens -->
-        <div class="footer-col">
-          <h4 class="footer-heading">Matières</h4>
-          <ul class="footer-links">
-            <li><a href="<?= APP_URL ?>/algeria/1ap/arabe">Arabe 1AP</a></li>
-            <li><a href="<?= APP_URL ?>/algeria/1ap/mathematiques">Maths 1AP</a></li>
-          </ul>
+        <div class="mt-20 pt-8 border-t border-gray-800 text-center">
+            <p class="text-xs">
+                &copy; <?php echo date('Y'); ?> FreeGeny - Tous droits réservés. <br>
+                Fait avec ❤️ pour les enfants d'Algérie.
+            </p>
         </div>
-
-        <div class="footer-col">
-          <h4 class="footer-heading">FreeGeny</h4>
-          <ul class="footer-links">
-            <li><a href="<?= APP_URL ?>/auth/register">S'inscrire</a></li>
-            <li><a href="<?= APP_URL ?>/auth/login">Connexion</a></li>
-            <li><a href="<?= APP_URL ?>/dashboard/parent">Tableau de bord</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 class="footer-heading">Légal</h4>
-          <ul class="footer-links">
-            <li><a href="<?= APP_URL ?>/privacy">Confidentialité</a></li>
-            <li><a href="<?= APP_URL ?>/terms">Conditions</a></li>
-            <li><a href="<?= APP_URL ?>/contact">Contact</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <p><?= t('footer.rights', ['year' => APP_YEAR]) ?></p>
-        <p class="footer-men">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Conforme au programme officiel du Ministère de l'Éducation Nationale — Algérie
-        </p>
-      </div>
     </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="<?= ASSETS_URL ?>/js/app.js?v=<?= APP_VERSION ?>"></script>
-
-  <?php if (isset($extraScripts)) echo $extraScripts; ?>
-
+</footer>
 </body>
 </html>

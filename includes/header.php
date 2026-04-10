@@ -1,133 +1,89 @@
 <?php
-// FreeGeny — Header HTML universel
-// Usage : require_once INCLUDES_PATH . '/header.php';
-// Variables attendues : $pageTitle, $pageDescription, $lang, $isRtl
+require_once __DIR__ . '/../config/app.php';
+require_once __DIR__ . '/../config/db.php';
+
+// Initialisation du SEO
+$page_title = $page_title ?? 'FreeGeny - Soutien Scolaire Numérique';
+$page_description = $page_description ?? 'La plateforme éducative premium pour les élèves en Algérie et dans le monde arabe. Arabe, Maths et plus.';
+$current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+// Point 3 : Détection du Pays (Simplifiée pour le test, peut être liée à une API IP)
+if (!isset($_SESSION['user_country'])) {
+    $_SESSION['user_country'] = $_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'DZ'; // Détection via Cloudflare ou par défaut DZ
+}
+$is_dz = ($_SESSION['user_country'] === 'DZ');
+
 ?>
 <!DOCTYPE html>
-<html lang="<?= e($lang ?? 'fr') ?>" dir="<?= ($isRtl ?? false) ? 'rtl' : 'ltr' ?>" data-theme="dark">
+<html lang="<?php echo $lang; ?>" dir="<?php echo ($lang == 'ar' ? 'rtl' : 'ltr'); ?>">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO de Base -->
+    <title><?php echo $page_title; ?></title>
+    <meta name="description" content="<?php echo $page_description; ?>">
+    <link rel="canonical" href="<?php echo $current_url; ?>">
+    
+    <!-- SEO Multilingue (Hreflang) -->
+    <link rel="alternate" hreflang="fr" href="<?php echo APP_URL; ?>/fr/">
+    <link rel="alternate" hreflang="ar" href="<?php echo APP_URL; ?>/ar/">
+    
+    <!-- Open Graph / Social Media (Facebook, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo $current_url; ?>">
+    <meta property="og:title" content="<?php echo $page_title; ?>">
+    <meta property="og:description" content="<?php echo $page_description; ?>">
+    <meta property="og:image" content="<?php echo APP_URL; ?>/assets/img/og-preview.jpg">
 
-  <!-- SEO -->
-  <title><?= e($pageTitle ?? 'FreeGeny — Éducation Algérienne Officielle') ?></title>
-  <meta name="description" content="<?= e($pageDescription ?? 'Plateforme éducative conforme au programme algérien du MEN. Leçons interactives, exercices et jeux pour enfants 5-12 ans.') ?>">
-  <meta name="keywords" content="éducation algérie, programme scolaire algérie, 1AP, arabe, mathématiques, enfants, freegeny">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="<?= e(APP_URL . $_SERVER['REQUEST_URI']) ?>">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo $page_title; ?>">
+    <meta name="twitter:description" content="<?php echo $page_description; ?>">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="<?= e(APP_URL . $_SERVER['REQUEST_URI']) ?>">
-  <meta property="og:title" content="<?= e($pageTitle ?? 'FreeGeny') ?>">
-  <meta property="og:description" content="<?= e($pageDescription ?? 'La plateforme éducative officielle pour les enfants algériens.') ?>">
-  <meta property="og:image" content="<?= ASSETS_URL ?>/images/og-image.png">
-  <meta property="og:site_name" content="FreeGeny">
-  <meta property="og:locale" content="<?= $lang === 'ar' ? 'ar_DZ' : 'fr_DZ' ?>">
+    <!-- Styles -->
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/main.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/components.css">
+    <?php if ($lang == 'ar'): ?>
+        <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/rtl.css">
+    <?php endif; ?>
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="<?= e($pageTitle ?? 'FreeGeny') ?>">
-  <meta name="twitter:image" content="<?= ASSETS_URL ?>/images/og-image.png">
+    <!-- Fonts Premium (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="<?= ASSETS_URL ?>/images/favicon.svg">
-  <link rel="apple-touch-icon" href="<?= ASSETS_URL ?>/images/apple-touch-icon.png">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles FreeGeny -->
-  <link rel="stylesheet" href="<?= ASSETS_URL ?>/css/main.css?v=<?= APP_VERSION ?>">
-  <link rel="stylesheet" href="<?= ASSETS_URL ?>/css/components.css?v=<?= APP_VERSION ?>">
-  <?php if ($isRtl ?? false): ?>
-  <link rel="stylesheet" href="<?= ASSETS_URL ?>/css/rtl.css?v=<?= APP_VERSION ?>">
-  <?php endif; ?>
-
-  <!-- Alpine.js (CDN) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "FreeGeny",
-    "url": "https://freegeny.com",
-    "description": "Plateforme éducative conforme au programme officiel algérien MEN",
-    "address": {"@type": "PostalAddress", "addressCountry": "DZ"}
-  }
-  </script>
-
-  <?php if (isset($extraHead)) echo $extraHead; ?>
+    <!-- Scripts de base -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="<?= ($isRtl ?? false) ? 'rtl' : 'ltr' ?>" x-data="freegenyApp()">
-
-  <!-- Navigation -->
-  <nav class="navbar" id="main-nav">
-    <div class="container">
-      <div class="navbar-inner">
-
-        <!-- Logo -->
-        <a href="<?= APP_URL ?>" class="navbar-logo" aria-label="FreeGeny accueil">
-          <div class="logo-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="8" fill="#FF6B35"/>
-              <text x="16" y="22" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="Inter">F</text>
-            </svg>
-          </div>
-          <span class="logo-text">FreeGeny</span>
-        </a>
-
-        <!-- Menu desktop -->
-        <ul class="navbar-menu" id="nav-menu">
-          <li><a href="<?= APP_URL ?>" class="nav-link <?= ($_SERVER['REQUEST_URI'] === '/' ? 'active' : '') ?>"><?= t('nav.home') ?></a></li>
-          <li><a href="<?= APP_URL ?>/algeria/1ap/arabe" class="nav-link"><?= t('subjects.arabe') ?></a></li>
-          <li><a href="<?= APP_URL ?>/algeria/1ap/mathematiques" class="nav-link"><?= t('subjects.maths') ?></a></li>
-          <?php if (isLoggedIn()): ?>
-          <li><a href="<?= APP_URL ?>/dashboard/parent" class="nav-link"><?= t('nav.dashboard') ?></a></li>
-          <?php endif; ?>
-        </ul>
-
-        <!-- Langue + Auth -->
-        <div class="navbar-actions">
-          <!-- Sélecteur de langue -->
-          <div class="lang-switcher">
-            <a href="?lang=fr" class="lang-btn <?= ($lang === 'fr' ? 'active' : '') ?>" title="Français">FR</a>
-            <a href="?lang=ar" class="lang-btn <?= ($lang === 'ar' ? 'active' : '') ?>" title="عربية">ع</a>
-          </div>
-
-          <?php if (isLoggedIn()): ?>
-            <div class="user-menu" x-data="{ open: false }">
-              <button @click="open = !open" class="user-avatar-btn" aria-label="Menu utilisateur">
-                <div class="user-avatar"><?= strtoupper(substr(currentUser()['full_name'] ?? 'U', 0, 1)) ?></div>
-              </button>
-              <div class="user-dropdown" x-show="open" @click.away="open = false" x-transition>
-                <div class="user-info">
-                  <strong><?= e(currentUser()['full_name'] ?? '') ?></strong>
-                  <span><?= e(currentUser()['email'] ?? '') ?></span>
-                </div>
-                <a href="<?= APP_URL ?>/dashboard/parent" class="dropdown-item"><?= t('nav.dashboard') ?></a>
-                <a href="<?= APP_URL ?>/api/auth/logout" class="dropdown-item text-danger"><?= t('nav.logout') ?></a>
-              </div>
-            </div>
-          <?php else: ?>
-            <a href="<?= APP_URL ?>/auth/login" class="btn btn-ghost btn-sm"><?= t('nav.login') ?></a>
-            <a href="<?= APP_URL ?>/auth/register" class="btn btn-primary btn-sm"><?= t('nav.register') ?></a>
-          <?php endif; ?>
-
-          <!-- Bouton hamburger mobile -->
-          <button class="hamburger" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-
-      </div>
+<body class="bg-gray-50 text-gray-900 font-sans">
+    
+    <!-- Barre de détection pays (Point 3) -->
+    <?php if ($is_dz): ?>
+    <div class="bg-orange-600 text-white text-center py-1 text-sm font-bold">
+        🇩🇿 Offre spéciale Algérie : Accès gratuit au programme 1AP !
     </div>
-  </nav>
+    <?php endif; ?>
 
-  <!-- Main content wrapper -->
-  <main id="main-content">
+    <nav class="navbar bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="<?php echo APP_URL; ?>" class="flex items-center space-x-2">
+                <span class="text-2xl font-black text-orange-600">FreeGeny</span>
+            </a>
+
+            <div class="hidden md:flex space-x-8 font-semibold">
+                <a href="<?php echo APP_URL; ?>/algeria/1ap/arabe" class="hover:text-orange-600">Arabe</a>
+                <a href="<?php echo APP_URL; ?>/algeria/1ap/mathematiques" class="hover:text-orange-600">Maths</a>
+                <a href="#" class="hover:text-orange-600">Tarifs</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="<?php echo APP_URL; ?>/dashboard/parent" class="btn btn-primary btn-sm">Mon Dashboard</a>
+                <?php else: ?>
+                    <a href="<?php echo APP_URL; ?>/auth/login" class="text-gray-600 hover:text-orange-600 font-bold">Connexion</a>
+                    <a href="<?php echo APP_URL; ?>/auth/register" class="btn btn-orange btn-sm">S'inscrire</a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </nav>
