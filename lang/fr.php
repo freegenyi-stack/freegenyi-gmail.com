@@ -1,1 +1,25 @@
-<?php return ['home'=>'Accueil','login'=>'Connexion','register'=>'S\'inscrire','subjects'=>'Matières','maths'=>'Maths','arabic'=>'Arabe','pricing'=>'Tarifs','dashboard'=>'Tableau de bord','logout'=>'Déconnexion','change_region'=>'Changer de région','about'=>'Qui sommes-nous','goals'=>'Objectifs','parents'=>'Parents','schools'=>'Écoles','ngos'=>'ONG'];
+<?php
+return [
+    'home' => 'Accueil',
+    'login' => 'Connexion',
+    'register' => 'S\'inscrire',
+    'subjects' => 'Matières',
+    'maths' => 'Mathématiques',
+    'arabic' => 'Arabe',
+    'pricing' => 'Tarifs',
+    'dashboard' => 'Tableau de bord',
+    'logout' => 'Déconnexion',
+    'change_region' => 'Choisir votre région',
+    'about' => 'Qui sommes-nous',
+    'goals' => 'Objectifs',
+    'parents' => 'Parents',
+    'schools' => 'Écoles',
+    'ngos' => 'ONG',
+    'hero_badge' => 'Apprendre en s\'amusant',
+    'hero_title' => 'L\'excellence scolaire commence ici',
+    'hero_desc' => 'La plateforme premium de soutien scolaire qui révolutionne l\'apprentissage.',
+    'lessons' => 'Leçons',
+    'games' => 'Jeux',
+    'students' => 'Élèves',
+    'rating' => 'Note'
+];
