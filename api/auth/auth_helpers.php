@@ -103,8 +103,13 @@ try {
             DB::execute("ALTER TABLE users ADD phone VARCHAR(25) NULL AFTER full_name");
         }
         
-        // Ajout des colonnes de vérification et OAuth
-        $cols = ['email_verified' => "TINYINT(1) DEFAULT 0", 'verification_token' => "VARCHAR(100) NULL", 'oauth_provider' => "VARCHAR(50) NULL"];
+        // Ajout des colonnes de vérification, OAuth et Profile
+        $cols = [
+            'email_verified' => "TINYINT(1) DEFAULT 0", 
+            'verification_token' => "VARCHAR(100) NULL", 
+            'oauth_provider' => "VARCHAR(50) NULL",
+            'profile_photo' => "VARCHAR(255) NULL"
+        ];
         foreach ($cols as $col => $def) {
             $check = DB::fetchOne("SHOW COLUMNS FROM users LIKE '$col'");
             if (!$check) DB::execute("ALTER TABLE users ADD $col $def");
