@@ -72,7 +72,7 @@ try {
 
     jsonResponse([
         'success' => true,
-        'redirect' => '/' . strtolower($country) . '-' . strtolower($_SESSION['lang'] ?? 'fr') . '/dashboard/parent',
+        'redirect' => '/' . strtoupper($country) . '-' . strtolower($_SESSION['lang'] ?? 'fr') . '/dashboard/parent',
         'user' => [
             'id' => $userId,
             'name' => $name,
