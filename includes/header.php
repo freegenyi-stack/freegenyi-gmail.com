@@ -31,15 +31,15 @@ $is_rtl = $is_rtl ?? false;
         body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
         .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,0.05); }
         
-        /* SCROLLBAR UNIVERSELLE & MINIMALISTE */
+        /* SCROLLBAR UNIVERSELLE ORANGE */
         .custom-scroll {
             scrollbar-width: thin;
-            scrollbar-color: #e2e8f0 transparent;
+            scrollbar-color: #ea580c transparent;
         }
         .custom-scroll::-webkit-scrollbar { width: 2px !important; }
         .custom-scroll::-webkit-scrollbar-track { background: transparent !important; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0 !important; border-radius: 20px !important; }
-        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #ea580c !important; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #ea580c !important; border-radius: 20px !important; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #c2410c !important; }
 
         .nav-link { position: relative; transition: color 0.3s; }
         .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #ea580c; transition: width 0.3s; }
