@@ -157,17 +157,23 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
             </div>
 
             <div class="hidden md:flex space-x-8 font-semibold">
-                <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/algeria/1ap/arabe'; ?>" class="hover:text-orange-600">Arabe</a>
-                <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/algeria/1ap/mathematiques'; ?>" class="hover:text-orange-600">Maths</a>
-                <a href="#" class="hover:text-orange-600">Tarifs</a>
+                <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/algeria/1ap/arabe'; ?>" class="hover:text-orange-600"><?php echo __('arabic'); ?></a>
+                <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/algeria/1ap/mathematiques'; ?>" class="hover:text-orange-600"><?php echo __('maths'); ?></a>
+                <a href="#" class="hover:text-orange-600"><?php echo __('pricing'); ?></a>
             </div>
 
             <div class="flex items-center space-x-4">
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="<?php echo APP_URL; ?>/dashboard/parent" class="btn btn-primary btn-sm">Mon Dashboard</a>
+                    <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/dashboard/parent'; ?>" class="bg-primary text-white px-4 py-2 rounded-lg font-bold hover:opacity-90 transition">
+                        <?php echo __('dashboard'); ?>
+                    </a>
                 <?php else: ?>
-                    <a href="<?php echo APP_URL; ?>/auth/login" class="text-gray-600 hover:text-orange-600 font-bold">Connexion</a>
-                    <a href="<?php echo APP_URL; ?>/auth/register" class="btn btn-orange btn-sm">S'inscrire</a>
+                    <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/auth/login'; ?>" class="text-gray-600 hover:text-orange-600 font-bold">
+                        <?php echo __('login'); ?>
+                    </a>
+                    <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/auth/register'; ?>" class="bg-orange-500 text-white px-5 py-2 rounded-xl font-black hover:bg-orange-600 shadow-md transition">
+                        <?php echo __('register'); ?>
+                    </a>
                 <?php endif; ?>
             </div>
         </div>
