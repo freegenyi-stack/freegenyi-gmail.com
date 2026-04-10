@@ -43,6 +43,8 @@ return [
     'or_by_email' => 'Ou par email',
     'email_label' => 'Email professionnel ou personnel',
     'password_label' => 'Mot de passe',
+    'phone_label' => 'Numéro de téléphone',
+    'phone_placeholder' => 'Ex: +213 555 00 00 00',
     'forgot_password' => 'Oublié ?',
     'login_button' => 'Se Connecter maintenant',
     'login_loading' => 'Connexion en cours...',

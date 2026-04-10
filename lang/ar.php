@@ -43,6 +43,8 @@ return [
     'or_by_email' => 'أو عبر البريد الإلكتروني',
     'email_label' => 'البريد الإلكتروني',
     'password_label' => 'كلمة المرور',
+    'phone_label' => 'رقم الهاتف',
+    'phone_placeholder' => 'مثال: 00 00 00 555 213+',
     'forgot_password' => 'نسيت كلمة المرور؟',
     'login_button' => 'تسجيل الدخول',
     'login_loading' => 'جاري تسجيل الدخول...',

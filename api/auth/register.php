@@ -18,6 +18,7 @@ if (($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') !== 'XMLHttpRequest') {
 
 $body    = json_decode(file_get_contents('php://input'), true) ?? [];
 $name    = trim($body['full_name'] ?? '');
+$phone   = trim($body['phone']     ?? '');
 $email   = trim($body['email']    ?? '');
 $pass    = $body['password']       ?? '';
 $confirm = $body['confirm']        ?? '';
@@ -26,6 +27,7 @@ $country = strtoupper(trim($body['country'] ?? 'DZ'));
 // Validation
 $errors = [];
 if (strlen($name) < 2)  $errors[] = 'Le nom doit contenir au moins 2 caractères.';
+if (strlen($phone) < 8) $errors[] = 'Numéro de téléphone invalide.';
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Adresse email invalide.';
 if (strlen($pass) < 8)  $errors[] = 'Le mot de passe doit contenir au moins 8 caractères.';
 if ($pass !== $confirm) $errors[] = 'Les mots de passe ne correspondent pas.';
@@ -44,8 +46,8 @@ if ($existing) {
 // Créer l'utilisateur
 $hash   = password_hash($pass, PASSWORD_BCRYPT, ['cost' => BCRYPT_COST]);
 $userId = DB::insert(
-    "INSERT INTO users (email, password_hash, full_name, declared_country) VALUES (?, ?, ?, ?)",
-    [$email, $hash, $name, $country]
+    "INSERT INTO users (email, password_hash, full_name, phone, declared_country) VALUES (?, ?, ?, ?, ?)",
+    [$email, $hash, $name, $phone, $country]
 );
 
 if (!$userId) {

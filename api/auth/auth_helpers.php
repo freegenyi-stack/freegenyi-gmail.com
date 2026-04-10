@@ -68,6 +68,7 @@ try {
             email VARCHAR(255) NOT NULL UNIQUE,
             password_hash VARCHAR(255) NOT NULL,
             full_name VARCHAR(255) NOT NULL,
+            phone VARCHAR(25) NULL,
             declared_country VARCHAR(2),
             login_attempts INT DEFAULT 0,
             locked_until DATETIME NULL,
@@ -75,6 +76,11 @@ try {
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
+
+    // Tentative d'ajout manuel de la colonne si elle n'existe pas déjà
+    try {
+        DB::execute("ALTER TABLE users ADD COLUMN IF NOT EXISTS phone VARCHAR(25) NULL AFTER full_name;");
+    } catch (\Exception $e) {}
 
     DB::execute("
         CREATE TABLE IF NOT EXISTS login_attempts (
