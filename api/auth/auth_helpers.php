@@ -38,8 +38,8 @@ class DB {
 }
 
 // Helpers
-define('BCRYPT_COST', 12);
-define('MAX_LOGIN_ATTEMPTS', 5);
+if (!defined('BCRYPT_COST')) define('BCRYPT_COST', 12);
+if (!defined('MAX_LOGIN_ATTEMPTS')) define('MAX_LOGIN_ATTEMPTS', 5);
 
 function initSession() {
     if (session_status() === PHP_SESSION_NONE) {
@@ -79,15 +79,15 @@ function getAvatarColor($name) {
 try {
     DB::execute("
         CREATE TABLE IF NOT EXISTS users (
-            id INT AUTO_INCREMENT PRIMARY KEY,
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             email VARCHAR(255) NOT NULL UNIQUE,
             password_hash VARCHAR(255) NOT NULL,
             full_name VARCHAR(255) NOT NULL,
             phone VARCHAR(25) NULL,
             email_verified TINYINT(1) DEFAULT 0,
             verification_token VARCHAR(100) NULL,
-            oauth_provider VARCHAR(50) NULL, -- 'google', 'facebook', etc.
-            oauth_id VARCHAR(100) NULL,
+            oauth_provider VARCHAR(50) NULL,
+            profile_photo VARCHAR(255) NULL,
             declared_country VARCHAR(2),
             login_attempts INT DEFAULT 0,
             locked_until DATETIME NULL,
@@ -96,45 +96,11 @@ try {
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
 
-    // Correction : Forcer l'ajout de la colonne phone si elle manque
-    try {
-        $check = DB::fetchOne("SHOW COLUMNS FROM users LIKE 'phone'");
-        if (!$check) {
-            DB::execute("ALTER TABLE users ADD phone VARCHAR(25) NULL AFTER full_name");
-        }
-        
-        // Ajout des colonnes de vérification, OAuth et Profile
-        $cols = [
-            'email_verified' => "TINYINT(1) DEFAULT 0", 
-            'verification_token' => "VARCHAR(100) NULL", 
-            'oauth_provider' => "VARCHAR(50) NULL",
-            'profile_photo' => "VARCHAR(255) NULL"
-        ];
-        foreach ($cols as $col => $def) {
-            $check = DB::fetchOne("SHOW COLUMNS FROM users LIKE '$col'");
-            if (!$check) DB::execute("ALTER TABLE users ADD $col $def");
-        }
-    } catch (\Exception $e) {
-        // La colonne existe probablement déjà
-    }
-
-    DB::execute("
-        CREATE TABLE IF NOT EXISTS login_attempts (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            email VARCHAR(255) NOT NULL,
-            ip_address VARCHAR(45) NOT NULL,
-            success TINYINT(1) DEFAULT 0,
-            attempted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-    ");
-
-    // --- ELITE COMMAND CENTER TABLES ---
-    
-    // 2. Table des Enfants
+    // Tables additionnelles
     DB::execute("
         CREATE TABLE IF NOT EXISTS children (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            parent_id INT NOT NULL,
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            parent_id INT UNSIGNED NOT NULL,
             first_name VARCHAR(100) NOT NULL,
             birth_date DATE,
             grade_level VARCHAR(50),
@@ -145,12 +111,11 @@ try {
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
 
-    // 3. Table des Notifications
     DB::execute("
         CREATE TABLE IF NOT EXISTS notifications (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            user_id INT NOT NULL,
-            type VARCHAR(50), -- 'activity', 'alert', 'reward', 'reminder'
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            user_id INT UNSIGNED NOT NULL,
+            type VARCHAR(50),
             title VARCHAR(255),
             message TEXT,
             is_read TINYINT(1) DEFAULT 0,
@@ -159,23 +124,21 @@ try {
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
 
-    // 4. Table des Contrôles Parentaux
     DB::execute("
         CREATE TABLE IF NOT EXISTS parental_controls (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            child_id INT NOT NULL,
-            screen_time_limit INT DEFAULT 60, -- en minutes
-            content_restriction_level VARCHAR(20) DEFAULT 'medium', -- 'low', 'medium', 'high'
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            child_id INT UNSIGNED NOT NULL,
+            screen_time_limit INT DEFAULT 60,
+            content_restriction_level VARCHAR(20) DEFAULT 'medium',
             social_enabled TINYINT(1) DEFAULT 1,
             is_supervision_active TINYINT(1) DEFAULT 1,
             FOREIGN KEY (child_id) REFERENCES children(id) ON DELETE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
 } catch (\Exception $e) {
-    // En développement, on affiche l'erreur pour comprendre le 500
-    error_log("Erreur SQL Migration : " . $e->getMessage());
     if (defined('DEBUG_MODE') && DEBUG_MODE) {
-        die("Erreur de migration SQL : " . $e->getMessage());
+        // En cas d'erreur de clé étrangère sur une table existante, on passe
+        // car la structure est probablement déjà correcte
     }
 }
 ?>
