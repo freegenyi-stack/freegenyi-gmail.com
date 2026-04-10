@@ -58,6 +58,21 @@ function loginUser($user) {
     $_SESSION['user_email'] = $user['email'];
     $_SESSION['user_name'] = $user['full_name'];
     $_SESSION['logged_in'] = true;
+    $_SESSION['user_initials'] = getInitials($user['full_name']);
+}
+
+function getInitials($name) {
+    $words = explode(' ', $name);
+    if (count($words) >= 2) {
+        return strtoupper(substr($words[0], 0, 1) . substr($words[count($words)-1], 0, 1));
+    }
+    return strtoupper(substr($name, 0, 2));
+}
+
+function getAvatarColor($name) {
+    $colors = ['#EA580C', '#0EA5E9', '#8B5CF6', '#10B981', '#F43F5E', '#D946EF'];
+    $index = ord(substr($name, 0, 1)) % count($colors);
+    return $colors[$index];
 }
 
 // Auto-création des tables si elles n'existent pas (Pour la sécurité et la simplicité)
