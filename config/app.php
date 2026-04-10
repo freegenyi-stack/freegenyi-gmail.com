@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 /**
- * app.php - Version Mondiale Finale avec Protection & RTL
+ * app.php - Version Mondiale Finale & Robuste
  */
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -34,12 +34,10 @@ if (!function_exists('loadEnv')) {
 $env = loadEnv(__DIR__ . '/../.env');
 define('APP_URL', rtrim($env['APP_URL'] ?? 'https://freegeny.com', '/'));
 
-// LISTE EN ANGLAIS (Sorted)
 $supported_regions = [
     'DZ' => ['name' => 'Algeria', 'langs' => ['ar', 'fr']],
     'MA' => ['name' => 'Morocco', 'langs' => ['ar', 'fr']],
     'TN' => ['name' => 'Tunisia', 'langs' => ['ar', 'fr']],
-    'LY' => ['name' => 'Libya', 'langs' => ['ar']],
     'SA' => ['name' => 'Saudi Arabia', 'langs' => ['ar']],
     'AE' => ['name' => 'United Arab Emirates', 'langs' => ['ar']],
     'FR' => ['name' => 'France', 'langs' => ['fr']],
@@ -47,8 +45,6 @@ $supported_regions = [
     'CH' => ['name' => 'Switzerland', 'langs' => ['fr']],
     'CA' => ['name' => 'Canada', 'langs' => ['fr']],
     'US' => ['name' => 'USA', 'langs' => ['en']],
-    'GB' => ['name' => 'United Kingdom', 'langs' => ['en']],
-    // ... Simplified for the example, we can add more later
 ];
 
 uasort($supported_regions, function($a, $b) {
@@ -59,17 +55,23 @@ $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
 $uri_parts = explode('/', trim($request_uri, '/'));
 $slug = explode('?', $uri_parts[0] ?? '')[0];
 
+// Détection Langue et Pays depuis l'URL
 if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $_SESSION['country_code'] = strtoupper($matches[1]);
     $_SESSION['lang'] = strtolower($matches[2]);
 } 
+else if (!str_contains($request_uri, 'unlock.php') && !str_contains($request_uri, '/assets/')) {
+    $detected_country = $_SESSION['country_code'] ?? ($_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'DZ'); 
+    $detected_lang = $_SESSION['lang'] ?? ($supported_regions[$detected_country]['langs'][0] ?? 'fr');
+    header("Location: /" . strtoupper($detected_country) . "-" . $detected_lang . "/");
+    exit;
+}
 
 $country = $_SESSION['country_code'] ?? 'DZ';
 $lang = $_SESSION['lang'] ?? 'fr';
-$rtl_languages = ['ar'];
-$is_rtl = in_array($lang, $rtl_languages);
+$is_rtl = in_array($lang, ['ar']);
 
-// Chargement des traductions
+// Chargement unique des traductions
 $GLOBALS['translations'] = [];
 $lang_file = __DIR__ . "/../lang/{$lang}.php";
 if (file_exists($lang_file)) {
@@ -79,7 +81,8 @@ if (file_exists($lang_file)) {
 if (!function_exists('__')) {
     function __($key, $fallback = '') {
         $val = $GLOBALS['translations'][$key] ?? null;
-        return $val ?: ($fallback ?: $key);
+        if ($val) return $val;
+        return $fallback ?: (ucfirst(str_replace('_', ' ', $key)));
     }
 }
 ?>

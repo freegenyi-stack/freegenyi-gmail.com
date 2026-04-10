@@ -1,11 +1,13 @@
 <?php
-$page_title = "Nos Objectifs";
 include_once __DIR__ . '/includes/header.php';
 ?>
-<main class="py-32">
-    <div class="container mx-auto px-4 text-center">
-        <h1 class="text-5xl font-black mb-6"><?php echo __('goals'); ?></h1>
-        <p class="text-xl text-gray-500 italic">"Notre objectif principal est de rendre l'éducation de qualité accessible gratuitement partout dans le monde."</p>
+<main class="py-32 bg-white">
+    <div class="container mx-auto px-6 text-center">
+        <h1 class="text-6xl font-black text-slate-900 mb-8"><?php echo __('goals'); ?></h1>
+        <p class="text-2xl text-slate-400 italic max-w-3xl mx-auto leading-relaxed">
+            <?php echo __('maths_desc'); ?> & <?php echo __('arabic_desc'); ?>
+        </p>
+        <div class="mt-16"><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/" class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl hover:bg-orange-600 transition">← <?php echo __('home'); ?></a></div>
     </div>
 </main>
 <?php include_once __DIR__ . '/includes/footer.php'; ?>
