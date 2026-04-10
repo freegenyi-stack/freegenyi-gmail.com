@@ -29,7 +29,7 @@ $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png">
+    <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png?v=3.0">
     
     <style>
         [x-cloak] { display: none !important; }
