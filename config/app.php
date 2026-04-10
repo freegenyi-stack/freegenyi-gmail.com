@@ -9,7 +9,10 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // PROTECTION CONSTRUCTION
 define('MAINTENANCE_PASSWORD', 'Yousr4568520&');
-if (!isset($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'], 'unlock.php')) {
+$is_legal_page = str_contains($_SERVER['REQUEST_URI'], 'privacy') || str_contains($_SERVER['REQUEST_URI'], 'terms');
+$is_root = $_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/index.php';
+
+if (!isset($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'], 'unlock.php') && !$is_legal_page && !$is_root) {
     header('Location: /unlock.php');
     exit;
 }
