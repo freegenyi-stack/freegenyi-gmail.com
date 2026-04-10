@@ -43,6 +43,10 @@ foreach ($env as $k => $v) {
 }
 define('APP_URL', rtrim($env['APP_URL'] ?? 'https://freegeny.com', '/'));
 
+// Sécurité Authentification
+define('BCRYPT_COST', 12);
+define('MAX_LOGIN_ATTEMPTS', 5);
+
 $supported_regions = [
     'DZ' => ['name' => 'Algeria', 'langs' => ['ar', 'fr']],
     'MA' => ['name' => 'Morocco', 'langs' => ['ar', 'fr']],

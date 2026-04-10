@@ -135,7 +135,7 @@ if ($email && $full_name) {
         $detected_country = $_SESSION['home_country'] ?? 'DZ';
 
         $user_id = DB::insert(
-            "INSERT INTO users (email, password_hash, full_name, declared_country, last_login_at) VALUES (?, ?, ?, ?, NOW())",
+            "INSERT INTO users (email, password_hash, full_name, declared_country, email_verified, oauth_provider, last_login_at) VALUES (?, ?, ?, ?, 1, 'Google', NOW())",
             [$email, $hash, $full_name, $detected_country]
         );
 
