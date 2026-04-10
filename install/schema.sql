@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `exercise_attempts` (
   `lesson_id`       VARCHAR(100) NOT NULL,
   `exercise_type`   VARCHAR(50) NOT NULL DEFAULT 'qcm',
   `is_correct`      TINYINT(1) DEFAULT NULL,
-  `attempt_data`    JSON DEFAULT NULL COMMENT 'Réponse donnée par l'arbre',
+  `attempt_data`    JSON DEFAULT NULL COMMENT 'Reponse donnee par l_enfant',
   `time_spent_sec`  SMALLINT UNSIGNED NOT NULL DEFAULT 0,
   `xp_earned`       SMALLINT UNSIGNED NOT NULL DEFAULT 0,
   `created_at`      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
