@@ -29,12 +29,37 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
     <link rel="alternate" hreflang="fr" href="<?php echo APP_URL; ?>/fr/">
     <link rel="alternate" hreflang="ar" href="<?php echo APP_URL; ?>/ar/">
     
+    <!-- Frameworks (Tailwind CSS v3 + Alpine.js) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a237e',
+                        accent: '#FF6B35',
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#FF6B35',
+                            600: '#ea580c',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+                        arabic: ['Noto Sans Arabic', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <!-- Open Graph / Social Media (Facebook, WhatsApp) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo $current_url; ?>">
     <meta property="og:title" content="<?php echo $page_title; ?>">
     <meta property="og:description" content="<?php echo $page_description; ?>">
-    <meta property="og:image" content="<?php echo APP_URL; ?>/assets/img/og-preview.jpg">
+    <meta property="og:image" content="<?php echo APP_URL; ?>/assets/img/og-preview.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -82,14 +107,14 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
                         
                         <div class="px-4 py-2 text-[10px] font-black text-gray-400 uppercase tracking-widest border-b border-gray-50 mb-2">Choisir votre région</div>
                         
-                        <?php foreach ($supported_regions as $code => $info): ?>
-                            <?php foreach ($info['langs'] as $l): ?>
-                                <a href="<?php echo APP_URL . '/' . $code . '-' . $l . '/'; ?>" 
-                                   class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition border-b border-gray-50 last:border-0">
-                                    <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-5 h-auto mr-3 rounded-sm shadow-sm">
-                                    <span class="font-medium"><?php echo $info['name']; ?> <span class="text-gray-400 text-xs ml-1">(<?php echo strtoupper($l); ?>)</span></span>
-                                </a>
-                            <?php endforeach; ?>
+                        <?php foreach ($supported_regions as $code => $info): 
+                            $l = $info['langs'][0]; // On prend la première langue par défaut
+                        ?>
+                            <a href="<?php echo APP_URL . '/' . $code . '-' . $l . '/'; ?>" 
+                               class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition border-b border-gray-50 last:border-0">
+                                <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-5 h-auto mr-3 rounded-sm shadow-sm">
+                                <span class="font-medium"><?php echo $info['name']; ?></span>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                 </div>
