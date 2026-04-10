@@ -63,7 +63,8 @@ $is_rtl = $is_rtl ?? false;
         <div class="container mx-auto px-6 flex justify-between items-center">
             
             <div class="flex items-center space-x-8 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
-                <a href="/<?php echo $country . '-' . $lang; ?>/" class="transition hover:scale-105 transform">
+                <?php $home_slug = strtoupper($_COOKIE['freegeny_home'] ?? 'DZ') . '-' . $lang; ?>
+                <a href="/<?php echo $home_slug; ?>/" class="transition hover:scale-105 transform">
                     <img src="<?php echo APP_URL; ?>/assets/img/logo.png?v=4.0" class="h-10 md:h-12 w-auto" alt="Logo">
                 </a>
 

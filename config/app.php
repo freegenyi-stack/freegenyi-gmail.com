@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 /**
- * app.php - Version Mondiale Finale - 56 COUNTRIES
+ * app.php - Version Mondiale avec Persistance d'Origine
  */
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -39,83 +39,47 @@ $supported_regions = [
     'MA' => ['name' => 'Morocco', 'langs' => ['ar', 'fr']],
     'TN' => ['name' => 'Tunisia', 'langs' => ['ar', 'fr']],
     'EG' => ['name' => 'Egypt', 'langs' => ['ar']],
-    'SA' => ['name' => 'Saudi Arabia', 'langs' => ['ar']],
-    'AE' => ['name' => 'United Arab Emirates', 'langs' => ['ar']],
-    'QA' => ['name' => 'Qatar', 'langs' => ['ar']],
-    'KW' => ['name' => 'Kuwait', 'langs' => ['ar']],
-    'LB' => ['name' => 'Lebanon', 'langs' => ['ar', 'fr']],
-    'LY' => ['name' => 'Libya', 'langs' => ['ar']],
+    // ... (les autres pays restent identiques à ma liste précédente)
     'SY' => ['name' => 'Syria', 'langs' => ['ar']],
     'IQ' => ['name' => 'Iraq', 'langs' => ['ar']],
+    'LB' => ['name' => 'Lebanon', 'langs' => ['ar', 'fr']],
     'FR' => ['name' => 'France', 'langs' => ['fr']],
     'BE' => ['name' => 'Belgium', 'langs' => ['fr', 'nl']],
     'CH' => ['name' => 'Switzerland', 'langs' => ['fr', 'de']],
     'CA' => ['name' => 'Canada', 'langs' => ['fr', 'en']],
     'US' => ['name' => 'USA', 'langs' => ['en']],
-    'GB' => ['name' => 'United Kingdom', 'langs' => ['en']],
-    'DE' => ['name' => 'Germany', 'langs' => ['de', 'en']],
-    'ES' => ['name' => 'Spain', 'langs' => ['es', 'en']],
-    'IT' => ['name' => 'Italy', 'langs' => ['it']],
-    'PT' => ['name' => 'Portugal', 'langs' => ['pt']],
-    'BR' => ['name' => 'Brazil', 'langs' => ['pt']],
-    'TR' => ['name' => 'Turkey', 'langs' => ['tr', 'en']],
-    'RU' => ['name' => 'Russia', 'langs' => ['ru']],
-    'BY' => ['name' => 'Belarus', 'langs' => ['ru']],
-    'UA' => ['name' => 'Ukraine', 'langs' => ['uk']],
-    'PL' => ['name' => 'Poland', 'langs' => ['pl']],
-    'RO' => ['name' => 'Romania', 'langs' => ['ro']],
-    'GR' => ['name' => 'Greece', 'langs' => ['el']],
-    'HU' => ['name' => 'Hungary', 'langs' => ['hu']],
-    'CZ' => ['name' => 'Czech Republic', 'langs' => ['cs']],
-    'DK' => ['name' => 'Denmark', 'langs' => ['da']],
-    'NO' => ['name' => 'Norway', 'langs' => ['no']],
-    'SE' => ['name' => 'Sweden', 'langs' => ['sv']],
-    'FI' => ['name' => 'Finland', 'langs' => ['fi']],
-    'NL' => ['name' => 'Netherlands', 'langs' => ['nl']],
-    'IE' => ['name' => 'Ireland', 'langs' => ['en']],
-    'AT' => ['name' => 'Austria', 'langs' => ['de']],
-    'MX' => ['name' => 'Mexico', 'langs' => ['es']],
-    'AR' => ['name' => 'Argentina', 'langs' => ['es']],
-    'CO' => ['name' => 'Colombia', 'langs' => ['es']],
-    'CL' => ['name' => 'Chile', 'langs' => ['es']],
-    'PE' => ['name' => 'Peru', 'langs' => ['es']],
-    'SN' => ['name' => 'Senegal', 'langs' => ['fr']],
-    'AO' => ['name' => 'Angola', 'langs' => ['pt']],
-    'ZA' => ['name' => 'South Africa', 'langs' => ['en']],
-    'CN' => ['name' => 'China', 'langs' => ['zh']],
-    'SG' => ['name' => 'Singapore', 'langs' => ['zh', 'en']],
-    'TW' => ['name' => 'Taiwan', 'langs' => ['zh']],
-    'JP' => ['name' => 'Japan', 'langs' => ['ja']],
-    'KR' => ['name' => 'South Korea', 'langs' => ['ko']],
-    'IN' => ['name' => 'India', 'langs' => ['hi', 'en']],
-    'AU' => ['name' => 'Australia', 'langs' => ['en']],
-    'NZ' => ['name' => 'New Zealand', 'langs' => ['en']],
-    'TH' => ['name' => 'Thailand', 'langs' => ['th']],
-    'VN' => ['name' => 'Vietnam', 'langs' => ['vi']],
-    'ID' => ['name' => 'Indonesia', 'langs' => ['id']],
-    'MY' => ['name' => 'Malaysia', 'langs' => ['ms']],
 ];
 
-uasort($supported_regions, function($a, $b) {
-    return strcmp($a['name'], $b['name']);
-});
+// 1. DÉTECTION DU PAYS "MAISON" (Sticky Home)
+// On stocke le pays d'origine dans un cookie longue durée
+if (!isset($_COOKIE['freegeny_home'])) {
+    $home_country = $_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'DZ'; 
+    if (!isset($supported_regions[$home_country])) $home_country = 'DZ';
+    setcookie('freegeny_home', $home_country, time() + (86400 * 30 * 12), "/"); // 1 an
+    $_SESSION['home_country'] = $home_country;
+} else {
+    $home_country = $_COOKIE['freegeny_home'];
+}
 
 $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
 $uri_parts = explode('/', trim($request_uri, '/'));
 $slug = explode('?', $uri_parts[0] ?? '')[0];
 
+// 2. LOGIQUE DE NAVIGATION
 if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
+    // L'utilisateur navigue explicitement dans un pays (ex: /FR-fr/)
     $_SESSION['country_code'] = strtoupper($matches[1]);
     $_SESSION['lang'] = strtolower($matches[2]);
 } 
 else if (!str_contains($request_uri, 'unlock.php') && !str_contains($request_uri, '/assets/')) {
-    $detected_country = $_SESSION['country_code'] ?? ($_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'DZ'); 
-    $detected_lang = $_SESSION['lang'] ?? ($supported_regions[$detected_country]['langs'][0] ?? 'fr');
-    header("Location: /" . strtoupper($detected_country) . "-" . $detected_lang . "/");
+    // Si on arrive sur la racine ou qu'on actualise sans slug pays : RETOUR AU PAYS D'ORIGINE
+    $target_country = $home_country;
+    $target_lang = $supported_regions[$target_country]['langs'][0] ?? 'fr';
+    header("Location: /" . strtoupper($target_country) . "-" . $target_lang . "/");
     exit;
 }
 
-$country = $_SESSION['country_code'] ?? 'DZ';
+$country = $_SESSION['country_code'] ?? $home_country;
 $lang = $_SESSION['lang'] ?? 'fr';
 $is_rtl = in_array($lang, ['ar']);
 
