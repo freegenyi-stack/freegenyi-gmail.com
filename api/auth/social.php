@@ -41,7 +41,10 @@ switch ($provider) {
 }
 
 // Message informatif pour le mode développement
-if (empty(include(__DIR__ . '/../../config/auth.php'))['providers'][ucfirst($provider)]['keys']['id']) {
+$auth_config = include __DIR__ . '/../../config/auth.php';
+$provider_key = ucfirst($provider);
+
+if (empty($auth_config['providers'][$provider_key]['keys']['id'])) {
     die("<h3>Configuration requise</h3> 
          <p>Veuillez entrer votre <b>Client ID</b> et <b>Secret</b> dans le fichier <code>config/auth.php</code> pour activer la connexion avec " . ucfirst($provider) . ".</p>
          <a href='" . APP_URL . "/auth/login'>Retour</a>");
