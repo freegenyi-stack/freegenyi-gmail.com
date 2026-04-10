@@ -127,60 +127,52 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
             <div class="flex justify-between items-center h-20">
                 
                 <!-- GAUCHE : Logo & Sélecteur -->
-                <div class="flex items-center space-x-4 lg:space-x-8">
+                <div class="flex items-center space-x-3 lg:space-x-8">
                     <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/'; ?>" class="flex-shrink-0">
                         <img src="<?php echo APP_URL; ?>/assets/img/logo.png?v=2.0" alt="FreeGeny" class="h-10 lg:h-12 w-auto">
                     </a>
                     
-                    <!-- Sélecteur de Pays (Desktop) -->
-                    <div class="hidden sm:block relative" x-data="{ open: false }">
-                        <button @click="open = !open" class="flex items-center space-x-3 bg-orange-50 border border-orange-100 px-3 py-2 rounded-2xl hover:bg-white hover:shadow-md transition-all duration-300">
-                            <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" class="w-6 h-auto rounded-sm shadow-sm">
-                            <span class="text-xs font-black text-orange-600 uppercase tracking-tighter"><?php echo $country; ?></span>
-                            <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"></path></svg>
+                    <!-- Sélecteur de Pays (Visible dès 400px) -->
+                    <div class="hidden xs:block relative" x-data="{ open: false }">
+                        <button @click="open = !open" class="flex items-center space-x-2 bg-orange-50 border border-orange-100 px-3 py-1.5 rounded-2xl hover:bg-white transition-all">
+                            <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" class="w-6 h-auto rounded-sm">
+                            <span class="text-[10px] font-black text-orange-600 uppercase"><?php echo $country; ?></span>
                         </button>
-
-                        <div x-show="open" @click.away="open = false" 
-                             class="absolute mt-3 w-72 bg-orange-50/98 backdrop-blur-xl border border-orange-100 rounded-3xl shadow-2xl z-[150] py-4 max-h-[70vh] overflow-y-auto"
-                             x-transition:enter="transition ease-out duration-200"
-                             x-transition:enter-start="opacity-0 translate-y-4 scale-95">
+                        <!-- (Le reste du menu reste inchangé mais accessible) -->
+                        <div x-show="open" @click.away="open = false" class="absolute mt-3 w-72 bg-orange-50/98 backdrop-blur-xl border border-orange-100 rounded-3xl shadow-2xl z-[150] py-4 max-h-[70vh] overflow-y-auto" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-4 scale-95">
                             <div class="px-6 py-2 text-[10px] font-black text-orange-400 uppercase tracking-widest border-b border-orange-100/50 mb-3"><?php echo __('change_region'); ?></div>
                             <div class="grid grid-cols-1 gap-1 px-3">
                                 <?php foreach ($supported_regions as $code => $info): $l = $info['langs'][0]; ?>
-                                    <a href="<?php echo APP_URL . '/' . $code . '-' . $l . '/'; ?>" 
-                                       class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-white hover:text-orange-600 rounded-2xl transition-all duration-200 group">
-                                        <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-5 h-auto mr-4 rounded-sm shadow-sm group-hover:scale-110 transition-transform">
-                                        <span class="font-bold"><?php echo $info['name']; ?></span>
-                                    </a>
+                                    <a href="<?php echo APP_URL . '/' . $code . '-' . $l . '/'; ?>" class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-white hover:text-orange-600 rounded-2xl transition-all"><img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-5 h-auto mr-4 rounded-sm shadow-sm"><span class="font-bold"><?php echo $info['name']; ?></span></a>
                                 <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- CENTRE : Navigation Desktop -->
-                <div class="hidden md:flex items-center space-x-6">
-                    <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition"><?php echo __('about'); ?></a>
-                    <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition"><?php echo __('goals'); ?></a>
-                    <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition"><?php echo __('parents'); ?></a>
-                    <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition"><?php echo __('schools'); ?></a>
-                    <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition"><?php echo __('ngos'); ?></a>
+                <!-- CENTRE : Navigation Desktop (Visible seulement sur Large Écran pour éviter les chevauchements) -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition tracking-tight"><?php echo __('about'); ?></a>
+                    <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition tracking-tight"><?php echo __('goals'); ?></a>
+                    <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition tracking-tight"><?php echo __('parents'); ?></a>
+                    <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition tracking-tight"><?php echo __('schools'); ?></a>
+                    <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition tracking-tight"><?php echo __('ngos'); ?></a>
                 </div>
 
-                <!-- DROITE : Connexion & Menu Mobile -->
-                <div class="flex items-center space-x-3 md:space-x-4">
+                <!-- DROITE : Actions -->
+                <div class="flex items-center space-x-3">
                     <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/auth/login'; ?>" 
-                       class="hidden sm:inline-flex items-center text-sm font-black text-gray-900 uppercase tracking-wider hover:text-orange-600 transition">
+                       class="hidden sm:inline-flex text-sm font-black text-gray-900 uppercase tracking-wider hover:text-orange-600 transition">
                         <?php echo __('login'); ?>
                     </a>
                     
                     <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/auth/register'; ?>" 
-                       class="bg-orange-600 text-white px-5 md:px-7 py-2.5 md:py-3 rounded-2xl font-black text-sm uppercase tracking-widest shadow-lg shadow-orange-200 hover:bg-orange-700 hover:shadow-xl transition transform hover:-translate-y-0.5">
+                       class="bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-2xl font-black text-xs sm:text-sm uppercase tracking-widest shadow-lg hover:bg-orange-700 transition">
                         <?php echo __('register'); ?>
                     </a>
 
-                    <!-- Bouton Menu Mobile (Hamburger) -->
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-xl transition">
+                    <!-- Bouton Menu Mobile (Orange Vif pour être visible) -->
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 text-orange-600 bg-orange-50 rounded-xl hover:bg-orange-100 transition">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-width="2.5" stroke-linecap="round"></path></svg>
                     </button>
                 </div>
