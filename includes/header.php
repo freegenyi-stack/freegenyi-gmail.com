@@ -102,10 +102,10 @@ $is_rtl = $is_rtl ?? false;
             </div>
 
             <div class="flex items-center space-x-6 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden sm:block text-sm font-extrabold text-slate-900 uppercase tracking-widest hover:text-orange-600 transition">
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden sm:block text-[13px] font-extrabold text-slate-900 uppercase tracking-widest hover:text-orange-600 transition">
                     <?php echo __('login'); ?>
                 </a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="bg-orange-600 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-orange-200 hover:bg-orange-700 hover:shadow-2xl hover:-translate-y-0.5 transition transform duration-300">
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="bg-orange-600 text-white px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-orange-100 hover:bg-orange-700 hover:shadow-2xl hover:-translate-y-0.5 transition transform duration-300">
                     <?php echo __('register'); ?>
                 </a>
                 

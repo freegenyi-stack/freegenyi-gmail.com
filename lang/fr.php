@@ -16,7 +16,7 @@ return [
     'schools' => 'Écoles',
     'ngos' => 'ONG',
     'shop' => 'Magasin',
-    'hero_badge' => 'Révolution EdTech Primaire 🚀',
+    'hero_badge' => 'FreeGeny Global 🚀',
     'hero_title' => 'La réussite scolaire prématurée pour tous',
     'hero_desc' => 'Plateforme mondiale 100% gratuite. Cursus nationaux, standards internationaux et suivi pro.',
     'lessons' => 'Cours détaillés',
@@ -33,7 +33,7 @@ return [
     'contact' => 'Contactez-nous',
     'faq' => 'FAQ',
     'help' => 'Centre d\'aide',
-    'ads_model' => '100% Gratuit - Financé par la publicité',
+    'ads_model' => '',
     'singapore_math' => 'Maths Singapour',
     'intl_languages' => 'Langues Internationales'
 ];
