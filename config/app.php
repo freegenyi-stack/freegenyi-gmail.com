@@ -136,7 +136,11 @@ if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $_SESSION['country_code'] = $browsing_country;
     $_SESSION['lang'] = $browsing_lang;
 } 
-else if (!str_contains($request_uri, 'unlock.php') && !str_contains($request_uri, '/assets/')) {
+else if (
+    !str_contains($request_uri, 'unlock.php') && 
+    !str_contains($request_uri, '/assets/') && 
+    !str_contains($request_uri, '/api/')
+) {
     $target_country = $home_country;
     $target_lang = $supported_regions[$target_country]['langs'][0] ?? 'fr';
     header("Location: /" . strtoupper($target_country) . "-" . $target_lang . "/");
