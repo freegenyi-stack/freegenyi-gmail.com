@@ -126,27 +126,27 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-6">
                 <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/'; ?>" class="flex items-center">
-                    <img src="<?php echo APP_URL; ?>/assets/img/logo.png?v=1.1" alt="FreeGeny" class="h-10 w-auto">
+                    <img src="<?php echo APP_URL; ?>/assets/img/logo.png?v=2.0" alt="FreeGeny" class="h-10 w-auto">
                 </a>
                 
-                <!-- Sélecteur de Pays Ultra-Design (POINT 1 MONDIAL) -->
+                <!-- Sélecteur de Pays Ultra-Design (Point 1 Mondial) -->
                 <div class="relative" x-data="{ open: false }">
-                    <button @click="open = !open" class="flex items-center space-x-2 bg-gray-50 border border-gray-100 pl-2 pr-3 py-1.5 rounded-2xl hover:bg-white hover:shadow-md transition duration-200">
+                    <button @click="open = !open" class="flex items-center space-x-2 bg-orange-50 border border-orange-100 pl-2 pr-3 py-1.5 rounded-2xl hover:bg-white hover:shadow-md transition duration-200">
                         <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" 
                              alt="<?php echo $country; ?>" 
                              class="w-6 h-auto rounded-sm shadow-sm">
-                        <span class="text-xs font-bold text-gray-500"><?php echo $country; ?></span>
-                        <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="text-xs font-bold text-orange-600"><?php echo $country; ?></span>
+                        <svg class="w-3 h-3 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
                     </button>
 
-                    <!-- Menu Déroulant Premium -->
+                    <!-- Menu Déroulant Premium avec Fond Doux -->
                     <div x-show="open" @click.away="open = false" 
-                         class="absolute mt-3 w-72 bg-white/95 backdrop-blur-md border border-gray-100 rounded-3xl shadow-2xl z-[100] py-3 max-h-96 overflow-y-auto transform origin-top-left"
+                         class="absolute mt-3 w-72 bg-orange-50/95 backdrop-blur-md border border-orange-100 rounded-3xl shadow-2xl z-[100] py-3 max-h-96 overflow-y-auto transform origin-top-left"
                          x-transition:enter="transition ease-out duration-200"
                          x-transition:enter-start="opacity-0 translate-y-2 scale-95"
                          x-transition:enter-end="opacity-100 translate-y-0 scale-100">
                         
-                        <div class="px-5 py-2 text-[10px] font-black text-gray-400 uppercase tracking-widest border-b border-gray-50 mb-2">
+                        <div class="px-5 py-2 text-[10px] font-black text-orange-400 uppercase tracking-widest border-b border-orange-100 mb-2">
                              <?php echo __('change_region', 'Sélectionner votre région'); ?>
                         </div>
                         
@@ -155,7 +155,7 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
                                 $l = $info['langs'][0]; 
                             ?>
                                 <a href="<?php echo APP_URL . '/' . $code . '-' . $l . '/'; ?>" 
-                                   class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 rounded-2xl transition-all duration-200 group">
+                                   class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-orange-600 rounded-2xl transition-all duration-200 group">
                                     <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-5 h-auto mr-3 rounded-sm shadow-sm group-hover:scale-110 transition-transform">
                                     <span class="font-semibold"><?php echo $info['name']; ?></span>
                                     <?php if($code === $country): ?>
@@ -166,6 +166,7 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
             <div class="hidden md:flex space-x-8 font-semibold">
