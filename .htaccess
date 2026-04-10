@@ -13,6 +13,8 @@ RewriteRule ^([A-Z]{2})-([a-z]{2})/ngos$ ngos.php [L,QSA]
 RewriteRule ^([A-Z]{2})-([a-z]{2})/shop$ shop.php [L,QSA]
 RewriteRule ^([A-Z]{2})-([a-z]{2})/auth/login$ auth/login.php [L,QSA]
 RewriteRule ^([A-Z]{2})-([a-z]{2})/auth/register$ auth/register.php [L,QSA]
+RewriteRule ^([A-Z]{2})-([a-z]{2})/dashboard/parent$ dashboard/parent.php [L,QSA]
+RewriteRule ^([A-Z]{2})-([a-z]{2})/dashboard/child$ dashboard/child.php [L,QSA]
 
 # Routes Globales (Légal & Support)
 RewriteRule ^privacy$ privacy.php [L,QSA]
