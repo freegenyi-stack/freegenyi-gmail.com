@@ -41,8 +41,8 @@
                 <div>
                     <h4 class="font-black text-slate-900 mb-8 uppercase tracking-[0.2em] text-[10px]">Légal</h4>
                     <ul class="space-y-5">
-                        <li><a href="/privacy" class="text-slate-500 hover:text-orange-600 transition font-bold"><?php echo __('privacy'); ?></a></li>
-                        <li><a href="/terms" class="text-slate-500 hover:text-orange-600 transition font-bold"><?php echo __('terms'); ?></a></li>
+                        <li><a href="/privacy.html" class="text-slate-500 hover:text-orange-600 transition font-bold"><?php echo __('privacy'); ?></a></li>
+                        <li><a href="/terms.html" class="text-slate-500 hover:text-orange-600 transition font-bold"><?php echo __('terms'); ?></a></li>
                     </ul>
                 </div>
 

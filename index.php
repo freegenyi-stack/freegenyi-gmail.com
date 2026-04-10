@@ -14,7 +14,7 @@ include_once __DIR__ . '/includes/header.php';
                     <?php echo __('hero_badge'); ?>
                 </span>
                 <h1 class="text-6xl md:text-8xl font-black text-slate-900 leading-none mb-8 tracking-tighter">
-                    FreeGeny<span class="text-orange-600">.</span>
+                    FreeGeny
                 </h1>
                 <p class="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed mb-10 max-w-xl italic">
                     <?php echo __('hero_subtitle'); ?>. <br>

@@ -136,20 +136,7 @@ if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $_SESSION['country_code'] = $browsing_country;
     $_SESSION['lang'] = $browsing_lang;
 } 
-else if (
-    !str_contains($request_uri, 'unlock.php') && 
-    !str_contains($request_uri, '/assets/') && 
-    !str_contains($request_uri, '/api/') &&
-    !str_contains($request_uri, '/privacy') &&
-    !str_contains($request_uri, '/terms') &&
-    !str_contains($request_uri, '/faq') &&
-    !str_contains($request_uri, '/contact')
-) {
-    $target_country = $home_country;
-    $target_lang = $supported_regions[$target_country]['langs'][0] ?? 'fr';
-    header("Location: /" . strtoupper($target_country) . "-" . $target_lang . "/");
-    exit;
-}
+// On ne redirige plus les URL sans pays. On applique simplement les valeurs par défaut ci-dessous.
 
 $country = $_SESSION['country_code'] ?? $home_country;
 $lang = $_SESSION['lang'] ?? 'fr';
