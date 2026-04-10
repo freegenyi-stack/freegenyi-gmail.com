@@ -37,6 +37,10 @@ if (!function_exists('loadEnv')) {
 }
 
 $env = loadEnv(__DIR__ . '/../.env');
+foreach ($env as $k => $v) {
+    putenv("$k=$v");
+    $_ENV[$k] = $v;
+}
 define('APP_URL', rtrim($env['APP_URL'] ?? 'https://freegeny.com', '/'));
 
 $supported_regions = [

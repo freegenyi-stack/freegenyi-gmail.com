@@ -1,99 +1,77 @@
 <?php
 include_once __DIR__ . '/../includes/header.php';
 ?>
-<main class="py-20 bg-slate-50 min-h-screen flex items-center justify-center relative overflow-hidden">
-    <!-- Décorations de fond -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-orange-100/50 blur-[120px] rounded-full -mr-20 -mt-20"></div>
-    <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-100/30 blur-[120px] rounded-full -ml-20 -mb-20"></div>
+<main class="min-h-screen relative flex items-center justify-center py-20 px-6 overflow-hidden bg-[#fafafa]">
+    <!-- Background Animated Gradients -->
+    <div class="absolute top-0 -left-4 w-96 h-96 bg-orange-400 opacity-20 blur-[120px] rounded-full animate-pulse"></div>
+    <div class="absolute bottom-0 -right-4 w-96 h-96 bg-blue-400 opacity-10 blur-[120px] rounded-full animate-pulse" style="animation-delay: 2s"></div>
 
-    <div class="max-w-xl w-full bg-white/80 backdrop-blur-xl p-12 rounded-[4rem] shadow-2xl shadow-slate-200 border border-white mx-4 relative z-10">
-        
-        <!-- HEADER : LOGO & TITRE -->
-        <div class="text-center mb-12">
-            <a href="/"><img src="<?php echo APP_URL; ?>/assets/img/logo.png?v=4.0" class="h-14 mx-auto mb-8 transform hover:scale-110 transition duration-500" alt="Logo"></a>
-            <h1 class="text-4xl font-black text-slate-900 mb-3 tracking-tight"><?php echo __('welcome_back'); ?></h1>
-            <p class="text-slate-400 font-medium italic"><?php echo __('login_subtitle'); ?></p>
-        </div>
-
-        <!-- SOCIAL LOGIN : GOOGLE ONLY -->
-        <div class="mb-10">
-            <a href="/api/auth/social.php?provider=Google" class="flex items-center justify-center space-x-4 p-5 bg-white border border-slate-100 rounded-3xl hover:bg-slate-50 hover:shadow-lg transition-all duration-300 group w-full">
-                <svg class="w-6 h-6 transform group-hover:scale-110 transition" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571.001-.001.002-.001.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
-                <span class="text-sm font-black text-slate-700 uppercase tracking-widest">Continuer avec Google</span>
-            </a>
-        </div>
-
-        <!-- DIVIDER -->
-        <div class="relative flex items-center mb-10">
-            <div class="flex-grow border-t border-slate-100"></div>
-            <span class="flex-shrink mx-4 text-xs font-black text-slate-300 uppercase tracking-[0.2em]"><?php echo __('or_by_email'); ?></span>
-            <div class="flex-grow border-t border-slate-100"></div>
-        </div>
-
-        <!-- FORMULAIRE CLASSIQUE (AJAX/JSON) -->
-        <form @submit.prevent="submit" x-data="{
-            email: '',
-            password: '',
-            loading: false,
-            error: '',
-            async submit() {
-                this.loading = true;
-                this.error = '';
-                try {
-                    const res = await fetch('/api/auth/login.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Requested-With': 'XMLHttpRequest'
-                        },
-                        body: JSON.stringify({ email: this.email, password: this.password })
-                    });
-                    const data = await res.json();
-                    if (res.ok && data.success) {
-                        window.location.href = data.redirect || '/dashboard';
-                    } else {
-                        this.error = data.error || 'Erreur de connexion.';
-                    }
-                } catch (e) {
-                    this.error = 'Erreur de communication avec le serveur.';
-                } finally {
-                    this.loading = false;
-                }
-            }
-        }" class="space-y-6">
+    <div class="w-full max-w-lg relative">
+        <div class="bg-white/70 backdrop-blur-3xl p-12 rounded-[3.5rem] shadow-[0_32px_64px_-15px_rgba(0,0,0,0.08)] border border-white/50 relative z-10 box-border">
             
-            <template x-if="error">
-                <div class="p-4 bg-red-50 border border-red-100 rounded-2xl text-red-600 text-xs font-bold text-center" x-text="error"></div>
-            </template>
-
-            <div class="relative group">
-                <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 ml-4"><?php echo __('email_label'); ?></label>
-                <input type="email" x-model="email" required placeholder="nom@exemple.com"
-                       class="w-full px-8 py-5 bg-slate-50 border border-transparent rounded-[2rem] focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold placeholder:text-slate-300">
-            </div>
-            
-            <div class="relative group">
-                <div class="flex justify-between items-center mb-2 px-4">
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400"><?php echo __('password_label'); ?></label>
-                    <a href="/auth/forgot" class="text-[10px] font-black text-orange-600 hover:underline uppercase tracking-widest font-bold"><?php echo __('forgot_password'); ?></a>
+            <!-- Logo area -->
+            <div class="text-center mb-12">
+                <div class="inline-flex p-4 rounded-3xl bg-orange-600/5 mb-8">
+                    <a href="/"><img src="<?php echo APP_URL; ?>/assets/img/logo.png" class="h-12 w-auto object-contain" alt="FreeGeny"></a>
                 </div>
-                <input type="password" x-model="password" required placeholder="••••••••"
-                       class="w-full px-8 py-5 bg-slate-50 border border-transparent rounded-[2rem] focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold placeholder:text-slate-300">
+                <h1 class="text-4xl font-black text-slate-900 tracking-tight leading-none mb-4"><?php echo __('welcome_back'); ?></h1>
+                <p class="text-slate-500 font-medium"><?php echo __('login_subtitle'); ?></p>
             </div>
 
-            <div class="pt-4">
-                <button type="submit" :disabled="loading" class="relative w-full bg-orange-600 text-white py-6 rounded-3xl font-black text-xs uppercase tracking-[0.2em] shadow-2xl shadow-orange-200 hover:bg-orange-700 hover:shadow-orange-300 hover:-translate-y-1 transition transform duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
-                    <span x-show="!loading"><?php echo __('login_button'); ?></span>
-                    <span x-show="loading" x-cloak><?php echo __('login_loading'); ?></span>
-                </button>
+            <!-- Google Integration (Clean & Bold) -->
+            <div class="mb-10">
+                <a href="/api/auth/social.php?provider=Google" class="flex items-center justify-center space-x-4 w-full py-4 bg-white border border-slate-100 rounded-2xl hover:bg-slate-50 hover:border-slate-200 hover:shadow-xl transition-all duration-500 group">
+                    <svg class="w-6 h-6 group-hover:scale-110 transition duration-500" viewBox="0 0 48 48">
+                        <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+                        <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+                        <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+                        <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571.001-.001.002-.001.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+                    </svg>
+                    <span class="text-xs font-black text-slate-700 uppercase tracking-[0.2em] italic">Continuer avec Google</span>
+                </a>
             </div>
-        </form>
 
-        <!-- FOOTER : S'INSCRIRE -->
-        <div class="mt-12 text-center pt-8 border-t border-slate-50">
-            <p class="text-slate-400 text-sm font-medium"><?php echo __('new_user'); ?> 
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="text-orange-600 font-black hover:text-orange-700 underline underline-offset-8 transition ml-2"><?php echo __('create_account_free'); ?></a>
-            </p>
+            <!-- Separator -->
+            <div class="relative flex items-center mb-10">
+                <div class="flex-grow border-t border-slate-100"></div>
+                <span class="flex-shrink mx-6 text-[10px] font-black text-slate-300 uppercase tracking-widest"><?php echo __('or_by_email'); ?></span>
+                <div class="flex-grow border-t border-slate-100"></div>
+            </div>
+
+            <!-- Inputs Area -->
+            <form action="/api/auth/login.php" method="POST" class="space-y-6">
+                <div class="group">
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-4"><?php echo __('email_label'); ?></label>
+                    <input type="email" name="email" required placeholder="nom@exemple.com"
+                           class="w-full px-8 py-5 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-slate-700 placeholder:text-slate-300">
+                </div>
+
+                <div class="group relative">
+                    <div class="flex items-center justify-between mb-3 ml-4">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest"><?php echo __('password_label'); ?></label>
+                        <a href="#" class="text-[10px] font-black text-orange-600 uppercase tracking-widest hover:text-orange-700"><?php echo __('forgot_password'); ?></a>
+                    </div>
+                    <input type="password" name="password" required placeholder="••••••••"
+                           class="w-full px-8 py-5 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-slate-700 placeholder:text-slate-300">
+                </div>
+
+                <div class="pt-6">
+                    <button type="submit" class="w-full bg-orange-600 text-white py-6 rounded-2xl font-black text-xs uppercase tracking-[0.25em] shadow-xl shadow-orange-100 hover:bg-orange-700 hover:shadow-orange-200 hover:-translate-y-1 transition-all active:scale-95 duration-300">
+                        <?php echo __('login_button'); ?>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Footer area -->
+            <div class="mt-12 text-center pt-8 border-t border-slate-50">
+                <p class="text-slate-400 text-sm font-medium">
+                    <?php echo __('new_user'); ?>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="text-orange-600 font-black hover:text-orange-700 underline underline-offset-8 transition-all duration-300 ml-1">
+                        <?php echo __('create_account_free'); ?>
+                    </a>
+                </p>
+            </div>
+
         </div>
     </div>
 </main>
