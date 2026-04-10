@@ -172,10 +172,10 @@
   font-size: 4rem;
 }
 .subject-card-cover.arabe {
-  background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+  background: linear-gradient(135deg, #FF6B35 0%, #ff9a3c 100%);
 }
 .subject-card-cover.maths {
-  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%);
+  background: linear-gradient(135deg, #2196F3 0%, #64b5f6 100%);
 }
 .subject-card-body { padding: var(--space-6); }
 .subject-card-body h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
@@ -297,7 +297,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-12) var(--space-4);
-  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(26,35,126,0.4) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255, 107, 53, 0.05) 0%, transparent 70%);
 }
 .auth-card {
   width: 100%;

@@ -42,10 +42,10 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
     <meta name="twitter:description" content="<?php echo $page_description; ?>">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/main.css">
-    <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/components.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/main.css?v=2.0">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/components.css?v=2.0">
     <?php if ($lang == 'ar'): ?>
-        <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/rtl.css">
+        <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/rtl.css?v=2.0">
     <?php endif; ?>
 
     <!-- Fonts Premium (Google Fonts) -->
