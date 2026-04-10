@@ -48,7 +48,7 @@ include_once __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Section MATIÈRES (Subjects) -->
-<section id="subjects" class="py-20 bg-gray-50">
+<section id="subjects" class="py-20 bg-white border-t border-gray-50">
     <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto text-center mb-16">
             <h2 class="text-4xl font-black text-gray-900 mb-4">Le programme officiel Algérien <span class="text-orange-600">1AP</span></h2>
@@ -90,24 +90,24 @@ include_once __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Section STATS : Social Proof -->
-<section class="py-16 bg-blue-900 text-white overflow-hidden relative">
+<section class="py-16 bg-white border-t border-gray-50 text-gray-900 overflow-hidden relative">
     <div class="container mx-auto px-4 relative z-10">
         <div class="flex flex-wrap -mx-4 text-center">
             <div class="w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
-                <h3 class="text-4xl font-black mb-2">115+</h3>
-                <p class="text-blue-200">Leçons interactives</p>
+                <h3 class="text-4xl font-black text-orange-600 mb-2">115+</h3>
+                <p class="text-gray-500 font-bold">Leçons interactives</p>
             </div>
             <div class="w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
-                <h3 class="text-4xl font-black mb-2">333+</h3>
-                <p class="text-blue-200">Jeux éducatifs</p>
+                <h3 class="text-4xl font-black text-orange-600 mb-2">333+</h3>
+                <p class="text-gray-500 font-bold">Jeux éducatifs</p>
             </div>
             <div class="w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
-                <h3 class="text-4xl font-black mb-2">10k+</h3>
-                <p class="text-blue-200">Enfants satisfaits</p>
+                <h3 class="text-4xl font-black text-orange-600 mb-2">10k+</h3>
+                <p class="text-gray-500 font-bold">Enfants satisfaits</p>
             </div>
             <div class="w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
-                <h3 class="text-4xl font-black mb-2">4.9/5</h3>
-                <p class="text-blue-200">Note moyenne</p>
+                <h3 class="text-4xl font-black text-orange-600 mb-2">4.9/5</h3>
+                <p class="text-gray-500 font-bold">Note moyenne</p>
             </div>
         </div>
     </div>

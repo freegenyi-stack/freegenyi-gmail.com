@@ -58,26 +58,18 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
 </head>
 <body class="bg-white text-gray-900 font-sans">
     
-    <!-- Barre de détection pays (Point 3) -->
-    <?php if ($country === 'DZ'): ?>
-    <div class="bg-orange-600 text-white text-center py-1 text-sm font-bold">
-        🇩🇿 Offre spéciale Algérie : Accès gratuit au programme 1AP !
-    </div>
-    <?php endif; ?>
-
-    <nav class="navbar bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <nav class="navbar bg-white border-b border-gray-100 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/'; ?>" class="flex items-center space-x-2">
                     <span class="text-2xl font-black text-orange-600">FreeGeny</span>
                 </a>
-                <!-- Drapeau et Sélecteur de Pays (POINT 1 MONDIAL) -->
+                <!-- Drapeau Uniquement (POINT 1 MONDIAL) -->
                 <div class="relative" x-data="{ open: false }">
-                    <button @click="open = !open" class="flex items-center space-x-2 bg-gray-50 border border-gray-200 px-3 py-1.5 rounded-xl hover:bg-white hover:shadow-md transition duration-200">
+                    <button @click="open = !open" class="flex items-center space-x-2 bg-gray-50 border border-gray-100 px-2 py-1.5 rounded-xl hover:bg-white hover:shadow-sm transition duration-200">
                         <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" 
                              alt="<?php echo $country; ?>" 
-                             class="w-6 h-auto rounded-sm shadow-sm">
-                        <span class="text-xs font-bold text-gray-700 uppercase"><?php echo $country; ?>-<?php echo $lang; ?></span>
+                             class="w-6 h-auto rounded-sm">
                         <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
                     </button>
 
