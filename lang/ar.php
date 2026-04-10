@@ -35,5 +35,27 @@ return [
     'help' => 'مركز المساعدة',
     'ads_model' => '',
     'singapore_math' => 'رياضيات سنغافورة',
-    'intl_languages' => 'لغات عالمية'
+    'intl_languages' => 'لغات عالمية',
+    
+    // Authentification
+    'welcome_back' => 'مرحباً بعودتك!',
+    'login_subtitle' => 'قم بتسجيل الدخول للوصول إلى حسابك.',
+    'or_by_email' => 'أو عبر البريد الإلكتروني',
+    'email_label' => 'البريد الإلكتروني',
+    'password_label' => 'كلمة المرور',
+    'forgot_password' => 'نسيت كلمة المرور؟',
+    'login_button' => 'تسجيل الدخول',
+    'login_loading' => 'جاري تسجيل الدخول...',
+    'new_user' => 'ليس لديك حساب؟',
+    'create_account_free' => 'إنشاء حساب مجاني',
+    
+    'join_us' => 'انضم إلينا!',
+    'register_subtitle' => 'ابدأ مغامرتك التعليمية العالمية اليوم.',
+    'or_register_by_email' => 'أو سجل عبر البريد الإلكتروني',
+    'fullname_label' => 'الاسم الكامل',
+    'confirm_password_label' => 'تأكيد كلمة المرور',
+    'register_button' => 'تسجيل مجاني',
+    'register_loading' => 'جاري إنشاء الحساب...',
+    'already_member' => 'لديك حساب بالفعل؟',
+    'login_link' => 'تسجيل الدخول'
 ];

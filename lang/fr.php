@@ -35,5 +35,27 @@ return [
     'help' => 'Centre d\'aide',
     'ads_model' => '',
     'singapore_math' => 'Maths Singapour',
-    'intl_languages' => 'Langues Internationales'
+    'intl_languages' => 'Langues Internationales',
+    
+    // Authentification
+    'welcome_back' => 'Ravi de vous revoir !',
+    'login_subtitle' => 'Accédez à votre espace pour continuer.',
+    'or_by_email' => 'Ou par email',
+    'email_label' => 'Email professionnel ou personnel',
+    'password_label' => 'Mot de passe',
+    'forgot_password' => 'Oublié ?',
+    'login_button' => 'Se Connecter maintenant',
+    'login_loading' => 'Connexion en cours...',
+    'new_user' => 'Nouveau sur FreeGeny ?',
+    'create_account_free' => 'Créer un compte gratuit',
+    
+    'join_us' => 'Rejoignez-nous !',
+    'register_subtitle' => 'Commencez dès aujourd\'hui l\'aventure.',
+    'or_register_by_email' => 'Ou s\'inscrire par email',
+    'fullname_label' => 'Nom complet',
+    'confirm_password_label' => 'Confirmer le mot de passe',
+    'register_button' => 'S\'INSCRIRE gratuitement',
+    'register_loading' => 'Création en cours...',
+    'already_member' => 'Déjà un compte ?',
+    'login_link' => 'Se connecter'
 ];
