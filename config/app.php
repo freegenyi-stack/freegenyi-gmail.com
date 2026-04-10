@@ -1,6 +1,6 @@
 <?php
 /**
- * app.php - Version avec REDIRECTION FORCÉE et liste élargie de pays
+ * app.php - Version Mondiale Exhaustive
  */
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -23,19 +23,39 @@ if (!function_exists('loadEnv')) {
 $env = loadEnv(__DIR__ . '/../.env');
 define('APP_URL', rtrim($env['APP_URL'] ?? 'https://freegeny.com', '/'));
 
-// Liste élargie des régions FreeGeny
+// LISTE MONDIALE DES RÉGIONS FREEGENY
 $supported_regions = [
+    // Maghreb
     'DZ' => ['name' => 'Algérie', 'langs' => ['ar', 'fr']],
-    'FR' => ['name' => 'France', 'langs' => ['fr']],
     'MA' => ['name' => 'Maroc', 'langs' => ['ar', 'fr']],
     'TN' => ['name' => 'Tunisie', 'langs' => ['ar', 'fr']],
-    'SA' => ['name' => 'Arabie S.', 'langs' => ['ar']],
+    'LY' => ['name' => 'Libye', 'langs' => ['ar']],
+    
+    // Moyen-Orient
+    'SA' => ['name' => 'Arabie Saoudite', 'langs' => ['ar']],
     'AE' => ['name' => 'Émirats', 'langs' => ['ar']],
     'QA' => ['name' => 'Qatar', 'langs' => ['ar']],
+    'KW' => ['name' => 'Koweït', 'langs' => ['ar']],
+    'BH' => ['name' => 'Bahreïn', 'langs' => ['ar']],
+    'OM' => ['name' => 'Oman', 'langs' => ['ar']],
     'EG' => ['name' => 'Égypte', 'langs' => ['ar']],
-    'BE' => ['name' => 'Belgique', 'langs' => ['fr', 'nl']],
-    'CH' => ['name' => 'Suisse', 'langs' => ['fr', 'de']],
-    'CA' => ['name' => 'Canada', 'langs' => ['fr', 'en']],
+    'JO' => ['name' => 'Jordanie', 'langs' => ['ar']],
+    'LB' => ['name' => 'Liban', 'langs' => ['ar', 'fr']],
+    'PS' => ['name' => 'Palestine', 'langs' => ['ar']],
+    'IQ' => ['name' => 'Irak', 'langs' => ['ar']],
+
+    // Europe
+    'FR' => ['name' => 'France', 'langs' => ['fr']],
+    'BE' => ['name' => 'Belgique', 'langs' => ['fr']],
+    'CH' => ['name' => 'Suisse', 'langs' => ['fr']],
+    'DE' => ['name' => 'Allemagne', 'langs' => ['fr']], // Pour la diaspora
+    'ES' => ['name' => 'Espagne', 'langs' => ['fr']],
+    'IT' => ['name' => 'Italie', 'langs' => ['fr']],
+    'TR' => ['name' => 'Turquie', 'langs' => ['ar', 'fr']],
+
+    // Amérique
+    'CA' => ['name' => 'Canada', 'langs' => ['fr']],
+    'US' => ['name' => 'USA', 'langs' => ['fr']],
 ];
 
 /**
@@ -45,17 +65,14 @@ $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
 $uri_parts = explode('/', trim($request_uri, '/'));
 $slug = explode('?', $uri_parts[0] ?? '')[0];
 
-// 1. Si on a le slug dans l'URL, on l'utilise
 if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $_SESSION['country_code'] = strtoupper($matches[1]);
     $_SESSION['lang'] = strtolower($matches[2]);
 } 
-// 2. SINON : REDIRECTION FORCÉE (Si on est sur une page .php ou à la racine)
 else if (!str_contains($request_uri, '/api/') && !str_contains($request_uri, '/assets/')) {
     $detected_country = $_SESSION['country_code'] ?? ($_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'DZ'); 
-    $detected_lang = $_SESSION['lang'] ?? (in_array($detected_country, ['FR', 'BE', 'CH', 'CA']) ? 'fr' : 'ar');
+    $detected_lang = $_SESSION['lang'] ?? (in_array($detected_country, ['DZ', 'MA', 'TN', 'LY', 'SA', 'AE', 'QA', 'KW', 'BH', 'OM', 'EG', 'JO', 'LB', 'PS', 'IQ']) ? 'ar' : 'fr');
     
-    // On construit l'URL avec le prefixe obligatoire
     $path = ($request_uri === '/') ? '' : ltrim($request_uri, '/');
     $redirect_url = APP_URL . '/' . strtoupper($detected_country) . '-' . $detected_lang . '/' . $path;
     
