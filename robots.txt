@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Chemins à ne pas indexer (admin, api, config)
+Disallow: /api/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /install/
+Disallow: /dashboard/
+Disallow: /auth/
+
+# Indiquer le plan du site
+Sitemap: https://freegeny.com/sitemap.xml

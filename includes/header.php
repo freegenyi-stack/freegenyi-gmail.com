@@ -21,13 +21,49 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO de Base -->
+    <!-- SEO Dynamique par Pays -->
+    <?php 
+    $display_country = $supported_regions[$country]['name'] ?? 'Monde';
+    $page_title = "FreeGeny " . $display_country . " | " . $page_title;
+    ?>
     <title><?php echo $page_title; ?></title>
-    <meta name="description" content="<?php echo $page_description; ?>">
+    <meta name="description" content="<?php echo $page_description; ?> - Accédez au programme scolaire officiel de <?php echo $display_country; ?>.">
     <link rel="canonical" href="<?php echo $current_url; ?>">
     
-    <!-- SEO Multilingue (Hreflang) -->
-    <link rel="alternate" hreflang="fr" href="<?php echo APP_URL; ?>/fr/">
-    <link rel="alternate" hreflang="ar" href="<?php echo APP_URL; ?>/ar/">
+    <!-- SEO International : Balises Hreflang Dynamiques (50+ Pays) -->
+    <?php foreach ($supported_regions as $code => $info): ?>
+        <?php foreach ($info['langs'] as $l): ?>
+            <link rel="alternate" hreflang="<?php echo strtolower($l) . '-' . strtolower($code); ?>" href="<?php echo APP_URL . '/' . $code . '-' . $l . '/'; ?>">
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+    <link rel="alternate" hreflang="x-default" href="<?php echo APP_URL; ?>/">
+    
+    <!-- Données Structurées JSON-LD (Professionnel) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "FreeGeny",
+      "url": "<?php echo APP_URL; ?>",
+      "logo": "<?php echo APP_URL; ?>/assets/img/logo.png",
+      "sameAs": [
+        "https://facebook.com/freegeny",
+        "https://instagram.com/freegeny"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "<?php echo APP_URL; ?>",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "<?php echo APP_URL; ?>/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
     
     <!-- Frameworks (Tailwind CSS v3 + Alpine.js) -->
     <script src="https://cdn.tailwindcss.com"></script>
