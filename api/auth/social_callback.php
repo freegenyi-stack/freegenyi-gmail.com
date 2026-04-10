@@ -1,39 +1,122 @@
 <?php
 /**
- * social_callback.php - Reçoit les données du réseau social et gère la connexion finale
+ * social_callback.php - Reçoit le code du réseau social, l'échange contre un token, et connecte l'utilisateur.
  */
-
 require_once __DIR__ . '/../../config/app.php';
-require_once __DIR__ . '/../../config/db.php';
-require_once __DIR__ . '/../../includes/SocialAuthManager.php';
+require_once __DIR__ . '/../../config/auth.php';
+require_once __DIR__ . '/auth_helpers.php'; // DB connection & auth functions
 
-// Initialisation du manager avec la base de données
-$authManager = new SocialAuthManager($pdo);
+$provider = $_GET['provider'] ?? '';
+$code = $_GET['code'] ?? null;
+$state = $_GET['state'] ?? null;
+$error = $_GET['error'] ?? null;
 
-// Ici, on récupèrerait normalement les données via l'API (ex: Google User Info)
-// PHP Simulation :
-$provider = $_GET['provider'] ?? 'google';
-$provider_id = $_GET['id'] ?? null; // ID envoyé par le réseau
-$email = $_GET['email'] ?? null;
-$full_name = $_GET['name'] ?? 'Utilisateur Social';
-
-if (!$email || !$provider_id) {
-    header('Location: ' . APP_URL . '/auth/login?error=auth_failed');
+if ($error || !$code || !$state || $state !== ($_SESSION['oauth_state'] ?? '')) {
+    header('Location: /auth/login?error=auth_failed_state');
     exit;
 }
 
-// UTILISATION DE L'IDENTITÉ UNIFIÉE (POINT 1)
-$user_id = $authManager->handleSocialUser($provider, $provider_id, $email, $full_name);
+$auth_config = include __DIR__ . '/../../config/auth.php';
+$provider_key = ucfirst($provider);
 
-if ($user_id) {
-    // Connexion réussie : On crée la session
-    $_SESSION['user_id'] = $user_id;
-    $_SESSION['user_email'] = $email;
-    $_SESSION['logged_in'] = true;
-
-    // Redirection vers le dashboard
-    header('Location: ' . APP_URL . '/dashboard/parent');
-} else {
-    header('Location: ' . APP_URL . '/auth/login?error=database_error');
+if (empty($auth_config['providers'][$provider_key]['keys']['id'])) {
+    header('Location: /auth/login?error=not_configured');
+    exit;
 }
+
+$client_id = $auth_config['providers'][$provider_key]['keys']['id'];
+$client_secret = $auth_config['providers'][$provider_key]['keys']['secret'];
+$redirect_uri = APP_URL . '/api/auth/social_callback.php?provider=' . urlencode($provider);
+
+$email = null;
+$full_name = null;
+$social_id = null;
+
+if ($provider === 'google') {
+    // 1. Echanger le CODE contre un Access Token
+    $token_url = 'https://oauth2.googleapis.com/token';
+    $post_data = http_build_query([
+        'code' => $code,
+        'client_id' => $client_id,
+        'client_secret' => $client_secret,
+        'redirect_uri' => $redirect_uri,
+        'grant_type' => 'authorization_code'
+    ]);
+
+    $ch = curl_init($token_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-urlencoded']);
+    
+    $response = curl_exec($ch);
+    curl_close($ch);
+    $token_data = json_decode($response, true);
+
+    if (empty($token_data['access_token'])) {
+        error_log("Google OAuth Error: " . json_encode($token_data));
+        header('Location: /auth/login?error=token_exchange_failed');
+        exit;
+    }
+
+    // 2. Fetch User Info
+    $user_info_url = 'https://www.googleapis.com/oauth2/v2/userinfo';
+    $ch = curl_init($user_info_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer ' . $token_data['access_token']]);
+    
+    $response = curl_exec($ch);
+    curl_close($ch);
+    $user_info = json_decode($response, true);
+
+    if (empty($user_info['email'])) {
+        header('Location: /auth/login?error=no_email_provided');
+        exit;
+    }
+
+    $email = $user_info['email'];
+    $full_name = $user_info['name'] ?? 'Google User';
+    $social_id = $user_info['id'];
+} else {
+    // Autres providers (Facebook, Microsoft) à implémenter de la même manière par la suite
+    header('Location: /auth/login?error=provider_not_implemented');
+    exit;
+}
+
+
+// --- 3. Intégration à la Base de données (Identité Unifiée) ---
+if ($email && $full_name) {
+    // On vérifie si l'utilisateur existe déjà
+    $user = DB::fetchOne("SELECT * FROM users WHERE email = ? LIMIT 1", [$email]);
+
+    if ($user) {
+        // Mise à jour date connexion
+        DB::execute("UPDATE users SET last_login_at = NOW(), login_attempts = 0 WHERE id = ?", [$user['id']]);
+    } else {
+        // Création du compte via Social Login (Mot de passe vide robuste)
+        $random_password = bin2hex(random_bytes(16)); // Sécurité
+        $hash = password_hash($random_password, PASSWORD_BCRYPT, ['cost' => BCRYPT_COST]);
+        $detected_country = $_SESSION['home_country'] ?? 'DZ';
+
+        $user_id = DB::insert(
+            "INSERT INTO users (email, password_hash, full_name, declared_country, last_login_at) VALUES (?, ?, ?, ?, NOW())",
+            [$email, $hash, $full_name, $detected_country]
+        );
+
+        if (!$user_id) {
+            header('Location: /auth/login?error=account_creation_failed');
+            exit;
+        }
+        $user = DB::fetchOne("SELECT * FROM users WHERE id = ? LIMIT 1", [$user_id]);
+    }
+
+    // Connecter l'utilisateur
+    loginUser($user);
+
+    // Rediriger vers le dashboard
+    header("Location: /" . strtoupper($_SESSION['country_code'] ?? 'DZ') . "-" . ($_SESSION['lang'] ?? 'fr') . "/dashboard/parent");
+    exit;
+}
+
+header('Location: /auth/login?error=unknown_error');
 exit;

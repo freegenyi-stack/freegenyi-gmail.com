@@ -24,32 +24,44 @@ if (!$provider || !in_array($provider, $allowed_providers)) {
 // 1. Stockage de l'état (sécurité contre les attaques CSRF)
 $_SESSION['oauth_state'] = bin2hex(random_bytes(16));
 
-// 2. Redirection simulée (tant que les clés ne sont pas configurées)
-// Note : Une fois les clés (ID/Secret) insérées, nous remplacerons ceci par l'appel réel à l'API du provider.
-
-switch ($provider) {
-    case 'google':
-        // Logique de redirection vers Google Accounts
-        $auth_url = "https://accounts.google.com/o/oauth2/auth";
-        break;
-    case 'facebook':
-        // Logique de redirection vers Facebook OAuth
-        $auth_url = "https://www.facebook.com/v12.0/dialog/oauth";
-        break;
-    default:
-        header('Location: ' . APP_URL . '/auth/login?error=not_implemented');
-        exit;
-}
-
-// Message informatif pour le mode développement
+// 2. Redirection réelle vers le provider
 $auth_config = include __DIR__ . '/../../config/auth.php';
 $provider_key = ucfirst($provider);
 
 if (empty($auth_config['providers'][$provider_key]['keys']['id'])) {
     die("<h3>Configuration requise</h3> 
          <p>Veuillez entrer votre <b>Client ID</b> et <b>Secret</b> dans le fichier <code>config/auth.php</code> pour activer la connexion avec " . ucfirst($provider) . ".</p>
-         <a href='" . APP_URL . "/auth/login'>Retour</a>");
+         <a href='/auth/login'>Retour</a>");
 }
 
-// Redirection réelle (à activer une fois les clés prêtes)
-// header('Location: ' . $auth_url . '?client_id=...');
+$client_id = $auth_config['providers'][$provider_key]['keys']['id'];
+$redirect_uri = APP_URL . '/api/auth/social_callback.php?provider=' . urlencode($provider);
+
+switch ($provider) {
+    case 'google':
+        $auth_url = 'https://accounts.google.com/o/oauth2/v2/auth?' . http_build_query([
+            'client_id' => $client_id,
+            'redirect_uri' => $redirect_uri,
+            'response_type' => 'code',
+            'scope' => 'email profile',
+            'state' => $_SESSION['oauth_state'],
+            'access_type' => 'online',
+            'prompt' => 'select_account'
+        ]);
+        header("Location: $auth_url");
+        exit;
+        
+    case 'facebook':
+        $auth_url = 'https://www.facebook.com/v12.0/dialog/oauth?' . http_build_query([
+            'client_id' => $client_id,
+            'redirect_uri' => $redirect_uri,
+            'state' => $_SESSION['oauth_state'],
+            'scope' => 'email'
+        ]);
+        header("Location: $auth_url");
+        exit;
+        
+    default:
+        header('Location: /auth/login?error=not_implemented');
+        exit;
+}
