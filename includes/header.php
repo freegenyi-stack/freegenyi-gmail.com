@@ -24,11 +24,15 @@ $is_rtl = $is_rtl ?? false;
     
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png?v=4.0">
     
     <style>
         [x-cloak] { display: none !important; }
         body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
         .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,0.05); }
+        .custom-scroll::-webkit-scrollbar { width: 5px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #ea580c; border-radius: 10px; }
         .nav-link { position: relative; transition: color 0.3s; }
         .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #ea580c; transition: width 0.3s; }
         .nav-link:hover::after { width: 100%; }
@@ -42,7 +46,7 @@ $is_rtl = $is_rtl ?? false;
             <!-- GAUCHE : LOGO & COUNTRY -->
             <div class="flex items-center space-x-8 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
                 <a href="/<?php echo $country . '-' . $lang; ?>/" class="transition hover:scale-105 transform">
-                    <img src="<?php echo APP_URL; ?>/assets/img/logo.png?v=3.0" class="h-10 md:h-12 w-auto" alt="Logo">
+                    <img src="<?php echo APP_URL; ?>/assets/img/logo.png?v=4.0" class="h-10 md:h-12 w-auto" alt="Logo">
                 </a>
 
                 <!-- SÉLECTEUR DE PAYS LUXE -->
@@ -55,7 +59,7 @@ $is_rtl = $is_rtl ?? false;
                     </button>
 
                     <div x-show="open" @click.away="open = false" x-cloak 
-                         class="absolute mt-5 w-80 glass-card rounded-[2.5rem] shadow-2xl z-[150] p-6 origin-top overflow-hidden"
+                         class="absolute mt-5 w-80 glass-card rounded-[2.5rem] shadow-2xl z-[150] p-6 origin-top overflow-y-auto max-h-[70vh] custom-scroll"
                          x-transition:enter="transition ease-out duration-200 transform"
                          x-transition:enter-start="opacity-0 -translate-y-4 scale-95">
                         
