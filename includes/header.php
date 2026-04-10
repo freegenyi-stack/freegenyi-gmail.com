@@ -67,13 +67,22 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
 
     <nav class="navbar bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="<?php echo APP_URL; ?>" class="flex items-center space-x-2">
-                <span class="text-2xl font-black text-orange-600">FreeGeny</span>
-            </a>
+            <div class="flex items-center space-x-4">
+                <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/'; ?>" class="flex items-center space-x-2">
+                    <span class="text-2xl font-black text-orange-600">FreeGeny</span>
+                </a>
+                <!-- Drapeau du Pays (Point 1 Mondial) -->
+                <div class="flex items-center bg-gray-100 px-2 py-1 rounded-lg border border-gray-200">
+                    <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" 
+                         alt="<?php echo $country; ?>" 
+                         class="w-6 h-auto rounded-sm shadow-sm">
+                    <span class="ml-2 text-xs font-bold text-gray-500 uppercase"><?php echo $country; ?></span>
+                </div>
+            </div>
 
             <div class="hidden md:flex space-x-8 font-semibold">
-                <a href="<?php echo APP_URL; ?>/algeria/1ap/arabe" class="hover:text-orange-600">Arabe</a>
-                <a href="<?php echo APP_URL; ?>/algeria/1ap/mathematiques" class="hover:text-orange-600">Maths</a>
+                <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/algeria/1ap/arabe'; ?>" class="hover:text-orange-600">Arabe</a>
+                <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/algeria/1ap/mathematiques'; ?>" class="hover:text-orange-600">Maths</a>
                 <a href="#" class="hover:text-orange-600">Tarifs</a>
             </div>
 

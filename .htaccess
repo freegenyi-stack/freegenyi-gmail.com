@@ -26,6 +26,10 @@ RewriteRule ^api/(.*)$ /api/$1.php [L]
 # Route clean URLs to pages
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+
+# Support pour les URLs internationales : /XX-yy/page -> page
+RewriteRule ^([A-Z]{2})-([a-z]{2})/(.*)$ $3 [L,QSA]
+
 RewriteRule ^auth/login$ pages/auth/login.php [L]
 RewriteRule ^auth/register$ pages/auth/register.php [L]
 RewriteRule ^dashboard/parent$ pages/dashboard/parent.php [L]

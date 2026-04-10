@@ -1,146 +1,69 @@
 <?php
-// ============================================================
-// FreeGeny — Configuration Globale de l'Application
-// ============================================================
+/**
+ * app.php - Cœur de l'application avec détection Pays/Langue et Routage International
+ */
+session_start();
 
-// --- Informations de l'application ---
-define('APP_NAME', 'FreeGeny');
-define('APP_TAGLINE', "L'éducation du programme officiel, accessible partout");
-define('APP_URL', 'https://freegeny.com');
-define('APP_VERSION', '2.0.0');
-define('APP_YEAR', 2026);
-
-// --- Environnement ---
-define('DEBUG', getenv('APP_DEBUG') === 'true');
-define('APP_ENV', getenv('APP_ENV') ?: 'production');
-
-// --- Chemins absolus ---
-define('ROOT_PATH', dirname(__DIR__));
-define('CONFIG_PATH', ROOT_PATH . '/config');
-define('INCLUDES_PATH', ROOT_PATH . '/includes');
-define('PAGES_PATH', ROOT_PATH . '/pages');
-define('DATA_PATH', ROOT_PATH . '/data');
-define('LANG_PATH', ROOT_PATH . '/lang');
-define('ASSETS_PATH', ROOT_PATH . '/assets');
-
-// --- URLs publiques ---
-define('ASSETS_URL', APP_URL . '/assets');
-define('DATA_URL', APP_URL . '/data');
-
-// --- Session ---
-define('SESSION_LIFETIME', 86400 * 30); // 30 jours
-define('SESSION_NAME', 'fg_session');
-define('CSRF_TOKEN_NAME', 'fg_csrf_token');
-
-// --- Pagination ---
-define('ITEMS_PER_PAGE', 20);
-
-// --- Langues supportées ---
-define('SUPPORTED_LANGS', ['fr', 'ar', 'en']);
-define('DEFAULT_LANG', 'fr');
-define('RTL_LANGS', ['ar']);
-
-// --- Sécurité ---
-define('BCRYPT_COST', 12);
-define('MAX_LOGIN_ATTEMPTS', 5);
-define('LOCKOUT_DURATION', 900); // 15 minutes
-
-// --- Initialisation des sessions sécurisées ---
-function initSession(): void {
-    if (session_status() === PHP_SESSION_NONE) {
-        $isSecure = APP_ENV === 'production';
-        session_set_cookie_params([
-            'lifetime' => SESSION_LIFETIME,
-            'path'     => '/',
-            'domain'   => 'freegeny.com',
-            'secure'   => $isSecure,
-            'httponly' => true,
-            'samesite' => 'Strict',
-        ]);
-        session_name(SESSION_NAME);
-        session_start();
-
-        // Régénérer l'ID de session périodiquement (anti-fixation)
-        if (!isset($_SESSION['created'])) {
-            $_SESSION['created'] = time();
-        } elseif (time() - $_SESSION['created'] > 1800) {
-            session_regenerate_id(true);
-            $_SESSION['created'] = time();
-        }
+// Chargement des variables .env
+function loadEnv($path) {
+    if (!file_exists($path)) return [];
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $data = [];
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        list($name, $value) = explode('=', $line, 2);
+        $data[trim($name)] = trim($value, " \t\n\r\0\x0B\"");
     }
+    return $data;
 }
 
-// --- Génération / Vérification CSRF ---
-function generateCsrfToken(): string {
-    if (empty($_SESSION[CSRF_TOKEN_NAME])) {
-        $_SESSION[CSRF_TOKEN_NAME] = bin2hex(random_bytes(32));
+$env = loadEnv(__DIR__ . '/../.env');
+
+// Constantes globales
+define('APP_URL', $env['APP_URL'] ?? 'https://freegeny.com');
+define('APP_NAME', $env['APP_NAME'] ?? 'FreeGeny');
+
+/**
+ * LOGIQUE DE DÉTECTION INTERNATIONALE (POINT 1)
+ */
+
+// 1. Analyse de l'URL pour le format /CC-lg/ (ex: FR-fr)
+$request_uri = $_SERVER['REQUEST_URI'];
+$uri_parts = explode('/', trim($request_uri, '/'));
+$slug = $uri_parts[0] ?? '';
+
+// Format attendu : XX-yy (2 lettres pays, tiret, 2 lettres langue)
+if (preg_match('/^([A-Z]{2})-([a-z]{2})$/', $slug, $matches)) {
+    $_SESSION['country_code'] = $matches[1];
+    $_SESSION['lang'] = $matches[2];
+} 
+// 2. Si non présent dans l'URL, détection par IP et redirection
+else if (!isset($_SESSION['country_code'])) {
+    // Détection via Cloudflare ou une IP par défaut (à coupler avec une API IP plus tard pour 100% de précision)
+    $detected_country = $_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'DZ'; 
+    $detected_lang = ($detected_country === 'FR' || $detected_country === 'DZ' || $detected_country === 'MA') ? 'fr' : 'ar';
+    
+    // On force la redirection vers le format pro : /CC-lg/
+    $redirect_url = APP_URL . '/' . strtoupper($detected_country) . '-' . $detected_lang . '/';
+    header("Location: $redirect_url");
+    exit;
+}
+
+// Variables globales de langue et pays
+$country = $_SESSION['country_code'] ?? 'DZ';
+$lang = $_SESSION['lang'] ?? 'fr';
+
+// Helper pour traduire
+function __($key, $placeholders = []) {
+    global $lang;
+    static $translations = null;
+    if ($translations === null) {
+        $file = __DIR__ . "/../lang/{$lang}.php";
+        $translations = file_exists($file) ? include($file) : [];
     }
-    return $_SESSION[CSRF_TOKEN_NAME];
-}
-
-function verifyCsrfToken(string $token): bool {
-    return isset($_SESSION[CSRF_TOKEN_NAME])
-        && hash_equals($_SESSION[CSRF_TOKEN_NAME], $token);
-}
-
-// --- Détection langue via URL ou session ---
-function detectLang(): string {
-    $lang = $_GET['lang'] ?? $_SESSION['lang'] ?? DEFAULT_LANG;
-    if (!in_array($lang, SUPPORTED_LANGS)) {
-        $lang = DEFAULT_LANG;
-    }
-    $_SESSION['lang'] = $lang;
-    return $lang;
-}
-
-// --- Chargement des traductions ---
-function loadLang(string $lang): array {
-    $file = LANG_PATH . '/' . $lang . '.php';
-    if (file_exists($file)) {
-        return require $file;
-    }
-    return require LANG_PATH . '/fr.php';
-}
-
-// --- Traduction helper ---
-function t(string $key, array $replace = []): string {
-    global $translations;
     $text = $translations[$key] ?? $key;
-    foreach ($replace as $k => $v) {
+    foreach ($placeholders as $k => $v) {
         $text = str_replace(":$k", $v, $text);
     }
-    return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+    return $text;
 }
-
-// --- Sanitize output ---
-function e(mixed $value): string {
-    return htmlspecialchars((string)$value, ENT_QUOTES, 'UTF-8');
-}
-
-// --- Redirect helper ---
-function redirect(string $url, int $code = 302): never {
-    header("Location: $url", true, $code);
-    exit;
-}
-
-// --- JSON Response helper ---
-function jsonResponse(array $data, int $status = 200): never {
-    http_response_code($status);
-    header('Content-Type: application/json; charset=utf-8');
-    echo json_encode($data, JSON_UNESCAPED_UNICODE);
-    exit;
-}
-
-// --- Error reporting ---
-if (DEBUG) {
-    error_reporting(E_ALL);
-    ini_set('display_errors', '1');
-} else {
-    error_reporting(0);
-    ini_set('display_errors', '0');
-    ini_set('log_errors', '1');
-}
-
-// --- Autoload config ---
-require_once CONFIG_PATH . '/db.php';
-require_once CONFIG_PATH . '/monetization.php';
