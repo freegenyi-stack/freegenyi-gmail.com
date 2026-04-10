@@ -54,7 +54,7 @@ $is_rtl = $is_rtl ?? false;
 
                 <div class="hidden md:block relative" x-data="{ open: false }">
                     <button @click="open = !open" 
-                            class="flex items-center space-x-3 bg-slate-50 border border-slate-100 px-4 py-2 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-orange-500/5 transition-all duration-300 group">
+                            class="flex items-center space-x-3 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?> bg-slate-50 border border-slate-100 px-4 py-2 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-orange-500/5 transition-all duration-300 group">
                         <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" class="w-7 h-auto rounded-sm transition-transform">
                         <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-tighter"><?php echo $country; ?></span>
                         <svg class="w-4 h-4 text-slate-300 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"></path></svg>
