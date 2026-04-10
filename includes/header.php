@@ -31,15 +31,26 @@ $is_rtl = $is_rtl ?? false;
         body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
         .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,0.05); }
         
-        /* SCROLLBAR UNIVERSELLE ORANGE */
-        .custom-scroll {
-            scrollbar-width: thin;
-            scrollbar-color: #ea580c transparent;
+        /* FORCE ORANGE SCROLLBAR - BRUTE SPECIFICITY */
+        div.custom-scroll {
+            scrollbar-width: thin !important;
+            scrollbar-color: #ea580c transparent !important;
         }
-        .custom-scroll::-webkit-scrollbar { width: 2px !important; }
-        .custom-scroll::-webkit-scrollbar-track { background: transparent !important; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #ea580c !important; border-radius: 20px !important; }
-        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #c2410c !important; }
+        div.custom-scroll::-webkit-scrollbar { 
+            width: 2px !important; 
+            display: block !important;
+        }
+        div.custom-scroll::-webkit-scrollbar-track { 
+            background: transparent !important; 
+        }
+        div.custom-scroll::-webkit-scrollbar-thumb { 
+            background-color: #ea580c !important; 
+            border-radius: 50px !important;
+            border: none !important;
+        }
+        div.custom-scroll::-webkit-scrollbar-thumb:hover { 
+            background-color: #c2410c !important; 
+        }
 
         .nav-link { position: relative; transition: color 0.3s; }
         .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #ea580c; transition: width 0.3s; }
@@ -65,6 +76,7 @@ $is_rtl = $is_rtl ?? false;
                     </button>
 
                     <div x-show="open" @click.away="open = false" x-cloak 
+                         id="force-refresh-scroll"
                          class="absolute mt-5 w-80 glass-card rounded-[2.5rem] shadow-2xl z-[150] p-6 origin-top overflow-y-auto max-h-[70vh] custom-scroll"
                          x-transition:enter="transition ease-out duration-200 transform"
                          x-transition:enter-start="opacity-0 -translate-y-4 scale-95">
