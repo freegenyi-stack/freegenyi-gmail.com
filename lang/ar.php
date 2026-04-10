@@ -6,20 +6,13 @@ return [
     'subjects' => 'المواد',
     'maths' => 'الرياضيات',
     'arabic' => 'العربية',
-    'pricing' => 'الأسعار',
     'dashboard' => 'لوحة التحكم',
     'logout' => 'خروج',
-    'change_region' => 'تغيير المنطقة',
+    'change_region' => 'Change Region',
     'about' => 'من نحن',
     'goals' => 'أهدافنا',
     'parents' => 'أولياء الأمور',
     'schools' => 'المدارس',
     'ngos' => 'المنظمات',
-    'hero_badge' => 'التعلم بمتعة',
-    'hero_title' => 'التميز الدراسي يبدأ من هنا',
-    'hero_desc' => 'المنصة التعليمية الرائدة التي تحدث ثورة في التعلم.',
-    'lessons' => 'دروس',
-    'games' => 'ألعاب',
-    'students' => 'تلاميذ',
-    'rating' => 'تقييم'
+    'shop' => 'المتجر'
 ];

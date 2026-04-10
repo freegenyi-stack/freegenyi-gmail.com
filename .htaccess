@@ -1,77 +1,17 @@
-Options -Indexes
-Options -MultiViews
-
 RewriteEngine On
+RewriteBase /
 
-# Force HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# 1. Empêcher l'accès direct aux dossiers sensibles
+Options -Indexes
 
-# Remove www
-RewriteCond %{HTTP_HOST} ^www\.freegeny\.com [NC]
-RewriteRule ^(.*)$ https://freegeny.com/$1 [L,R=301]
+# 2. Routage vers les pages spécifiques (Format /DZ-fr/page)
+RewriteRule ^([A-Z]{2})-([a-z]{2})/about$ about.php [L,QSA]
+RewriteRule ^([A-Z]{2})-([a-z]{2})/goals$ goals.php [L,QSA]
+RewriteRule ^([A-Z]{2})-([a-z]{2})/parents$ parents.php [L,QSA]
+RewriteRule ^([A-Z]{2})-([a-z]{2})/schools$ schools.php [L,QSA]
+RewriteRule ^([A-Z]{2})-([a-z]{2})/ngos$ ngos.php [L,QSA]
+RewriteRule ^([A-Z]{2})-([a-z]{2})/shop$ shop.php [L,QSA]
 
-# Block access to sensitive files
-RewriteRule ^\.env$ - [F,L]
-RewriteRule ^config/ - [F,L]
-RewriteRule ^includes/ - [F,L]
-RewriteRule ^install/ - [F,L]
-RewriteRule ^lang/ - [F,L]
-
-# Allow API routes
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^api/(.*)$ /api/$1.php [L]
-
-# Route clean URLs to pages
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-# Support pour les URLs internationales : /XX-yy/ -> index.php
-RewriteRule ^([A-Z]{2})-([a-z]{2})/?$ index.php [L,QSA]
-RewriteRule ^([A-Z]{2})-([a-z]{2})/(.+)$ $3 [L,QSA]
-
-RewriteRule ^auth/login$ pages/auth/login.php [L]
-RewriteRule ^auth/register$ pages/auth/register.php [L]
-RewriteRule ^dashboard/parent$ pages/dashboard/parent.php [L]
-RewriteRule ^algeria/1ap/arabe$ pages/algeria/1ap/arabe.php [L]
-RewriteRule ^algeria/1ap/mathematiques$ pages/algeria/1ap/mathematiques.php [L]
-RewriteRule ^cours/([a-z0-9_-]+)$ pages/cours.php?id=$1 [L]
-RewriteRule ^exercices/([a-z0-9_-]+)$ pages/cours.php?id=$1 [L]
-
-# Security headers
-<IfModule mod_headers.c>
-    Header always set X-Content-Type-Options "nosniff"
-    Header always set X-Frame-Options "SAMEORIGIN"
-    Header always set X-XSS-Protection "1; mode=block"
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-</IfModule>
-
-# PHP settings for DZHoster EA-PHP80
-<IfModule mod_php8.c>
-    php_value upload_max_filesize 10M
-    php_value post_max_size 10M
-    php_value max_execution_time 60
-    php_value memory_limit 256M
-    php_flag display_errors Off
-    php_flag log_errors On
-</IfModule>
-
-# Cache static assets
-<IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/jpg "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType font/woff2 "access plus 1 year"
-</IfModule>
-
-# Gzip compression
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
-</IfModule>
+# 3. Accueil avec locale
+RewriteRule ^([A-Z]{2})-([a-z]{2})/$ index.php [L,QSA]
+RewriteRule ^([A-Z]{2})-([a-z]{2})$ $1-$2/ [R=301,L]
