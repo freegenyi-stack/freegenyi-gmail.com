@@ -159,7 +159,7 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
                 </div>
 
                 <!-- CENTRE : Navigation Desktop -->
-                <div class="hidden lg:flex items-center space-x-6">
+                <div class="hidden md:flex items-center space-x-6">
                     <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition"><?php echo __('about'); ?></a>
                     <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition"><?php echo __('goals'); ?></a>
                     <a href="#" class="text-sm font-bold text-gray-600 hover:text-orange-600 transition"><?php echo __('parents'); ?></a>
@@ -168,19 +168,19 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
                 </div>
 
                 <!-- DROITE : Connexion & Menu Mobile -->
-                <div class="flex items-center space-x-3 lg:space-x-4">
+                <div class="flex items-center space-x-3 md:space-x-4">
                     <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/auth/login'; ?>" 
                        class="hidden sm:inline-flex items-center text-sm font-black text-gray-900 uppercase tracking-wider hover:text-orange-600 transition">
                         <?php echo __('login'); ?>
                     </a>
                     
                     <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/auth/register'; ?>" 
-                       class="bg-orange-600 text-white px-5 lg:px-7 py-2.5 lg:py-3 rounded-2xl font-black text-sm uppercase tracking-widest shadow-lg shadow-orange-200 hover:bg-orange-700 hover:shadow-xl transition transform hover:-translate-y-0.5">
+                       class="bg-orange-600 text-white px-5 md:px-7 py-2.5 md:py-3 rounded-2xl font-black text-sm uppercase tracking-widest shadow-lg shadow-orange-200 hover:bg-orange-700 hover:shadow-xl transition transform hover:-translate-y-0.5">
                         <?php echo __('register'); ?>
                     </a>
 
                     <!-- Bouton Menu Mobile (Hamburger) -->
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-xl transition">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-xl transition">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-width="2.5" stroke-linecap="round"></path></svg>
                     </button>
                 </div>
@@ -189,7 +189,7 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
 
         <!-- MENU MOBILE (Overlay) -->
         <div x-show="mobileMenuOpen" 
-             class="fixed inset-0 z-[200] lg:hidden"
+             class="fixed inset-0 z-[200] md:hidden"
              x-transition:enter="transition infinite duration-300">
             <div class="absolute inset-0 bg-gray-900/50 backdrop-blur-sm" @click="mobileMenuOpen = false"></div>
             <div class="absolute right-0 top-0 bottom-0 w-80 bg-white shadow-2xl p-8 transform transition ease-out duration-300"
@@ -206,13 +206,13 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
                 </div>
 
                 <div class="flex flex-col space-y-6">
-                    <a href="#" class="text-xl font-black text-gray-900"><?php echo __('about'); ?></a>
-                    <a href="#" class="text-xl font-black text-gray-900"><?php echo __('goals'); ?></a>
-                    <a href="#" class="text-xl font-black text-gray-900"><?php echo __('parents'); ?></a>
-                    <a href="#" class="text-xl font-black text-gray-900"><?php echo __('schools'); ?></a>
-                    <a href="#" class="text-xl font-black text-gray-900"><?php echo __('ngos'); ?></a>
+                    <a href="#" class="text-xl font-black text-gray-900 transition hover:text-orange-600"><?php echo __('about'); ?></a>
+                    <a href="#" class="text-xl font-black text-gray-900 transition hover:text-orange-600"><?php echo __('goals'); ?></a>
+                    <a href="#" class="text-xl font-black text-gray-900 transition hover:text-orange-600"><?php echo __('parents'); ?></a>
+                    <a href="#" class="text-xl font-black text-gray-900 transition hover:text-orange-600"><?php echo __('schools'); ?></a>
+                    <a href="#" class="text-xl font-black text-gray-900 transition hover:text-orange-600"><?php echo __('ngos'); ?></a>
                     <hr class="border-gray-100">
-                    <a href="<?php echo APP_URL . '/auth/login'; ?>" class="text-xl font-black text-orange-600"><?php echo __('login'); ?></a>
+                    <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/auth/login'; ?>" class="text-xl font-black text-orange-600"><?php echo __('login'); ?></a>
                 </div>
             </div>
         </div>
