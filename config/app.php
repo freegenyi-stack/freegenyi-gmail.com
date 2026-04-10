@@ -20,7 +20,8 @@ if (!isset($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'],
 */
 
 error_reporting(E_ALL & ~E_NOTICE); 
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
+define('DEBUG_MODE', true);
 
 if (!function_exists('loadEnv')) {
     function loadEnv($path) {

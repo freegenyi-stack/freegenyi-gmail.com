@@ -1,17 +1,35 @@
-<?php
 require_once __DIR__ . '/../config/app.php';
 require_once __DIR__ . '/../api/auth/auth_helpers.php';
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 initSession();
 
-if (!isset($_SESSION['logged_in'])) { header('Location: /auth/login'); exit; }
+try {
+    if (!isset($_SESSION['logged_in'])) { 
+        header('Location: /auth/login'); 
+        exit; 
+    }
 
-$user = DB::fetchOne("SELECT * FROM users WHERE id = ?", [$_SESSION['user_id']]);
-$initials = getInitials($user['full_name']);
-$avatarColor = getAvatarColor($user['full_name']);
+    $userId = $_SESSION['user_id'] ?? 0;
+    $user = DB::fetchOne("SELECT * FROM users WHERE id = ?", [$userId]);
+    
+    if (!$user) {
+        session_destroy();
+        header('Location: /auth/login');
+        exit;
+    }
 
-// Données fictives pour le design (à lier à la DB plus tard)
-$children = DB::fetchAll("SELECT * FROM children WHERE parent_id = ?", [$user['id']]);
-$notifications = DB::fetchAll("SELECT * FROM notifications WHERE user_id = ? AND is_read = 0", [$user['id']]);
+    $initials = getInitials($user['full_name']);
+    $avatarColor = getAvatarColor($user['full_name']);
+
+    $children = DB::fetchAll("SELECT * FROM children WHERE parent_id = ?", [$userId]);
+    $notifications = DB::fetchAll("SELECT * FROM notifications WHERE user_id = ? AND is_read = 0", [$userId]);
+} catch (Exception $e) {
+    die("Erreur Critique : " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr" x-data="{ 

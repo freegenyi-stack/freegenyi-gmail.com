@@ -172,6 +172,10 @@ try {
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
 } catch (\Exception $e) {
-    // Si l'utilisateur n'a pas les droits de création, on ignore l'erreur
+    // En développement, on affiche l'erreur pour comprendre le 500
+    error_log("Erreur SQL Migration : " . $e->getMessage());
+    if (defined('DEBUG_MODE') && DEBUG_MODE) {
+        die("Erreur de migration SQL : " . $e->getMessage());
+    }
 }
 ?>
