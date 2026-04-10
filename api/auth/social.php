@@ -7,13 +7,14 @@
 require_once __DIR__ . '/../../config/app.php';
 require_once __DIR__ . '/../../config/auth.php';
 
-$provider = $_GET['provider'] ?? null;
+$provider_raw = $_GET['provider'] ?? '';
+$provider = strtolower($provider_raw);
 
 // Vérification de la validité du provider
-$allowed_providers = ['google', 'facebook', 'microsoft', 'instagram'];
+$allowed_providers = ['google', 'facebook', 'microsoft', 'instagram', 'linkedin'];
 
 if (!$provider || !in_array($provider, $allowed_providers)) {
-    header('Location: ' . APP_URL . '/auth/login?error=invalid_provider');
+    header('Location: /auth/login?error=invalid_provider');
     exit;
 }
 
