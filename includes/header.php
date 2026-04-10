@@ -31,10 +31,10 @@ $is_rtl = $is_rtl ?? false;
         body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
         .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,0.05); }
         
-        /* SCROLLBAR ULTRA-FINE (Next.js/React Style) */
-        .custom-scroll::-webkit-scrollbar { width: 3px; }
+        /* SCROLLBAR ULTRA-MINIMALISTE */
+        .custom-scroll::-webkit-scrollbar { width: 2.5px; }
         .custom-scroll::-webkit-scrollbar-track { background: transparent; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 20px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 20px; }
         .custom-scroll::-webkit-scrollbar-thumb:hover { background: #ea580c; }
 
         .nav-link { position: relative; transition: color 0.3s; }
