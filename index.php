@@ -25,7 +25,7 @@ include_once __DIR__ . '/includes/header.php';
                 <div class="flex flex-wrap -mx-2">
                     <div class="w-full sm:w-auto px-2 mb-4">
                         <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/auth/register'; ?>" class="inline-block w-full py-4 px-8 text-lg font-bold text-white bg-orange-600 hover:bg-orange-700 rounded-2xl shadow-lg transition duration-200 text-center">
-                            <?php echo __('register', 'S\'inscrire gratuitement'); ?>
+                            <?php echo __('register', 'Accès immédiat'); ?>
                         </a>
                     </div>
                 </div>
