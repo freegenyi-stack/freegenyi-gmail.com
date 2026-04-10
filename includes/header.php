@@ -56,16 +56,16 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
     <!-- Scripts de base -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-white text-gray-900 font-sans">
     
     <!-- Barre de détection pays (Point 3) -->
-    <?php if ($is_dz): ?>
+    <?php if ($country === 'DZ'): ?>
     <div class="bg-orange-600 text-white text-center py-1 text-sm font-bold">
         🇩🇿 Offre spéciale Algérie : Accès gratuit au programme 1AP !
     </div>
     <?php endif; ?>
 
-    <nav class="navbar bg-white shadow-sm sticky top-0 z-50">
+    <nav class="navbar bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/'; ?>" class="flex items-center space-x-2">
@@ -81,21 +81,21 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
                         <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
                     </button>
 
-                    <!-- Menu Déroulant -->
+                    <!-- Menu Déroulant avec Défilement -->
                     <div x-show="open" @click.away="open = false" 
-                         class="absolute mt-2 w-48 bg-white border border-gray-100 rounded-2xl shadow-xl z-[100] py-2 overflow-hidden transform origin-top-left"
+                         class="absolute mt-2 w-56 bg-white border border-gray-200 rounded-2xl shadow-2xl z-[100] py-2 max-h-80 overflow-y-auto transform origin-top-left"
                          x-transition:enter="transition ease-out duration-100"
                          x-transition:enter-start="opacity-0 scale-95"
                          x-transition:enter-end="opacity-100 scale-100">
                         
-                        <div class="px-3 py-1 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Choisir votre région</div>
+                        <div class="px-4 py-2 text-[10px] font-black text-gray-400 uppercase tracking-widest border-b border-gray-50 mb-2">Choisir votre région</div>
                         
                         <?php foreach ($supported_regions as $code => $info): ?>
                             <?php foreach ($info['langs'] as $l): ?>
                                 <a href="<?php echo APP_URL . '/' . $code . '-' . $l . '/'; ?>" 
-                                   class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition">
-                                    <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-4 h-auto mr-3">
-                                    <span><?php echo $info['name']; ?> (<?php echo strtoupper($l); ?>)</span>
+                                   class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition border-b border-gray-50 last:border-0">
+                                    <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-5 h-auto mr-3 rounded-sm shadow-sm">
+                                    <span class="font-medium"><?php echo $info['name']; ?> <span class="text-gray-400 text-xs ml-1">(<?php echo strtoupper($l); ?>)</span></span>
                                 </a>
                             <?php endforeach; ?>
                         <?php endforeach; ?>
