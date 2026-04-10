@@ -126,35 +126,44 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-6">
                 <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/'; ?>" class="flex items-center">
-                    <img src="<?php echo APP_URL; ?>/assets/img/logo.png" alt="FreeGeny" class="h-10 w-auto">
+                    <img src="<?php echo APP_URL; ?>/assets/img/logo.png?v=1.1" alt="FreeGeny" class="h-10 w-auto">
                 </a>
-                <!-- Drapeau Uniquement (POINT 1 MONDIAL) -->
+                
+                <!-- Sélecteur de Pays Ultra-Design (POINT 1 MONDIAL) -->
                 <div class="relative" x-data="{ open: false }">
-                    <button @click="open = !open" class="flex items-center space-x-2 bg-gray-50 border border-gray-100 px-2 py-1.5 rounded-xl hover:bg-white hover:shadow-sm transition duration-200">
+                    <button @click="open = !open" class="flex items-center space-x-2 bg-gray-50 border border-gray-100 pl-2 pr-3 py-1.5 rounded-2xl hover:bg-white hover:shadow-md transition duration-200">
                         <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" 
                              alt="<?php echo $country; ?>" 
-                             class="w-6 h-auto rounded-sm">
+                             class="w-6 h-auto rounded-sm shadow-sm">
+                        <span class="text-xs font-bold text-gray-500"><?php echo $country; ?></span>
                         <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
                     </button>
 
-                    <!-- Menu Déroulant avec Défilement -->
+                    <!-- Menu Déroulant Premium -->
                     <div x-show="open" @click.away="open = false" 
-                         class="absolute mt-2 w-64 bg-white border border-gray-200 rounded-2xl shadow-2xl z-[100] py-2 max-h-80 overflow-y-auto transform origin-top-left"
-                         x-transition:enter="transition ease-out duration-100"
-                         x-transition:enter-start="opacity-0 scale-95"
-                         x-transition:enter-end="opacity-100 scale-100">
+                         class="absolute mt-3 w-72 bg-white/95 backdrop-blur-md border border-gray-100 rounded-3xl shadow-2xl z-[100] py-3 max-h-96 overflow-y-auto transform origin-top-left"
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 translate-y-2 scale-95"
+                         x-transition:enter-end="opacity-100 translate-y-0 scale-100">
                         
-                        <div class="px-4 py-2 text-[10px] font-black text-gray-400 uppercase tracking-widest border-b border-gray-50 mb-2">Choisir votre région</div>
+                        <div class="px-5 py-2 text-[10px] font-black text-gray-400 uppercase tracking-widest border-b border-gray-50 mb-2">
+                             <?php echo __('change_region', 'Sélectionner votre région'); ?>
+                        </div>
                         
-                        <?php foreach ($supported_regions as $code => $info): 
-                            $l = $info['langs'][0]; // On prend la première langue par défaut
-                        ?>
-                            <a href="<?php echo APP_URL . '/' . $code . '-' . $l . '/'; ?>" 
-                               class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition border-b border-gray-50 last:border-0">
-                                <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-5 h-auto mr-3 rounded-sm shadow-sm">
-                                <span class="font-medium"><?php echo $info['name']; ?></span>
-                            </a>
-                        <?php endforeach; ?>
+                        <div class="grid grid-cols-1 gap-1 px-2">
+                            <?php foreach ($supported_regions as $code => $info): 
+                                $l = $info['langs'][0]; 
+                            ?>
+                                <a href="<?php echo APP_URL . '/' . $code . '-' . $l . '/'; ?>" 
+                                   class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 rounded-2xl transition-all duration-200 group">
+                                    <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-5 h-auto mr-3 rounded-sm shadow-sm group-hover:scale-110 transition-transform">
+                                    <span class="font-semibold"><?php echo $info['name']; ?></span>
+                                    <?php if($code === $country): ?>
+                                        <span class="ml-auto w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
+                                    <?php endif; ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
             </div>
