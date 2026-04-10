@@ -75,7 +75,7 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
 
                     <!-- Menu Déroulant avec Défilement -->
                     <div x-show="open" @click.away="open = false" 
-                         class="absolute mt-2 w-56 bg-white border border-gray-200 rounded-2xl shadow-2xl z-[100] py-2 max-h-80 overflow-y-auto transform origin-top-left"
+                         class="absolute mt-2 w-64 bg-white border border-gray-200 rounded-2xl shadow-2xl z-[100] py-2 max-h-80 overflow-y-auto transform origin-top-left"
                          x-transition:enter="transition ease-out duration-100"
                          x-transition:enter-start="opacity-0 scale-95"
                          x-transition:enter-end="opacity-100 scale-100">
