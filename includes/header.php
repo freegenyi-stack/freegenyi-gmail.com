@@ -71,12 +71,35 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
                 <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/'; ?>" class="flex items-center space-x-2">
                     <span class="text-2xl font-black text-orange-600">FreeGeny</span>
                 </a>
-                <!-- Drapeau du Pays (Point 1 Mondial) -->
-                <div class="flex items-center bg-gray-100 px-2 py-1 rounded-lg border border-gray-200">
-                    <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" 
-                         alt="<?php echo $country; ?>" 
-                         class="w-6 h-auto rounded-sm shadow-sm">
-                    <span class="ml-2 text-xs font-bold text-gray-500 uppercase"><?php echo $country; ?></span>
+                <!-- Drapeau et Sélecteur de Pays (POINT 1 MONDIAL) -->
+                <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="flex items-center space-x-2 bg-gray-50 border border-gray-200 px-3 py-1.5 rounded-xl hover:bg-white hover:shadow-md transition duration-200">
+                        <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" 
+                             alt="<?php echo $country; ?>" 
+                             class="w-6 h-auto rounded-sm shadow-sm">
+                        <span class="text-xs font-bold text-gray-700 uppercase"><?php echo $country; ?>-<?php echo $lang; ?></span>
+                        <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+
+                    <!-- Menu Déroulant -->
+                    <div x-show="open" @click.away="open = false" 
+                         class="absolute mt-2 w-48 bg-white border border-gray-100 rounded-2xl shadow-xl z-[100] py-2 overflow-hidden transform origin-top-left"
+                         x-transition:enter="transition ease-out duration-100"
+                         x-transition:enter-start="opacity-0 scale-95"
+                         x-transition:enter-end="opacity-100 scale-100">
+                        
+                        <div class="px-3 py-1 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Choisir votre région</div>
+                        
+                        <?php foreach ($supported_regions as $code => $info): ?>
+                            <?php foreach ($info['langs'] as $l): ?>
+                                <a href="<?php echo APP_URL . '/' . $code . '-' . $l . '/'; ?>" 
+                                   class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition">
+                                    <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-4 h-auto mr-3">
+                                    <span><?php echo $info['name']; ?> (<?php echo strtoupper($l); ?>)</span>
+                                </a>
+                            <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
 

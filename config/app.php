@@ -1,12 +1,11 @@
 <?php
 /**
- * app.php - Version corrigée pour éviter l'erreur 500
+ * app.php - Version améliorée avec sélecteur de pays et langue par défaut Arabe pour DZ
  */
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Chargement sécurisé du .env
 if (!function_exists('loadEnv')) {
     function loadEnv($path) {
         if (!file_exists($path)) return [];
@@ -24,23 +23,33 @@ if (!function_exists('loadEnv')) {
 $env = loadEnv(__DIR__ . '/../.env');
 define('APP_URL', $env['APP_URL'] ?? 'https://freegeny.com');
 
+// Liste des pays/langues supportés (pour le sélecteur)
+$supported_regions = [
+    'DZ' => ['name' => 'Algérie', 'langs' => ['ar', 'fr']],
+    'FR' => ['name' => 'France', 'langs' => ['fr']],
+    'MA' => ['name' => 'Maroc', 'langs' => ['ar', 'fr']],
+    'SA' => ['name' => 'Arabe S.', 'langs' => ['ar']],
+    'AE' => ['name' => 'Émirats', 'langs' => ['ar']],
+];
+
 /**
- * LOGIQUE DE DÉTECTION INTERNATIONALE
+ * LOGIQUE DE DÉTECTION
  */
 $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
 $uri_parts = explode('/', trim($request_uri, '/'));
 $slug = $uri_parts[0] ?? '';
+$slug = explode('?', $slug)[0]; // Nettoyage query params
 
-// On nettoie le slug (ex: DZ-fr?query -> DZ-fr)
-$slug = explode('?', $slug)[0];
-
-if (preg_match('/^([A-Z]{2})-([a-z]{2})$/', $slug, $matches)) {
-    $_SESSION['country_code'] = $matches[1];
-    $_SESSION['lang'] = $matches[2];
+// Détection du format XX-yy (Indifférent à la casse)
+if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
+    $_SESSION['country_code'] = strtoupper($matches[1]);
+    $_SESSION['lang'] = strtolower($matches[2]);
 } 
-else if (!isset($_SESSION['country_code']) && !str_contains($request_uri, '.php')) {
+// Si pas de slug dans l'URL, on détecte par IP
+else if (!isset($_SESSION['country_code'])) {
     $detected_country = $_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'DZ'; 
-    $detected_lang = in_array($detected_country, ['FR', 'DZ', 'MA', 'TN', 'BE', 'CH']) ? 'fr' : 'ar';
+    // Choix de la langue par défaut (Arabe pour DZ, MA, SA, etc. Français pour FR)
+    $detected_lang = in_array($detected_country, ['DZ', 'MA', 'TN', 'SA', 'AE']) ? 'ar' : 'fr';
     
     $redirect_url = rtrim(APP_URL, '/') . '/' . strtoupper($detected_country) . '-' . $detected_lang . '/';
     header("Location: $redirect_url");
@@ -48,5 +57,5 @@ else if (!isset($_SESSION['country_code']) && !str_contains($request_uri, '.php'
 }
 
 $country = $_SESSION['country_code'] ?? 'DZ';
-$lang = $_SESSION['lang'] ?? 'fr';
+$lang = $_SESSION['lang'] ?? 'ar';
 ?>
