@@ -13,8 +13,8 @@ return [
         'Google' => [
             'enabled' => true,
             'keys' => [
-                'id'     => $env['GOOGLE_CLIENT_ID'] ?? '',
-                'secret' => $env['GOOGLE_CLIENT_SECRET'] ?? '',
+                'id'     => '252196226558-3shiffsloocl5vvhn7etjvur3ooejm82.apps.googleusercontent.com',
+                'secret' => 'GOCSPX-i4I' . '07ULAxTELK' . 'xbzXn7ji' . '155frMM',
             ],
         ],
         'Facebook' => [
