@@ -80,6 +80,40 @@ if ($provider === 'google') {
     $email = $user_info['email'];
     $full_name = $user_info['name'] ?? 'Google User';
     $social_id = $user_info['id'];
+} else if ($provider === 'facebook') {
+    // 1. Échanger le CODE contre un Access Token Facebook
+    $token_url = 'https://graph.facebook.com/v12.0/oauth/access_token?' . http_build_query([
+        'client_id' => $client_id,
+        'client_secret' => $client_secret,
+        'redirect_uri' => $redirect_uri,
+        'code' => $code
+    ]);
+
+    $response = file_get_contents($token_url);
+    $token_data = json_decode($response, true);
+
+    if (empty($token_data['access_token'])) {
+        header('Location: /auth/login?error=facebook_token_failed');
+        exit;
+    }
+
+    // 2. Fetch User Info via Graph API
+    $user_info_url = 'https://graph.facebook.com/me?' . http_build_query([
+        'fields' => 'id,name,email',
+        'access_token' => $token_data['access_token']
+    ]);
+    
+    $response = file_get_contents($user_info_url);
+    $user_info = json_decode($response, true);
+
+    if (empty($user_info['email'])) {
+        header('Location: /auth/login?error=no_email_provided');
+        exit;
+    }
+
+    $email = $user_info['email'];
+    $full_name = $user_info['name'] ?? 'Facebook User';
+    $social_id = $user_info['id'];
 } else {
     // Autres providers (Facebook, Microsoft) à implémenter de la même manière par la suite
     header('Location: /auth/login?error=provider_not_implemented');
