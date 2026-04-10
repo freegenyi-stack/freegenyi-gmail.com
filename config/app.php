@@ -7,16 +7,18 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Chargement sécurisé du .env
-function loadEnv($path) {
-    if (!file_exists($path)) return [];
-    $data = [];
-    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($lines as $line) {
-        if (strpos(trim($line), '#') === 0 || !strpos($line, '=')) continue;
-        $parts = explode('=', $line, 2);
-        $data[trim($parts[0])] = trim($parts[1], " \t\n\r\0\x0B\"");
+if (!function_exists('loadEnv')) {
+    function loadEnv($path) {
+        if (!file_exists($path)) return [];
+        $data = [];
+        $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lines as $line) {
+            if (strpos(trim($line), '#') === 0 || !strpos($line, '=')) continue;
+            $parts = explode('=', $line, 2);
+            $data[trim($parts[0])] = trim($parts[1], " \t\n\r\0\x0B\"");
+        }
+        return $data;
     }
-    return $data;
 }
 
 $env = loadEnv(__DIR__ . '/../.env');
