@@ -12,6 +12,12 @@ RewriteRule ^([A-Z]{2})-([a-z]{2})/schools$ schools.php [L,QSA]
 RewriteRule ^([A-Z]{2})-([a-z]{2})/ngos$ ngos.php [L,QSA]
 RewriteRule ^([A-Z]{2})-([a-z]{2})/shop$ shop.php [L,QSA]
 
+# Routes Globales (Légal & Support)
+RewriteRule ^privacy$ privacy.php [L,QSA]
+RewriteRule ^terms$ terms.php [L,QSA]
+RewriteRule ^faq$ faq.php [L,QSA]
+RewriteRule ^contact$ contact.php [L,QSA]
+
 # 3. Accueil avec locale
 RewriteRule ^([A-Z]{2})-([a-z]{2})/$ index.php [L,QSA]
 RewriteRule ^([A-Z]{2})-([a-z]{2})$ $1-$2/ [R=301,L]
