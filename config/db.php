@@ -1,10 +1,22 @@
 <?php
 /**
- * db.php - Connexion PDO à la base de données MySQL (DZHoster)
+ * db.php - Connexion PDO robuste à la base de données (DZHoster)
  */
 
-// Chargement manuel des variables d'environnement (Méthode simple pour PHP 8.0)
-$env = parse_ini_file(__DIR__ . '/../.env');
+// Chargement robuste du fichier .env
+function loadEnv($path) {
+    if (!file_exists($path)) return [];
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $data = [];
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        list($name, $value) = explode('=', $line, 2);
+        $data[trim($name)] = trim($value, " \t\n\r\0\x0B\"");
+    }
+    return $data;
+}
+
+$env = loadEnv(__DIR__ . '/../.env');
 
 $host = $env['DB_HOST'] ?? 'localhost';
 $db   = $env['DB_NAME'] ?? '';
@@ -22,7 +34,7 @@ $options = [
 try {
      $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
-     // En production, on ne montre pas l'erreur complète pour la sécurité
      error_log($e->getMessage());
-     die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
+     // Petit indicatif pour vous aider à débugger (enlevez-le une fois que ça marche)
+     die("Erreur de connexion : " . $e->getMessage());
 }
