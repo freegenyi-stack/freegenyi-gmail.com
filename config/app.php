@@ -139,7 +139,11 @@ if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
 else if (
     !str_contains($request_uri, 'unlock.php') && 
     !str_contains($request_uri, '/assets/') && 
-    !str_contains($request_uri, '/api/')
+    !str_contains($request_uri, '/api/') &&
+    !str_contains($request_uri, '/privacy') &&
+    !str_contains($request_uri, '/terms') &&
+    !str_contains($request_uri, '/faq') &&
+    !str_contains($request_uri, '/contact')
 ) {
     $target_country = $home_country;
     $target_lang = $supported_regions[$target_country]['langs'][0] ?? 'fr';
