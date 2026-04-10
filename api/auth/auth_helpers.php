@@ -127,6 +127,50 @@ try {
             attempted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
+
+    // --- ELITE COMMAND CENTER TABLES ---
+    
+    // 2. Table des Enfants
+    DB::execute("
+        CREATE TABLE IF NOT EXISTS children (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            parent_id INT NOT NULL,
+            first_name VARCHAR(100) NOT NULL,
+            birth_date DATE,
+            grade_level VARCHAR(50),
+            avatar_url VARCHAR(255) NULL,
+            relationship VARCHAR(50) DEFAULT 'Père/Mère',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (parent_id) REFERENCES users(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ");
+
+    // 3. Table des Notifications
+    DB::execute("
+        CREATE TABLE IF NOT EXISTS notifications (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            type VARCHAR(50), -- 'activity', 'alert', 'reward', 'reminder'
+            title VARCHAR(255),
+            message TEXT,
+            is_read TINYINT(1) DEFAULT 0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ");
+
+    // 4. Table des Contrôles Parentaux
+    DB::execute("
+        CREATE TABLE IF NOT EXISTS parental_controls (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            child_id INT NOT NULL,
+            screen_time_limit INT DEFAULT 60, -- en minutes
+            content_restriction_level VARCHAR(20) DEFAULT 'medium', -- 'low', 'medium', 'high'
+            social_enabled TINYINT(1) DEFAULT 1,
+            is_supervision_active TINYINT(1) DEFAULT 1,
+            FOREIGN KEY (child_id) REFERENCES children(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ");
 } catch (\Exception $e) {
     // Si l'utilisateur n'a pas les droits de création, on ignore l'erreur
 }
