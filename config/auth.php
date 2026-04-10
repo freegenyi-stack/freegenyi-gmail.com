@@ -3,6 +3,8 @@
 // CONFIGURATION AUTHENTIFICATION SOCIALE (POINT 1)
 // ============================================================
 
+global $env;
+
 return [
     // URL de retour après connexion (doit correspondre à vos réglages Google/FB)
     'callback' => APP_URL . '/api/auth/social_callback.php',
@@ -11,8 +13,8 @@ return [
         'Google' => [
             'enabled' => true,
             'keys' => [
-                'id'     => 'VOTRE_GOOGLE_CLIENT_ID',
-                'secret' => 'VOTRE_GOOGLE_CLIENT_SECRET',
+                'id'     => $env['GOOGLE_CLIENT_ID'] ?? '',
+                'secret' => $env['GOOGLE_CLIENT_SECRET'] ?? '',
             ],
         ],
         'Facebook' => [
