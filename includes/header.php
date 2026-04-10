@@ -29,6 +29,9 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
     <title><?php echo $page_title; ?></title>
     <meta name="description" content="<?php echo $page_description; ?> - Accédez au programme scolaire officiel de <?php echo $display_country; ?>.">
     <link rel="canonical" href="<?php echo $current_url; ?>">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png">
     
     <!-- SEO International : Balises Hreflang Dynamiques (50+ Pays) -->
     <?php foreach ($supported_regions as $code => $info): ?>
@@ -121,9 +124,9 @@ $is_dz = ($_SESSION['user_country'] === 'DZ');
     
     <nav class="navbar bg-white border-b border-gray-100 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/'; ?>" class="flex items-center space-x-2">
-                    <span class="text-2xl font-black text-orange-600">FreeGeny</span>
+            <div class="flex items-center space-x-6">
+                <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/'; ?>" class="flex items-center">
+                    <img src="<?php echo APP_URL; ?>/assets/img/logo.png" alt="FreeGeny" class="h-10 w-auto">
                 </a>
                 <!-- Drapeau Uniquement (POINT 1 MONDIAL) -->
                 <div class="relative" x-data="{ open: false }">
