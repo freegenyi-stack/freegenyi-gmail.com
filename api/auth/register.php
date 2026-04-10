@@ -41,8 +41,10 @@ if ($errors) {
     jsonResponse(['error' => implode(' ', $errors)], 422);
 }
 
-// Vérifier si email déjà pris
+// Diagnostic : Log l'email testé
 $existing = DB::fetchOne("SELECT id, oauth_provider FROM users WHERE email = ? LIMIT 1", [$email]);
+error_log("Tentative d'inscription pour $email. Résultat DB : " . ($existing ? 'TROUVÉ (id:'.$existing['id'].')' : 'VIDE'));
+
 if ($existing) {
     if ($existing['oauth_provider'] === 'Google') {
         jsonResponse(['error' => 'Ce compte est lié à Google. Connectez-vous avec le bouton Google.'], 409);
