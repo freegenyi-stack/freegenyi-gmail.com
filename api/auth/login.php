@@ -76,6 +76,9 @@ DB::execute("UPDATE users SET last_login_at = NOW(), login_attempts = 0 WHERE id
 // Créer la session
 loginUser($user);
 
+$country = $user['declared_country'] ?: 'DZ';
+$lang = $_SESSION['lang'] ?? 'fr';
+
 jsonResponse([
     'success' => true,
     'user' => [
@@ -83,5 +86,5 @@ jsonResponse([
         'full_name' => $user['full_name'],
         'email'     => $user['email'],
     ],
-    'redirect' => APP_URL . '/dashboard/parent',
+    'redirect' => '/' . strtoupper($country) . '-' . strtolower($lang) . '/dashboard/parent',
 ]);

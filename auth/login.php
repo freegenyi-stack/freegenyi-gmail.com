@@ -45,10 +45,40 @@ include_once __DIR__ . '/../includes/header.php';
             </div>
 
             <!-- Inputs Area -->
-            <form action="/api/auth/login.php" method="POST" class="space-y-4">
+            <form @submit.prevent="submit" x-data="{
+                email: '',
+                password: '',
+                loading: false,
+                error: '',
+                async submit() {
+                    this.loading = true;
+                    this.error = '';
+                    try {
+                        const res = await fetch('/api/auth/login.php', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+                            body: JSON.stringify({ email: this.email, password: this.password })
+                        });
+                        const data = await res.json();
+                        if (res.ok && data.success) {
+                            window.location.href = data.redirect || '/';
+                        } else {
+                            this.error = data.error || 'Identifiants incorrects.';
+                        }
+                    } catch (e) {
+                        this.error = 'Erreur de connexion au serveur.';
+                    } finally {
+                        this.loading = false;
+                    }
+                }
+            }" class="space-y-4">
+                
+                <!-- Error Message -->
+                <div x-show="error" x-transition class="p-4 bg-red-50 text-red-600 rounded-2xl text-[10px] font-bold border border-red-100 italic text-center" x-text="error"></div>
+
                 <div class="group">
                     <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('email_label'); ?></label>
-                    <input type="email" name="email" required placeholder="nom@exemple.com"
+                    <input type="email" x-model="email" required placeholder="nom@exemple.com"
                            class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
                 </div>
 
@@ -57,13 +87,14 @@ include_once __DIR__ . '/../includes/header.php';
                         <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest"><?php echo __('password_label'); ?></label>
                         <a href="#" class="text-[10px] font-black text-orange-600 uppercase tracking-widest hover:text-orange-700"><?php echo __('forgot_password'); ?></a>
                     </div>
-                    <input type="password" name="password" required placeholder="••••••••"
+                    <input type="password" x-model="password" required placeholder="••••••••"
                            class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
                 </div>
 
                 <div class="pt-4">
-                    <button type="submit" class="w-full bg-orange-600 text-white py-4 rounded-2xl font-black text-xs uppercase tracking-[0.25em] shadow-xl shadow-orange-100 hover:bg-orange-700 hover:shadow-orange-200 hover:-translate-y-1 transition-all active:scale-95 duration-300">
-                        <?php echo __('login_button'); ?>
+                    <button type="submit" :disabled="loading" class="w-full bg-orange-600 text-white py-4 rounded-2xl font-black text-xs uppercase tracking-[0.25em] shadow-xl shadow-orange-100 hover:bg-orange-700 hover:shadow-orange-200 hover:-translate-y-1 transition-all active:scale-95 duration-300 disabled:opacity-50">
+                        <span x-show="!loading"><?php echo __('login_button'); ?></span>
+                        <span x-show="loading" x-cloak><?php echo __('login_loading'); ?></span>
                     </button>
                 </div>
             </form>
