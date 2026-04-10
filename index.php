@@ -8,39 +8,31 @@ $page_description = "Découvrez la méthode FreeGeny : Soutien scolaire interact
 include_once __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Section HERO : La première impression -->
+<!-- Section HERO : Titre & Appel à l'action -->
 <section class="relative bg-white pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
     <div class="container mx-auto px-4 relative z-10">
         <div class="flex flex-wrap items-center -mx-4">
-            <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
+            <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0 text-left">
                 <span class="inline-block py-1 px-3 mb-4 text-xs font-bold bg-orange-100 text-orange-600 rounded-full uppercase tracking-widest">
-                    🚀 <?php echo __('hero_badge') ?? 'Apprendre en s\'amusant'; ?>
+                    🚀 <?php echo __('hero_badge', 'Apprendre en s\'amusant'); ?>
                 </span>
                 <h1 class="text-5xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                    <?php echo __('hero_title') ?? 'L\'avenir commence ici'; ?>
+                    <?php echo __('hero_title', 'L\'excellence scolaire commence ici'); ?>
                 </h1>
                 <p class="text-xl text-gray-600 mb-10 leading-relaxed">
-                    <?php echo __('hero_desc') ?? 'Une plateforme interactive conçue par des experts pédagogiques.'; ?>
+                    <?php echo __('hero_desc', 'La plateforme premium de soutien scolaire qui révolutionne l\'apprentissage.'); ?>
                 </p>
                 <div class="flex flex-wrap -mx-2">
                     <div class="w-full sm:w-auto px-2 mb-4">
                         <a href="<?php echo APP_URL . '/' . $country . '-' . $lang . '/auth/register'; ?>" class="inline-block w-full py-4 px-8 text-lg font-bold text-white bg-orange-600 hover:bg-orange-700 rounded-2xl shadow-lg transition duration-200 text-center">
-                            <?php echo __('register'); ?>
-                        </a>
-                    </div>
-                    <div class="w-full sm:w-auto px-2 mb-4">
-                        <a href="#subjects" class="inline-block w-full py-4 px-8 text-lg font-bold text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-2xl transition duration-200 text-center">
-                            <?php echo __('explore_courses') ?? 'Voir le programme'; ?>
+                            <?php echo __('register', 'S\'inscrire gratuitement'); ?>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="w-full lg:w-1/2 px-4 text-center">
-                <!-- Image illustrative (Peut être remplacée par un visuel 3D ou Lottie) -->
                 <div class="relative inline-block">
-                    <img class="relative z-10 w-full max-w-lg mx-auto transform hover:scale-105 transition duration-500" src="https://img.freepik.com/free-vector/children-learning-online-concept_23-2148524458.jpg" alt="Enfants apprenant en ligne">
-                    <div class="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-orange-200 rounded-full blur-2xl opacity-50"></div>
-                    <div class="absolute bottom-0 left-0 -ml-4 -mb-4 w-32 h-32 bg-blue-200 rounded-full blur-2xl opacity-50"></div>
+                    <img class="relative z-10 w-full max-w-lg mx-auto transform hover:scale-105 transition duration-500 rounded-3xl" src="https://img.freepik.com/free-vector/children-learning-online-concept_23-2148524458.jpg" alt="FreeGeny">
                 </div>
             </div>
         </div>
@@ -51,8 +43,8 @@ include_once __DIR__ . '/includes/header.php';
 <section id="subjects" class="py-20 bg-white border-t border-gray-50">
     <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto text-center mb-16">
-            <h2 class="text-4xl font-black text-gray-900 mb-4"><?php echo __('subjects'); ?></h2>
-            <p class="text-lg text-gray-600"><?php echo __('hero_desc'); ?></p>
+            <h2 class="text-4xl font-black text-gray-900 mb-4"><?php echo __('subjects', 'Nos Matières'); ?></h2>
+            <p class="text-lg text-gray-600"><?php echo __('hero_desc', 'Un programme complet pour chaque enfant.'); ?></p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -95,19 +87,19 @@ include_once __DIR__ . '/includes/header.php';
         <div class="flex flex-wrap -mx-4 text-center">
             <div class="w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
                 <h3 class="text-4xl font-black text-orange-600 mb-2">115+</h3>
-                <p class="text-gray-500 font-bold"><?php echo __('lessons') ?? 'Leçons'; ?></p>
+                <p class="text-gray-500 font-bold"><?php echo __('lessons', 'Leçons'); ?></p>
             </div>
             <div class="w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
                 <h3 class="text-4xl font-black text-orange-600 mb-2">333+</h3>
-                <p class="text-gray-500 font-bold"><?php echo __('games') ?? 'Jeux'; ?></p>
+                <p class="text-gray-500 font-bold"><?php echo __('games', 'Jeux'); ?></p>
             </div>
             <div class="w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
                 <h3 class="text-4xl font-black text-orange-600 mb-2">10k+</h3>
-                <p class="text-gray-500 font-bold"><?php echo __('students') ?? 'Élèves'; ?></p>
+                <p class="text-gray-500 font-bold"><?php echo __('students', 'Élèves'); ?></p>
             </div>
             <div class="w-1/2 lg:w-1/4 px-4 mb-8 lg:mb-0">
                 <h3 class="text-4xl font-black text-orange-600 mb-2">4.9/5</h3>
-                <p class="text-gray-500 font-bold"><?php echo __('rating') ?? 'Note'; ?></p>
+                <p class="text-gray-500 font-bold"><?php echo __('rating', 'Note'); ?></p>
             </div>
         </div>
     </div>
