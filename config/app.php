@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 /**
- * app.php - Version Mondiale Finale & Robuste
+ * app.php - Version Mondiale Finale - FULL COUNTRIES
  */
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -38,13 +38,28 @@ $supported_regions = [
     'DZ' => ['name' => 'Algeria', 'langs' => ['ar', 'fr']],
     'MA' => ['name' => 'Morocco', 'langs' => ['ar', 'fr']],
     'TN' => ['name' => 'Tunisia', 'langs' => ['ar', 'fr']],
+    'EG' => ['name' => 'Egypt', 'langs' => ['ar']],
     'SA' => ['name' => 'Saudi Arabia', 'langs' => ['ar']],
     'AE' => ['name' => 'United Arab Emirates', 'langs' => ['ar']],
+    'QA' => ['name' => 'Qatar', 'langs' => ['ar']],
+    'KW' => ['name' => 'Kuwait', 'langs' => ['ar']],
+    'JO' => ['name' => 'Jordan', 'langs' => ['ar']],
+    'LB' => ['name' => 'Lebanon', 'langs' => ['ar', 'fr']],
+    'OM' => ['name' => 'Oman', 'langs' => ['ar']],
+    'BH' => ['name' => 'Bahrain', 'langs' => ['ar']],
+    'PS' => ['name' => 'Palestine', 'langs' => ['ar']],
+    'LY' => ['name' => 'Libya', 'langs' => ['ar']],
     'FR' => ['name' => 'France', 'langs' => ['fr']],
     'BE' => ['name' => 'Belgium', 'langs' => ['fr']],
-    'CH' => ['name' => 'Switzerland', 'langs' => ['fr']],
-    'CA' => ['name' => 'Canada', 'langs' => ['fr']],
+    'CH' => ['name' => 'Switzerland', 'langs' => ['fr', 'en']],
+    'CA' => ['name' => 'Canada', 'langs' => ['fr', 'en']],
     'US' => ['name' => 'USA', 'langs' => ['en']],
+    'GB' => ['name' => 'United Kingdom', 'langs' => ['en']],
+    'DE' => ['name' => 'Germany', 'langs' => ['en']],
+    'ES' => ['name' => 'Spain', 'langs' => ['en']],
+    'IT' => ['name' => 'Italy', 'langs' => ['en']],
+    'TR' => ['name' => 'Turkey', 'langs' => ['en']],
+    'SE' => ['name' => 'Sweden', 'langs' => ['en']],
 ];
 
 uasort($supported_regions, function($a, $b) {
@@ -55,7 +70,6 @@ $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
 $uri_parts = explode('/', trim($request_uri, '/'));
 $slug = explode('?', $uri_parts[0] ?? '')[0];
 
-// Détection Langue et Pays depuis l'URL
 if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $_SESSION['country_code'] = strtoupper($matches[1]);
     $_SESSION['lang'] = strtolower($matches[2]);
@@ -71,7 +85,6 @@ $country = $_SESSION['country_code'] ?? 'DZ';
 $lang = $_SESSION['lang'] ?? 'fr';
 $is_rtl = in_array($lang, ['ar']);
 
-// Chargement unique des traductions
 $GLOBALS['translations'] = [];
 $lang_file = __DIR__ . "/../lang/{$lang}.php";
 if (file_exists($lang_file)) {
