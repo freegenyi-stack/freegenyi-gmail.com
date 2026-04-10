@@ -1,0 +1,34 @@
+# FreeGeny PHP — Root .gitignore
+
+# Secrets & Environnement
+.env
+.env.local
+
+# Logs
+*.log
+error.log
+php_errors.log
+
+# Caches & Temp
+.cache/
+cache/
+tmp/
+temp/
+
+# Systèmes OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# GitHub Actions / Deployment
+# Ne pas ignorer le dossier install/ car il contient le schema.sql
+!install/schema.sql
+
+# Note : On ne met plus Documentation_Programs_Contry dans le gitignore 
+# car vous voulez repartir sur une base propre avec tout le contenu sur GitHub.
