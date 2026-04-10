@@ -4,6 +4,7 @@
  */
 require_once __DIR__ . '/../../config/app.php';
 require_once __DIR__ . '/../../config/auth.php';
+require_once __DIR__ . '/../../includes/MailManager.php';
 require_once __DIR__ . '/auth_helpers.php'; // DB connection & auth functions
 
 $provider = $_SESSION['oauth_provider'] ?? '';
@@ -144,6 +145,10 @@ if ($email && $full_name) {
             header('Location: /auth/login?error=account_creation_failed');
             exit;
         }
+        
+        // Bienvenue !
+        MailManager::sendWelcome($email, $full_name);
+        
         $user = DB::fetchOne("SELECT * FROM users WHERE id = ? LIMIT 1", [$user_id]);
     }
 

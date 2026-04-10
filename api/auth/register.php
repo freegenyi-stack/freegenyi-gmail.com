@@ -4,6 +4,7 @@
 // ============================================================
 require_once __DIR__ . '/../../config/app.php';
 require_once __DIR__ . '/auth_helpers.php';
+require_once __DIR__ . '/../../includes/MailManager.php';
 initSession();
 
 header('Content-Type: application/json; charset=utf-8');
@@ -57,6 +58,9 @@ if (!$userId) {
 // Charger l'utilisateur créé et initialiser la session
 $user = DB::fetchOne("SELECT * FROM users WHERE id = ? LIMIT 1", [$userId]);
 loginUser($user);
+
+// Envoyer l'email de bienvenue pro
+MailManager::sendWelcome($email, $name);
 
 jsonResponse([
     'success' => true,
