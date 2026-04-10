@@ -42,42 +42,38 @@ if ($errors) {
 }
 
 // Vérifier si email déjà pris
-$existing = DB::fetchOne("SELECT id FROM users WHERE email = ? LIMIT 1", [$email]);
+$existing = DB::fetchOne("SELECT id, oauth_provider FROM users WHERE email = ? LIMIT 1", [$email]);
 if ($existing) {
-    jsonResponse(['error' => 'Un compte existe déjà avec cette adresse email.'], 409);
+    if ($existing['oauth_provider'] === 'Google') {
+        jsonResponse(['error' => 'Ce compte est lié à Google. Connectez-vous avec le bouton Google.'], 409);
+    }
+    jsonResponse(['error' => 'Un compte existe déjà. Connectez-vous avec votre mot de passe.'], 409);
 }
 
+// Générer un Token de vérification
+$token = bin2hex(random_bytes(32));
+
 try {
-    // Créer l'utilisateur
+    // Créer l'utilisateur (Non vérifié par défaut)
     $hash   = password_hash($pass, PASSWORD_BCRYPT, ['cost' => BCRYPT_COST]);
     $userId = DB::insert(
-        "INSERT INTO users (email, password_hash, full_name, phone, declared_country) VALUES (?, ?, ?, ?, ?)",
-        [$email, $hash, $name, $phone, $country]
+        "INSERT INTO users (email, password_hash, full_name, phone, declared_country, verification_token, email_verified) VALUES (?, ?, ?, ?, ?, ?, 0)",
+        [$email, $hash, $name, $phone, $country, $token]
     );
 
     if (!$userId) {
         jsonResponse(['error' => 'Erreur lors de la création du compte. Réessayez.'], 500);
     }
 
-    // Charger l'utilisateur créé et initialiser la session
-    $user = DB::fetchOne("SELECT * FROM users WHERE id = ? LIMIT 1", [$userId]);
-    loginUser($user);
-
-    // Envoyer l'email de bienvenue (ne doit pas bloquer si ça échoue)
+    // Envoyer l'email de vérification obligatoire (Checklist Elite)
     try {
-        MailManager::sendWelcome($email, $name);
-    } catch (\Exception $e) {
-        // Log error silently
-    }
+        MailManager::sendVerification($email, $name, $token);
+    } catch (\Exception $e) {}
 
     jsonResponse([
         'success' => true,
-        'redirect' => '/' . strtoupper($country) . '-' . strtolower($_SESSION['lang'] ?? 'fr') . '/dashboard/parent',
-        'user' => [
-            'id' => $userId,
-            'name' => $name,
-            'email' => $email
-        ]
+        'message' => 'Lien de confirmation envoyé !',
+        'redirect' => '/' . strtoupper($country) . '-' . strtolower($_SESSION['lang'] ?? 'fr') . '/auth/verify-pending'
     ]);
 
 } catch (\Exception $e) {

@@ -11,11 +11,19 @@ include_once __DIR__ . '/../includes/header.php';
             
             <!-- Logo area -->
             <div class="text-center mb-6">
-                <div class="inline-flex p-3 rounded-2xl bg-orange-600/5 mb-4">
-                    <a href="/"><img src="<?php echo APP_URL; ?>/assets/img/logo.png" class="h-8 w-auto object-contain" alt="FreeGeny"></a>
+                <!-- ILLUSTRATION CONVIVIALE (Checklist Elite) -->
+                <div class="mb-6 transform hover:scale-105 transition-transform duration-500">
+                    <svg class="h-24 mx-auto" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="80" fill="#FFF7ED"/>
+                        <circle cx="100" cy="100" r="60" fill="#FFEDD5"/>
+                        <path d="M100 60C100 54.4772 104.477 50 110 50H130C135.523 50 140 54.4772 140 60V80C140 85.5228 135.523 90 130 90H110C104.477 90 100 85.5228 100 80V60Z" fill="#EA580C"/>
+                        <path d="M60 110C60 104.477 64.4772 100 70 100H90C95.5228 100 100 104.477 100 110V130C100 135.523 95.5228 140 90 140H70C64.4772 140 60 135.523 60 130V110Z" fill="#F97316"/>
+                        <path d="M110 110C110 104.477 114.477 100 120 100H140C145.523 100 150 104.477 150 110V130C150 135.523 145.523 140 140 140H120C114.477 140 110 135.523 110 130V110Z" fill="#FB923C"/>
+                    </svg>
                 </div>
+                
                 <h1 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight leading-none mb-2"><?php echo __('join_us'); ?></h1>
-                <p class="text-slate-500 font-medium italic"><?php echo __('register_subtitle'); ?></p>
+                <p class="text-slate-500 text-xs font-bold italic"><?php echo __('register_subtitle'); ?></p>
             </div>
 
             <!-- Google Integration -->
@@ -85,33 +93,33 @@ include_once __DIR__ . '/../includes/header.php';
                 <div x-show="error" x-transition class="col-span-1 md:col-span-2 p-4 bg-red-50 text-red-600 rounded-2xl text-[10px] font-bold border border-red-100 italic" x-text="error"></div>
 
                 <div class="group">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-4"><?php echo __('fullname_label'); ?></label>
+                    <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('fullname_label'); ?></label>
                     <input type="text" x-model="full_name" required placeholder="Ex: Jean Dupont"
-                           class="w-full px-7 py-3 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300">
+                           class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
                 </div>
 
                 <div class="group">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-4"><?php echo __('phone_label'); ?></label>
+                    <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('phone_label'); ?></label>
                     <input type="tel" x-model="phone" required placeholder="<?php echo __('phone_placeholder'); ?>"
-                           class="w-full px-7 py-3 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300">
+                           class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
                 </div>
 
                 <div class="group col-span-1 md:col-span-2">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-4"><?php echo __('email_label'); ?></label>
+                    <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('email_label'); ?></label>
                     <input type="email" x-model="email" required placeholder="nom@exemple.com"
-                           class="w-full px-7 py-3 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300">
+                           class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
                 </div>
 
                 <div class="group">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-4"><?php echo __('password_label'); ?></label>
+                    <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('password_label'); ?></label>
                     <input type="password" x-model="password" required placeholder="••••••••"
-                           class="w-full px-7 py-3 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300">
+                           class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
                 </div>
 
                 <div class="group">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-4"><?php echo __('confirm_password_label'); ?></label>
+                    <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('confirm_password_label'); ?></label>
                     <input type="password" x-model="confirm" required placeholder="••••••••"
-                           class="w-full px-7 py-3 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300">
+                           class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
                 </div>
 
                 <div class="pt-2 col-span-1 md:col-span-2">

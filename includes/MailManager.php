@@ -37,6 +37,24 @@ class MailManager {
         return @mail($to, $subject, $fullBody, $headers);
     }
 
+    /**
+     * Envoie l'email de confirmation obligatoire
+     */
+    public static function sendVerification($to, $userName, $token) {
+        $verifyUrl = APP_URL . "/api/auth/verify.php?token=" . $token;
+        $subject = "Confirmez votre adresse email - FreeGeny 🔐";
+        $html = "
+            <h1 style='color: #0f172a; font-size: 24px; text-align: center;'>Une dernière étape ! 🚀</h1>
+            <p>Bonjour <strong>$userName</strong>,</p>
+            <p>Pour activer votre accès à FreeGeny et protéger vos données, merci de confirmer que cette adresse email est bien la vôtre.</p>
+            <div style='margin-top: 40px; text-align: center;'>
+                <a href='$verifyUrl' style='background: #0f172a; color: white; padding: 18px 36px; border-radius: 16px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);'>Confirmer mon email</a>
+            </div>
+            <p style='margin-top: 40px; font-size: 12px; color: #94a3b8; text-align: center;'>Si le bouton ne fonctionne pas, copiez ce lien : <br> $verifyUrl</p>
+        ";
+        return self::send($to, $subject, $html);
+    }
+
     public static function sendWelcome($to, $userName) {
         $subject = "Bienvenue chez FreeGeny, $userName ! 🚀";
         $html = "

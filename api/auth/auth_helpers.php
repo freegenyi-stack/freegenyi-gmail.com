@@ -69,6 +69,10 @@ try {
             password_hash VARCHAR(255) NOT NULL,
             full_name VARCHAR(255) NOT NULL,
             phone VARCHAR(25) NULL,
+            email_verified TINYINT(1) DEFAULT 0,
+            verification_token VARCHAR(100) NULL,
+            oauth_provider VARCHAR(50) NULL, -- 'google', 'facebook', etc.
+            oauth_id VARCHAR(100) NULL,
             declared_country VARCHAR(2),
             login_attempts INT DEFAULT 0,
             locked_until DATETIME NULL,
@@ -82,6 +86,13 @@ try {
         $check = DB::fetchOne("SHOW COLUMNS FROM users LIKE 'phone'");
         if (!$check) {
             DB::execute("ALTER TABLE users ADD phone VARCHAR(25) NULL AFTER full_name");
+        }
+        
+        // Ajout des colonnes de vérification et OAuth
+        $cols = ['email_verified' => "TINYINT(1) DEFAULT 0", 'verification_token' => "VARCHAR(100) NULL", 'oauth_provider' => "VARCHAR(50) NULL"];
+        foreach ($cols as $col => $def) {
+            $check = DB::fetchOne("SHOW COLUMNS FROM users LIKE '$col'");
+            if (!$check) DB::execute("ALTER TABLE users ADD $col $def");
         }
     } catch (\Exception $e) {
         // La colonne existe probablement déjà

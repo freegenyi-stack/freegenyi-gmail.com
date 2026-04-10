@@ -60,6 +60,11 @@ if (!$user || !password_verify($password, $user['password_hash'])) {
     jsonResponse(['error' => 'Email ou mot de passe incorrect.'], 401);
 }
 
+// Checklist Elite : Vérifier si l'email est validé
+if ($user['email_verified'] == 0) {
+    jsonResponse(['error' => 'Compte non activé. Merci de cliquer sur le lien envoyé par email.'], 403);
+}
+
 // Vérifier si le compte est verrouillé
 if ($user['locked_until'] && strtotime($user['locked_until']) > time()) {
     jsonResponse(['error' => 'Compte temporairement verrouillé.'], 403);
