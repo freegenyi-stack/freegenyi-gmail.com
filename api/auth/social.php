@@ -21,8 +21,9 @@ if (!$provider || !in_array($provider, $allowed_providers)) {
 // Ici, nous devrions normalement charger Hybridauth ou notre propre logique OAuth.
 // Pour rester "propre et progressif", je prépare les paramètres qui seront envoyés au réseau social.
 
-// 1. Stockage de l'état (sécurité contre les attaques CSRF)
+// 1. Stockage de l'état et du provider en session
 $_SESSION['oauth_state'] = bin2hex(random_bytes(16));
+$_SESSION['oauth_provider'] = $provider;
 
 // 2. Redirection réelle vers le provider
 $auth_config = include __DIR__ . '/../../config/auth.php';
@@ -35,7 +36,11 @@ if (empty($auth_config['providers'][$provider_key]['keys']['id'])) {
 }
 
 $client_id = $auth_config['providers'][$provider_key]['keys']['id'];
-$redirect_uri = APP_URL . '/api/auth/social_callback.php?provider=' . urlencode($provider);
+
+// Calcul dynamique du domaine pour éviter l'erreur "redirect_uri mismatch" si l'utilisateur est sur www. ou http/https différent.
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+$host = $_SERVER['HTTP_HOST'];
+$redirect_uri = $protocol . $host . '/api/auth/social_callback.php';
 
 switch ($provider) {
     case 'google':

@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../config/app.php';
 require_once __DIR__ . '/../../config/auth.php';
 require_once __DIR__ . '/auth_helpers.php'; // DB connection & auth functions
 
-$provider = $_GET['provider'] ?? '';
+$provider = $_SESSION['oauth_provider'] ?? '';
 $code = $_GET['code'] ?? null;
 $state = $_GET['state'] ?? null;
 $error = $_GET['error'] ?? null;
@@ -26,7 +26,10 @@ if (empty($auth_config['providers'][$provider_key]['keys']['id'])) {
 
 $client_id = $auth_config['providers'][$provider_key]['keys']['id'];
 $client_secret = $auth_config['providers'][$provider_key]['keys']['secret'];
-$redirect_uri = APP_URL . '/api/auth/social_callback.php?provider=' . urlencode($provider);
+
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+$host = $_SERVER['HTTP_HOST'];
+$redirect_uri = $protocol . $host . '/api/auth/social_callback.php';
 
 $email = null;
 $full_name = null;
