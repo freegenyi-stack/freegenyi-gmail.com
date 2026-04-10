@@ -1,25 +1,25 @@
 <?php
 include_once __DIR__ . '/../includes/header.php';
 ?>
-<main class="min-h-screen relative flex items-center justify-center py-20 px-6 overflow-hidden bg-[#fafafa]">
+<main class="min-h-screen relative flex items-center justify-center py-10 px-6 overflow-hidden bg-[#fafafa]">
     <!-- Background Animated Gradients -->
-    <div class="absolute top-0 -left-4 w-96 h-96 bg-orange-400 opacity-20 blur-[120px] rounded-full animate-pulse"></div>
-    <div class="absolute bottom-0 -right-4 w-96 h-96 bg-blue-400 opacity-10 blur-[120px] rounded-full animate-pulse" style="animation-delay: 2s"></div>
+    <div class="absolute top-0 -left-4 w-64 h-64 bg-orange-400 opacity-20 blur-[100px] rounded-full animate-pulse"></div>
+    <div class="absolute bottom-0 -right-4 w-64 h-64 bg-blue-400 opacity-10 blur-[100px] rounded-full animate-pulse" style="animation-delay: 2s"></div>
 
     <div class="w-full max-w-lg relative">
-        <div class="bg-white/70 backdrop-blur-3xl p-12 rounded-[3.5rem] shadow-[0_32px_64px_-15px_rgba(0,0,0,0.08)] border border-white/50 relative z-10 box-border">
+        <div class="bg-white/70 backdrop-blur-3xl p-8 md:p-10 rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] border border-white/50 relative z-10 box-border">
             
             <!-- Logo area -->
-            <div class="text-center mb-12">
-                <div class="inline-flex p-4 rounded-3xl bg-orange-600/5 mb-8">
-                    <a href="/"><img src="<?php echo APP_URL; ?>/assets/img/logo.png" class="h-12 w-auto object-contain" alt="FreeGeny"></a>
+            <div class="text-center mb-6">
+                <div class="inline-flex p-3 rounded-2xl bg-orange-600/5 mb-4">
+                    <a href="/"><img src="<?php echo APP_URL; ?>/assets/img/logo.png" class="h-10 w-auto object-contain" alt="FreeGeny"></a>
                 </div>
-                <h1 class="text-4xl font-black text-slate-900 tracking-tight leading-none mb-4"><?php echo __('welcome_back'); ?></h1>
-                <p class="text-slate-500 font-medium"><?php echo __('login_subtitle'); ?></p>
+                <h1 class="text-3xl font-black text-slate-900 tracking-tight leading-none mb-2"><?php echo __('welcome_back'); ?></h1>
+                <p class="text-slate-400 text-xs font-medium"><?php echo __('login_subtitle'); ?></p>
             </div>
 
             <!-- Google Integration (Clean & Bold) -->
-            <div class="mb-10">
+            <div class="mb-6">
                 <a href="/api/auth/social.php?provider=Google" class="flex items-center justify-center space-x-4 w-full py-4 bg-white border border-slate-100 rounded-2xl hover:bg-slate-50 hover:border-slate-200 hover:shadow-xl transition-all duration-500 group">
                     <svg class="w-6 h-6 group-hover:scale-110 transition duration-500" viewBox="0 0 48 48">
                         <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
@@ -32,38 +32,38 @@ include_once __DIR__ . '/../includes/header.php';
             </div>
 
             <!-- Separator -->
-            <div class="relative flex items-center mb-10">
+            <div class="relative flex items-center mb-6">
                 <div class="flex-grow border-t border-slate-100"></div>
                 <span class="flex-shrink mx-6 text-[10px] font-black text-slate-300 uppercase tracking-widest"><?php echo __('or_by_email'); ?></span>
                 <div class="flex-grow border-t border-slate-100"></div>
             </div>
 
             <!-- Inputs Area -->
-            <form action="/api/auth/login.php" method="POST" class="space-y-6">
+            <form action="/api/auth/login.php" method="POST" class="space-y-4">
                 <div class="group">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 ml-4"><?php echo __('email_label'); ?></label>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-4"><?php echo __('email_label'); ?></label>
                     <input type="email" name="email" required placeholder="nom@exemple.com"
-                           class="w-full px-8 py-5 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-slate-700 placeholder:text-slate-300">
+                           class="w-full px-7 py-3 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300">
                 </div>
 
                 <div class="group relative">
-                    <div class="flex items-center justify-between mb-3 ml-4">
+                    <div class="flex items-center justify-between mb-2 ml-4">
                         <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest"><?php echo __('password_label'); ?></label>
                         <a href="#" class="text-[10px] font-black text-orange-600 uppercase tracking-widest hover:text-orange-700"><?php echo __('forgot_password'); ?></a>
                     </div>
                     <input type="password" name="password" required placeholder="••••••••"
-                           class="w-full px-8 py-5 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-slate-700 placeholder:text-slate-300">
+                           class="w-full px-7 py-3 bg-slate-50 border border-transparent rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300">
                 </div>
 
-                <div class="pt-6">
-                    <button type="submit" class="w-full bg-orange-600 text-white py-6 rounded-2xl font-black text-xs uppercase tracking-[0.25em] shadow-xl shadow-orange-100 hover:bg-orange-700 hover:shadow-orange-200 hover:-translate-y-1 transition-all active:scale-95 duration-300">
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-orange-600 text-white py-4 rounded-2xl font-black text-xs uppercase tracking-[0.25em] shadow-xl shadow-orange-100 hover:bg-orange-700 hover:shadow-orange-200 hover:-translate-y-1 transition-all active:scale-95 duration-300">
                         <?php echo __('login_button'); ?>
                     </button>
                 </div>
             </form>
 
             <!-- Footer area -->
-            <div class="mt-12 text-center pt-8 border-t border-slate-50">
+            <div class="mt-6 text-center pt-6 border-t border-slate-50">
                 <p class="text-slate-400 text-sm font-medium">
                     <?php echo __('new_user'); ?>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="text-orange-600 font-black hover:text-orange-700 underline underline-offset-8 transition-all duration-300 ml-1">

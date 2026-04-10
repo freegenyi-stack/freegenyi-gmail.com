@@ -7,6 +7,9 @@ require_once __DIR__ . '/auth_helpers.php';
 require_once __DIR__ . '/../../includes/MailManager.php';
 initSession();
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 header('Content-Type: application/json; charset=utf-8');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -44,30 +47,39 @@ if ($existing) {
     jsonResponse(['error' => 'Un compte existe déjà avec cette adresse email.'], 409);
 }
 
-// Créer l'utilisateur
-$hash   = password_hash($pass, PASSWORD_BCRYPT, ['cost' => BCRYPT_COST]);
-$userId = DB::insert(
-    "INSERT INTO users (email, password_hash, full_name, phone, declared_country) VALUES (?, ?, ?, ?, ?)",
-    [$email, $hash, $name, $phone, $country]
-);
+try {
+    // Créer l'utilisateur
+    $hash   = password_hash($pass, PASSWORD_BCRYPT, ['cost' => BCRYPT_COST]);
+    $userId = DB::insert(
+        "INSERT INTO users (email, password_hash, full_name, phone, declared_country) VALUES (?, ?, ?, ?, ?)",
+        [$email, $hash, $name, $phone, $country]
+    );
 
-if (!$userId) {
-    jsonResponse(['error' => 'Erreur lors de la création du compte. Réessayez.'], 500);
+    if (!$userId) {
+        jsonResponse(['error' => 'Erreur lors de la création du compte. Réessayez.'], 500);
+    }
+
+    // Charger l'utilisateur créé et initialiser la session
+    $user = DB::fetchOne("SELECT * FROM users WHERE id = ? LIMIT 1", [$userId]);
+    loginUser($user);
+
+    // Envoyer l'email de bienvenue (ne doit pas bloquer si ça échoue)
+    try {
+        MailManager::sendWelcome($email, $name);
+    } catch (\Exception $e) {
+        // Log error silently
+    }
+
+    jsonResponse([
+        'success' => true,
+        'redirect' => '/' . strtolower($country) . '-' . strtolower($_SESSION['lang'] ?? 'fr') . '/dashboard/parent',
+        'user' => [
+            'id' => $userId,
+            'name' => $name,
+            'email' => $email
+        ]
+    ]);
+
+} catch (\Exception $e) {
+    jsonResponse(['error' => 'Erreur critique : ' . $e->getMessage()], 500);
 }
-
-// Charger l'utilisateur créé et initialiser la session
-$user = DB::fetchOne("SELECT * FROM users WHERE id = ? LIMIT 1", [$userId]);
-loginUser($user);
-
-// Envoyer l'email de bienvenue pro
-MailManager::sendWelcome($email, $name);
-
-jsonResponse([
-    'success' => true,
-    'user' => [
-        'id'        => $user['id'],
-        'full_name' => $user['full_name'],
-        'email'     => $user['email'],
-    ],
-    'redirect' => APP_URL . '/dashboard/parent',
-]);
