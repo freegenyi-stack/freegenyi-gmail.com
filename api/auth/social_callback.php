@@ -54,7 +54,6 @@ if ($provider === 'google') {
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-urlencoded']);
     
     $response = curl_exec($ch);
-    curl_close($ch);
     $token_data = json_decode($response, true);
 
     if (empty($token_data['access_token'])) {
@@ -70,7 +69,6 @@ if ($provider === 'google') {
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer ' . $token_data['access_token']]);
     
     $response = curl_exec($ch);
-    curl_close($ch);
     $user_info = json_decode($response, true);
 
     if (empty($user_info['email'])) {
