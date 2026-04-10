@@ -77,10 +77,15 @@ try {
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
 
-    // Tentative d'ajout manuel de la colonne si elle n'existe pas déjà
+    // Correction : Forcer l'ajout de la colonne phone si elle manque
     try {
-        DB::execute("ALTER TABLE users ADD COLUMN IF NOT EXISTS phone VARCHAR(25) NULL AFTER full_name;");
-    } catch (\Exception $e) {}
+        $check = DB::fetchOne("SHOW COLUMNS FROM users LIKE 'phone'");
+        if (!$check) {
+            DB::execute("ALTER TABLE users ADD phone VARCHAR(25) NULL AFTER full_name");
+        }
+    } catch (\Exception $e) {
+        // La colonne existe probablement déjà
+    }
 
     DB::execute("
         CREATE TABLE IF NOT EXISTS login_attempts (
