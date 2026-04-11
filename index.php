@@ -84,13 +84,25 @@ include_once __DIR__ . '/includes/header.php';
         <h2 class="text-xs font-black uppercase tracking-[0.3em] text-orange-600 mb-6">Notre Mission EdTech</h2>
         <h3 class="text-4xl md:text-5xl font-black text-slate-900 mb-10 leading-tight">Accompagner chaque enfant vers la réussite scolaire prématurée.</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-            <div class="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 transform hover:-translate-y-1 transition duration-500">
-                <p class="text-slate-600 font-medium leading-relaxed">
+            <div class="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 transform hover:-translate-y-1 transition duration-500 flex flex-col items-center text-center">
+                <div class="w-14 h-14 mb-6 flex items-center justify-center bg-white rounded-2xl shadow-sm">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="grad_mission_1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ea580c" /><stop offset="100%" style="stop-color:#f43f5e" /></linearGradient></defs>
+                        <path d="M12 21a9 9 0 100-18 9 9 0 000 18z" stroke="url(#grad_mission_1)" stroke-width="2"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a13.5 13.5 0 000 18M12 3a13.5 13.5 0 010 18" stroke="url(#grad_mission_1)" stroke-width="2"/>
+                    </svg>
+                </div>
+                <p class="text-slate-600 font-medium leading-relaxed italic">
                     <span class="text-slate-900 font-black">Accès Universel :</span> FreeGeny propose des descriptifs de cursus, des cours détaillés et des exercices spécifiques pour chacun des pays supportés.
                 </p>
             </div>
-            <div class="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 transform hover:-translate-y-1 transition duration-500">
-                <p class="text-slate-600 font-medium leading-relaxed">
+            <div class="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 transform hover:-translate-y-1 transition duration-500 flex flex-col items-center text-center">
+                <div class="w-14 h-14 mb-6 flex items-center justify-center bg-white rounded-2xl shadow-sm">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="grad_mission_2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563eb" /><stop offset="100%" style="stop-color:#0d9488" /></linearGradient></defs>
+                        <path d="M18 20V10M12 20V4M6 20v-6" stroke="url(#grad_mission_2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <p class="text-slate-600 font-medium leading-relaxed italic">
                     <span class="text-slate-900 font-black">Outils de Suivi :</span> Un tableau de bord complet permet aux parents et ONG de suivre l'historique et la progression des enfants en temps réel.
                 </p>
             </div>
@@ -110,10 +122,15 @@ include_once __DIR__ . '/includes/header.php';
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <!-- Qui sommes-nous -->
             <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-orange-50 text-orange-600 rounded-2xl text-2xl group-hover:scale-110 transition-transform">📖</div>
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-orange-50 rounded-2xl group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="grad_about" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ea580c" /><stop offset="100%" style="stop-color:#f43f5e" /></linearGradient></defs>
+                        <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5S19.832 5.477 21 6.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="url(#grad_about)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Qui sommes-nous ?</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
-                    FreeGeny est une plateforme EdTech visionnaire qui repense l'apprentissage pour le cycle primaire. Découvrez notre histoire et notre équipe de passionnés.
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
+                    FreeGeny est une plateforme EdTech visionnaire qui repense l'apprentissage pour le cycle primaire. Découvrez notre histoire.
                 </p>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="inline-flex items-center text-sm font-black text-orange-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
                     En savoir plus <span class="ml-2">→</span>
@@ -122,46 +139,66 @@ include_once __DIR__ . '/includes/header.php';
 
             <!-- Nos objectifs -->
             <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-blue-50 text-blue-600 rounded-2xl text-2xl group-hover:scale-110 transition-transform">🎯</div>
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-blue-50 rounded-2xl group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="grad_goals" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563eb" /><stop offset="100%" style="stop-color:#0d9488" /></linearGradient></defs>
+                        <circle cx="12" cy="12" r="10" stroke="url(#grad_goals)" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke="url(#grad_goals)" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="url(#grad_goals)"/>
+                    </svg>
+                </div>
                 <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Nos objectifs</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
-                    Nous visons l'excellence académique pour chaque enfant, peu importe sa localisation, grâce à des outils technologiques de pointe et un contenu de qualité.
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
+                    Nous visons l'excellence académique pour chaque enfant, grâce à des outils technologiques de pointe et un contenu de qualité.
                 </p>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/goals" class="inline-flex items-center text-sm font-black text-blue-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/mission" class="inline-flex items-center text-sm font-black text-blue-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
                     En savoir plus <span class="ml-2">→</span>
                 </a>
             </div>
 
             <!-- Parents -->
             <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-purple-50 text-purple-600 rounded-2xl text-2xl group-hover:scale-110 transition-transform">👨‍👩‍👧‍👦</div>
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-rose-50 rounded-2xl group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="grad_parents" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e11d48" /><stop offset="100%" style="stop-color:#ea580c" /></linearGradient></defs>
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2m16-10a4 4 0 100-8 4 4 0 000 8zM7 7a3 3 0 100-6 3 3 0 000 6zm0 14v-2a4 4 0 00-2-3.465" stroke="url(#grad_parents)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Espace Parents</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
-                    Suivez la progression de vos enfants en temps réel, gérez les exercices et accompagnez leur scolarité avec sérénité grâce à notre dashboard parent.
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
+                    Suivez la progression de vos enfants en temps réel et accompagnez leur scolarité avec sérénité grâce à notre dashboard.
                 </p>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="inline-flex items-center text-sm font-black text-purple-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="inline-flex items-center text-sm font-black text-rose-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
                     En savoir plus <span class="ml-2">→</span>
                 </a>
             </div>
 
             <!-- Écoles -->
             <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-green-50 text-green-600 rounded-2xl text-2xl group-hover:scale-110 transition-transform">🏫</div>
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-blue-50 rounded-2xl group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="grad_schools" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563eb" /><stop offset="100%" style="stop-color:#1e40af" /></linearGradient></defs>
+                        <path d="M3 21h18M3 10l9-7 9 7v11H3V10zm6 11V14h6v7" stroke="url(#grad_schools)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Pour les Écoles</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
-                    Digitalisez vos supports de cours et offrez à vos élèves une bibliothèque d'exercices interactifs alignés sur les cursus officiels internationaux.
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
+                    Digitalisez vos supports de cours et offrez à vos élèves une bibliothèque interactive alignée sur les cursus officiels.
                 </p>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="inline-flex items-center text-sm font-black text-green-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="inline-flex items-center text-sm font-black text-blue-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
                     En savoir plus <span class="ml-2">→</span>
                 </a>
             </div>
 
             <!-- ONG -->
             <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-teal-50 text-teal-600 rounded-2xl text-2xl group-hover:scale-110 transition-transform">🤝</div>
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-teal-50 rounded-2xl group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="grad_ngos" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0d9488" /><stop offset="100%" style="stop-color:#059669" /></linearGradient></defs>
+                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke="url(#grad_ngos)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Pour les ONG</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
-                    Déployez des solutions éducatives dans les zones reculées et suivez l'impact de vos programmes grâce à des analyses de données précises.
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
+                    Déployez des solutions éducatives dans les zones reculées et suivez l'impact de vos programmes avec précision.
                 </p>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="inline-flex items-center text-sm font-black text-teal-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
                     En savoir plus <span class="ml-2">→</span>
@@ -170,10 +207,15 @@ include_once __DIR__ . '/includes/header.php';
 
             <!-- Magasin -->
             <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-14 h-14 mb-8 flex items-center justify-center bg-rose-50 text-rose-600 rounded-2xl text-xl group-hover:scale-110 transition-transform">🛒</div>
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-rose-50 rounded-2xl group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="grad_shop" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f43f5e" /><stop offset="100%" style="stop-color:#e11d48" /></linearGradient></defs>
+                        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-10 0a2 2 0 100 4 2 2 0 000-4z" stroke="url(#grad_shop)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Boutique FreeGeny</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
-                    Accédez à nos supports physiques, livres d'activités et ressources complémentaires pour enrichir l'apprentissage hors-ligne.
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
+                    Accédez à nos supports physiques et livres d'activités pour enrichir l'apprentissage hors-ligne de vos enfants.
                 </p>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="inline-flex items-center text-sm font-black text-rose-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
                     En savoir plus <span class="ml-2">→</span>

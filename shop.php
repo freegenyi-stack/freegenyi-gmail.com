@@ -12,11 +12,15 @@ include_once __DIR__ . '/includes/header.php';
         </div>
     </section>
 
-    <!-- Products Placeholder -->
     <section class="py-32">
         <div class="max-w-7xl mx-auto px-12">
             <div class="bg-white p-20 rounded-[4rem] shadow-xl text-center border border-slate-100">
-                <div class="w-32 h-32 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-12 text-5xl italic shadow-inner">🛒</div>
+                <div class="w-32 h-32 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-12 shadow-inner">
+                    <svg class="w-16 h-16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="g_shop_hero" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f43f5e" /><stop offset="100%" style="stop-color:#e11d48" /></linearGradient></defs>
+                        <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke="url(#g_shop_hero)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h3 class="text-4xl font-black text-slate-900 mb-6 italic tracking-tight">Ouverture Prochaine</h3>
                 <p class="text-slate-400 text-lg max-w-xl mx-auto font-medium mb-12 italic">
                     Nous préparons actuellement une sélection exclusive de cahiers d'activités, de livres de lecture et de kits pédagogiques FreeGeny.

@@ -29,7 +29,10 @@ include_once __DIR__ . '/includes/header.php';
                         </ul>
                     </div>
                     <div class="flex-1 bg-slate-50 rounded-[3rem] p-12 flex items-center justify-center">
-                        <i class="fas fa-school text-7xl text-blue-600"></i>
+                        <svg class="w-24 h-24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs><linearGradient id="g_sch_1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563eb" /><stop offset="100%" style="stop-color:#1e40af" /></linearGradient></defs>
+                            <path d="M3 21h18M3 10l9-7 9 7v11H3V10zm6 11V14h6v7" stroke="url(#g_sch_1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
                 </div>
 
@@ -42,7 +45,10 @@ include_once __DIR__ . '/includes/header.php';
                         <a href="#" class="inline-block py-4 px-8 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:shadow-xl transition-all italic">Prendre rendez-vous</a>
                     </div>
                     <div class="flex-1 bg-slate-50 rounded-[3rem] p-12 flex items-center justify-center">
-                        <i class="fas fa-laptop-code text-7xl text-blue-600"></i>
+                        <svg class="w-24 h-24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs><linearGradient id="g_sch_2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563eb" /><stop offset="100%" style="stop-color:#0d9488" /></linearGradient></defs>
+                            <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="url(#g_sch_2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
                 </div>
             </div>

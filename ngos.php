@@ -15,12 +15,14 @@ include_once __DIR__ . '/includes/header.php';
         </div>
     </section>
 
-    <!-- Content -->
     <section class="py-32">
         <div class="max-w-7xl mx-auto px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                 <div class="bg-teal-50 rounded-[4rem] p-16 aspect-video flex items-center justify-center">
-                    <i class="fas fa-hand-holding-heart text-8xl text-teal-600"></i>
+                    <svg class="w-32 h-32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="g_ngo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0d9488" /><stop offset="100%" style="stop-color:#059669" /></linearGradient></defs>
+                        <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="url(#g_ngo)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </div>
                 <div>
                     <h2 class="text-4xl font-black text-slate-900 mb-8 italic">Un Partenaire de Terrain</h2>

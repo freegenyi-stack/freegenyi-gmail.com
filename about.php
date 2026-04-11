@@ -30,13 +30,21 @@ include_once __DIR__ . '/includes/header.php';
                         </p>
                     </div>
                     <div class="bg-orange-50 rounded-[3rem] p-12 aspect-square flex items-center justify-center">
-                        <i class="fas fa-lightbulb text-7xl text-orange-600"></i>
+                        <svg class="w-24 h-24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs><linearGradient id="grad_about_vision" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ea580c" /><stop offset="100%" style="stop-color:#f43f5e" /></linearGradient></defs>
+                            <path d="M12 2v20m0-20L5 9m7-7l7 7" stroke="url(#grad_about_vision)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="9" stroke="url(#grad_about_vision)" stroke-width="2" stroke-dasharray="2 4"/>
+                        </svg>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                     <div class="order-2 md:order-1 bg-blue-50 rounded-[3rem] p-12 aspect-square flex items-center justify-center">
-                        <i class="fas fa-globe-africa text-7xl text-blue-600"></i>
+                        <svg class="w-24 h-24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs><linearGradient id="grad_about_impact" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563eb" /><stop offset="100%" style="stop-color:#0d9488" /></linearGradient></defs>
+                            <path d="M12 21a9 9 0 100-18 9 9 0 000 18z" stroke="url(#grad_about_impact)" stroke-width="2"/>
+                            <path d="M12 3v18M3 12h18" stroke="url(#grad_about_impact)" stroke-width="2" stroke-dasharray="1 3"/>
+                        </svg>
                     </div>
                     <div class="order-1 md:order-2">
                         <h2 class="text-3xl font-black text-slate-900 mb-8 italic">Impact Mondial</h2>
