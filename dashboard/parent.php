@@ -116,6 +116,47 @@ $children = [
                         </div>
                         <svg class="w-6 h-6 text-orange-300 group-hover:text-orange-600 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="3"/></svg>
                     </div>
+                    <!-- Academic Compass (New Section) -->
+                    <div class="mt-12 bg-slate-50 rounded-[3rem] p-10 border border-slate-100" x-data="{ tab: 'arabe' }">
+                        <div class="flex items-center justify-between mb-8">
+                            <div>
+                                <h3 class="text-xl font-black text-slate-900 tracking-tight">Le Compas Académique</h3>
+                                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Programme Officiel <?php echo $child['grade']; ?></p>
+                            </div>
+                            <div class="flex bg-white p-1.5 rounded-2xl shadow-sm border border-slate-100">
+                                <button @click="tab = 'arabe'" :class="tab === 'arabe' ? 'bg-orange-600 text-white shadow-md' : 'text-slate-400'" class="px-4 py-2 rounded-xl text-[10px] font-black uppercase transition-all">Arabe</button>
+                                <button @click="tab = 'maths'" :class="tab === 'maths' ? 'bg-orange-600 text-white shadow-md' : 'text-slate-400'" class="px-4 py-2 rounded-xl text-[10px] font-black uppercase transition-all ml-1">Maths</button>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content : Arabe -->
+                        <div x-show="tab === 'arabe'" x-cloak class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-6 rounded-3xl shadow-sm">
+                                    <span class="block text-[9px] font-black text-orange-600 uppercase tracking-widest mb-2">Objectifs</span>
+                                    <p class="text-xs font-bold text-slate-700 leading-loose">Maîtrise de l'alphabet, lecture de mots simples et structures de phrases de base.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-3xl shadow-sm border-l-4 border-orange-600">
+                                    <span class="block text-[9px] font-black text-orange-600 uppercase tracking-widest mb-2">Astuce Accompagnement</span>
+                                    <p class="text-xs italic text-slate-500 font-medium leading-loose text-justify">Récitez des comptines ensemble et encouragez-le à identifier les lettres dans son environnement quotidien.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content : Maths -->
+                        <div x-show="tab === 'maths'" x-cloak class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-6 rounded-3xl shadow-sm">
+                                    <span class="block text-[9px] font-black text-blue-600 uppercase tracking-widest mb-2">Objectifs</span>
+                                    <p class="text-xs font-bold text-slate-700 leading-loose">Nombres de 0 à 100, additions simples et reconnaissance des formes géométriques.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-3xl shadow-sm border-l-4 border-blue-600">
+                                    <span class="block text-[9px] font-black text-blue-600 uppercase tracking-widest mb-2">Astuce Accompagnement</span>
+                                    <p class="text-xs italic text-slate-500 font-medium leading-loose text-justify">Utilisez des objets réels (fruits, billes) pour rendre les additions concrètes et amusantes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -123,6 +164,31 @@ $children = [
             <!-- Right Panel (The Bridge & Support) -->
             <div class="space-y-12">
                 
+                <!-- Atelier Print Options (Enhanced) -->
+                <div class="bg-white rounded-[3rem] p-10 shadow-[0_40px_100px_rgba(0,0,0,0.03)] border border-white">
+                    <h3 class="text-lg font-black text-slate-900 mb-6 tracking-tight">Atelier d'Impression</h3>
+                    <div class="space-y-4">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Formats disponibles :</p>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center">
+                                <span class="text-xs font-black text-red-600">PDF</span>
+                                <span class="text-[8px] uppercase text-slate-400 mt-1">Print</span>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center">
+                                <span class="text-xs font-black text-blue-600">HTML</span>
+                                <span class="text-[8px] uppercase text-slate-400 mt-1">Web</span>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex flex-col items-center">
+                                <span class="text-xs font-black text-green-600">PNG</span>
+                                <span class="text-[8px] uppercase text-slate-400 mt-1">Image</span>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 py-4 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-[9px] hover:bg-black transition-all">
+                            Générer le dossier
+                        </button>
+                    </div>
+                </div>
+
                 <!-- The Bridge Suggestion -->
                 <div class="bg-slate-900 rounded-[3rem] p-10 text-white relative overflow-hidden">
                     <div class="absolute -top-10 -right-10 w-40 h-40 bg-orange-600 blur-[80px] opacity-30"></div>
