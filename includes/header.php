@@ -22,15 +22,14 @@ $is_rtl = $is_rtl ?? false;
         }
     </script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png?v=4.0">
     
     <style>
         [x-cloak] { display: none !important; }
-        body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
-        .font-next { font-family: 'Inter', sans-serif; }
-        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,0.05); }
+        body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.05); }
         
         /* Dropdown Elevation */
         .dropdown-shadow { box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); }
@@ -124,50 +123,49 @@ $is_rtl = $is_rtl ?? false;
 
             <div class="flex items-center space-x-6 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
                 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
-                    <!-- USER MENU (Next.js Style) -->
+                    <!-- USER MENU (Geist Style) -->
                     <div class="relative" x-data="{ userOpen: false }">
                         <button @click="userOpen = !userOpen" @click.away="userOpen = false" 
-                                class="flex items-center space-x-3 bg-slate-50 border border-slate-100 p-1.5 pr-4 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-orange-500/5 transition-all group">
-                            <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-[10px] font-black text-white shadow-lg overflow-hidden border-2 border-white">
+                                class="flex items-center space-x-3 bg-white border border-slate-200 p-1.5 pr-4 rounded-xl hover:border-slate-950 transition-all group">
+                            <div class="w-9 h-9 rounded-lg bg-slate-950 flex items-center justify-center text-[11px] font-bold text-white shadow-sm overflow-hidden border border-white">
                                 <?php if (isset($_SESSION['user_avatar']) && $_SESSION['user_avatar']): ?>
                                     <img src="<?php echo $_SESSION['user_avatar']; ?>" class="w-full h-full object-cover">
                                 <?php else: ?>
                                     <?php echo strtoupper(substr($_SESSION['user_name'] ?? 'U', 0, 1)); ?>
                                 <?php endif; ?>
                             </div>
-                            <span class="text-[11px] font-black text-slate-800 uppercase tracking-tighter font-next hidden sm:block">
+                            <span class="text-sm font-semibold text-slate-950 tracking-tight font-next hidden sm:block leading-none">
                                 <?php echo explode(' ', $_SESSION['user_name'] ?? 'Compte')[0]; ?>
                             </span>
-                            <svg class="w-4 h-4 text-slate-300 transition-transform duration-300" :class="userOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"></path></svg>
+                            <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-300" :class="userOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M19 9l-7 7-7-7"></path></svg>
                         </button>
 
                         <!-- Dropdown Menu -->
                         <div x-show="userOpen" x-cloak 
-                             x-transition:enter="transition ease-out duration-200 transform"
-                             x-transition:enter-start="opacity-0 translate-y-4 scale-95"
-                             x-transition:leave="transition ease-in duration-100 transform"
-                             class="absolute right-0 mt-4 w-60 bg-white rounded-[2rem] border border-slate-100 dropdown-shadow z-[200] overflow-hidden p-2">
+                             x-transition:enter="transition ease-out duration-100 transform"
+                             x-transition:enter-start="opacity-0 translate-y-2 scale-95"
+                             class="absolute right-0 mt-3 w-56 bg-white rounded-xl border border-slate-100 dropdown-shadow z-[200] overflow-hidden p-1.5">
                              
-                             <div class="px-5 py-4 border-b border-slate-50 mb-1">
-                                <p class="text-[10px] font-black text-slate-300 uppercase tracking-widest italic mb-1">Accès Elite</p>
-                                <p class="text-xs font-bold text-slate-900 truncate"><?php echo $_SESSION['user_name'] ?? 'Utilisateur'; ?></p>
+                             <div class="px-4 py-3 border-b border-slate-50 mb-1">
+                                <p class="text-[11px] font-medium text-slate-400 mb-0.5">Compte vérifié</p>
+                                <p class="text-sm font-bold text-slate-950 truncate"><?php echo $_SESSION['user_name'] ?? 'Utilisateur'; ?></p>
                              </div>
 
-                             <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent" class="flex items-center space-x-3 px-5 py-4 rounded-2xl hover:bg-slate-50 transition-all group">
-                                <span class="text-lg">📊</span>
-                                <span class="text-xs font-bold text-slate-700 font-next group-hover:text-orange-600 transition-colors">Tableau de bord</span>
+                             <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-slate-50 transition-all group">
+                                <svg class="w-4 h-4 text-slate-400 group-hover:text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                                <span class="text-sm font-medium text-slate-700 font-next transition-colors">Tableau de bord</span>
                              </a>
 
-                             <a href="#" class="flex items-center space-x-3 px-5 py-4 rounded-2xl hover:bg-slate-50 transition-all group">
-                                <span class="text-lg">🔔</span>
-                                <span class="text-xs font-bold text-slate-700 font-next group-hover:text-blue-600 transition-colors">Notifications</span>
-                                <span class="ml-auto w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                             <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-slate-50 transition-all group relative">
+                                <svg class="w-4 h-4 text-slate-400 group-hover:text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                                <span class="text-sm font-medium text-slate-700 font-next transition-colors">Notifications</span>
+                                <span class="absolute right-4 w-1.5 h-1.5 rounded-full bg-blue-600"></span>
                              </a>
 
                              <div class="mt-1 border-t border-slate-50 pt-1">
-                                 <a href="/api/auth/logout.php" class="flex items-center space-x-3 px-5 py-4 rounded-2xl hover:bg-red-50 transition-all group">
-                                    <span class="text-lg text-red-500">🚪</span>
-                                    <span class="text-xs font-bold text-red-500 font-next">Se déconnecter</span>
+                                 <a href="/api/auth/logout.php" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-red-50 transition-all group">
+                                    <svg class="w-4 h-4 text-red-400 group-hover:text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                                    <span class="text-sm font-medium text-red-600 font-next">Se déconnecter</span>
                                  </a>
                              </div>
                         </div>
