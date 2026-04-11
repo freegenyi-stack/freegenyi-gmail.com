@@ -1,11 +1,16 @@
 <?php
 session_start();
-// Traitement de l'inscription
-$full_name = $_POST['full_name'] ?? '';
-$email = $_POST['email'] ?? '';
+
+// Simulation d'inscription réussie
+$full_name = $_POST['full_name'] ?? 'Nouveau Parent';
 $role = $_POST['role'] ?? 'parent';
 
-// Simulation de succès et redirection vers l'ajout d'enfant
+$_SESSION['logged_in'] = true;
+$_SESSION['user_id'] = rand(100, 999);
+$_SESSION['user_name'] = $full_name;
+$_SESSION['user_role'] = $role;
+
+// On dirige vers le magic wizard d'ajout d'enfant
 header('Location: /dashboard/add_child.php');
 exit;
 ?>

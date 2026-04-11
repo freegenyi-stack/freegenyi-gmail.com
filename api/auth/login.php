@@ -1,10 +1,20 @@
 <?php
 session_start();
-// Traitement de la connexion par e-mail
+
+// Simulation de validation (En production, on vérifiera via la DB)
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 
-// Simulation de redirection vers le dashboard
-header('Location: /dashboard/parent.php');
+if (!empty($email)) {
+    $_SESSION['logged_in'] = true;
+    $_SESSION['user_id'] = 1;
+    $_SESSION['user_name'] = 'Parent Test';
+    $_SESSION['user_role'] = 'parent';
+    
+    // Direction le Cockpit !
+    header('Location: /dashboard/parent.php');
+} else {
+    header('Location: /auth/login.php?error=empty_fields');
+}
 exit;
 ?>

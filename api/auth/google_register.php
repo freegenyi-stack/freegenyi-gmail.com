@@ -1,12 +1,14 @@
 <?php
-require_once __DIR__ . '/../../includes/SocialAuthManager.php';
-// Récupération du rôle choisi (parent, school, ngo)
+session_start();
+
+// Simulateur Inscription Google
 $role = $_GET['role'] ?? 'parent';
 
-// Stockage du rôle en session pour le callback Google
-session_start();
-$_SESSION['pending_role'] = $role;
+$_SESSION['logged_in'] = true;
+$_SESSION['user_id'] = 999;
+$_SESSION['user_name'] = 'Génie Google';
+$_SESSION['user_role'] = $role;
 
-header('Location: /index.php?error=google_auth_not_configured');
+header('Location: /dashboard/add_child.php');
 exit;
 ?>
