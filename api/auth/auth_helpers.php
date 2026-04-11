@@ -136,7 +136,7 @@ try {
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
 
-    // Migration des préférences
+    // Migration des préférences users
     $prefs = [
         'preferred_color' => "VARCHAR(7) DEFAULT '#2563eb'",
         'theme_mode' => "VARCHAR(10) DEFAULT 'light'"
@@ -144,6 +144,19 @@ try {
     foreach ($prefs as $col => $def) {
         $check = DB::fetchOne("SHOW COLUMNS FROM users LIKE '$col'");
         if (!$check) DB::execute("ALTER TABLE users ADD $col $def");
+    }
+
+    // Migration de la structure children
+    $childCols = [
+        'last_name' => "VARCHAR(100) NULL",
+        'avatar_color' => "VARCHAR(7) DEFAULT '#7c3aed'",
+        'pin_code' => "VARCHAR(4) NULL",
+        'child_id_alias' => "VARCHAR(50) NULL",
+        'is_active' => "TINYINT(1) DEFAULT 1"
+    ];
+    foreach ($childCols as $col => $def) {
+        $check = DB::fetchOne("SHOW COLUMNS FROM children LIKE '$col'");
+        if (!$check) DB::execute("ALTER TABLE children ADD $col $def");
     }
 } catch (\Exception $e) {
     if (defined('DEBUG_MODE') && DEBUG_MODE) {
