@@ -114,12 +114,33 @@ $is_rtl = $is_rtl ?? false;
             </div>
 
             <div class="hidden lg:flex items-center space-x-10 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="nav-link text-sm font-bold text-slate-600 hover:text-orange-600"><?php echo __('about'); ?></a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/goals" class="nav-link text-sm font-bold text-slate-600 hover:text-orange-600"><?php echo __('goals'); ?></a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="nav-link text-sm font-bold text-slate-600 hover:text-orange-600"><?php echo __('parents'); ?></a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="nav-link text-sm font-bold text-slate-600 hover:text-orange-600"><?php echo __('schools'); ?></a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="nav-link text-sm font-bold text-slate-600 hover:text-orange-600"><?php echo __('ngos'); ?></a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="nav-link text-sm font-bold text-slate-600 hover:text-orange-600"><?php echo __('shop'); ?></a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="nav-link text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-orange-600 transition-all">Notre Approche</a>
+                
+                <div class="relative group" x-data="{ ecosystemOpen: false }" @mouseenter="ecosystemOpen = true" @mouseleave="ecosystemOpen = false">
+                    <button class="nav-link text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-orange-600 transition-all flex items-center">
+                        L'Écosystème
+                        <svg class="ml-2 w-3 h-3 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+                    </button>
+                    <div x-show="ecosystemOpen" x-cloak x-transition class="absolute top-full -left-4 pt-4 w-64 z-50">
+                        <div class="bg-white rounded-[2rem] shadow-2xl border border-slate-50 p-6 space-y-4">
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block group">
+                                <span class="block text-[11px] font-black text-slate-900 group-hover:text-orange-600 transition-colors uppercase tracking-tight">Espace Parents</span>
+                                <span class="block text-[9px] text-slate-400 uppercase tracking-widest font-bold">Le cockpit de pilotage</span>
+                            </a>
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block group">
+                                <span class="block text-[11px] font-black text-slate-900 group-hover:text-orange-600 transition-colors uppercase tracking-tight">Pour les Écoles</span>
+                                <span class="block text-[9px] text-slate-400 uppercase tracking-widest font-bold">Digitalisez vos supports</span>
+                            </a>
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block group">
+                                <span class="block text-[11px] font-black text-slate-900 group-hover:text-orange-600 transition-colors uppercase tracking-tight">Partenaires ONG</span>
+                                <span class="block text-[9px] text-slate-400 uppercase tracking-widest font-bold">Impact & Transparence</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="nav-link text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-orange-600 transition-all">Science & Clinique</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="nav-link text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-orange-600 transition-all">Boutique</a>
             </div>
 
             <div class="flex items-center space-x-6 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">

@@ -5,221 +5,166 @@
 include_once __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Section HERO : Style Affiné & Compteurs Animés -->
-<section class="relative bg-white pt-20 pb-28 overflow-hidden">
+<!-- Section HERO : Le Pont de l'Excellence -->
+<section class="relative bg-white pt-32 pb-28 overflow-hidden">
     <div class="max-w-7xl mx-auto px-12 relative z-10 text-center lg:text-left">
         <div class="flex flex-wrap items-center -mx-4">
             
-            <div class="w-full lg:w-1/2 px-4 mb-20 lg:mb-0" 
-                 x-data="{ 
-                    users: 0, 
-                    subjects: 0, 
-                    countries: 0, 
-                    langs: 0, 
-                    exercises: 0,
-                    animate(target, duration, key) {
-                        let start = 0;
-                        let increment = target / (duration / 16);
-                        let timer = setInterval(() => {
-                            start += increment;
-                            if (start >= target) {
-                                this[key] = target;
-                                clearInterval(timer);
-                            } else {
-                                this[key] = Math.floor(start);
-                            }
-                        }, 16);
-                    }
-                 }" 
-                 x-init="animate(15, 5000, 'users'); animate(48, 5000, 'subjects'); animate(64, 5000, 'countries'); animate(28, 5000, 'langs'); animate(8500, 5000, 'exercises');">
-                
-                <div class="relative inline-block mb-12">
-                    <h1 class="text-5xl md:text-7xl font-black text-slate-900 leading-none tracking-tighter">
-                        FreeGeny
-                    </h1>
-                    <span class="absolute -bottom-4 right-0 md:-right-20 text-xl md:text-2xl font-bold text-orange-600 font-[Caveat] whitespace-nowrap -rotate-2">
-                        free the genius on your child
-                    </span>
+            <div class="w-full lg:w-1/2 px-4 mb-20 lg:mb-0">
+                <div class="inline-flex items-center space-x-2 bg-orange-50 border border-orange-100 px-4 py-2 rounded-full mb-8">
+                    <span class="w-2 h-2 bg-orange-600 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-orange-600">Le Pont de l'Excellence est Ouvert</span>
                 </div>
                 
-                <p class="text-lg md:text-xl text-slate-500 font-medium leading-relaxed mb-12 max-w-xl">
-                    <span class="text-orange-600 font-bold">FreeGeny</span> est une plateforme EdTech dédiée à la réussite scolaire des enfants du cycle primaire partout dans le monde.
+                <h1 class="text-6xl md:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter mb-10">
+                    Libérez le <span class="text-orange-600">Génie</span><br>de votre enfant.
+                </h1>
+                
+                <p class="text-xl text-slate-500 font-medium leading-relaxed mb-12 max-w-xl">
+                    FreeGeny érige un pont technologique entre <span class="text-slate-900 font-black italic">Parents</span>, <span class="text-slate-900 font-black italic">Écoles</span> et <span class="text-slate-900 font-black italic">Enfants</span> pour un accompagnement holistique vers l'élite mondiale.
                 </p>
                 
-                <!-- Ligne de Compteurs (Horizontale) -->
-                <div class="flex flex-wrap gap-x-10 gap-y-6 justify-center lg:justify-start pt-4 border-t border-slate-50">
-                    <div class="flex flex-col">
-                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="users + 'K+'">0</span>
-                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Utilisateurs</span>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="subjects">0</span>
-                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Matières</span>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="countries">0</span>
-                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Pays</span>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="langs">0</span>
-                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Langues</span>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="exercises.toLocaleString() + '+'">0</span>
-                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Exercices</span>
-                    </div>
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="bg-slate-900 text-white px-10 py-6 rounded-[2rem] font-black uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-2xl">
+                        Commencer l'aventure
+                    </a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="flex items-center justify-center space-x-3 px-10 py-6 bg-white border-2 border-slate-100 rounded-[2rem] font-black uppercase tracking-widest text-xs hover:bg-slate-50 transition-all">
+                        <span>Notre approche</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2.5"/></svg>
+                    </a>
                 </div>
             </div>
 
-            <div class="w-full lg:w-1/2 px-4">
-                <img class="w-full max-w-lg mx-auto transform hover:scale-105 transition duration-700" src="https://img.freepik.com/free-vector/children-learning-online-concept_23-2148524458.jpg" alt="FreeGeny Original">
+            <div class="w-full lg:w-1/2 px-4 flex justify-center lg:justify-end">
+                <div class="relative">
+                    <div class="absolute -top-10 -right-10 w-64 h-64 bg-orange-100 rounded-full blur-[100px] opacity-50"></div>
+                    <img class="w-full max-w-md relative z-10 transform hover:rotate-2 transition duration-700" src="https://img.freepik.com/free-vector/children-learning-online-concept_23-2148524458.jpg" alt="FreeGeny Elite">
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- MISSION SECTION (Validation Google & Confiance) -->
-<section class="py-32 bg-white">
-    <div class="max-w-5xl mx-auto px-12 text-center">
-        <h2 class="text-xs font-black uppercase tracking-[0.3em] text-orange-600 mb-6">Notre Mission EdTech</h2>
-        <h3 class="text-4xl md:text-5xl font-black text-slate-900 mb-10 leading-tight">Accompagner chaque enfant vers la réussite scolaire prématurée.</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-            <div class="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 transform hover:-translate-y-1 transition duration-500 flex flex-col items-center text-center">
-                <div class="w-14 h-14 mb-6 flex items-center justify-center bg-white rounded-2xl shadow-sm">
-                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="grad_mission_1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ea580c" /><stop offset="100%" style="stop-color:#f43f5e" /></linearGradient></defs>
-                        <path d="M12 21a9 9 0 100-18 9 9 0 000 18z" stroke="url(#grad_mission_1)" stroke-width="2"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a13.5 13.5 0 000 18M12 3a13.5 13.5 0 010 18" stroke="url(#grad_mission_1)" stroke-width="2"/>
-                    </svg>
-                </div>
-                <p class="text-slate-600 font-medium leading-relaxed italic">
-                    <span class="text-slate-900 font-black">Accès Universel :</span> FreeGeny propose des descriptifs de cursus, des cours détaillés et des exercices spécifiques pour chacun des pays supportés.
-                </p>
-            </div>
-            <div class="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 transform hover:-translate-y-1 transition duration-500 flex flex-col items-center text-center">
-                <div class="w-14 h-14 mb-6 flex items-center justify-center bg-white rounded-2xl shadow-sm">
-                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="grad_mission_2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563eb" /><stop offset="100%" style="stop-color:#0d9488" /></linearGradient></defs>
-                        <path d="M18 20V10M12 20V4M6 20v-6" stroke="url(#grad_mission_2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <p class="text-slate-600 font-medium leading-relaxed italic">
-                    <span class="text-slate-900 font-black">Lien Parents-École :</span> Un écosystème où chaque acteur de la formation (parents, enseignants, ONG) collabore pour un accompagnement personnalisé.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Section SERVICES : Les 6 Piliers FreeGeny -->
-<section id="subjects" class="py-32 bg-slate-50/50">
+<!-- Section 3 UNIVERS : Scolaire, Monde, Magique -->
+<section class="py-32 bg-slate-50">
     <div class="max-w-7xl mx-auto px-12">
-        <div class="max-w-3xl mx-auto text-center mb-24">
-            <h2 class="text-xs font-black uppercase tracking-[0.4em] text-orange-600 mb-6 italic">Découvrez notre univers</h2>
-            <h3 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Tout savoir sur FreeGeny</h3>
-            <p class="text-lg text-slate-400 font-medium italic">Explorez nos missions et les outils que nous mettons à votre disposition pour la réussite éducative.</p>
+        <div class="text-center mb-20">
+            <h2 class="text-4xl font-black text-slate-900 mb-4 tracking-tight">Trois Portails, Une Destination.</h2>
+            <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">L'immersion totale FreeGeny</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <!-- Qui sommes-nous -->
-            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-orange-50 rounded-2xl group-hover:scale-110 transition-transform">
-                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="grad_about" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ea580c" /><stop offset="100%" style="stop-color:#f43f5e" /></linearGradient></defs>
-                        <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5S19.832 5.477 21 6.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="url(#grad_about)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-12 rounded-[4rem] shadow-xl border border-white group hover:-translate-y-2 transition-all duration-500">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center mb-10 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-width="2.5"/></svg>
                 </div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Qui sommes-nous ?</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
-                    FreeGeny est une plateforme EdTech visionnaire qui repense l'apprentissage pour le cycle primaire. Découvrez notre histoire.
-                </p>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="inline-flex items-center text-sm font-black text-orange-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
-                    En savoir plus <span class="ml-2">→</span>
-                </a>
+                <h3 class="text-2xl font-black mb-4">Univers Local</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8 italic">Maîtrise chirurgicale du programme national officiel (Algérie 1AP, 2AP...).</p>
             </div>
-
-            <!-- Nos objectifs -->
-            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-blue-50 rounded-2xl group-hover:scale-110 transition-transform">
-                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="grad_goals" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563eb" /><stop offset="100%" style="stop-color:#0d9488" /></linearGradient></defs>
-                        <circle cx="12" cy="12" r="10" stroke="url(#grad_goals)" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke="url(#grad_goals)" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="url(#grad_goals)"/>
-                    </svg>
+            <div class="bg-slate-900 p-12 rounded-[4rem] shadow-2xl text-white group hover:-translate-y-2 transition-all duration-500">
+                <div class="w-16 h-16 bg-blue-600 text-white rounded-3xl flex items-center justify-center mb-10">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke-width="2.5"/></svg>
                 </div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Nos objectifs</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
-                    Nous visons l'excellence académique pour chaque enfant, grâce à des outils technologiques de pointe et un contenu de qualité.
-                </p>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/mission" class="inline-flex items-center text-sm font-black text-blue-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
-                    En savoir plus <span class="ml-2">→</span>
-                </a>
+                <h3 class="text-2xl font-black mb-4">Portail Mondial</h3>
+                <p class="text-slate-400 text-sm leading-relaxed mb-8 italic">Accès aux standards d'élite : Maths de Singapour, Anglais Oxford et plus.</p>
             </div>
-
-            <!-- Parents -->
-            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-rose-50 rounded-2xl group-hover:scale-110 transition-transform">
-                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="grad_parents" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e11d48" /><stop offset="100%" style="stop-color:#ea580c" /></linearGradient></defs>
-                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2m16-10a4 4 0 100-8 4 4 0 000 8zM7 7a3 3 0 100-6 3 3 0 000 6zm0 14v-2a4 4 0 00-2-3.465" stroke="url(#grad_parents)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+            <div class="bg-white p-12 rounded-[4rem] shadow-xl border border-white group hover:-translate-y-2 transition-all duration-500">
+                <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-3xl flex items-center justify-center mb-10 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2.5"/></svg>
                 </div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Espace Parents</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
-                    Suivez la progression de vos enfants en temps réel et accompagnez leur scolarité avec sérénité grâce à notre dashboard.
-                </p>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="inline-flex items-center text-sm font-black text-rose-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
-                    En savoir plus <span class="ml-2">→</span>
-                </a>
+                <h3 class="text-2xl font-black mb-4">Arène Magique</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8 italic">Des défis ludiques qui s'adaptent dynamiquement aux leçons de la semaine.</p>
             </div>
+        </div>
+    </div>
+</section>
 
-            <!-- Écoles -->
-            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-blue-50 rounded-2xl group-hover:scale-110 transition-transform">
-                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="grad_schools" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563eb" /><stop offset="100%" style="stop-color:#1e40af" /></linearGradient></defs>
-                        <path d="M3 21h18M3 10l9-7 9 7v11H3V10zm6 11V14h6v7" stroke="url(#grad_schools)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+<!-- Section OUTILS EXCEPTION : Boost, Pont, Print -->
+<section class="py-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div class="relative">
+                <div class="bg-orange-100 rounded-[5rem] w-full aspect-square relative z-10 flex items-center justify-center p-12">
+                    <div class="bg-white p-10 rounded-[3rem] shadow-2xl w-full transform rotate-2">
+                        <div class="flex items-center space-x-6 mb-8">
+                            <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-orange-200">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" stroke-width="2.5"/></svg>
+                            </div>
+                            <span class="text-xl font-black text-slate-900 tracking-tight">Boost Émotionnel</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="h-3 w-full bg-slate-50 rounded-full"></div>
+                            <div class="h-3 w-5/6 bg-slate-50 rounded-full"></div>
+                            <div class="flex justify-end pt-4">
+                                <span class="text-[9px] font-black uppercase text-orange-600 tracking-widest bg-orange-50 px-4 py-2 rounded-full italic">La voix de papa</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Pour les Écoles</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
-                    Digitalisez vos supports de cours et offrez à vos élèves une bibliothèque interactive alignée sur les cursus officiels.
-                </p>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="inline-flex items-center text-sm font-black text-blue-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
-                    En savoir plus <span class="ml-2">→</span>
-                </a>
+                <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-blue-100 rounded-full blur-[80px] opacity-40"></div>
             </div>
-
-            <!-- ONG -->
-            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-teal-50 rounded-2xl group-hover:scale-110 transition-transform">
-                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="grad_ngos" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0d9488" /><stop offset="100%" style="stop-color:#059669" /></linearGradient></defs>
-                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke="url(#grad_ngos)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Pour les ONG</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
-                    Déployez des solutions éducatives dans les zones reculées et suivez l'impact de vos programmes avec précision.
-                </p>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="inline-flex items-center text-sm font-black text-teal-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
-                    En savoir plus <span class="ml-2">→</span>
-                </a>
+            
+            <div>
+                <h2 class="text-5xl font-black text-slate-900 mb-8 tracking-tighter leading-none">Des outils de pilotage <br><span class="text-orange-600">sans précédent.</span></h2>
+                <ul class="space-y-12">
+                    <li class="group">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-20 h-20 bg-slate-100 rounded-[2rem] flex items-center justify-center shrink-0 group-hover:bg-orange-600 group-hover:text-white transition-all">✨</div>
+                            <div>
+                                <h4 class="text-2xl font-black mb-3">Le Boost Émotionnel</h4>
+                                <p class="text-slate-500 text-sm leading-relaxed italic font-medium">Motivez votre enfant avec votre propre voix. Une gratification humaine immédiate après chaque victoire difficile.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="group">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-20 h-20 bg-slate-100 rounded-[2rem] flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all">🤝</div>
+                            <div>
+                                <h4 class="text-2xl font-black mb-3">Le Pont de Récompenses</h4>
+                                <p class="text-slate-500 text-sm leading-relaxed italic font-medium">FreeGeny suggère le "cadeau réel" idéal basé sur les efforts. Le parent valide, l'enfant s'épanouit.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="group">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-20 h-20 bg-slate-100 rounded-[2rem] flex items-center justify-center shrink-0 group-hover:bg-teal-600 group-hover:text-white transition-all">🖨️</div>
+                            <div>
+                                <h4 class="text-2xl font-black mb-3">Printable Factory</h4>
+                                <p class="text-slate-500 text-sm leading-relaxed italic font-medium">Générez des cahiers de révision personnalisés (PDF, Image, HTML) sur les thèmes préférés de votre génie.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
+        </div>
+    </div>
+</section>
 
-            <!-- Magasin -->
-            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
-                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-rose-50 rounded-2xl group-hover:scale-110 transition-transform">
-                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="grad_shop" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f43f5e" /><stop offset="100%" style="stop-color:#e11d48" /></linearGradient></defs>
-                        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-10 0a2 2 0 100 4 2 2 0 000-4z" stroke="url(#grad_shop)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Boutique FreeGeny</h3>
-                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1 italic">
-                    Accédez à nos supports physiques et livres d'activités pour enrichir l'apprentissage hors-ligne de vos enfants.
-                </p>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="inline-flex items-center text-sm font-black text-rose-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
-                    En savoir plus <span class="ml-2">→</span>
-                </a>
+<!-- Section EXPERTS : Caution Scientifique -->
+<section class="py-32 bg-slate-900 text-white rounded-[5rem] mb-32 mx-6">
+    <div class="max-w-6xl mx-auto px-12 text-center">
+        <h2 class="text-xs font-black uppercase tracking-[0.4em] text-orange-500 mb-8">Caution Scientifique & Humaine</h2>
+        <h3 class="text-5xl font-black mb-10 tracking-tight italic">Une vision partagée par les meilleurs.</h3>
+        <p class="text-slate-400 text-xl font-medium mb-20 max-w-3xl mx-auto leading-relaxed">
+            FreeGeny intègre des cliniciens, des pédagogues et des experts EdTech pour créer un écosystème d'apprentissage sain, gratuit et ultra-performant.
+        </p>
+        
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+            <div class="p-8 bg-white/5 rounded-[3rem] border border-white/5">
+                <span class="block text-4xl font-black mb-3 italic">Diagnostic</span>
+                <p class="text-[9px] font-black uppercase tracking-widest text-orange-500">IA de calibrage initiale</p>
+            </div>
+            <div class="p-8 bg-white/5 rounded-[3rem] border border-white/5">
+                <span class="block text-4xl font-black mb-3 italic">Expertise</span>
+                <p class="text-[9px] font-black uppercase tracking-widest text-orange-500">Appui clinique gratuit</p>
+            </div>
+            <div class="p-8 bg-white/5 rounded-[3rem] border border-white/5">
+                <span class="block text-4xl font-black mb-3 italic">Sync</span>
+                <p class="text-[9px] font-black uppercase tracking-widest text-orange-500">Lien Maison / École</p>
+            </div>
+            <div class="p-8 bg-white/5 rounded-[3rem] border border-white/5">
+                <span class="block text-4xl font-black mb-3 italic">Global</span>
+                <p class="text-[9px] font-black uppercase tracking-widest text-orange-500">Maths de Singapour</p>
             </div>
         </div>
     </div>
