@@ -48,15 +48,15 @@ include_once __DIR__ . '/includes/header.php';
                         <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Utilisateurs</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="subjects + '+'">0</span>
+                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="subjects">0</span>
                         <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Matières</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="countries + '+'">0</span>
+                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="countries">0</span>
                         <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Pays</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="langs + '+'">0</span>
+                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="langs">0</span>
                         <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Langues</span>
                     </div>
                     <div class="flex flex-col">
