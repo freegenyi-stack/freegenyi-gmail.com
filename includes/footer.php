@@ -31,10 +31,10 @@
             <div>
                 <h4 class="text-[10px] font-black text-slate-900 uppercase tracking-[0.3em] mb-8 italic">Découvrir</h4>
                 <ul class="space-y-4">
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">À propos</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Mission</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Notre Approche</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Science & Efficacité</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">À propos</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/mission" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Mission</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Notre Approche</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Science & Efficacité</a></li>
                 </ul>
             </div>
 
@@ -42,11 +42,11 @@
             <div>
                 <h4 class="text-[10px] font-black text-slate-900 uppercase tracking-[0.3em] mb-8 italic">Solutions</h4>
                 <ul class="space-y-4">
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Espace Parents</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">FreeGeny Écoles</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">FreeGeny ONG</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Magasin / Boutique</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Investisseurs</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Espace Parents</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">FreeGeny Écoles</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">FreeGeny ONG</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Magasin / Boutique</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/investors" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Investisseurs</a></li>
                 </ul>
             </div>
 
@@ -54,11 +54,11 @@
             <div>
                 <h4 class="text-[10px] font-black text-slate-900 uppercase tracking-[0.3em] mb-8 italic">Ressources</h4>
                 <ul class="space-y-4">
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Centre d'aide / FAQ</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Blog Éducatif</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Presse</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Statut du site</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Contactez-nous</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/faq" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Centre d'aide / FAQ</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/blog" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Blog Éducatif</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/press" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Presse</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/status" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Statut du site</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/contact" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Contactez-nous</a></li>
                 </ul>
             </div>
 
@@ -66,11 +66,11 @@
             <div>
                 <h4 class="text-[10px] font-black text-slate-900 uppercase tracking-[0.3em] mb-8 italic">Légal</h4>
                 <ul class="space-y-4">
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Confidentialité</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Conditions d'utilisation</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Politique de Cookies</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Mentions Légales</a></li>
-                    <li><a href="#" class="text-[10px] font-black text-slate-300 hover:text-red-500 transition-colors italic">Do not sell my personal info</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/privacy" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Confidentialité</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/terms" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Conditions d'utilisation</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/cookies" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Politique de Cookies</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/legal" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Mentions Légales</a></li>
+                    <li><a href="/<?php echo $country; ?>-<?php echo $lang; ?>/data-protection" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Do not sell my personal info</a></li>
                 </ul>
             </div>
         </div>

@@ -1,30 +1,24 @@
-<?php include_once __DIR__ . '/includes/header.php'; ?>
-<main class="py-32 bg-slate-50 min-h-screen">
-    <div class="container mx-auto px-6 max-w-4xl bg-white p-16 rounded-[3rem] shadow-xl shadow-slate-200/50 border border-slate-100">
-        <h1 class="text-6xl font-black text-slate-900 mb-12 tracking-tighter">Conditions d'Utilisation<span class="text-orange-600">.</span></h1>
+<?php
+include_once __DIR__ . '/includes/header.php';
+?>
+<main class="min-h-screen bg-slate-50 pt-20">
+    <div class="max-w-4xl mx-auto px-12 py-32 bg-white rounded-[4rem] shadow-sm border border-slate-100 my-20">
+        <h1 class="text-4xl font-black text-slate-900 mb-4 italic tracking-tight">Conditions d'Utilisation</h1>
+        <p class="text-slate-400 font-bold uppercase tracking-[0.2em] text-[10px] italic mb-16">Dernière mise à jour : 11 Avril 2026</p>
         
-        <div class="space-y-10 text-slate-600 leading-relaxed text-lg">
+        <div class="space-y-12">
             <section>
-                <h2 class="text-2xl font-black text-slate-800 mb-4 uppercase tracking-widest text-sm">1. Acceptation</h2>
-                <p>En utilisant <span class="text-orange-600 font-bold">FreeGeny</span>, vous acceptez nos conditions d'utilisation visant à fournir un environnement éducatif sûr et gratuit pour les élèves du cycle primaire.</p>
+                <h2 class="text-2xl font-black text-slate-900 mb-6 italic">1. Acceptation</h2>
+                <p class="text-slate-500 font-medium italic leading-relaxed">En accédant à FreeGeny, vous acceptez pleinement les présentes conditions d'utilisation destinées à garantir un environnement éducatif sain et sécurisé.</p>
             </section>
-
             <section>
-                <h2 class="text-2xl font-black text-slate-800 mb-4 uppercase tracking-widest text-sm">2. Utilisation du Service</h2>
-                <p>Nos ressources (cours, exercices, examens) sont destinées à un usage strictement éducatif. Toute exploitation commerciale des contenus est interdite sans autorisation préalable.</p>
+                <h2 class="text-2xl font-black text-slate-900 mb-6 italic">2. Propriété Intellectuelle</h2>
+                <p class="text-slate-500 font-medium italic leading-relaxed">Les contenus, exercices et illustrations présents sur la plateforme sont la propriété exclusive de FreeGeny Inc. Toute reproduction non autorisée est strictement interdite.</p>
             </section>
-
             <section>
-                <h2 class="text-2xl font-black text-slate-800 mb-4 uppercase tracking-widest text-sm">3. Comptes Utilisateurs</h2>
-                <p>L'utilisation de Google OAuth facilitant la connexion ne vous dispense pas de fournir des informations exactes pour le suivi pédagogique de l'enfant.</p>
+                <h2 class="text-2xl font-black text-slate-900 mb-6 italic">3. Responsabilité</h2>
+                <p class="text-slate-500 font-medium italic leading-relaxed">FreeGeny s'efforce de fournir des contenus de qualité mais ne peut être tenu responsable d'éventuelles erreurs pédagogiques ou techniques.</p>
             </section>
-        </div>
-
-        <div class="mt-20 pt-12 border-t border-slate-100">
-            <a href="/" class="text-orange-600 font-black flex items-center hover:translate-x-1 transition-transform">
-                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-width="2.5"></path></svg>
-                Retour à l'Accueil
-            </a>
         </div>
     </div>
 </main>
