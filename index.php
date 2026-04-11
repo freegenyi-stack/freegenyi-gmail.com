@@ -9,24 +9,32 @@ include_once __DIR__ . '/includes/header.php';
 <section class="relative bg-white pt-20 pb-28 overflow-hidden">
     <div class="max-w-7xl mx-auto px-12 relative z-10 text-center lg:text-left">
         <div class="flex flex-wrap items-center -mx-4">
-            <div class="w-full lg:w-1/2 px-4 mb-16 lg:mb-0">
-                <span class="inline-block py-1.5 px-4 mb-6 text-[10px] font-black bg-slate-100 text-slate-500 rounded-xl uppercase tracking-[0.2em]">
-                    <?php echo __('hero_badge'); ?>
-                </span>
-                <h1 class="text-6xl md:text-8xl font-black text-slate-900 leading-none mb-8 tracking-tighter">
+            <div class="w-full lg:w-1/2 px-4 mb-20 lg:mb-0">
+                <h1 class="text-7xl md:text-[8rem] font-black text-slate-900 leading-none mb-12 tracking-tighter italic">
                     FreeGeny
                 </h1>
-                <p class="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed mb-10 max-w-xl italic">
-                    <?php echo __('hero_subtitle'); ?>. <br>
-                    <span class="text-orange-600 font-bold">FreeGeny</span> est une plateforme EdTech dédiée à la réussite scolaire des enfants du cycle primaire partout dans le monde.
-                </p>
-                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="py-3.5 px-8 text-sm font-black text-white bg-orange-600 hover:bg-orange-700 rounded-2xl shadow-xl shadow-orange-100 transition-all transform hover:-translate-y-0.5">
-                        <?php echo __('register'); ?>
-                    </a>
-                    <a href="#subjects" class="py-3.5 px-8 text-sm font-black text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-2xl transition-all">
-                        Nos Programmes
-                    </a>
+                
+                <div class="grid grid-cols-2 lg:grid-cols-2 gap-10 text-left">
+                    <div class="flex flex-col">
+                        <span class="text-5xl font-black text-orange-600 tracking-tighter">15,000+</span>
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Utilisateurs</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-5xl font-black text-orange-600 tracking-tighter">48+</span>
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Matières</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-5xl font-black text-orange-600 tracking-tighter">190+</span>
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Pays</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-5xl font-black text-orange-600 tracking-tighter">32+</span>
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Langues</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-5xl font-black text-orange-600 tracking-tighter">8,500+</span>
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Exercices</span>
+                    </div>
                 </div>
             </div>
             <div class="w-full lg:w-1/2 px-4">
