@@ -5,38 +5,67 @@
 include_once __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Section HERO : Look d'Origine & Pureté -->
+<!-- Section HERO : Style Affiné & Compteurs Animés -->
 <section class="relative bg-white pt-20 pb-28 overflow-hidden">
     <div class="max-w-7xl mx-auto px-12 relative z-10 text-center lg:text-left">
         <div class="flex flex-wrap items-center -mx-4">
-            <div class="w-full lg:w-1/2 px-4 mb-20 lg:mb-0">
-                <h1 class="text-7xl md:text-[8rem] font-black text-slate-900 leading-none mb-12 tracking-tighter italic">
+            
+            <div class="w-full lg:w-1/2 px-4 mb-20 lg:mb-0" 
+                 x-data="{ 
+                    users: 0, 
+                    subjects: 0, 
+                    countries: 0, 
+                    langs: 0, 
+                    exercises: 0,
+                    animate(target, duration, key) {
+                        let start = 0;
+                        let increment = target / (duration / 16);
+                        let timer = setInterval(() => {
+                            start += increment;
+                            if (start >= target) {
+                                this[key] = target;
+                                clearInterval(timer);
+                            } else {
+                                this[key] = Math.floor(start);
+                            }
+                        }, 16);
+                    }
+                 }" 
+                 x-init="animate(15000, 5000, 'users'); animate(48, 5000, 'subjects'); animate(190, 5000, 'countries'); animate(32, 5000, 'langs'); animate(8500, 5000, 'exercises');">
+                
+                <h1 class="text-5xl md:text-7xl font-black text-slate-900 leading-none mb-6 tracking-tighter">
                     FreeGeny
                 </h1>
                 
-                <div class="grid grid-cols-2 lg:grid-cols-2 gap-10 text-left">
+                <p class="text-lg md:text-xl text-slate-500 font-medium leading-relaxed mb-12 max-w-xl">
+                    <span class="text-orange-600 font-bold">FreeGeny</span> est une plateforme EdTech dédiée à la réussite scolaire des enfants du cycle primaire partout dans le monde.
+                </p>
+                
+                <!-- Ligne de Compteurs (Horizontale) -->
+                <div class="flex flex-wrap gap-x-10 gap-y-6 justify-center lg:justify-start pt-4 border-t border-slate-50">
                     <div class="flex flex-col">
-                        <span class="text-5xl font-black text-orange-600 tracking-tighter">15,000+</span>
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Utilisateurs</span>
+                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="users.toLocaleString() + '+'">0</span>
+                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Utilisateurs</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-5xl font-black text-orange-600 tracking-tighter">48+</span>
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Matières</span>
+                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="subjects + '+'">0</span>
+                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Matières</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-5xl font-black text-orange-600 tracking-tighter">190+</span>
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Pays</span>
+                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="countries + '+'">0</span>
+                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Pays</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-5xl font-black text-orange-600 tracking-tighter">32+</span>
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Langues</span>
+                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="langs + '+'">0</span>
+                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Langues</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-5xl font-black text-orange-600 tracking-tighter">8,500+</span>
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Exercices</span>
+                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="exercises.toLocaleString() + '+'">0</span>
+                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Exercices</span>
                     </div>
                 </div>
             </div>
+
             <div class="w-full lg:w-1/2 px-4">
                 <img class="w-full max-w-lg mx-auto transform hover:scale-105 transition duration-700" src="https://img.freepik.com/free-vector/children-learning-online-concept_23-2148524458.jpg" alt="FreeGeny Original">
             </div>
