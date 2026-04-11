@@ -44,6 +44,8 @@ CREATE TABLE IF NOT EXISTS `children` (
   `grade`           VARCHAR(20) NOT NULL DEFAULT '1AP',
   `language`        VARCHAR(5) NOT NULL DEFAULT 'ar',
   `avatar`          VARCHAR(50) NOT NULL DEFAULT 'avatar1',
+  `interests`       JSON DEFAULT NULL,
+  `emotional_boost_audio` VARCHAR(255) DEFAULT NULL,
   `xp_total`        INT UNSIGNED NOT NULL DEFAULT 0,
   `streak_days`     SMALLINT UNSIGNED NOT NULL DEFAULT 0,
   `longest_streak`  SMALLINT UNSIGNED NOT NULL DEFAULT 0,
@@ -125,8 +127,46 @@ CREATE TABLE IF NOT EXISTS `user_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- -----------------------------------------------------------
--- Table : login_attempts (anti-brute-force)
+-- Table : child_rewards (Pont des Récompenses)
 -- -----------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `child_rewards` (
+  `id`              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `child_id`        INT UNSIGNED NOT NULL,
+  `suggestion`      VARCHAR(255) NOT NULL,
+  `custom_reward`   VARCHAR(255) DEFAULT NULL,
+  `status`          ENUM('pending', 'validated', 'claimed') NOT NULL DEFAULT 'pending',
+  `created_at`      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`child_id`) REFERENCES `children`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- -----------------------------------------------------------
+-- Table : academic_calendar (Dates clés)
+-- -----------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `academic_calendar` (
+  `id`              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `child_id`        INT UNSIGNED NOT NULL,
+  `event_name`      VARCHAR(100) NOT NULL,
+  `event_type`      ENUM('exam', 'holiday', 'other') NOT NULL DEFAULT 'exam',
+  `start_date`      DATE NOT NULL,
+  `end_date`        DATE DEFAULT NULL,
+  `created_at`      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`child_id`) REFERENCES `children`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- -----------------------------------------------------------
+-- Table : communication_hub (Lien Parent-Enseignant)
+-- -----------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `communication_hub` (
+  `id`              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `sender_id`       INT UNSIGNED NOT NULL,
+  `receiver_id`     INT UNSIGNED NOT NULL,
+  `child_id`        INT UNSIGNED NOT NULL,
+  `message`         TEXT NOT NULL,
+  `type`            ENUM('chat', 'notebook') NOT NULL DEFAULT 'chat',
+  `is_read`         TINYINT(1) NOT NULL DEFAULT 0,
+  `created_at`      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`child_id`) REFERENCES `children`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS `login_attempts` (
   `id`          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `email`       VARCHAR(255) NOT NULL,
