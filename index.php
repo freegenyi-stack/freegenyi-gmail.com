@@ -56,34 +56,86 @@ include_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Section SERVICES -->
-<section id="subjects" class="py-24 bg-slate-50/50">
+<!-- Section SERVICES : Les 6 Piliers FreeGeny -->
+<section id="subjects" class="py-32 bg-slate-50/50">
     <div class="container mx-auto px-6">
-        <div class="max-w-3xl mx-auto text-center mb-20">
-            <h2 class="text-4xl font-black text-slate-900 mb-4"><?php echo __('innovation_title'); ?></h2>
-            <p class="text-lg text-slate-400 font-medium"><?php echo __('innovation_desc'); ?></p>
+        <div class="max-w-3xl mx-auto text-center mb-24">
+            <h2 class="text-xs font-black uppercase tracking-[0.4em] text-orange-600 mb-6 italic">Découvrez notre univers</h2>
+            <h3 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Tout savoir sur FreeGeny</h3>
+            <p class="text-lg text-slate-400 font-medium italic">Explorez nos missions et les outils que nous mettons à votre disposition pour la réussite éducative.</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Cursus Nationaux -->
-            <div class="group bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
-                <div class="w-14 h-14 mb-6 flex items-center justify-center bg-orange-50 text-orange-600 rounded-2xl text-xl">🌍</div>
-                <h3 class="text-xl font-black text-slate-900 mb-3">Matières & Cursus</h3>
-                <p class="text-sm text-slate-500 leading-relaxed">Cours détaillés et exercices pour le cycle primaire.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Qui sommes-nous -->
+            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-orange-50 text-orange-600 rounded-2xl text-2xl group-hover:scale-110 transition-transform">📖</div>
+                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Qui sommes-nous ?</h3>
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
+                    FreeGeny est une plateforme EdTech visionnaire qui repense l'apprentissage pour le cycle primaire. Découvrez notre histoire et notre équipe de passionnés.
+                </p>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="inline-flex items-center text-sm font-black text-orange-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
+                    En savoir plus <span class="ml-2">→</span>
+                </a>
             </div>
 
-            <!-- Standards Internationaux -->
-            <div class="group bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
-                <div class="w-14 h-14 mb-6 flex items-center justify-center bg-blue-50 text-blue-600 rounded-2xl text-xl">♾️</div>
-                <h3 class="text-xl font-black text-slate-900 mb-3"><?php echo __('singapore_math'); ?></h3>
-                <p class="text-sm text-slate-500 leading-relaxed">Mathématiques Méthode Singapour et Langues.</p>
+            <!-- Nos objectifs -->
+            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-blue-50 text-blue-600 rounded-2xl text-2xl group-hover:scale-110 transition-transform">🎯</div>
+                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Nos objectifs</h3>
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
+                    Nous visons l'excellence académique pour chaque enfant, peu importe sa localisation, grâce à des outils technologiques de pointe et un contenu de qualité.
+                </p>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/goals" class="inline-flex items-center text-sm font-black text-blue-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
+                    En savoir plus <span class="ml-2">→</span>
+                </a>
             </div>
 
-            <!-- Dashboard Adults -->
-            <div class="group bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
-                <div class="w-14 h-14 mb-6 flex items-center justify-center bg-green-50 text-green-600 rounded-2xl text-xl">📊</div>
-                <h3 class="text-xl font-black text-slate-900 mb-3">Dashboard Pro</h3>
-                <p class="text-sm text-slate-500 leading-relaxed">Suivi en temps réel pour Parents, Écoles et ONG.</p>
+            <!-- Parents -->
+            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-purple-50 text-purple-600 rounded-2xl text-2xl group-hover:scale-110 transition-transform">👨‍👩‍👧‍👦</div>
+                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Espace Parents</h3>
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
+                    Suivez la progression de vos enfants en temps réel, gérez les exercices et accompagnez leur scolarité avec sérénité grâce à notre dashboard parent.
+                </p>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="inline-flex items-center text-sm font-black text-purple-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
+                    En savoir plus <span class="ml-2">→</span>
+                </a>
+            </div>
+
+            <!-- Écoles -->
+            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-green-50 text-green-600 rounded-2xl text-2xl group-hover:scale-110 transition-transform">🏫</div>
+                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Pour les Écoles</h3>
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
+                    Digitalisez vos supports de cours et offrez à vos élèves une bibliothèque d'exercices interactifs alignés sur les cursus officiels internationaux.
+                </p>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="inline-flex items-center text-sm font-black text-green-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
+                    En savoir plus <span class="ml-2">→</span>
+                </a>
+            </div>
+
+            <!-- ONG -->
+            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
+                <div class="w-16 h-16 mb-8 flex items-center justify-center bg-teal-50 text-teal-600 rounded-2xl text-2xl group-hover:scale-110 transition-transform">🤝</div>
+                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Pour les ONG</h3>
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
+                    Déployez des solutions éducatives dans les zones reculées et suivez l'impact de vos programmes grâce à des analyses de données précises.
+                </p>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="inline-flex items-center text-sm font-black text-teal-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
+                    En savoir plus <span class="ml-2">→</span>
+                </a>
+            </div>
+
+            <!-- Magasin -->
+            <div class="group bg-white p-10 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col">
+                <div class="w-14 h-14 mb-8 flex items-center justify-center bg-rose-50 text-rose-600 rounded-2xl text-xl group-hover:scale-110 transition-transform">🛒</div>
+                <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Boutique FreeGeny</h3>
+                <p class="text-slate-500 leading-relaxed font-medium mb-8 flex-1">
+                    Accédez à nos supports physiques, livres d'activités et ressources complémentaires pour enrichir l'apprentissage hors-ligne.
+                </p>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="inline-flex items-center text-sm font-black text-rose-600 uppercase tracking-widest hover:translate-x-2 transition-transform italic">
+                    En savoir plus <span class="ml-2">→</span>
+                </a>
             </div>
         </div>
     </div>
