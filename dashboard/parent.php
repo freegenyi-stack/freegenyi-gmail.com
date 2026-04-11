@@ -11,24 +11,11 @@ $initials = getInitials($user['full_name']);
 $avatarColor = getAvatarColor($user['full_name']);
 $currentAvatar = $user['profile_photo'] ?? '';
 
-// Bibliothèque Élite Étendue
-$avatarCategories = [
-    'Tech & Pro' => [
-        'micah' => ['Oliver', 'Caleb', 'Jack', 'Avery', 'Riley', 'Jordan'],
-        'pixel-art' => ['Felix', 'Aneka', 'Sasha', 'Matti', 'Lukas', 'Klaus']
-    ],
-    'Illustrations' => [
-        'lorelei' => ['Sasha', 'Matti', 'Lukas', 'Klaus', 'Hans', 'Greta'],
-        'open-peeps' => ['Jules', 'Elsa', 'Hans', 'Greta', 'Ulrich', 'Inge']
-    ],
-    'Aventure' => [
-        'adventurer' => ['Felix', 'Aneka', 'Sasha', 'Matti', 'Lukas', 'Klaus'],
-        'big-smile' => ['Oliver', 'Caleb', 'Jack', 'Avery', 'Riley', 'Jordan']
-    ],
-    'Abstrait' => [
-        'shapes' => ['Felix', 'Aneka', 'Sasha', 'Matti', 'Lukas', 'Klaus'],
-        'initials' => ['Felix', 'Aneka', 'Sasha', 'Matti', 'Lukas', 'Klaus']
-    ]
+// Générer une liste de styles DiceBear "Elite"
+$avatarStyles = [
+    'micah' => ['Oliver', 'Caleb', 'Jack', 'Avery', 'Riley', 'Jordan', 'Max', 'Sam', 'Alex', 'Bailey', 'Casey', 'Robin'],
+    'avataaars' => ['Robert', 'Kimberly', 'Matthew', 'Susan', 'James', 'Linda', 'Thomas', 'Barbara', 'Christopher', 'Elizabeth', 'Richard', 'Jennifer'],
+    'personas' => ['Felix', 'Aneka', 'Sasha', 'Matti', 'Lukas', 'Klaus', 'Jules', 'Elsa', 'Hans', 'Greta', 'Ulrich', 'Inge']
 ];
 ?>
 <!DOCTYPE html>
@@ -43,17 +30,18 @@ $avatarCategories = [
     <style>
         body { font-family: 'Outfit', sans-serif; background: #ffffff; }
         [x-cloak] { display: none !important; }
-        .avatar-main { border: 8px solid #fff; box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.2); }
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        .cat-tab.active { background: #0f172a; color: white; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .avatar-main { border: 8px solid #fff; box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .dicebear-card:hover { border-color: #EA580C; transform: scale(1.05); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-6 bg-[#F1F5F9]" 
+<body class="min-h-screen flex flex-col items-center justify-center p-6 bg-[#F8FAFC]" 
       x-data="{ 
           modalOpen: false, 
           loading: false, 
-          currentCategory: 'Tech & Pro',
+          error: '',
+          currentAvatar: '<?php echo $currentAvatar; ?>',
           async uploadFile(e) {
               const file = e.target.files[0];
               if (!file) return;
@@ -62,7 +50,7 @@ $avatarCategories = [
               formData.append('avatar_file', file);
               const res = await fetch('/api/user/upload_avatar.php', { method: 'POST', body: formData });
               const data = await res.json();
-              if (data.success) { window.location.reload(); } else { alert(data.error); this.loading = false; }
+              if (data.success) { window.location.reload(); } else { this.error = data.error; this.loading = false; }
           },
           async selectAvatar(url) {
               this.loading = true;
@@ -77,111 +65,90 @@ $avatarCategories = [
 
     <!-- AVATAR CENTRAL -->
     <div class="relative group cursor-pointer" @click="modalOpen = true">
-        <div class="w-52 h-52 rounded-[3.5rem] flex items-center justify-center text-white font-black text-6xl avatar-main transition-all duration-700 overflow-hidden bg-white mb-2 group-hover:rotate-2">
+        <div class="w-48 h-48 rounded-[3rem] flex items-center justify-center text-white font-black text-6xl avatar-main transition-all duration-700 overflow-hidden bg-slate-200 group-hover:rotate-2">
             <?php if ($currentAvatar): ?>
                 <img src="<?php echo $currentAvatar; ?>" class="w-full h-full object-cover">
             <?php else: ?>
-                <span class="text-8xl" style="color: <?php echo $avatarColor; ?>;"><?php echo $initials; ?></span>
+                <span class="text-7xl" style="color: <?php echo $avatarColor; ?>;"><?php echo $initials; ?></span>
             <?php endif; ?>
         </div>
-        <div class="absolute -bottom-2 -right-2 w-14 h-14 bg-white rounded-3xl shadow-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🎭</div>
+        <div class="absolute inset-0 bg-slate-900/40 rounded-[3rem] opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center backdrop-blur-sm">
+            <span class="text-white font-black text-[11px] uppercase tracking-[0.4em] bg-white/10 px-6 py-3 rounded-full border border-white/20 italic shadow-2xl">Elite ID</span>
+        </div>
+        <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl">📸</div>
     </div>
 
-    <div class="text-center mt-12 bg-white/50 backdrop-blur-md px-12 py-8 rounded-[3rem] border border-white shadow-xl">
-        <h2 class="text-4xl font-black text-slate-900 tracking-tighter mb-2 italic"><?php echo $user['full_name']; ?></h2>
+    <div class="text-center mt-12">
+        <h2 class="text-4xl font-black text-slate-900 tracking-tighter leading-none mb-3 italic"><?php echo $user['full_name']; ?></h2>
         <div class="flex items-center justify-center space-x-3">
-            <span class="px-4 py-1.5 bg-slate-900 text-white text-[9px] font-black rounded-full uppercase italic tracking-widest">Membre Elite</span>
-            <p class="text-[10px] font-bold text-slate-400 lowercase tracking-widest italic"><?php echo $user['email']; ?></p>
+            <span class="px-3 py-1 bg-green-100 text-green-700 text-[9px] font-black rounded-full uppercase italic">Compte Actif</span>
+            <p class="text-[10px] font-bold text-slate-400 lowercase tracking-widest"><?php echo $user['email']; ?></p>
         </div>
     </div>
 
-    <!-- MODALE "VOÛTE DES AVATARS" -->
+    <!-- MODALE ELITE (DiceBear) -->
     <template x-teleport="body">
         <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-6" x-cloak>
-            <div x-show="modalOpen" x-transition.opacity @click="modalOpen = false" class="absolute inset-0 bg-slate-900/95 backdrop-blur-xl"></div>
+            <div x-show="modalOpen" x-transition.opacity @click="modalOpen = false" class="absolute inset-0 bg-slate-900/90 backdrop-blur-xl"></div>
             
             <div x-show="modalOpen" 
                  x-transition:enter="transition ease-out duration-500 transform"
                  x-transition:enter-start="opacity-0 translate-y-24 scale-95"
-                 class="relative bg-white w-full max-w-5xl rounded-[4rem] p-12 shadow-3xl overflow-hidden min-h-[70vh] flex flex-col">
+                 class="relative bg-white w-full max-w-4xl rounded-[4rem] p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden">
                 
-                <div class="flex justify-between items-start mb-12">
+                <div class="flex justify-between items-center mb-10">
                     <div>
-                        <h3 class="text-5xl font-black text-slate-900 italic tracking-tighter leading-none">Voûte Élite</h3>
-                        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.4em] mt-4 flex items-center">
-                            <span class="w-8 h-px bg-slate-200 mr-4"></span> Identité Visuelle Universelle
-                        </p>
+                        <h3 class="text-4xl font-black text-slate-900 italic tracking-tighter leading-none">Galerie Élite</h3>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mt-3">Powered by DiceBear & FreeGeny</p>
                     </div>
-                    <button @click="modalOpen = false" class="w-16 h-16 flex items-center justify-center bg-slate-50 text-slate-400 rounded-[2rem] hover:bg-red-50 hover:text-red-500 transition-all font-black text-xl">✕</button>
+                    <button @click="modalOpen = false" class="w-14 h-14 flex items-center justify-center bg-slate-50 text-slate-400 rounded-3xl hover:bg-red-50 hover:text-red-500 transition-all font-black">✕</button>
                 </div>
 
-                <!-- NAVIGATION PAR CATÉGORIE -->
-                <div class="flex space-x-3 mb-10 overflow-x-auto pb-4 custom-scrollbar">
-                    <?php foreach (array_keys($avatarCategories) as $cat): ?>
-                        <button @click="currentCategory = '<?php echo $cat; ?>'" 
-                                :class="currentCategory === '<?php echo $cat; ?>' ? 'active' : 'bg-slate-50 text-slate-400 hover:bg-slate-100'"
-                                class="cat-tab whitespace-nowrap px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all duration-300">
-                            <?php echo $cat; ?>
-                        </button>
-                    <?php endforeach; ?>
-                </div>
-
-                <!-- GRILLE DE LA CATÉGORIE ACTIVE -->
-                <div class="flex-grow overflow-y-auto pr-6 custom-scrollbar">
-                    
-                    <!-- Option Upload Toujours visible en haut -->
-                    <label class="mb-10 p-10 bg-slate-50 rounded-[3rem] border-2 border-dashed border-slate-200 hover:border-orange-500 hover:bg-orange-50 transition-all text-center cursor-pointer group flex flex-col items-center justify-center">
-                        <div class="text-5xl mb-4 group-hover:-translate-y-2 transition-transform duration-500">📸</div>
-                        <p class="font-black text-slate-800 italic uppercase text-xs tracking-widest">Ma Propre Image HD</p>
+                <!-- ACTIONS RAPIDES (Upload) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <label class="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-dashed border-slate-200 hover:border-orange-500 hover:bg-orange-50 transition-all text-center cursor-pointer group col-span-1">
+                        <div class="text-4xl mb-4">📸</div>
+                        <p class="font-black text-slate-800 text-xs italic">Ma Photo Locale</p>
                         <input type="file" class="hidden" @change="uploadFile">
                     </label>
+                    <div class="p-8 bg-slate-900 rounded-[2.5rem] flex flex-col items-center justify-center text-center text-white col-span-2">
+                        <p class="text-[9px] font-black uppercase tracking-widest opacity-40 mb-3 italic">Identification</p>
+                        <p class="font-black italic text-lg tracking-tight">Personnalisez votre présence sur la plateforme</p>
+                    </div>
+                </div>
 
-                    <?php foreach ($avatarCategories as $catName => $styles): ?>
-                        <div x-show="currentCategory === '<?php echo $catName; ?>'" x-transition x-cloak>
-                            <?php foreach ($styles as $style => $seeds): ?>
-                                <h4 class="text-[10px] font-black text-slate-200 uppercase tracking-[0.5em] mb-8 italic flex items-center">
-                                    <span class="mr-6"><?php echo strtoupper($style); ?> STYLE</span>
-                                    <span class="flex-grow h-px bg-slate-50"></span>
-                                </h4>
-                                <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-6 mb-16">
-                                    <?php foreach ($seeds as $seed): 
-                                        $url = "https://api.dicebear.com/7.x/$style/svg?seed=$seed&backgroundColor=f1f5f9";
-                                    ?>
-                                    <button @click="selectAvatar('<?php echo $url; ?>')" 
-                                            class="aspect-square bg-slate-50 rounded-[2rem] p-3 border-2 border-transparent transition-all duration-300 hover:border-slate-900 hover:scale-110 hover:shadow-2xl">
-                                        <img src="<?php echo $url; ?>" class="w-full h-full rounded-[1.5rem]">
-                                    </button>
-                                    <?php endforeach; ?>
-                                </div>
+                <!-- LA GRANDE GALERIE (36 Avatars Elite) -->
+                <div class="max-h-[45vh] overflow-y-auto pr-4 custom-scrollbar">
+                    <?php foreach ($avatarStyles as $style => $seeds): ?>
+                        <h4 class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-6 mt-10 italic border-b border-slate-50 pb-4">— <?php echo strtoupper($style); ?> STYLE —</h4>
+                        <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
                             <?php foreach ($seeds as $seed): 
-                                        $url = "https://api.dicebear.com/7.x/$style/svg?seed=$seed" . "Special&backgroundColor=f1f5f9";
-                                    ?>
-                                    <button @click="selectAvatar('<?php echo $url; ?>')" 
-                                            class="aspect-square bg-slate-50 rounded-[2rem] p-3 border-2 border-transparent transition-all duration-300 hover:border-slate-900 hover:scale-110 hover:shadow-2xl">
-                                        <img src="<?php echo $url; ?>" class="w-full h-full rounded-[1.5rem]">
-                                    </button>
-                                    <?php endforeach; ?>
+                                $url = "https://api.dicebear.com/7.x/$style/svg?seed=$seed&backgroundColor=f8fafc";
+                            ?>
+                            <button @click="selectAvatar('<?php echo $url; ?>')" 
+                                    class="dicebear-card aspect-square bg-slate-50 rounded-[2rem] p-2 border-2 border-transparent transition-all duration-300">
+                                <img src="<?php echo $url; ?>" class="w-full h-full rounded-[1.5rem]">
+                            </button>
                             <?php endforeach; ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
 
                 <!-- LOADING OVERLAY -->
-                <div x-show="loading" class="absolute inset-0 bg-white/95 flex flex-col items-center justify-center space-y-10 z-[60]">
-                    <div class="h-1 w-48 bg-slate-100 rounded-full overflow-hidden">
-                        <div class="h-full bg-slate-900 animate-[loading_1s_infinite] w-full origin-left"></div>
+                <div x-show="loading" class="absolute inset-0 bg-white/95 flex flex-col items-center justify-center space-y-8 z-[60]">
+                    <div class="w-20 h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-orange-600 animate-[progress_1s_ease-in-out_infinite] w-1/3"></div>
                     </div>
-                    <p class="text-[11px] font-black uppercase tracking-[0.8em] animate-pulse italic">Voûte Élite — Synchronisation</p>
+                    <p class="text-[11px] font-black uppercase tracking-[0.5em] animate-pulse italic">Synchronisation Elite Identity...</p>
                 </div>
             </div>
         </div>
     </template>
 
     <style>
-        @keyframes loading {
-            0% { transform: scaleX(0); }
-            50% { transform: scaleX(1); }
-            100% { transform: scaleX(0); transform-origin: right; }
+        @keyframes progress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(300%); }
         }
     </style>
 </body>
