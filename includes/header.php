@@ -120,9 +120,6 @@ $is_rtl = $is_rtl ?? false;
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="nav-link text-sm font-bold text-slate-600 hover:text-orange-600"><?php echo __('schools'); ?></a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="nav-link text-sm font-bold text-slate-600 hover:text-orange-600"><?php echo __('ngos'); ?></a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="nav-link text-sm font-bold text-slate-600 hover:text-orange-600"><?php echo __('shop'); ?></a>
-                <a href="/privacy.html" class="px-4 py-2 bg-orange-50 text-orange-600 font-black text-[10px] uppercase tracking-widest rounded-xl hover:bg-orange-600 hover:text-white transition-all border border-orange-100 italic">
-                    Privacy Policy
-                </a>
             </div>
 
             <div class="flex items-center space-x-6 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
