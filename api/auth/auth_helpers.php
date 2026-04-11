@@ -141,7 +141,9 @@ try {
     // Migration des préférences users
     $prefs = [
         'preferred_color' => "VARCHAR(7) DEFAULT '#2563eb'",
-        'theme_mode' => "VARCHAR(10) DEFAULT 'light'"
+        'theme_mode'      => "VARCHAR(10) DEFAULT 'light'",
+        'role'            => "VARCHAR(20) DEFAULT 'parent'",
+        'entity_name'     => "VARCHAR(255) NULL"
     ];
     foreach ($prefs as $col => $def) {
         $check = DB::fetchOne("SHOW COLUMNS FROM users LIKE '$col'");

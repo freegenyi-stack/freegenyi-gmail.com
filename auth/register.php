@@ -1,141 +1,163 @@
 <?php
 include_once __DIR__ . '/../includes/header.php';
 ?>
-<main class="min-h-screen relative flex items-center justify-center py-8 px-6 overflow-hidden bg-[#fafafa]">
+<main class="min-h-screen relative flex items-center justify-center py-12 px-6 overflow-hidden bg-[#fafafa]" 
+      x-data="{ 
+        role: 'parent', 
+        full_name: '', 
+        entity_name: '',
+        director_name: '',
+        phone: '', 
+        email: '', 
+        password: '', 
+        confirm: '', 
+        loading: false, 
+        error: '',
+        async submit() {
+            if (this.password !== this.confirm) { this.error = 'Les mots de passe ne correspondent pas.'; return; }
+            this.loading = true; this.error = '';
+            try {
+                const res = await fetch('/api/auth/register.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+                    body: JSON.stringify({ 
+                        role: this.role,
+                        full_name: this.role === 'parent' ? this.full_name : this.director_name, 
+                        entity_name: this.entity_name,
+                        phone: this.phone, 
+                        email: this.email, 
+                        password: this.password, 
+                        confirm: this.confirm,
+                        country: '<?php echo $country; ?>' 
+                    })
+                });
+                const data = await res.json();
+                if (res.ok && data.success) { window.location.href = data.redirect || '/dashboard'; }
+                else { this.error = data.error || 'Erreur lors de l\'inscription.'; }
+            } catch (e) { this.error = 'Erreur serveur.'; }
+            finally { this.loading = false; }
+        }
+      }">
+    
     <!-- Background Animated Gradients -->
     <div class="absolute top-0 -right-4 w-64 h-64 bg-blue-400 opacity-20 blur-[100px] rounded-full animate-pulse"></div>
     <div class="absolute bottom-0 -left-4 w-64 h-64 bg-orange-400 opacity-10 blur-[100px] rounded-full animate-pulse" style="animation-delay: 2s"></div>
 
     <div class="w-full max-w-xl relative">
-        <div class="bg-white/70 backdrop-blur-3xl p-8 md:p-10 rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] border border-white/50 relative z-10 box-border">
+        <div class="bg-white/80 backdrop-blur-3xl p-8 md:p-12 rounded-[3.5rem] shadow-2xl border border-white relative z-10">
             
-            <!-- Logo area -->
-            <div class="text-center mb-6">
-                <!-- ILLUSTRATION CONVIVIALE (Checklist Elite) -->
-                <div class="mb-6 transform hover:scale-105 transition-transform duration-500">
-                    <svg class="h-24 mx-auto" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="100" cy="100" r="80" fill="#FFF7ED"/>
-                        <circle cx="100" cy="100" r="60" fill="#FFEDD5"/>
-                        <path d="M100 60C100 54.4772 104.477 50 110 50H130C135.523 50 140 54.4772 140 60V80C140 85.5228 135.523 90 130 90H110C104.477 90 100 85.5228 100 80V60Z" fill="#EA580C"/>
-                        <path d="M60 110C60 104.477 64.4772 100 70 100H90C95.5228 100 100 104.477 100 110V130C100 135.523 95.5228 140 90 140H70C64.4772 140 60 135.523 60 130V110Z" fill="#F97316"/>
-                        <path d="M110 110C110 104.477 114.477 100 120 100H140C145.523 100 150 104.477 150 110V130C150 135.523 145.523 140 140 140H120C114.477 140 110 135.523 110 130V110Z" fill="#FB923C"/>
-                    </svg>
-                </div>
-                
-                <h1 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight leading-none mb-2"><?php echo __('join_us'); ?></h1>
-                <p class="text-slate-500 text-xs font-bold italic"><?php echo __('register_subtitle'); ?></p>
+            <!-- Type Selector -->
+            <div class="flex p-1.5 bg-slate-100 rounded-3xl mb-10 overflow-hidden shadow-inner">
+                <button @click="role = 'parent'" :class="role === 'parent' ? 'bg-white shadow-md text-orange-600' : 'text-slate-400 hover:text-slate-600'" 
+                        class="flex-1 py-3.5 text-[10px] font-black uppercase tracking-widest rounded-2xl transition-all duration-300 italic">
+                    👨‍👩‍👦 Parent
+                </button>
+                <button @click="role = 'school'" :class="role === 'school' ? 'bg-white shadow-md text-blue-600' : 'text-slate-400 hover:text-slate-600'" 
+                        class="flex-1 py-3.5 text-[10px] font-black uppercase tracking-widest rounded-2xl transition-all duration-300 italic">
+                    🏫 École
+                </button>
+                <button @click="role = 'ngo'" :class="role === 'ngo' ? 'bg-white shadow-md text-teal-600' : 'text-slate-400 hover:text-slate-600'" 
+                        class="flex-1 py-3.5 text-[10px] font-black uppercase tracking-widest rounded-2xl transition-all duration-300 italic">
+                    🤝 ONG
+                </button>
             </div>
 
-            <!-- Google Integration -->
-            <div class="mb-6">
-                <a href="/api/auth/social.php?provider=Google" class="flex items-center justify-center space-x-4 w-full py-4 bg-white border border-slate-100 rounded-2xl hover:bg-slate-50 hover:border-slate-200 hover:shadow-xl transition-all duration-500 group">
-                    <svg class="w-6 h-6 group-hover:scale-110 transition duration-500" viewBox="0 0 48 48">
-                        <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
-                        <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
-                        <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
-                        <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571.001-.001.002-.001.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
-                    </svg>
-                    <span class="text-xs font-black text-slate-700 uppercase tracking-[0.2em] italic">Inscription via Google</span>
+            <!-- Title -->
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-black text-slate-900 tracking-tighter leading-none mb-3 italic transition-all" x-text="role === 'parent' ? 'Rejoignez FreeGeny' : (role === 'school' ? 'Espace Établissement' : 'Espace Organisation')"></h1>
+                <p class="text-slate-400 text-[11px] font-bold italic" x-text="role === 'parent' ? 'Le meilleur pour la réussite de vos enfants' : (role === 'school' ? 'Digitalisez le suivi de vos élèves' : 'Impactez l\'éducation avec nous')"></p>
+            </div>
+
+            <!-- Google Login (Common) -->
+            <div class="mb-10">
+                <a href="/api/auth/social.php?provider=Google" 
+                   @click="document.cookie = 'pending_role=' + role + '; path=/; max-age=600'"
+                   class="flex items-center justify-center space-x-4 w-full py-4.5 bg-white border border-slate-100 rounded-3xl hover:bg-slate-50 hover:shadow-xl transition-all duration-500 group">
+                    <svg class="w-6 h-6 group-hover:scale-110 transition duration-500" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.7-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2.1 1.5-4.6 2.4-7.2 2.4-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2c4-3.7 7-8.9 7-18.9 0-1.3-.1-2.7-.4-3.9z"/></svg>
+                    <span class="text-[10px] font-black text-slate-700 uppercase tracking-[0.2em] italic">Continuer avec Gmail</span>
                 </a>
             </div>
 
             <!-- Separator -->
-            <div class="relative flex items-center mb-6">
+            <div class="relative flex items-center mb-10">
                 <div class="flex-grow border-t border-slate-100"></div>
-                <span class="flex-shrink mx-6 text-[10px] font-black text-slate-300 uppercase tracking-widest italic"><?php echo __('or_register_by_email'); ?></span>
+                <span class="flex-shrink mx-6 text-[9px] font-black text-slate-300 uppercase tracking-widest italic">Ou par adresse mail</span>
                 <div class="flex-grow border-t border-slate-100"></div>
             </div>
 
-            <!-- Form with AlpineJS -->
-            <form @submit.prevent="submit" x-data="{
-                full_name: '',
-                phone: '',
-                email: '',
-                password: '',
-                confirm: '',
-                loading: false,
-                error: '',
-                async submit() {
-                    if (this.password !== this.confirm) {
-                        this.error = 'Les mots de passe ne correspondent pas.';
-                        return;
-                    }
-                    this.loading = true;
-                    this.error = '';
-                    try {
-                        const res = await fetch('/api/auth/register.php', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
-                            body: JSON.stringify({ 
-                                full_name: this.full_name, 
-                                phone: this.phone, 
-                                email: this.email, 
-                                password: this.password, 
-                                confirm: this.confirm,
-                                country: '<?php echo $country; ?>' 
-                            })
-                        });
-                        const data = await res.json();
-                        if (res.ok && data.success) {
-                            window.location.href = data.redirect || '/dashboard';
-                        } else {
-                            this.error = data.error || 'Erreur lors de l\'inscription.';
-                        }
-                    } catch (e) {
-                        this.error = 'Erreur serveur.';
-                    } finally {
-                        this.loading = false;
-                    }
-                }
-            }" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form @submit.prevent="submit" class="space-y-5">
+                <!-- Error -->
+                <div x-show="error" x-transition class="p-5 bg-red-50 text-red-600 rounded-[2rem] text-[10px] font-bold border border-red-100 italic" x-text="error"></div>
 
-                <!-- Error Message -->
-                <div x-show="error" x-transition class="col-span-1 md:col-span-2 p-4 bg-red-50 text-red-600 rounded-2xl text-[10px] font-bold border border-red-100 italic" x-text="error"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    
+                    <!-- Dynamic Identity Fields -->
+                    <template x-if="role === 'parent'">
+                        <div class="col-span-2">
+                            <label class="block text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-6 italic">Nom Complet du Parent</label>
+                            <input type="text" x-model="full_name" required placeholder="Ex: Amira Bensalem"
+                                   class="w-full px-8 py-4.5 bg-slate-50 border-none rounded-[2.5rem] focus:bg-white focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-black text-sm text-slate-700">
+                        </div>
+                    </template>
 
-                <div class="group">
-                    <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('fullname_label'); ?></label>
-                    <input type="text" x-model="full_name" required placeholder="Ex: Jean Dupont"
-                           class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
-                </div>
+                    <template x-if="role !== 'parent'">
+                        <div class="col-span-2 space-y-5">
+                            <div>
+                                <label class="block text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-6 italic" x-text="role === 'school' ? 'Nom de l\'Établissement' : 'Nom de l\'Organisation'"></label>
+                                <input type="text" x-model="entity_name" required :placeholder="role === 'school' ? 'Ex: École Al-Kindi' : 'Ex: Vision Éducative'"
+                                       class="w-full px-8 py-4.5 bg-slate-50 border-none rounded-[2.5rem] focus:bg-white focus:ring-4 focus:ring-blue-500/5 outline-none transition-all font-black text-sm text-slate-700">
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-6 italic" x-text="role === 'school' ? 'Nom du Directeur' : 'Nom du Responsable'"></label>
+                                <input type="text" x-model="director_name" required placeholder="Prénom et Nom"
+                                       class="w-full px-8 py-4.5 bg-slate-50 border-none rounded-[2.5rem] focus:bg-white focus:ring-4 focus:ring-blue-500/5 outline-none transition-all font-black text-sm text-slate-700">
+                            </div>
+                        </div>
+                    </template>
 
-                <div class="group">
-                    <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('phone_label'); ?></label>
-                    <input type="tel" x-model="phone" required placeholder="<?php echo __('phone_placeholder'); ?>"
-                           class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
-                </div>
+                    <!-- Contact -->
+                    <div class="col-span-2 md:col-span-1">
+                        <label class="block text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-6 italic">Téléphone</label>
+                        <input type="tel" x-model="phone" required placeholder="+213..."
+                               class="w-full px-8 py-4.5 bg-slate-50 border-none rounded-[2.5rem] focus:bg-white focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-black text-sm text-slate-700">
+                    </div>
 
-                <div class="group col-span-1 md:col-span-2">
-                    <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('email_label'); ?></label>
-                    <input type="email" x-model="email" required placeholder="nom@exemple.com"
-                           class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
-                </div>
+                    <div class="col-span-2 md:col-span-1">
+                        <label class="block text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-6 italic">E-mail</label>
+                        <input type="email" x-model="email" required placeholder="contact@domaine.com"
+                               class="w-full px-8 py-4.5 bg-slate-50 border-none rounded-[2.5rem] focus:bg-white focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-black text-sm text-slate-700">
+                    </div>
 
-                <div class="group">
-                    <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('password_label'); ?></label>
-                    <input type="password" x-model="password" required placeholder="••••••••"
-                           class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
-                </div>
+                    <!-- Password -->
+                    <div class="col-span-2 md:col-span-1">
+                        <label class="block text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-6 italic">Mot de passe</label>
+                        <input type="password" x-model="password" required placeholder="••••••••"
+                               class="w-full px-8 py-4.5 bg-slate-50 border-none rounded-[2.5rem] focus:bg-white focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-black text-sm text-slate-700">
+                    </div>
 
-                <div class="group">
-                    <label class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 ml-4"><?php echo __('confirm_password_label'); ?></label>
-                    <input type="password" x-model="confirm" required placeholder="••••••••"
-                           class="w-full px-7 py-3 bg-white border border-slate-200 rounded-2xl focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-bold text-sm text-slate-700 placeholder:text-slate-300 shadow-sm">
-                </div>
+                    <div class="col-span-2 md:col-span-1">
+                        <label class="block text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-6 italic">Confirmation</label>
+                        <input type="password" x-model="confirm" required placeholder="••••••••"
+                               class="w-full px-8 py-4.5 bg-slate-50 border-none rounded-[2.5rem] focus:bg-white focus:ring-4 focus:ring-orange-500/5 outline-none transition-all font-black text-sm text-slate-700">
+                    </div>
 
-                <div class="pt-2 col-span-1 md:col-span-2">
-                    <button type="submit" :disabled="loading" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-black text-xs uppercase tracking-[0.25em] shadow-xl shadow-slate-200 hover:bg-orange-600 hover:shadow-orange-200 hover:-translate-y-1 transition-all active:scale-95 duration-300 disabled:opacity-50">
-                        <span x-show="!loading"><?php echo __('register_button'); ?></span>
-                        <span x-show="loading" x-cloak><?php echo __('register_loading'); ?></span>
-                    </button>
+                    <div class="pt-6 col-span-2">
+                        <button type="submit" :disabled="loading" 
+                                :class="role === 'parent' ? 'bg-orange-600 shadow-orange-100 hover:shadow-orange-200' : (role === 'school' ? 'bg-blue-600 shadow-blue-100 hover:shadow-blue-200' : 'bg-teal-600 shadow-teal-100 hover:shadow-teal-200')"
+                                class="w-full text-white py-5 rounded-[2.5rem] font-black text-xs uppercase tracking-[0.25em] shadow-2xl transition-all active:scale-95 duration-500 disabled:opacity-50 italic">
+                            <span x-show="!loading" x-text="role === 'parent' ? 'Créer mon accès parent' : 'Initialiser mon espace pro'"></span>
+                            <span x-show="loading" x-cloak>Synchronisation en cours...</span>
+                        </button>
+                    </div>
                 </div>
             </form>
 
-            <!-- Footer area -->
-            <div class="mt-12 text-center pt-8 border-t border-slate-50">
-                <p class="text-slate-400 text-sm font-medium">
-                    <?php echo __('already_member'); ?>
+            <!-- Footer -->
+            <div class="mt-12 text-center pt-10 border-t border-slate-50">
+                <p class="text-slate-400 text-[13px] font-medium italic">
+                    Déjà membre ? 
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="text-orange-600 font-black hover:text-orange-700 underline underline-offset-8 transition-all duration-300 ml-1">
-                        <?php echo __('login_link'); ?>
+                        Se connecter ici
                     </a>
                 </p>
             </div>
