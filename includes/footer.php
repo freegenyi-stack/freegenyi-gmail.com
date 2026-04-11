@@ -103,6 +103,39 @@
     </div>
 </footer>
 
-<script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+<!-- Cookie Consent Banner (Elite Style) -->
+<div x-data="{ show: !localStorage.getItem('freegeny_cookies_accepted') }"
+     x-show="show"
+     x-cloak
+     x-transition:enter="transition ease-out duration-500"
+     x-transition:enter-start="opacity-0 translate-y-10"
+     x-transition:enter-end="opacity-100 translate-y-0"
+     class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[1000] w-[90%] max-w-2xl">
+    
+    <div class="bg-slate-900/95 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-start space-x-5">
+            <div class="w-12 h-12 bg-orange-600 rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-orange-600/20">
+                <i class="fas fa-cookie-bite text-xl text-white"></i>
+            </div>
+            <div class="text-left">
+                <h4 class="text-sm font-black text-white uppercase tracking-widest italic mb-1">Poliitique de Cookies</h4>
+                <p class="text-slate-400 text-xs font-medium leading-relaxed">
+                    FreeGeny utilise des cookies pour améliorer votre expérience éducative. En continuant, vous acceptez notre usage des données.
+                </p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4 shrink-0">
+            <button @click="localStorage.setItem('freegeny_cookies_accepted', 'true'); show = false" 
+                    class="bg-white text-slate-900 px-8 py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 hover:text-white transition-all duration-300 italic shadow-xl">
+                Accepter
+            </button>
+            <button @click="show = false" class="text-slate-500 hover:text-white transition-colors text-xs font-medium italic underline underline-offset-4">
+                Refuser
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 </body>
 </html>
