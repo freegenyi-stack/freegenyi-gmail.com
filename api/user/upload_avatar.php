@@ -33,6 +33,7 @@ if (!empty($_FILES['avatar_file'])) {
     if (move_uploaded_file($file['tmp_name'], $targetPath)) {
         $photoUrl = '/uploads/avatars/' . $fileName;
         DB::execute("UPDATE users SET profile_photo = ? WHERE id = ?", [$photoUrl, $_SESSION['user_id']]);
+        $_SESSION['user_avatar'] = $photoUrl;
         jsonResponse(['success' => true, 'photo_url' => $photoUrl]);
     } else {
         jsonResponse(['error' => 'Erreur lors du transfert du fichier.'], 500);
@@ -44,6 +45,7 @@ $body = json_decode(file_get_contents('php://input'), true);
 if (isset($body['avatar_choice'])) {
     $choice = trim($body['avatar_choice']);
     DB::execute("UPDATE users SET profile_photo = ? WHERE id = ?", [$choice, $_SESSION['user_id']]);
+    $_SESSION['user_avatar'] = $choice;
     jsonResponse(['success' => true]);
 }
 

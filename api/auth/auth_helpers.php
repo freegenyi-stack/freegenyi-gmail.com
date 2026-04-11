@@ -54,10 +54,12 @@ function jsonResponse($data, $statusCode = 200) {
 }
 
 function loginUser($user) {
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['user_email'] = $user['email'];
-    $_SESSION['user_name'] = $user['full_name'];
     $_SESSION['logged_in'] = true;
+    $_SESSION['user_id']   = $user['id'];
+    $_SESSION['user_name'] = $user['full_name'];
+    $_SESSION['user_email'] = $user['email'];
+    $_SESSION['user_avatar'] = $user['profile_photo'] ?? '';
+    $_SESSION['is_parent'] = true;
     $_SESSION['user_initials'] = getInitials($user['full_name']);
 }
 

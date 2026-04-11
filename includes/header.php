@@ -22,14 +22,18 @@ $is_rtl = $is_rtl ?? false;
         }
     </script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png?v=4.0">
     
     <style>
         [x-cloak] { display: none !important; }
         body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
+        .font-next { font-family: 'Inter', sans-serif; }
         .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,0.05); }
+        
+        /* Dropdown Elevation */
+        .dropdown-shadow { box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); }
         
         /* FORCE ORANGE SCROLLBAR - BRUTE SPECIFICITY */
         div.custom-scroll {
@@ -123,10 +127,54 @@ $is_rtl = $is_rtl ?? false;
 
             <div class="flex items-center space-x-6 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
                 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent" class="hidden sm:flex items-center space-x-3 bg-slate-900 text-white px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-orange-600 transition-all shadow-xl group">
-                         <span><?php echo __('dashboard', 'Mon Dashboard'); ?></span>
-                         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-width="3"></path></svg>
-                    </a>
+                    <!-- USER MENU (Next.js Style) -->
+                    <div class="relative" x-data="{ userOpen: false }">
+                        <button @click="userOpen = !userOpen" @click.away="userOpen = false" 
+                                class="flex items-center space-x-3 bg-slate-50 border border-slate-100 p-1.5 pr-4 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-orange-500/5 transition-all group">
+                            <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-[10px] font-black text-white shadow-lg overflow-hidden border-2 border-white">
+                                <?php if (isset($_SESSION['user_avatar']) && $_SESSION['user_avatar']): ?>
+                                    <img src="<?php echo $_SESSION['user_avatar']; ?>" class="w-full h-full object-cover">
+                                <?php else: ?>
+                                    <?php echo strtoupper(substr($_SESSION['user_name'] ?? 'U', 0, 1)); ?>
+                                <?php endif; ?>
+                            </div>
+                            <span class="text-[11px] font-black text-slate-800 uppercase tracking-tighter font-next hidden sm:block">
+                                <?php echo explode(' ', $_SESSION['user_name'] ?? 'Compte')[0]; ?>
+                            </span>
+                            <svg class="w-4 h-4 text-slate-300 transition-transform duration-300" :class="userOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"></path></svg>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div x-show="userOpen" x-cloak 
+                             x-transition:enter="transition ease-out duration-200 transform"
+                             x-transition:enter-start="opacity-0 translate-y-4 scale-95"
+                             x-transition:leave="transition ease-in duration-100 transform"
+                             class="absolute right-0 mt-4 w-60 bg-white rounded-[2rem] border border-slate-100 dropdown-shadow z-[200] overflow-hidden p-2">
+                             
+                             <div class="px-5 py-4 border-b border-slate-50 mb-1">
+                                <p class="text-[10px] font-black text-slate-300 uppercase tracking-widest italic mb-1">Accès Elite</p>
+                                <p class="text-xs font-bold text-slate-900 truncate"><?php echo $_SESSION['user_name'] ?? 'Utilisateur'; ?></p>
+                             </div>
+
+                             <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent" class="flex items-center space-x-3 px-5 py-4 rounded-2xl hover:bg-slate-50 transition-all group">
+                                <span class="text-lg">📊</span>
+                                <span class="text-xs font-bold text-slate-700 font-next group-hover:text-orange-600 transition-colors">Tableau de bord</span>
+                             </a>
+
+                             <a href="#" class="flex items-center space-x-3 px-5 py-4 rounded-2xl hover:bg-slate-50 transition-all group">
+                                <span class="text-lg">🔔</span>
+                                <span class="text-xs font-bold text-slate-700 font-next group-hover:text-blue-600 transition-colors">Notifications</span>
+                                <span class="ml-auto w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                             </a>
+
+                             <div class="mt-1 border-t border-slate-50 pt-1">
+                                 <a href="/api/auth/logout.php" class="flex items-center space-x-3 px-5 py-4 rounded-2xl hover:bg-red-50 transition-all group">
+                                    <span class="text-lg text-red-500">🚪</span>
+                                    <span class="text-xs font-bold text-red-500 font-next">Se déconnecter</span>
+                                 </a>
+                             </div>
+                        </div>
+                    </div>
                 <?php else: ?>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden sm:block text-[13px] font-extrabold text-slate-900 uppercase tracking-widest hover:text-orange-600 transition">
                         <?php echo __('login'); ?>
