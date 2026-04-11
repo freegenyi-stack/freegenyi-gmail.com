@@ -44,16 +44,16 @@ $xp = 1250;
                 </div>
             </div>
         </div>
-        <button class="bg-white/10 backdrop-blur-md px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] border border-white/10 hover:bg-white/20 transition-all">
+        <a href="/dashboard/parent.php" class="bg-white/10 backdrop-blur-md px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] border border-white/10 hover:bg-white/20 transition-all">
             Menu Parent
-        </button>
+        </a>
     </div>
 
     <!-- The 3 Portals -->
     <div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
         
         <!-- Portal 1: Academic -->
-        <a href="#" class="portal-card group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 text-center hover:bg-white/10 transition-all duration-500">
+        <a href="/dashboard/portal_local.php" class="portal-card group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 text-center hover:bg-white/10 transition-all duration-500">
             <div class="absolute inset-0 bg-blue-600/5 rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="portal-icon w-32 h-32 bg-blue-600/20 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 transition-all duration-500 shadow-2xl shadow-blue-600/20">
                 <svg class="w-16 h-16 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -67,10 +67,10 @@ $xp = 1250;
         </a>
 
         <!-- Portal 2: World Exploration -->
-        <a href="#" class="portal-card group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 text-center hover:bg-white/10 transition-all duration-500 scale-110">
+        <a href="/dashboard/portal_world.php" class="portal-card group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 text-center hover:bg-white/10 transition-all duration-500 scale-110">
             <div class="absolute inset-0 bg-orange-600/5 rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="portal-icon w-40 h-40 bg-orange-600 rounded-[3rem] flex items-center justify-center mx-auto mb-10 transition-all duration-500 shadow-[0_20px_50px_rgba(234,88,12,0.3)]">
-                <svg class="w-20 h-20 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                <svg class="w-20 h-20 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke-width="2"/></svg>
             </div>
             <h2 class="text-4xl font-black mb-4 tracking-tighter">Le Monde</h2>
             <p class="text-orange-200/60 font-medium text-sm leading-relaxed">Singapour, Oxford et bien d'autres défis !</p>
@@ -81,7 +81,7 @@ $xp = 1250;
         </a>
 
         <!-- Portal 3: Magic Arena -->
-        <a href="#" class="portal-card group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 text-center hover:bg-white/10 transition-all duration-500">
+        <a href="/dashboard/portal_magic.php" class="portal-card group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 text-center hover:bg-white/10 transition-all duration-500">
             <div class="absolute inset-0 bg-teal-600/5 rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="portal-icon w-32 h-32 bg-teal-600/20 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 transition-all duration-500 shadow-2xl shadow-teal-600/20">
                 <svg class="w-16 h-16 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>

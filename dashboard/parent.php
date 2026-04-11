@@ -60,9 +60,9 @@ $children = [
                 <h1 class="text-3xl font-black text-slate-900 tracking-tight">Espace Parent</h1>
                 <p class="text-slate-400 text-[11px] font-black uppercase tracking-[0.2em] mt-2">Gérez l'avenir de vos petits génies</p>
             </div>
-            <button class="bg-white border border-slate-200 px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:shadow-xl transition-all">
+            <a href="/dashboard/add_child.php" class="bg-white border border-slate-200 px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:shadow-xl transition-all">
                 + Ajouter un enfant
-            </button>
+            </a>
         </header>
 
         <section class="px-12 pb-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
