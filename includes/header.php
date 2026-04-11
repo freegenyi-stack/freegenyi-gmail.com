@@ -122,12 +122,19 @@ $is_rtl = $is_rtl ?? false;
             </div>
 
             <div class="flex items-center space-x-6 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden sm:block text-[13px] font-extrabold text-slate-900 uppercase tracking-widest hover:text-orange-600 transition">
-                    <?php echo __('login'); ?>
-                </a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="bg-orange-600 text-white px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-orange-100 hover:bg-orange-700 hover:shadow-2xl hover:-translate-y-0.5 transition transform duration-300">
-                    <?php echo __('register'); ?>
-                </a>
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent" class="hidden sm:flex items-center space-x-3 bg-slate-900 text-white px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-orange-600 transition-all shadow-xl group">
+                         <span><?php echo __('dashboard', 'Mon Dashboard'); ?></span>
+                         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-width="3"></path></svg>
+                    </a>
+                <?php else: ?>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden sm:block text-[13px] font-extrabold text-slate-900 uppercase tracking-widest hover:text-orange-600 transition">
+                        <?php echo __('login'); ?>
+                    </a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="bg-orange-600 text-white px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-orange-100 hover:bg-orange-700 hover:shadow-2xl hover:-translate-y-0.5 transition transform duration-300">
+                        <?php echo __('register'); ?>
+                    </a>
+                <?php endif; ?>
                 
                 <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-3 bg-slate-50 text-slate-600 rounded-2xl border border-slate-100">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-width="2.5"></path></svg>
