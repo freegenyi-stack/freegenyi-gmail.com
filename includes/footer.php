@@ -35,7 +35,6 @@
                     <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Mission</a></li>
                     <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Notre Approche</a></li>
                     <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Science & Efficacité</a></li>
-                    <li><a href="#" class="text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors italic">Carrières</a></li>
                 </ul>
             </div>
 
