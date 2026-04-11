@@ -1,13 +1,8 @@
 <?php
-session_start();
+require_once __DIR__ . '/../../config/app.php';
+require_once __DIR__ . '/../../includes/SocialAuthManager.php';
 
-// Simulateur Google Auth (Phase de Développement)
-// Dès que vous aurez vos clés, nous intégrerons la vraie bibliothèque Google.
-$_SESSION['logged_in'] = true;
-$_SESSION['user_id'] = 99;
-$_SESSION['user_name'] = 'Génie Google';
-$_SESSION['user_role'] = 'parent';
-
-header('Location: /dashboard/parent.php');
+$auth = new SocialAuthManager();
+header('Location: ' . $auth->getAuthUrl('login'));
 exit;
 ?>

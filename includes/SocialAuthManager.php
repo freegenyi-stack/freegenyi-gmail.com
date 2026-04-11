@@ -1,67 +1,62 @@
 <?php
-/**
- * SocialAuthManager - Gère l'identité unifiée (Reconnaissance multi-réseaux)
- * Point 1 du plan d'amélioration
- */
-
 class SocialAuthManager {
-    private $db;
+    private $clientId;
+    private $clientSecret;
+    private $redirectUri;
 
-    public function __construct($pdo) {
-        $this->db = $pdo;
+    public function __construct() {
+        // Récupération des clés depuis l'environnement (déjà chargé par config/app.php)
+        $this->clientId = $_ENV['GOOGLE_CLIENT_ID'] ?? '';
+        $this->clientSecret = $_ENV['GOOGLE_CLIENT_SECRET'] ?? '';
+        $this->redirectUri = APP_URL . '/api/auth/google_callback.php';
     }
 
-    /**
-     * Gère la connexion ou l'inscription d'un utilisateur venant d'un réseau social
-     * 
-     * @param string $provider Le nom du réseau (google, facebook, etc.)
-     * @param string $provider_id L'ID unique envoyé par le réseau
-     * @param string $email L'email de l'utilisateur
-     * @param string $full_name Le nom de l'utilisateur
-     * @return int|bool L'ID de l'utilisateur ou false en cas d'erreur
-     */
-    public function handleSocialUser($provider, $provider_id, $email, $full_name) {
-        // 1. Chercher si ce compte social est déjà lié
-        $stmt = $this->db->prepare("SELECT user_id FROM user_social_accounts WHERE provider = ? AND provider_id = ?");
-        $stmt->execute([$provider, $provider_id]);
-        $existingSocial = $stmt->fetch();
+    public function getAuthUrl($state = '') {
+        $params = [
+            'client_id' => $this->clientId,
+            'redirect_uri' => $this->redirectUri,
+            'response_type' => 'code',
+            'scope' => 'openid email profile',
+            'access_type' => 'offline',
+            'prompt' => 'select_account',
+            'state' => $state
+        ];
+        return 'https://accounts.google.com/o/oauth2/v2/auth?' . http_build_query($params);
+    }
 
-        if ($existingSocial) {
-            return $existingSocial['user_id'];
+    public function handleCallback($code) {
+        // Échange du code contre un access token
+        $url = 'https://oauth2.googleapis.com/token';
+        $data = [
+            'code' => $code,
+            'client_id' => $this->clientId,
+            'client_secret' => $this->clientSecret,
+            'redirect_uri' => $this->redirectUri,
+            'grant_type' => 'authorization_code'
+        ];
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        $response = curl_exec($ch);
+        $tokenData = json_decode($response, true);
+        curl_close($ch);
+
+        if (isset($tokenData['access_token'])) {
+            return $this->getUserInfo($tokenData['access_token']);
         }
-
-        // 2. Si le lien n'existe pas, chercher l'utilisateur par son EMAIL (Reconnaissance automatique)
-        $stmt = $this->db->prepare("SELECT id FROM users WHERE email = ?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-
-        if ($user) {
-            // L'utilisateur existe déjà (par ex via un autre réseau), on lie le nouveau provider
-            $user_id = $user['id'];
-            $this->linkSocialAccount($user_id, $provider, $provider_id);
-            return $user_id;
-        }
-
-        // 3. Sinon, on crée un nouvel utilisateur (Premier enregistrement)
-        $user_id = $this->createNewUser($email, $full_name);
-        if ($user_id) {
-            $this->linkSocialAccount($user_id, $provider, $provider_id);
-            return $user_id;
-        }
-
         return false;
     }
 
-    private function linkSocialAccount($user_id, $provider, $provider_id) {
-        $stmt = $this->db->prepare("INSERT INTO user_social_accounts (user_id, provider, provider_id) VALUES (?, ?, ?)");
-        return $stmt->execute([$user_id, $provider, $provider_id]);
-    }
-
-    private function createNewUser($email, $full_name) {
-        $stmt = $this->db->prepare("INSERT INTO users (email, full_name, role) VALUES (?, ?, 'parent')");
-        if ($stmt->execute([$email, $full_name])) {
-            return $this->db->lastInsertId();
-        }
-        return false;
+    private function getUserInfo($accessToken) {
+        $url = 'https://www.googleapis.com/oauth2/v3/userinfo';
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer ' . $accessToken]);
+        $response = curl_exec($ch);
+        $userInfo = json_decode($response, true);
+        curl_close($ch);
+        return $userInfo;
     }
 }
+?>
