@@ -33,9 +33,14 @@ include_once __DIR__ . '/includes/header.php';
                  }" 
                  x-init="animate(15, 5000, 'users'); animate(48, 5000, 'subjects'); animate(64, 5000, 'countries'); animate(28, 5000, 'langs'); animate(8500, 5000, 'exercises');">
                 
-                <h1 class="text-5xl md:text-7xl font-black text-slate-900 leading-none mb-6 tracking-tighter">
-                    FreeGeny
-                </h1>
+                <div class="relative inline-block mb-12">
+                    <h1 class="text-5xl md:text-7xl font-black text-slate-900 leading-none tracking-tighter">
+                        FreeGeny
+                    </h1>
+                    <span class="absolute -bottom-4 right-0 md:-right-20 text-xl md:text-2xl font-bold text-orange-600 font-[Caveat] whitespace-nowrap -rotate-2">
+                        free the genius on your child
+                    </span>
+                </div>
                 
                 <p class="text-lg md:text-xl text-slate-500 font-medium leading-relaxed mb-12 max-w-xl">
                     <span class="text-orange-600 font-bold">FreeGeny</span> est une plateforme EdTech dédiée à la réussite scolaire des enfants du cycle primaire partout dans le monde.
