@@ -7,7 +7,7 @@ include_once __DIR__ . '/includes/header.php';
 
 <!-- Section HERO : Look d'Origine & Pureté -->
 <section class="relative bg-white pt-20 pb-28 overflow-hidden">
-    <div class="container mx-auto px-6 relative z-10 text-center lg:text-left">
+    <div class="max-w-7xl mx-auto px-12 relative z-10 text-center lg:text-left">
         <div class="flex flex-wrap items-center -mx-4">
             <div class="w-full lg:w-1/2 px-4 mb-16 lg:mb-0">
                 <span class="inline-block py-1.5 px-4 mb-6 text-[10px] font-black bg-slate-100 text-slate-500 rounded-xl uppercase tracking-[0.2em]">
@@ -38,7 +38,7 @@ include_once __DIR__ . '/includes/header.php';
 
 <!-- MISSION SECTION (Validation Google & Confiance) -->
 <section class="py-32 bg-white">
-    <div class="container mx-auto px-6 max-w-4xl text-center">
+    <div class="max-w-5xl mx-auto px-12 text-center">
         <h2 class="text-xs font-black uppercase tracking-[0.3em] text-orange-600 mb-6">Notre Mission EdTech</h2>
         <h3 class="text-4xl md:text-5xl font-black text-slate-900 mb-10 leading-tight">Accompagner chaque enfant vers la réussite scolaire prématurée.</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
@@ -58,7 +58,7 @@ include_once __DIR__ . '/includes/header.php';
 
 <!-- Section SERVICES : Les 6 Piliers FreeGeny -->
 <section id="subjects" class="py-32 bg-slate-50/50">
-    <div class="container mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-12">
         <div class="max-w-3xl mx-auto text-center mb-24">
             <h2 class="text-xs font-black uppercase tracking-[0.4em] text-orange-600 mb-6 italic">Découvrez notre univers</h2>
             <h3 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Tout savoir sur FreeGeny</h3>

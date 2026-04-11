@@ -63,7 +63,7 @@ $is_rtl = $is_rtl ?? false;
 <body class="bg-white text-slate-900" x-data="{ mobileMenuOpen: false }">
 
     <nav class="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-[100] h-24 flex items-center">
-        <div class="container mx-auto px-6 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-12 flex justify-between items-center w-full">
             
             <div class="flex items-center space-x-8 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
                 <?php $home_slug = strtoupper($_COOKIE['freegeny_home'] ?? 'DZ') . '-' . $lang; ?>
