@@ -135,6 +135,16 @@ try {
             FOREIGN KEY (child_id) REFERENCES children(id) ON DELETE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
+
+    // Migration des préférences
+    $prefs = [
+        'preferred_color' => "VARCHAR(7) DEFAULT '#2563eb'",
+        'theme_mode' => "VARCHAR(10) DEFAULT 'light'"
+    ];
+    foreach ($prefs as $col => $def) {
+        $check = DB::fetchOne("SHOW COLUMNS FROM users LIKE '$col'");
+        if (!$check) DB::execute("ALTER TABLE users ADD $col $def");
+    }
 } catch (\Exception $e) {
     if (defined('DEBUG_MODE') && DEBUG_MODE) {
         // En cas d'erreur de clé étrangère sur une table existante, on passe
