@@ -58,9 +58,43 @@ include_once __DIR__ . '/includes/header.php';
                         Le meilleur de la technologie pour personnaliser l'apprentissage de chaque enfant.
                     </p>
                 </div>
+            <!-- The Bridge Section -->
+            <div class="mt-32 p-16 bg-slate-900 rounded-[4rem] relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                    <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M0 50 Q 25 0 50 50 T 100 50" stroke="white" stroke-width="0.5" fill="none"/>
+                    </svg>
+                </div>
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <h2 class="text-4xl font-black text-white mb-8 italic tracking-tight">Le Pont de l'Excellence</h2>
+                        <p class="text-slate-300 text-lg leading-relaxed font-medium mb-10 italic">
+                            Nous créons un pont technologique et humain entre les acteurs fondamentaux de la réussite : Parents, Écoles et l'Enfant. En synchronisant les efforts de chacun, nous garantissons un accompagnement holistique où le progrès n'est plus une statistique, mais une victoire partagée.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="p-6 bg-white/5 rounded-3xl border border-white/10">
+                                <span class="block text-2xl font-black text-white mb-2">Visibilité</span>
+                                <span class="text-slate-400 text-xs font-bold uppercase tracking-widest">Suivi chirurgical en temps réel</span>
+                            </div>
+                            <div class="p-6 bg-white/5 rounded-3xl border border-white/10">
+                                <span class="block text-2xl font-black text-white mb-2">Unisson</span>
+                                <span class="text-slate-400 text-xs font-bold uppercase tracking-widest">Dialogue parents-écoles fluide</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 rounded-[3rem] p-12 border border-white/10">
+                        <div class="text-center">
+                            <div class="inline-flex items-center justify-center w-20 h-20 bg-orange-600 rounded-2xl mb-8 shadow-2xl shadow-orange-600/20">
+                                <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4 italic">Récompenses Intelligentes</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Notre IA suggère des gratifications sur-mesure au parent. Le parent reste le seul décideur, FreeGeny devient son conseiller pour transformer l'effort numérique en joie réelle.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
     <!-- Call to action -->
     <section class="py-32 bg-slate-900 text-white rounded-t-[5rem]">

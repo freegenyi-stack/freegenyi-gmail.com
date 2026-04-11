@@ -103,7 +103,7 @@ include_once __DIR__ . '/includes/header.php';
                     </svg>
                 </div>
                 <p class="text-slate-600 font-medium leading-relaxed italic">
-                    <span class="text-slate-900 font-black">Outils de Suivi :</span> Un tableau de bord complet permet aux parents et ONG de suivre l'historique et la progression des enfants en temps réel.
+                    <span class="text-slate-900 font-black">Lien Parents-École :</span> Un écosystème où chaque acteur de la formation (parents, enseignants, ONG) collabore pour un accompagnement personnalisé.
                 </p>
             </div>
         </div>
