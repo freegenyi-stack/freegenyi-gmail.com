@@ -31,7 +31,7 @@ include_once __DIR__ . '/includes/header.php';
                         }, 16);
                     }
                  }" 
-                 x-init="animate(15000, 5000, 'users'); animate(48, 5000, 'subjects'); animate(190, 5000, 'countries'); animate(32, 5000, 'langs'); animate(8500, 5000, 'exercises');">
+                 x-init="animate(15, 5000, 'users'); animate(48, 5000, 'subjects'); animate(64, 5000, 'countries'); animate(28, 5000, 'langs'); animate(8500, 5000, 'exercises');">
                 
                 <h1 class="text-5xl md:text-7xl font-black text-slate-900 leading-none mb-6 tracking-tighter">
                     FreeGeny
@@ -44,7 +44,7 @@ include_once __DIR__ . '/includes/header.php';
                 <!-- Ligne de Compteurs (Horizontale) -->
                 <div class="flex flex-wrap gap-x-10 gap-y-6 justify-center lg:justify-start pt-4 border-t border-slate-50">
                     <div class="flex flex-col">
-                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="users.toLocaleString() + '+'">0</span>
+                        <span class="text-3xl font-black text-orange-600 tracking-tighter" x-text="users + 'K+'">0</span>
                         <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">Utilisateurs</span>
                     </div>
                     <div class="flex flex-col">
