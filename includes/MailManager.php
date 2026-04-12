@@ -40,31 +40,59 @@ class MailManager {
     /**
      * Envoie l'email de confirmation obligatoire
      */
-    public static function sendVerification($to, $userName, $token) {
+    public static function sendVerification($to, $userName, $token, $lang = 'fr') {
         $verifyUrl = APP_URL . "/api/auth/verify.php?token=" . $token;
-        $subject = "Confirmez votre adresse email - FreeGeny 🔐";
-        $html = "
-            <h1 style='color: #0f172a; font-size: 24px; text-align: center;'>Une dernière étape ! 🚀</h1>
-            <p>Bonjour <strong>$userName</strong>,</p>
-            <p>Pour activer votre accès à FreeGeny et protéger vos données, merci de confirmer que cette adresse email est bien la vôtre.</p>
-            <div style='margin-top: 40px; text-align: center;'>
-                <a href='$verifyUrl' style='background: #0f172a; color: white; padding: 18px 36px; border-radius: 16px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);'>Confirmer mon email</a>
-            </div>
-            <p style='margin-top: 40px; font-size: 12px; color: #94a3b8; text-align: center;'>Si le bouton ne fonctionne pas, copiez ce lien : <br> $verifyUrl</p>
-        ";
+        
+        if ($lang === 'ar') {
+            $subject = "قم بتأكيد بريدك الإلكتروني - FreeGeny 🔐";
+            $html = "
+                <div dir='rtl' style='text-align: right;'>
+                    <h1 style='color: #0f172a; font-size: 24px; text-align: center;'>خطوة أخيرة! 🚀</h1>
+                    <p>مرحباً <strong>$userName</strong>،</p>
+                    <p>لتفعيل وصولك إلى مساحتك، يرجى تأكيد أن هذا البريد الإلكتروني لك.</p>
+                    <div style='margin-top: 40px; text-align: center;'>
+                        <a href='$verifyUrl' style='display: inline-block; background: #0f172a; color: white; padding: 18px 36px; border-radius: 16px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);'>تأكيد بريدي الإلكتروني</a>
+                    </div>
+                </div>
+            ";
+        } else {
+            $subject = "Confirmez votre adresse email - FreeGeny 🔐";
+            $html = "
+                <h1 style='color: #0f172a; font-size: 24px; text-align: center;'>Une dernière étape ! 🚀</h1>
+                <p>Bonjour <strong>$userName</strong>,</p>
+                <p>Pour activer votre accès à FreeGeny, merci de confirmer que cette adresse email est bien la vôtre.</p>
+                <div style='margin-top: 40px; text-align: center;'>
+                    <a href='$verifyUrl' style='display: inline-block; background: #0f172a; color: white; padding: 18px 36px; border-radius: 16px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);'>Confirmer mon email</a>
+                </div>
+            ";
+        }
         return self::send($to, $subject, $html);
     }
 
-    public static function sendWelcome($to, $userName) {
-        $subject = "Bienvenue chez FreeGeny, $userName ! 🚀";
-        $html = "
-            <h1 style='color: #0f172a; font-size: 24px;'>Bienvenue ! 🎓</h1>
-            <p>Bonjour <strong>$userName</strong>,</p>
-            <p>Nous sommes ravis de vous accompagner dans la réussite scolaire de votre famille.</p>
-            <div style='margin-top: 30px; text-align: center;'>
-                <a href='https://freegeny.com' style='background: #ea580c; color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: bold;'>Commencer maintenant</a>
-            </div>
-        ";
+    public static function sendWelcome($to, $userName, $lang = 'fr') {
+        if ($lang === 'ar') {
+            $subject = "مرحباً بك في عالمنا يا $userName ! 🚀";
+            $html = "
+                <div dir='rtl' style='text-align: right;'>
+                    <h1 style='color: #0f172a; font-size: 24px;'>مرحباً ! 🎓</h1>
+                    <p>أهلاً <strong>$userName</strong>،</p>
+                    <p>نحن سعداء بمرافقتك في نجاح عائلتك.</p>
+                    <div style='margin-top: 30px; text-align: center;'>
+                        <a href='https://freegeny.com' style='display: inline-block; background: #ea580c; color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: bold;'>ابدأ الآن</a>
+                    </div>
+                </div>
+            ";
+        } else {
+            $subject = "Bienvenue chez FreeGeny, $userName ! 🚀";
+            $html = "
+                <h1 style='color: #0f172a; font-size: 24px;'>Bienvenue ! 🎓</h1>
+                <p>Bonjour <strong>$userName</strong>,</p>
+                <p>Nous sommes ravis de vous accompagner dans la réussite scolaire de votre famille.</p>
+                <div style='margin-top: 30px; text-align: center;'>
+                    <a href='https://freegeny.com' style='display: inline-block; background: #ea580c; color: white; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: bold;'>Commencer maintenant</a>
+                </div>
+            ";
+        }
         return self::send($to, $subject, $html);
     }
 }

@@ -92,7 +92,7 @@ if (!$user_id) {
 }
 
 // ─── 4. ENVOI EMAIL VÉRIFICATION ─────────────────────────────────────────────
-MailManager::sendVerification($email, $full_name, $verification_token);
+MailManager::sendVerification($email, $full_name, $verification_token, $lang_code);
 
 // ─── 5. SESSION TEMPORAIRE (pendant la vérification) ─────────────────────────
 $_SESSION['pending_email']   = $email;

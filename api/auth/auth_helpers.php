@@ -64,11 +64,14 @@ function loginUser($user) {
 }
 
 function getInitials($name) {
-    $words = explode(' ', $name);
+    if (empty($name)) return '?';
+    $words = array_values(array_filter(explode(' ', trim($name))));
     if (count($words) >= 2) {
-        return strtoupper(substr($words[0], 0, 1) . substr($words[count($words)-1], 0, 1));
+        return mb_strtoupper(mb_substr($words[0], 0, 1) . mb_substr($words[count($words)-1], 0, 1));
+    } elseif (count($words) === 1) {
+        return mb_strtoupper(mb_substr($words[0], 0, 2));
     }
-    return strtoupper(substr($name, 0, 2));
+    return '?';
 }
 
 function getAvatarColor($name) {

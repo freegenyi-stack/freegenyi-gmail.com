@@ -151,7 +151,7 @@ if ($email && $full_name) {
         }
         
         // Bienvenue !
-        MailManager::sendWelcome($email, $full_name);
+        MailManager::sendWelcome($email, $full_name, $lang_code);
         
         $user = DB::fetchOne("SELECT * FROM users WHERE id = ? LIMIT 1", [$user_id]);
     }

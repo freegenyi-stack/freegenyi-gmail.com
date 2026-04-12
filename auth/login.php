@@ -85,14 +85,18 @@ require_once __DIR__ . '/../config/app.php';
                 <form action="/api/auth/login.php" method="POST" class="space-y-4">
                     <div>
                         <label class="block text-[11px] font-black uppercase tracking-wider text-slate-700 mb-1 px-1">E-mail</label>
-                        <input type="email" name="email" required placeholder="nom@exemple.com" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-4 py-3 rounded-xl outline-none transition-all font-semibold text-slate-950">
+                        <input type="email" name="email" id="email" autocomplete="email" required placeholder="nom@exemple.com" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-4 py-3 rounded-xl outline-none transition-all font-semibold text-slate-950">
                     </div>
                     <div>
-                        <div class="flex justify-between mb-1 px-1">
+                        <div class="flex items-center justify-between mb-1 px-1">
                             <label class="text-[11px] font-black uppercase tracking-wider text-slate-700">Mot de passe</label>
                             <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/forgot-password" class="text-[9px] font-bold text-slate-400 hover:text-orange-600 uppercase tracking-widest">Oublié ?</a>
                         </div>
-                        <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-4 py-3 rounded-xl outline-none transition-all font-semibold text-slate-950">
+                        <input type="password" name="password" id="password" autocomplete="current-password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-4 py-3 rounded-xl outline-none transition-all font-semibold text-slate-950">
+                    </div>
+                    <div class="flex items-center gap-2 px-1 pt-1">
+                        <input type="checkbox" name="remember" id="remember" class="w-4 h-4 accent-orange-600 rounded cursor-pointer">
+                        <label for="remember" class="text-[10px] font-bold text-slate-500 uppercase tracking-widest cursor-pointer">Se souvenir de moi</label>
                     </div>
                     <div class="pt-2">
                         <button type="submit" class="w-full bg-slate-950 text-white py-3.5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all duration-300 shadow-xl">
