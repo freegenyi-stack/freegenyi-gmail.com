@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/register.php - Elite Register Page (Floating Animation Edition)
+ * auth/register.php - Elite Register Page (Integrated Logo Edition)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,7 +13,8 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <!-- Stable Lottie Player -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js"></script>
     <style>
         [x-cloak] { display: none !important; }
         body { 
@@ -32,12 +33,19 @@ require_once __DIR__ . '/../config/app.php';
         <div class="absolute -bottom-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-50 blur-[120px] rounded-full"></div>
     </div>
 
-    <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 relative z-10">
+    <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 relative z-10">
         
         <!-- Left Side: Large Floating Animation -->
         <div class="hidden lg:block flex-1 max-w-xl">
-            <lottie-player src="https://lottie.host/7905a5a9-455c-4e8c-8594-e0eb29977598/EBy6FCHM4m.json" background="transparent" speed="1" style="width: 100%; height: auto;" loop autoplay></lottie-player>
-            <div class="text-center mt-[-40px]">
+            <lottie-player 
+                src="https://lottie.host/7905a5a9-455c-4e8c-8594-e0eb29977598/EBy6FCHM4m.json" 
+                background="transparent" 
+                speed="1" 
+                style="width: 100%; height: 500px;" 
+                loop 
+                autoplay>
+            </lottie-player>
+            <div class="text-center mt-[-60px]">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2">Libérez leur génie.</h2>
                 <p class="text-slate-500 font-light text-xl">Rejoignez l'élite éducative dès aujourd'hui.</p>
             </div>
@@ -46,24 +54,22 @@ require_once __DIR__ . '/../config/app.php';
         <!-- Right Side: Form Card -->
         <div class="w-full max-w-lg">
             
-            <!-- Logo Top -->
-            <div class="flex justify-center mb-8">
-                <a href="/" class="flex items-center gap-2 group hover:scale-105 transition-transform">
-                    <img src="/assets/img/logo.png" alt="FreeGeny" class="h-10 w-auto">
-                    <span class="text-xl font-black text-slate-900 uppercase font-title tracking-tighter">Free<span class="text-orange-600">Geny</span></span>
-                </a>
-            </div>
-
-            <!-- Card -->
-            <div class="glass-card rounded-[3.5rem] shadow-[0_45px_100px_rgba(0,0,0,0.06)] p-8 md:p-10" x-data="{ role: 'parent' }">
+            <!-- Card with Integrated Logo -->
+            <div class="glass-card rounded-[3.5rem] shadow-[0_45px_100px_rgba(0,0,0,0.06)] p-8 md:p-10 pt-12 md:pt-14 relative" x-data="{ role: 'parent' }">
                 
-                <div class="mb-6">
+                <!-- Logo Incrusté -->
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white px-8 py-3 rounded-2xl shadow-lg border border-slate-50 flex items-center gap-3">
+                    <img src="/assets/img/logo.png" alt="FreeGeny" class="h-8 w-auto">
+                    <span class="text-lg font-black text-slate-900 uppercase font-title tracking-tighter leading-none">Free<span class="text-orange-600">Geny</span></span>
+                </div>
+
+                <div class="mb-6 mt-4">
                     <h1 class="text-3xl font-black text-slate-950 font-title tracking-tight leading-none mb-2">Créer un compte.</h1>
-                    <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Écosystème FreeGeny d'exception</p>
+                    <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest leading-none">Cockpit d'exception pour génies</p>
                 </div>
 
                 <!-- Role Selector -->
-                <div class="flex bg-slate-50 p-1.5 rounded-2xl gap-2 mb-6 border border-slate-100">
+                <div class="flex bg-slate-50 p-1 rounded-2xl gap-2 mb-6 border border-slate-100">
                     <button @click="role = 'parent'" :class="role === 'parent' ? 'bg-slate-950 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-200'" class="flex-1 py-3 px-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">Parent</button>
                     <button @click="role = 'school'" :class="role === 'school' ? 'bg-orange-600 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-200'" class="flex-1 py-3 px-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">École</button>
                     <button @click="role = 'ngo'" :class="role === 'ngo' ? 'bg-teal-600 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-200'" class="flex-1 py-3 px-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">ONG</button>
@@ -103,8 +109,8 @@ require_once __DIR__ . '/../config/app.php';
                             <input type="tel" name="phone" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-950">
                         </div>
                         <div class="col-span-2">
-                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-900 mb-2 px-1">Mot de passe</label>
-                            <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-900">
+                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-2 px-1">Mot de passe</label>
+                            <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-950">
                         </div>
                     </div>
 
