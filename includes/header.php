@@ -77,8 +77,11 @@ $is_rtl = $is_rtl ?? false;
         <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center w-full">
             <div class="flex items-center gap-6">
                 <?php $home_slug = strtoupper($_COOKIE['freegeny_home'] ?? 'DZ') . '-' . $lang; ?>
-                <a href="/<?php echo $home_slug; ?>/" class="transition hover:scale-105">
-                    <span class="text-2xl font-black text-slate-900 tracking-tighter uppercase" style="font-family: 'Plus Jakarta Sans', sans-serif;">FreeGeny</span>
+                <a href="/<?php echo $home_slug; ?>/" class="flex items-center gap-3 transition hover:scale-105">
+                    <img src="/assets/img/logo.png" alt="FreeGeny" class="h-10 w-auto">
+                    <span class="text-2xl font-black text-slate-900 tracking-tighter uppercase" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+                        Free<span class="text-orange-600">Geny</span>
+                    </span>
                 </a>
                 
                 <!-- Sélecteur de pays -->

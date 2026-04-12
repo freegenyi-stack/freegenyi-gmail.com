@@ -30,7 +30,7 @@ include_once __DIR__ . '/includes/header.php';
                     pour un accompagnement holistique vers l’excellence mondiale.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="inline-flex items-center justify-center gap-2 bg-slate-900 text-white px-10 py-5 rounded-2xl text-sm font-bold uppercase tracking-widest hover:bg-orange-600 transition-all shadow-2xl hover:shadow-orange-200 hover:-translate-y-1">
                         Commencer l’aventure
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"/></svg>
@@ -38,6 +38,24 @@ include_once __DIR__ . '/includes/header.php';
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="inline-flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 px-10 py-5 rounded-2xl text-sm font-bold uppercase tracking-widest hover:bg-slate-50 hover:border-slate-300 transition-all">
                         Notre approche
                     </a>
+                </div>
+
+                <!-- Compteur d'Impact -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-8 opacity-70">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black text-slate-900 leading-none">15,000+</span>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">Génies Connectés</span>
+                    </div>
+                    <div class="w-px h-8 bg-slate-200 hidden sm:block"></div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black text-slate-900 leading-none">60+</span>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">Pays Actifs</span>
+                    </div>
+                    <div class="w-px h-8 bg-slate-200 hidden sm:block"></div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black text-slate-900 leading-none">300+</span>
+                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">Écoles Partenaires</span>
+                    </div>
                 </div>
             </div>
             
