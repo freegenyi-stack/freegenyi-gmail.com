@@ -2,7 +2,10 @@
 require_once __DIR__ . '/../config/app.php';
 require_once __DIR__ . '/../api/auth/auth_helpers.php';
 initSession();
-requireLogin();
+if (empty($_SESSION['logged_in'])) {
+    header('Location: /');
+    exit;
+}
 
 // Cette page sera développée ultérieurement pour permettre au parent
 // de finir de configurer son numéro de téléphone, avatar, informations, etc.
