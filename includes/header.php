@@ -137,7 +137,7 @@ $is_rtl = $is_rtl ?? false;
                                     <?php echo $user_initials; ?>
                                 <?php endif; ?>
                             </div>
-                            <?php if (isset($_SESSION['oauth_provider']) && $_SESSION['oauth_provider'] === 'Google' && empty($_SESSION['user_phone'])): ?>
+                            <?php if (empty($_SESSION['user_phone'])): ?>
                                 <span class="absolute top-0 right-3 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
                             <?php endif; ?>
                             <svg class="w-4 h-4 text-slate-400 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"/></svg>
@@ -147,7 +147,7 @@ $is_rtl = $is_rtl ?? false;
                                 <p class="text-[9px] font-black uppercase text-slate-400 tracking-widest">Connecté</p>
                                 <p class="text-xs font-bold text-slate-900 truncate"><?php echo htmlspecialchars($_SESSION['user_name']); ?></p>
                             </div>
-                            <?php if (isset($_SESSION['oauth_provider']) && $_SESSION['oauth_provider'] === 'Google' && empty($_SESSION['user_phone'])): ?>
+                            <?php if (empty($_SESSION['user_phone'])): ?>
                             <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/profile" class="block px-5 py-3 text-xs font-bold text-red-600 hover:bg-red-50 transition-all font-sans relative">
                                 Compléter profil <span class="absolute right-4 top-[14px] w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
                             </a>
