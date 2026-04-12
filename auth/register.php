@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/register.php - Elite Register Page (Lottie Web Edition)
+ * auth/register.php - Elite Register Page (Ultimate Animation Fix)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -12,11 +12,6 @@ require_once __DIR__ . '/../config/app.php';
     <title>S'inscrire | FreeGeny Elite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <!-- Original Lottie Web Library (Ultra Reliable) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    
     <style>
         [x-cloak] { display: none !important; }
         body { 
@@ -30,6 +25,7 @@ require_once __DIR__ . '/../config/app.php';
 </head>
 <body class="h-screen w-full overflow-hidden flex items-center justify-center p-6 relative">
 
+    <!-- Subtle Background BG -->
     <div class="absolute inset-0 opacity-50 pointer-events-none">
         <div class="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] bg-orange-50 blur-[150px] rounded-full"></div>
         <div class="absolute -bottom-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-50 blur-[120px] rounded-full"></div>
@@ -37,9 +33,12 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 relative z-10">
         
-        <!-- Conteneur Animation Gauche -->
-        <div class="hidden lg:block flex-1 max-w-xl text-center">
-            <div id="lottie-container" style="width: 550px; height: 500px;" class="mx-auto"></div>
+        <!-- Left Side: Animation (Rocket Launch - High Compatibility) -->
+        <div class="hidden lg:block flex-1 max-w-md text-center">
+            <div class="relative w-[450px] h-[450px] mx-auto opacity-90">
+                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+                <dotlottie-player src="https://lottie.host/7905a5a9-455c-4e8c-8594-e0eb29977598/EBy6FCHM4m.json" background="transparent" speed="1" style="width: 450px; height: 450px;" loop autoplay></dotlottie-player>
+            </div>
             <div class="mt-[-20px]">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none">Libérez leur génie.</h2>
                 <p class="text-slate-500 font-light text-xl">Rejoignez l'élite éducative dès aujourd'hui.</p>
@@ -50,6 +49,7 @@ require_once __DIR__ . '/../config/app.php';
         <div class="w-full max-w-lg">
             <div class="glass-card rounded-[3.5rem] shadow-[0_45px_100px_rgba(0,0,0,0.06)] p-8 md:p-10 pt-12 md:pt-14 relative" x-data="{ role: 'parent' }">
                 
+                <!-- Logo Incrusté -->
                 <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white px-8 py-3 rounded-2xl shadow-lg border border-slate-50 flex items-center gap-3">
                     <img src="/assets/img/logo.png" alt="FreeGeny" class="h-8 w-auto">
                     <span class="text-lg font-black text-slate-900 uppercase font-title tracking-tighter leading-none">Free<span class="text-orange-600">Geny</span></span>
@@ -69,14 +69,7 @@ require_once __DIR__ . '/../config/app.php';
 
                 <!-- Google Register -->
                 <a :href="'/api/auth/google_register.php?role=' + role" class="w-full flex items-center justify-center gap-4 bg-white border-2 border-slate-100 py-3 rounded-2xl hover:border-orange-600 hover:bg-orange-50 transition-all group mb-4">
-                    <div class="bg-white p-1 rounded-lg">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24">
-                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                        </svg>
-                    </div>
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-5 h-5" alt="Google">
                     <span class="text-[9px] font-black uppercase tracking-[0.2em] text-slate-700">Inscription Express</span>
                 </a>
 
@@ -85,9 +78,9 @@ require_once __DIR__ . '/../config/app.php';
                     <span class="absolute bg-white px-3 text-[8px] font-bold uppercase tracking-widest text-slate-300">ou classiquement</span>
                 </div>
 
-                <form action="/api/auth/register.php" method="POST" class="space-y-3.5">
+                <form action="/api/auth/register.php" method="POST" class="space-y-4">
                     <input type="hidden" name="role" :value="role">
-                    <div class="grid grid-cols-2 gap-3.5">
+                    <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
                             <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-1 px-1" x-text="role === 'parent' ? 'Nom Complet' : 'Nom organisation'"></label>
                             <input type="text" name="full_name" required placeholder="Ex: Jean Martin" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all font-bold leading-none text-slate-950">
@@ -106,7 +99,7 @@ require_once __DIR__ . '/../config/app.php';
                         </div>
                     </div>
 
-                    <div class="pt-1.5">
+                    <div class="pt-2">
                         <button type="submit" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-orange-600 transition-all shadow-xl hover:shadow-orange-100">
                             Créer mon accès génie
                         </button>
@@ -120,16 +113,8 @@ require_once __DIR__ . '/../config/app.php';
         </div>
     </div>
 
-    <script>
-        // Initialisation Lottie-web (Méthode la plus stable)
-        lottie.loadAnimation({
-            container: document.getElementById('lottie-container'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'https://assets3.lottiefiles.com/packages/lf20_sk5h17io.json'
-        });
-    </script>
+    <!-- Scripts at the end -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 </body>
 </html>
