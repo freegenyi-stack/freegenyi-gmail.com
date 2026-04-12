@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/register.php - Elite Register Page (Integrated Logo Edition)
+ * auth/register.php - Elite Register Page (Lottie Fix Edition)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,8 +13,10 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Stable Lottie Player -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js"></script>
+    
+    <!-- Nouveau Lecteur DotLottie (Plus stable) -->
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    
     <style>
         [x-cloak] { display: none !important; }
         body { 
@@ -27,7 +29,6 @@ require_once __DIR__ . '/../config/app.php';
 </head>
 <body class="h-screen w-full overflow-hidden flex items-center justify-center p-6 relative">
 
-    <!-- Background Decoration Subtle -->
     <div class="absolute inset-0 opacity-50 pointer-events-none">
         <div class="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] bg-orange-50 blur-[150px] rounded-full"></div>
         <div class="absolute -bottom-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-50 blur-[120px] rounded-full"></div>
@@ -35,17 +36,21 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 relative z-10">
         
-        <!-- Left Side: Large Floating Animation -->
-        <div class="hidden lg:block flex-1 max-w-xl">
-            <lottie-player 
+        <!-- Conteneur Animation Gauche -->
+        <div class="hidden lg:block flex-1 max-w-xl text-center">
+            <!-- Utilisation d'une animation alternative stable -->
+            <dotlottie-player 
                 src="https://lottie.host/7905a5a9-455c-4e8c-8594-e0eb29977598/EBy6FCHM4m.json" 
                 background="transparent" 
                 speed="1" 
-                style="width: 100%; height: 500px;" 
+                style="width: 500px; height: 500px;" 
+                direction="1" 
+                playMode="normal" 
                 loop 
-                autoplay>
-            </lottie-player>
-            <div class="text-center mt-[-60px]">
+                autoplay
+                class="mx-auto">
+            </dotlottie-player>
+            <div class="mt-[-20px]">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2">Libérez leur génie.</h2>
                 <p class="text-slate-500 font-light text-xl">Rejoignez l'élite éducative dès aujourd'hui.</p>
             </div>
@@ -53,11 +58,8 @@ require_once __DIR__ . '/../config/app.php';
 
         <!-- Right Side: Form Card -->
         <div class="w-full max-w-lg">
-            
-            <!-- Card with Integrated Logo -->
             <div class="glass-card rounded-[3.5rem] shadow-[0_45px_100px_rgba(0,0,0,0.06)] p-8 md:p-10 pt-12 md:pt-14 relative" x-data="{ role: 'parent' }">
                 
-                <!-- Logo Incrusté -->
                 <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white px-8 py-3 rounded-2xl shadow-lg border border-slate-50 flex items-center gap-3">
                     <img src="/assets/img/logo.png" alt="FreeGeny" class="h-8 w-auto">
                     <span class="text-lg font-black text-slate-900 uppercase font-title tracking-tighter leading-none">Free<span class="text-orange-600">Geny</span></span>
@@ -126,7 +128,6 @@ require_once __DIR__ . '/../config/app.php';
                 </p>
             </div>
             
-            <!-- Quick Links -->
             <div class="mt-8 flex justify-center gap-6 text-[8px] font-bold uppercase tracking-widest text-slate-300">
                 <a href="/privacy" class="hover:text-slate-900 transition-colors">Confidentialité</a>
                 <a href="/terms" class="hover:text-slate-900 transition-colors">Conditions</a>
