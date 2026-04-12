@@ -114,6 +114,8 @@ $is_rtl = $is_rtl ?? false;
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Approche</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Parents</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Écoles</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">ONG</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Boutique</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Science</a>
             </div>
 
@@ -165,6 +167,8 @@ $is_rtl = $is_rtl ?? false;
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Approche</a>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Parents</a>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Écoles</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">ONG</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Boutique</a>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Science</a>
                     <hr class="border-slate-100">
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="text-2xl font-black text-orange-600 font-title">Connexion</a>
