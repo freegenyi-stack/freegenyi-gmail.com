@@ -43,7 +43,7 @@ include_once __DIR__ . '/includes/header.php';
                 <!-- Compteur d'Impact Élite (Ultra-Compact & Animé) -->
                 <div class="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-4 text-orange-600" 
                      x-data="{ 
-                        genies: 0, pays: 0, ecoles: 0, langs: 0, cours: 0, ex : 0, progs: 0,
+                        genies: 0, pays: 0, ecoles: 0, langs: 0, total: 0,
                         startAnimation() {
                             const duration = 5000;
                             const steps = 60;
@@ -53,13 +53,11 @@ include_once __DIR__ . '/includes/header.php';
                             const timer = setInterval(() => {
                                 currentStep++;
                                 const progress = currentStep / steps;
-                                this.genies = Math.floor(progress * 15000);
+                                this.genies = Math.floor(progress * 15);
                                 this.pays = Math.floor(progress * 60);
                                 this.ecoles = Math.floor(progress * 300);
                                 this.langs = Math.floor(progress * 10);
-                                this.cours = Math.floor(progress * 5000);
-                                this.ex = Math.floor(progress * 50000);
-                                this.progs = Math.floor(progress * 12);
+                                this.total = Math.floor(progress * 55);
                                 
                                 if (currentStep >= steps) clearInterval(timer);
                             }, interval);
@@ -68,7 +66,7 @@ include_once __DIR__ . '/includes/header.php';
                      x-init="startAnimation()">
                     
                     <div class="flex items-baseline gap-1">
-                        <span class="text-lg font-black leading-none" x-text="genies.toLocaleString() + '+'">0+</span>
+                        <span class="text-lg font-black leading-none" x-text="genies + 'K+'">0K+</span>
                         <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Génies</span>
                     </div>
                     <div class="flex items-baseline gap-1">
@@ -84,16 +82,8 @@ include_once __DIR__ . '/includes/header.php';
                         <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Langues</span>
                     </div>
                     <div class="flex items-baseline gap-1">
-                        <span class="text-lg font-black leading-none" x-text="cours.toLocaleString() + '+'">0+</span>
-                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Cours</span>
-                    </div>
-                    <div class="flex items-baseline gap-1">
-                        <span class="text-lg font-black leading-none" x-text="ex.toLocaleString() + '+'">0+</span>
-                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Exercices</span>
-                    </div>
-                    <div class="flex items-baseline gap-1">
-                        <span class="text-lg font-black leading-none" x-text="progs + '+'">0+</span>
-                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Prog. Int.</span>
+                        <span class="text-lg font-black leading-none" x-text="total + 'K+'">0K+</span>
+                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Cours & Exercices</span>
                     </div>
                 </div>
             </div>
