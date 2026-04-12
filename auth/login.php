@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/login.php - Elite Login Page (LOCAL LOTTIE FIX)
+ * auth/login.php - Elite Login Page (BACK TO WORKING METHOD)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,8 +13,8 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- LECTEUR LOTTIE LOCAL -->
-    <script src="/assets/js/lottie-player.js"></script>
+    <!-- LA MÉTHODE QUI A MARCHÉ (LECTEUR DE LA GRUE) -->
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
     <style>
         [x-cloak] { display: none !important; }
@@ -33,10 +33,10 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 relative z-10">
         
-        <!-- Left Side: LOCAL LOTTIE -->
+        <!-- Left Side: THE ANIMATION (Using the "Crane" method) -->
         <div class="hidden lg:block flex-1 max-w-md text-center">
             <div class="relative w-[450px] h-[450px] mx-auto">
-                <lottie-player src="/assets/animations/test-elite.json" background="transparent" speed="1" style="width: 450px; height: 450px;" loop autoplay></lottie-player>
+                <dotlottie-player src="https://lottie.host/83e6540c-2550-48e0-bbd8-348f95c5c64c/I0qf461Y5Y.json" background="transparent" speed="1" style="width: 450px; height: 450px;" loop autoplay></dotlottie-player>
             </div>
             <div class="mt-[-20px]">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none">Bon retour.</h2>
@@ -46,7 +46,7 @@ require_once __DIR__ . '/../config/app.php';
 
         <!-- Right Side: Form Card -->
         <div class="w-full max-w-md">
-            <div class="glass-card rounded-[3.5rem] shadow-[0_45px_100px_rgba(0,0,0,0.06)] p-10 pt-12 md:pt-14 relative" x-data="{}">
+            <div class="glass-card rounded-[3.5rem] shadow-[0_45px_100px_rgba(0,0,0,0.06)] p-10 pt-12 md:pt-14 relative">
                 
                 <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white px-8 py-3 rounded-2xl shadow-lg border border-slate-50 flex items-center gap-3 text-center">
                     <img src="/assets/img/logo.png" alt="FreeGeny" class="h-8 w-auto">

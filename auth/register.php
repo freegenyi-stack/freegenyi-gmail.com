@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/register.php - Elite Register Page (LOCAL LOTTIE FIX)
+ * auth/register.php - Elite Register Page (BACK TO WORKING METHOD)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,8 +13,8 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- LECTEUR LOTTIE LOCAL -->
-    <script src="/assets/js/lottie-player.js"></script>
+    <!-- LA MÉTHODE QUI A MARCHÉ (LECTEUR DE LA GRUE) -->
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
     <style>
         [x-cloak] { display: none !important; }
@@ -33,15 +33,15 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 relative z-10">
         
-        <!-- Left Side: LOCAL LOTTIE -->
+        <!-- Left Side: THE ANIMATION (Using the "Crane" method) -->
         <div class="hidden lg:block flex-1 max-w-xl text-center">
             <div class="relative w-[500px] h-[500px] mx-auto">
-                <!-- UTILISATION DU FICHIER JSON LOCAL -->
-                <lottie-player src="/assets/animations/test-elite.json" background="transparent" speed="1" style="width: 500px; height: 500px;" loop autoplay></lottie-player>
+                <!-- Nouvelle Animation Premium (Éducation/Success) avec le lecteur qui marche -->
+                <dotlottie-player src="https://lottie.host/921a9792-888e-4a6f-998a-728b7a95638c/a0H3d2X7mE.json" background="transparent" speed="1" style="width: 500px; height: 500px;" loop autoplay></dotlottie-player>
             </div>
             <div class="mt-[-20px]">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none">Libérez leur génie.</h2>
-                <p class="text-slate-500 font-light text-xl">L'élite éducative commence ici.</p>
+                <p class="text-slate-500 font-light text-xl">L'aventure de l'excellence commence ici.</p>
             </div>
         </div>
 
