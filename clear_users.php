@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once __DIR__ . '/config/app.php';
-require_once __DIR__ . '/config/db.php';
+require_once __DIR__ . '/api/auth/auth_helpers.php';
 
 try {
     DB::execute('SET FOREIGN_KEY_CHECKS = 0');
