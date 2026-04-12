@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/register.php - Elite Register Page (Final Refinement)
+ * auth/register.php - Elite Register Page (Lottie Web Edition)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,7 +13,10 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-player/2.0.4/lottie-player.js"></script>
+    
+    <!-- Original Lottie Web Library (Ultra Reliable) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    
     <style>
         [x-cloak] { display: none !important; }
         body { 
@@ -34,18 +37,10 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 relative z-10">
         
-        <!-- Left Side: Large Floating Animation (Learning/Genius) -->
+        <!-- Conteneur Animation Gauche -->
         <div class="hidden lg:block flex-1 max-w-xl text-center">
-            <lottie-player 
-                src="https://assets3.lottiefiles.com/packages/lf20_sk5h17io.json" 
-                background="transparent" 
-                speed="1" 
-                style="width: 550px; height: 550px;" 
-                loop 
-                autoplay
-                class="mx-auto">
-            </lottie-player>
-            <div class="mt-[-60px]">
+            <div id="lottie-container" style="width: 550px; height: 500px;" class="mx-auto"></div>
+            <div class="mt-[-20px]">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none">Libérez leur génie.</h2>
                 <p class="text-slate-500 font-light text-xl">Rejoignez l'élite éducative dès aujourd'hui.</p>
             </div>
@@ -66,14 +61,14 @@ require_once __DIR__ . '/../config/app.php';
                 </div>
 
                 <!-- Role Selector -->
-                <div class="flex bg-slate-50 p-1 rounded-2xl gap-2 mb-5 border border-slate-100">
+                <div class="flex bg-slate-50 p-1 rounded-2xl gap-2 mb-4 border border-slate-100">
                     <button @click="role = 'parent'" :class="role === 'parent' ? 'bg-slate-950 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-200'" class="flex-1 py-3 px-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">Parent</button>
                     <button @click="role = 'school'" :class="role === 'school' ? 'bg-orange-600 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-200'" class="flex-1 py-3 px-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">École</button>
                     <button @click="role = 'ngo'" :class="role === 'ngo' ? 'bg-teal-600 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-200'" class="flex-1 py-3 px-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">ONG</button>
                 </div>
 
-                <!-- Social Auth -->
-                <a :href="'/api/auth/google_register.php?role=' + role" class="w-full flex items-center justify-center gap-4 bg-white border-2 border-slate-100 py-3 rounded-2xl hover:border-orange-600 hover:bg-orange-50 transition-all group mb-5">
+                <!-- Google Register -->
+                <a :href="'/api/auth/google_register.php?role=' + role" class="w-full flex items-center justify-center gap-4 bg-white border-2 border-slate-100 py-3 rounded-2xl hover:border-orange-600 hover:bg-orange-50 transition-all group mb-4">
                     <div class="bg-white p-1 rounded-lg">
                         <svg class="w-4 h-4" viewBox="0 0 24 24">
                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -85,44 +80,56 @@ require_once __DIR__ . '/../config/app.php';
                     <span class="text-[9px] font-black uppercase tracking-[0.2em] text-slate-700">Inscription Express</span>
                 </a>
 
-                <div class="relative flex items-center justify-center mb-5 text-slate-100">
+                <div class="relative flex items-center justify-center mb-4 text-slate-100">
                     <div class="w-full border-t border-slate-100"></div>
                     <span class="absolute bg-white px-3 text-[8px] font-bold uppercase tracking-widest text-slate-300">ou classiquement</span>
                 </div>
 
-                <form action="/api/auth/register.php" method="POST" class="space-y-4">
+                <form action="/api/auth/register.php" method="POST" class="space-y-3.5">
                     <input type="hidden" name="role" :value="role">
                     <div class="grid grid-cols-2 gap-3.5">
                         <div class="col-span-2">
-                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-1.5 px-1" x-text="role === 'parent' ? 'Nom Complet' : 'Nom organisation'"></label>
+                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-1 px-1" x-text="role === 'parent' ? 'Nom Complet' : 'Nom organisation'"></label>
                             <input type="text" name="full_name" required placeholder="Ex: Jean Martin" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all font-bold leading-none text-slate-950">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-1.5 px-1">E-mail</label>
+                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-1 px-1">E-mail</label>
                             <input type="email" name="email" required placeholder="nom@exemple.com" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all font-bold leading-none text-slate-950">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-1.5 px-1">Téléphone <span class="text-slate-300 font-normal italic">(Opt)</span></label>
+                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-1 px-1">Téléphone <span class="text-slate-300 font-normal italic">(Opt)</span></label>
                             <input type="tel" name="phone" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all font-bold leading-none text-slate-950">
                         </div>
                         <div class="col-span-2">
-                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-900 mb-1.5 px-1">Mot de passe</label>
+                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-900 mb-1 px-1">Mot de passe</label>
                             <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all font-bold leading-none text-slate-900">
                         </div>
                     </div>
 
-                    <div class="pt-2">
+                    <div class="pt-1.5">
                         <button type="submit" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-orange-600 transition-all shadow-xl hover:shadow-orange-100">
                             Créer mon accès génie
                         </button>
                     </div>
                 </form>
 
-                <p class="mt-5 text-center text-[9px] text-slate-400 font-bold uppercase tracking-widest">
+                <p class="mt-4 text-center text-[9px] text-slate-400 font-bold uppercase tracking-widest">
                     Déjà inscrit ? <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="text-orange-600 hover:underline">Se connecter</a>
                 </p>
             </div>
         </div>
     </div>
+
+    <script>
+        // Initialisation Lottie-web (Méthode la plus stable)
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'https://assets3.lottiefiles.com/packages/lf20_sk5h17io.json'
+        });
+    </script>
+
 </body>
 </html>

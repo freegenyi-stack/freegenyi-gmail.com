@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/login.php - Elite Login Page (Final Refinement)
+ * auth/login.php - Elite Login Page (Lottie Web Edition)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,7 +13,10 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-player/2.0.4/lottie-player.js"></script>
+    
+    <!-- Original Lottie Web Library (Ultra Reliable) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    
     <style>
         [x-cloak] { display: none !important; }
         body { 
@@ -36,15 +39,7 @@ require_once __DIR__ . '/../config/app.php';
         
         <!-- Conteneur Animation Gauche -->
         <div class="hidden lg:block flex-1 max-w-md text-center">
-            <lottie-player 
-                src="https://assets10.lottiefiles.com/packages/lf20_jcik7bo4.json" 
-                background="transparent" 
-                speed="1" 
-                style="width: 450px; height: 450px;" 
-                loop 
-                autoplay
-                class="mx-auto">
-            </lottie-player>
+            <div id="lottie-container" style="width: 450px; height: 450px;" class="mx-auto"></div>
             <div class="mt-[-20px]">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none">Bon retour.</h2>
                 <p class="text-slate-500 font-light text-xl">L'aventure de l'excellence continue.</p>
@@ -108,5 +103,15 @@ require_once __DIR__ . '/../config/app.php';
             </div>
         </div>
     </div>
+
+    <script>
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'https://assets10.lottiefiles.com/packages/lf20_jcik7bo4.json'
+        });
+    </script>
 </body>
 </html>
