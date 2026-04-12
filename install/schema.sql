@@ -7,10 +7,23 @@
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
+DROP TABLE IF EXISTS `v_child_stats`;
+DROP TABLE IF EXISTS `country_conflicts`;
+DROP TABLE IF EXISTS `login_attempts`;
+DROP TABLE IF EXISTS `communication_hub`;
+DROP TABLE IF EXISTS `academic_calendar`;
+DROP TABLE IF EXISTS `child_rewards`;
+DROP TABLE IF EXISTS `user_sessions`;
+DROP TABLE IF EXISTS `achievements`;
+DROP TABLE IF EXISTS `exercise_attempts`;
+DROP TABLE IF EXISTS `child_progress`;
+DROP TABLE IF EXISTS `children`;
+DROP TABLE IF EXISTS `users`;
+
 -- -----------------------------------------------------------
 -- Table : users (comptes parents/admins)
 -- -----------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id`                    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `email`                 VARCHAR(255) NOT NULL UNIQUE,
   `password_hash`         VARCHAR(255) NOT NULL,
@@ -35,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- -----------------------------------------------------------
 -- Table : children (profils enfants liés à un parent)
 -- -----------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `children` (
+CREATE TABLE `children` (
   `id`              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `parent_id`       INT UNSIGNED NOT NULL,
   `name`            VARCHAR(100) NOT NULL,
@@ -60,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `children` (
 -- -----------------------------------------------------------
 -- Table : child_progress (progression par leçon)
 -- -----------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `child_progress` (
+CREATE TABLE `child_progress` (
   `id`            INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `child_id`      INT UNSIGNED NOT NULL,
   `lesson_id`     VARCHAR(100) NOT NULL,
@@ -81,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `child_progress` (
 -- -----------------------------------------------------------
 -- Table : exercise_attempts (tentatives d'exercices)
 -- -----------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `exercise_attempts` (
+CREATE TABLE `exercise_attempts` (
   `id`              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `child_id`        INT UNSIGNED NOT NULL,
   `exercise_id`     VARCHAR(100) NOT NULL,
@@ -101,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `exercise_attempts` (
 -- -----------------------------------------------------------
 -- Table : achievements (badges et récompenses)
 -- -----------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `achievements` (
+CREATE TABLE `achievements` (
   `id`          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `child_id`    INT UNSIGNED NOT NULL,
   `badge_type`  VARCHAR(100) NOT NULL,
@@ -114,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `achievements` (
 -- -----------------------------------------------------------
 -- Table : user_sessions (tokens de session sécurisés)
 -- -----------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `user_sessions` (
+CREATE TABLE `user_sessions` (
   `id`          VARCHAR(64) PRIMARY KEY COMMENT 'Token aléatoire 32 bytes hex',
   `user_id`     INT UNSIGNED NOT NULL,
   `ip_address`  VARCHAR(45) DEFAULT NULL,
@@ -129,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `user_sessions` (
 -- -----------------------------------------------------------
 -- Table : child_rewards (Pont des Récompenses)
 -- -----------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `child_rewards` (
+CREATE TABLE `child_rewards` (
   `id`              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `child_id`        INT UNSIGNED NOT NULL,
   `suggestion`      VARCHAR(255) NOT NULL,
@@ -142,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `child_rewards` (
 -- -----------------------------------------------------------
 -- Table : academic_calendar (Dates clés)
 -- -----------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `academic_calendar` (
+CREATE TABLE `academic_calendar` (
   `id`              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `child_id`        INT UNSIGNED NOT NULL,
   `event_name`      VARCHAR(100) NOT NULL,
@@ -156,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `academic_calendar` (
 -- -----------------------------------------------------------
 -- Table : communication_hub (Lien Parent-Enseignant)
 -- -----------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `communication_hub` (
+CREATE TABLE `communication_hub` (
   `id`              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `sender_id`       INT UNSIGNED NOT NULL,
   `receiver_id`     INT UNSIGNED NOT NULL,
@@ -167,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `communication_hub` (
   `created_at`      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (`child_id`) REFERENCES `children`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-CREATE TABLE IF NOT EXISTS `login_attempts` (
+CREATE TABLE `login_attempts` (
   `id`          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `email`       VARCHAR(255) NOT NULL,
   `ip_address`  VARCHAR(45) NOT NULL,
@@ -180,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
 -- -----------------------------------------------------------
 -- Table : country_conflicts (anti-VPN / anti-fraude)
 -- -----------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `country_conflicts` (
+CREATE TABLE `country_conflicts` (
   `id`            INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `user_id`       INT UNSIGNED NOT NULL,
   `ip_country`    CHAR(2) NOT NULL,
