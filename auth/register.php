@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/register.php - Elite Register Page (Lottie Compatibility Edition)
+ * auth/register.php - Elite Register Page (Final Refinement)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,10 +13,7 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <!-- Lecteur Lottie Ultra-Compatible (Cloudflare Stable) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-player/2.0.4/lottie-player.js"></script>
-    
     <style>
         [x-cloak] { display: none !important; }
         body { 
@@ -25,6 +22,7 @@ require_once __DIR__ . '/../config/app.php';
         }
         .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
         .glass-card { background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(255, 255, 255, 1); }
+        input { font-size: 0.9rem !important; }
     </style>
 </head>
 <body class="h-screen w-full overflow-hidden flex items-center justify-center p-6 relative">
@@ -36,20 +34,19 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 relative z-10">
         
-        <!-- Conteneur Animation Gauche -->
+        <!-- Left Side: Large Floating Animation (Learning/Genius) -->
         <div class="hidden lg:block flex-1 max-w-xl text-center">
-            <!-- Animation Rocket (Éducation/Décollage) Ultra-Stable -->
             <lottie-player 
-                src="https://assets2.lottiefiles.com/packages/lf20_m6cuL6.json" 
+                src="https://assets3.lottiefiles.com/packages/lf20_sk5h17io.json" 
                 background="transparent" 
                 speed="1" 
-                style="width: 500px; height: 500px;" 
+                style="width: 550px; height: 550px;" 
                 loop 
                 autoplay
                 class="mx-auto">
             </lottie-player>
-            <div class="mt-[-40px]">
-                <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2">Libérez leur génie.</h2>
+            <div class="mt-[-60px]">
+                <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none">Libérez leur génie.</h2>
                 <p class="text-slate-500 font-light text-xl">Rejoignez l'élite éducative dès aujourd'hui.</p>
             </div>
         </div>
@@ -63,20 +60,20 @@ require_once __DIR__ . '/../config/app.php';
                     <span class="text-lg font-black text-slate-900 uppercase font-title tracking-tighter leading-none">Free<span class="text-orange-600">Geny</span></span>
                 </div>
 
-                <div class="mb-6 mt-4">
-                    <h1 class="text-3xl font-black text-slate-950 font-title tracking-tight leading-none mb-2">Créer un compte.</h1>
-                    <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest leading-none">Cockpit d'exception pour génies</p>
+                <div class="mb-5 mt-2">
+                    <h1 class="text-3xl font-black text-slate-950 font-title tracking-tight leading-none mb-1.5">Créer un compte.</h1>
+                    <p class="text-slate-400 text-[9px] font-bold uppercase tracking-widest leading-none">Cockpit d'exception pour génies</p>
                 </div>
 
                 <!-- Role Selector -->
-                <div class="flex bg-slate-50 p-1 rounded-2xl gap-2 mb-6 border border-slate-100">
+                <div class="flex bg-slate-50 p-1 rounded-2xl gap-2 mb-5 border border-slate-100">
                     <button @click="role = 'parent'" :class="role === 'parent' ? 'bg-slate-950 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-200'" class="flex-1 py-3 px-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">Parent</button>
                     <button @click="role = 'school'" :class="role === 'school' ? 'bg-orange-600 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-200'" class="flex-1 py-3 px-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">École</button>
                     <button @click="role = 'ngo'" :class="role === 'ngo' ? 'bg-teal-600 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-200'" class="flex-1 py-3 px-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">ONG</button>
                 </div>
 
                 <!-- Social Auth -->
-                <a :href="'/api/auth/google_register.php?role=' + role" class="w-full flex items-center justify-center gap-4 bg-white border-2 border-slate-100 py-3 rounded-2xl hover:border-orange-600 hover:bg-orange-50 transition-all group mb-6">
+                <a :href="'/api/auth/google_register.php?role=' + role" class="w-full flex items-center justify-center gap-4 bg-white border-2 border-slate-100 py-3 rounded-2xl hover:border-orange-600 hover:bg-orange-50 transition-all group mb-5">
                     <div class="bg-white p-1 rounded-lg">
                         <svg class="w-4 h-4" viewBox="0 0 24 24">
                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -88,29 +85,29 @@ require_once __DIR__ . '/../config/app.php';
                     <span class="text-[9px] font-black uppercase tracking-[0.2em] text-slate-700">Inscription Express</span>
                 </a>
 
-                <div class="relative flex items-center justify-center mb-6 text-slate-100">
+                <div class="relative flex items-center justify-center mb-5 text-slate-100">
                     <div class="w-full border-t border-slate-100"></div>
                     <span class="absolute bg-white px-3 text-[8px] font-bold uppercase tracking-widest text-slate-300">ou classiquement</span>
                 </div>
 
                 <form action="/api/auth/register.php" method="POST" class="space-y-4">
                     <input type="hidden" name="role" :value="role">
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-2 gap-3.5">
                         <div class="col-span-2">
-                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-2 px-1" x-text="role === 'parent' ? 'Nom Complet' : 'Nom organisation'"></label>
-                            <input type="text" name="full_name" required placeholder="Ex: Jean Martin" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-950">
+                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-1.5 px-1" x-text="role === 'parent' ? 'Nom Complet' : 'Nom organisation'"></label>
+                            <input type="text" name="full_name" required placeholder="Ex: Jean Martin" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all font-bold leading-none text-slate-950">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-2 px-1">E-mail</label>
-                            <input type="email" name="email" required placeholder="nom@exemple.com" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-950">
+                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-1.5 px-1">E-mail</label>
+                            <input type="email" name="email" required placeholder="nom@exemple.com" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all font-bold leading-none text-slate-950">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-2 px-1">Téléphone <span class="text-slate-300 font-normal italic">(Opt)</span></label>
-                            <input type="tel" name="phone" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-950">
+                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-1.5 px-1">Téléphone <span class="text-slate-300 font-normal italic">(Opt)</span></label>
+                            <input type="tel" name="phone" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all font-bold leading-none text-slate-950">
                         </div>
                         <div class="col-span-2">
-                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-950 mb-2 px-1">Mot de passe</label>
-                            <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-950">
+                            <label class="block text-[8px] font-black uppercase tracking-widest text-slate-900 mb-1.5 px-1">Mot de passe</label>
+                            <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-3 rounded-xl outline-none transition-all font-bold leading-none text-slate-900">
                         </div>
                     </div>
 
@@ -121,19 +118,11 @@ require_once __DIR__ . '/../config/app.php';
                     </div>
                 </form>
 
-                <p class="mt-6 text-center text-[9px] text-slate-400 font-bold uppercase tracking-widest">
+                <p class="mt-5 text-center text-[9px] text-slate-400 font-bold uppercase tracking-widest">
                     Déjà inscrit ? <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="text-orange-600 hover:underline">Se connecter</a>
                 </p>
             </div>
-            
-            <div class="mt-8 flex justify-center gap-6 text-[8px] font-bold uppercase tracking-widest text-slate-300">
-                <a href="/privacy" class="hover:text-slate-900 transition-colors">Confidentialité</a>
-                <a href="/terms" class="hover:text-slate-900 transition-colors">Conditions</a>
-                <a href="/contact" class="hover:text-slate-900 transition-colors">Support</a>
-            </div>
-
         </div>
     </div>
-
 </body>
 </html>

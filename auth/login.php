@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/login.php - Elite Login Page (Lottie Compatibility Edition)
+ * auth/login.php - Elite Login Page (Final Refinement)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,10 +13,7 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <!-- Lecteur Lottie Ultra-Compatible (Cloudflare Stable) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-player/2.0.4/lottie-player.js"></script>
-    
     <style>
         [x-cloak] { display: none !important; }
         body { 
@@ -25,6 +22,7 @@ require_once __DIR__ . '/../config/app.php';
         }
         .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
         .glass-card { background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(255, 255, 255, 1); }
+        input { font-size: 0.9rem !important; }
     </style>
 </head>
 <body class="h-screen w-full overflow-hidden flex items-center justify-center p-6 relative">
@@ -48,7 +46,7 @@ require_once __DIR__ . '/../config/app.php';
                 class="mx-auto">
             </lottie-player>
             <div class="mt-[-20px]">
-                <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2">Bon retour.</h2>
+                <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none">Bon retour.</h2>
                 <p class="text-slate-500 font-light text-xl">L'aventure de l'excellence continue.</p>
             </div>
         </div>
@@ -62,8 +60,8 @@ require_once __DIR__ . '/../config/app.php';
                     <span class="text-lg font-black text-slate-900 uppercase font-title tracking-tighter leading-none">Free<span class="text-orange-600">Geny</span></span>
                 </div>
 
-                <div class="mb-8 mt-4">
-                    <h1 class="text-3xl font-black text-slate-950 font-title tracking-tight leading-none mb-3">Se connecter.</h1>
+                <div class="mb-8 mt-2 text-center">
+                    <h1 class="text-3xl font-black text-slate-950 font-title tracking-tight leading-none mb-2">Se connecter.</h1>
                     <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest leading-none">Accédez à votre cockpit FreeGeny</p>
                 </div>
 
@@ -88,14 +86,14 @@ require_once __DIR__ . '/../config/app.php';
                 <form action="/api/auth/login.php" method="POST" class="space-y-6">
                     <div>
                         <label class="block text-[9px] font-black uppercase tracking-widest text-slate-950 mb-2 px-1">E-mail</label>
-                        <input type="email" name="email" required placeholder="nom@exemple.com" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-4 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-900">
+                        <input type="email" name="email" required placeholder="nom@exemple.com" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-4 rounded-xl outline-none transition-all font-bold leading-none text-slate-900">
                     </div>
                     <div>
                         <div class="flex items-center justify-between mb-2 px-1">
                             <label class="block text-[9px] font-black uppercase tracking-widest text-slate-950">Mot de passe</label>
                             <a href="/forgot-password" class="text-[8px] font-bold text-slate-400 hover:text-orange-600 uppercase tracking-widest">Oublié ?</a>
                         </div>
-                        <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-4 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-900">
+                        <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-4 rounded-xl outline-none transition-all font-bold leading-none text-slate-900">
                     </div>
                     <div class="pt-2">
                         <button type="submit" class="w-full bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl hover:shadow-orange-100">
