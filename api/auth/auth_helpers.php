@@ -140,10 +140,19 @@ try {
 
     // Migration des préférences users
     $prefs = [
-        'preferred_color' => "VARCHAR(7) DEFAULT '#2563eb'",
-        'theme_mode'      => "VARCHAR(10) DEFAULT 'light'",
-        'role'            => "VARCHAR(20) DEFAULT 'parent'",
-        'entity_name'     => "VARCHAR(255) NULL"
+        'preferred_color'                => "VARCHAR(7) DEFAULT '#2563eb'",
+        'theme_mode'                     => "VARCHAR(10) DEFAULT 'light'",
+        'role'                           => "VARCHAR(20) DEFAULT 'parent'",
+        'entity_name'                    => "VARCHAR(255) NULL",
+        'phone'                          => "VARCHAR(25) NULL",
+        'verification_token'             => "VARCHAR(100) NULL",
+        'verification_token_expires_at'  => "DATETIME NULL",
+        'oauth_provider'                 => "VARCHAR(50) NULL",
+        'profile_photo'                  => "VARCHAR(255) NULL",
+        'login_attempts'                 => "INT DEFAULT 0",
+        'locked_until'                   => "DATETIME NULL",
+        'last_login_at'                  => "DATETIME NULL",
+        'email_verified'                 => "TINYINT(1) DEFAULT 0",
     ];
     foreach ($prefs as $col => $def) {
         $check = DB::fetchOne("SHOW COLUMNS FROM users LIKE '$col'");
