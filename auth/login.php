@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/login.php - Elite Login Page (ROBUST JS IMPLEMENTATION)
+ * auth/login.php - Elite Login Page (ISOLATED IFRAME IMPLEMENTATION)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,21 +13,16 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Lottie-web (Plus robuste que le player component) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
-
     <style>
         [x-cloak] { display: none !important; }
         body { font-family: 'DM Sans', sans-serif; background: #f8fafc; overflow-x: hidden; }
         .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
         .glass-card { background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(255, 255, 255, 1); }
         input { font-size: 0.9rem !important; }
-        #lottie-animation { width: 100%; height: 100%; max-width: 450px; max-height: 450px; margin: 0 auto; }
     </style>
 </head>
 <body class="min-h-screen w-full flex items-center justify-center p-6 relative">
 
-    <!-- Background Shapes -->
     <div class="fixed inset-0 opacity-40 pointer-events-none">
         <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-100 blur-[120px] rounded-full"></div>
         <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-orange-100 blur-[120px] rounded-full"></div>
@@ -35,20 +30,22 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 relative z-10">
         
-        <!-- Left Side -->
+        <!-- Conteneur Animation Gauche (ISOLATED IFRAME) -->
         <div class="hidden lg:block flex-1 text-center">
-            <div id="lottie-animation"></div>
+            <div class="relative w-[450px] h-[450px] mx-auto overflow-hidden rounded-full">
+                <!-- Utilisation de l'iframe pour isoler Lottie de tout conflit -->
+                <iframe src="/assets/animations/isolated-genius.html" style="width: 100%; height: 100%; border: none; background: transparent;" scrolling="no"></iframe>
+            </div>
             <div class="mt-4">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none uppercase">Bon retour.</h2>
                 <p class="text-slate-500 font-light text-xl">L'aventure de l'excellence continue.</p>
             </div>
         </div>
 
-        <!-- Right Side -->
+        <!-- Right Side: Form Card -->
         <div class="w-full max-w-md">
-            <div class="glass-card rounded-[3.5rem] shadow-[0_45px_100px_rgba(0,0,0,0.06)] p-10 pt-12 md:pt-14 relative">
+            <div class="glass-card rounded-[3.5rem] shadow-[0_45px_100px_rgba(0,0,0,0.06)] p-10 pt-12 md:pt-14 relative" x-data="{}">
                 
-                <!-- Logo -->
                 <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white px-8 py-3 rounded-2xl shadow-lg border border-slate-50 flex items-center gap-3 text-center">
                     <img src="/assets/img/logo.png" alt="FreeGeny" class="h-8 w-auto">
                     <span class="text-lg font-black text-slate-900 uppercase font-title tracking-tighter leading-none">Free<span class="text-orange-600">Geny</span></span>
@@ -56,7 +53,7 @@ require_once __DIR__ . '/../config/app.php';
 
                 <div class="mb-8 mt-2 text-center">
                     <h1 class="text-3xl font-black text-slate-950 font-title tracking-tight leading-none mb-2">Se connecter.</h1>
-                    <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest leading-none tracking-widest leading-none">Accédez à votre cockpit</p>
+                    <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest leading-none">Accédez à votre cockpit FreeGeny</p>
                 </div>
 
                 <form action="/api/auth/login.php" method="POST" class="space-y-6">
@@ -85,27 +82,6 @@ require_once __DIR__ . '/../config/app.php';
         </div>
     </div>
 
-    <!-- Scripts -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animation JSON (Elite Pulse Blue)
-            const animData = {"v":"5.5.7","fr":60,"ip":0,"op":180,"w":500,"h":500,"nm":"ElitePulse","ddd":0,"assets":[],"layers":[{"ddd":0,"ind":1,"ty":4,"nm":"Shape","sr":1,"ks":{"o":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":0,"s":[50]},{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":90,"s":[100]},{"t":180,"s":[50]}]},"r":{"a":0,"k":0},"p":{"a":0,"k":[250,250,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":0,"s":[100,100,100]},{"i":{"x":[0.667],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":90,"s":[115,115,100]},{"t":180,"s":[100,100,100]}]}},"shapes":[{"ty":"gr","it":[{"d":1,"ty":"el","s":{"a":0,"k":[250,250]},"p":{"a":0,"k":[0,0]},"nm":"Ellipse"},{"ty":"fl","c":{"a":0,"k":[0.1,0.4,0.9,1]},"o":{"a":0,"k":15},"nm":"Fill"},{"ty":"st","c":{"a":0,"k":[0.1,0.4,0.9,1]},"o":{"a":0,"k":50},"w":{"a":0,"k":2},"nm":"Stroke"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"nm":"Transform"}]}]} ]};
-            
-            try {
-                lottie.loadAnimation({
-                    container: document.getElementById('lottie-animation'),
-                    renderer: 'svg',
-                    loop: true,
-                    autoplay: true,
-                    animationData: animData
-                });
-            } catch (e) {
-                console.error("Lottie Error:", e);
-                // Fallback visuel simple
-                document.getElementById('lottie-animation').innerHTML = '<div class="w-64 h-64 bg-blue-100 rounded-full mx-auto animate-pulse flex items-center justify-center"><i class="fas fa-lock-open text-blue-600 text-6xl"></i></div>';
-            }
-        });
-    </script>
 </body>
 </html>
