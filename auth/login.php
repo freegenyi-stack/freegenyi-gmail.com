@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/login.php - Elite Login Page
+ * auth/login.php - Elite Login Page (Anti-Scroll Edition)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -16,51 +16,46 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <style>
         [x-cloak] { display: none !important; }
-        body { font-family: 'DM Sans', sans-serif; }
+        body { 
+            font-family: 'DM Sans', sans-serif;
+            background: #f8fafc;
+        }
         .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); }
-        input::placeholder { color: #94a3b8; }
-        input { color: #0f172a !important; font-weight: 500 !important; }
+        .glass-card { background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(255, 255, 255, 1); }
     </style>
 </head>
-<body class="h-screen w-full bg-slate-50 overflow-hidden flex items-center justify-center p-0 md:p-6">
+<body class="h-screen w-full overflow-hidden flex items-center justify-center p-4 relative">
 
-    <div class="w-full max-w-6xl h-full md:h-[90vh] glass-card md:rounded-[4rem] shadow-[0_50px_100px_rgba(0,0,0,0.08)] border border-white flex overflow-hidden relative z-10">
+    <!-- Background Decoration Subtle -->
+    <div class="absolute inset-0 opacity-40 pointer-events-none">
+        <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-100 blur-[120px] rounded-full"></div>
+        <div class="absolute -bottom-[10%] -right-[10%] w-[30%] h-[30%] bg-orange-100 blur-[100px] rounded-full"></div>
+    </div>
+
+    <div class="w-full max-w-md relative z-10 flex flex-col items-center">
         
-        <!-- Left Side: Immersive & Lottie -->
-        <div class="hidden lg:flex flex-1 bg-slate-950 items-center justify-center p-16 relative overflow-hidden">
-            <div class="absolute inset-0 opacity-20">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 blur-[150px] rounded-full"></div>
-                <div class="absolute bottom-0 left-0 w-96 h-96 bg-orange-600 blur-[150px] rounded-full"></div>
-            </div>
+        <!-- Logo Top -->
+        <a href="/" class="flex items-center gap-2 mb-8 group hover:scale-105 transition-transform">
+            <img src="/assets/img/logo.png" alt="FreeGeny" class="h-10 w-auto">
+            <span class="text-xl font-black text-slate-900 uppercase font-title tracking-tighter">Free<span class="text-orange-600">Geny</span></span>
+        </a>
+
+        <!-- Main Card -->
+        <div class="w-full glass-card rounded-[3.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.06)] p-10 relative overflow-hidden">
             
-            <div class="relative z-10 text-center">
-                <lottie-player src="https://lottie.host/8046dd4d-3754-47ef-8067-1834958f310f/zL2E1lIeM3.json" background="transparent" speed="1" style="width: 400px; height: 400px;" loop autoplay class="mx-auto"></lottie-player>
-                <h2 class="text-4xl font-black text-white font-title tracking-tight mb-4 mt-8">Bon retour.</h2>
-                <p class="text-slate-400 font-light text-lg">Poursuivez l'aventure de l'excellence.</p>
-            </div>
-        </div>
-
-        <!-- Right Side: Compact Form -->
-        <div class="flex-1 flex flex-col p-8 md:p-12 overflow-y-auto bg-white/50">
-            
-            <!-- Header/Logo -->
-            <div class="flex justify-between items-center mb-12">
-                <a href="/" class="flex items-center gap-3 group">
-                    <img src="/assets/img/logo.png" alt="FreeGeny" class="h-10 w-auto">
-                    <span class="text-xl font-black text-slate-900 uppercase font-title tracking-tighter">Free<span class="text-orange-600">Geny</span></span>
-                </a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="text-[10px] font-black uppercase tracking-widest text-orange-600 hover:text-slate-900 transition-colors underline underline-offset-8 decoration-orange-200">Créer un compte</a>
+            <!-- Floating Animation (Tiny) -->
+            <div class="absolute top-4 right-8 w-24 h-24 opacity-80">
+                <lottie-player src="https://lottie.host/8046dd4d-3754-47ef-8067-1834958f310f/zL2E1lIeM3.json" background="transparent" speed="1" loop autoplay></lottie-player>
             </div>
 
-            <div class="mb-10">
-                <h1 class="text-3xl font-black text-slate-950 font-title tracking-tight mb-2">Se connecter.</h1>
-                <p class="text-slate-500 text-sm font-light leading-relaxed">Accédez à votre cockpit FreeGeny.</p>
+            <div class="mb-8 relative z-10">
+                <h1 class="text-3xl font-black text-slate-950 font-title tracking-tight leading-none mb-3">Bon retour.</h1>
+                <p class="text-slate-400 text-xs font-light">Accédez à votre cockpit FreeGeny.</p>
             </div>
 
-            <!-- Google Login (Enhanced) -->
-            <a href="/api/auth/google_login.php" class="w-full flex items-center justify-center gap-4 bg-white border-2 border-slate-100 py-4 rounded-2xl hover:border-orange-600 hover:bg-orange-50 transition-all group mb-10">
-                <div class="bg-white p-1 rounded-lg shadow-sm">
+            <!-- Google Login -->
+            <a href="/api/auth/google_login.php" class="w-full flex items-center justify-center gap-4 bg-white border-2 border-slate-100 py-4 rounded-2xl hover:border-orange-600 hover:bg-orange-50 transition-all group mb-8 shadow-sm">
+                <div class="bg-white p-1 rounded-lg">
                     <svg class="w-5 h-5" viewBox="0 0 24 24">
                         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                         <path d="M12.48 10.92V14.51h6.29c-.21 1.07-.81 1.98-1.63 2.58l3.15 2.44c1.84-1.7 2.92-4.2 2.92-7.21 0-.61-.05-1.21-.15-1.79H12.48z" fill="#4285F4"/>
@@ -72,15 +67,15 @@ require_once __DIR__ . '/../config/app.php';
                 <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-800">Continuer avec Google</span>
             </a>
 
-            <div class="relative flex items-center justify-center mb-10 text-slate-200">
+            <div class="relative flex items-center justify-center mb-8 text-slate-100">
                 <div class="w-full border-t border-slate-100"></div>
-                <span class="absolute bg-white px-4 text-[9px] font-black uppercase tracking-[0.2em] text-slate-300">ou via e-mail</span>
+                <span class="absolute bg-white px-3 text-[8px] font-bold uppercase tracking-widest text-slate-300">ou par e-mail</span>
             </div>
 
             <form action="/api/auth/login.php" method="POST" class="space-y-6">
                 <div>
                     <label class="block text-[9px] font-black uppercase tracking-widest text-slate-950 mb-2 px-1">E-mail</label>
-                    <input type="email" name="email" required placeholder="nom@exemple.com" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-4 rounded-xl outline-none transition-all text-xs font-bold leading-none">
+                    <input type="email" name="email" required placeholder="nom@exemple.com" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-4 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-900">
                 </div>
                 
                 <div>
@@ -88,26 +83,28 @@ require_once __DIR__ . '/../config/app.php';
                         <label class="block text-[9px] font-black uppercase tracking-widest text-slate-950">Mot de passe</label>
                         <a href="/forgot-password" class="text-[8px] font-bold text-slate-400 hover:text-orange-600 uppercase tracking-widest">Oublié ?</a>
                     </div>
-                    <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-4 rounded-xl outline-none transition-all text-xs font-bold leading-none">
+                    <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-5 py-4 rounded-xl outline-none transition-all text-xs font-bold leading-none text-slate-900">
                 </div>
 
-                <div class="pt-4">
+                <div class="pt-2">
                     <button type="submit" class="w-full bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl hover:shadow-orange-100">
                         Entrer dans le cockpit
                     </button>
                 </div>
             </form>
 
-            <!-- Footer (Tiny) -->
-            <div class="mt-auto pt-12 flex items-center justify-between text-[8px] font-bold uppercase tracking-widest text-slate-400">
-                <p>&copy; 2024 FreeGeny Elite</p>
-                <div class="flex gap-4 text-slate-400">
-                    <a href="/privacy" class="hover:text-slate-900 transition-colors">Confidentialité</a>
-                    <a href="/terms" class="hover:text-slate-900 transition-colors">Conditions</a>
-                </div>
-            </div>
-
+            <p class="mt-8 text-center text-[9px] text-slate-400 font-bold uppercase tracking-widest">
+                Pas encore de compte ? <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="text-orange-600 hover:underline ml-1">S'inscrire</a>
+            </p>
         </div>
+
+        <!-- Footer Tiny -->
+        <div class="mt-8 flex gap-6 text-[8px] font-bold uppercase tracking-widest text-slate-300">
+            <a href="/privacy" class="hover:text-slate-900 transition-colors">Confidentialité</a>
+            <a href="/terms" class="hover:text-slate-900 transition-colors">Conditions</a>
+            <a href="/contact" class="hover:text-slate-900 transition-colors">Support</a>
+        </div>
+
     </div>
 
 </body>
