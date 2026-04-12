@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/login.php - Elite Login Page (ISOLATED IFRAME IMPLEMENTATION)
+ * auth/login.php - Elite Login Page (ULTIMATE STABILITY - STUNNING VISUAL)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -19,6 +19,16 @@ require_once __DIR__ . '/../config/app.php';
         .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
         .glass-card { background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(255, 255, 255, 1); }
         input { font-size: 0.9rem !important; }
+
+        /* Animation de flottement pour le visuel */
+        .premium-float {
+            filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.2));
+            animation: float-alt 8s ease-in-out infinite;
+        }
+        @keyframes float-alt {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
+        }
     </style>
 </head>
 <body class="min-h-screen w-full flex items-center justify-center p-6 relative">
@@ -30,11 +40,13 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 relative z-10">
         
-        <!-- Conteneur Animation Gauche (ISOLATED IFRAME) -->
+        <!-- Left Side: PREMIUM VISUAL (GIF STABILIZER) -->
         <div class="hidden lg:block flex-1 text-center">
-            <div class="relative w-[450px] h-[450px] mx-auto overflow-hidden rounded-full">
-                <!-- Utilisation de l'iframe pour isoler Lottie de tout conflit -->
-                <iframe src="/assets/animations/isolated-genius.html" style="width: 100%; height: 100%; border: none; background: transparent;" scrolling="no"></iframe>
+            <div class="relative w-[450px] h-[450px] mx-auto flex items-center justify-center">
+                <!-- Visuel Premium Haute Qualité (Génique/Futuriste) -->
+                <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNndicm91czh0a3Jua2RyeWc3dDk3ZDh0dzV0N3Z4Z3Z4Z3Z4Z3Z4Z3Z4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKVUn7iM8FMEU24/giphy.gif" 
+                     alt="FreeGeny Return" 
+                     class="w-full h-auto premium-float mix-blend-multiply opacity-95">
             </div>
             <div class="mt-4">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none uppercase">Bon retour.</h2>

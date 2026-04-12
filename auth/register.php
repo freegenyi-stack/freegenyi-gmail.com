@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/register.php - Elite Register Page (ISOLATED IFRAME IMPLEMENTATION)
+ * auth/register.php - Elite Register Page (ULTIMATE STABILITY - STUNNING VISUAL)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -19,6 +19,16 @@ require_once __DIR__ . '/../config/app.php';
         .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
         .glass-card { background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(255, 255, 255, 1); }
         input { font-size: 0.9rem !important; }
+        
+        /* Animation Pulse pour le visuel */
+        .premium-glow {
+            filter: drop-shadow(0 0 30px rgba(234, 88, 12, 0.2));
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
     </style>
 </head>
 <body class="min-h-screen w-full flex items-center justify-center p-6 relative">
@@ -30,15 +40,17 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 relative z-10">
         
-        <!-- Conteneur Animation Gauche (ISOLATED IFRAME) -->
+        <!-- Left Side: PREMIUM VISUAL (GIF STABILIZER) -->
         <div class="hidden lg:block flex-1 text-center">
-            <div class="relative w-[500px] h-[500px] mx-auto overflow-hidden rounded-full">
-                <!-- Utilisation de l'iframe pour isoler Lottie de tout conflit -->
-                <iframe src="/assets/animations/isolated-genius.html" style="width: 100%; height: 100%; border: none; background: transparent;" scrolling="no"></iframe>
+            <div class="relative w-[500px] h-[500px] mx-auto flex items-center justify-center">
+                <!-- Visuel Premium en Haute Qualité (Garantie d'affichage 100%) -->
+                <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNndicm91czh0a3Jua2RyeWc3dDk3ZDh0dzV0N3Z4Z3Z4Z3Z4Z3Z4Z3Z4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKVUn7iM8FMEU24/giphy.gif" 
+                     alt="FreeGeny Spirit" 
+                     class="w-full h-auto premium-glow mix-blend-multiply opacity-90">
             </div>
             <div class="mt-4">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none uppercase">Libérez leur génie.</h2>
-                <p class="text-slate-500 font-light text-xl">L'excellence éducative sans frontières.</p>
+                <p class="text-slate-500 font-light text-xl">L'aventure de l'excellence commence ici.</p>
             </div>
         </div>
 
