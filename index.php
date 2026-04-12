@@ -40,21 +40,60 @@ include_once __DIR__ . '/includes/header.php';
                     </a>
                 </div>
 
-                <!-- Compteur d'Impact -->
-                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-8 opacity-70">
-                    <div class="flex flex-col">
-                        <span class="text-2xl font-black text-slate-900 leading-none">15,000+</span>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">Génies Connectés</span>
+                <!-- Compteur d'Impact Élite (Ultra-Compact & Animé) -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-4 text-orange-600" 
+                     x-data="{ 
+                        genies: 0, pays: 0, ecoles: 0, langs: 0, cours: 0, ex : 0, progs: 0,
+                        startAnimation() {
+                            const duration = 5000;
+                            const steps = 60;
+                            const interval = duration / steps;
+                            let currentStep = 0;
+                            
+                            const timer = setInterval(() => {
+                                currentStep++;
+                                const progress = currentStep / steps;
+                                this.genies = Math.floor(progress * 15000);
+                                this.pays = Math.floor(progress * 60);
+                                this.ecoles = Math.floor(progress * 300);
+                                this.langs = Math.floor(progress * 10);
+                                this.cours = Math.floor(progress * 5000);
+                                this.ex = Math.floor(progress * 50000);
+                                this.progs = Math.floor(progress * 12);
+                                
+                                if (currentStep >= steps) clearInterval(timer);
+                            }, interval);
+                        }
+                     }" 
+                     x-init="startAnimation()">
+                    
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-lg font-black leading-none" x-text="genies.toLocaleString() + '+'">0+</span>
+                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Génies</span>
                     </div>
-                    <div class="w-px h-8 bg-slate-200 hidden sm:block"></div>
-                    <div class="flex flex-col">
-                        <span class="text-2xl font-black text-slate-900 leading-none">60+</span>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">Pays Actifs</span>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-lg font-black leading-none" x-text="pays + '+'">0+</span>
+                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Pays</span>
                     </div>
-                    <div class="w-px h-8 bg-slate-200 hidden sm:block"></div>
-                    <div class="flex flex-col">
-                        <span class="text-2xl font-black text-slate-900 leading-none">300+</span>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">Écoles Partenaires</span>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-lg font-black leading-none" x-text="ecoles + '+'">0+</span>
+                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Écoles</span>
+                    </div>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-lg font-black leading-none" x-text="langs + '+'">0+</span>
+                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Langues</span>
+                    </div>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-lg font-black leading-none" x-text="cours.toLocaleString() + '+'">0+</span>
+                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Cours</span>
+                    </div>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-lg font-black leading-none" x-text="ex.toLocaleString() + '+'">0+</span>
+                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Exercices</span>
+                    </div>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-lg font-black leading-none" x-text="progs + '+'">0+</span>
+                        <span class="text-[8px] font-bold uppercase tracking-tighter text-slate-400">Prog. Int.</span>
                     </div>
                 </div>
             </div>
