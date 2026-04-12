@@ -27,7 +27,7 @@ include_once __DIR__ . '/includes/header.php';
                 <p class="text-lg md:text-xl text-slate-500 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-12" style="font-family: 'DM Sans', sans-serif; font-weight: 300;">
                     FreeGeny érige un pont technologique entre <span class="font-bold text-slate-900">Parents</span>, 
                     <span class="font-bold text-slate-900">Écoles</span> et <span class="font-bold text-slate-900">Enfants</span> 
-                    pour un accompagnement holistique vers l’excellence mondiale.
+                    pour un accompagnement holistique vers l’excellence.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
@@ -258,7 +258,7 @@ include_once __DIR__ . '/includes/header.php';
                         </div>
                         <div>
                             <h4 class="text-xl font-bold text-slate-900 mb-2">Printable Factory</h4>
-                            <p class="text-slate-500 font-light leading-relaxed">Générez des cahiers de révision personnalisés (PDF) sur les thèmes préférés de votre génieux.</p>
+                            <p class="text-slate-500 font-light leading-relaxed">Générez des cahiers de révision personnalisés sur les thèmes préférés de votre génieux.</p>
                         </div>
                     </div>
                     
@@ -277,8 +277,18 @@ include_once __DIR__ . '/includes/header.php';
                             <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v9.375c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.035 0 1.875.84 1.875 1.875v4.875c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 18v-4.875z"/></svg>
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold text-slate-900 mb-2">Diagnostic IA Élite</h4>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Moteur de Diagnostic Élite</h4>
                             <p class="text-slate-500 font-light leading-relaxed">Identifiez les forces et points d'appui de votre enfant grâce à notre moteur d'analyse prédictive.</p>
+                        </div>
+                    </div>
+
+                    <div class="group flex gap-6">
+                        <div class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-amber-600 group-hover:text-white transition-colors duration-300">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21a9.004 9.004 0 008.716-6.747C19.716 13.565 18 12.115 18 9.75c0-3.314-2.686-6-6-6s-6 2.686-6 6c0 2.365-1.716 3.815-2.716 4.503A9.004 9.004 0 0012 21z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Ambition Mondiale</h4>
+                            <p class="text-slate-500 font-light leading-relaxed">Le meilleur du monde à portée de main. Méthodologies de Singapour pour les maths et standards Oxford pour les langues.</p>
                         </div>
                     </div>
                 </div>
@@ -297,7 +307,7 @@ include_once __DIR__ . '/includes/header.php';
                     <span class="text-[11px] font-black uppercase tracking-[0.2em] text-orange-600 bg-orange-50 px-5 py-2.5 rounded-full">Science de l'Excellence</span>
                     <h2 class="text-4xl md:text-6xl font-black text-slate-900 mt-8 mb-8 tracking-tight leading-[1.1]">La Méthode <br><span class="text-orange-600">FreeGeny.</span></h2>
                     <p class="text-slate-500 text-lg md:text-xl font-light leading-relaxed mb-10">
-                        Notre approche unique fusionne les dernières découvertes en <span class="font-bold text-slate-900">neurosciences</span> avec une <span class="font-bold text-slate-900">intelligence artificielle</span> de pointe, tout en plaçant l'intelligence émotionnelle au cœur de chaque apprentissage.
+                        Notre approche unique fusionne les dernières découvertes en <span class="font-bold text-slate-900">neurosciences</span> avec des <span class="font-bold text-slate-900">systèmes algorithmiques</span> de pointe, tout en plaçant l'intelligence émotionnelle au cœur de chaque apprentissage.
                     </p>
                     <div class="grid sm:grid-cols-2 gap-8 mb-12">
                         <div class="flex items-start gap-4">
