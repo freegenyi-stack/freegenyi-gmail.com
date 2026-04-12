@@ -102,11 +102,11 @@ require_once __DIR__ . '/../config/app.php';
 
                 <!-- Liens légaux -->
                 <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-center gap-4 flex-wrap">
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/terms" class="text-[9px] font-bold text-slate-300 hover:text-orange-600 uppercase tracking-widest transition-colors">Conditions d'utilisation</a>
-                    <span class="text-slate-200">·</span>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/privacy" class="text-[9px] font-bold text-slate-300 hover:text-orange-600 uppercase tracking-widest transition-colors">Politique de confidentialité</a>
-                    <span class="text-slate-200">·</span>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/cookies" class="text-[9px] font-bold text-slate-300 hover:text-orange-600 uppercase tracking-widest transition-colors">Cookies</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/terms" class="text-[9px] font-bold text-orange-500 hover:text-orange-700 uppercase tracking-widest transition-colors">Conditions d'utilisation</a>
+                    <span class="text-orange-300">·</span>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/privacy" class="text-[9px] font-bold text-orange-500 hover:text-orange-700 uppercase tracking-widest transition-colors">Politique de confidentialité</a>
+                    <span class="text-orange-300">·</span>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/cookies" class="text-[9px] font-bold text-orange-500 hover:text-orange-700 uppercase tracking-widest transition-colors">Cookies</a>
                 </div>
             </div>
         </div>
