@@ -261,6 +261,26 @@ include_once __DIR__ . '/includes/header.php';
                             <p class="text-slate-500 font-light leading-relaxed">Générez des cahiers de révision personnalisés (PDF) sur les thèmes préférés de votre génieux.</p>
                         </div>
                     </div>
+                    
+                    <div class="group flex gap-6">
+                        <div class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 3.375c0-1.036.84-1.875 1.875-1.875h.375a3.75 3.75 0 013.75 3.75v1.875C13.5 8.161 14.34 9 15.375 9h1.875A3.75 3.75 0 0121 12.75v3.375C21 17.16 20.16 18 19.125 18h-9.75A1.875 1.875 0 017.5 16.125V3.375z"/><path d="M15 5.25a5.23 5.23 0 00-1.279-3.434 9.768 9.768 0 016.963 6.963A5.23 5.23 0 0017.25 7.5h-1.875a.375.375 0 01-.375-.375V5.25z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Cahier de Liaison</h4>
+                            <p class="text-slate-500 font-light leading-relaxed">Le pont numérique entre vous et l'école. Communiquez en temps réel avec les enseignants pour un suivi harmonisé.</p>
+                        </div>
+                    </div>
+
+                    <div class="group flex gap-6">
+                        <div class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v9.375c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.035 0 1.875.84 1.875 1.875v4.875c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 18v-4.875z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Diagnostic IA Élite</h4>
+                            <p class="text-slate-500 font-light leading-relaxed">Identifiez les forces et points d'appui de votre enfant grâce à notre moteur d'analyse prédictive.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
