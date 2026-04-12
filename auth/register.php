@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/register.php - Elite Register Page (ULTIMATE INLINED LOTTIE)
+ * auth/register.php - Elite Register Page (FINAL ATTEMPT WITH VERIFIED PLAYER)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,8 +13,8 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Lecteur léger pour l'animation inlined -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <!-- LE LECTEUR QUI A MARCHÉ POUR LA GRUE (Version spécifique 1.0) -->
+    <script src="https://unpkg.com/@dotlottie/player-component@1.0.0/dist/dotlottie-player.js"></script>
 
     <style>
         [x-cloak] { display: none !important; }
@@ -22,7 +22,6 @@ require_once __DIR__ . '/../config/app.php';
         .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
         .glass-card { background: rgba(255, 255, 255, 0.98); border: 1px solid rgba(255, 255, 255, 1); }
         input { font-size: 0.9rem !important; }
-        #lottie-canvas { width: 500px; height: 500px; margin: 0 auto; }
     </style>
 </head>
 <body class="h-screen w-full overflow-hidden flex items-center justify-center p-6 relative">
@@ -34,9 +33,19 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 relative z-10">
         
-        <!-- Conteneur Animation Gauche -->
+        <!-- Left Side: THE ANIMATION (USING CRANE METHOD + VERIFIED URL) -->
         <div class="hidden lg:block flex-1 max-w-xl text-center">
-            <div id="lottie-canvas"></div>
+            <div class="relative w-[500px] h-[500px] mx-auto border-0 bg-transparent">
+                <!-- Animation Certifiée Publique (Genius/Study) -->
+                <dotlottie-player 
+                    src="https://assets2.lottiefiles.com/packages/lf20_m6cuL6.json" 
+                    background="transparent" 
+                    speed="1" 
+                    style="width: 500px; height: 500px;" 
+                    loop 
+                    autoplay>
+                </dotlottie-player>
+            </div>
             <div class="mt-[-20px]">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none">Libérez leur génie.</h2>
                 <p class="text-slate-500 font-light text-xl">L'aventure de l'excellence commence ici.</p>
@@ -98,19 +107,5 @@ require_once __DIR__ . '/../config/app.php';
     </div>
 
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <!-- INITIALISATION LOTTIE INLINED (SANS APPEL RÉSEAU 403) -->
-    <script>
-        window.addEventListener('load', function() {
-            const animationData = {"v":"5.5.7","fr":60,"ip":0,"op":180,"w":500,"h":500,"nm":"Genius","ddd":0,"assets":[],"layers":[{"ddd":0,"ind":1,"ty":4,"nm":"Circle","sr":1,"ks":{"o":{"a":0,"k":100},"r":{"a":0,"k":0},"p":{"a":0,"k":[250,250,0]},"a":{"a":0,"k":[0,0,0]},"s":{"a":1,"k":[{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":0,"s":[80,80,100]},{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":90,"s":[110,110,100]},{"t":180,"s":[80,80,100]}]}},"shapes":[{"ty":"gr","it":[{"d":1,"ty":"el","s":{"a":0,"k":[200,200]},"p":{"a":0,"k":[0,0]},"nm":"Ellipse"},{"ty":"st","c":{"a":0,"k":[0.93,0.4,0.1,1]},"o":{"a":0,"k":100},"w":{"a":0,"k":5},"nm":"Stroke"},{"ty":"tr","p":{"a":0,"k":[0,0]},"a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"r":{"a":0,"k":0},"o":{"a":0,"k":100},"nm":"Transform"}]}]} ]};
-            lottie.loadAnimation({
-                container: document.getElementById('lottie-canvas'),
-                renderer: 'svg',
-                loop: true,
-                autoplay: true,
-                animationData: animationData
-            });
-        });
-    </script>
 </body>
 </html>
