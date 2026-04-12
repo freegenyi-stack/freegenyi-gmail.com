@@ -10,6 +10,12 @@ $is_rtl = $is_rtl ?? false;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeGeny | Premium Education</title>
     
+    <!-- Polices premium -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png?v=4.0">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -21,210 +27,152 @@ $is_rtl = $is_rtl ?? false;
             }
         }
     </script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png?v=4.0">
-    
+
     <style>
         [x-cloak] { display: none !important; }
-        body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
-        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.05); }
+        body { 
+            font-family: 'DM Sans', sans-serif; 
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4, .font-title { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            font-weight: 600;
+        }
+        .font-caveat { font-family: 'Caveat', cursive; }
         
-        /* Dropdown Elevation */
-        .dropdown-shadow { box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); }
-        
-        /* FORCE ORANGE SCROLLBAR - BRUTE SPECIFICITY */
-        div.custom-scroll {
-            scrollbar-width: thin !important;
-            scrollbar-color: #ea580c transparent !important;
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
         }
-        div.custom-scroll::-webkit-scrollbar { 
-            width: 2px !important; 
-            display: block !important;
+        .nav-link { 
+            position: relative; 
+            transition: color 0.2s; 
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
         }
-        div.custom-scroll::-webkit-scrollbar-track { 
-            background: transparent !important; 
+        .nav-link::after { 
+            content: ''; 
+            position: absolute; 
+            width: 0; 
+            height: 2px; 
+            bottom: -4px; 
+            left: 0; 
+            background-color: #ea580c; 
+            transition: width 0.3s; 
         }
-        div.custom-scroll::-webkit-scrollbar-thumb { 
-            background-color: #ea580c !important; 
-            border-radius: 50px !important;
-            border: none !important;
-        }
-        div.custom-scroll::-webkit-scrollbar-thumb:hover { 
-            background-color: #c2410c !important; 
-        }
-
-        .nav-link { position: relative; transition: color 0.3s; }
-        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #ea580c; transition: width 0.3s; }
         .nav-link:hover::after { width: 100%; }
+
+        /* Custom Scrollbar */
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
 </head>
 <body class="bg-white text-slate-900" x-data="{ mobileMenuOpen: false }">
 
-    <nav class="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-[100] h-24 flex items-center">
-        <div class="max-w-7xl mx-auto px-12 flex justify-between items-center w-full">
-            
-            <div class="flex items-center space-x-8 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
+    <!-- ========== HEADER (Glass Edition) ========== -->
+    <nav class="glass-nav fixed top-0 w-full z-[120] h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center w-full">
+            <div class="flex items-center gap-6">
                 <?php $home_slug = strtoupper($_COOKIE['freegeny_home'] ?? 'DZ') . '-' . $lang; ?>
-                <a href="/<?php echo $home_slug; ?>/" class="transition hover:scale-105 transform">
-                    <img src="<?php echo APP_URL; ?>/assets/img/logo.png?v=4.0" class="h-10 md:h-12 w-auto" alt="Logo">
+                <a href="/<?php echo $home_slug; ?>/" class="transition hover:scale-105">
+                    <span class="text-2xl font-black text-slate-900 tracking-tighter uppercase" style="font-family: 'Plus Jakarta Sans', sans-serif;">FreeGeny</span>
                 </a>
-
-                <div class="hidden md:block relative" x-data="{ open: false }">
-                    <button @click="open = !open" 
-                            class="flex items-center space-x-3 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?> bg-slate-50 border border-slate-100 px-4 py-2 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-orange-500/5 transition-all duration-300 group">
-                        <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" class="w-7 h-auto rounded-sm transition-transform">
-                        <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-tighter"><?php echo $country; ?></span>
-                        <svg class="w-4 h-4 text-slate-300 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"></path></svg>
-                    </button>
-
-                    <div x-show="open" @click.away="open = false" x-cloak 
-                         id="force-refresh-scroll"
-                         class="absolute mt-5 w-80 glass-card rounded-[2.5rem] shadow-2xl z-[150] p-6 origin-top overflow-y-auto max-h-[70vh] custom-scroll"
-                         x-transition:enter="transition ease-out duration-200 transform"
-                         x-transition:enter-start="opacity-0 -translate-y-4 scale-95">
-                        
-                        <div class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 px-2"><?php echo __('select_region', 'Global Access'); ?></div>
-                        <div class="grid grid-cols-1 gap-1">
-                            <?php foreach ($supported_regions as $code => $info): 
-                                $is_selected = ($country === $code);
-                            ?>
-                                <div class="p-0.5">
-                                    <div class="flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-200 <?php echo $is_selected ? 'bg-orange-50 border border-orange-100 shadow-sm' : 'bg-slate-50/50 hover:bg-white hover:shadow-md'; ?>">
-                                        <div class="flex items-center space-x-3 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
-                                            <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-5 h-auto rounded-sm">
-                                            <span class="font-bold text-sm <?php echo $is_selected ? 'text-orange-600' : 'text-slate-700'; ?> transition-colors"><?php echo $info['name']; ?></span>
-                                        </div>
-                                        <div class="flex space-x-1 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
-                                            <?php foreach ($info['langs'] as $l): ?>
-                                                <a href="/<?php echo $code . '-' . $l; ?>/" 
-                                                   class="px-2 py-1 text-[10px] font-black rounded-lg transition <?php echo ($country==$code && $lang==$l) ? 'bg-orange-600 text-white' : 'bg-white text-slate-400 hover:text-orange-600 hover:shadow-sm'; ?>">
-                                                    <?php echo strtoupper($l); ?>
-                                                </a>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hidden lg:flex items-center space-x-10 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="nav-link text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-orange-600 transition-all">Notre Approche</a>
                 
-                <div class="relative group" x-data="{ ecosystemOpen: false }" @mouseenter="ecosystemOpen = true" @mouseleave="ecosystemOpen = false">
-                    <button class="nav-link text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-orange-600 transition-all flex items-center">
-                        L'Écosystème
-                        <svg class="ml-2 w-3 h-3 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"/></svg>
+                <!-- Sélecteur de pays -->
+                <div class="hidden md:block relative" x-data="{ open: false }">
+                    <button @click="open = !open" class="flex items-center gap-2 bg-white/60 border border-slate-200 px-3 py-1.5 rounded-xl hover:bg-white transition text-[10px] font-bold text-slate-600 uppercase">
+                        <img src="https://flagcdn.com/w40/<?php echo strtolower($country); ?>.png" class="w-5 h-auto rounded-sm">
+                        <?php echo $country; ?>
+                        <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"/></svg>
                     </button>
-                    <div x-show="ecosystemOpen" x-cloak x-transition class="absolute top-full -left-4 pt-4 w-64 z-50">
-                        <div class="bg-white rounded-[2rem] shadow-2xl border border-slate-50 p-6 space-y-4">
-                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block group">
-                                <span class="block text-[11px] font-black text-slate-900 group-hover:text-orange-600 transition-colors uppercase tracking-tight">Espace Parents</span>
-                                <span class="block text-[9px] text-slate-400 uppercase tracking-widest font-bold">Le cockpit de pilotage</span>
-                            </a>
-                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block group">
-                                <span class="block text-[11px] font-black text-slate-900 group-hover:text-orange-600 transition-colors uppercase tracking-tight">Pour les Écoles</span>
-                                <span class="block text-[9px] text-slate-400 uppercase tracking-widest font-bold">Digitalisez vos supports</span>
-                            </a>
-                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block group">
-                                <span class="block text-[11px] font-black text-slate-900 group-hover:text-orange-600 transition-colors uppercase tracking-tight">Partenaires ONG</span>
-                                <span class="block text-[9px] text-slate-400 uppercase tracking-widest font-bold">Impact & Transparence</span>
-                            </a>
-                        </div>
+                    <div x-show="open" @click.away="open = false" x-cloak x-transition class="absolute mt-2 w-72 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100 p-4 z-[150] max-h-[60vh] overflow-y-auto custom-scroll">
+                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3 px-2">Région</p>
+                        <?php foreach ($supported_regions as $code => $info): ?>
+                            <div class="flex items-center justify-between p-2 hover:bg-slate-50 rounded-xl transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://flagcdn.com/w20/<?php echo strtolower($code); ?>.png" class="w-4 h-auto">
+                                    <span class="text-xs font-bold text-slate-700"><?php echo $info['name']; ?></span>
+                                </div>
+                                <div class="flex gap-1">
+                                    <?php foreach ($info['langs'] as $l): ?>
+                                        <a href="/<?php echo $code . '-' . $l; ?>/" class="px-2 py-1 text-[9px] font-black rounded-md <?php echo ($country==$code && $lang==$l) ? 'bg-orange-600 text-white' : 'bg-slate-100 text-slate-400 hover:text-orange-600'; ?>">
+                                            <?php echo strtoupper($l); ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="nav-link text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-orange-600 transition-all">Science & Clinique</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="nav-link text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-orange-600 transition-all">Boutique</a>
             </div>
 
-            <div class="flex items-center space-x-6 <?php echo $is_rtl ? 'space-x-reverse' : ''; ?>">
-                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
-                    <!-- USER MENU (Geist Style) -->
-                    <div class="relative" x-data="{ userOpen: false }">
-                        <button @click="userOpen = !userOpen" @click.away="userOpen = false" 
-                                class="flex items-center space-x-3 bg-white border border-slate-200 p-1.5 pr-4 rounded-xl hover:border-slate-950 transition-all group">
-                            <div class="w-9 h-9 rounded-lg bg-slate-950 flex items-center justify-center text-[11px] font-bold text-white shadow-sm overflow-hidden border border-white">
+            <!-- Navigation Desktop -->
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Approche</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Parents</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Écoles</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Science</a>
+            </div>
+
+            <!-- Avatar / Auth -->
+            <div class="flex items-center gap-4">
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): 
+                    $user_initials = strtoupper(substr($_SESSION['user_name'] ?? 'U', 0, 1));
+                ?>
+                    <div class="relative" x-data="{ userMenuOpen: false }">
+                        <button @click="userMenuOpen = !userMenuOpen" class="flex items-center gap-2 focus:outline-none group">
+                            <div class="w-9 h-9 rounded-full bg-slate-900 flex items-center justify-center text-white font-bold text-[11px] border-2 border-white shadow-sm overflow-hidden group-hover:scale-105 transition-transform">
                                 <?php if (isset($_SESSION['user_avatar']) && $_SESSION['user_avatar']): ?>
                                     <img src="<?php echo $_SESSION['user_avatar']; ?>" class="w-full h-full object-cover">
                                 <?php else: ?>
-                                    <?php echo strtoupper(substr($_SESSION['user_name'] ?? 'U', 0, 1)); ?>
+                                    <?php echo $user_initials; ?>
                                 <?php endif; ?>
                             </div>
-                            <span class="text-sm font-semibold text-slate-950 tracking-tight font-next hidden sm:block leading-none">
-                                <?php echo explode(' ', $_SESSION['user_name'] ?? 'Compte')[0]; ?>
-                            </span>
-                            <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-300" :class="userOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M19 9l-7 7-7-7"></path></svg>
+                            <svg class="w-4 h-4 text-slate-400 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"/></svg>
                         </button>
-
-                        <!-- Dropdown Menu -->
-                        <div x-show="userOpen" x-cloak 
-                             x-transition:enter="transition ease-out duration-100 transform"
-                             x-transition:enter-start="opacity-0 translate-y-2 scale-95"
-                             class="absolute right-0 mt-3 w-56 bg-white rounded-xl border border-slate-100 dropdown-shadow z-[200] overflow-hidden p-1.5">
-                             
-                             <div class="px-4 py-3 border-b border-slate-50 mb-1">
-                                <p class="text-[11px] font-medium text-slate-400 mb-0.5">Compte vérifié</p>
-                                <p class="text-sm font-bold text-slate-950 truncate"><?php echo $_SESSION['user_name'] ?? 'Utilisateur'; ?></p>
-                             </div>
-
-                             <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-slate-50 transition-all group">
-                                <svg class="w-4 h-4 text-slate-400 group-hover:text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-                                <span class="text-sm font-medium text-slate-700 font-next transition-colors">Tableau de bord</span>
-                             </a>
-
-                             <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-slate-50 transition-all group relative">
-                                <svg class="w-4 h-4 text-slate-400 group-hover:text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                                <span class="text-sm font-medium text-slate-700 font-next transition-colors">Notifications</span>
-                                <span class="absolute right-4 w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-                             </a>
-
-                             <div class="mt-1 border-t border-slate-50 pt-1">
-                                 <a href="/api/auth/logout.php" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-red-50 transition-all group">
-                                    <svg class="w-4 h-4 text-red-400 group-hover:text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-                                    <span class="text-sm font-medium text-red-600 font-next">Se déconnecter</span>
-                                 </a>
-                             </div>
+                        <div x-show="userMenuOpen" @click.away="userMenuOpen = false" x-cloak x-transition class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 z-50 overflow-hidden">
+                            <div class="px-5 py-3 border-b border-slate-50 mb-1">
+                                <p class="text-[9px] font-black uppercase text-slate-400 tracking-widest">Connecté</p>
+                                <p class="text-xs font-bold text-slate-900 truncate"><?php echo htmlspecialchars($_SESSION['user_name']); ?></p>
+                            </div>
+                            <a href="/dashboard/parent.php" class="block px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all font-sans">Tableau de bord</a>
+                            <a href="/api/auth/logout.php" class="block px-5 py-3 text-xs font-bold text-red-600 hover:bg-red-50 transition-all font-sans">Déconnexion</a>
                         </div>
                     </div>
                 <?php else: ?>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden sm:block text-[13px] font-extrabold text-slate-900 uppercase tracking-widest hover:text-orange-600 transition">
-                        <?php echo __('login'); ?>
-                    </a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="bg-orange-600 text-white px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-orange-100 hover:bg-orange-700 hover:shadow-2xl hover:-translate-y-0.5 transition transform duration-300">
-                        <?php echo __('register'); ?>
-                    </a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden sm:block text-[11px] font-black uppercase text-slate-900 tracking-widest hover:text-orange-600 transition p-2">Connexion</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="bg-slate-900 text-white px-7 py-3 rounded-xl font-bold text-[11px] uppercase tracking-widest shadow-xl shadow-slate-100 hover:bg-orange-600 transition transform duration-300">Rejoindre</a>
                 <?php endif; ?>
                 
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-3 bg-slate-50 text-slate-600 rounded-2xl border border-slate-100">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-3 bg-white border border-slate-200 text-slate-600 rounded-xl">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-width="2.5"></path></svg>
                 </button>
             </div>
         </div>
 
-        <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 z-[200] lg:hidden">
-            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md" @click="mobileMenuOpen = false"></div>
-            <div class="absolute <?php echo $is_rtl ? 'left-0' : 'right-0'; ?> top-0 bottom-0 w-80 bg-white p-10 shadow-2xl overflow-y-auto"
-                 x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="<?php echo $is_rtl ? '-translate-x-full' : 'translate-x-full'; ?>" x-transition:enter-end="translate-x-0">
-                <div class="flex justify-between items-center mb-12">
-                    <img src="<?php echo APP_URL; ?>/assets/img/logo.png" class="h-10 w-auto">
+        <!-- Menu Mobile -->
+        <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 z-[200] lg:hidden" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+            <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-md" @click="mobileMenuOpen = false"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-80 bg-white p-10 shadow-2xl flex flex-col" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
+                <div class="flex justify-between items-center mb-16">
+                    <span class="text-xl font-black text-slate-900 tracking-tighter uppercase font-title">FreeGeny</span>
                     <button @click="mobileMenuOpen = false" class="p-2 bg-slate-100 rounded-xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2.5"></path></svg></button>
                 </div>
-                <div class="flex flex-col space-y-8">
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="text-2xl font-black text-slate-900"><?php echo __('about'); ?></a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/goals" class="text-2xl font-black text-slate-900"><?php echo __('goals'); ?></a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="text-2xl font-black text-slate-900"><?php echo __('parents'); ?></a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="text-2xl font-black text-slate-900"><?php echo __('schools'); ?></a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="text-2xl font-black text-slate-900"><?php echo __('ngos'); ?></a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="text-2xl font-black text-slate-900"><?php echo __('shop'); ?></a>
+                <div class="flex flex-col gap-8">
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Approche</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Parents</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Écoles</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Science</a>
                     <hr class="border-slate-100">
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="text-2xl font-black text-orange-600"><?php echo __('login'); ?></a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="text-2xl font-black text-orange-600 font-title">Connexion</a>
+                </div>
+                <div class="mt-auto">
+                    <p class="font-caveat text-lg text-slate-400">free the genius on your child</p>
                 </div>
             </div>
         </div>
     </nav>
+    <div class="h-20"></div>

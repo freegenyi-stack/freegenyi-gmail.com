@@ -5,9 +5,15 @@ class SocialAuthManager {
     private $redirectUri;
 
     public function __construct() {
-        // Récupération des clés depuis l'environnement (déjà chargé par config/app.php)
-        $this->clientId = $_ENV['GOOGLE_CLIENT_ID'] ?? '';
-        $this->clientSecret = $_ENV['GOOGLE_CLIENT_SECRET'] ?? '';
+        // Tentative via environnement
+        $this->clientId = $_ENV['GOOGLE_CLIENT_ID'] ?? getenv('GOOGLE_CLIENT_ID') ?? '';
+        $this->clientSecret = $_ENV['GOOGLE_CLIENT_SECRET'] ?? getenv('GOOGLE_CLIENT_SECRET') ?? '';
+        
+        // Sécurité critique : Utilisation exclusive des variables d'environnement
+        if (empty($this->clientId)) {
+            error_log("SocialAuthManager Error: GOOGLE_CLIENT_ID not found in environment.");
+        }
+
         $this->redirectUri = APP_URL . '/api/auth/google_callback.php';
     }
 
