@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/register.php - Elite Register Page (Lottie Fix Edition)
+ * auth/register.php - Elite Register Page (Lottie Compatibility Edition)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -14,8 +14,8 @@ require_once __DIR__ . '/../config/app.php';
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
-    <!-- Nouveau Lecteur DotLottie (Plus stable) -->
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <!-- Lecteur Lottie Ultra-Compatible (Cloudflare Stable) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-player/2.0.4/lottie-player.js"></script>
     
     <style>
         [x-cloak] { display: none !important; }
@@ -38,19 +38,17 @@ require_once __DIR__ . '/../config/app.php';
         
         <!-- Conteneur Animation Gauche -->
         <div class="hidden lg:block flex-1 max-w-xl text-center">
-            <!-- Utilisation d'une animation alternative stable -->
-            <dotlottie-player 
-                src="https://lottie.host/7905a5a9-455c-4e8c-8594-e0eb29977598/EBy6FCHM4m.json" 
+            <!-- Animation Rocket (Éducation/Décollage) Ultra-Stable -->
+            <lottie-player 
+                src="https://assets2.lottiefiles.com/packages/lf20_m6cuL6.json" 
                 background="transparent" 
                 speed="1" 
                 style="width: 500px; height: 500px;" 
-                direction="1" 
-                playMode="normal" 
                 loop 
                 autoplay
                 class="mx-auto">
-            </dotlottie-player>
-            <div class="mt-[-20px]">
+            </lottie-player>
+            <div class="mt-[-40px]">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2">Libérez leur génie.</h2>
                 <p class="text-slate-500 font-light text-xl">Rejoignez l'élite éducative dès aujourd'hui.</p>
             </div>
