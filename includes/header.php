@@ -111,6 +111,7 @@ $is_rtl = $is_rtl ?? false;
 
             <!-- Navigation Desktop -->
             <div class="hidden lg:flex items-center gap-8">
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">À propos</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Approche</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Parents</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="nav-link text-[11px] font-black uppercase tracking-wider text-slate-600 hover:text-orange-600">Écoles</a>
@@ -164,6 +165,7 @@ $is_rtl = $is_rtl ?? false;
                     <button @click="mobileMenuOpen = false" class="p-2 bg-slate-100 rounded-xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2.5"></path></svg></button>
                 </div>
                 <div class="flex flex-col gap-8">
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">À propos</a>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Approche</a>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Parents</a>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Écoles</a>
