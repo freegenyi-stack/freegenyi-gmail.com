@@ -1,6 +1,6 @@
 <?php
 /**
- * auth/register.php - Elite Register Page (FINAL ATTEMPT WITH VERIFIED PLAYER)
+ * auth/register.php - Elite Register Page (DATA-URI LOTTIE)
  */
 require_once __DIR__ . '/../config/app.php';
 ?>
@@ -13,8 +13,8 @@ require_once __DIR__ . '/../config/app.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- LE LECTEUR QUI A MARCHÉ POUR LA GRUE (Version spécifique 1.0) -->
-    <script src="https://unpkg.com/@dotlottie/player-component@1.0.0/dist/dotlottie-player.js"></script>
+    <!-- Lecteur Lottie Standard -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <style>
         [x-cloak] { display: none !important; }
@@ -33,18 +33,18 @@ require_once __DIR__ . '/../config/app.php';
 
     <div class="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 relative z-10">
         
-        <!-- Left Side: THE ANIMATION (USING CRANE METHOD + VERIFIED URL) -->
+        <!-- Conteneur Animation Gauche -->
         <div class="hidden lg:block flex-1 max-w-xl text-center">
-            <div class="relative w-[500px] h-[500px] mx-auto border-0 bg-transparent">
-                <!-- Animation Certifiée Publique (Genius/Study) -->
-                <dotlottie-player 
-                    src="https://assets2.lottiefiles.com/packages/lf20_m6cuL6.json" 
+            <div class="relative w-[500px] h-[500px] mx-auto">
+                <!-- ANIMATION ENCODÉE (DATA URI) : AUCUN APPEL RÉSEAU POSSIBLE -->
+                <lottie-player 
+                    src='data:application/json;base64,eyJ2IjoiNS41LjciLCJmciI6NjAsImlwIjowLCJvcCI6MTgwLCJ3Ijo1MDAsImgiOjUwMCwib m0iOiJFbGl0ZSBQdWxzZSIsImRkZCI6MCwiYXNzZXRzIjpbXSwibGF5ZXJzIjpbeyJkZG QiOjAsImluZCI6MSwidHkiOjQsIm5tIjoiQ2lyY2xlIiwic3IiOjEsImtzIjp7Im8iOnsi YSI6MCwibSI6MTAwfSwiciI6eyJhIjowLCJrIjowfSwicCI6eyJhIjowLCJrIjpbMjUwLD I1MCwwXX0sImEiOnsiYSI6MCwibSI6WzAsMCwwXX0sInMiOnsiYSI6MSwibSI6W3siaI ieIjpbMC42NjcsMC42NjcsMC42NjcsMC42NjddLCJ5IjpbMSwxLDEsMV19LCJvIjp7Ing iOlswLjMzMywwLjMzMywwLjMzMywwLjMzM10sInkiOlswLDAsMCwwXX0sInQiOjAsInMi Ols4MCw4MCwxMDBdfSx7InQiOjkwLCJzIjpbMTQwLDE0MCwxMDBdfSx7InQiOjE4MCwic yI6WzgwLDgwLDEwMF19XX19LCJzaGFwZXMiOlt7InR5IjoiZ3IiLCJpdCI6W3siZCI6MS widHkiOiJlbCIsInMiOnsiYSI6MCwibSI6WzMwMCwzMDBdfSwicCI6eyJhIjowLCJrIjp bMCwwXX0sIm5tIjoiQm9keSJ9LHsidHkiOiJmbCIsImMiOnsiYSI6MCwibSI6WzAuOTMs MC40LDAuMSwxXX0sIm8iOnsiYSI6MCwibSI6MTAwfSwibm0iOiJGaWxsIn0seyJ0eSI6I nRyIiwicCI6eyJhIjowLCJrIjpbMCwwXX0sImEiOnsiYSI6MCwibSI6WzAsMF19LCJzIj p7ImFfIjowLCJrIjpbMTAwLDEwMF19LCJyIjp7ImEiOjAsInZhbHVlIjp0cnVlfSwibyI OnsiYSI6MCwibSI6MTBwfSwibm0iOiJUcmFuc2Zvcm0ifV0sIm5tIjoiR3JvdXAiLCJu cCI6Mn1dfV19' 
                     background="transparent" 
                     speed="1" 
                     style="width: 500px; height: 500px;" 
                     loop 
                     autoplay>
-                </dotlottie-player>
+                </lottie-player>
             </div>
             <div class="mt-[-20px]">
                 <h2 class="text-4xl font-black text-slate-900 font-title tracking-tight mb-2 leading-none">Libérez leur génie.</h2>
