@@ -60,7 +60,7 @@ loginUser($user);
 DB::execute("UPDATE users SET last_login_at = NOW() WHERE id = ?", [$user['id']]);
 session_regenerate_id(true);
 
-// ─── 7. REDIRECTION DASHBOARD ────────────────────────────────────────────────
+// ─── 7. REDIRECTION DASHBOARD / ONBOARDING ──────────────────────────────────────
 $user_country = strtoupper($user['declared_country'] ?? $country);
-header("Location: /{$user_country}-{$lang_code}/dashboard/parent?welcome=1");
+header("Location: /{$user_country}-{$lang_code}/dashboard/add_child?welcome=1");
 exit;

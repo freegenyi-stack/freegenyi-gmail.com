@@ -19,7 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$full_name = trim($_POST['full_name'] ?? '');
+$first_name = trim($_POST['first_name'] ?? '');
+$last_name  = trim($_POST['last_name'] ?? '');
+$full_name  = trim($first_name . ' ' . $last_name);
 $email     = strtolower(trim($_POST['email'] ?? ''));
 $password  = $_POST['password'] ?? '';
 $phone     = trim($_POST['phone'] ?? '');
@@ -32,8 +34,8 @@ $base_url  = "/{$country}-{$lang_code}";
 // ─── 1. VALIDATION ────────────────────────────────────────────────────────────
 $errors = [];
 
-if (mb_strlen($full_name) < 2) {
-    $errors[] = 'Le nom complet est requis (minimum 2 caractères).';
+if (empty($first_name) || empty($last_name)) {
+    $errors[] = 'Le prénom et le nom sont requis.';
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

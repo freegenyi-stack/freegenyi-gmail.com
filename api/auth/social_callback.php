@@ -124,23 +124,29 @@ if ($provider === 'google') {
 if ($email && $full_name) {
     // On vérifie si l'utilisateur existe déjà
     $user = DB::fetchOne("SELECT * FROM users WHERE email = ? LIMIT 1", [$email]);
+    
+    $country_code = strtoupper($_SESSION['country_code'] ?? 'DZ');
+    $lang_code = strtolower($_SESSION['lang'] ?? 'fr');
+    $is_new = false;
 
     if ($user) {
         // Mise à jour date connexion
         DB::execute("UPDATE users SET last_login_at = NOW(), login_attempts = 0 WHERE id = ?", [$user['id']]);
     } else {
-        // Création du compte via Social Login (Mot de passe vide robuste)
+        $is_new = true;
+        // Création du compte via Social Login
         $random_password = bin2hex(random_bytes(16)); // Sécurité
         $hash = password_hash($random_password, PASSWORD_BCRYPT, ['cost' => BCRYPT_COST]);
         $detected_country = $_SESSION['home_country'] ?? 'DZ';
+        $role = $_SESSION['pending_role'] ?? 'parent';
 
         $user_id = DB::insert(
-            "INSERT INTO users (email, password_hash, full_name, declared_country, email_verified, oauth_provider, last_login_at) VALUES (?, ?, ?, ?, 1, 'Google', NOW())",
-            [$email, $hash, $full_name, $detected_country]
+            "INSERT INTO users (email, password_hash, full_name, declared_country, role, email_verified, oauth_provider, last_login_at) VALUES (?, ?, ?, ?, ?, 1, 'Google', NOW())",
+            [$email, $hash, $full_name, $detected_country, $role]
         );
 
         if (!$user_id) {
-            header('Location: /auth/login?error=account_creation_failed');
+            header("Location: /{$country_code}-{$lang_code}/auth/login?error=account_creation_failed");
             exit;
         }
         
@@ -152,11 +158,16 @@ if ($email && $full_name) {
 
     // Connecter l'utilisateur
     loginUser($user);
+    session_regenerate_id(true);
 
-    // Rediriger vers le dashboard
-    header("Location: /" . strtoupper($_SESSION['country_code'] ?? 'DZ') . "-" . ($_SESSION['lang'] ?? 'fr') . "/dashboard/parent");
+    // Rediriger
+    if ($is_new) {
+        header("Location: /{$country_code}-{$lang_code}/dashboard/add_child?welcome=google");
+    } else {
+        header("Location: /{$country_code}-{$lang_code}/dashboard/parent");
+    }
     exit;
 }
 
-header('Location: /auth/login?error=unknown_error');
+header("Location: /auth/login?error=unknown_error");
 exit;

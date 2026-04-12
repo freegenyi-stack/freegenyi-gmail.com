@@ -90,7 +90,7 @@ require_once __DIR__ . '/../config/app.php';
                     <div>
                         <div class="flex justify-between mb-1 px-1">
                             <label class="text-[11px] font-black uppercase tracking-wider text-slate-700">Mot de passe</label>
-                            <a href="/forgot-password" class="text-[9px] font-bold text-slate-400 hover:text-orange-600 uppercase tracking-widest">Oublié ?</a>
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/forgot-password" class="text-[9px] font-bold text-slate-400 hover:text-orange-600 uppercase tracking-widest">Oublié ?</a>
                         </div>
                         <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-4 py-3 rounded-xl outline-none transition-all font-semibold text-slate-950">
                     </div>

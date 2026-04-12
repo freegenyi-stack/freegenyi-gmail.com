@@ -91,9 +91,13 @@ require_once __DIR__ . '/../config/app.php';
                 <form action="/api/auth/register.php" method="POST" class="space-y-2">
                     <input type="hidden" name="role" :value="role">
                     <div class="grid grid-cols-2 gap-3">
-                        <div class="col-span-2">
-                            <label class="block text-[11px] font-black uppercase tracking-wider text-slate-700 mb-1 px-1">Nom Complet</label>
-                            <input type="text" name="full_name" required placeholder="Ex: Jean Martin" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-4 py-3 rounded-xl outline-none transition-all font-semibold text-slate-950">
+                        <div class="col-span-1">
+                            <label class="block text-[11px] font-black uppercase tracking-wider text-slate-700 mb-1 px-1">Prénom</label>
+                            <input type="text" name="first_name" required placeholder="Ex: Jean" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-4 py-3 rounded-xl outline-none transition-all font-semibold text-slate-950">
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-[11px] font-black uppercase tracking-wider text-slate-700 mb-1 px-1">Nom</label>
+                            <input type="text" name="last_name" required placeholder="Ex: Martin" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-4 py-3 rounded-xl outline-none transition-all font-semibold text-slate-950">
                         </div>
                         <div>
                             <label class="block text-[11px] font-black uppercase tracking-wider text-slate-700 mb-1 px-1">E-mail</label>
