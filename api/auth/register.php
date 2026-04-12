@@ -1,16 +1,102 @@
 <?php
-session_start();
+/**
+ * api/auth/register.php — Logique d'inscription PROFESSIONNELLE
+ * ✅ Validation côté serveur
+ * ✅ Hash bcrypt
+ * ✅ Token vérification email (expire dans 24h)
+ * ✅ Email de confirmation envoyé
+ * ✅ Anti-doublons
+ */
+require_once __DIR__ . '/../../config/app.php';
+require_once __DIR__ . '/auth_helpers.php';
+require_once __DIR__ . '/../../includes/MailManager.php';
 
-// Simulation d'inscription réussie
-$full_name = $_POST['full_name'] ?? 'Nouveau Parent';
-$role = $_POST['role'] ?? 'parent';
+initSession();
 
-$_SESSION['logged_in'] = true;
-$_SESSION['user_id'] = rand(100, 999);
-$_SESSION['user_name'] = $full_name;
-$_SESSION['user_role'] = $role;
+// Sécurité : POST uniquement
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: /auth/register');
+    exit;
+}
 
-// On dirige vers le magic wizard d'ajout d'enfant
-header('Location: /dashboard/add_child.php');
+$full_name = trim($_POST['full_name'] ?? '');
+$email     = strtolower(trim($_POST['email'] ?? ''));
+$password  = $_POST['password'] ?? '';
+$phone     = trim($_POST['phone'] ?? '');
+$role      = in_array($_POST['role'] ?? '', ['parent', 'school', 'ngo']) ? $_POST['role'] : 'parent';
+$country   = strtoupper($country ?? 'DZ');
+$lang_code = $lang ?? 'fr';
+
+$base_url  = "/{$country}-{$lang_code}";
+
+// ─── 1. VALIDATION ────────────────────────────────────────────────────────────
+$errors = [];
+
+if (mb_strlen($full_name) < 2) {
+    $errors[] = 'Le nom complet est requis (minimum 2 caractères).';
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = 'Adresse email invalide.';
+}
+
+if (mb_strlen($password) < 8) {
+    $errors[] = 'Le mot de passe doit contenir au moins 8 caractères.';
+}
+
+if (!preg_match('/[A-Z]/', $password) || !preg_match('/[0-9]/', $password)) {
+    $errors[] = 'Le mot de passe doit contenir au moins une majuscule et un chiffre.';
+}
+
+if (!empty($errors)) {
+    $errorStr = urlencode(implode('|', $errors));
+    header("Location: {$base_url}/auth/register?error=" . $errorStr);
+    exit;
+}
+
+// ─── 2. VÉRIFICATION DOUBLON ──────────────────────────────────────────────────
+$existing = DB::fetchOne("SELECT id FROM users WHERE email = ? LIMIT 1", [$email]);
+if ($existing) {
+    header("Location: {$base_url}/auth/register?error=" . urlencode('Cette adresse email est déjà utilisée.'));
+    exit;
+}
+
+// ─── 3. CRÉATION DU COMPTE ───────────────────────────────────────────────────
+$password_hash        = password_hash($password, PASSWORD_BCRYPT, ['cost' => BCRYPT_COST]);
+$verification_token   = bin2hex(random_bytes(32));
+$token_expires_at     = date('Y-m-d H:i:s', strtotime('+24 hours'));
+
+// Ajouter la colonne d'expiration si elle n'existe pas (migration douce)
+$col = DB::fetchOne("SHOW COLUMNS FROM users LIKE 'verification_token_expires_at'");
+if (!$col) {
+    DB::execute("ALTER TABLE users ADD verification_token_expires_at DATETIME NULL AFTER verification_token");
+}
+
+// Ajouter la colonne role si elle n'existe pas
+$colRole = DB::fetchOne("SHOW COLUMNS FROM users LIKE 'role'");
+if (!$colRole) {
+    DB::execute("ALTER TABLE users ADD role VARCHAR(20) DEFAULT 'parent' AFTER email_verified");
+}
+
+$user_id = DB::insert(
+    "INSERT INTO users (email, password_hash, full_name, phone, role, declared_country, email_verified, verification_token, verification_token_expires_at, created_at)
+     VALUES (?, ?, ?, ?, ?, ?, 0, ?, ?, NOW())",
+    [$email, $password_hash, $full_name, $phone ?: null, $role, $country, $verification_token, $token_expires_at]
+);
+
+if (!$user_id) {
+    header("Location: {$base_url}/auth/register?error=" . urlencode('Erreur lors de la création du compte. Réessayez.'));
+    exit;
+}
+
+// ─── 4. ENVOI EMAIL VÉRIFICATION ─────────────────────────────────────────────
+MailManager::sendVerification($email, $full_name, $verification_token);
+
+// ─── 5. SESSION TEMPORAIRE (pendant la vérification) ─────────────────────────
+$_SESSION['pending_email']   = $email;
+$_SESSION['pending_name']    = $full_name;
+$_SESSION['pending_role']    = $role;
+
+// Redirection vers la page "Vérifiez votre boîte mail"
+header("Location: {$base_url}/auth/verify-pending");
 exit;
-?>
