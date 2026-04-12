@@ -129,7 +129,7 @@ $is_rtl = $is_rtl ?? false;
                     $user_initials = $_SESSION['user_initials'] ?? mb_strtoupper(mb_substr($_SESSION['user_name'] ?? 'U', 0, 2));
                 ?>
                     <div class="relative" x-data="{ userMenuOpen: false }">
-                        <button @click="userMenuOpen = !userMenuOpen" class="flex items-center gap-2 focus:outline-none group">
+                        <button @click="userMenuOpen = !userMenuOpen" class="flex items-center gap-2 focus:outline-none group relative">
                             <div class="w-9 h-9 rounded-full bg-slate-900 flex items-center justify-center text-white font-bold text-[11px] border-2 border-white shadow-sm overflow-hidden group-hover:scale-105 transition-transform">
                                 <?php if (isset($_SESSION['user_avatar']) && $_SESSION['user_avatar']): ?>
                                     <img src="<?php echo $_SESSION['user_avatar']; ?>" class="w-full h-full object-cover">
@@ -137,6 +137,9 @@ $is_rtl = $is_rtl ?? false;
                                     <?php echo $user_initials; ?>
                                 <?php endif; ?>
                             </div>
+                            <?php if (isset($_SESSION['oauth_provider']) && $_SESSION['oauth_provider'] === 'Google' && empty($_SESSION['user_phone'])): ?>
+                                <span class="absolute top-0 right-3 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
+                            <?php endif; ?>
                             <svg class="w-4 h-4 text-slate-400 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"/></svg>
                         </button>
                         <div x-show="userMenuOpen" @click.away="userMenuOpen = false" x-cloak x-transition class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 z-50 overflow-hidden">
@@ -144,6 +147,11 @@ $is_rtl = $is_rtl ?? false;
                                 <p class="text-[9px] font-black uppercase text-slate-400 tracking-widest">Connecté</p>
                                 <p class="text-xs font-bold text-slate-900 truncate"><?php echo htmlspecialchars($_SESSION['user_name']); ?></p>
                             </div>
+                            <?php if (isset($_SESSION['oauth_provider']) && $_SESSION['oauth_provider'] === 'Google' && empty($_SESSION['user_phone'])): ?>
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/profile" class="block px-5 py-3 text-xs font-bold text-red-600 hover:bg-red-50 transition-all font-sans relative">
+                                Compléter profil <span class="absolute right-4 top-[14px] w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+                            </a>
+                            <?php endif; ?>
                             <a href="/dashboard/parent.php" class="block px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all font-sans">Tableau de bord</a>
                             <a href="/api/auth/logout.php" class="block px-5 py-3 text-xs font-bold text-red-600 hover:bg-red-50 transition-all font-sans">Déconnexion</a>
                         </div>

@@ -59,8 +59,10 @@ function loginUser($user) {
     $_SESSION['user_name'] = $user['full_name'];
     $_SESSION['user_email'] = $user['email'];
     $_SESSION['user_avatar'] = $user['profile_photo'] ?? '';
-    $_SESSION['is_parent'] = true;
+    $_SESSION['is_parent'] = true; // par défaut
     $_SESSION['user_initials'] = getInitials($user['full_name']);
+    $_SESSION['oauth_provider'] = $user['oauth_provider'] ?? null;
+    $_SESSION['user_phone'] = $user['phone'] ?? null;
 }
 
 function getInitials($name) {

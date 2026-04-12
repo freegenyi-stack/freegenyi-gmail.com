@@ -44,4 +44,16 @@ include_once __DIR__ . '/../includes/header.php';
         </div>
     </div>
 </main>
+<script>
+    setInterval(() => {
+        fetch('/api/auth/check_status.php')
+            .then(r => r.json())
+            .then(data => {
+                if (data.verified) {
+                    window.location.href = '/<?php echo $country; ?>-<?php echo $lang; ?>/?welcome=1';
+                }
+            })
+            .catch(e => console.error(e));
+    }, 2000); // Polling toutes les 2 secondes
+</script>
 <?php include_once __DIR__ . '/../includes/header.php'; ?>
