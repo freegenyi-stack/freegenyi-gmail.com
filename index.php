@@ -19,7 +19,7 @@ include_once __DIR__ . '/includes/header.php';
                     <span class="text-[11px] font-black uppercase tracking-wider text-orange-600">Le Pont de l’Excellence est ouvert</span>
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 leading-[1.05] tracking-tighter mb-8" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.05] tracking-tighter mb-8" style="font-family: 'Plus Jakarta Sans', sans-serif;">
                     Libérez le <span class="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">génie</span><br>
                     de votre enfant.
                 </h1>
@@ -41,22 +41,12 @@ include_once __DIR__ . '/includes/header.php';
                 </div>
             </div>
             
-            <!-- Illustration SVG sur mesure -->
+            <!-- Illustration Image (Elite Spirit) -->
             <div class="flex-1 relative w-full">
                 <div class="absolute -top-20 -right-20 w-80 h-80 bg-orange-200 rounded-full blur-[120px] opacity-40"></div>
                 <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-200 rounded-full blur-[120px] opacity-30"></div>
-                <div class="relative z-10 transition-transform duration-1000 hover:scale-105">
-                    <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-md mx-auto drop-shadow-2xl">
-                        <defs>
-                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ea580c"/><stop offset="100%" stop-color="#f97316"/></linearGradient>
-                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient>
-                        </defs>
-                        <circle cx="250" cy="250" r="200" fill="white" fill-opacity="0.5"/>
-                        <circle cx="250" cy="250" r="180" fill="url(#grad1)" fill-opacity="0.05"/>
-                        <path d="M250 100 L350 200 L300 200 L300 350 L200 350 L200 200 L150 200 L250 100Z" fill="url(#grad1)"/>
-                        <rect x="210" y="370" width="80" height="40" rx="12" fill="url(#grad2)"/>
-                        <circle cx="250" cy="390" r="10" fill="white"/>
-                    </svg>
+                <div class="relative z-10 transition-transform duration-1000 hover:scale-[1.02]">
+                    <img src="/assets/img/hero_elite.png" alt="FreeGeny Spirit" class="w-full max-w-xl mx-auto rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.15)] border-8 border-white ring-1 ring-slate-100">
                 </div>
             </div>
         </div>
