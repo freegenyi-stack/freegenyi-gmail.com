@@ -266,6 +266,47 @@ include_once __DIR__ . '/includes/header.php';
         </div>
     </div>
 </section>
+<!-- ========== SECTION SCIENCE (La Méthode) ========== -->
+<section class="py-24 md:py-32 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="bg-white rounded-[4rem] p-12 md:p-24 border border-slate-100 shadow-2xl relative overflow-hidden group">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-orange-50 rounded-full blur-[100px] opacity-70 transition-transform duration-1000 group-hover:scale-110"></div>
+            
+            <div class="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+                <div class="flex-1">
+                    <span class="text-[11px] font-black uppercase tracking-[0.2em] text-orange-600 bg-orange-50 px-5 py-2.5 rounded-full">Science de l'Excellence</span>
+                    <h2 class="text-4xl md:text-6xl font-black text-slate-900 mt-8 mb-8 tracking-tight leading-[1.1]">La Méthode <br><span class="text-orange-600">FreeGeny.</span></h2>
+                    <p class="text-slate-500 text-lg md:text-xl font-light leading-relaxed mb-10">
+                        Notre approche unique fusionne les dernières découvertes en <span class="font-bold text-slate-900">neurosciences</span> avec une <span class="font-bold text-slate-900">intelligence artificielle</span> de pointe, tout en plaçant l'intelligence émotionnelle au cœur de chaque apprentissage.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-8 mb-12">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-slate-900" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+                            </div>
+                            <p class="text-sm font-bold text-slate-700">Apprentissage Collaboratif</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-slate-900" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            </div>
+                            <p class="text-sm font-bold text-slate-700">Validation Clinique</p>
+                        </div>
+                    </div>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="inline-flex items-center gap-4 bg-slate-900 text-white px-10 py-5 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all shadow-xl">
+                        Découvrir la science →
+                    </a>
+                </div>
+                <div class="flex-1">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-orange-600/20 to-transparent rounded-[3rem] -rotate-3"></div>
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" alt="Neuroscience Education" class="relative z-10 w-full rounded-[3.5rem] shadow-3xl grayscale hover:grayscale-0 transition-all duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- ========== CTAs & FOOTER ========== -->
 <section class="py-24 bg-slate-900 text-white rounded-t-[4rem]">
