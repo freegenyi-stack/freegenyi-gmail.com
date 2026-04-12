@@ -240,7 +240,7 @@ include_once __DIR__ . '/includes/header.php';
             <!-- Texte -->
             <div class="flex-1">
                 <span class="text-[11px] font-black uppercase tracking-[0.2em] text-orange-600 bg-orange-50 px-5 py-2.5 rounded-full">Innovation</span>
-                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-8 mb-10 tracking-tight leading-[1.1]">Un pilotage d'exception.</h2>
+                <h2 class="text-4xl md:text-5xl font-black text-orange-600 mt-8 mb-10 tracking-tight leading-[1.1]">Un pilotage d'exception.</h2>
                 
                 <div class="space-y-10">
                     <div class="group flex gap-6">
@@ -288,7 +288,7 @@ include_once __DIR__ . '/includes/header.php';
                         </div>
                         <div>
                             <h4 class="text-xl font-bold text-slate-900 mb-2">Ambition Mondiale</h4>
-                            <p class="text-slate-500 font-light leading-relaxed">Le meilleur du monde à portée de main. Méthodologies de Singapour pour les maths et standards Oxford pour les langues.</p>
+                            <p class="text-slate-500 font-light leading-relaxed">Standardisation internationale (IB/PISA). Méthodologies de Singapour pour les maths et excellence Oxford pour les langues.</p>
                         </div>
                     </div>
                 </div>
