@@ -126,7 +126,7 @@ $is_rtl = $is_rtl ?? false;
             <!-- Avatar / Auth -->
             <div class="flex items-center gap-4">
                 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): 
-                    $user_initials = strtoupper(substr($_SESSION['user_name'] ?? 'U', 0, 1));
+                    $user_initials = $_SESSION['user_initials'] ?? mb_strtoupper(mb_substr($_SESSION['user_name'] ?? 'U', 0, 2));
                 ?>
                     <div class="relative" x-data="{ userMenuOpen: false }">
                         <button @click="userMenuOpen = !userMenuOpen" class="flex items-center gap-2 focus:outline-none group">

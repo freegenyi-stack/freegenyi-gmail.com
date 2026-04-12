@@ -8,5 +8,5 @@ session_destroy();
 $loc = $_COOKIE['freegeny_home'] ?? 'DZ';
 $lang = $_COOKIE['freegeny_lang'] ?? 'fr';
 
-header("Location: /" . strtoupper($loc) . "-" . strtolower($lang) . "/auth/login");
+header("Location: /" . strtoupper($loc) . "-" . strtolower($lang) . "/");
 exit;

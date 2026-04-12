@@ -162,7 +162,7 @@ if ($email && $full_name) {
 
     // Rediriger
     if ($is_new) {
-        header("Location: /{$country_code}-{$lang_code}/dashboard/add_child?welcome=google");
+        header("Location: /{$country_code}-{$lang_code}/?welcome=google");
     } else {
         header("Location: /{$country_code}-{$lang_code}/dashboard/parent");
     }
