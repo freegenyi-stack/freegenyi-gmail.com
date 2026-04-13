@@ -68,11 +68,17 @@ $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
                 </div>
             </div>
 
+            <!-- FOOTER : Step 2 Arguments -->
+            <div x-show="step === 2" x-cloak class="space-y-4 slide-up mb-6">
+                <h1 class="text-6xl font-title font-black leading-tight tracking-tighter">L'éducation est un sport d'équipe.</h1>
+                <p class="text-slate-500 font-bold text-sm tracking-widest uppercase">Synchronisez vos efforts pour son succès.</p>
+            </div>
+
             <!-- DOTS INDICATORS (Tout à fait à droite comme demandé) -->
             <div class="absolute bottom-12 right-12 flex gap-4">
                 <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 1 ? 'bg-orange-600 w-12' : 'bg-slate-800 w-4'"></div>
-                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 2 ? 'bg-blue-600 w-12' : 'bg-slate-800 w-4'"></div>
-                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 3 ? 'bg-green-600 w-12' : 'bg-slate-800 w-4'"></div>
+                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 2 ? 'bg-blue-500 w-12' : 'bg-slate-800 w-4'"></div>
+                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 3 ? 'bg-green-500 w-12' : 'bg-slate-800 w-4'"></div>
             </div>
         </div>
 
@@ -119,10 +125,30 @@ $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
                     <button type="button" @click="step = 2" class="w-full bg-slate-950 text-white py-5 rounded-3xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl shadow-slate-950/10">Suivant →</button>
                 </div>
 
-                <!-- STEP 2 -->
-                <div x-show="step === 2" x-cloak class="slide-up">
-                    <h3 class="text-3xl font-black font-title">Invitation.</h3>
-                    <button type="button" @click="step = 3" class="mt-8 bg-black text-white px-8 py-3 rounded-lg">Continuer</button>
+                <!-- STEP 2 : INVITATION -->
+                <div x-show="step === 2" x-cloak class="space-y-12 slide-up pt-10">
+                    <div>
+                        <h3 class="text-4xl font-black font-title text-slate-950 tracking-tight leading-none text-center">Équipe Familiale.</h3>
+                        <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-6 text-center italic">Étape 2 sur 3 — Inviter le conjoint</p>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-8 space-y-6">
+                        <p class="text-[13px] text-slate-600 leading-relaxed font-bold text-center">
+                            Permettez à votre conjoint d'avoir son propre accès pour suivre l'évolution en temps réel.
+                        </p>
+                        <input type="email" name="spouse_email" placeholder="Email du conjoint (Optionnel)" class="w-full bg-white border-2 border-slate-200 px-4 py-4 rounded-xl font-bold text-slate-950 outline-none focus:border-blue-500 transition-all shadow-sm">
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button type="button" @click="step = 1" class="px-8 py-5 border-2 border-slate-100 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-slate-50 transition-all">←</button>
+                        <button type="button" @click="step = 3" class="flex-1 bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl">Étape Suivante</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div x-show="step === 3" x-cloak class="slide-up">
+                    <h3 class="text-3xl font-black font-title">Finalisation.</h3>
+                    <button type="button" @click="step = 3" class="mt-8 bg-black text-white px-8 py-3 rounded-lg">Terminer</button>
                 </div>
 
             </div>
