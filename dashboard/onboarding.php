@@ -44,9 +44,9 @@ $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
         <!-- LEFT PANEL (60% WIDE) : CONTENT TOP & BOTTOM -->
         <div class="lg:w-[58%] bg-argumentaire text-white p-20 flex flex-col justify-between relative">
             
-            <!-- HEADER : L'Excellence Mondiale (Fidèle à vos directives) -->
+            <!-- HEADER : L'Excellence Mondiale (Orange) -->
             <div x-show="step === 1" class="absolute top-10 left-10 slide-up">
-                <span class="inline-block px-4 py-2 bg-white/5 text-slate-100 text-[11px] font-black uppercase tracking-[0.2em] border border-white/10 rounded-md">L'Excellence mondiale</span>
+                <span class="inline-block px-4 py-2 bg-orange-600 text-white text-[11px] font-black uppercase tracking-[0.2em] rounded-md shadow-lg shadow-orange-600/20">L'Excellence mondiale</span>
             </div>
 
             <!-- MIDDLE AREA : VOID FOR PHOTO -->
@@ -98,15 +98,15 @@ $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
                         <div class="grid grid-cols-3 gap-2">
                             <label class="cursor-pointer group">
                                 <input type="radio" name="parent_role" value="Maman" class="hidden peer" checked x-model="role">
-                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-950 peer-checked:text-slate-950 peer-checked:bg-slate-50 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center h-16">Maman</div>
+                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-950 peer-checked:text-white peer-checked:bg-slate-950 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center h-16">Maman</div>
                             </label>
                             <label class="cursor-pointer group">
                                 <input type="radio" name="parent_role" value="Papa" class="hidden peer" x-model="role">
-                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-950 peer-checked:text-slate-950 peer-checked:bg-slate-50 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center h-16">Papa</div>
+                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-950 peer-checked:text-white peer-checked:bg-slate-950 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center h-16">Papa</div>
                             </label>
                             <label class="cursor-pointer group">
                                 <input type="radio" name="parent_role" value="Tuteur" class="hidden peer" x-model="role">
-                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-950 peer-checked:text-slate-950 peer-checked:bg-slate-50 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center h-16">Tuteur Légal</div>
+                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-950 peer-checked:text-white peer-checked:bg-slate-950 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center h-16">Tuteur Légal</div>
                             </label>
                         </div>
 
