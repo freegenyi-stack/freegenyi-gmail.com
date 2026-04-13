@@ -79,15 +79,20 @@ loginUser($user);
 // Régénérer l'ID de session pour prévenir la fixation de session
 session_regenerate_id(true);
 
-// ─── 7. REDIRECTION SELON RÔLE ───────────────────────────────────────────────
+// ─── 7. REDIRECTION INTELLIGENTE ───────────────────────────────────────────────
 $role = $user['role'] ?? 'parent';
-switch ($role) {
-    case 'school':
-    case 'ngo':
-        header("Location: {$base_url}/dashboard/parent"); // À adapter selon les dashboards
-        break;
-    default:
-        header("Location: {$base_url}/dashboard/parent");
-        break;
+$user_country = strtoupper($user['declared_country'] ?? $country);
+
+if ($role === 'parent') {
+    // Vérifier si au moins un enfant a été ajouté (Onboarding complété)
+    $hasChild = DB::fetchOne("SELECT id FROM children WHERE parent_id = ? LIMIT 1", [$user['id']]);
+    if (!$hasChild) {
+        header("Location: /{$user_country}-{$lang_code}/dashboard/onboarding");
+    } else {
+        header("Location: /{$user_country}-{$lang_code}/dashboard/parent");
+    }
+} else {
+    // Redirection par défaut pour les autres rôles
+    header("Location: /{$user_country}-{$lang_code}/dashboard/parent");
 }
 exit;

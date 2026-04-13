@@ -160,11 +160,18 @@ if ($email && $full_name) {
     loginUser($user);
     session_regenerate_id(true);
 
-    // Rediriger
+    // Rediriger intelligemment
+    $user_country = strtoupper($user['declared_country'] ?? $country_code);
     if ($is_new) {
-        header("Location: /{$country_code}-{$lang_code}/dashboard/onboarding");
+        header("Location: /{$user_country}-{$lang_code}/dashboard/onboarding");
     } else {
-        header("Location: /{$country_code}-{$lang_code}/dashboard/parent");
+        // Si ancien utilisateur, vérifier s'il a au moins un enfant
+        $hasChild = DB::fetchOne("SELECT id FROM children WHERE parent_id = ? LIMIT 1", [$user['id']]);
+        if (!$hasChild) {
+            header("Location: /{$user_country}-{$lang_code}/dashboard/onboarding");
+        } else {
+            header("Location: /{$user_country}-{$lang_code}/dashboard/parent");
+        }
     }
     exit;
 }
