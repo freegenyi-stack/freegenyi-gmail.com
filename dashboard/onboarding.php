@@ -44,8 +44,8 @@ $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
         <!-- LEFT PANEL (60% WIDE) : CONTENT TOP & BOTTOM -->
         <div class="lg:w-[58%] bg-argumentaire text-white p-20 flex flex-col justify-between relative">
             
-            <!-- HEADER : L'Excellence Mondiale -->
-            <div x-show="step === 1" class="slide-up">
+            <!-- HEADER : L'Excellence Mondiale (Plus haut, plus à gauche) -->
+            <div x-show="step === 1" class="absolute top-12 left-12 slide-up">
                 <span class="inline-block px-4 py-2 bg-orange-600/20 text-orange-400 text-[11px] font-black uppercase tracking-[0.2em] border border-orange-500/20 rounded-md">L'Excellence mondiale</span>
             </div>
 
