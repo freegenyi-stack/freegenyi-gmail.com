@@ -13,7 +13,10 @@ class MailManager {
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
         $headers .= "From: " . $fromName . " <" . $fromEmail . ">" . "\r\n";
         $headers .= "Reply-To: " . $fromEmail . "\r\n";
-        $headers .= "X-Mailer: PHP/" . phpversion();
+        $headers .= "Return-Path: " . $fromEmail . "\r\n";
+        $headers .= "X-Sender: <" . $fromEmail . ">" . "\r\n";
+        $headers .= "X-Priority: 3" . "\r\n";
+        $headers .= "X-Mailer: FreeGeny-Core-PHP/" . phpversion();
 
         $fullBody = "
         <html>
