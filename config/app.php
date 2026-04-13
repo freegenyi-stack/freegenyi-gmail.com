@@ -1,6 +1,6 @@
 <?php
 /**
- * app.php - Version Élite Stabilisée (Performance & Sécurité)
+ * app.php - Version Mondiale Intégrale RESTAURÉE
  */
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -8,6 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // 1. PROTECTION DU SITE (Unlock)
 if (!defined('MAINTENANCE_PASSWORD')) define('MAINTENANCE_PASSWORD', 'Yousr4568520&');
+
 $is_legal_page = str_contains($_SERVER['REQUEST_URI'] ?? '', 'privacy') || str_contains($_SERVER['REQUEST_URI'] ?? '', 'terms');
 
 if (empty($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'] ?? '', 'unlock.php') && !$is_legal_page) {
@@ -15,7 +16,6 @@ if (empty($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'] ?
     exit;
 }
 
-// 2. CONFIGURATION ERREURS & ENV
 error_reporting(E_ALL & ~E_NOTICE); 
 ini_set('display_errors', 1);
 if (!defined('DEBUG_MODE')) define('DEBUG_MODE', true);
@@ -44,20 +44,87 @@ if (!defined('APP_URL')) define('APP_URL', 'https://freegeny.com');
 if (!defined('BCRYPT_COST')) define('BCRYPT_COST', 12);
 if (!defined('MAX_LOGIN_ATTEMPTS')) define('MAX_LOGIN_ATTEMPTS', 5);
 
-// 3. SYSTÈME DE RÉGIONS & LANGUES
 $supported_regions = [
     'DZ' => ['name' => 'Algeria', 'langs' => ['ar', 'fr']],
     'MA' => ['name' => 'Morocco', 'langs' => ['ar', 'fr']],
     'TN' => ['name' => 'Tunisia', 'langs' => ['ar', 'fr']],
+    'EG' => ['name' => 'Egypt', 'langs' => ['ar']],
+    'SA' => ['name' => 'Saudi Arabia', 'langs' => ['ar']],
+    'AE' => ['name' => 'United Arab Emirates', 'langs' => ['ar']],
+    'QA' => ['name' => 'Qatar', 'langs' => ['ar']],
+    'KW' => ['name' => 'Kuwait', 'langs' => ['ar']],
+    'LB' => ['name' => 'Lebanon', 'langs' => ['ar', 'fr']],
+    'LY' => ['name' => 'Libya', 'langs' => ['ar']],
+    'SY' => ['name' => 'Syria', 'langs' => ['ar']],
+    'IQ' => ['name' => 'Iraq', 'langs' => ['ar']],
+    'JO' => ['name' => 'Jordan', 'langs' => ['ar']],
+    'OM' => ['name' => 'Oman', 'langs' => ['ar']],
+    'BH' => ['name' => 'Bahrain', 'langs' => ['ar']],
+    'YE' => ['name' => 'Yemen', 'langs' => ['ar']],
+    'SD' => ['name' => 'Sudan', 'langs' => ['ar']],
     'FR' => ['name' => 'France', 'langs' => ['fr']],
     'BE' => ['name' => 'Belgium', 'langs' => ['fr', 'nl']],
     'CH' => ['name' => 'Switzerland', 'langs' => ['fr', 'de']],
     'CA' => ['name' => 'Canada', 'langs' => ['fr', 'en']],
     'US' => ['name' => 'USA', 'langs' => ['en']],
     'GB' => ['name' => 'United Kingdom', 'langs' => ['en']],
+    'DE' => ['name' => 'Germany', 'langs' => ['de', 'en']],
+    'ES' => ['name' => 'Spain', 'langs' => ['es', 'en']],
+    'IT' => ['name' => 'Italy', 'langs' => ['it']],
+    'PT' => ['name' => 'Portugal', 'langs' => ['pt']],
+    'BR' => ['name' => 'Brazil', 'langs' => ['pt']],
+    'TR' => ['name' => 'Turkey', 'langs' => ['tr', 'en']],
+    'RU' => ['name' => 'Russia', 'langs' => ['ru']],
+    'BY' => ['name' => 'Belarus', 'langs' => ['ru']],
+    'UA' => ['name' => 'Ukraine', 'langs' => ['uk']],
+    'PL' => ['name' => 'Poland', 'langs' => ['pl']],
+    'RO' => ['name' => 'Romania', 'langs' => ['ro']],
+    'GR' => ['name' => 'Greece', 'langs' => ['el']],
+    'HU' => ['name' => 'Hungary', 'langs' => ['hu']],
+    'CZ' => ['name' => 'Czech Republic', 'langs' => ['cs']],
+    'DK' => ['name' => 'Denmark', 'langs' => ['da']],
+    'NO' => ['name' => 'Norway', 'langs' => ['no']],
+    'SE' => ['name' => 'Sweden', 'langs' => ['sv']],
+    'FI' => ['name' => 'Finland', 'langs' => ['fi']],
+    'NL' => ['name' => 'Netherlands', 'langs' => ['nl']],
+    'IE' => ['name' => 'Ireland', 'langs' => ['en']],
+    'AT' => ['name' => 'Austria', 'langs' => ['de']],
+    'MX' => ['name' => 'Mexico', 'langs' => ['es']],
+    'AR' => ['name' => 'Argentina', 'langs' => ['es']],
+    'CO' => ['name' => 'Colombia', 'langs' => ['es']],
+    'CL' => ['name' => 'Chile', 'langs' => ['es']],
+    'PE' => ['name' => 'Peru', 'langs' => ['es']],
+    'SN' => ['name' => 'Senegal', 'langs' => ['fr']],
+    'AO' => ['name' => 'Angola', 'langs' => ['pt']],
+    'ZA' => ['name' => 'South Africa', 'langs' => ['en']],
+    'CN' => ['name' => 'China', 'langs' => ['zh']],
+    'SG' => ['name' => 'Singapore', 'langs' => ['zh', 'en']],
+    'TW' => ['name' => 'Taiwan', 'langs' => ['zh']],
+    'JP' => ['name' => 'Japan', 'langs' => ['ja']],
+    'KR' => ['name' => 'South Korea', 'langs' => ['ko']],
+    'IN' => ['name' => 'India', 'langs' => ['hi', 'en']],
+    'AU' => ['name' => 'Australia', 'langs' => ['en']],
+    'NZ' => ['name' => 'New Zealand', 'langs' => ['en']],
+    'TH' => ['name' => 'Thailand', 'langs' => ['th']],
+    'VN' => ['name' => 'Vietnam', 'langs' => ['vi']],
+    'ID' => ['name' => 'Indonesia', 'langs' => ['id']],
+    'MY' => ['name' => 'Malaysia', 'langs' => ['ms']],
 ];
 
-// Détection pays/langue sans boucle de redirection
+uasort($supported_regions, function($a, $b) {
+    return strcmp($a['name'] ?? '', $b['name'] ?? '');
+});
+
+// 2. DÉTECTION PAYS
+if (!isset($_COOKIE['freegeny_home'])) {
+    $home_country = $_SERVER['HTTP_CF_IPCOUNTRY'] ?? 'DZ'; 
+    if (!isset($supported_regions[$home_country])) $home_country = 'DZ';
+    setcookie('freegeny_home', $home_country, time() + (86400 * 30 * 12), "/");
+    $_SESSION['home_country'] = $home_country;
+} else {
+    $home_country = $_COOKIE['freegeny_home'];
+}
+
 $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
 $uri_parts = explode('/', trim($request_uri, '/'));
 $slug = explode('?', $uri_parts[0] ?? '')[0];
@@ -67,11 +134,11 @@ if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $_SESSION['lang'] = strtolower($matches[2]);
 }
 
-$country = $_SESSION['country_code'] ?? 'DZ';
+$country = $_SESSION['country_code'] ?? $home_country;
 $lang = $_SESSION['lang'] ?? 'fr';
 $is_rtl = ($lang === 'ar');
 
-// 4. TRADUCTIONS ET HELPERS
+// 3. TRADUCTIONS ET HELPERS
 $GLOBALS['translations'] = [];
 $lang_file = __DIR__ . "/../lang/{$lang}.php";
 if (file_exists($lang_file)) {
