@@ -130,7 +130,8 @@ $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
 $uri_parts = explode('/', trim($request_uri, '/'));
 $slug = explode('?', $uri_parts[0] ?? '')[0];
 
-// 2. LOGIQUE RADICALE "ACTUALISATION = RETOUR MAISON"
+// 2. LOGIQUE ACTUALISATION (Désactivée temporairement pour stopper la boucle infinie)
+/*
 if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $browsing_country = strtoupper($matches[1]);
     $browsing_lang = strtolower($matches[2]);
@@ -146,7 +147,12 @@ if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $_SESSION['country_code'] = $browsing_country;
     $_SESSION['lang'] = $browsing_lang;
 } 
-
+*/
+// Nouvelle détection simple sans redirection forcée
+if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
+    $_SESSION['country_code'] = strtoupper($matches[1]);
+    $_SESSION['lang'] = strtolower($matches[2]);
+}
 $country = $_SESSION['country_code'] ?? $home_country;
 $lang = $_SESSION['lang'] ?? 'fr';
 $is_rtl = in_array($lang, ['ar']);
