@@ -6,6 +6,7 @@
  *   - /assets/animations/education.json  (télécharger depuis lottie.host)
  */
 require_once __DIR__ . '/../config/app.php';
+require_once __DIR__ . '/../api/auth/auth_helpers.php';
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $lang; ?>">
