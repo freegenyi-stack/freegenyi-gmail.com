@@ -14,7 +14,7 @@ if (empty($_SESSION['logged_in'])) {
 $user_id = $_SESSION['user_id'];
 
 // Initialisation via la BDD pour voir s'il a déjà rempli
-$user = DB::query("SELECT id, first_name, last_name, phone FROM users WHERE id = ?", [$user_id])->fetch();
+$user = DB::fetchOne("SELECT id, first_name, last_name, phone FROM users WHERE id = ?", [$user_id]);
 
 // Traitement du formulaire final en AJAX ou POST basique (Ici POST pour la robustesse)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
