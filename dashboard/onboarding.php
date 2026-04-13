@@ -232,7 +232,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
 
                         <div class="grid grid-cols-2 gap-3">
                             <div class="space-y-1">
-                                <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest px-1">Wilaya / Province (Ville 00000)</label>
+                                <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest px-1">Wilaya / Province</label>
                                 <select name="child_region" class="w-full bg-slate-50 border-2 border-slate-100 p-3 rounded-xl font-bold text-xs appearance-none">
                                     <template x-if="childCountry === 'DZ'">
                                         <template x-for="w in wilayas" :key="w.c">
