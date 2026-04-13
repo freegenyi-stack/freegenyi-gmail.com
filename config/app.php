@@ -7,17 +7,15 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// PROTECTION CONSTRUCTION (DÉSACTIVÉE TEMPORAIREMENT POUR VALIDATION GOOGLE)
+// PROTECTION CONSTRUCTION (ACTIVÉE)
 define('MAINTENANCE_PASSWORD', 'Yousr4568520&');
-/*
-$is_legal_page = str_contains($_SERVER['REQUEST_URI'], 'privacy') || str_contains($_SERVER['REQUEST_URI'], 'terms');
-$is_root = $_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/index.php';
 
-if (!isset($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'], 'unlock.php') && !$is_legal_page && !$is_root) {
+$is_legal_page = str_contains($_SERVER['REQUEST_URI'], 'privacy') || str_contains($_SERVER['REQUEST_URI'], 'terms');
+
+if (empty($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'], 'unlock.php') && !$is_legal_page) {
     header('Location: /unlock.php');
     exit;
 }
-*/
 
 error_reporting(E_ALL & ~E_NOTICE); 
 ini_set('display_errors', 1);
