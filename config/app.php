@@ -6,25 +6,33 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// PROTECTION CONSTRUCTION (ACTIVÉE)
-define('MAINTENANCE_PASSWORD', 'Yousr4568520&');
+// Sécurité Authentification (Placées en haut pour éviter les 'already defined')
+if (!defined('BCRYPT_COST')) define('BCRYPT_COST', 12);
+if (!defined('MAX_LOGIN_ATTEMPTS')) define('MAX_LOGIN_ATTEMPTS', 5);
 
-$is_legal_page = str_contains($_SERVER['REQUEST_URI'], 'privacy') || str_contains($_SERVER['REQUEST_URI'], 'terms');
+// PROTECTION CONSTRUCTION (DÉSACTIVÉE TEMPORAIREMENT)
+if (!defined('MAINTENANCE_PASSWORD')) define('MAINTENANCE_PASSWORD', 'Yousr4568520&');
 
-if (empty($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'], 'unlock.php') && !$is_legal_page) {
+$is_legal_page = str_contains($_SERVER['REQUEST_URI'] ?? '', 'privacy') || str_contains($_SERVER['REQUEST_URI'] ?? '', 'terms');
+
+// Unlock désactivé par précaution
+/*
+if (empty($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'] ?? '', 'unlock.php') && !$is_legal_page) {
     header('Location: /unlock.php');
     exit;
 }
+*/
 
 error_reporting(E_ALL & ~E_NOTICE); 
 ini_set('display_errors', 1);
-define('DEBUG_MODE', true);
+if (!defined('DEBUG_MODE')) define('DEBUG_MODE', true);
 
 if (!function_exists('loadEnv')) {
     function loadEnv($path) {
         if (!file_exists($path)) return [];
         $data = [];
-        $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $lines = @file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        if (!$lines) return [];
         foreach ($lines as $line) {
             if (strpos(trim($line), '#') === 0 || !strpos($line, '=')) continue;
             $parts = explode('=', $line, 2);
@@ -39,11 +47,7 @@ foreach ($env as $k => $v) {
     putenv("$k=$v");
     $_ENV[$k] = $v;
 }
-define('APP_URL', rtrim($env['APP_URL'] ?? 'https://freegeny.com', '/'));
-
-// Sécurité Authentification
-if (!defined('BCRYPT_COST')) define('BCRYPT_COST', 12);
-if (!defined('MAX_LOGIN_ATTEMPTS')) define('MAX_LOGIN_ATTEMPTS', 5);
+if (!defined('APP_URL')) define('APP_URL', rtrim($env['APP_URL'] ?? 'https://freegeny.com', '/'));
 
 $supported_regions = [
     'DZ' => ['name' => 'Algeria', 'langs' => ['ar', 'fr']],
@@ -113,7 +117,7 @@ $supported_regions = [
 ];
 
 uasort($supported_regions, function($a, $b) {
-    return strcmp($a['name'], $b['name']);
+    return strcmp($a['name'] ?? '', $b['name'] ?? '');
 });
 
 // 1. DÉTECTION DU PAYS "ORIGINE" (Ex: DZ)
@@ -135,7 +139,6 @@ if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $browsing_country = strtoupper($matches[1]);
     $browsing_lang = strtolower($matches[2]);
 
-    // Si on est déjà sur cette URL (Actualisation F5) et que ce n'est pas notre pays d'origine
     if (isset($_SESSION['last_uri']) && $_SESSION['last_uri'] === $request_uri && $browsing_country !== $home_country) {
         $target_lang = $supported_regions[$home_country]['langs'][0] ?? 'fr';
         header("Location: /" . strtoupper($home_country) . "-" . $target_lang . "/");
@@ -147,7 +150,6 @@ if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $_SESSION['country_code'] = $browsing_country;
     $_SESSION['lang'] = $browsing_lang;
 } 
-// On ne redirige plus les URL sans pays. On applique simplement les valeurs par défaut ci-dessous.
 
 $country = $_SESSION['country_code'] ?? $home_country;
 $lang = $_SESSION['lang'] ?? 'fr';
@@ -166,4 +168,3 @@ if (!function_exists('__')) {
         return $fallback ?: (ucfirst(str_replace('_', ' ', $key)));
     }
 }
-?>
