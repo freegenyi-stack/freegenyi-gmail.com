@@ -57,6 +57,21 @@ require_once __DIR__ . '/../config/app.php';
                     <span class="text-base sm:text-lg font-black text-slate-900 uppercase font-title tracking-tighter">Free<span class="text-orange-600">Geny</span></span>
                 </a>
 
+                <?php 
+                    $inviter_name = "";
+                    if (!empty($_GET['invite_parent'])) {
+                        $inviter = DB::fetchOne("SELECT full_name FROM users WHERE id = ?", [$_GET['invite_parent']]);
+                        if ($inviter) $inviter_name = $inviter['full_name'];
+                    }
+                ?>
+
+                <?php if (!empty($inviter_name)): ?>
+                <div class="mb-6 bg-orange-600 text-white p-4 rounded-2xl shadow-xl shadow-orange-600/20 slide-up text-center">
+                    <p class="text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">Invitation Spéciale</p>
+                    <p class="text-sm font-bold tracking-tight">Bienvenue ! <span class="underline"><?php echo htmlspecialchars($inviter_name); ?></span> vous invite à rejoindre son espace familial.</p>
+                </div>
+                <?php endif; ?>
+
                 <?php if (!empty($_GET['error'])): ?>
                 <div class="mt-2 mb-3 bg-red-50 border border-red-100 text-red-600 text-[11px] font-bold px-4 py-3 rounded-2xl leading-relaxed">
                     <?php echo htmlspecialchars(str_replace('|', '<br>', urldecode($_GET['error']))); ?>

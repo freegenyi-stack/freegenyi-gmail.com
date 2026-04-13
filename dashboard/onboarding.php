@@ -12,7 +12,15 @@ if (empty($_SESSION['logged_in'])) {
 }
 
 $user_id = $_SESSION['user_id'] ?? 0;
-$user = DB::fetchOne("SELECT id, full_name, phone FROM users WHERE id = ?", [$user_id]);
+// Migration douce pour onboarding_step
+$colStep = DB::fetchOne("SHOW COLUMNS FROM users LIKE 'onboarding_step'");
+if (!$colStep) DB::execute("ALTER TABLE users ADD COLUMN onboarding_step INT DEFAULT 1");
+
+$user = DB::fetchOne("SELECT id, full_name, phone, onboarding_step FROM users WHERE id = ?", [$user_id]);
+
+// MISSION 2 : Détecter si c'est un parent invité qui a déjà des enfants
+$hasChildrenAsSecondary = DB::fetchOne("SELECT id FROM children WHERE secondary_parent_id = ? LIMIT 1", [$user_id]);
+$is_invited = $hasChildrenAsSecondary ? true : false;
 
 $full_name_raw = ($user && !empty($user['full_name'])) ? $user['full_name'] : ($_SESSION['user_name'] ?? 'Parent');
 $parts = explode(' ', trim($full_name_raw));
@@ -162,7 +170,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
                             <input type="tel" x-model="phone" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl font-bold text-slate-950 outline-none">
                         </div>
                     </div>
-                    <button type="button" @click="step = 2" class="w-full bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl hover:bg-orange-600 transition-all">Suivant →</button>
+                    <button type="button" @click="isInvited ? window.location.href='/dashboard/parent' : saveStep(2)" class="w-full bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl hover:bg-orange-600 transition-all">
+                        <span x-text="isInvited ? 'Rejoindre ma famille →' : 'Suivant →'"></span>
+                    </button>
                 </div>
 
                 <!-- STEP 2 -->
@@ -176,8 +186,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
                         <input type="email" x-model="spouse_email" placeholder="Email du conjoint (Optionnel)" class="w-full bg-white border-2 border-slate-100 px-4 py-4 rounded-xl font-bold text-slate-950 outline-none focus:border-blue-500">
                     </div>
                     <div class="flex gap-4">
-                        <button type="button" @click="step = 1" class="px-8 py-5 border-2 border-slate-100 rounded-2xl font-black uppercase text-[10px]">←</button>
-                        <button type="button" @click="step = 3" class="flex-1 bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl hover:bg-orange-600 transition-all">Étape Suivante</button>
+                        <button type="button" @click="saveStep(1)" class="px-8 py-5 border-2 border-slate-100 rounded-2xl font-black uppercase text-[10px]">←</button>
+                        <button type="button" @click="saveStep(3)" class="flex-1 bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl hover:bg-orange-600 transition-all">Étape Suivante</button>
                     </div>
                 </div>
 
@@ -260,7 +270,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
                     </div>
 
                     <div class="flex gap-4 pt-2">
-                        <button type="button" @click="step = 2" class="px-8 py-5 border-2 border-slate-100 rounded-2xl font-black uppercase text-[10px] hover:bg-slate-50 transition-all">←</button>
+                        <button type="button" @click="saveStep(2)" class="px-8 py-5 border-2 border-slate-100 rounded-2xl font-black uppercase text-[10px] hover:bg-slate-50 transition-all">←</button>
                         <button type="submit" class="flex-1 bg-green-600 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl hover:bg-slate-900 transition-all shadow-green-600/10">Démarrer !</button>
                     </div>
                 </form>
@@ -272,7 +282,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
     <script>
         function onboardingApp() {
             return {
-                step: 1,
+                step: <?= (int)($user['onboarding_step'] ?? 1) ?>,
+                isInvited: <?= $is_invited ? 'true' : 'false' ?>,
                 role: 'Maman',
                 phone: '<?= htmlspecialchars($user['phone'] ?? '') ?>',
                 spouse_email: '',
@@ -285,6 +296,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
                     'FR': ['CP', 'CE1', 'CE2', 'CM1', 'CM2'],
                     'US': ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
                     'INT': ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6']
+                },
+
+                // Initialisation & Polling (MISSION 1 SYNC)
+                init() {
+                    console.log("Onboarding sync active...");
+                    setInterval(() => {
+                        fetch('/api/auth/check_status.php')
+                            .then(r => r.json())
+                            .then(data => {
+                                if (data.verified && data.step && data.step !== this.step) {
+                                    console.log("Sync redirection vers étape " + data.step);
+                                    this.step = data.step;
+                                }
+                            });
+                    }, 3000);
+                },
+
+                // Sauvegarde de l'étape en base de données
+                saveStep(newStep) {
+                    const formData = new FormData();
+                    formData.append('step', newStep);
+                    fetch('/api/dashboard/update_onboarding_step.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    this.step = newStep;
+                    
+                    // Si Maman invitée et qu'elle a fini l'étape 1, on peut la rediriger ou lui montrer le dashboard
+                    if (this.isInvited && newStep === 2) {
+                         // On laisse le bouton s'en occuper ou on force ici
+                    }
                 }
             }
         }

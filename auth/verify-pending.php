@@ -50,7 +50,7 @@ include_once __DIR__ . '/../includes/header.php';
             .then(r => r.json())
             .then(data => {
                 if (data.verified) {
-                    window.location.href = '/<?php echo $country; ?>-<?php echo $lang; ?>/?welcome=1';
+                    window.location.href = '/dashboard/onboarding.php';
                 }
             })
             .catch(e => console.error(e));
