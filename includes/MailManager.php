@@ -95,4 +95,23 @@ class MailManager {
         }
         return self::send($to, $subject, $html);
     }
+
+    /**
+     * Invitation pour le deuxième parent (conjoint)
+     */
+    public static function sendInviteParent($to, $fromName, $parentId) {
+        $subject = "Invitation : Suivez la réussite de votre famille sur FreeGeny 💎";
+        $registerUrl = APP_URL . "/auth/register?invite_parent=" . $parentId;
+        $html = "
+            <h1 style='color: #0f172a; font-size: 24px; text-align: center;'>Une invitation pour vous ! 🤝</h1>
+            <p>Bonjour,</p>
+            <p><strong>$fromName</strong> vous invite à rejoindre son espace familial sur <strong>FreeGeny</strong>.</p>
+            <p>Ensemble, suivez les progrès, les leçons et les victoires de vos enfants en un clic.</p>
+            <div style='margin-top: 40px; text-align: center;'>
+                <a href='$registerUrl' style='display: inline-block; background: #0f172a; color: white; padding: 18px 36px; border-radius: 16px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);'>Rejoindre ma famille</a>
+            </div>
+            <p style='font-size: 12px; color: #94a3b8; margin-top: 20px;'>Si vous n'êtes pas à l'origine de cette demande, vous pouvez ignorer cet email.</p>
+        ";
+        return self::send($to, $subject, $html);
+    }
 }

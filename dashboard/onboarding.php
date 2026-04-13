@@ -1,9 +1,10 @@
 <?php
 /**
- * dashboard/onboarding.php - The Elite Onboarding Experience
+ * dashboard/onboarding.php - The Elite Onboarding Experience (V2)
  */
 require_once __DIR__ . '/../config/app.php';
 require_once __DIR__ . '/../api/auth/auth_helpers.php';
+require_once __DIR__ . '/../includes/MailManager.php';
 
 // Redirige au login si non connecté
 if (empty($_SESSION['logged_in'])) {
@@ -12,312 +13,242 @@ if (empty($_SESSION['logged_in'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-
-// Initialisation via la BDD pour voir s'il a déjà rempli
 $user = DB::fetchOne("SELECT id, full_name, phone FROM users WHERE id = ?", [$user_id]);
 
-// Traitement du formulaire final en AJAX ou POST basique (Ici POST pour la robustesse)
+// Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = $_POST['phone'] ?? null;
     $role = $_POST['parent_role'] ?? 'Maman';
-    // Mettre à jour le parent
+    
     if ($phone) {
         DB::execute("UPDATE users SET phone = ?, updated_at = NOW() WHERE id = ?", [$phone, $user_id]);
         $_SESSION['phone'] = $phone;
     }
     
-    // Insérer l'enfant si fourni
+    $spouse_email = trim($_POST['spouse_email'] ?? '');
+    if (!empty($spouse_email) && filter_var($spouse_email, FILTER_VALIDATE_EMAIL)) {
+        MailManager::sendInviteParent($spouse_email, $user['full_name'], $user_id);
+    }
+    
     $child_name = trim($_POST['child_name'] ?? '');
     $child_age = (int)($_POST['child_age'] ?? 0);
     $child_level = $_POST['child_level'] ?? '';
+    $child_country = $_POST['child_country'] ?? $country;
     
     if (!empty($child_name) && $child_age > 0) {
-        $stmt = DB::execute("INSERT INTO children (parent_id, name, age, grade, created_at) VALUES (?, ?, ?, ?, NOW())",
-            [$user_id, $child_name, $child_age, $child_level]);
+        DB::execute("INSERT INTO children (parent_id, name, age, country, grade, created_at) VALUES (?, ?, ?, ?, ?, NOW())",
+            [$user_id, $child_name, $child_age, $child_country, $child_level]);
     }
     
-    // Si un email conjoint est fourni (simulation)
-    $spouse_email = trim($_POST['spouse_email'] ?? '');
-    if (!empty($spouse_email)) {
-        // Todo: Mailer logique
-    }
-    
-    // Terminé !
     header("Location: /" . ($country ?? 'DZ') . "-" . ($lang ?? 'fr') . "/dashboard/parent");
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $lang; ?>">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue | FreeGeny Elite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Onboarding | FreeGeny Elite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
         [x-cloak] { display: none !important; }
-        body { font-family: 'DM Sans', sans-serif; background: #f8fafc; }
+        body { font-family: 'DM Sans', sans-serif; height: 100dvh; overflow: hidden; background: #fafafa; }
         .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-caveat { font-family: 'Caveat', cursive; }
-        .glass-card { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); }
-        .slide-enter { animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-        .slide-exit { animation: slideOutLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(30px) scale(0.98); }
-            to { opacity: 1; transform: translateX(0) scale(1); }
-        }
-        @keyframes slideOutLeft {
-            from { opacity: 1; transform: translateX(0) scale(1); }
-            to { opacity: 0; transform: translateX(-30px) scale(0.98); }
-        }
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .slide-enter { animation: slideIn 0.4s ease-out forwards; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Fix for mobile 100vh */
+        .h-svh { height: 100dvh; }
     </style>
 </head>
-<body class="min-h-[100dvh] w-full flex items-center justify-center bg-slate-50 relative overflow-hidden" x-data="{ 
+<body class="h-svh w-full flex items-center justify-center p-0 lg:p-8" x-data="{ 
     step: 1,
-    maxSteps: 3,
-    direction: 1,
-    nextStep() { 
-        if(this.step < this.maxSteps) { this.direction = 1; this.step++; } 
+    childCountry: '<?= $country ?>',
+    levels: {
+        'DZ': ['1AP', '2AP', '3AP', '4AP', '5AP'],
+        'MA': ['1AP', '2AP', '3AP', '4AP', '5AP', '6AP'],
+        'TN': ['1ère Année', '2ème Année', '3ème Année', '4ème Année', '5ème Année', '6ème Année'],
+        'FR': ['CP', 'CE1', 'CE2', 'CM1', 'CM2'],
+        'US': ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+        'INT': ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6']
     },
-    prevStep() { 
-        if(this.step > 1) { this.direction = -1; this.step--; } 
-    }
+    regions: {
+        'DZ': ['Adrar', 'Chlef', 'Laghouat', 'Oum El Bouaghi', 'Batna', 'Béjaïa', 'Biskra', 'Béchar', 'Blida', 'Bouira', 'Tamanrasset', 'Tébessa', 'Tlemcen', 'Tiaret', 'Tizi Ouzou', 'Alger', 'Djelfa', 'Jijel', 'Sétif', 'Saïda', 'Skikda', 'Sidi Bel Abbès', 'Annaba', 'Guelma', 'Constantine', 'Médéa', 'Mostaganem', 'M\'Sila', 'Mascara', 'Ouargla', 'Oran', 'El Bayadh', 'Illizi', 'Bordj Bou Arréridj', 'Boumerdès', 'El Tarf', 'Tindouf', 'Tissemsilt', 'El Oued', 'Khenchela', 'Souk Ahras', 'Tipaza', 'Mila', 'Aïn Defla', 'Naâma', 'Aïn Témouchent', 'Ghardaïa', 'Relizane'],
+        'MA': ['Casablanca-Settat', 'Rabat-Salé-Kénitra', 'Marrakech-Safi', 'Fès-Meknès', 'Tanger-Tétouan-Al Hoceïma', 'Souss-Massa'],
+        'FR': ['Île-de-France', 'Nouvelle-Aquitaine', 'Auvergne-Rhône-Alpes', 'Hauts-de-France', 'Grand Est', 'Occitanie'],
+        'INT': ['Europe', 'North America', 'Middle East', 'Africa', 'Asia']
+    },
+    next() { if(this.step < 3) this.step++ },
+    prev() { if(this.step > 1) this.step-- }
 }">
 
-    <!-- Background magique -->
-    <div class="fixed inset-0 pointer-events-none opacity-40">
-        <div class="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-orange-200 rounded-full blur-[150px]"></div>
-        <div class="absolute -bottom-1/4 -left-1/4 w-[800px] h-[800px] bg-blue-200 rounded-full blur-[150px]"></div>
-    </div>
-
-    <!-- Container Principal (Split Screen) -->
-    <div class="w-full max-w-[1400px] h-[100dvh] lg:h-[85vh] lg:rounded-[3rem] lg:shadow-2xl overflow-hidden flex flex-col lg:flex-row relative z-10 bg-white/50 border-0 lg:border border-white/60">
+    <!-- MAIN CONTAINER -->
+    <div class="w-full h-full lg:max-h-[90vh] max-w-[1300px] flex flex-col lg:flex-row bg-white lg:rounded-[3rem] lg:shadow-2xl overflow-hidden relative z-10">
         
-        <!-- ======================= GAUCHE : LE RÊVE ======================= -->
-        <div class="hidden lg:flex flex-col flex-1 bg-slate-950 text-white relative p-16 items-center justify-center overflow-hidden">
-            <!-- Particules de fond -->
-            <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+        <!-- LEFT: THE DREAM -->
+        <div class="hidden lg:flex flex-col flex-1 bg-slate-950 text-white p-16 justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-transparent z-10 opacity-90"></div>
             
-            <div class="relative w-full max-w-lg z-10">
-                
-                <!-- Slide 1 -->
-                <div x-show="step === 1" x-transition:enter="transition ease-out duration-700 delay-200" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0 flex flex-col justify-center">
-                    <span class="text-orange-500 font-caveat text-3xl mb-4 ml-1">L'Excellence mondiale</span>
-                    <h2 class="text-5xl font-title font-black leading-[1.1] mb-8 tracking-tighter">Votre enfant n'a plus aucune frontière.</h2>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-white/10 rounded-xl text-sm font-bold border border-white/5 backdrop-blur-md">Mathématiques de Singapour</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-xl text-sm font-bold border border-white/5 backdrop-blur-md">Cambridge (UK)</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-xl text-sm font-bold border border-white/5 backdrop-blur-md">Finnish Model</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-xl text-sm font-bold border border-white/5 backdrop-blur-md">STEM / STEAM</span>
-                        <span class="px-4 py-2 bg-white/10 rounded-xl text-sm font-bold border border-white/5 backdrop-blur-md">Montessori</span>
-                    </div>
+            <div class="relative z-20 max-w-md">
+                <div x-show="step === 1" x-transition class="space-y-6">
+                    <span class="text-orange-500 font-caveat text-4xl block">L'Excellence mondiale</span>
+                    <h2 class="text-5xl font-black font-title tracking-tighter leading-[1.1] mb-8">Votre enfant n'a plus aucune frontière.</h2>
+                    <ul class="space-y-2 text-sm font-bold text-slate-400 uppercase tracking-widest">
+                        <li>• Mathématiques de Singapour</li>
+                        <li>• Cambridge (UK)</li>
+                        <li>• Finnish Model</li>
+                        <li>• STEM / STEAM</li>
+                        <li>• Montessori</li>
+                    </ul>
                 </div>
-
-                <!-- Slide 2 -->
-                <div x-show="step === 2" x-transition:enter="transition ease-out duration-700 delay-200" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="absolute inset-0 flex flex-col justify-center">
-                    <span class="text-blue-400 font-caveat text-3xl mb-4 ml-1">Le village éducatif</span>
-                    <h2 class="text-5xl font-title font-black leading-[1.1] mb-6 tracking-tighter">Un suivi magique, un foyer uni.</h2>
-                    <p class="text-slate-300 text-lg font-light leading-relaxed mb-6">Restez synchronisés. Suivez les progrès ensemble, recevez des alertes en temps réel et concertez-vous facilement avec les enseignants du monde entier.</p>
-                    <div class="flex gap-4 items-center">
-                        <div class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700"><i class="fa-solid fa-bell text-orange-500"></i></div>
-                        <div class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700"><i class="fa-solid fa-comments text-blue-400"></i></div>
-                        <div class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700"><i class="fa-solid fa-chart-line text-green-400"></i></div>
-                    </div>
+                <div x-show="step === 2" x-transition class="space-y-6" x-cloak>
+                    <span class="text-blue-400 font-caveat text-4xl block">Le village éducatif</span>
+                    <h2 class="text-5xl font-black font-title tracking-tighter leading-[1.1] mb-8">Un suivi magique, un foyer uni.</h2>
+                    <p class="text-slate-400 text-lg leading-relaxed">Concertez-vous avec les enseignants et votre conjoint. L'éducation est un sport d'équipe.</p>
                 </div>
-
-                <!-- Slide 3 -->
-                <div x-show="step === 3" x-transition:enter="transition ease-out duration-700 delay-200" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="absolute inset-0 flex flex-col justify-center">
-                    <span class="text-green-400 font-caveat text-3xl mb-4 ml-1">Gratuit. Global. Solidaire.</span>
-                    <h2 class="text-5xl font-title font-black leading-[1.1] mb-6 tracking-tighter">Le pouvoir du clic magique.</h2>
-                    <p class="text-slate-300 text-lg font-light leading-relaxed">
-                        Passez d'un système éducatif à un autre, d'une culture à une autre, en maîtrisant les langues d'un glissement de doigt. Et pendant que votre enfant s'élève, FreeGeny reverse ses ressources pour parrainer des enfants dans les régions défavorisées du monde.
-                    </p>
+                <div x-show="step === 3" x-transition class="space-y-6" x-cloak>
+                    <span class="text-green-400 font-caveat text-4xl block">Gratuit & Solidaire</span>
+                    <h2 class="text-5xl font-black font-title tracking-tighter leading-[1.1] mb-8">Le pouvoir du clic magique.</h2>
+                    <p class="text-slate-400 text-lg leading-relaxed">Passez d'un système à l'autre en un clic. Aidez un enfant ailleurs en éduquant le vôtre ici.</p>
                 </div>
-
             </div>
-            
-            <!-- Logo bas -->
-            <div class="absolute bottom-10 left-16 flex items-center gap-3">
-                <img src="/assets/img/logo.png" alt="FreeGeny" class="h-8 brightness-0 invert opacity-90">
-                <span class="text-xl font-black uppercase font-title tracking-tighter text-white">Free<span class="text-orange-500">Geny</span></span>
-            </div>
-            
-            <!-- Indicateur de progression visuel -->
-            <div class="absolute bottom-12 right-16 flex gap-2">
-                <div class="h-1.5 rounded-full transition-all duration-500" :class="step >= 1 ? 'w-8 bg-orange-500' : 'w-4 bg-slate-800'"></div>
-                <div class="h-1.5 rounded-full transition-all duration-500" :class="step >= 2 ? 'w-8 bg-blue-400' : 'w-4 bg-slate-800'"></div>
-                <div class="h-1.5 rounded-full transition-all duration-500" :class="step >= 3 ? 'w-8 bg-green-400' : 'w-4 bg-slate-800'"></div>
+
+            <!-- Indicateur Step -->
+            <div class="absolute bottom-12 left-16 flex gap-3 z-20">
+                <div class="h-1.5 transition-all duration-500" :class="step >= 1 ? 'w-12 bg-orange-500' : 'w-4 bg-slate-800'"></div>
+                <div class="h-1.5 transition-all duration-500" :class="step >= 2 ? 'w-12 bg-blue-500' : 'w-4 bg-slate-800'"></div>
+                <div class="h-1.5 transition-all duration-500" :class="step >= 3 ? 'w-12 bg-green-500' : 'w-4 bg-slate-800'"></div>
             </div>
         </div>
 
-        <!-- ======================= DROITE : LE FORMULAIRE ======================= -->
-        <div class="flex-1 bg-white relative flex flex-col overflow-y-auto custom-scroll w-full lg:max-w-xl">
-            
-            <!-- En-tête mobile -->
-            <div class="lg:hidden p-6 pb-0 flex items-center gap-3">
-                <img src="/assets/img/logo.png" alt="FreeGeny" class="h-6">
-                <span class="text-lg font-black uppercase font-title tracking-tighter text-slate-900">Free<span class="text-orange-500">Geny</span></span>
-            </div>
-
-            <div class="p-8 sm:p-12 lg:p-16 flex-1 flex flex-col justify-center">
-                <form action="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/onboarding" method="POST" id="onboardingForm" class="w-full">
+        <!-- RIGHT: FORMS -->
+        <div class="flex-1 flex flex-col h-full bg-white relative overflow-hidden">
+            <div class="p-8 lg:p-16 flex-1 flex flex-col justify-center overflow-y-auto custom-scroll">
+                <form action="" method="POST" class="max-w-md mx-auto w-full">
                     
-                    <!-- STEP 1 : Profil du garant -->
-                    <div x-show="step === 1" x-transition:enter="slide-enter" class="space-y-6">
+                    <!-- STEP 1: Parent -->
+                    <div x-show="step === 1" class="slide-enter space-y-8">
                         <div>
-                            <h3 class="text-3xl font-black font-title text-slate-950 tracking-tight">Bonjour <?= htmlspecialchars($user['full_name'] ?? 'Parent') ?> !</h3>
-                            <p class="text-slate-500 font-bold text-[11px] uppercase tracking-widest mt-2">Étape 1 sur 3 — Faisons connaissance</p>
+                            <h3 class="text-4xl font-black font-title text-slate-900 tracking-tighter leading-none">Bienvenue, <br><span class="text-orange-600"><?= htmlspecialchars(explode(' ', $user['full_name'])[0]) ?></span>.</h3>
+                            <p class="text-slate-500 font-bold text-[10px] uppercase tracking-[0.2em] mt-3">Étape 1 sur 3 — Votre profil</p>
                         </div>
-                        
-                        <div class="space-y-5 mt-8">
-                            <div>
-                                <label class="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">Quel est votre rôle ?</label>
-                                <div class="grid grid-cols-2 gap-3">
-                                    <label class="cursor-pointer">
-                                        <input type="radio" name="parent_role" value="Maman" class="peer hidden" checked>
-                                        <div class="py-3 sm:py-4 px-4 rounded-xl border-2 border-slate-100 peer-checked:border-orange-500 peer-checked:bg-orange-50 text-center transition-all">
-                                            <span class="block font-bold text-slate-800 peer-checked:text-orange-700 text-sm">Maman</span>
-                                        </div>
-                                    </label>
-                                    <label class="cursor-pointer">
-                                        <input type="radio" name="parent_role" value="Papa" class="peer hidden">
-                                        <div class="py-3 sm:py-4 px-4 rounded-xl border-2 border-slate-100 peer-checked:border-orange-500 peer-checked:bg-orange-50 text-center transition-all">
-                                            <span class="block font-bold text-slate-800 peer-checked:text-orange-700 text-sm">Papa</span>
-                                        </div>
-                                    </label>
-                                    <label class="cursor-pointer col-span-2">
-                                        <input type="radio" name="parent_role" value="Tuteur Légal" class="peer hidden">
-                                        <div class="py-3 sm:py-4 px-4 rounded-xl border-2 border-slate-100 peer-checked:border-slate-800 peer-checked:bg-slate-50 text-center transition-all">
-                                            <span class="block font-bold text-slate-800 text-sm">Tuteur Légal / Autre</span>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">Téléphone (Optionnel mais recommandé pour les alertes)</label>
-                                <input type="tel" name="phone" placeholder="+213..." value="<?= htmlspecialchars($user['phone'] ?? '') ?>" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 focus:bg-white px-4 py-3.5 rounded-xl outline-none transition-all font-semibold text-slate-900">
-                            </div>
-                        </div>
-
-                        <div class="pt-8 text-right">
-                            <button type="button" @click="nextStep()" class="bg-slate-900 hover:bg-orange-600 text-white px-8 py-3.5 rounded-xl font-bold uppercase tracking-widest text-xs transition-all shadow-lg shadow-slate-900/20">Suivant →</button>
-                        </div>
-                    </div>
-
-                    <!-- STEP 2 : Inviter le conjoint -->
-                    <div x-show="step === 2" x-transition:enter="slide-enter" x-cloak class="space-y-6">
-                        <div>
-                            <h3 class="text-3xl font-black font-title text-slate-950 tracking-tight">Le travail d'équipe.</h3>
-                            <p class="text-slate-500 font-bold text-[11px] uppercase tracking-widest mt-2">Étape 2 sur 3 — Impliquer l'autre parent</p>
-                        </div>
-                        
-                        <div class="bg-blue-50/50 border border-blue-100 rounded-2xl p-6 mt-6">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600 shadow-sm"><i class="fa-solid fa-envelope"></i></div>
-                            <h4 class="font-bold text-slate-900 mb-2">Inviter le deuxième parent</h4>
-                            <p class="text-sm text-slate-600 leading-relaxed font-medium mb-5">
-                                Permettez à votre conjoint d'avoir son propre accès pour suivre l'évolution, recevoir les alertes des professeurs et se concerter avec vous en temps réel.
-                            </p>
-                            
-                            <div>
-                                <label class="block text-[10px] font-black uppercase tracking-wider text-blue-800 mb-1">Email du conjoint (Optionnel)</label>
-                                <input type="email" name="spouse_email" placeholder="email@exemple.com" class="w-full bg-white border-2 border-blue-100 focus:border-blue-500 px-4 py-3.5 rounded-xl outline-none transition-all font-semibold text-slate-900">
-                            </div>
-                        </div>
-
-                        <div class="pt-8 flex justify-between">
-                            <button type="button" @click="prevStep()" class="text-slate-500 hover:text-slate-800 px-2 py-3 font-bold uppercase tracking-widest text-[10px] transition-all">← Précédent</button>
-                            <button type="button" @click="nextStep()" class="bg-slate-900 hover:bg-orange-600 text-white px-8 py-3.5 rounded-xl font-bold uppercase tracking-widest text-[11px] transition-all shadow-lg">Continuer →</button>
-                        </div>
-                    </div>
-
-                    <!-- STEP 3 : Ajouter l'enfant -->
-                    <div x-show="step === 3" x-transition:enter="slide-enter" x-cloak class="space-y-6">
-                        <div>
-                            <h3 class="text-3xl font-black font-title text-slate-950 tracking-tight">Le Héros de l'histoire.</h3>
-                            <p class="text-slate-500 font-bold text-[11px] uppercase tracking-widest mt-2">Étape 3 sur 3 — Ajouter votre premier enfant</p>
-                        </div>
-                        
-                        <div class="space-y-5 mt-8">
-                            <div>
-                                <label class="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">Prénom de l'enfant *</label>
-                                <input type="text" name="child_name" required placeholder="Ex: Lina" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 focus:bg-white px-4 py-3.5 rounded-xl outline-none transition-all font-semibold text-slate-900 shadow-sm">
-                            </div>
-                            
-                            
-                            <div class="space-y-4">
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">Pays de résidence</label>
-                                        <select name="child_country" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 px-4 py-3.5 rounded-xl text-slate-900 appearance-none font-bold">
-                                            <option value="DZ" <?= $country === 'DZ' ? 'selected' : '' ?>>Algérie (DZ)</option>
-                                            <option value="MA" <?= $country === 'MA' ? 'selected' : '' ?>>Maroc (MA)</option>
-                                            <option value="FR" <?= $country === 'FR' ? 'selected' : '' ?>>France (FR)</option>
-                                            <option value="US" <?= $country === 'US' ? 'selected' : '' ?>>États-Unis (US)</option>
-                                            <option value="UK" <?= $country === 'UK' ? 'selected' : '' ?>>Royaume-Uni (UK)</option>
-                                            <option value="INT">International (Autre)</option>
-                                        </select>
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-2 gap-4">
+                                <label class="cursor-pointer group">
+                                    <input type="radio" name="parent_role" value="Maman" class="hidden peer" checked>
+                                    <div class="p-5 rounded-2xl border-2 border-slate-50 bg-slate-50 text-center transition peer-checked:border-orange-500 peer-checked:bg-orange-50">
+                                        <div class="text-2xl mb-1">👩</div>
+                                        <span class="text-[10px] font-black uppercase text-slate-600 peer-checked:text-orange-700">Maman</span>
                                     </div>
-                                    <div>
-                                        <label class="block text-xs font-black uppercase tracking-wider text-orange-600 mb-2">Niveau Primaire</label>
-                                        <select name="child_level" class="w-full bg-orange-50 border-2 border-orange-200 focus:border-orange-500 focus:bg-white px-4 py-3.5 rounded-xl outline-none font-semibold text-slate-900 appearance-none shadow-sm cursor-pointer" required>
-                                            <option value="" disabled selected>Choisir la classe...</option>
-                                            <!-- Standard Algérie / Moyen Orient -->
-                                            <optgroup label="Standard Primaire">
-                                                <option value="1AP">1ère Année Primaire (1AP)</option>
-                                                <option value="2AP">2ème Année Primaire (2AP)</option>
-                                                <option value="3AP">3ème Année Primaire (3AP)</option>
-                                                <option value="4AP">4ème Année Primaire (4AP)</option>
-                                                <option value="5AP">5ème Année Primaire (5AP)</option>
-                                            </optgroup>
-                                            <!-- Standard Europe -->
-                                            <optgroup label="International / Europe">
-                                                <option value="CP">CP (Grade 1)</option>
-                                                <option value="CE1">CE1 (Grade 2)</option>
-                                                <option value="CE2">CE2 (Grade 3)</option>
-                                                <option value="CM1">CM1 (Grade 4)</option>
-                                                <option value="CM2">CM2 (Grade 5)</option>
-                                                <option value="G6">Grade 6 (International)</option>
-                                            </optgroup>
+                                </label>
+                                <label class="cursor-pointer group">
+                                    <input type="radio" name="parent_role" value="Papa" class="hidden peer">
+                                    <div class="p-5 rounded-2xl border-2 border-slate-50 bg-slate-50 text-center transition peer-checked:border-blue-500 peer-checked:bg-blue-50">
+                                        <div class="text-2xl mb-1">👨</div>
+                                        <span class="text-[10px] font-black uppercase text-slate-600 peer-checked:text-blue-700">Papa</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Numéro de téléphone</label>
+                                <input type="tel" name="phone" value="<?= htmlspecialchars($user['phone'] ?? '') ?>" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 py-4 px-5 rounded-2xl outline-none transition font-bold text-slate-900 shadow-sm">
+                            </div>
+                        </div>
+                        <button type="button" @click="next()" class="w-full py-5 bg-slate-950 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-orange-600 transition shadow-xl">Suivant →</button>
+                    </div>
+
+                    <!-- STEP 2: Invitation -->
+                    <div x-show="step === 2" x-cloak class="slide-enter space-y-8">
+                        <div>
+                            <h3 class="text-4xl font-black font-title text-slate-900 tracking-tighter leading-none">Travail <br><span class="text-blue-600">d'Équipe</span>.</h3>
+                            <p class="text-slate-500 font-bold text-[10px] uppercase tracking-[0.2em] mt-3">Étape 2 sur 3 — Invitation conjoint</p>
+                        </div>
+                        <div class="bg-blue-50/50 border border-blue-100 rounded-[2rem] p-8 space-y-4">
+                            <h4 class="font-bold text-slate-900 flex items-center gap-2">🤝 Invitez le conjoint</h4>
+                            <p class="text-[11px] font-medium text-slate-500 leading-relaxed italic">"Donnez un accès direct au deuxième parent pour suivre les progrès ensemble."</p>
+                            <input type="email" name="spouse_email" placeholder="email@conjoint.com" class="w-full bg-white border-2 border-blue-200 focus:border-blue-600 py-4 px-5 rounded-2xl outline-none transition font-bold text-slate-900">
+                        </div>
+                        <div class="flex gap-4">
+                            <button type="button" @click="prev()" class="px-6 py-5 bg-slate-100 text-slate-400 rounded-2xl font-black uppercase tracking-widest text-[10px]">←</button>
+                            <button type="button" @click="next()" class="flex-1 py-5 bg-slate-950 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-blue-600 transition shadow-xl">Continuer</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Enfant (PRIMARY ONLY) -->
+                    <div x-show="step === 3" x-cloak class="slide-enter space-y-6">
+                        <div>
+                            <h3 class="text-4xl font-black font-title text-slate-900 tracking-tighter leading-none">Le Petit <br><span class="text-green-600">Génie</span>.</h3>
+                            <p class="text-slate-500 font-bold text-[10px] uppercase tracking-[0.2em] mt-2">Étape 3 sur 3 — Cycle Primaire Unique</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Prénom de l'enfant</label>
+                                <input type="text" name="child_name" required placeholder="Ex: Lina" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-green-600 py-3.5 px-5 rounded-xl outline-none transition font-bold text-slate-900">
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Pays (Détection OK)</label>
+                                    <div class="relative">
+                                        <select x-model="childCountry" name="child_country" class="w-full bg-slate-100 border-0 py-3.5 pl-11 pr-4 rounded-xl outline-none font-bold text-slate-800 text-xs appearance-none">
+                                            <template x-for="(info, code) in levels" :key="code">
+                                                <option :value="code" x-text="code"></option>
+                                            </template>
                                         </select>
+                                        <div class="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none">
+                                            <img :src="'https://flagcdn.com/w40/' + childCountry.toLowerCase() + '.png'" class="w-5 h-auto rounded-sm">
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div>
-                                    <label class="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">Âge *</label>
-                                    <input type="number" name="child_age" min="4" max="15" required placeholder="Ex: 8" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 focus:bg-white px-4 py-3.5 rounded-xl outline-none transition-all font-semibold text-slate-900">
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-black uppercase tracking-wider text-blue-700 mb-1 flex items-center gap-2"><i class="fa-solid fa-school"></i> École fréquentée au Primaire</label>
-                                    <p class="text-[9px] text-slate-500 uppercase tracking-widest font-bold mb-2">Recherchez ou saisissez le nom complet pour connecter les professeurs</p>
-                                    <input type="text" name="child_school" placeholder="Nom de l'école ou établissement..." class="w-full bg-white border-2 border-blue-100 focus:border-blue-500 px-4 py-3.5 rounded-xl outline-none transition-all font-semibold text-slate-900 shadow-inner">
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Niveau (OFFICIEL)</label>
+                                    <select name="child_level" required class="w-full bg-green-50 border-2 border-green-200 py-3.5 px-4 rounded-xl outline-none font-bold text-green-900 text-xs appearance-none">
+                                        <template x-for="lvl in levels[childCountry]" :key="lvl">
+                                            <option :value="lvl" x-text="lvl"></option>
+                                        </template>
+                                    </select>
                                 </div>
                             </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Province / Wilaya</label>
+                                    <select name="child_region" class="w-full bg-slate-50 border border-slate-100 py-3 px-4 rounded-xl font-bold text-slate-800 text-xs appearance-none overflow-hidden">
+                                        <option value="">Sélectionner...</option>
+                                        <template x-for="reg in regions[childCountry]" :key="reg">
+                                            <option :value="reg" x-text="reg"></option>
+                                        </template>
+                                    </select>
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Âge</label>
+                                    <input type="number" name="child_age" min="5" max="13" required class="w-full bg-slate-50 border border-slate-100 py-3 px-4 rounded-xl font-bold text-slate-800 text-xs outline-none">
+                                </div>
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-black uppercase tracking-widest text-blue-600 flex items-center gap-2 font-bold"><i class="fa-solid fa-school"></i> Établissement Primaire</label>
+                                <input type="text" name="child_school" placeholder="Rechercher ou saisir l'école..." class="w-full bg-white border-2 border-blue-50 focus:border-blue-500 py-3.5 px-5 rounded-xl outline-none transition font-bold text-slate-900 shadow-sm text-sm">
+                            </div>
                         </div>
-
-                        <div class="pt-8 flex justify-between">
-                            <button type="button" @click="prevStep()" class="text-slate-500 hover:text-slate-800 px-2 py-3 font-bold uppercase tracking-widest text-[10px] transition-all">← Retour</button>
-                            <button type="submit" class="bg-orange-600 hover:bg-slate-900 text-white px-8 py-3.5 rounded-xl font-black uppercase tracking-widest text-[11px] transition-all shadow-xl shadow-orange-600/30">
-                                Démarrer l'aventure !
-                            </button>
+                        <div class="flex gap-4 pt-4">
+                            <button type="button" @click="prev()" class="px-6 py-5 bg-slate-100 text-slate-400 rounded-2xl font-black uppercase tracking-widest text-[10px]">←</button>
+                            <button type="submit" class="flex-1 py-5 bg-green-600 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-slate-950 transition shadow-xl">Démarrer !</button>
                         </div>
                     </div>
-
                 </form>
             </div>
 
-            <!-- Footer safe area -->
-            <div class="p-6 text-center text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                Sécurisé et Chiffré par FreeGeny Core
+            <!-- Footer fixed -->
+            <div class="p-8 text-center border-t border-slate-50 bg-white/50 shrink-0">
+                <p class="text-[9px] font-black text-slate-300 uppercase tracking-[0.3em] mb-1">Garantie Excellence • Primaire Uniquement</p>
+                <p class="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">© FreeGeny Core v4.0 — Chiffré bout en bout</p>
             </div>
         </div>
-
     </div>
-
 </body>
 </html>
