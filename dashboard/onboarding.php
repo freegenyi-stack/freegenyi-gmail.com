@@ -170,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
                             <input type="tel" x-model="phone" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl font-bold text-slate-950 outline-none">
                         </div>
                     </div>
-                    <button type="button" @click="isInvited ? window.location.href='/dashboard/parent' : saveStep(2)" class="w-full bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl hover:bg-orange-600 transition-all">
+                    <button type="button" @click="isInvited ? window.location.href='/<?= $country ?>-<?= $lang ?>/dashboard/parent' : saveStep(2)" class="w-full bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl hover:bg-orange-600 transition-all">
                         <span x-text="isInvited ? 'Rejoindre ma famille →' : 'Suivant →'"></span>
                     </button>
                 </div>
