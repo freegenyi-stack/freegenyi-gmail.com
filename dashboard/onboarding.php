@@ -145,11 +145,106 @@ $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
                     </div>
                 </div>
 
-                <!-- STEP 3 -->
-                <div x-show="step === 3" x-cloak class="slide-up">
-                    <h3 class="text-3xl font-black font-title">Finalisation.</h3>
-                    <button type="button" @click="step = 3" class="mt-8 bg-black text-white px-8 py-3 rounded-lg">Terminer</button>
-                </div>
+            <div x-show="step === 3" x-cloak class="absolute top-10 left-10 slide-up">
+                <span class="inline-block px-4 py-2 bg-green-600 text-white text-[11px] font-black uppercase tracking-[0.2em] rounded-md shadow-lg shadow-green-600/20">Le Petit Génie</span>
+            </div>
+
+            <!-- MIDDLE AREA : VOID FOR PHOTO -->
+            <div class="flex-1"></div>
+
+            <!-- FOOTER : Step 3 Arguments -->
+            <div x-show="step === 3" x-cloak class="space-y-4 slide-up mb-6">
+                <h1 class="text-6xl font-title font-black leading-tight tracking-tighter">Cycle Primaire Exclusivement.</h1>
+                <p class="text-slate-500 font-bold text-sm tracking-widest uppercase">Un accompagnement sur mesure pour ses débuts.</p>
+            </div>
+
+            <!-- DOTS INDICATORS -->
+            <div class="absolute bottom-12 right-12 flex gap-4">
+                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 1 ? 'bg-orange-600 w-12' : 'bg-slate-800 w-4'"></div>
+                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 2 ? 'bg-blue-500 w-12' : 'bg-slate-800 w-4'"></div>
+                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 3 ? 'bg-green-500 w-12' : 'bg-slate-800 w-4'"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL (FORM) -->
+        <div class="flex-1 flex flex-col justify-between p-16 bg-white overflow-hidden relative rounded-r-[3.5rem]">
+            
+            <!-- LOGO CENTERED -->
+            <a href="/<?= $country ?>-<?= $lang ?>/" class="absolute top-12 left-1/2 -translate-x-1/2 flex items-center gap-3 whitespace-nowrap group">
+                <img src="/assets/img/logo.png" alt="FreeGeny" class="h-9 w-auto">
+                <span class="text-xl font-black text-slate-950 uppercase font-title tracking-tighter">Free<span class="text-orange-600">Geny</span></span>
+            </a>
+
+            <div class="max-w-sm mx-auto w-full h-full flex flex-col justify-center">
+                
+                <!-- STEP 1 & 2 ... -->
+
+                <!-- STEP 3 : L'ENFANT -->
+                <form action="" method="POST" x-show="step === 3" x-cloak class="space-y-4 slide-up pt-10">
+                    <input type="hidden" name="parent_role" :value="role">
+                    <input type="hidden" name="phone" :value="phone">
+                    <input type="hidden" name="spouse_email" :value="spouse_email">
+
+                    <div>
+                        <h3 class="text-3xl font-black font-title text-slate-950 tracking-tight leading-none text-center">L'Enfant.</h3>
+                        <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-4 text-center italic">Étape 3 sur 3 — Finalisation</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <input type="text" name="child_name" required placeholder="Prénom de l'enfant" class="w-full bg-slate-50 border-2 border-slate-100 px-4 py-4 rounded-xl font-bold text-slate-950 shadow-sm focus:border-green-600 outline-none">
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="space-y-1">
+                                <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Pays</label>
+                                <div class="relative">
+                                    <select x-model="childCountry" name="child_country" class="w-full bg-slate-50 border-2 border-slate-100 p-3 rounded-xl font-bold text-xs appearance-none">
+                                        <?php foreach ($supported_regions as $code => $info): ?>
+                                            <option value="<?= $code ?>"><?= $info['name'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <div class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                                        <img :src="'https://flagcdn.com/w20/' + childCountry.toLowerCase() + '.png'" class="w-4 h-auto">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Niveau (Primaire)</label>
+                                <select name="child_level" required class="w-full bg-slate-50 border-2 border-slate-100 p-3 rounded-xl font-bold text-xs">
+                                    <template x-for="lvl in (levels[childCountry] || levels['INT'])" :key="lvl">
+                                        <option :value="lvl" x-text="lvl"></option>
+                                    </template>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="space-y-1">
+                                <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Wilaya / Province</label>
+                                <select name="child_region" class="w-full bg-slate-50 border-2 border-slate-100 p-3 rounded-xl font-bold text-xs">
+                                    <template x-if="childCountry === 'DZ'">
+                                        <template x-for="w in wilayas" :key="w.c">
+                                            <option :value="w.n" x-text="w.n"></option>
+                                        </template>
+                                    </template>
+                                </select>
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Âge</label>
+                                <input type="number" name="child_age" min="5" max="13" required class="w-full bg-slate-50 border-2 border-slate-100 p-3 rounded-xl font-bold text-xs">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-[9px] font-black text-blue-600 uppercase tracking-widest">École fréquentée (recherche)</label>
+                            <input type="text" name="child_school" placeholder="Taper le nom de l'école..." class="w-full bg-slate-50 border-2 border-blue-50 p-4 rounded-xl font-bold text-xs">
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 pt-2">
+                        <button type="button" @click="step = 2" class="px-8 py-5 border-2 border-slate-100 rounded-2xl font-black uppercase text-[10px] hover:bg-slate-50 transition-all">←</button>
+                        <button type="submit" class="flex-1 bg-green-600 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl hover:bg-slate-900 transition-all shadow-green-600/10">Démarrer l'Aventure !</button>
+                    </div>
+                </form>
 
             </div>
 
