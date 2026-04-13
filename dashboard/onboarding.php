@@ -14,7 +14,7 @@ if (empty($_SESSION['logged_in'])) {
 $user_id = $_SESSION['user_id'];
 
 // Initialisation via la BDD pour voir s'il a déjà rempli
-$user = DB::fetchOne("SELECT id, first_name, last_name, phone FROM users WHERE id = ?", [$user_id]);
+$user = DB::fetchOne("SELECT id, full_name, phone FROM users WHERE id = ?", [$user_id]);
 
 // Traitement du formulaire final en AJAX ou POST basique (Ici POST pour la robustesse)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -169,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <!-- STEP 1 : Profil du garant -->
                     <div x-show="step === 1" x-transition:enter="slide-enter" class="space-y-6">
                         <div>
-                            <h3 class="text-3xl font-black font-title text-slate-950 tracking-tight">Bonjour <?= htmlspecialchars($user['first_name'] ?? 'Parent') ?> !</h3>
+                            <h3 class="text-3xl font-black font-title text-slate-950 tracking-tight">Bonjour <?= htmlspecialchars($user['full_name'] ?? 'Parent') ?> !</h3>
                             <p class="text-slate-500 font-bold text-[11px] uppercase tracking-widest mt-2">Étape 1 sur 3 — Faisons connaissance</p>
                         </div>
                         
