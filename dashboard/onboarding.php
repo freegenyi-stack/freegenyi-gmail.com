@@ -1,6 +1,6 @@
 <?php
 /**
- * dashboard/onboarding.php - The Elite Onboarding Experience (RECONSTRUCTED CARD DESIGN)
+ * dashboard/onboarding.php - The Elite Onboarding Experience (RECONSTRUCTED WITH LOGO & GRID ROLES)
  */
 require_once __DIR__ . '/../config/app.php';
 require_once __DIR__ . '/../api/auth/auth_helpers.php';
@@ -27,15 +27,15 @@ $wilayas_dz = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue | FreeGeny Onboarding</title>
+    <title>Bienvenue | FreeGeny Elite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         [x-cloak] { display: none !important; }
-        body { font-family: 'DM Sans', sans-serif; background: #f3f4f6; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        body { font-family: 'DM Sans', sans-serif; background: #f8fafc; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
         .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .premium-card { background: white; border-radius: 3rem; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.12), 0 30px 60px -30px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,1); }
+        .premium-card { background: white; border-radius: 3rem; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.1), 0 30px 60px -30px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,1); position: relative; }
         .bg-argumentaire { background-color: #0f172a; border-radius: 2.5rem 0 0 2.5rem; }
         .slide-up { animation: slideUp 0.5s ease-out forwards; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -43,10 +43,16 @@ $wilayas_dz = [
 </head>
 <body>
 
-    <div class="w-full max-w-[1200px] h-[750px] premium-card flex overflow-hidden lg:flex-row flex-col" x-data="onboardingApp()">
+    <div class="w-full max-w-[1150px] h-[720px] premium-card flex overflow-visible lg:flex-row flex-col" x-data="onboardingApp()">
         
-        <!-- LEFT PANEL : ARGUMENTAIRE V1 -->
-        <div class="lg:w-[45%] bg-argumentaire text-white p-16 flex flex-col justify-center relative">
+        <!-- LOGO FLOTTANT (Exactement comme vous avez demandé) -->
+        <a href="/<?= $country ?>-<?= $lang ?>/" class="absolute -top-7 left-1/2 lg:left-[72.5%] -translate-x-1/2 bg-white px-8 py-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 whitespace-nowrap hover:shadow-2xl transition-all z-50">
+            <img src="/assets/img/logo.png" alt="FreeGeny" class="h-8 w-auto">
+            <span class="text-lg font-black text-slate-950 uppercase font-title tracking-tighter">Free<span class="text-orange-600">Geny</span></span>
+        </a>
+
+        <!-- LEFT PANEL : ARGUMENTAIRE -->
+        <div class="lg:w-[42%] bg-argumentaire text-white p-16 flex flex-col justify-center relative">
             <div x-show="step === 1" class="space-y-6 slide-up">
                 <span class="inline-block px-4 py-2 bg-orange-500 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-md">L'Excellence mondiale</span>
                 <h1 class="text-5xl font-title font-black leading-tight tracking-tighter">Votre enfant n'a plus aucune frontière.</h1>
@@ -69,7 +75,6 @@ $wilayas_dz = [
                 <h1 class="text-5xl font-title font-black leading-tight tracking-tighter">Cycle Primaire Exclusivement.</h1>
             </div>
 
-            <!-- DOTS -->
             <div class="absolute bottom-12 left-16 flex gap-3">
                 <div class="w-2 h-2 rounded-full transition-all duration-300" :class="step === 1 ? 'bg-orange-500 w-8' : 'bg-slate-700'"></div>
                 <div class="w-2 h-2 rounded-full transition-all duration-300" :class="step === 2 ? 'bg-blue-500 w-8' : 'bg-slate-700'"></div>
@@ -78,71 +83,51 @@ $wilayas_dz = [
         </div>
 
         <!-- RIGHT PANEL : FORM -->
-        <div class="flex-1 flex flex-col justify-between p-16 bg-white overflow-hidden relative">
+        <div class="flex-1 flex flex-col justify-between p-16 bg-white overflow-hidden relative rounded-r-[3rem]">
             <div class="max-w-md mx-auto w-full h-full flex flex-col justify-center">
                 
-                <!-- STEP 1 -->
-                <div x-show="step === 1" class="space-y-10 slide-up">
+                <!-- STEP 1 : ROLES EN LIGNE (GRID 3) -->
+                <div x-show="step === 1" class="space-y-12 slide-up">
                     <div>
-                        <h3 class="text-4xl font-black font-title text-slate-950 tracking-tight">Bonjour, <?= htmlspecialchars($first_name) ?>.</h3>
-                        <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-4">Étape 1 — Votre rôle</p>
+                        <h3 class="text-4xl font-black font-title text-slate-950 tracking-tight leading-none">Bonjour, <?= htmlspecialchars($first_name) ?>.</h3>
+                        <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-6">Étape 1 sur 3 — Votre rôle de garant</p>
                     </div>
 
-                    <div class="space-y-4">
-                        <div class="grid grid-cols-2 gap-3">
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-3 gap-2">
                             <label class="cursor-pointer group">
                                 <input type="radio" name="parent_role" value="Maman" class="hidden peer" checked x-model="role">
-                                <div class="py-4 border-2 border-slate-100 rounded-2xl text-center font-bold text-slate-400 peer-checked:border-orange-500 peer-checked:text-orange-600 transition-all uppercase text-[11px] tracking-widest">Maman</div>
+                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-orange-500 peer-checked:text-orange-600 peer-checked:bg-orange-50/30 transition-all uppercase text-[10px] tracking-tighter">Maman</div>
                             </label>
                             <label class="cursor-pointer group">
                                 <input type="radio" name="parent_role" value="Papa" class="hidden peer" x-model="role">
-                                <div class="py-4 border-2 border-slate-100 rounded-2xl text-center font-bold text-slate-400 peer-checked:border-orange-500 peer-checked:text-orange-600 transition-all uppercase text-[11px] tracking-widest">Papa</div>
+                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-orange-500 peer-checked:text-orange-600 peer-checked:bg-orange-50/30 transition-all uppercase text-[10px] tracking-tighter">Papa</div>
                             </label>
-                            <label class="cursor-pointer col-span-2 group">
+                            <label class="cursor-pointer group">
                                 <input type="radio" name="parent_role" value="Tuteur" class="hidden peer" x-model="role">
-                                <div class="py-4 border-2 border-slate-100 rounded-2xl text-center font-bold text-slate-400 peer-checked:border-slate-800 peer-checked:text-slate-900 transition-all uppercase text-[11px] tracking-widest">Tuteur Légal</div>
+                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-800 peer-checked:text-slate-900 peer-checked:bg-slate-50 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center">Tuteur Légal</div>
                             </label>
                         </div>
 
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-300">Numéro de téléphone</label>
-                            <input type="tel" name="phone" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl font-bold text-slate-900 outline-none focus:border-black transition-all">
+                        <div class="space-y-1 pt-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-300 px-1">Numéro de téléphone</label>
+                            <input type="tel" name="phone" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl font-bold text-slate-900 outline-none focus:border-slate-950 transition-all shadow-inner">
                         </div>
                     </div>
 
-                    <button type="button" @click="step = 2" class="w-full bg-slate-950 text-white py-5 rounded-3xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl">Continuer →</button>
+                    <button type="button" @click="step = 2" class="w-full bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl shadow-slate-900/10">Étape Suivante →</button>
                 </div>
 
-                <!-- STEP 2 -->
-                <div x-show="step === 2" x-cloak class="space-y-8 slide-up">
+                <!-- STEP 2 (Placeholders) -->
+                <div x-show="step === 2" x-cloak class="slide-up">
                     <h3 class="text-4xl font-black font-title">Invitation.</h3>
-                    <p class="text-slate-500 font-bold uppercase text-[10px] tracking-widest">Étape 2 — Inviter le conjoint</p>
-                    <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 space-y-4">
-                        <input type="email" placeholder="Email du conjoint..." class="w-full p-4 rounded-xl border-2 border-slate-200 font-bold outline-none focus:border-blue-500">
-                    </div>
-                    <div class="flex gap-4">
-                        <button type="button" @click="step = 1" class="px-8 py-5 border-2 border-slate-100 rounded-2xl font-black uppercase tracking-widest text-[10px]">←</button>
-                        <button type="button" @click="step = 3" class="flex-1 bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-xs">Suivant</button>
-                    </div>
-                </div>
-
-                <!-- STEP 3 -->
-                <div x-show="step === 3" x-cloak class="space-y-8 slide-up">
-                    <h3 class="text-4xl font-black font-title">L'Enfant.</h3>
-                    <div class="space-y-4">
-                        <input type="text" placeholder="Prénom de l'enfant" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-xl font-bold">
-                    </div>
-                    <div class="flex gap-4">
-                        <button type="button" @click="step = 2" class="px-8 py-5 border-2 border-slate-100 rounded-2xl font-black uppercase text-[10px]">←</button>
-                        <button type="button" class="flex-1 bg-orange-600 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl">Terminer</button>
-                    </div>
+                    <button type="button" @click="step = 3" class="mt-8 bg-black text-white px-8 py-4 rounded-xl">Continuer</button>
                 </div>
 
             </div>
 
-            <!-- FOOTER -->
             <div class="text-center">
-                <p class="text-[9px] font-black text-slate-200 uppercase tracking-[0.4em] italic mb-4">
+                <p class="text-[9px] font-black text-slate-300 uppercase tracking-[0.4em] italic mb-4">
                     Sécurisé et Chiffré par FreeGeny Core
                 </p>
             </div>
