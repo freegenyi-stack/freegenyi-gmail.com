@@ -1,6 +1,6 @@
 <?php
 /**
- * dashboard/onboarding.php - The Elite Onboarding Experience (STRUCTURAL REFINEMENT V1)
+ * dashboard/onboarding.php - The Elite Onboarding Experience (STRUCTURAL REFINEMENT V2)
  */
 require_once __DIR__ . '/../config/app.php';
 require_once __DIR__ . '/../api/auth/auth_helpers.php';
@@ -31,8 +31,8 @@ $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
         [x-cloak] { display: none !important; }
         body { font-family: 'DM Sans', sans-serif; background: #fdfdfd; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; margin: 0; }
         .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .premium-card { background: white; border-radius: 3rem; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.03); position: relative; }
-        .bg-argumentaire { background-color: #0f172a; border-radius: 2.5rem 0 0 2.5rem; overflow: hidden; }
+        .premium-card { background: white; border-radius: 3.5rem; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.03); position: relative; }
+        .bg-argumentaire { background-color: #0d1117; border-radius: 3rem 0 0 3rem; overflow: hidden; }
         .slide-up { animation: slideUp 0.5s ease-out forwards; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -44,43 +44,43 @@ $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
         <!-- LEFT PANEL (60% WIDE) : CONTENT TOP & BOTTOM -->
         <div class="lg:w-[58%] bg-argumentaire text-white p-20 flex flex-col justify-between relative">
             
-            <!-- HEADER : L'Excellence Mondiale (Plus haut, plus à gauche) -->
-            <div x-show="step === 1" class="absolute top-12 left-12 slide-up">
-                <span class="inline-block px-4 py-2 bg-orange-600/20 text-orange-400 text-[11px] font-black uppercase tracking-[0.2em] border border-orange-500/20 rounded-md">L'Excellence mondiale</span>
+            <!-- HEADER : L'Excellence Mondiale (Fidèle à vos directives) -->
+            <div x-show="step === 1" class="absolute top-10 left-10 slide-up">
+                <span class="inline-block px-4 py-2 bg-white/5 text-slate-100 text-[11px] font-black uppercase tracking-[0.2em] border border-white/10 rounded-md">L'Excellence mondiale</span>
             </div>
 
             <!-- MIDDLE AREA : VOID FOR PHOTO -->
             <div class="flex-1"></div>
 
-            <!-- FOOTER : Arguments -->
-            <div x-show="step === 1" class="space-y-8 slide-up">
+            <!-- FOOTER : Arguments RESSERRÉS -->
+            <div x-show="step === 1" class="space-y-4 slide-up mb-6">
                 <h1 class="text-6xl font-title font-black leading-tight tracking-tighter">Votre enfant n'a plus aucune frontière.</h1>
-                <div class="grid grid-cols-2 gap-4 text-[12px] font-bold text-slate-400 pt-6 uppercase tracking-[0.1em] leading-relaxed">
-                    <div class="space-y-3">
+                <div class="grid grid-cols-2 gap-4 text-[12px] font-bold text-slate-500 pt-2 uppercase tracking-[0.1em] leading-relaxed">
+                    <div class="space-y-4">
                         <p>• Mathématiques de Singapour</p>
                         <p>• Cambridge (UK)</p>
                         <p>• Finnish Model</p>
                     </div>
-                    <div class="space-y-3">
+                    <div class="space-y-4">
                         <p>• STEM / STEAM</p>
                         <p>• Montessori</p>
                     </div>
                 </div>
             </div>
 
-            <!-- DOTS INDICATORS -->
-            <div class="absolute bottom-12 left-20 flex gap-4">
-                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 1 ? 'bg-orange-500 w-12' : 'bg-slate-700 w-4'"></div>
-                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 2 ? 'bg-blue-500 w-12' : 'bg-slate-700 w-4'"></div>
-                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 3 ? 'bg-green-500 w-12' : 'bg-slate-700 w-4'"></div>
+            <!-- DOTS INDICATORS (Tout à fait à droite comme demandé) -->
+            <div class="absolute bottom-12 right-12 flex gap-4">
+                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 1 ? 'bg-orange-600 w-12' : 'bg-slate-800 w-4'"></div>
+                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 2 ? 'bg-blue-600 w-12' : 'bg-slate-800 w-4'"></div>
+                <div class="h-1.5 rounded-full transition-all duration-300" :class="step === 3 ? 'bg-green-600 w-12' : 'bg-slate-800 w-4'"></div>
             </div>
         </div>
 
-        <!-- RIGHT PANEL (FORM CASE) -->
-        <div class="flex-1 flex flex-col justify-between p-16 bg-white overflow-hidden relative rounded-r-[3rem]">
+        <!-- RIGHT PANEL (FORM) -->
+        <div class="flex-1 flex flex-col justify-between p-16 bg-white overflow-hidden relative rounded-r-[3.5rem]">
             
-            <!-- LOGO CENTERED HORIZONTALLY IN FORM (As requested) -->
-            <a href="/<?= $country ?>-<?= $lang ?>/" class="absolute top-10 left-1/2 -translate-x-1/2 flex items-center gap-3 whitespace-nowrap group">
+            <!-- LOGO CENTERED -->
+            <a href="/<?= $country ?>-<?= $lang ?>/" class="absolute top-12 left-1/2 -translate-x-1/2 flex items-center gap-3 whitespace-nowrap group">
                 <img src="/assets/img/logo.png" alt="FreeGeny" class="h-9 w-auto">
                 <span class="text-xl font-black text-slate-950 uppercase font-title tracking-tighter">Free<span class="text-orange-600">Geny</span></span>
             </a>
@@ -88,7 +88,7 @@ $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
             <div class="max-w-sm mx-auto w-full h-full flex flex-col justify-center">
                 
                 <!-- STEP 1 -->
-                <div x-show="step === 1" class="space-y-12 slide-up mt-12">
+                <div x-show="step === 1" class="space-y-12 slide-up pt-10">
                     <div>
                         <h3 class="text-4xl font-black font-title text-slate-950 tracking-tight leading-none text-center">Bonjour, <?= htmlspecialchars($first_name) ?>.</h3>
                         <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-6 text-center italic">Étape 1 sur 3 — Votre rôle de garant</p>
@@ -98,30 +98,31 @@ $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
                         <div class="grid grid-cols-3 gap-2">
                             <label class="cursor-pointer group">
                                 <input type="radio" name="parent_role" value="Maman" class="hidden peer" checked x-model="role">
-                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-orange-500 peer-checked:text-orange-600 peer-checked:bg-orange-50 transition-all uppercase text-[10px] tracking-tighter">Maman</div>
+                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-950 peer-checked:text-slate-950 peer-checked:bg-slate-50 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center h-16">Maman</div>
                             </label>
                             <label class="cursor-pointer group">
                                 <input type="radio" name="parent_role" value="Papa" class="hidden peer" x-model="role">
-                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-orange-500 peer-checked:text-orange-600 peer-checked:bg-orange-50 transition-all uppercase text-[10px] tracking-tighter">Papa</div>
+                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-950 peer-checked:text-slate-950 peer-checked:bg-slate-50 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center h-16">Papa</div>
                             </label>
                             <label class="cursor-pointer group">
                                 <input type="radio" name="parent_role" value="Tuteur" class="hidden peer" x-model="role">
-                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-800 peer-checked:text-slate-900 peer-checked:bg-slate-50 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center">Tuteur Légal</div>
+                                <div class="py-4 border-2 border-slate-100 rounded-xl text-center font-bold text-slate-400 peer-checked:border-slate-950 peer-checked:text-slate-950 peer-checked:bg-slate-50 transition-all uppercase text-[10px] tracking-tighter leading-none flex items-center justify-center h-16">Tuteur Légal</div>
                             </label>
                         </div>
 
-                        <div class="space-y-1 pt-2">
+                        <div class="space-y-1">
                             <label class="text-[10px] font-black uppercase tracking-widest text-slate-300 px-1">Numéro de téléphone</label>
                             <input type="tel" name="phone" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl font-bold text-slate-900 outline-none focus:border-black transition-all">
                         </div>
                     </div>
 
-                    <button type="button" @click="step = 2" class="w-full bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl shadow-slate-950/10">Suivant →</button>
+                    <button type="button" @click="step = 2" class="w-full bg-slate-950 text-white py-5 rounded-3xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl shadow-slate-950/10">Suivant →</button>
                 </div>
 
-                <!-- STEP 2 PLACEHOLDER -->
+                <!-- STEP 2 -->
                 <div x-show="step === 2" x-cloak class="slide-up">
-                    <h3 class="text-3xl font-black font-title">Étape 2</h3>
+                    <h3 class="text-3xl font-black font-title">Invitation.</h3>
+                    <button type="button" @click="step = 3" class="mt-8 bg-black text-white px-8 py-3 rounded-lg">Continuer</button>
                 </div>
 
             </div>
