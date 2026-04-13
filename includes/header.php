@@ -8,7 +8,38 @@ $is_rtl = $is_rtl ?? false;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreeGeny | Premium Education</title>
+    <?php
+    $seo_title = $seo_title ?? "FreeGeny | " . __("Premium Education", "L'excellence éducative libérée");
+    $seo_desc  = $seo_desc ?? __("discover_freegeny", "Découvrez FreeGeny, la plateforme premium d'éducation sur-mesure pour révéler le génie de votre enfant.");
+    $current_url = APP_URL . htmlspecialchars(explode('?', $_SERVER['REQUEST_URI'])[0]);
+    ?>
+    <title><?= htmlspecialchars($seo_title) ?></title>
+    <meta name="description" content="<?= htmlspecialchars($seo_desc) ?>">
+    
+    <!-- URL Canonique -->
+    <link rel="canonical" href="<?= $current_url ?>">
+
+    <!-- Hreflang Tags (International SEO Parfait) -->
+    <?php
+    $path_without_locale = preg_replace('#^/([A-Z]{2})-([a-z]{2})#', '', explode('?', $_SERVER['REQUEST_URI'])[0]);
+    if ($path_without_locale === '' || $path_without_locale === '/') $path_without_locale = '/';
+
+    foreach ($supported_regions as $cCode => $info) {
+        foreach ($info['langs'] as $lCode) {
+            $href = APP_URL . '/' . $cCode . '-' . $lCode . ($path_without_locale === '/' ? '/' : $path_without_locale);
+            echo '    <link rel="alternate" hreflang="' . strtolower($lCode) . '-' . strtolower($cCode) . '" href="' . $href . '">' . "\n";
+        }
+    }
+    ?>
+    <link rel="alternate" hreflang="x-default" href="<?= APP_URL ?>/">
+
+    <!-- Open Graph / Réseaux Sociaux -->
+    <meta property="og:title" content="<?= htmlspecialchars($seo_title) ?>">
+    <meta property="og:description" content="<?= htmlspecialchars($seo_desc) ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $current_url ?>">
+    <meta property="og:image" content="<?= APP_URL ?>/assets/img/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
     
     <!-- Polices premium -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
