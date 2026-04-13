@@ -1,16 +1,24 @@
 <?php
 /**
- * app.php - Version de Secours (Simplifiée pour rétablir l'accès)
+ * app.php - Version Élite Stabilisée (Performance & Sécurité)
  */
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Désactivation temporaire du verrouillage site pour test
-$_SESSION['site_unlocked'] = true; 
+// 1. PROTECTION DU SITE (Unlock)
+if (!defined('MAINTENANCE_PASSWORD')) define('MAINTENANCE_PASSWORD', 'Yousr4568520&');
+$is_legal_page = str_contains($_SERVER['REQUEST_URI'] ?? '', 'privacy') || str_contains($_SERVER['REQUEST_URI'] ?? '', 'terms');
 
-error_reporting(E_ALL); 
+if (empty($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'] ?? '', 'unlock.php') && !$is_legal_page) {
+    header('Location: /unlock.php');
+    exit;
+}
+
+// 2. CONFIGURATION ERREURS & ENV
+error_reporting(E_ALL & ~E_NOTICE); 
 ini_set('display_errors', 1);
+if (!defined('DEBUG_MODE')) define('DEBUG_MODE', true);
 
 if (!function_exists('loadEnv')) {
     function loadEnv($path) {
@@ -36,16 +44,34 @@ if (!defined('APP_URL')) define('APP_URL', 'https://freegeny.com');
 if (!defined('BCRYPT_COST')) define('BCRYPT_COST', 12);
 if (!defined('MAX_LOGIN_ATTEMPTS')) define('MAX_LOGIN_ATTEMPTS', 5);
 
-// Valeurs par défaut sécurisées
-$country = $_SESSION['country_code'] ?? 'DZ';
-$lang = $_SESSION['lang'] ?? 'fr';
-$home_country = $country;
-
+// 3. SYSTÈME DE RÉGIONS & LANGUES
 $supported_regions = [
     'DZ' => ['name' => 'Algeria', 'langs' => ['ar', 'fr']],
+    'MA' => ['name' => 'Morocco', 'langs' => ['ar', 'fr']],
+    'TN' => ['name' => 'Tunisia', 'langs' => ['ar', 'fr']],
     'FR' => ['name' => 'France', 'langs' => ['fr']],
+    'BE' => ['name' => 'Belgium', 'langs' => ['fr', 'nl']],
+    'CH' => ['name' => 'Switzerland', 'langs' => ['fr', 'de']],
+    'CA' => ['name' => 'Canada', 'langs' => ['fr', 'en']],
+    'US' => ['name' => 'USA', 'langs' => ['en']],
+    'GB' => ['name' => 'United Kingdom', 'langs' => ['en']],
 ];
 
+// Détection pays/langue sans boucle de redirection
+$request_uri = $_SERVER['REQUEST_URI'] ?? '/';
+$uri_parts = explode('/', trim($request_uri, '/'));
+$slug = explode('?', $uri_parts[0] ?? '')[0];
+
+if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
+    $_SESSION['country_code'] = strtoupper($matches[1]);
+    $_SESSION['lang'] = strtolower($matches[2]);
+}
+
+$country = $_SESSION['country_code'] ?? 'DZ';
+$lang = $_SESSION['lang'] ?? 'fr';
+$is_rtl = ($lang === 'ar');
+
+// 4. TRADUCTIONS ET HELPERS
 $GLOBALS['translations'] = [];
 $lang_file = __DIR__ . "/../lang/{$lang}.php";
 if (file_exists($lang_file)) {
