@@ -77,9 +77,9 @@ $is_rtl = $is_rtl ?? false;
         <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center w-full">
             <div class="flex items-center gap-6">
                 <?php $home_slug = strtoupper($_COOKIE['freegeny_home'] ?? 'DZ') . '-' . $lang; ?>
-                <a href="/<?php echo $home_slug; ?>/" class="flex items-center gap-3 transition hover:scale-105 group">
-                    <img src="/assets/img/logo.png" alt="FreeGeny" class="h-10 w-auto">
-                    <span class="text-2xl font-black text-slate-900 tracking-tighter uppercase font-title leading-none">
+                <a href="/<?php echo $home_slug; ?>/" class="flex items-center gap-2 md:gap-3 transition hover:scale-105 group">
+                    <img src="/assets/img/logo.png" alt="FreeGeny" class="h-8 md:h-10 w-auto">
+                    <span class="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase font-title leading-none">
                         Free<span class="text-orange-600">Geny</span>
                     </span>
                 </a>
@@ -157,37 +157,50 @@ $is_rtl = $is_rtl ?? false;
                         </div>
                     </div>
                 <?php else: ?>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden sm:block text-[11px] font-black uppercase text-slate-900 tracking-widest hover:text-orange-600 transition p-2">Connexion</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="bg-slate-900 text-white px-7 py-3 rounded-xl font-bold text-[11px] uppercase tracking-widest shadow-xl shadow-slate-100 hover:bg-orange-600 transition transform duration-300">Rejoindre</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden md:block text-[11px] font-black uppercase text-slate-900 tracking-widest hover:text-orange-600 transition p-2">Connexion</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="hidden sm:block bg-slate-900 text-white px-6 py-2.5 rounded-xl font-bold text-[11px] uppercase tracking-widest shadow-xl hover:bg-orange-600 transition transform duration-300">Rejoindre</a>
                 <?php endif; ?>
                 
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-3 bg-white border border-slate-200 text-slate-600 rounded-xl">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-width="2.5"></path></svg>
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-100 text-slate-700 rounded-xl transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" stroke-width="2.5"></path></svg>
                 </button>
             </div>
         </div>
 
-        <!-- Menu Mobile -->
+        <!-- Menu Mobile (Premium Design) -->
         <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 z-[200] lg:hidden" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
-            <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-md" @click="mobileMenuOpen = false"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-80 bg-white p-10 shadow-2xl flex flex-col" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
-                <div class="flex justify-between items-center mb-16">
-                    <span class="text-xl font-black text-slate-900 tracking-tighter uppercase font-title">FreeGeny</span>
-                    <button @click="mobileMenuOpen = false" class="p-2 bg-slate-100 rounded-xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2.5"></path></svg></button>
+            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" @click="mobileMenuOpen = false"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-[85vw] max-w-sm bg-white shadow-2xl flex flex-col" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
+                
+                <!-- En-tête du menu -->
+                <div class="flex justify-between items-center p-6 border-b border-slate-50">
+                    <span class="text-2xl font-black text-slate-900 tracking-tighter uppercase font-title leading-none">Free<span class="text-orange-600">Geny</span></span>
+                    <button @click="mobileMenuOpen = false" class="p-2 bg-slate-50 hover:bg-slate-100 rounded-xl transition text-slate-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" stroke-width="2.5"></path></svg>
+                    </button>
                 </div>
-                <div class="flex flex-col gap-8">
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">À propos</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Approche</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Parents</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Écoles</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">ONG</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Science</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors font-title">Boutique</a>
-                    <hr class="border-slate-100">
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="text-2xl font-black text-orange-600 font-title">Connexion</a>
+                
+                <!-- Liens de navigation -->
+                <div class="flex-1 overflow-y-auto px-6 py-8 custom-scroll space-y-6">
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">À propos</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">Approche</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">Parents</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">Écoles</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">ONG</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">Science</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">Boutique</a>
                 </div>
-                <div class="mt-auto">
-                    <p class="font-caveat text-lg text-slate-400">free the genius on your child</p>
+                
+                <!-- Footer du menu (Auth Actions) -->
+                <div class="p-6 bg-slate-50 border-t border-slate-100">
+                    <?php if (empty($_SESSION['logged_in'])): ?>
+                        <div class="flex flex-col gap-3">
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="w-full text-center py-3.5 rounded-xl font-bold text-slate-900 bg-white border border-slate-200 hover:border-orange-300 transition shadow-sm text-sm">Me connecter</a>
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="w-full text-center py-3.5 rounded-xl font-black text-white bg-orange-600 hover:bg-orange-700 shadow-xl shadow-orange-600/20 transition uppercase tracking-widest text-[11px]">Rejoindre FreeGeny</a>
+                        </div>
+                    <?php else: ?>
+                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent.php" class="block w-full text-center py-3.5 rounded-xl font-black text-white bg-slate-900 hover:bg-slate-800 transition uppercase tracking-widest text-[11px] shadow-xl">Mon Tableau de bord</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
