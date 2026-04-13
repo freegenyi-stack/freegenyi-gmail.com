@@ -149,6 +149,13 @@ if ($email && $full_name) {
             header("Location: /{$country_code}-{$lang_code}/auth/login?error=account_creation_failed");
             exit;
         }
+
+        // ─── LIAISON PARENTALE (SI INVITATION) ───────────────────────────────────
+        $invite_parent_id = (int)($_SESSION['invite_parent'] ?? 0);
+        if ($invite_parent_id > 0) {
+            DB::execute("UPDATE children SET secondary_parent_id = ? WHERE parent_id = ? AND secondary_parent_id IS NULL", [$user_id, $invite_parent_id]);
+            unset($_SESSION['invite_parent']);
+        }
         
         // Bienvenue !
         MailManager::sendWelcome($email, $full_name, $lang_code);

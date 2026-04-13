@@ -91,7 +91,14 @@ if (!$user_id) {
     exit;
 }
 
-// ─── 4. ENVOI EMAIL VÉRIFICATION ─────────────────────────────────────────────
+// ─── 4. LIAISON PARENTALE (SI INVITATION) ───────────────────────────────────
+$invite_parent_id = (int)($_POST['invite_parent'] ?? 0);
+if ($invite_parent_id > 0) {
+    // Lier les enfants créés par le parent 1 au parent 2 (nouveau inscrit)
+    DB::execute("UPDATE children SET secondary_parent_id = ? WHERE parent_id = ? AND secondary_parent_id IS NULL", [$user_id, $invite_parent_id]);
+}
+
+// ─── 5. ENVOI EMAIL VÉRIFICATION ─────────────────────────────────────────────
 MailManager::sendVerification($email, $full_name, $verification_token, $lang_code);
 
 // ─── 5. SESSION TEMPORAIRE (pendant la vérification) ─────────────────────────

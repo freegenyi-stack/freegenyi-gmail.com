@@ -1,13 +1,11 @@
 <?php
 /**
- * dashboard/onboarding.php - The Elite Onboarding Experience (V5 - RESCUE)
- * VERSION ROBUSTE CONTRE LES ERREURS JS
+ * dashboard/onboarding.php - The Elite Onboarding Experience (V6 - VERCEL EDITION)
  */
 require_once __DIR__ . '/../config/app.php';
 require_once __DIR__ . '/../api/auth/auth_helpers.php';
 require_once __DIR__ . '/../includes/MailManager.php';
 
-// Redirige au login si non connecté
 if (empty($_SESSION['logged_in'])) {
     header("Location: /" . ($country ?? 'DZ') . "-" . ($lang ?? 'fr') . "/auth/login");
     exit;
@@ -21,15 +19,13 @@ $full_name_raw = ($user && !empty($user['full_name'])) ? $user['full_name'] : ($
 $first_name = explode(' ', trim($full_name_raw))[0];
 if (empty($first_name)) $first_name = 'Parent';
 
-// Liste des Wilayas
 $wilayas_dz = [
     ['n' => 'Adrar', 'c' => '01000'], ['n' => 'Chlef', 'c' => '02000'], ['n' => 'Laghouat', 'c' => '03000'], ['n' => 'Oum El Bouaghi', 'c' => '04000'],
     ['n' => 'Batna', 'c' => '05000'], ['n' => 'Béjaïa', 'c' => '06000'], ['n' => 'Biskra', 'c' => '07000'], ['n' => 'Béchar', 'c' => '08000'],
     ['n' => 'Blida', 'c' => '09000'], ['n' => 'Bouira', 'c' => '10000'], ['n' => 'Alger', 'c' => '16000'], ['n' => 'Sétif', 'c' => '19000'], ['n' => 'Oran', 'c' => '31000'], ['n' => 'Constantine', 'c' => '25000']
 ];
 
-// Traitement du formulaire
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = $_POST['phone'] ?? null;
     if ($phone) {
         DB::execute("UPDATE users SET phone = ?, updated_at = NOW() WHERE id = ?", [$phone, $user_id]);
@@ -41,13 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
     }
     
     $child_name = trim($_POST['child_name'] ?? '');
-    $child_age = (int)($_POST['child_age'] ?? 0);
-    $child_level = $_POST['child_level'] ?? '';
-    $child_country = $_POST['child_country'] ?? $country;
-    
     if (!empty($child_name)) {
+        $age = (int)($_POST['child_age'] ?? 7);
+        $lvl = $_POST['child_level'] ?? '1AP';
+        $cnt = $_POST['child_country'] ?? $country;
         DB::execute("INSERT INTO children (parent_id, name, age, country, grade, created_at) VALUES (?, ?, ?, ?, ?, NOW())",
-            [$user_id, $child_name, $child_age, $child_country, $child_level]);
+            [$user_id, $child_name, $age, $cnt, $lvl]);
     }
     
     header("Location: /" . ($country ?? 'DZ') . "-" . ($lang ?? 'fr') . "/dashboard/parent");
@@ -59,111 +54,123 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue | FreeGeny</title>
+    <title>Onboarding | FreeGeny Elite</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@700;800&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        title: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         [x-cloak] { display: none !important; }
-        body { font-family: 'DM Sans', sans-serif; background: #fafafa; min-height: 100vh; margin: 0; padding: 0; }
-        .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .font-caveat { font-family: 'Caveat', cursive; }
-        .slide-enter { animation: slideIn 0.3s ease-out forwards; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .vercel-card { transition: all 0.2s ease; border: 1px solid #eaeaea; }
+        .vercel-card:hover { border-color: #000; box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
+        .vercel-input { border: 1px solid #eaeaea; transition: border-color 0.2s ease; }
+        .vercel-input:focus { border-color: #000; outline: none; }
+        .slide-up { animation: slideUp 0.4s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="flex items-center justify-center p-0 lg:p-8" x-data="onboardingData()">
+<body class="bg-white text-black antialiased min-h-screen flex flex-col items-center justify-center p-6">
 
-    <div class="w-full max-w-[1200px] bg-white lg:rounded-[3rem] lg:shadow-2xl overflow-hidden flex flex-col lg:flex-row shadow-none rounded-none border-b border-slate-100">
+    <div class="w-full max-w-4xl" x-data="onboarding()">
         
-        <!-- LEFT AREA -->
-        <div class="hidden lg:flex flex-col flex-1 bg-slate-900 text-white p-12 justify-center relative min-h-[600px]">
-            <div class="relative z-20">
-                <div x-show="step === 1">
-                    <span class="text-orange-500 font-caveat text-4xl block mb-4">L'Excellence mondiale</span>
-                    <h2 class="text-5xl font-black font-title leading-tight mb-8">Votre enfant n'a plus aucune frontière.</h2>
-                </div>
-                <div x-show="step === 2" x-cloak>
-                    <span class="text-blue-400 font-caveat text-4xl block mb-4">Famille Unie</span>
-                    <h2 class="text-5xl font-black font-title leading-tight mb-8">Un suivi partagé en temps réel.</h2>
-                </div>
-                <div x-show="step === 3" x-cloak>
-                    <span class="text-green-400 font-caveat text-4xl block mb-4">Le Petit Génie</span>
-                    <h2 class="text-5xl font-black font-title leading-tight mb-8">Cycle Primaire Exclusivement.</h2>
-                </div>
-            </div>
+        <!-- Progress Bar (Sleek Vercel Line) -->
+        <div class="w-full h-1 bg-slate-100 mb-16 overflow-hidden">
+            <div class="h-full bg-black transition-all duration-500" :style="'width: ' + ((step/3)*100) + '%'"></div>
         </div>
 
-        <!-- RIGHT AREA -->
-        <div class="flex-1 p-8 lg:p-16 flex flex-col justify-center bg-white min-h-[500px]">
-            <form action="" method="POST" class="max-w-md mx-auto w-full space-y-8">
-                
-                <!-- STEP 1: NOM + ROLE -->
-                <div x-show="step === 1" class="slide-enter space-y-6">
-                    <div>
-                        <h3 class="text-4xl font-black font-title text-slate-950 tracking-tighter">Bonjour, <?= htmlspecialchars($first_name) ?>.</h3>
-                        <p class="text-slate-500 font-bold text-[11px] uppercase tracking-widest mt-2">Votre rôle de garant</p>
-                    </div>
-
-                    <div class="space-y-3">
-                        <label class="block text-xs font-black uppercase tracking-wider text-slate-700">Sélectionnez votre rôle :</label>
-                        <div class="space-y-2">
-                            <label class="block cursor-pointer">
-                                <input type="radio" name="parent_role" value="Maman" class="hidden peer" checked>
-                                <div class="py-4 px-6 border-2 border-slate-100 rounded-xl font-bold text-slate-700 peer-checked:border-orange-500 peer-checked:bg-orange-50/30 transition">Maman</div>
-                            </label>
-                            <label class="block cursor-pointer">
-                                <input type="radio" name="parent_role" value="Papa" class="hidden peer">
-                                <div class="py-4 px-6 border-2 border-slate-100 rounded-xl font-bold text-slate-700 peer-checked:border-orange-500 peer-checked:bg-orange-50/30 transition">Papa</div>
-                            </label>
-                            <label class="block cursor-pointer">
-                                <input type="radio" name="parent_role" value="Tuteur légal" class="hidden peer">
-                                <div class="py-4 px-6 border-2 border-slate-100 rounded-xl font-bold text-slate-700 peer-checked:border-orange-500 peer-checked:bg-orange-50/30 transition">Tuteur légal</div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Numéro de téléphone</label>
-                        <input type="tel" name="phone" value="<?= htmlspecialchars($user['phone'] ?? '') ?>" placeholder="+213..." class="w-full bg-slate-50 border-2 border-slate-100 py-4 px-6 rounded-xl outline-none font-bold text-slate-900 shadow-inner">
-                    </div>
-                    <button type="button" @click="step = 2" class="w-full py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-orange-600 transition shadow-xl">Suivant →</button>
+        <div class="space-y-12">
+            
+            <!-- STEP 1: ROLES (VERCEL GRID) -->
+            <div x-show="step === 1" class="slide-up space-y-8">
+                <div>
+                    <h1 class="text-4xl font-title font-extrabold tracking-tighter mb-2">Bonjour, <?= htmlspecialchars($first_name) ?>.</h1>
+                    <p class="text-slate-500 text-lg">Choisissez votre rôle de garant pour commencer l'aventure.</p>
                 </div>
 
-                <!-- STEP 2: INVITATION -->
-                <div x-show="step === 2" x-cloak class="slide-enter space-y-6">
-                    <h3 class="text-3xl font-black font-title text-slate-950 tracking-tighter">Équipe Familiale</h3>
-                    <p class="text-sm text-slate-500 font-medium leading-relaxed">Invitez le deuxième parent pour un suivi partagé.</p>
-                    <input type="email" name="spouse_email" placeholder="Email conjoint (ex: maman@gmail.com)" class="w-full bg-slate-50 border-2 border-slate-100 py-4 px-6 rounded-xl outline-none font-bold text-slate-900 shadow-inner">
-                    <div class="flex gap-4">
-                        <button type="button" @click="step = 1" class="px-8 py-5 bg-slate-100 text-slate-400 rounded-xl font-black uppercase tracking-widest text-[10px]">←</button>
-                        <button type="button" @click="step = 3" class="flex-1 py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-blue-600 transition">Suivant</button>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <template x-for="r in ['Maman', 'Papa', 'Tuteur légal']">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="parent_role" :value="r" class="hidden peer" x-model="role">
+                            <div class="vercel-card p-6 rounded-xl bg-white text-center font-bold peer-checked:bg-black peer-checked:text-white peer-checked:border-black">
+                                <span x-text="r"></span>
+                            </div>
+                        </label>
+                    </template>
                 </div>
 
-                <!-- STEP 3: ENFANT -->
-                <div x-show="step === 3" x-cloak class="slide-enter space-y-4">
-                    <h3 class="text-3xl font-black font-title text-slate-950 tracking-tighter">Votre Enfant</h3>
-                    <input type="text" name="child_name" placeholder="Prénom de l'enfant" required class="w-full bg-slate-50 border-2 border-slate-100 py-4 px-6 rounded-xl outline-none font-bold text-slate-900 shadow-sm focus:border-green-600">
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Téléphone de contact</label>
+                    <input type="tel" name="phone" placeholder="+213..." class="w-full vercel-input p-4 rounded-xl font-bold bg-slate-50 focus:bg-white">
+                </div>
+
+                <button @click="step = 2" class="w-full py-5 bg-black text-white rounded-xl font-bold uppercase tracking-widest text-xs hover:opacity-90 transition">Continuer</button>
+            </div>
+
+            <!-- STEP 2: INVITATION -->
+            <div x-show="step === 2" x-cloak class="slide-up space-y-8">
+                <div>
+                    <h1 class="text-4xl font-title font-extrabold tracking-tighter mb-2">Équipe Familiale.</h1>
+                    <p class="text-slate-500 text-lg">L'éducation est un sport d'équipe. Invitez le conjoint.</p>
+                </div>
+
+                <div class="vercel-card p-10 rounded-3xl space-y-4">
+                    <input type="email" name="spouse_email" placeholder="Email du conjoint..." class="w-full vercel-input p-4 rounded-xl font-bold bg-slate-50 focus:bg-white">
+                    <p class="text-xs text-slate-400 italic">Un lien magique sera envoyé pour synchroniser vos comptes.</p>
+                </div>
+
+                <div class="flex gap-4">
+                    <button @click="step = 1" class="px-8 py-5 border border-slate-200 rounded-xl font-bold uppercase tracking-widest text-[10px]">Retour</button>
+                    <button @click="step = 3" class="flex-1 py-5 bg-black text-white rounded-xl font-bold uppercase tracking-widest text-xs">Suivant</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: ENFANT & PAYS (WITH FLAGS) -->
+            <div x-show="step === 3" x-cloak class="slide-up space-y-6">
+                <div>
+                    <h1 class="text-4xl font-title font-extrabold tracking-tighter mb-2">Votre Petit Génie.</h1>
+                    <p class="text-slate-500 text-lg">Dernière étape : enregistrons votre enfant.</p>
+                </div>
+
+                <form action="" method="POST" class="space-y-4">
+                    <input type="hidden" name="child_country" :value="childCountry">
                     
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 italic">Pays</label>
-                            <div class="relative">
-                                <select x-model="childCountry" name="child_country" class="w-full bg-slate-50 border-2 border-slate-100 py-3.5 pl-10 pr-4 rounded-xl font-bold text-slate-800 text-xs appearance-none">
-                                    <?php foreach ($supported_regions as $code => $info): ?>
-                                        <option value="<?= $code ?>"><?= $info['name'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <div class="absolute left-3 top-1/2 -translate-y-1/2">
-                                    <img :src="'https://flagcdn.com/w20/' + childCountry.toLowerCase() + '.png'" class="w-4 h-auto rounded-sm">
+                    <input type="text" name="child_name" placeholder="Prénom de l'enfant" required class="w-full vercel-input p-4 rounded-xl font-bold shadow-sm">
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Custom Country Selector -->
+                        <div class="relative" x-data="{ open: false }">
+                            <label class="text-[10px] font-bold uppercase text-slate-400 mb-1 block">Pays</label>
+                            <button @click="open = !open" type="button" class="w-full vercel-input p-4 rounded-xl font-bold flex items-center justify-between text-xs bg-slate-50">
+                                <div class="flex items-center gap-2">
+                                    <img :src="'https://flagcdn.com/w20/' + childCountry.toLowerCase() + '.png'" class="w-4 h-auto">
+                                    <span x-text="countries[childCountry]?.name || childCountry"></span>
                                 </div>
+                                <i class="fa-solid fa-chevron-down text-[10px] opacity-30"></i>
+                            </button>
+                            <div x-show="open" @click.away="open = false" class="absolute z-50 top-full left-0 w-full mt-2 bg-white border border-slate-100 shadow-2xl rounded-2xl max-h-60 overflow-y-auto p-2">
+                                <template x-for="(info, code) in countries" :key="code">
+                                    <div @click="childCountry = code; open = false" class="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-xl cursor-pointer transition">
+                                        <img :src="'https://flagcdn.com/w20/' + code.toLowerCase() + '.png'" class="w-4 h-auto">
+                                        <span class="text-xs font-bold" x-text="info.name"></span>
+                                    </div>
+                                </template>
                             </div>
                         </div>
+
                         <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 italic">Niveau</label>
-                            <select name="child_level" required class="w-full bg-green-50 border-2 border-green-200 py-3.5 px-4 rounded-xl font-bold text-green-900 text-xs appearance-none">
+                            <label class="text-[10px] font-bold uppercase text-slate-400 mb-1 block">Niveau Primaire</label>
+                            <select name="child_level" class="w-full vercel-input p-4 rounded-xl font-bold text-xs bg-slate-50 appearance-none">
                                 <template x-for="lvl in (levels[childCountry] || levels['INT'])" :key="lvl">
                                     <option :value="lvl" x-text="lvl"></option>
                                 </template>
@@ -171,10 +178,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 italic">Wilaya / Province</label>
-                            <select name="child_region" class="w-full bg-slate-50 border-2 border-slate-100 py-3.5 px-4 rounded-xl font-bold text-slate-800 text-xs appearance-none">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-[10px] font-bold uppercase text-slate-400 mb-1 block">Wilaya / Province</label>
+                            <select name="child_region" class="w-full vercel-input p-4 rounded-xl font-bold text-xs bg-slate-50 appearance-none">
                                 <option value="">Choisir...</option>
                                 <template x-if="childCountry === 'DZ'">
                                     <template x-for="w in wilayas" :key="w.c">
@@ -183,36 +190,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
                                 </template>
                             </select>
                         </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 italic">Âge</label>
-                            <input type="number" name="child_age" min="5" max="13" required class="w-full bg-slate-50 border-2 border-slate-100 py-3 px-4 rounded-xl font-bold text-slate-800 text-xs">
+                        <div>
+                            <label class="text-[10px] font-bold uppercase text-slate-400 mb-1 block">Âge</label>
+                            <input type="number" name="child_age" min="5" max="13" class="w-full vercel-input p-4 rounded-xl font-bold text-xs bg-slate-50">
                         </div>
                     </div>
 
                     <div class="space-y-1">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 font-bold">École fréquentée</label>
-                        <input type="text" name="child_school" placeholder="Nom de l'école..." class="w-full bg-white border-2 border-blue-50 focus:border-blue-500 py-4 px-6 rounded-xl font-bold text-slate-900 text-sm shadow-sm">
+                        <label class="text-[10px] font-bold uppercase text-slate-400 mb-1 block">Établissement</label>
+                        <input type="text" name="child_school" placeholder="Rechercher une école..." class="w-full vercel-input p-4 rounded-xl font-bold text-sm bg-slate-50">
                     </div>
-                    
-                    <div class="flex gap-4 pt-4">
-                        <button type="button" @click="step = 2" class="px-8 py-5 bg-slate-100 text-slate-400 rounded-xl font-black uppercase tracking-widest text-[10px]">←</button>
-                        <button type="submit" class="flex-1 py-5 bg-green-600 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-slate-900 transition shadow-xl shadow-green-600/30">C'est parti !</button>
-                    </div>
-                </div>
 
-                <!-- Footer incrusté -->
-                <div class="pt-10 text-center text-[9px] text-slate-300 font-bold uppercase tracking-[0.4em]">
-                    Sécurisé et Chiffré par FreeGeny Core
-                </div>
-            </form>
+                    <div class="flex gap-4 pt-4">
+                        <button type="button" @click="step = 2" class="px-8 py-5 border border-slate-200 rounded-xl font-bold uppercase tracking-widest text-[10px]">←</button>
+                        <button type="submit" class="flex-1 py-5 bg-black text-white rounded-xl font-bold uppercase tracking-widest text-xs shadow-xl shadow-black/20 hover:scale-[1.02] transition">Démarrer !</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
+
+        <div class="mt-20 text-center">
+            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-300 italic">Sécurisé & Chiffré par FreeGeny Core v6.0</p>
+        </div>
+
     </div>
 
     <script>
-        function onboardingData() {
+        function onboarding() {
             return {
                 step: 1,
+                role: 'Maman',
                 childCountry: '<?= $country ?>',
+                countries: <?= json_encode($supported_regions) ?>,
                 wilayas: <?= json_encode($wilayas_dz) ?>,
                 levels: {
                     'DZ': ['1AP', '2AP', '3AP', '4AP', '5AP'],
@@ -225,5 +235,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
             }
         }
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </body>
 </html>

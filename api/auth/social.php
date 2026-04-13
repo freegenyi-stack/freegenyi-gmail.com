@@ -24,6 +24,9 @@ if (!$provider || !in_array($provider, $allowed_providers)) {
 // 1. Stockage de l'état et du provider en session
 $_SESSION['oauth_state'] = bin2hex(random_bytes(16));
 $_SESSION['oauth_provider'] = $provider;
+if (!empty($_GET['invite_parent'])) {
+    $_SESSION['invite_parent'] = (int)$_GET['invite_parent'];
+}
 
 // 2. Redirection réelle vers le provider
 $auth_config = include __DIR__ . '/../../config/auth.php';
