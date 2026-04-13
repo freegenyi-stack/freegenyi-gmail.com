@@ -57,6 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
         $school = $_POST['child_school'] ?? '';
         DB::execute("INSERT INTO children (parent_id, name, age, country, grade, school_name) VALUES (?, ?, ?, ?, ?, ?)", [$user_id, $child_name, $age, $cnt, $lvl, $school]);
     }
+    // Marquage comme terminé (Sync)
+    DB::execute("UPDATE users SET onboarding_step = 4 WHERE id = ?", [$user_id]);
     header("Location: /" . ($country ?? 'DZ') . "-" . ($lang ?? 'fr') . "/dashboard/parent");
     exit;
 }
