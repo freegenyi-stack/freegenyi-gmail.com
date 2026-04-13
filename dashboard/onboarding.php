@@ -248,19 +248,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <input type="text" name="child_name" required placeholder="Ex: Lina" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 focus:bg-white px-4 py-3.5 rounded-xl outline-none transition-all font-semibold text-slate-900 shadow-sm">
                             </div>
                             
-                            <div class="grid grid-cols-2 gap-4">
+                            
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">Pays de résidence</label>
+                                        <select name="child_country" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 px-4 py-3.5 rounded-xl text-slate-900 appearance-none font-bold">
+                                            <option value="DZ" <?= $country === 'DZ' ? 'selected' : '' ?>>Algérie (DZ)</option>
+                                            <option value="MA" <?= $country === 'MA' ? 'selected' : '' ?>>Maroc (MA)</option>
+                                            <option value="FR" <?= $country === 'FR' ? 'selected' : '' ?>>France (FR)</option>
+                                            <option value="US" <?= $country === 'US' ? 'selected' : '' ?>>États-Unis (US)</option>
+                                            <option value="UK" <?= $country === 'UK' ? 'selected' : '' ?>>Royaume-Uni (UK)</option>
+                                            <option value="INT">International (Autre)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-black uppercase tracking-wider text-orange-600 mb-2">Niveau Primaire</label>
+                                        <select name="child_level" class="w-full bg-orange-50 border-2 border-orange-200 focus:border-orange-500 focus:bg-white px-4 py-3.5 rounded-xl outline-none font-semibold text-slate-900 appearance-none shadow-sm cursor-pointer" required>
+                                            <option value="" disabled selected>Choisir la classe...</option>
+                                            <!-- Standard Algérie / Moyen Orient -->
+                                            <optgroup label="Standard Primaire">
+                                                <option value="1AP">1ère Année Primaire (1AP)</option>
+                                                <option value="2AP">2ème Année Primaire (2AP)</option>
+                                                <option value="3AP">3ème Année Primaire (3AP)</option>
+                                                <option value="4AP">4ème Année Primaire (4AP)</option>
+                                                <option value="5AP">5ème Année Primaire (5AP)</option>
+                                            </optgroup>
+                                            <!-- Standard Europe -->
+                                            <optgroup label="International / Europe">
+                                                <option value="CP">CP (Grade 1)</option>
+                                                <option value="CE1">CE1 (Grade 2)</option>
+                                                <option value="CE2">CE2 (Grade 3)</option>
+                                                <option value="CM1">CM1 (Grade 4)</option>
+                                                <option value="CM2">CM2 (Grade 5)</option>
+                                                <option value="G6">Grade 6 (International)</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div>
                                     <label class="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">Âge *</label>
-                                    <input type="number" name="child_age" min="3" max="18" required placeholder="Ex: 8" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 focus:bg-white px-4 py-3.5 rounded-xl outline-none transition-all font-semibold text-slate-900">
+                                    <input type="number" name="child_age" min="4" max="15" required placeholder="Ex: 8" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 focus:bg-white px-4 py-3.5 rounded-xl outline-none transition-all font-semibold text-slate-900">
                                 </div>
+
                                 <div>
-                                    <label class="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">Cycle principal</label>
-                                    <select name="child_level" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 focus:bg-white px-4 py-3.5 rounded-xl outline-none transition-all font-semibold text-slate-900 appearance-none cursor-pointer">
-                                        <option value="Preschool">Pré-scolaire (Maternelle)</option>
-                                        <option value="Primary">Primaire</option>
-                                        <option value="Middle">Collège (Moyen)</option>
-                                        <option value="High">Lycée (Secondaire)</option>
-                                    </select>
+                                    <label class="block text-xs font-black uppercase tracking-wider text-blue-700 mb-1 flex items-center gap-2"><i class="fa-solid fa-school"></i> École fréquentée au Primaire</label>
+                                    <p class="text-[9px] text-slate-500 uppercase tracking-widest font-bold mb-2">Recherchez ou saisissez le nom complet pour connecter les professeurs</p>
+                                    <input type="text" name="child_school" placeholder="Nom de l'école ou établissement..." class="w-full bg-white border-2 border-blue-100 focus:border-blue-500 px-4 py-3.5 rounded-xl outline-none transition-all font-semibold text-slate-900 shadow-inner">
                                 </div>
                             </div>
                         </div>

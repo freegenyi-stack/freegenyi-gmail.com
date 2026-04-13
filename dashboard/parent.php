@@ -4,23 +4,37 @@
  */
 require_once __DIR__ . '/../includes/header.php';
 
-// Données fictives (Elite Focus)
-$children = [
-    [
-        'id' => 1,
-        'name' => 'Amine',
-        'grade' => '1AP',
-        'avatar' => null,
-        'xp' => 1250,
-        'progress' => 65,
-        'interest' => 'Astronomie',
+// Récupération des enfants réels liés à ce compte
+$children_raw = DB::fetchAll("SELECT * FROM children WHERE parent_id = ?", [$_SESSION['user_id']]);
+
+// Si pas d'enfants, on peut rediriger vers onboarding ou afficher un message vide.
+// On construit le tableau pour le Dashboard
+$children = [];
+foreach ($children_raw as $child) {
+    // Si la colonne 'avatar' est juste un nom, ou s'il n'y en a pas, on laisse null
+    // On simule quelques matières (sujets) temporaires puisque nous n'avons pas encore créé l'interfaçage de notes
+    $children[] = [
+        'id' => $child['id'],
+        'name' => $child['name'],
+        'grade' => $child['grade'],
+        'avatar' => null, // La fonction du header fera les initiales automatiques
+        'xp' => $child['xp_total'] ?? 0,
+        'progress' => 0,
+        'interest' => 'Astronomie', // Champ JSON par défaut
         'subjects' => [
-            ['name' => 'Arabe', 'score' => 85, 'color' => 'orange'],
-            ['name' => 'Maths', 'score' => 92, 'color' => 'blue'],
-            ['name' => 'Science', 'score' => 78, 'color' => 'teal']
+            ['name' => 'Arabe', 'score' => 0, 'color' => 'orange'],
+            ['name' => 'Maths', 'score' => 0, 'color' => 'blue'],
+            ['name' => 'Science', 'score' => 0, 'color' => 'teal']
         ]
-    ]
-];
+    ];
+}
+
+// Si la base est totalement vide (aucun enfant inséré)
+if (empty($children)) {
+    // Redirection de sécurité vers l'onboarding pour forcer la création du premier Génie
+    header("Location: /" . ($country ?? 'DZ') . "-" . ($lang ?? 'fr') . "/dashboard/onboarding");
+    exit;
+}
 ?>
 
 <div class="bg-slate-50 min-h-screen" style="font-family: 'DM Sans', sans-serif;">
