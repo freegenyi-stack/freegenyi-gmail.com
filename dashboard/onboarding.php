@@ -13,8 +13,13 @@ if (empty($_SESSION['logged_in'])) {
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id'] ?? 0;
 $user = DB::fetchOne("SELECT id, full_name, phone FROM users WHERE id = ?", [$user_id]);
+
+// Préparation du prénom pour l'affichage (Fallback si vide)
+$full_name_raw = ($user && !empty($user['full_name'])) ? $user['full_name'] : ($_SESSION['user_name'] ?? 'Parent');
+$first_name = explode(' ', trim($full_name_raw))[0];
+if (empty($first_name)) $first_name = 'Parent';
 
 // Préparation des pays pour JS (Synchronisé avec app.php)
 $countries_js = json_encode($supported_regions);
@@ -132,10 +137,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="flex-1 p-8 lg:p-16 flex flex-col justify-center bg-white">
             <form action="" method="POST" class="max-w-md mx-auto w-full space-y-8">
                 
-                <!-- STEP 1: ROLES (Boring Text Only as requested) -->
                 <div x-show="step === 1" class="slide-enter space-y-6">
                     <div>
-                        <h3 class="text-4xl font-black font-title text-slate-950 tracking-tighter">Bonjour, <?= htmlspecialchars(explode(' ', $user['full_name'])[0]) ?>.</h3>
+                        <h3 class="text-4xl font-black font-title text-slate-950 tracking-tighter">Bonjour, <?= htmlspecialchars($first_name) ?>.</h3>
                         <p class="text-slate-500 font-bold text-[11px] uppercase tracking-widest mt-2">Votre rôle de garant</p>
                     </div>
 
