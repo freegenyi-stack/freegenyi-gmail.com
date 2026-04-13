@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $child_level = $_POST['child_level'] ?? '';
     
     if (!empty($child_name) && $child_age > 0) {
-        $stmt = DB::execute("INSERT INTO children (parent_id, first_name, age, education_level, created_at) VALUES (?, ?, ?, ?, NOW())",
+        $stmt = DB::execute("INSERT INTO children (parent_id, name, age, grade, created_at) VALUES (?, ?, ?, ?, NOW())",
             [$user_id, $child_name, $child_age, $child_level]);
     }
     
