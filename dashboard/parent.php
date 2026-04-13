@@ -3,6 +3,14 @@
  * dashboard/parent.php - Elite Dashboard Version
  */
 require_once __DIR__ . '/../includes/header.php';
+require_once __DIR__ . '/../api/auth/auth_helpers.php';
+
+// Sécurité : redirection si non connecté
+initSession();
+if (empty($_SESSION['logged_in'])) {
+    header("Location: /" . ($country ?? 'DZ') . "-" . ($lang ?? 'fr') . "/auth/login");
+    exit;
+}
 
 // Récupération des enfants réels liés à ce compte
 $children_raw = DB::fetchAll("SELECT * FROM children WHERE parent_id = ?", [$_SESSION['user_id']]);
