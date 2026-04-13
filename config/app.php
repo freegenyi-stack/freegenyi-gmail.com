@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
 /**
  * app.php - Version Mondiale Finale - 59 COUNTRIES + F5 REDIRECT
  */
