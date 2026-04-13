@@ -62,5 +62,5 @@ session_regenerate_id(true);
 
 // ─── 7. REDIRECTION DASHBOARD / ACCUEIL ──────────────────────────────────────
 $user_country = strtoupper($user['declared_country'] ?? $country);
-header("Location: /{$user_country}-{$lang_code}/?welcome=1");
+header("Location: /{$user_country}-{$lang_code}/dashboard/onboarding");
 exit;
