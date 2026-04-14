@@ -198,46 +198,46 @@ $is_rtl = $is_rtl ?? false;
             </div>
         </div>
 
-        <!-- Menu Mobile (Premium Design) -->
-        <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 lg:hidden" style="z-index: 99999!important;" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
-            <div class="absolute inset-0" style="background-color: rgba(15, 23, 42, 0.98) !important;" @click="mobileMenuOpen = false"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-[85vw] max-w-sm flex flex-col shadow-2xl border-l-[6px] border-orange-600" style="background-color: #ffffff !important; opacity: 1 !important; z-index: 100000!important;" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
-                
-                <!-- En-tête du menu -->
-                <div class="flex justify-between items-center p-6 border-b border-slate-50">
-                    <span class="text-2xl font-black text-slate-900 tracking-tighter uppercase font-title leading-none">Free<span class="text-orange-600">Geny</span></span>
-                    <button @click="mobileMenuOpen = false" class="p-2 bg-slate-50 hover:bg-slate-100 rounded-xl transition text-slate-500">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" stroke-width="2.5"></path></svg>
-                    </button>
-                </div>
-                
-                <!-- Liens de navigation -->
-                <div class="flex-1 overflow-y-auto px-6 py-8 custom-scroll space-y-5">
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">À propos</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Approche</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Parents</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Écoles</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">ONG</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Science</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Boutique</a>
-                    <div class="h-px bg-slate-100 my-4"></div>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/investors" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Investisseurs</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/blog" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Blog</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/press" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Espace Presse</a>
-                </div>
-                
-                <!-- Footer du menu (Auth Actions) -->
-                <div class="p-6 bg-slate-50 border-t border-slate-100">
-                    <?php if (empty($_SESSION['logged_in'])): ?>
-                        <div class="flex flex-col gap-3">
-                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="w-full text-center py-4 rounded-xl font-black text-slate-900 bg-white border border-slate-200 hover:border-orange-300 transition shadow-sm text-[10px] uppercase tracking-widest">Accès Élite</a>
-                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="w-full text-center py-3.5 rounded-xl font-black text-white bg-orange-600 hover:bg-orange-700 shadow-xl shadow-orange-600/20 transition uppercase tracking-widest text-[11px]">Rejoindre FreeGeny</a>
-                        </div>
-                    <?php else: ?>
-                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent.php" class="block w-full text-center py-3.5 rounded-xl font-black text-white bg-slate-900 hover:bg-slate-800 transition uppercase tracking-widest text-[11px] shadow-xl">Mon Tableau de bord</a>
-                    <?php endif; ?>
-                </div>
+    </nav>
+    
+    <!-- Menu Mobile (Premium Design - OUTSIDE NAV TO ESCAPE PARENT Z-INDEX) -->
+    <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 lg:hidden" style="z-index: 99999!important;" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+        <div class="absolute inset-0" style="background-color: rgba(15, 23, 42, 0.98) !important;" @click="mobileMenuOpen = false"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-[85vw] max-w-sm flex flex-col shadow-2xl border-l-[6px] border-orange-600" style="background-color: #ffffff !important; opacity: 1 !important; z-index: 100000!important;" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
+            
+            <!-- En-tête du menu -->
+            <div class="flex justify-between items-center p-6 border-b border-slate-50">
+                <span class="text-2xl font-black text-slate-900 tracking-tighter uppercase font-title leading-none">Free<span class="text-orange-600">Geny</span></span>
+                <button @click="mobileMenuOpen = false" class="p-2 bg-slate-50 hover:bg-slate-100 rounded-xl transition text-slate-500">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" stroke-width="2.5"></path></svg>
+                </button>
+            </div>
+            
+            <!-- Liens de navigation -->
+            <div class="flex-1 overflow-y-auto px-6 py-8 custom-scroll space-y-5">
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">À propos</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Approche</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Parents</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Écoles</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">ONG</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Science</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Boutique</a>
+                <div class="h-px bg-slate-100 my-4"></div>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/investors" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Investisseurs</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/blog" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Blog</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/press" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Espace Presse</a>
+            </div>
+            
+            <!-- Footer du menu (Auth Actions) -->
+            <div class="p-6 bg-slate-50 border-t border-slate-100">
+                <?php if (empty($_SESSION['logged_in'])): ?>
+                    <div class="flex flex-col gap-3">
+                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="w-full text-center py-4 rounded-xl font-black text-slate-900 bg-white border border-slate-200 hover:border-orange-300 transition shadow-sm text-[10px] uppercase tracking-widest">Accès Élite</a>
+                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="w-full text-center py-3.5 rounded-xl font-black text-white bg-orange-600 hover:bg-orange-700 shadow-xl shadow-orange-600/20 transition uppercase tracking-widest text-[11px]">Rejoindre FreeGeny</a>
+                    </div>
+                <?php else: ?>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent.php" class="block w-full text-center py-3.5 rounded-xl font-black text-white bg-slate-900 hover:bg-slate-800 transition uppercase tracking-widest text-[11px] shadow-xl">Mon Tableau de bord</a>
+                <?php endif; ?>
             </div>
         </div>
-    </nav>
-    <div class="h-14"></div>
+    <div class="h-14"></div><?php // End of Header ?>
