@@ -6,7 +6,7 @@ include_once __DIR__ . '/includes/header.php';
 ?>
 
 <!-- ========== SECTION HERO ========== -->
-<section class="relative bg-gradient-to-b from-white to-slate-50/40 pt-14 pb-20 md:pt-32 md:pb-28 overflow-hidden">
+<section class="relative bg-gradient-to-b from-white to-slate-50/40 pt-10 pb-20 md:pt-32 md:pb-28 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <!-- Texte -->
