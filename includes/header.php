@@ -104,7 +104,7 @@ $is_rtl = $is_rtl ?? false;
 <body class="bg-white text-slate-900" x-data="{ mobileMenuOpen: false }">
 
     <!-- ========== HEADER (Glass Edition) ========== -->
-    <nav class="glass-nav fixed top-0 w-full z-[120] h-20 flex items-center">
+    <nav class="glass-nav fixed top-0 w-full z-[120] h-16 flex items-center">
         <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center w-full">
             <div class="flex items-center gap-6">
                 <?php $home_slug = strtoupper($_COOKIE['freegeny_home'] ?? 'DZ') . '-' . $lang; ?>
@@ -236,4 +236,4 @@ $is_rtl = $is_rtl ?? false;
             </div>
         </div>
     </nav>
-    <div class="h-20"></div>
+    <div class="h-16"></div>
