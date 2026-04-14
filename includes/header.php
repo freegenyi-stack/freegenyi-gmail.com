@@ -218,25 +218,25 @@ $is_rtl = $is_rtl ?? false;
             
             <!-- Liens de navigation -->
             <div class="flex-1 overflow-y-auto px-6 py-8 custom-scroll space-y-5">
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">À propos</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Approche</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Parents</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Écoles</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">ONG</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Science</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Boutique</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">À propos</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">Approche</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">Parents</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">Écoles</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">ONG</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">Science</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">Boutique</a>
                 <div class="h-px bg-slate-100 my-4"></div>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/investors" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Investisseurs</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/blog" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Blog</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/press" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Espace Presse</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/investors" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest">Investisseurs</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/blog" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest">Blog</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/press" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest">Espace Presse</a>
             </div>
             
             <!-- Footer du menu (Auth Actions) -->
             <div class="p-6 bg-slate-50 border-t border-slate-100">
                 <?php if (empty($_SESSION['logged_in'])): ?>
                     <div class="flex flex-col gap-3">
-                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="w-full text-center py-4 rounded-xl font-black text-slate-900 bg-white border border-slate-200 hover:border-orange-300 transition shadow-sm text-[11px] uppercase tracking-widest font-title">Connexion</a>
-                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="w-full text-center py-4 rounded-xl font-black text-white bg-slate-900 hover:bg-orange-600 shadow-xl shadow-slate-900/10 transition uppercase tracking-widest text-[11px] font-title">Rejoindre</a>
+                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="w-full text-center py-4 rounded-xl font-black text-slate-900 bg-white border border-slate-200 hover:border-orange-300 transition shadow-sm text-[11px] uppercase tracking-widest">Connexion</a>
+                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="w-full text-center py-4 rounded-xl font-black text-white bg-slate-900 hover:bg-orange-600 shadow-xl shadow-slate-900/10 transition uppercase tracking-widest text-[11px]">Rejoindre</a>
                     </div>
                 <?php else: ?>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent.php" class="block w-full text-center py-3.5 rounded-xl font-black text-white bg-slate-900 hover:bg-slate-800 transition uppercase tracking-widest text-[11px] shadow-xl">Mon Tableau de bord</a>
