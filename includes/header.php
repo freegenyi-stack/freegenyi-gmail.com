@@ -199,9 +199,9 @@ $is_rtl = $is_rtl ?? false;
         </div>
 
         <!-- Menu Mobile (Premium Design) -->
-        <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 z-[9999] lg:hidden" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
-            <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-xl" @click="mobileMenuOpen = false"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-[85vw] max-w-sm bg-slate-50 shadow-[0_0_150px_rgba(0,0,0,0.5)] flex flex-col border-l border-white" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
+        <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 z-[10000] lg:hidden" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+            <div class="absolute inset-0 bg-slate-900/95" @click="mobileMenuOpen = false"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-[85vw] max-w-sm bg-white shadow-[0_0_200px_rgba(0,0,0,0.8)] flex flex-col border-l-4 border-orange-600" style="background-color: #ffffff !important;" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
                 
                 <!-- En-tête du menu -->
                 <div class="flex justify-between items-center p-6 border-b border-slate-50">
