@@ -203,7 +203,7 @@ $is_rtl = $is_rtl ?? false;
     <!-- Menu Mobile (Premium Design - OUTSIDE NAV TO ESCAPE PARENT Z-INDEX) -->
     <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 lg:hidden" style="z-index: 99999!important;" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
         <div class="absolute inset-0" style="background-color: rgba(15, 23, 42, 0.98) !important;" @click="mobileMenuOpen = false"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-[85vw] max-w-sm flex flex-col shadow-2xl border-l-[6px] border-orange-600" style="background-color: #ffffff !important; opacity: 1 !important; z-index: 100000!important;" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
+        <div class="absolute right-0 top-0 bottom-0 w-[85vw] max-w-sm flex flex-col shadow-2xl border-l-[6px] border-orange-600" style="background: linear-gradient(180deg, #ffffff 0%, #fffcf5 100%) !important; opacity: 1 !important; z-index: 100000!important;" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
             
             <!-- En-tête du menu -->
             <div class="flex justify-between items-center p-6 border-b border-slate-50">
