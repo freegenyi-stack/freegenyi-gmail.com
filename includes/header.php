@@ -217,18 +217,18 @@ $is_rtl = $is_rtl ?? false;
             </div>
             
             <!-- Liens de navigation -->
-            <div class="flex-1 overflow-y-auto px-6 py-8 custom-scroll space-y-5">
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">À propos</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">Approche</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">Parents</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">Écoles</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">ONG</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">Science</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors uppercase tracking-tighter">Boutique</a>
+            <div class="flex-1 overflow-y-auto px-6 py-4 custom-scroll space-y-2.5">
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">À propos</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Approche</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Parents</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Écoles</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">ONG</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Science</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Boutique</a>
                 <div class="h-px bg-slate-100 my-4"></div>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/investors" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest">Investisseurs</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/blog" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest">Blog</a>
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/press" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest">Espace Presse</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/investors" class="block text-sm font-medium text-slate-500 hover:text-orange-600 font-title tracking-tight">Investisseurs</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/blog" class="block text-sm font-medium text-slate-500 hover:text-orange-600 font-title tracking-tight">Blog</a>
+                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/press" class="block text-sm font-medium text-slate-500 hover:text-orange-600 font-title tracking-tight">Espace Presse</a>
             </div>
             
             <!-- Footer du menu (Auth Actions) -->
