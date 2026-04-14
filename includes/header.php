@@ -240,4 +240,5 @@ $is_rtl = $is_rtl ?? false;
                 <?php endif; ?>
             </div>
         </div>
+    </div>
     <div class="h-14"></div><?php // End of Header ?>
