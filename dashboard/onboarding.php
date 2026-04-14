@@ -86,10 +86,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
 </head>
 <body x-data="onboardingApp()">
 
-    <div class="w-full max-w-[1250px] h-[720px] premium-card flex overflow-visible lg:flex-row flex-col">
+    <div class="w-full max-w-[1250px] min-h-[100dvh] lg:h-[720px] premium-card flex flex-col lg:flex-row overflow-hidden md:overflow-visible">
         
         <!-- LEFT PANEL (60%) -->
-        <div class="lg:w-[58%] bg-argumentaire text-white p-20 flex flex-col justify-between relative">
+        <div class="w-full lg:w-[58%] bg-argumentaire text-white p-10 md:p-20 flex flex-col justify-between relative rounded-t-[3.5rem] lg:rounded-t-none lg:rounded-l-[3.5rem]">
             
             <div x-show="step === 1" class="absolute top-10 left-10 slide-up">
                 <span class="inline-block px-4 py-2 bg-orange-600 text-white text-[11px] font-black uppercase tracking-[0.2em] rounded-md shadow-lg shadow-orange-600/20">L'Excellence mondiale</span>
@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
         </div>
 
         <!-- RIGHT PANEL (FORM) -->
-        <div class="flex-1 flex flex-col justify-between p-16 bg-white overflow-hidden relative rounded-r-[3.5rem]">
+        <div class="flex-1 flex flex-col justify-between p-8 md:p-16 bg-white overflow-hidden relative rounded-b-[3.5rem] lg:rounded-b-none lg:rounded-r-[3.5rem]">
             
             <a href="/<?= $country ?>-<?= $lang ?>/" class="absolute top-12 left-1/2 -translate-x-1/2 flex items-center gap-3 whitespace-nowrap group">
                 <img src="/assets/img/logo.png" alt="FreeGeny" class="h-9 w-auto">
