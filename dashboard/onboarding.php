@@ -138,9 +138,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
         <!-- RIGHT PANEL (FORM) -->
         <div class="flex-1 flex flex-col justify-between p-8 md:p-16 bg-white overflow-hidden relative rounded-b-[3.5rem] lg:rounded-b-none lg:rounded-r-[3.5rem]">
             
-            <a href="/<?= $country ?>-<?= $lang ?>/" class="absolute top-12 left-1/2 -translate-x-1/2 flex items-center gap-3 whitespace-nowrap group">
+            <a href="/<?php echo ($country ?? 'DZ') . '-' . ($lang ?? 'fr'); ?>/" class="absolute top-12 left-1/2 -translate-x-1/2 flex items-center gap-3 whitespace-nowrap group z-[100] cursor-pointer">
                 <img src="/assets/img/logo.png" alt="FreeGeny" class="h-9 w-auto">
-                <span class="text-xl font-black text-slate-950 uppercase font-title tracking-tighter">Free<span class="text-orange-600">Geny</span></span>
+                <span class="text-xl font-black text-slate-950 uppercase font-title tracking-tighter hover:text-orange-600 transition-colors">Free<span class="text-orange-600">Geny</span></span>
             </a>
 
             <div class="max-w-sm mx-auto w-full h-full flex flex-col justify-center">

@@ -53,7 +53,7 @@ require_once __DIR__ . '/../api/auth/auth_helpers.php';
             <div class="glass-card rounded-[2.5rem] sm:rounded-[3.5rem] shadow-[0_45px_100px_rgba(0,0,0,0.07)] border border-white p-5 pt-10 sm:p-8 sm:pt-10 relative" x-data="{ role: 'parent' }">
                 
                 <!-- Logo flottant (cliquable → accueil) -->
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/" class="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 bg-white px-6 sm:px-8 py-2 sm:py-3 rounded-2xl shadow-lg border border-slate-50 flex items-center gap-2 sm:gap-3 whitespace-nowrap hover:shadow-xl transition-shadow z-20">
+                <a href="/<?php echo ($country ?? 'DZ') . '-' . ($lang ?? 'fr'); ?>/" class="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 bg-white px-6 sm:px-8 py-2 sm:py-3 rounded-2xl shadow-lg border border-slate-50 flex items-center gap-2 sm:gap-3 whitespace-nowrap hover:shadow-xl hover:text-orange-600 transition-all z-[100] cursor-pointer">
                     <img src="/assets/img/logo.png" alt="FreeGeny" class="h-6 sm:h-8 w-auto">
                     <span class="text-base sm:text-lg font-black text-slate-900 uppercase font-title tracking-tighter">Free<span class="text-orange-600">Geny</span></span>
                 </a>

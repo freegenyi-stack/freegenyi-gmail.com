@@ -199,9 +199,9 @@ $is_rtl = $is_rtl ?? false;
         </div>
 
         <!-- Menu Mobile (Premium Design) -->
-        <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 z-[200] lg:hidden" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
-            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" @click="mobileMenuOpen = false"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-[85vw] max-w-sm bg-white shadow-2xl flex flex-col" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
+        <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 z-[500] lg:hidden" x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+            <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-md" @click="mobileMenuOpen = false"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-[85vw] max-w-sm bg-white shadow-[0_0_100px_rgba(0,0,0,0.3)] flex flex-col" x-show="mobileMenuOpen" x-transition:enter="transition duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0">
                 
                 <!-- En-tête du menu -->
                 <div class="flex justify-between items-center p-6 border-b border-slate-50">
@@ -212,14 +212,18 @@ $is_rtl = $is_rtl ?? false;
                 </div>
                 
                 <!-- Liens de navigation -->
-                <div class="flex-1 overflow-y-auto px-6 py-8 custom-scroll space-y-6">
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">À propos</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">Approche</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">Parents</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">Écoles</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">ONG</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">Science</a>
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title">Boutique</a>
+                <div class="flex-1 overflow-y-auto px-6 py-8 custom-scroll space-y-5">
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">À propos</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Approche</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Parents</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/schools" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Écoles</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">ONG</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Science</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="block text-xl font-bold text-slate-800 hover:text-orange-600 transition-colors font-title uppercase tracking-tighter">Boutique</a>
+                    <div class="h-px bg-slate-100 my-4"></div>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/investors" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Investisseurs</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/blog" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Blog</a>
+                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/press" class="block text-sm font-bold text-slate-500 hover:text-orange-600 uppercase tracking-widest font-sans">Espace Presse</a>
                 </div>
                 
                 <!-- Footer du menu (Auth Actions) -->

@@ -49,7 +49,7 @@ require_once __DIR__ . '/../config/app.php';
             <div class="glass-card rounded-[2.5rem] sm:rounded-[3.5rem] shadow-[0_45px_100px_rgba(0,0,0,0.07)] border border-white p-6 pt-10 sm:p-10 sm:pt-14 relative">
 
                 <!-- Logo flottant (cliquable → accueil) -->
-                <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/" class="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 bg-white px-6 sm:px-8 py-2 sm:py-3 rounded-2xl shadow-lg border border-slate-50 flex items-center gap-2 sm:gap-3 whitespace-nowrap hover:shadow-xl transition-shadow">
+                <a href="/<?php echo ($country ?? 'DZ') . '-' . ($lang ?? 'fr'); ?>/" class="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 bg-white px-6 sm:px-8 py-2 sm:py-3 rounded-2xl shadow-lg border border-slate-50 flex items-center gap-2 sm:gap-3 whitespace-nowrap hover:shadow-xl hover:text-orange-600 transition-all z-[100] cursor-pointer">
                     <img src="/assets/img/logo.png" alt="FreeGeny" class="h-6 sm:h-8 w-auto">
                     <span class="text-base sm:text-lg font-black text-slate-900 uppercase font-title tracking-tighter">Free<span class="text-orange-600">Geny</span></span>
                 </a>
