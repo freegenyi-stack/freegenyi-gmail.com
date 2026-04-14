@@ -207,7 +207,10 @@ $is_rtl = $is_rtl ?? false;
             
             <!-- En-tête du menu -->
             <div class="flex justify-between items-center p-6 border-b border-slate-50">
-                <span class="text-2xl font-black text-slate-900 tracking-tighter uppercase font-title leading-none">Free<span class="text-orange-600">Geny</span></span>
+                <a href="/<?php echo $home_slug; ?>/" class="flex items-center gap-3">
+                    <img src="/assets/img/logo.png" alt="FreeGeny" class="h-8 w-auto">
+                    <span class="text-xl font-black text-slate-900 tracking-tighter uppercase font-title leading-none">Free<span class="text-orange-600">Geny</span></span>
+                </a>
                 <button @click="mobileMenuOpen = false" class="p-2 bg-slate-50 hover:bg-slate-100 rounded-xl transition text-slate-500">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" stroke-width="2.5"></path></svg>
                 </button>
@@ -232,8 +235,8 @@ $is_rtl = $is_rtl ?? false;
             <div class="p-6 bg-slate-50 border-t border-slate-100">
                 <?php if (empty($_SESSION['logged_in'])): ?>
                     <div class="flex flex-col gap-3">
-                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="w-full text-center py-4 rounded-xl font-black text-slate-900 bg-white border border-slate-200 hover:border-orange-300 transition shadow-sm text-[10px] uppercase tracking-widest">Accès Élite</a>
-                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="w-full text-center py-3.5 rounded-xl font-black text-white bg-orange-600 hover:bg-orange-700 shadow-xl shadow-orange-600/20 transition uppercase tracking-widest text-[11px]">Rejoindre FreeGeny</a>
+                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="w-full text-center py-4 rounded-xl font-black text-slate-900 bg-white border border-slate-200 hover:border-orange-300 transition shadow-sm text-[11px] uppercase tracking-widest font-title">Connexion</a>
+                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="w-full text-center py-4 rounded-xl font-black text-white bg-slate-900 hover:bg-orange-600 shadow-xl shadow-slate-900/10 transition uppercase tracking-widest text-[11px] font-title">Rejoindre</a>
                     </div>
                 <?php else: ?>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent.php" class="block w-full text-center py-3.5 rounded-xl font-black text-white bg-slate-900 hover:bg-slate-800 transition uppercase tracking-widest text-[11px] shadow-xl">Mon Tableau de bord</a>
