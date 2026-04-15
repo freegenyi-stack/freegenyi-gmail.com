@@ -36,8 +36,10 @@ class MailManager {
         </html>
         ";
 
-        // Sur certains serveurs, mail() peut échouer. On met un @ pour ne pas bloquer l'inscription avec une erreur 500.
-        return @mail($to, $subject, $fullBody, $headers);
+        // Sur cPanel, le paramètre -f est crucial pour que le serveur accepte l'expéditeur
+        $additionalParams = "-f" . $fromEmail;
+
+        return @mail($to, $subject, $fullBody, $headers, $additionalParams);
     }
 
     /**

@@ -27,9 +27,8 @@ if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 // 2. Vérifier si l'utilisateur existe
 $user = DB::fetchOne("SELECT id, full_name, email FROM users WHERE email = ? LIMIT 1", [$email]);
 
-// Même si l'utilisateur n'existe pas, on simule un succès pour éviter le "user enumeration" (sécurité)
 if (!$user) {
-    header("Location: {$base_url}/auth/forgot-password?success=" . urlencode('Si cet email existe, un lien de réinitialisation a été envoyé.'));
+    header("Location: {$base_url}/auth/forgot-password?error=" . urlencode("Cette adresse email n'existe pas dans notre base de données."));
     exit;
 }
 
