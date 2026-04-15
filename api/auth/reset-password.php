@@ -38,11 +38,11 @@ if (strlen($password) < 8) {
 // 2. Vérifier le Token
 $tokenData = DB::fetchOne("
     SELECT * FROM password_reset_tokens 
-    WHERE token = ? AND expires_at > NOW() 
+    WHERE token = ? 
     LIMIT 1
 ", [$token]);
 
-if (!$tokenData) {
+if (!$tokenData || strtotime($tokenData['expires_at']) < time()) {
     header("Location: {$base_url}/auth/forgot-password?error=" . urlencode('Lien invalide ou expiré. Réeffectuez une demande.'));
     exit;
 }
