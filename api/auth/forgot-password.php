@@ -14,9 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $email = strtolower(trim($_POST['email'] ?? ''));
-$country = strtoupper($_GET['country'] ?? $country ?? 'DZ');
-$lang = $_GET['lang'] ?? $lang ?? 'fr';
-$base_url = "/{$country}-{$lang}";
+
+// Détection propre du pays/langue pour la redirection (via référent ou session)
+$country_code = $_SESSION['country_code'] ?? 'DZ';
+$lang_code = $_SESSION['lang'] ?? 'fr';
+$base_url = "/{$country_code}-{$lang_code}";
 
 // 1. Validation
 if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
