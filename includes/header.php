@@ -217,7 +217,7 @@ $is_rtl = $is_rtl ?? false;
             </div>
             
             <!-- Liens de navigation -->
-            <div class="flex-1 overflow-y-auto px-6 py-4 custom-scroll space-y-2.5">
+            <div class="flex-1 overflow-y-auto px-6 pt-5 pb-2 custom-scroll space-y-2.5">
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">À propos</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Approche</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Parents</a>
@@ -225,14 +225,14 @@ $is_rtl = $is_rtl ?? false;
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/ngos" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">ONG</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/science" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Science</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/shop" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Boutique</a>
-                <div class="h-px bg-slate-100 my-4"></div>
+                <div class="h-px bg-slate-100 my-2.5"></div>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/investors" class="block text-sm font-medium text-slate-500 hover:text-orange-600 font-title tracking-tight">Investisseurs</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/blog" class="block text-sm font-medium text-slate-500 hover:text-orange-600 font-title tracking-tight">Blog</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/press" class="block text-sm font-medium text-slate-500 hover:text-orange-600 font-title tracking-tight">Espace Presse</a>
             </div>
             
             <!-- Footer du menu (Auth Actions) -->
-            <div class="p-6 bg-slate-50 border-t border-slate-100">
+            <div class="p-4 bg-slate-50/50 border-t border-slate-100">
                 <?php if (empty($_SESSION['logged_in'])): ?>
                     <div class="flex flex-col gap-3">
                         <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="w-full text-center py-4 rounded-xl font-black text-slate-900 bg-white border border-slate-200 hover:border-orange-300 transition shadow-sm text-[11px] uppercase tracking-widest">Connexion</a>
