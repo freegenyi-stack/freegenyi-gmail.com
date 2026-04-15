@@ -217,7 +217,7 @@ $is_rtl = $is_rtl ?? false;
             </div>
             
             <!-- Liens de navigation -->
-            <div class="flex-1 overflow-y-auto px-6 pt-5 pb-2 custom-scroll space-y-2.5">
+            <div class="overflow-y-auto px-6 pt-5 pb-0 custom-scroll space-y-2.5">
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/about" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">À propos</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/approach" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Approche</a>
                 <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/parents" class="block text-[17px] font-medium text-slate-800 hover:text-orange-600 transition-colors font-title tracking-tight">Parents</a>
@@ -235,8 +235,8 @@ $is_rtl = $is_rtl ?? false;
             <div class="p-4 bg-slate-50/50 border-t border-slate-100">
                 <?php if (empty($_SESSION['logged_in'])): ?>
                     <div class="flex flex-col gap-3">
-                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="w-full text-center py-4 rounded-xl font-black text-slate-900 bg-white border border-slate-200 hover:border-orange-300 transition shadow-sm text-[11px] uppercase tracking-widest">Connexion</a>
                         <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="w-full text-center py-4 rounded-xl font-black text-white bg-slate-900 hover:bg-orange-600 shadow-xl shadow-slate-900/10 transition uppercase tracking-widest text-[11px]">Rejoindre</a>
+                        <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="w-full text-center py-4 rounded-xl font-black text-slate-900 bg-white border border-slate-200 hover:border-orange-300 transition shadow-sm text-[11px] uppercase tracking-widest">Connexion</a>
                     </div>
                 <?php else: ?>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent.php" class="block w-full text-center py-3.5 rounded-xl font-black text-white bg-slate-900 hover:bg-slate-800 transition uppercase tracking-widest text-[11px] shadow-xl">Mon Tableau de bord</a>
