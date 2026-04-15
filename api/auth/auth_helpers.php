@@ -143,6 +143,18 @@ try {
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
 
+    // Table pour la réinitialisation de mot de passe
+    DB::execute("
+        CREATE TABLE IF NOT EXISTS password_reset_tokens (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            user_id INT UNSIGNED NOT NULL,
+            token VARCHAR(100) NOT NULL UNIQUE,
+            expires_at DATETIME NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ");
+
     // Migration des préférences users
     $prefs = [
         'preferred_color'                => "VARCHAR(7) DEFAULT '#2563eb'",

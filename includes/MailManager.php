@@ -121,4 +121,40 @@ class MailManager {
         ";
         return self::send($to, $subject, $html);
     }
+
+    /**
+     * Réinitialisation de mot de passe
+     */
+    public static function sendPasswordReset($to, $userName, $token, $lang = 'fr') {
+        $country = strtoupper($_SESSION['home_country'] ?? 'DZ');
+        $resetUrl = APP_URL . "/{$country}-{$lang}/auth/reset-password?token=" . $token;
+        
+        if ($lang === 'ar') {
+            $subject = "إعادة تعيين كلمة المرور - FreeGeny 🔐";
+            $html = "
+                <div dir='rtl' style='text-align: right;'>
+                    <h1 style='color: #0f172a; font-size: 24px; text-align: center;'>نسيت كلمة المرور؟ 🔑</h1>
+                    <p>مرحباً <strong>$userName</strong>،</p>
+                    <p>لقد تلقينا طلباً لإعادة تعيين كلمة المرور الخاصة بك. إذا كنت أنت من طلب ذلك، انقر على الزر أدناه:</p>
+                    <div style='margin-top: 40px; text-align: center;'>
+                        <a href='$resetUrl' style='display: inline-block; background: #0f172a; color: white; padding: 18px 36px; border-radius: 16px; text-decoration: none; font-weight: bold; font-size: 16px;'>تعيين كلمة مرور جديدة</a>
+                    </div>
+                    <p style='margin-top: 20px; font-size: 14px; color: #64748b;'>هذا الرابط صالح لمدة ساعة واحدة فقط.</p>
+                </div>
+            ";
+        } else {
+            $subject = "Réinitialisez votre mot de passe - FreeGeny 🔐";
+            $html = "
+                <h1 style='color: #0f172a; font-size: 24px; text-align: center;'>Mot de passe oublié ? 🔑</h1>
+                <p>Bonjour <strong>$userName</strong>,</p>
+                <p>Nous avons reçu une demande de réinitialisation de votre mot de passe. Si vous en êtes à l'origine, cliquez sur le bouton ci-dessous :</p>
+                <div style='margin-top: 40px; text-align: center;'>
+                    <a href='$resetUrl' style='display: inline-block; background: #0f172a; color: white; padding: 18px 36px; border-radius: 16px; text-decoration: none; font-weight: bold; font-size: 16px;'>Réinitialiser mon mot de passe</a>
+                </div>
+                <p style='margin-top: 20px; font-size: 14px; color: #64748b;'>Ce lien est valable pendant 1 heure seulement.</p>
+                <p style='font-size: 12px; color: #94a3b8; margin-top: 20px;'>Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer cet email en toute sécurité.</p>
+            ";
+        }
+        return self::send($to, $subject, $html);
+    }
 }

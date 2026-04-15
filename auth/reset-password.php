@@ -1,18 +1,35 @@
 <?php
 /**
- * auth/forgot-password.php - Mot de passe oublié
+ * auth/reset-password.php - Réinitialisation du mot de passe (Interface)
  */
 require_once __DIR__ . '/../config/app.php';
+require_once __DIR__ . '/../api/auth/auth_helpers.php';
 
+$token = $_GET['token'] ?? '';
 $error = $_GET['error'] ?? null;
-$success = $_GET['success'] ?? null;
+
+// Vérifier si le token est valide avant d'afficher le formulaire
+$tokenData = null;
+if (!empty($token)) {
+    $tokenData = DB::fetchOne("
+        SELECT * FROM password_reset_tokens 
+        WHERE token = ? AND expires_at > NOW() 
+        LIMIT 1
+    ", [$token]);
+}
+
+if (!$tokenData) {
+    // Si le token est invalide ou expiré, rediriger avec une erreur
+    header("Location: /{$country}-{$lang}/auth/forgot-password?error=" . urlencode('Le lien de réinitialisation est invalide ou a expiré.'));
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $lang; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mot de passe oublié | FreeGeny Elite</title>
+    <title>Nouveau mot de passe | FreeGeny Elite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -37,8 +54,8 @@ $success = $_GET['success'] ?? null;
             </a>
 
             <div class="mb-8 text-center">
-                <h1 class="text-3xl font-black text-slate-950 font-title tracking-tight mb-1">Mot de passe oublié</h1>
-                <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-2">Récupération sécurisée</p>
+                <h1 class="text-3xl font-black text-slate-950 font-title tracking-tight mb-1">Nouveau mot de passe</h1>
+                <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mt-2">Étape finale de sécurité</p>
             </div>
 
             <?php if ($error): ?>
@@ -48,30 +65,26 @@ $success = $_GET['success'] ?? null;
                 </div>
             <?php endif; ?>
 
-            <?php if ($success): ?>
-                <div class="mb-6 p-4 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center gap-3 text-emerald-600 text-sm">
-                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"></path></svg>
-                    <p><?php echo htmlspecialchars($success); ?></p>
-                </div>
-            <?php endif; ?>
-
-            <form action="/api/auth/forgot-password.php" method="POST" class="space-y-6">
+            <form action="/api/auth/reset-password.php" method="POST" class="space-y-6">
+                <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
+                
                 <div>
-                    <label for="email" class="block text-[11px] font-black uppercase text-slate-400 tracking-widest ml-1 mb-2">Votre adresse email</label>
-                    <input type="email" name="email" id="email" required
+                    <label for="password" class="block text-[11px] font-black uppercase text-slate-400 tracking-widest ml-1 mb-2">Nouveau mot de passe</label>
+                    <input type="password" name="password" id="password" required minlength="8"
                         class="w-full bg-slate-50 border-2 border-transparent focus:border-orange-500/10 focus:bg-white px-6 py-4 rounded-2xl text-slate-900 font-medium transition-all outline-none"
-                        placeholder="nom@exemple.com">
+                        placeholder="••••••••">
+                </div>
+
+                <div>
+                    <label for="confirm_password" class="block text-[11px] font-black uppercase text-slate-400 tracking-widest ml-1 mb-2">Confirmer le mot de passe</label>
+                    <input type="password" name="confirm_password" id="confirm_password" required minlength="8"
+                        class="w-full bg-slate-50 border-2 border-transparent focus:border-orange-500/10 focus:bg-white px-6 py-4 rounded-2xl text-slate-900 font-medium transition-all outline-none"
+                        placeholder="••••••••">
                 </div>
 
                 <button type="submit" class="w-full bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all duration-300 shadow-xl shadow-slate-950/20 active:scale-[0.98]">
-                    Envoyer le lien de reset
+                    Mettre à jour mon accès
                 </button>
-
-                <div class="text-center">
-                    <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="text-[11px] font-black uppercase text-slate-400 hover:text-orange-600 transition">
-                        ← Retour à la connexion
-                    </a>
-                </div>
             </form>
             
         </div>
