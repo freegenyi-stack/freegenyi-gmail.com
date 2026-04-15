@@ -13,14 +13,14 @@ $tokenData = null;
 if (!empty($token)) {
     $tokenData = DB::fetchOne("
         SELECT * FROM password_reset_tokens 
-        WHERE token = ? AND expires_at > NOW() 
+        WHERE token = ? 
         LIMIT 1
     ", [$token]);
 }
 
-if (!$tokenData) {
+if (!$tokenData || strtotime($tokenData['expires_at']) < time()) {
     // Si le token est invalide ou expiré, rediriger avec une erreur
-    header("Location: /{$country}-{$lang}/auth/forgot-password?error=" . urlencode('Le lien de réinitialisation est invalide ou a expiré.'));
+    header("Location: /{$country}-{$lang}/auth/forgot-password?error=" . urlencode('Le lien de réinitialisation est invalide ou a expiré. Merci de refaire une demande.'));
     exit;
 }
 ?>
