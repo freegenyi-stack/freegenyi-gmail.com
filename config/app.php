@@ -139,7 +139,9 @@ if (preg_match('/^([A-Z]{2})-([a-z]{2})$/i', $slug, $matches)) {
     $browsing_country = strtoupper($matches[1]);
     $browsing_lang = strtolower($matches[2]);
 
-    if (isset($_SESSION['last_uri']) && $_SESSION['last_uri'] === $request_uri && $browsing_country !== $home_country) {
+    $is_auth_page = str_contains($request_uri, '/auth/') || str_contains($request_uri, '/dashboard/');
+
+    if (!$is_auth_page && isset($_SESSION['last_uri']) && $_SESSION['last_uri'] === $request_uri && $browsing_country !== $home_country) {
         $target_lang = $supported_regions[$home_country]['langs'][0] ?? 'fr';
         header("Location: /" . strtoupper($home_country) . "-" . $target_lang . "/");
         unset($_SESSION['last_uri']);

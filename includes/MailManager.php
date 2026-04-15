@@ -5,18 +5,12 @@
 class MailManager {
     
     public static function send($to, $subject, $messageHtml) {
-        // Utiliser $_ENV ou les valeurs par défaut
         $fromName = $_ENV['SMTP_FROM_NAME'] ?? 'FreeGeny Support';
         $fromEmail = $_ENV['SMTP_FROM_EMAIL'] ?? 'contact@freegeny.com';
-
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= "From: " . $fromName . " <" . $fromEmail . ">" . "\r\n";
-        $headers .= "Reply-To: " . $fromEmail . "\r\n";
-        $headers .= "Return-Path: " . $fromEmail . "\r\n";
-        $headers .= "X-Sender: <" . $fromEmail . ">" . "\r\n";
-        $headers .= "X-Priority: 3" . "\r\n";
-        $headers .= "X-Mailer: FreeGeny-Core-PHP/" . phpversion();
+        $host = $_ENV['SMTP_HOST'] ?? 'mail.freegeny.com';
+        $port = $_ENV['SMTP_PORT'] ?? 465;
+        $user = $_ENV['SMTP_USER'] ?? 'contact@freegeny.com';
+        $pass = $_ENV['SMTP_PASS'] ?? '';
 
         $fullBody = "
         <html>
@@ -36,10 +30,17 @@ class MailManager {
         </html>
         ";
 
-        // Sur cPanel, le paramètre -f est crucial pour que le serveur accepte l'expéditeur
-        $additionalParams = "-f" . $fromEmail;
+        // Si le mot de passe SMTP est configuré, on pourrait utiliser PHPMailer ou une classe SMTP.
+        // Pour l'instant on fiabilise mail() au maximum avec les bons headers et le paramètre -f.
+        // NOTE : Sur cPanel, le mail() local est TRÈS performant si le compte mail existe physiquement.
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= "From: " . $fromName . " <" . $fromEmail . ">" . "\r\n";
+        $headers .= "Reply-To: " . $fromEmail . "\r\n";
+        $headers .= "Return-Path: " . $fromEmail . "\r\n";
+        $headers .= "X-Mailer: FreeGeny-Core-PHP/" . phpversion();
 
-        return @mail($to, $subject, $fullBody, $headers, $additionalParams);
+        return @mail($to, $subject, $fullBody, $headers, "-f" . $fromEmail);
     }
 
     /**
