@@ -18,14 +18,14 @@ class MailManager {
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com'; // Gmail SMTP
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'nacer.aoudia@freegeny.com';
+            $mail->Username   = 'contact@freegeny.com';
             $mail->Password   = 'yeyv xqce nldw jngb';
             $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port       = 465;
             $mail->CharSet    = 'UTF-8';
 
             // Destinateur
-            $fromEmail = 'nacer.aoudia@freegeny.com';
+            $fromEmail = 'contact@freegeny.com';
             $fromName  = 'FreeGeny Elite';
             $mail->setFrom($fromEmail, $fromName);
             $mail->isHTML(true);
@@ -61,7 +61,7 @@ class MailManager {
         if (!$mail) {
             // Backup : mail() natif si PHPMailer échoue
             $fromName  = 'FreeGeny Elite';
-            $fromEmail = 'nacer.aoudia@freegeny.com';
+            $fromEmail = 'contact@freegeny.com';
             $fullBody = self::buildBody($messageHtml);
             $headers  = "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\n";
             $headers .= "From: {$fromName} <{$fromEmail}>\r\n";
