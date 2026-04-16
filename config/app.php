@@ -61,6 +61,7 @@ if (!defined('APP_URL')) define('APP_URL', rtrim($env['APP_URL'] ?? 'https://fre
 require_once __DIR__ . '/../includes/csrf.php';
 require_once __DIR__ . '/../includes/rate-limiter.php';
 require_once __DIR__ . '/../includes/auth-functions.php';
+require_once __DIR__ . '/../includes/activity.php';
 
 $supported_regions = [
     'DZ' => ['name' => 'Algeria', 'langs' => ['ar', 'fr']],

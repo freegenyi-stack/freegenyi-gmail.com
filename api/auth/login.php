@@ -87,6 +87,7 @@ if (!(int)$user['email_verified']) {
 DB::execute("UPDATE users SET login_attempts = 0, locked_until = NULL, last_login_at = NOW() WHERE id = ?", [$user['id']]);
 
 loginUser($user);
+Activity::log('auth', 'Connexion réussie', ['ip' => $_SERVER['REMOTE_ADDR']]);
 
 // Régénérer l'ID de session pour prévenir la fixation de session
 session_regenerate_id(true);

@@ -185,6 +185,10 @@ $is_rtl = $is_rtl ?? false;
                 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): 
                     $user_initials = $_SESSION['user_initials'] ?? mb_strtoupper(mb_substr($_SESSION['user_name'] ?? 'U', 0, 2));
                     $profile_complete = ($_SESSION['user_profile_pct'] ?? 0) >= 100;
+                    
+                    // Notification count (vague 2)
+                    $unread_notifs = DB::fetchOne("SELECT COUNT(*) as total FROM notifications WHERE user_id = ? AND is_read = 0", [$_SESSION['user_id']]);
+                    $notif_count = (int)($unread_notifs['total'] ?? 0);
                 ?>
                     <div class="relative" x-data="{ userMenuOpen: false }">
                         <button @click="userMenuOpen = !userMenuOpen" class="flex items-center gap-2 focus:outline-none group relative">
@@ -231,14 +235,17 @@ $is_rtl = $is_rtl ?? false;
                                 <i class="fa-solid fa-gauge-high w-4 opacity-50"></i> Tableau de bord
                             </a>
                             
-                            <a href="#" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all opacity-50 cursor-not-allowed">
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/history" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all">
                                 <i class="fa-solid fa-clock-rotate-left w-4 opacity-50"></i> Mon Historique
-                                <span class="ml-auto text-[8px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded uppercase">Bientôt</span>
                             </a>
 
                             <a href="#" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all opacity-50 cursor-not-allowed">
-                                <i class="fa-solid fa-message w-4 opacity-50"></i> Messagerie
-                                <span class="ml-auto text-[8px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded uppercase">Bientôt</span>
+                                <i class="fa-solid fa-message w-4 opacity-50"></i> Notifications
+                                <?php if ($notif_count > 0): ?>
+                                    <span class="ml-auto text-[9px] bg-red-600 text-white px-1.5 py-0.5 rounded-full font-bold"><?= $notif_count ?></span>
+                                <?php else: ?>
+                                    <span class="ml-auto text-[8px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded uppercase">Bientôt</span>
+                                <?php endif; ?>
                             </a>
 
                             <div class="h-px bg-slate-50 my-1"></div>
