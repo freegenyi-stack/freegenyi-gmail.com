@@ -1,3 +1,7 @@
+<?php
+/**
+ * includes/MailManager.php - Gestionnaire d'emails premium SMTP
+ */
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;

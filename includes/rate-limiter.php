@@ -14,16 +14,26 @@ class RateLimiter {
     public static function check($endpoint, $maxAttempts = 5, $seconds = 60) {
         $ip = self::getIP();
         
-        // Initialisation silencieuse de la table si nécessaire
-        // Note: Dans un système pro, on ferait ça via une migration, 
-        // mais ici on assure la robustesse.
-        
-        $data = DB::fetchOne("
-            SELECT id, last_request_at, request_count 
-            FROM api_rate_limits 
-            WHERE ip_address = ? AND endpoint = ? 
-            LIMIT 1
-        ", [$ip, $endpoint]);
+        // 🛡️ Auto-initialisation de la table (Senior Standard)
+        try {
+            $data = DB::fetchOne("
+                SELECT id, last_request_at, request_count 
+                FROM api_rate_limits 
+                WHERE ip_address = ? AND endpoint = ? 
+                LIMIT 1
+            ", [$ip, $endpoint]);
+        } catch (Exception $e) {
+            // La table n'existe probablement pas, on la crée
+            DB::execute("CREATE TABLE IF NOT EXISTS api_rate_limits (
+                id INT AUTO_INCREMENT PRIMARY KEY, 
+                ip_address VARCHAR(45) NOT NULL, 
+                endpoint VARCHAR(100) NOT NULL, 
+                last_request_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                request_count INT DEFAULT 1, 
+                INDEX(ip_address, endpoint)
+            )");
+            return true; // Premier essai autorisé
+        }
 
         if (!$data) {
             DB::execute("
