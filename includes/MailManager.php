@@ -14,14 +14,14 @@ class MailManager {
         $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
         
         try {
-            // Configuration Serveur
+            // Configuration Serveur (LOCAL SMTP - Only working method on Ayrade)
             $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com'; // Gmail SMTP
-            $mail->SMTPAuth   = true;
+            $mail->Host       = 'localhost';
+            $mail->SMTPAuth   = false;
             $mail->Username   = 'contact@freegeny.com';
-            $mail->Password   = 'yeyv xqce nldw jngb';
-            $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port       = 465;
+            $mail->Password   = ''; 
+            $mail->SMTPSecure = '';
+            $mail->Port       = 25;
             $mail->CharSet    = 'UTF-8';
 
             // Destinateur
