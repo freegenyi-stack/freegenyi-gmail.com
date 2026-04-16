@@ -20,8 +20,8 @@ try {
     $mail->SMTPAuth   = true;
     $mail->Username   = 'contact@freegeny.com';
     $mail->Password   = 'yeyv xqce nldw jngb';
-    $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port       = 465;
+    $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = 587;
 
     $mail->setFrom('contact@freegeny.com', 'FreeGeny Test');
     $mail->addAddress('contact@freegeny.com'); // S'envoyer un mail à soi-même
