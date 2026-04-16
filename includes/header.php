@@ -186,9 +186,12 @@ $is_rtl = $is_rtl ?? false;
                     $user_initials = $_SESSION['user_initials'] ?? mb_strtoupper(mb_substr($_SESSION['user_name'] ?? 'U', 0, 2));
                     $profile_complete = ($_SESSION['user_profile_pct'] ?? 0) >= 100;
                     
-                    // Notification count (vague 2)
-                    $unread_notifs = DB::fetchOne("SELECT COUNT(*) as total FROM notifications WHERE user_id = ? AND is_read = 0", [$_SESSION['user_id']]);
-                    $notif_count = (int)($unread_notifs['total'] ?? 0);
+                    // Notification count (vague 2) - Sécurisé
+                    $notif_count = 0;
+                    try {
+                        $unread_notifs = DB::fetchOne("SELECT COUNT(*) as total FROM notifications WHERE user_id = ? AND is_read = 0", [$_SESSION['user_id']]);
+                        $notif_count = (int)($unread_notifs['total'] ?? 0);
+                    } catch (Throwable $e) {}
                 ?>
                     <div class="relative" x-data="{ userMenuOpen: false }">
                         <button @click="userMenuOpen = !userMenuOpen" class="flex items-center gap-2 focus:outline-none group relative">

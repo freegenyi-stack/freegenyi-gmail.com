@@ -14,6 +14,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $family_id = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id])['family_id'] ?? null;
 
+try {
     // 1. Si l'utilisateur a un family_id, vérifier/créer la conversation de famille
     if ($family_id) {
         $fam_conv = DB::fetchOne("SELECT id FROM conversations WHERE family_id = ? AND type = 'family'", [$family_id]);
