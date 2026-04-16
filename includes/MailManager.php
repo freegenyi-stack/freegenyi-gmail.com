@@ -1,10 +1,40 @@
 <?php
 /**
- * includes/MailManager.php - Gestionnaire d'emails FreeGeny
- * Version stable sans dépendance externe (mail() natif cPanel)
+ * includes/MailManager.php - Gestionnaire d'emails FreeGeny Elite
+ * Utilise PHPMailer pour un envoi SMTP authentifié (meilleure délivrabilité)
  */
 
 class MailManager {
+
+    private static function getMailer() {
+        require_once __DIR__ . '/vendor/PHPMailer/Exception.php';
+        require_once __DIR__ . '/vendor/PHPMailer/PHPMailer.php';
+        require_once __DIR__ . '/vendor/PHPMailer/SMTP.php';
+
+        $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
+        
+        try {
+            // Configuration Serveur
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com'; // Gmail SMTP
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'nacer.aoudia@freegeny.com';
+            $mail->Password   = 'yeyv xqce nldw jngb';
+            $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port       = 465;
+            $mail->CharSet    = 'UTF-8';
+
+            // Destinateur
+            $fromEmail = 'nacer.aoudia@freegeny.com';
+            $fromName  = 'FreeGeny Elite';
+            $mail->setFrom($fromEmail, $fromName);
+            $mail->isHTML(true);
+
+            return $mail;
+        } catch (Exception $e) {
+            return null;
+        }
+    }
 
     private static function buildBody($messageHtml) {
         return "
@@ -26,19 +56,26 @@ class MailManager {
     }
 
     public static function send($to, $subject, $messageHtml) {
-        $fromName  = $_ENV['SMTP_FROM_NAME']  ?? 'FreeGeny Support';
-        $fromEmail = $_ENV['SMTP_FROM_EMAIL'] ?? 'contact@freegeny.com';
+        $mail = self::getMailer();
+        
+        if (!$mail) {
+            // Backup : mail() natif si PHPMailer échoue
+            $fromName  = 'FreeGeny Elite';
+            $fromEmail = 'nacer.aoudia@freegeny.com';
+            $fullBody = self::buildBody($messageHtml);
+            $headers  = "MIME-Version: 1.0\r\nContent-type: text/html; charset=UTF-8\r\n";
+            $headers .= "From: {$fromName} <{$fromEmail}>\r\n";
+            return @mail($to, $subject, $fullBody, $headers, "-f{$fromEmail}");
+        }
 
-        $fullBody = self::buildBody($messageHtml);
-
-        $headers  = "MIME-Version: 1.0\r\n";
-        $headers .= "Content-type: text/html; charset=UTF-8\r\n";
-        $headers .= "From: {$fromName} <{$fromEmail}>\r\n";
-        $headers .= "Reply-To: {$fromEmail}\r\n";
-        $headers .= "Return-Path: {$fromEmail}\r\n";
-        $headers .= "X-Mailer: FreeGeny-PHP/" . phpversion();
-
-        return @mail($to, $subject, $fullBody, $headers, "-f{$fromEmail}");
+        try {
+            $mail->addAddress($to);
+            $mail->Subject = $subject;
+            $mail->Body    = self::buildBody($messageHtml);
+            return $mail->send();
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     public static function sendVerification($to, $userName, $token, $lang = 'fr') {
