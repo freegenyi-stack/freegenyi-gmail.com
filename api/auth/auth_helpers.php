@@ -48,7 +48,11 @@ function initSession() {
     
     // 🛡️ Restauration automatique via cookie persistent (Senior Security)
     if (empty($_SESSION['logged_in'])) {
-        Auth::checkRememberMe();
+        try {
+            Auth::checkRememberMe();
+        } catch (Throwable $e) {
+            // Table absent ou erreur DB - on continue sans crash
+        }
     }
 }
 

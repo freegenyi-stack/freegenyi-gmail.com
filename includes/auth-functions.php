@@ -32,29 +32,32 @@ class Auth {
         if (!empty($_SESSION['logged_in'])) return;
         if (empty($_COOKIE['remember_me'])) return;
 
-        $parts = explode(':', $_COOKIE['remember_me']);
-        if (count($parts) !== 2) return;
+        try {
+            $parts = explode(':', $_COOKIE['remember_me']);
+            if (count($parts) !== 2) return;
 
-        $selector = $parts[0];
-        $validator = hex2bin($parts[1]);
+            $selector  = $parts[0];
+            $validator = hex2bin($parts[1]);
 
-        $token = DB::fetchOne("
-            SELECT * FROM remember_tokens 
-            WHERE selector = ? AND expires_at > NOW() 
-            LIMIT 1
-        ", [$selector]);
+            $token = DB::fetchOne("
+                SELECT * FROM remember_tokens 
+                WHERE selector = ? AND expires_at > NOW() 
+                LIMIT 1
+            ", [$selector]);
 
-        if ($token && hash_equals($token['token_hash'], hash('sha256', $validator))) {
-            // Token valide ! On restaure l'utilisateur
-            $user = DB::fetchOne("SELECT * FROM users WHERE id = ?", [$token['user_id']]);
-            if ($user) {
-                $_SESSION['logged_in'] = true;
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_name'] = $user['full_name'];
-                $_SESSION['user_role'] = $user['role'];
-                // Régénérer le token pour éviter le vol de session (Sécurité Senior)
-                self::setRememberMe($user['id']);
+            if ($token && hash_equals($token['token_hash'], hash('sha256', $validator))) {
+                $user = DB::fetchOne("SELECT * FROM users WHERE id = ?", [$token['user_id']]);
+                if ($user) {
+                    $_SESSION['logged_in']  = true;
+                    $_SESSION['user_id']    = $user['id'];
+                    $_SESSION['user_name']  = $user['full_name'];
+                    $_SESSION['user_role']  = $user['role'];
+                    self::setRememberMe($user['id']);
+                }
             }
+        } catch (Throwable $e) {
+            // Table remember_tokens absente ou erreur DB : on ignore silencieusement
+            return;
         }
     }
 
