@@ -194,7 +194,11 @@ $is_rtl = $is_rtl ?? false;
                         <button @click="userMenuOpen = !userMenuOpen" class="flex items-center gap-2 focus:outline-none group relative">
                             <!-- Avatar Circle -->
                             <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white font-bold text-[11px] border-2 border-white shadow-md overflow-hidden group-hover:scale-105 transition-transform relative">
-                                <?php if (isset($_SESSION['user_avatar']) && $_SESSION['user_avatar']): ?>
+                                <?php if (isset($_SESSION['user_avatar_config']['icon'])): ?>
+                                    <div class="w-full h-full flex items-center justify-center <?= $_SESSION['user_avatar_config']['bg'] ?? 'bg-slate-900' ?>">
+                                        <i class="fa-solid <?= $_SESSION['user_avatar_config']['icon'] ?> text-lg"></i>
+                                    </div>
+                                <?php elseif (isset($_SESSION['user_avatar']) && $_SESSION['user_avatar']): ?>
                                     <img src="<?php echo $_SESSION['user_avatar']; ?>" class="w-full h-full object-cover">
                                 <?php else: ?>
                                     <?php echo $user_initials; ?>
@@ -251,9 +255,9 @@ $is_rtl = $is_rtl ?? false;
                             <div class="h-px bg-slate-50 my-1"></div>
 
                             <!-- Settings / Layout -->
-                            <a href="#" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all opacity-50 cursor-not-allowed">
+                            <button @click="userMenuOpen = false; $dispatch('open-theme-modal')" class="w-full flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all">
                                 <i class="fa-solid fa-palette w-4 opacity-50"></i> Personnalisation
-                            </a>
+                            </button>
 
                             <!-- Logout -->
                             <a href="/api/auth/logout.php" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-red-600 hover:bg-red-50 transition-all border-t border-slate-50 mt-1">
@@ -318,4 +322,122 @@ $is_rtl = $is_rtl ?? false;
             </div>
         </div>
     </div>
-    <div class="h-14"></div><?php // End of Header ?>
+    <div class="h-14"></div>
+
+    <!-- MODALE DE PERSONNALISATION (Vague 3) -->
+    <div x-data="{ 
+        isOpen: false, 
+        currentPrimary: '<?= $_SESSION['user_theme']['primary'] ?? '#ea580c' ?>',
+        currentAvatarId: '<?= $_SESSION['user_avatar_config']['id'] ?? '' ?>',
+        colors: [
+            { name: 'Orange FreeGeny', hex: '#ea580c' },
+            { name: 'Bleu Royal', hex: '#2563eb' },
+            { name: 'Vert Émeraude', hex: '#059669' },
+            { name: 'Violet Élite', hex: '#7c3aed' },
+            { name: 'Rose Passion', hex: '#db2777' },
+            { name: 'Ardoise Sophistiquée', hex: '#475569' }
+        ],
+        async setTheme(color) {
+            this.currentPrimary = color;
+            document.documentElement.style.setProperty('--primary-color', color);
+            await fetch('/api/auth/update-theme.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ theme: { primary: color } })
+            });
+        },
+        async setAvatar(id, icon, bg) {
+            this.currentAvatarId = id;
+            await fetch('/api/auth/update-theme.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ avatar: { id, icon, bg } })
+            });
+            // Update local UI immediately (optionally reload or use Alpine state for header)
+            window.location.reload(); 
+        }
+    }" 
+    @open-theme-modal.window="isOpen = true"
+    x-show="isOpen" 
+    x-cloak 
+    class="fixed inset-0 z-[300] flex items-center justify-center px-4">
+        
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" @click="isOpen = false"></div>
+        
+        <div x-show="isOpen" 
+             x-transition:enter="transition ease-out duration-300 transform"
+             x-transition:enter-start="opacity-0 translate-y-8"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden border border-slate-100">
+            
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-black text-slate-900 tracking-tight">Personnalisation 🎨</h2>
+                    <button @click="isOpen = false" class="text-slate-400 hover:text-slate-900">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <p class="text-sm text-slate-500 mb-8 font-medium">Choisissez l'ambiance qui vous inspire pour accompagner la réussite de vos enfants.</p>
+
+                <!-- Color Selection -->
+                <div class="space-y-4">
+                    <label class="text-[11px] font-black uppercase text-slate-400 tracking-widest">Couleur Principale</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <template x-for="color in colors" :key="color.hex">
+                            <button @click="setTheme(color.hex)" 
+                                    class="h-12 rounded-xl flex items-center justify-center transition-all border-2"
+                                    :style="'background-color: ' + color.hex"
+                                    :class="currentPrimary === color.hex ? 'border-slate-900 shadow-lg scale-105' : 'border-transparent opacity-80 hover:opacity-100'">
+                                <i x-show="currentPrimary === color.hex" class="fa-solid fa-check text-white"></i>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Avatar Expert Selection -->
+                <div class="mt-8 space-y-4">
+                    <label class="text-[11px] font-black uppercase text-slate-400 tracking-widest">Avatar Expert 🏆</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <?php 
+                        $experts = [
+                            ['id' => 'scientist', 'icon' => 'fa-flask-vial', 'name' => 'Explorateur', 'bg' => 'bg-blue-500'],
+                            ['id' => 'math', 'icon' => 'fa-calculator', 'name' => 'Génie Math', 'bg' => 'bg-orange-500'],
+                            ['id' => 'lit', 'icon' => 'fa-feather-pointed', 'name' => 'Philosophe', 'bg' => 'bg-emerald-500'],
+                            ['id' => 'artist', 'icon' => 'fa-palette', 'name' => 'Artiste', 'bg' => 'bg-purple-500'],
+                            ['id' => 'astro', 'icon' => 'fa-user-astronaut', 'name' => 'Astronaute', 'bg' => 'bg-indigo-500'],
+                            ['id' => 'tech', 'icon' => 'fa-laptop-code', 'name' => 'Codeur', 'bg' => 'bg-slate-700']
+                        ];
+                        foreach ($experts as $e):
+                        ?>
+                        <button @click="setAvatar('<?= $e['id'] ?>', '<?= $e['icon'] ?>', '<?= $e['bg'] ?>')" 
+                                class="flex flex-col items-center p-3 rounded-2xl border-2 transition-all group"
+                                :class="currentAvatarId === '<?= $e['id'] ?>' ? 'border-slate-900 bg-slate-50' : 'border-slate-50 hover:border-slate-200'">
+                            <div class="w-10 h-10 rounded-full <?= $e['bg'] ?> text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-110 transition-transform">
+                                <i class="fa-solid <?= $e['icon'] ?>"></i>
+                            </div>
+                            <span class="text-[9px] font-bold text-slate-600 mt-2"><?= $e['name'] ?></span>
+                        </button>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <div class="h-px bg-slate-100 my-8"></div>
+
+                <!-- Dark Mode Placeholder -->
+                <div class="flex items-center justify-between opacity-50">
+                    <div>
+                        <p class="text-xs font-bold text-slate-900 uppercase tracking-widest">Mode Sombre</p>
+                        <p class="text-[10px] text-slate-500">Idéal pour les sessions du soir.</p>
+                    </div>
+                    <div class="w-12 h-6 bg-slate-200 rounded-full relative p-1 cursor-not-allowed">
+                        <div class="w-4 h-4 bg-white rounded-full shadow-sm"></div>
+                    </div>
+                </div>
+
+                <button @click="isOpen = false" class="w-full mt-10 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-orange-600 transition-colors shadow-xl">
+                    Terminer
+                </button>
+            </div>
+        </div>
+    </div><?php // End of Header ?>
