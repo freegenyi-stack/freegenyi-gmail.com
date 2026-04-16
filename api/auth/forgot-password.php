@@ -59,7 +59,7 @@ DB::execute("INSERT INTO password_reset_tokens (user_id, token, expires_at) VALU
 ]);
 
 // 5. Envoyer l'Email
-$mailSent = MailManager::sendPasswordReset($user['email'], $user['full_name'], $token, $lang);
+$mailSent = MailManager::sendPasswordReset($user['email'], $user['full_name'], $token, $lang_code);
 
 if ($mailSent) {
     header("Location: {$base_url}/auth/forgot-password?success=" . urlencode('Un lien de réinitialisation a été envoyé à votre adresse email.'));
