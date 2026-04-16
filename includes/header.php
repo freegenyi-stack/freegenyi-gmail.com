@@ -455,7 +455,7 @@ $is_rtl = $is_rtl ?? false;
     <!-- ELITE CHAT PANEL (Vague 4 - Mobile First) -->
     <div x-data="{ 
         isOpen: false,
-        view: 'list', -- 'list' or 'chat'
+        view: 'list', // 'list' or 'chat'
         conversations: [],
         currentConv: null,
         messages: [],
