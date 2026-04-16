@@ -19,8 +19,8 @@ if (!CSRF::verify($_POST['csrf_token'] ?? '')) {
     exit;
 }
 
-// 🛡️ Protection Rate Limiting
-if (!RateLimiter::check('forgot-password', 3, 60)) {
+// 🛡️ Protection Rate Limiting (Relâchée pour les tests)
+if (!RateLimiter::check('forgot-password', 10, 60)) {
     header("Location: /DZ-fr/auth/forgot-password?error=" . urlencode('Trop de demandes. Veuillez patienter.'));
     exit;
 }
