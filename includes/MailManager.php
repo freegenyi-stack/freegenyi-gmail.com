@@ -2,13 +2,13 @@
 /**
  * includes/MailManager.php - Gestionnaire d'emails premium SMTP
  */
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
 require_once __DIR__ . '/vendor/PHPMailer/Exception.php';
 require_once __DIR__ . '/vendor/PHPMailer/PHPMailer.php';
 require_once __DIR__ . '/vendor/PHPMailer/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class MailManager {
     
