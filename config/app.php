@@ -10,26 +10,19 @@ if (session_status() === PHP_SESSION_NONE) {
 if (!defined('BCRYPT_COST')) define('BCRYPT_COST', 12);
 if (!defined('MAX_LOGIN_ATTEMPTS')) define('MAX_LOGIN_ATTEMPTS', 5);
 
-// 🛡️ HEADERS DE SÉCURITÉ (Standards Senior)
+// 🛡️ HEADERS DE SÉCURITÉ (Standards Senior - Adaptés pour Alpine & FontAwesome)
 if (!headers_sent()) {
     header("X-Frame-Options: DENY");
     header("X-Content-Type-Options: nosniff");
     header("Referrer-Policy: strict-origin-when-cross-origin");
-    header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';");
+    // CSP assouplie pour les CDNs nécessaires
+    header("Content-Security-Policy: default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://fonts.googleapis.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://static.cloudflareinsights.com;");
 }
 
 // PROTECTION CONSTRUCTION (DÉSACTIVÉE TEMPORAIREMENT)
 if (!defined('MAINTENANCE_PASSWORD')) define('MAINTENANCE_PASSWORD', 'Yousr4568520&');
 
 $is_legal_page = str_contains($_SERVER['REQUEST_URI'] ?? '', 'privacy') || str_contains($_SERVER['REQUEST_URI'] ?? '', 'terms');
-
-// Unlock désactivé par précaution
-/*
-if (empty($_SESSION['site_unlocked']) && !str_contains($_SERVER['REQUEST_URI'] ?? '', 'unlock.php') && !$is_legal_page) {
-    header('Location: /unlock.php');
-    exit;
-}
-*/
 
 error_reporting(E_ALL & ~E_NOTICE); 
 ini_set('display_errors', 1);
@@ -57,7 +50,8 @@ foreach ($env as $k => $v) {
 }
 if (!defined('APP_URL')) define('APP_URL', rtrim($env['APP_URL'] ?? 'https://freegeny.com', '/'));
 
-// Chargement des utilitaires de sécurité
+// Chargement des utilitaires de sécurité et base
+require_once __DIR__ . '/../includes/db-class.php';
 require_once __DIR__ . '/../includes/csrf.php';
 require_once __DIR__ . '/../includes/rate-limiter.php';
 require_once __DIR__ . '/../includes/auth-functions.php';

@@ -6,36 +6,8 @@
 require_once __DIR__ . '/../../config/db.php';
 
 // Wrap PDO into a simple static class for the API
-class DB {
-    public static function fetchOne($sql, $params = []) {
-        global $pdo;
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute($params);
-        return $stmt->fetch() ?: null;
-    }
+// DB Class is now in includes/db-class.php and loaded via config/app.php
 
-    public static function fetchAll($sql, $params = []) {
-        global $pdo;
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute($params);
-        return $stmt->fetchAll();
-    }
-
-    public static function execute($sql, $params = []) {
-        global $pdo;
-        $stmt = $pdo->prepare($sql);
-        return $stmt->execute($params);
-    }
-
-    public static function insert($sql, $params = []) {
-        global $pdo;
-        $stmt = $pdo->prepare($sql);
-        if ($stmt->execute($params)) {
-            return $pdo->lastInsertId();
-        }
-        return false;
-    }
-}
 
 // Helpers
 if (!defined('BCRYPT_COST')) define('BCRYPT_COST', 12);
