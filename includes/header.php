@@ -196,16 +196,6 @@ $is_rtl = $is_rtl ?? false;
                                     <?php echo $user_initials; ?>
                                 <?php endif; ?>
                             </div>
-                            
-                            <!-- Status Point (Green) -->
-                            <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full status-pulse z-10"></span>
-                            
-                            <!-- Profile Missing Alert (Red Dot) -->
-                            <?php if (!$profile_complete): ?>
-                                <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-2 border-white rounded-full z-10">
-                                    <span class="absolute inset-0 rounded-full bg-red-400 ping-red"></span>
-                                </span>
-                            <?php endif; ?>
 
                             <svg class="ml-1 w-4 h-4 text-slate-400 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"/></svg>
                         </button>
