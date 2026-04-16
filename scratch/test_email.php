@@ -16,12 +16,12 @@ try {
     $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
     $mail->SMTPDebug = 2; // Activation debug complet
     $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
-    $mail->SMTPAuth   = true;
+    $mail->Host       = 'localhost';
+    $mail->SMTPAuth   = false; // Pas d'auth sur localhost souvent
     $mail->Username   = 'contact@freegeny.com';
-    $mail->Password   = 'yeyv xqce nldw jngb';
-    $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 587;
+    $mail->Password   = ''; 
+    $mail->SMTPSecure = '';
+    $mail->Port       = 25;
 
     $mail->setFrom('contact@freegeny.com', 'FreeGeny Test');
     $mail->addAddress('contact@freegeny.com'); // S'envoyer un mail à soi-même
