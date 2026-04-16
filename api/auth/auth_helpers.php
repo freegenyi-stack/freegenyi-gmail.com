@@ -61,10 +61,16 @@ function loginUser($user) {
     $_SESSION['user_name'] = $user['full_name'];
     $_SESSION['user_email'] = $user['email'];
     $_SESSION['user_avatar'] = $user['profile_photo'] ?? '';
-    $_SESSION['is_parent'] = true; // par défaut
+    $_SESSION['user_role']   = $user['role'] ?? 'parent';
+    $_SESSION['is_parent']   = ($_SESSION['user_role'] === 'parent');
     $_SESSION['user_initials'] = getInitials($user['full_name']);
     $_SESSION['oauth_provider'] = $user['oauth_provider'] ?? null;
     $_SESSION['user_phone'] = $user['phone'] ?? null;
+    
+    // Nouvelles variables Cockpit (Vague 1)
+    $_SESSION['user_profile_pct'] = (int)($user['profile_completion_pct'] ?? 0);
+    $_SESSION['user_theme'] = json_decode($user['theme_settings'] ?? '{}', true);
+    $_SESSION['user_avatar_config'] = json_decode($user['avatar_config'] ?? '{}', true);
 }
 
 function getInitials($name) {

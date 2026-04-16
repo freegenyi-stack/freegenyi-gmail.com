@@ -99,7 +99,33 @@ $is_rtl = $is_rtl ?? false;
         .custom-scroll::-webkit-scrollbar { width: 4px; }
         .custom-scroll::-webkit-scrollbar-track { background: transparent; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+
+        /* Animations & Status */
+        .status-pulse {
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+        .ping-red {
+            animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes ping {
+            75%, 100% { transform: scale(2); opacity: 0; }
+        }
     </style>
+    
+    <?php if (isset($_SESSION['user_theme'])): ?>
+    <style>
+        :root {
+            --primary-color: <?php echo $_SESSION['user_theme']['primary'] ?? '#ea580c'; ?>;
+        }
+        .text-orange-600, .hover\:text-orange-600:hover { color: var(--primary-color) !important; }
+        .bg-orange-600, .hover\:bg-orange-600:hover { background-color: var(--primary-color) !important; }
+    </style>
+    <?php endif; ?>
 </head>
 <body class="bg-white text-slate-900" x-data="{ mobileMenuOpen: false }">
 
@@ -158,33 +184,84 @@ $is_rtl = $is_rtl ?? false;
             <div class="flex items-center gap-4">
                 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): 
                     $user_initials = $_SESSION['user_initials'] ?? mb_strtoupper(mb_substr($_SESSION['user_name'] ?? 'U', 0, 2));
+                    $profile_complete = ($_SESSION['user_profile_pct'] ?? 0) >= 100;
                 ?>
                     <div class="relative" x-data="{ userMenuOpen: false }">
                         <button @click="userMenuOpen = !userMenuOpen" class="flex items-center gap-2 focus:outline-none group relative">
-                            <div class="w-9 h-9 rounded-full bg-slate-900 flex items-center justify-center text-white font-bold text-[11px] border-2 border-white shadow-sm overflow-hidden group-hover:scale-105 transition-transform">
+                            <!-- Avatar Circle -->
+                            <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white font-bold text-[11px] border-2 border-white shadow-md overflow-hidden group-hover:scale-105 transition-transform relative">
                                 <?php if (isset($_SESSION['user_avatar']) && $_SESSION['user_avatar']): ?>
                                     <img src="<?php echo $_SESSION['user_avatar']; ?>" class="w-full h-full object-cover">
                                 <?php else: ?>
                                     <?php echo $user_initials; ?>
                                 <?php endif; ?>
                             </div>
-                            <?php if (empty($_SESSION['user_phone'])): ?>
-                                <span class="absolute top-0 right-3 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
+                            
+                            <!-- Status Point (Green) -->
+                            <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full status-pulse z-10"></span>
+                            
+                            <!-- Profile Missing Alert (Red Dot) -->
+                            <?php if (!$profile_complete): ?>
+                                <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-2 border-white rounded-full z-10">
+                                    <span class="absolute inset-0 rounded-full bg-red-400 ping-red"></span>
+                                </span>
                             <?php endif; ?>
-                            <svg class="w-4 h-4 text-slate-400 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"/></svg>
+
+                            <svg class="ml-1 w-4 h-4 text-slate-400 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2.5"/></svg>
                         </button>
-                        <div x-show="userMenuOpen" @click.away="userMenuOpen = false" x-cloak x-transition class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 py-2 z-50 overflow-hidden">
-                            <div class="px-5 py-3 border-b border-slate-50 mb-1">
-                                <p class="text-[9px] font-black uppercase text-slate-400 tracking-widest">Connecté</p>
+
+                        <!-- Dropdown Menu (Glassmorphism) -->
+                        <div x-show="userMenuOpen" @click.away="userMenuOpen = false" x-cloak 
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 translate-y-1 scale-95"
+                             x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                             class="absolute right-0 mt-3 w-64 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-100 py-2 z-[200] overflow-hidden">
+                            
+                            <!-- User Info Header -->
+                            <div class="px-5 py-4 border-b border-slate-50 bg-slate-50/50 mb-1">
+                                <p class="text-[9px] font-black uppercase text-green-600 tracking-widest flex items-center gap-1.5 mb-0.5">
+                                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Connecté
+                                </p>
                                 <p class="text-xs font-bold text-slate-900 truncate"><?php echo htmlspecialchars($_SESSION['user_name']); ?></p>
+                                <p class="text-[10px] text-slate-500 font-medium italic mt-0.5">Role : <?php echo ucfirst($_SESSION['user_role'] ?? 'Parent'); ?></p>
                             </div>
-                            <?php if (empty($_SESSION['user_phone'])): ?>
-                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/profile" class="block px-5 py-3 text-xs font-bold text-red-600 hover:bg-red-50 transition-all font-sans relative">
-                                Compléter profil <span class="absolute right-4 top-[14px] w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+
+                            <!-- Critical Action: Profile Completion -->
+                            <?php if (!$profile_complete): ?>
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/profile" class="flex items-center justify-between px-5 py-3 text-xs font-bold text-red-600 hover:bg-red-50 transition-all group">
+                                <span class="flex items-center gap-2">
+                                    <i class="fa-solid fa-user-pen opacity-70"></i> Compléter mon profil
+                                </span>
+                                <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
                             </a>
                             <?php endif; ?>
-                            <a href="/dashboard/parent.php" class="block px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all font-sans">Tableau de bord</a>
-                            <a href="/api/auth/logout.php" class="block px-5 py-3 text-xs font-bold text-red-600 hover:bg-red-50 transition-all font-sans">Déconnexion</a>
+
+                            <!-- Main Links -->
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/parent" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all">
+                                <i class="fa-solid fa-gauge-high w-4 opacity-50"></i> Tableau de bord
+                            </a>
+                            
+                            <a href="#" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all opacity-50 cursor-not-allowed">
+                                <i class="fa-solid fa-clock-rotate-left w-4 opacity-50"></i> Mon Historique
+                                <span class="ml-auto text-[8px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded uppercase">Bientôt</span>
+                            </a>
+
+                            <a href="#" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all opacity-50 cursor-not-allowed">
+                                <i class="fa-solid fa-message w-4 opacity-50"></i> Messagerie
+                                <span class="ml-auto text-[8px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded uppercase">Bientôt</span>
+                            </a>
+
+                            <div class="h-px bg-slate-50 my-1"></div>
+
+                            <!-- Settings / Layout -->
+                            <a href="#" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all opacity-50 cursor-not-allowed">
+                                <i class="fa-solid fa-palette w-4 opacity-50"></i> Personnalisation
+                            </a>
+
+                            <!-- Logout -->
+                            <a href="/api/auth/logout.php" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-red-600 hover:bg-red-50 transition-all border-t border-slate-50 mt-1">
+                                <i class="fa-solid fa-right-from-bracket w-4 opacity-70"></i> Déconnexion
+                            </a>
                         </div>
                     </div>
                 <?php else: ?>
