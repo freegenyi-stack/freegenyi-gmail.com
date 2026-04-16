@@ -19,12 +19,16 @@ $family_id = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id]
         $fam_conv = DB::fetchOne("SELECT id FROM conversations WHERE family_id = ? AND type = 'family'", [$family_id]);
         if (!$fam_conv) {
             $conv_id = DB::insert("INSERT INTO conversations (family_id, type) VALUES (?, 'family')", [$family_id]);
-            // Ajouter l'utilisateur actuel comme membre
             DB::execute("INSERT IGNORE INTO conversation_members (conversation_id, user_id) VALUES (?, ?)", [$conv_id, $user_id]);
         } else {
-            // S'assurer qu'il est membre
             DB::execute("INSERT IGNORE INTO conversation_members (conversation_id, user_id) VALUES (?, ?)", [$fam_conv['id'], $user_id]);
         }
+    } else {
+        // Backup : Créer un family_id à la volée s'il n'en a pas
+        $new_fam = 'FAM-' . bin2hex(random_bytes(4));
+        DB::execute("UPDATE users SET family_id = ? WHERE id = ?", [$new_fam, $user_id]);
+        $conv_id = DB::insert("INSERT INTO conversations (family_id, type) VALUES (?, 'family')", [$new_fam]);
+        DB::execute("INSERT IGNORE INTO conversation_members (conversation_id, user_id) VALUES (?, ?)", [$conv_id, $user_id]);
     }
 
     // 2. Lister les conversations avec le statut des autres membres (pour le point vert)
