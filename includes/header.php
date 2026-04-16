@@ -265,6 +265,16 @@ $is_rtl = $is_rtl ?? false;
                             </a>
                         </div>
                     </div>
+
+                    <!-- Chat Trigger (Vague 4) -->
+                    <button @click="$dispatch('open-chat')" class="relative p-2 text-slate-500 hover:text-orange-600 transition-colors group">
+                        <i class="fa-solid fa-comments text-lg"></i>
+                        <template x-if="notif_count > 0">
+                            <span class="absolute top-1 right-1 w-4 h-4 bg-orange-600 text-[9px] font-bold text-white flex items-center justify-center rounded-full border-2 border-white shadow-sm transition-transform group-hover:scale-110">
+                                <?= $notif_count ?>
+                            </span>
+                        </template>
+                    </button>
                 <?php else: ?>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden md:block text-[11px] font-black uppercase text-slate-900 tracking-widest hover:text-orange-600 transition p-2">Connexion</a>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/register" class="hidden sm:block bg-slate-900 text-white px-6 py-2.5 rounded-xl font-bold text-[11px] uppercase tracking-widest shadow-xl hover:bg-orange-600 transition transform duration-300">Rejoindre</a>
@@ -438,6 +448,132 @@ $is_rtl = $is_rtl ?? false;
                 <button @click="isOpen = false" class="w-full mt-10 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-orange-600 transition-colors shadow-xl">
                     Terminer
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ELITE CHAT PANEL (Vague 4 - Mobile First) -->
+    <div x-data="{ 
+        isOpen: false,
+        view: 'list', -- 'list' or 'chat'
+        conversations: [],
+        currentConv: null,
+        messages: [],
+        newMessage: '',
+        userId: <?= $_SESSION['user_id'] ?? 0 ?>,
+
+        async loadConversations() {
+            const res = await fetch('/api/chat/get_conversations.php');
+            const data = await res.json();
+            this.conversations = data.conversations || [];
+        },
+        async openChat(conv) {
+            this.currentConv = conv;
+            this.view = 'chat';
+            await this.loadMessages();
+            this.scrollToBottom();
+        },
+        async loadMessages() {
+            if (!this.currentConv) return;
+            const res = await fetch('/api/chat/get_messages.php?conversation_id=' + this.currentConv.id);
+            const data = await res.json();
+            this.messages = data.messages || [];
+        },
+        async sendMessage() {
+            if (!this.newMessage.trim()) return;
+            const res = await fetch('/api/chat/send_message.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ conversation_id: this.currentConv.id, message: this.newMessage })
+            });
+            if (res.ok) {
+                this.newMessage = '';
+                await this.loadMessages();
+                this.scrollToBottom();
+            }
+        },
+        scrollToBottom() {
+            setTimeout(() => {
+                const el = this.$refs.msgContainer;
+                if (el) el.scrollTop = el.scrollHeight;
+            }, 100);
+        }
+    }"
+    @open-chat.window="isOpen = true; loadConversations()"
+    x-show="isOpen"
+    x-cloak
+    class="fixed inset-0 z-[400] overflow-hidden">
+        
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" @click="isOpen = false"></div>
+
+        <div class="absolute right-0 top-0 bottom-0 w-full md:w-[400px] bg-white shadow-2xl flex flex-col transition-transform duration-300"
+             x-show="isOpen" x-transition:enter="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="translate-x-0" x-transition:leave-end="translate-x-full">
+            
+            <!-- Header -->
+            <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                <div class="flex items-center gap-3">
+                    <button x-show="view === 'chat'" @click="view = 'list'" class="p-2 text-slate-500">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <h3 class="font-black text-slate-900 tracking-tight" x-text="view === 'list' ? 'Messagerie 💬' : 'Discussion'"></h3>
+                </div>
+                <button @click="isOpen = false" class="p-2 text-slate-400 hover:text-slate-900 transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Conversations List -->
+            <div x-show="view === 'list'" class="flex-1 overflow-y-auto custom-scroll">
+                <template x-if="conversations.length === 0">
+                    <div class="p-20 text-center">
+                        <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-300">
+                            <i class="fa-solid fa-comment-slash text-2xl"></i>
+                        </div>
+                        <p class="text-slate-400 font-bold text-sm">Pas encore de discussion.</p>
+                    </div>
+                </template>
+                <div class="divide-y divide-slate-50">
+                    <template x-for="conv in conversations" :key="conv.id">
+                        <button @click="openChat(conv)" class="w-full p-4 flex items-center gap-4 hover:bg-slate-50 transition-colors text-left group">
+                            <div class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 relative shrink-0">
+                                <i class="fa-solid fa-users"></i>
+                                <span x-show="conv.unread_count > 0" class="absolute -top-1 -right-1 w-5 h-5 bg-orange-600 text-white text-[10px] font-bold rounded-full border-2 border-white flex items-center justify-center" x-text="conv.unread_count"></span>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold text-slate-900 text-sm" x-text="conv.type === 'family' ? 'Ma Famille' : 'Discussion Directe'"></span>
+                                    <span class="text-[10px] text-slate-400" x-text="conv.last_message_at ? new Date(conv.last_message_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : ''"></span>
+                                </div>
+                                <p class="text-xs text-slate-500 truncate" x-text="conv.last_message || 'Démarrer la discussion...'"></p>
+                            </div>
+                        </button>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Chat View -->
+            <div x-show="view === 'chat'" class="flex-1 flex flex-col overflow-hidden">
+                <div class="flex-1 overflow-y-auto p-5 space-y-4 custom-scroll" x-ref="msgContainer">
+                    <template x-for="msg in messages" :key="msg.id">
+                        <div class="flex flex-col" :class="msg.sender_id == userId ? 'items-end' : 'items-start'">
+                            <div class="max-w-[80%] p-3 rounded-2xl text-sm" 
+                                 :class="msg.sender_id == userId ? 'bg-slate-900 text-white rounded-br-none' : 'bg-slate-100 text-slate-800 rounded-bl-none'">
+                                <p x-text="msg.message"></p>
+                            </div>
+                            <span class="text-[9px] text-slate-400 mt-1" x-text="new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})"></span>
+                        </div>
+                    </template>
+                </div>
+                <!-- Input -->
+                <div class="p-4 border-t border-slate-100 bg-slate-50">
+                    <div class="relative flex items-center">
+                        <input type="text" x-model="newMessage" @keydown.enter="sendMessage()" placeholder="Votre message..." 
+                               class="w-full pl-4 pr-12 py-3 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-orange-500 shadow-sm transition-all">
+                        <button @click="sendMessage()" class="absolute right-2 p-2 bg-slate-900 text-white rounded-xl hover:bg-orange-600 transition-colors">
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div><?php // End of Header ?>
