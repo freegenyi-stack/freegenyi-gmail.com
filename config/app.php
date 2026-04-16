@@ -6,9 +6,17 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Sécurité Authentification (Placées en haut pour éviter les 'already defined')
+// Sécurité Authentification
 if (!defined('BCRYPT_COST')) define('BCRYPT_COST', 12);
 if (!defined('MAX_LOGIN_ATTEMPTS')) define('MAX_LOGIN_ATTEMPTS', 5);
+
+// 🛡️ HEADERS DE SÉCURITÉ (Standards Senior)
+if (!headers_sent()) {
+    header("X-Frame-Options: DENY");
+    header("X-Content-Type-Options: nosniff");
+    header("Referrer-Policy: strict-origin-when-cross-origin");
+    header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';");
+}
 
 // PROTECTION CONSTRUCTION (DÉSACTIVÉE TEMPORAIREMENT)
 if (!defined('MAINTENANCE_PASSWORD')) define('MAINTENANCE_PASSWORD', 'Yousr4568520&');
@@ -48,6 +56,11 @@ foreach ($env as $k => $v) {
     $_ENV[$k] = $v;
 }
 if (!defined('APP_URL')) define('APP_URL', rtrim($env['APP_URL'] ?? 'https://freegeny.com', '/'));
+
+// Chargement des utilitaires de sécurité
+require_once __DIR__ . '/../includes/csrf.php';
+require_once __DIR__ . '/../includes/rate-limiter.php';
+require_once __DIR__ . '/../includes/auth-functions.php';
 
 $supported_regions = [
     'DZ' => ['name' => 'Algeria', 'langs' => ['ar', 'fr']],

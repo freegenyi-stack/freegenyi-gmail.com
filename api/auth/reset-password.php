@@ -12,6 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// 🛡️ Protection CSRF
+if (!CSRF::verify($_POST['csrf_token'] ?? '')) {
+    header('Location: /auth/login?error=' . urlencode('Session expirée ou invalide.'));
+    exit;
+}
+
 $token    = $_POST['token'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirm  = $_POST['confirm_password'] ?? '';
@@ -59,6 +65,15 @@ $updated = DB::execute("
 if ($updated) {
     // 4. Détruire le token utilisé
     DB::execute("DELETE FROM password_reset_tokens WHERE id = ?", [$tokenData['id']]);
+
+    // 🛡️ 5. Email de confirmation de changement (Senior Security)
+    $user_email = DB::fetchOne("SELECT email FROM users WHERE id = ?", [$tokenData['user_id']])['email'];
+    MailManager::send($user_email, "Sécurité : Votre mot de passe a été modifié", "
+        <h3>Bonjour,</h3>
+        <p>Nous vous informons que le mot de passe de votre compte <strong>FreeGeny</strong> a été modifié avec succès.</p>
+        <p>Si vous n'êtes pas à l'origine de ce changement, merci de contacter immédiatement notre support.</p>
+        <p>L'équipe FreeGeny</p>
+    ");
     
     header("Location: {$base_url}/auth/login?success=" . urlencode('Votre mot de passe a été mis à jour avec succès. Connectez-vous maintenant.'));
 } else {

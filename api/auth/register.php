@@ -19,6 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// 🛡️ Protection CSRF
+if (!CSRF::verify($_POST['csrf_token'] ?? '')) {
+    header('Location: /auth/register?error=' . urlencode('Session expirée ou invalide. Veuillez réessayer.'));
+    exit;
+}
+
+// 🛡️ Protection Rate Limiting
+if (!RateLimiter::check('register', 3, 60)) {
+    header('Location: /auth/register?error=' . urlencode('Trop d\'inscriptions. Veuillez patienter.'));
+    exit;
+}
+
 $first_name = trim($_POST['first_name'] ?? '');
 $last_name  = trim($_POST['last_name'] ?? '');
 $full_name  = trim($first_name . ' ' . $last_name);

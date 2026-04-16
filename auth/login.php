@@ -83,6 +83,7 @@ require_once __DIR__ . '/../config/app.php';
                 </div>
 
                 <form action="/api/auth/login.php" method="POST" class="space-y-3 sm:space-y-4">
+                    <?php CSRF::insertInput(); ?>
                     <div>
                         <label class="block text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-slate-700 mb-1 px-1">E-mail</label>
                         <input type="email" name="email" id="email" autocomplete="email" required placeholder="nom@exemple.com" class="w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-600 focus:bg-white px-3 py-2 sm:px-4 sm:py-3 rounded-xl outline-none transition-all font-semibold text-slate-950">

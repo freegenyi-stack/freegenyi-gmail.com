@@ -17,6 +17,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// 🛡️ Protection CSRF
+if (!CSRF::verify($_POST['csrf_token'] ?? '')) {
+    header('Location: /auth/login?error=' . urlencode('Session expirée ou invalide. Veuillez réessayer.'));
+    exit;
+}
+
+// 🛡️ Protection Rate Limiting
+if (!RateLimiter::check('login', 5, 60)) {
+    header('Location: /auth/login?error=' . urlencode('Trop de tentatives. Veuillez patienter une minute.'));
+    exit;
+}
+
 $email    = strtolower(trim($_POST['email'] ?? ''));
 $password = $_POST['password'] ?? '';
 $country  = strtoupper($country ?? 'DZ');
@@ -78,6 +90,11 @@ loginUser($user);
 
 // Régénérer l'ID de session pour prévenir la fixation de session
 session_regenerate_id(true);
+
+// 🛡️ Gestion "Se souvenir de moi" (Senior Standard)
+if (!empty($_POST['remember'])) {
+    Auth::setRememberMe($user['id']);
+}
 
 // ─── 7. REDIRECTION INTELLIGENTE ───────────────────────────────────────────────
 $role = $user['role'] ?? 'parent';

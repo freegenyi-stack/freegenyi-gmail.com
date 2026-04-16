@@ -1,7 +1,11 @@
-<?php
-/**
- * MailManager - Gestionnaire pro d'envoi d'emails
- */
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require_once __DIR__ . '/vendor/PHPMailer/Exception.php';
+require_once __DIR__ . '/vendor/PHPMailer/PHPMailer.php';
+require_once __DIR__ . '/vendor/PHPMailer/SMTP.php';
+
 class MailManager {
     
     public static function send($to, $subject, $messageHtml) {
@@ -12,37 +16,56 @@ class MailManager {
         $user = $_ENV['SMTP_USER'] ?? 'contact@freegeny.com';
         $pass = $_ENV['SMTP_PASS'] ?? '';
 
-        $fullBody = "
-        <html>
-        <body style='background-color: #f8fafc; font-family: sans-serif; padding: 40px;'>
-            <div style='max-width: 600px; margin: 0 auto; background: #ffffff; padding: 40px; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);'>
-                <div style='text-align: center; margin-bottom: 30px;'>
-                    <h2 style='color: #ea580c; font-weight: 900; margin: 0; font-size: 28px;'>FreeGeny</h2>
-                </div>
-                <div style='color: #334155; line-height: 1.6; font-size: 16px;'>
-                    $messageHtml
-                </div>
-                <div style='text-align: center; margin-top: 40px; color: #94a3b8; font-size: 12px;'>
-                    &copy; " . date('Y') . " FreeGeny EdTech.
-                </div>
-            </div>
-        </body>
-        </html>
-        ";
+        $mail = new PHPMailer(true);
 
-        // Si le mot de passe SMTP est configuré, on pourrait utiliser PHPMailer ou une classe SMTP.
-        // Pour l'instant on fiabilise mail() au maximum avec les bons headers et le paramètre -f.
-        // NOTE : Sur cPanel, le mail() local est TRÈS performant si le compte mail existe physiquement.
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= "From: " . $fromName . " <" . $fromEmail . ">" . "\r\n";
-        $headers .= "Reply-To: " . $fromEmail . "\r\n";
-        $headers .= "Return-Path: " . $fromEmail . "\r\n";
-        $headers .= "X-Mailer: FreeGeny-Core-PHP/" . phpversion();
+        try {
+            // Configuration Serveur
+            $mail->isSMTP();
+            $mail->Host       = $host;
+            $mail->SMTPAuth   = true;
+            $mail->Username   = $user;
+            $mail->Password   = $pass;
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
+            $mail->Port       = $port;
+            $mail->CharSet    = 'UTF-8';
 
-        return @mail($to, $subject, $fullBody, $headers, "-f" . $fromEmail);
+            // Destinataires
+            $mail->setFrom($fromEmail, $fromName);
+            $mail->addAddress($to);
+
+            // Contenu
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            
+            $fullBody = "
+            <html>
+            <body style='background-color: #f8fafc; font-family: sans-serif; padding: 40px;'>
+                <div style='max-width: 600px; margin: 0 auto; background: #ffffff; padding: 40px; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);'>
+                    <div style='text-align: center; margin-bottom: 30px;'>
+                        <h2 style='color: #ea580c; font-weight: 900; margin: 0; font-size: 28px;'>FreeGeny</h2>
+                    </div>
+                    <div style='color: #334155; line-height: 1.6; font-size: 16px;'>
+                        $messageHtml
+                    </div>
+                    <div style='text-align: center; margin-top: 40px; color: #94a3b8; font-size: 12px;'>
+                        &copy; " . date('Y') . " FreeGeny EdTech.
+                    </div>
+                </div>
+            </body>
+            </html>
+            ";
+
+            $mail->Body = $fullBody;
+            $mail->AltBody = strip_tags($messageHtml);
+
+            return $mail->send();
+        } catch (Exception $e) {
+            error_log("PHPMailer Error: " . $mail->ErrorInfo);
+            // Fallback mail() si SMTP échoue
+            $headers = "MIME-Version: 1.0\r\nContent-type:text/html;charset=UTF-8\r\nFrom: $fromName <$fromEmail>\r\n";
+            return @mail($to, $subject, $fullBody, $headers, "-f" . $fromEmail);
+        }
     }
-
     /**
      * Envoie l'email de confirmation obligatoire
      */

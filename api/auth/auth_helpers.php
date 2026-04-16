@@ -45,6 +45,11 @@ function initSession() {
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+    
+    // 🛡️ Restauration automatique via cookie persistent (Senior Security)
+    if (empty($_SESSION['logged_in'])) {
+        Auth::checkRememberMe();
+    }
 }
 
 function jsonResponse($data, $statusCode = 200) {

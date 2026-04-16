@@ -66,6 +66,7 @@ if (!$tokenData || strtotime($tokenData['expires_at']) < time()) {
             <?php endif; ?>
 
             <form action="/api/auth/reset-password.php" method="POST" class="space-y-6">
+                <?php CSRF::insertInput(); ?>
                 <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
                 
                 <div>

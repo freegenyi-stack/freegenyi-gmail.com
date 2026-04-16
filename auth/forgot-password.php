@@ -56,6 +56,7 @@ $success = $_GET['success'] ?? null;
             <?php endif; ?>
 
             <form action="/api/auth/forgot-password.php" method="POST" class="space-y-6">
+                <?php CSRF::insertInput(); ?>
                 <div>
                     <label for="email" class="block text-[11px] font-black uppercase text-slate-400 tracking-widest ml-1 mb-2">Votre adresse email</label>
                     <input type="email" name="email" id="email" required

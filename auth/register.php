@@ -105,6 +105,7 @@ require_once __DIR__ . '/../api/auth/auth_helpers.php';
                 </div>
 
                 <form action="/api/auth/register.php" method="POST" class="space-y-2">
+                    <?php CSRF::insertInput(); ?>
                     <input type="hidden" name="role" :value="role">
                     <input type="hidden" name="invite_parent" value="<?= htmlspecialchars($_GET['invite_parent'] ?? '') ?>">
                     <div class="grid grid-cols-2 gap-2 sm:gap-3">

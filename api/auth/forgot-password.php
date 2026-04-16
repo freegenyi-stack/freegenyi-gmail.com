@@ -9,7 +9,19 @@ require_once __DIR__ . '/../../includes/MailManager.php';
 initSession();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /auth/login');
+    header('Location: /auth/forgot-password');
+    exit;
+}
+
+// 🛡️ Protection CSRF
+if (!CSRF::verify($_POST['csrf_token'] ?? '')) {
+    header("Location: /DZ-fr/auth/forgot-password?error=" . urlencode('Session expirée ou invalide.'));
+    exit;
+}
+
+// 🛡️ Protection Rate Limiting
+if (!RateLimiter::check('forgot-password', 3, 60)) {
+    header("Location: /DZ-fr/auth/forgot-password?error=" . urlencode('Trop de demandes. Veuillez patienter.'));
     exit;
 }
 
