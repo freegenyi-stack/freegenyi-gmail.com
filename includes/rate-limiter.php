@@ -14,7 +14,7 @@ class RateLimiter {
     public static function check($endpoint, $maxAttempts = 5, $seconds = 60) {
         $ip = self::getIP();
         
-        // 🛡️ Auto-initialisation de la table (Senior Standard)
+        // 🛡️ Auto-initialisation de la table (Fail-safe total)
         try {
             $data = DB::fetchOne("
                 SELECT id, last_request_at, request_count 
@@ -22,17 +22,22 @@ class RateLimiter {
                 WHERE ip_address = ? AND endpoint = ? 
                 LIMIT 1
             ", [$ip, $endpoint]);
-        } catch (Exception $e) {
-            // La table n'existe probablement pas, on la crée
-            DB::execute("CREATE TABLE IF NOT EXISTS api_rate_limits (
-                id INT AUTO_INCREMENT PRIMARY KEY, 
-                ip_address VARCHAR(45) NOT NULL, 
-                endpoint VARCHAR(100) NOT NULL, 
-                last_request_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
-                request_count INT DEFAULT 1, 
-                INDEX(ip_address, endpoint)
-            )");
-            return true; // Premier essai autorisé
+        } catch (Throwable $e) {
+            // Si la table manque ou autre erreur DB, on tente la création
+            try {
+                DB::execute("CREATE TABLE IF NOT EXISTS api_rate_limits (
+                    id INT AUTO_INCREMENT PRIMARY KEY, 
+                    ip_address VARCHAR(45) NOT NULL, 
+                    endpoint VARCHAR(100) NOT NULL, 
+                    last_request_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+                    request_count INT DEFAULT 1, 
+                    INDEX(ip_address, endpoint)
+                )");
+            } catch (Throwable $e2) {
+                // Si même la création échoue (ex: droits DB), on laisse passer pour ne pas bloquer le site
+                return true;
+            }
+            return true;
         }
 
         if (!$data) {
