@@ -460,6 +460,8 @@ $is_rtl = $is_rtl ?? false;
         currentConv: null,
         messages: [],
         newMessage: '',
+        isRecording: false,
+        mediaMenuOpen: false,
         userId: <?= $_SESSION['user_id'] ?? 0 ?>,
 
         async loadConversations() {
@@ -568,12 +570,36 @@ $is_rtl = $is_rtl ?? false;
                         </div>
                     </template>
                 </div>
-                <!-- Input -->
-                <div class="p-4 border-t border-slate-100 bg-slate-50">
-                    <div class="relative flex items-center">
-                        <input type="text" x-model="newMessage" @keydown.enter="sendMessage()" placeholder="Votre message..." 
-                               class="w-full pl-4 pr-12 py-3 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-orange-500 shadow-sm transition-all">
-                        <button @click="sendMessage()" class="absolute right-2 p-2 bg-slate-900 text-white rounded-xl hover:bg-orange-600 transition-colors">
+                <!-- Input & Toolbar -->
+                <div class="p-4 border-t border-slate-100 bg-slate-50 relative">
+                    <!-- Media Toolbar -->
+                    <div x-show="mediaMenuOpen" @click.away="mediaMenuOpen = false" x-transition 
+                         class="absolute bottom-20 left-4 bg-white rounded-2xl shadow-2xl border border-slate-100 p-2 flex gap-2 z-[450]">
+                        <button class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors">
+                            <i class="fa-solid fa-image"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center hover:bg-orange-100 transition-colors">
+                            <i class="fa-solid fa-microphone"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center hover:bg-emerald-100 transition-colors">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </button>
+                    </div>
+
+                    <div class="relative flex items-center gap-2">
+                        <button @click="mediaMenuOpen = !mediaMenuOpen" class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-colors">
+                            <i class="fa-solid fa-plus text-lg"></i>
+                        </button>
+                        
+                        <div class="relative flex-1">
+                            <input type="text" x-model="newMessage" @keydown.enter="sendMessage()" placeholder="Votre message..." 
+                                   class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-orange-500 shadow-sm transition-all font-medium">
+                            <button class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-600 transition-colors">
+                                <i class="fa-regular fa-face-smile text-lg"></i>
+                            </button>
+                        </div>
+
+                        <button @click="sendMessage()" class="w-12 h-10 bg-slate-900 text-white rounded-xl hover:bg-orange-600 transition-all shadow-lg flex items-center justify-center">
                             <i class="fa-solid fa-paper-plane text-xs"></i>
                         </button>
                     </div>
