@@ -25,6 +25,8 @@ $is_invited = $hasChildrenAsSecondary ? true : false;
 $full_name_raw = ($user && !empty($user['full_name'])) ? $user['full_name'] : ($_SESSION['user_name'] ?? 'Parent');
 $parts = explode(' ', trim($full_name_raw));
 $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
+$onboarding_step = $user['onboarding_step'] ?? 1;
+$phone_val = $user['phone'] ?? '';
 
 // Liste des Wilayas avec Codes Postaux (Format demandé)
 $wilayas_dz = [
@@ -284,10 +286,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
     <script>
         function onboardingApp() {
             return {
-                step: <?= (int)($user['onboarding_step'] ?? 1) ?>,
+                step: <?= (int)($onboarding_step) ?>,
                 isInvited: <?= $is_invited ? 'true' : 'false' ?>,
                 role: 'Maman',
-                phone: '<?= htmlspecialchars($user['phone'] ?? '') ?>',
+                phone: '<?= htmlspecialchars($phone_val) ?>',
                 spouse_email: '',
                 childCountry: '<?= $country ?>',
                 wilayas: <?= json_encode($wilayas_dz) ?>,
