@@ -468,8 +468,48 @@ $is_rtl = $is_rtl ?? false;
         messages: [],
         newMessage: '',
         isRecording: false,
+        mediaRecorder: null,
+        audioChunks: [],
         mediaMenuOpen: false,
         userId: <?= $_SESSION['user_id'] ?? 0 ?>,
+
+        async startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                this.mediaRecorder = new MediaRecorder(stream);
+                this.audioChunks = [];
+                this.mediaRecorder.ondataavailable = e => this.audioChunks.push(e.data);
+                this.mediaRecorder.onstop = async () => {
+                    const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
+                    await this.uploadFile(audioBlob, 'audio');
+                };
+                this.mediaRecorder.start();
+                this.isRecording = true;
+            } catch (err) { alert('Micro non autorisé'); }
+        },
+        async stopRecording() {
+            this.mediaRecorder.stop();
+            this.isRecording = false;
+        },
+        async uploadFile(file, type) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('conversation_id', this.currentConv.id);
+            formData.append('type', type);
+            
+            const res = await fetch('/api/chat/upload.php', { method: 'POST', body: formData });
+            if (res.ok) {
+                await this.loadMessages();
+                this.scrollToBottom();
+            }
+        },
+        async pickFile(type) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = type === 'image' ? 'image/*' : '*/*';
+            input.onchange = e => this.uploadFile(e.target.files[0], type);
+            input.click();
+        },
 
         async loadConversations() {
             const res = await fetch('/api/chat/get_conversations.php');
@@ -571,7 +611,24 @@ $is_rtl = $is_rtl ?? false;
                         <div class="flex flex-col" :class="msg.sender_id == userId ? 'items-end' : 'items-start'">
                             <div class="max-w-[80%] p-3 rounded-2xl text-sm" 
                                  :class="msg.sender_id == userId ? 'bg-slate-900 text-white rounded-br-none' : 'bg-slate-100 text-slate-800 rounded-bl-none'">
-                                <p x-text="msg.message"></p>
+                                
+                                <template x-if="msg.message_type === 'text'">
+                                    <p x-text="msg.message"></p>
+                                </template>
+
+                                <template x-if="msg.message_type === 'image'">
+                                    <img :src="msg.media_path" class="rounded-xl max-h-60 w-full object-cover cursor-pointer" @click="window.open(msg.media_path)">
+                                </template>
+
+                                <template x-if="msg.message_type === 'audio'">
+                                    <audio controls class="max-w-full"><source :src="msg.media_path"></audio>
+                                </template>
+
+                                <template x-if="msg.message_type === 'file'">
+                                    <a :href="msg.media_path" target="_blank" class="flex items-center gap-2 underline">
+                                        <i class="fa-solid fa-file"></i> Fichier joint
+                                    </a>
+                                </template>
                             </div>
                             <span class="text-[9px] text-slate-400 mt-1" x-text="new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})"></span>
                         </div>
@@ -582,13 +639,15 @@ $is_rtl = $is_rtl ?? false;
                     <!-- Media Toolbar -->
                     <div x-show="mediaMenuOpen" @click.away="mediaMenuOpen = false" x-transition 
                          class="absolute bottom-20 left-4 bg-white rounded-2xl shadow-2xl border border-slate-100 p-2 flex gap-2 z-[450]">
-                        <button class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors">
+                        <button @click="pickFile('image'); mediaMenuOpen = false" class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors">
                             <i class="fa-solid fa-image"></i>
                         </button>
-                        <button class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center hover:bg-orange-100 transition-colors">
+                        <button @mousedown="startRecording()" @mouseup="stopRecording()" @mouseleave="isRecording && stopRecording()"
+                                :class="isRecording ? 'bg-red-500 text-white animate-pulse' : 'bg-orange-50 text-orange-600'"
+                                class="w-10 h-10 rounded-xl flex items-center justify-center hover:opacity-80 transition-all">
                             <i class="fa-solid fa-microphone"></i>
                         </button>
-                        <button class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center hover:bg-emerald-100 transition-colors">
+                        <button @click="pickFile('file'); mediaMenuOpen = false" class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center hover:bg-emerald-100 transition-colors">
                             <i class="fa-solid fa-folder-open"></i>
                         </button>
                     </div>
