@@ -47,6 +47,7 @@ try {
         CREATE TABLE children (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             parent_id INT UNSIGNED NOT NULL,
+            secondary_parent_id INT UNSIGNED DEFAULT NULL,
             first_name VARCHAR(100) NOT NULL,
             age INT NOT NULL,
             country VARCHAR(10),
