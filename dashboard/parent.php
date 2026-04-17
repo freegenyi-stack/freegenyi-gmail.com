@@ -14,11 +14,11 @@ if (empty($_SESSION['logged_in'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// 2. RÉCUPÉRATION DES ENFANTS
+// 2. RÉCUPÉRATION DES ENFANTS (Parent Principal ou Secondaire)
 try {
     $children_raw = DB::fetchAll(
-        "SELECT * FROM children WHERE parent_id = ?", 
-        [$user_id]
+        "SELECT * FROM children WHERE parent_id = ? OR secondary_parent_id = ?", 
+        [$user_id, $user_id]
     );
 } catch (Throwable $e) {
     error_log("Parent Dashboard DB Error: " . $e->getMessage());
