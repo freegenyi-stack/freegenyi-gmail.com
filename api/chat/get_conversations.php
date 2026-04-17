@@ -12,24 +12,21 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-$family_id = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id])['family_id'] ?? null;
+$user_row = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id]);
+$family_id = $user_row ? $user_row['family_id'] : null;
 
 try {
-    // 1. Si l'utilisateur a un family_id, vérifier/créer la conversation de famille
-    if ($family_id) {
-        $fam_conv = DB::fetchOne("SELECT id FROM conversations WHERE family_id = ? AND type = 'family'", [$family_id]);
-        if (!$fam_conv) {
-            $conv_id = DB::insert("INSERT INTO conversations (family_id, type) VALUES (?, 'family')", [$family_id]);
-            DB::execute("INSERT IGNORE INTO conversation_members (conversation_id, user_id) VALUES (?, ?)", [$conv_id, $user_id]);
-        } else {
-            DB::execute("INSERT IGNORE INTO conversation_members (conversation_id, user_id) VALUES (?, ?)", [$fam_conv['id'], $user_id]);
-        }
-    } else {
-        // Backup : Créer un family_id à la volée s'il n'en a pas
-        $new_fam = 'FAM-' . bin2hex(random_bytes(4));
-        DB::execute("UPDATE users SET family_id = ? WHERE id = ?", [$new_fam, $user_id]);
-        $conv_id = DB::insert("INSERT INTO conversations (family_id, type) VALUES (?, 'family')", [$new_fam]);
-        DB::execute("INSERT IGNORE INTO conversation_members (conversation_id, user_id) VALUES (?, ?)", [$conv_id, $user_id]);
+    // 2. Vérifier/créer la conversation avec Geny Expert (ID 999)
+    $geny_conv = DB::fetchOne("
+        SELECT c.id FROM conversations c
+        JOIN conversation_members m ON c.id = m.conversation_id
+        WHERE c.type = 'ai' AND m.user_id = ?
+    ", [$user_id]);
+
+    if (!$geny_conv) {
+        $conv_id = DB::insert("INSERT INTO conversations (type) VALUES ('ai')");
+        DB::execute("INSERT INTO conversation_members (conversation_id, user_id) VALUES (?, ?)", [$conv_id, $user_id]);
+        DB::execute("INSERT INTO conversation_members (conversation_id, user_id) VALUES (?, 999)", [$conv_id]);
     }
 
     // 2. Lister les conversations avec le statut des autres membres (pour le point vert)
