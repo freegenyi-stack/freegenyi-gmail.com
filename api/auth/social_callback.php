@@ -150,15 +150,17 @@ if ($email && $full_name) {
             exit;
         }
 
-        // ─── LIAISON PARENTALE (SI INVITATION) ───────────────────────────────────
-        $invite_parent_id = (int)($_SESSION['invite_parent'] ?? 0);
-        if ($invite_parent_id > 0) {
-            DB::execute("UPDATE children SET secondary_parent_id = ? WHERE parent_id = ? AND secondary_parent_id IS NULL", [$user_id, $invite_parent_id]);
-            unset($_SESSION['invite_parent']);
-        }
+        // ─── LIAISON PARENTALE ───────────────────────────────────
+        // Désactivé temporairement car la colonne secondary_parent_id n'existe pas en base
+        // $invite_parent_id = (int)($_SESSION['invite_parent'] ?? 0);
         
-        // Bienvenue !
-        MailManager::sendWelcome($email, $full_name, $lang_code);
+        // Bienvenue ! (Sécurisé)
+        try {
+            $mail = new MailManager();
+            $mail->sendWelcome($email, $full_name, $lang_code);
+        } catch (Throwable $e) {
+            error_log("Welcome Mail Error: " . $e->getMessage());
+        }
         
         $user = DB::fetchOne("SELECT * FROM users WHERE id = ? LIMIT 1", [$user_id]);
     }
