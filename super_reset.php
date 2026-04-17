@@ -1,73 +1,65 @@
 <?php
 /**
- * super_reset.php - ELITE DATABASE CLEANER
- * Use with caution. This wipes all dynamic data.
+ * super_reset.php - NETTOYAGE TOTAL POUR REPARTIR PROPRE
  */
-require_once 'config/db.php';
-global $pdo;
+require_once __DIR__ . '/config/db.php';
 
-header('Content-Type: text/html; charset=utf-8');
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Elite Reset | FreeGeny</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'DM Sans', sans-serif; }
-        .font-title { font-family: 'Plus Jakarta Sans', sans-serif; }
-    </style>
-</head>
-<body class="bg-slate-50 min-h-screen flex items-center justify-center p-6">
+try {
+    echo "<h1>Nettoyage de Printemps FreeGeny...</h1>";
 
-    <div class="w-full max-w-xl bg-white rounded-[3rem] p-12 shadow-[0_40px_100px_rgba(0,0,0,0.05)] border border-white relative overflow-hidden text-center">
-        
-        <?php
-        try {
-            // 1. Désactivation des contraintes pour le vidage
-            $pdo->exec("SET FOREIGN_KEY_CHECKS = 0;");
-            
-            $tables = [
-                'users', 'children', 'child_progress', 'exercise_attempts', 
-                'achievements', 'user_sessions', 'child_rewards', 
-                'academic_calendar', 'communication_hub', 'login_attempts', 
-                'country_conflicts'
-            ];
+    // 1. Suppression des tables pour recréer proprement
+    DB::execute("DROP TABLE IF EXISTS children, chat_messages, conversation_members, conversations, notifications, users, invitations");
+    echo "✅ Tables supprimées.<br>";
 
-            foreach ($tables as $table) {
-                $pdo->exec("TRUNCATE `$table`;");
-            }
-            
-            $pdo->exec("SET FOREIGN_KEY_CHECKS = 1;");
-            
-            echo '<div class="w-20 h-20 bg-green-50 text-green-600 rounded-3xl flex items-center justify-center mx-auto mb-8 text-3xl">✨</div>';
-            echo '<h1 class="text-3xl font-black text-slate-900 mb-4 font-title leading-tight">Base Purifiée.</h1>';
-            echo '<p class="text-slate-500 font-light mb-10 leading-relaxed">Toutes les tables ont été vidées avec succès. FreeGeny est prêt pour un nouveau cycle de tests d\'élite.</p>';
-            
-            echo '<div class="grid grid-cols-2 gap-4 mb-10">';
-            foreach ($tables as $table) {
-                echo '<div class="bg-slate-50 rounded-xl p-3 border border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-widest">'.$table.'</div>';
-            }
-            echo '</div>';
+    // 2. Recréation de la table USERS
+    DB::execute("
+        CREATE TABLE users (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            full_name VARCHAR(150),
+            email VARCHAR(150) UNIQUE,
+            password VARCHAR(255),
+            role VARCHAR(50) DEFAULT 'parent',
+            family_id INT UNSIGNED DEFAULT NULL,
+            phone VARCHAR(50),
+            onboarding_step INT DEFAULT 1,
+            profile_completion_pct INT DEFAULT 0,
+            theme_settings TEXT,
+            avatar_config TEXT,
+            is_online TINYINT(1) DEFAULT 0,
+            last_login_at TIMESTAMP NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ");
+    echo "✅ Table Users créée (avec family_id).<br>";
 
-        } catch (Exception $e) {
-            echo '<div class="w-20 h-20 bg-red-50 text-red-600 rounded-3xl flex items-center justify-center mx-auto mb-8 text-3xl">❌</div>';
-            echo '<h1 class="text-3xl font-black text-red-900 mb-4 font-title">Erreur Critique.</h1>';
-            echo '<pre class="bg-red-50 p-6 rounded-2xl text-left text-xs text-red-700 overflow-x-auto mb-10">' . $e->getMessage() . '</pre>';
-        }
-        ?>
+    // 3. Recréation de la table CHILDREN
+    DB::execute("
+        CREATE TABLE children (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            parent_id INT UNSIGNED NOT NULL,
+            first_name VARCHAR(100) NOT NULL,
+            age INT NOT NULL,
+            country VARCHAR(10),
+            grade_level VARCHAR(50),
+            school_name VARCHAR(150),
+            xp_total INT DEFAULT 0,
+            progress_percent INT DEFAULT 0,
+            field_of_interest VARCHAR(100) DEFAULT 'Exploration',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ");
+    echo "✅ Table Children créée (avec first_name).<br>";
 
-        <div class="flex flex-col gap-4">
-            <a href="/DZ-fr/auth/register" class="w-full bg-slate-950 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl hover:shadow-orange-100">
-                Tester l'Inscription
-            </a>
-            <a href="/" class="w-full bg-slate-100 text-slate-400 py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-slate-200 transition-all">
-                Retour à l'accueil
-            </a>
-        </div>
+    // 4. Recréation des tables de CHAT
+    DB::execute("CREATE TABLE conversations (id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, type VARCHAR(20), family_id INT UNSIGNED, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
+    DB::execute("CREATE TABLE conversation_members (id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, conversation_id INT UNSIGNED, user_id INT UNSIGNED)");
+    DB::execute("CREATE TABLE chat_messages (id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, conversation_id INT UNSIGNED, sender_id INT UNSIGNED, message TEXT, is_read TINYINT(1) DEFAULT 0, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
+    echo "✅ Tables Chat créées.<br>";
 
-    </div>
+    echo "<h2>TERMINÉ ! Tout est propre.</h2>";
+    echo "<p>Veuillez maintenant supprimer ce fichier et recommencer votre enregistrement.</p>";
+    echo "<a href='/auth/register' style='padding:10px 20px; background:black; color:white; text-decoration:none; border-radius:10px;'>S'enregistrer à nouveau</a>";
 
-</body>
-</html>
+} catch (Exception $e) {
+    echo "❌ Erreur : " . $e->getMessage();
+}
