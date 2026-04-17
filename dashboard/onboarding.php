@@ -12,16 +12,17 @@ if (empty($_SESSION['logged_in'])) {
 }
 
 $user_id = $_SESSION['user_id'] ?? 0;
-// Migration douce pour onboarding_step
-$colStep = DB::fetchOne("SHOW COLUMNS FROM users LIKE 'onboarding_step'");
-if (!$colStep) DB::execute("ALTER TABLE users ADD COLUMN onboarding_step INT DEFAULT 1");
+// 1. DÉTECTION PRIORITAIRE : Est-ce un co-parent invité ?
+$hasChildrenAsSecondary = DB::fetchOne("SELECT id FROM children WHERE secondary_parent_id = ? LIMIT 1", [$user_id]);
+
+if ($hasChildrenAsSecondary) {
+    // Il a déjà un enfant lié, on le propulse au Cockpit direct !
+    DB::execute("UPDATE users SET onboarding_step = 4 WHERE id = ?", [$user_id]);
+    header("Location: /" . ($country ?? 'DZ') . "-" . ($lang ?? 'fr') . "/dashboard/parent");
+    exit;
+}
 
 $user = DB::fetchOne("SELECT id, full_name, phone, onboarding_step FROM users WHERE id = ?", [$user_id]);
-
-// MISSION 2 : Détecter si c'est un parent invité qui a déjà des enfants
-$hasChildrenAsSecondary = DB::fetchOne("SELECT id FROM children WHERE secondary_parent_id = ? LIMIT 1", [$user_id]);
-$is_invited = $hasChildrenAsSecondary ? true : false;
-
 $full_name_raw = ($user && !empty($user['full_name'])) ? $user['full_name'] : ($_SESSION['user_name'] ?? 'Parent');
 $parts = explode(' ', trim($full_name_raw));
 $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
