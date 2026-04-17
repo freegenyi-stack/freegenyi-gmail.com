@@ -13,11 +13,15 @@ if (empty($_SESSION['logged_in'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// 2. RÉCUPÉRATION DES ENFANTS (Unifié : Parent Principal OU Secondaire)
-$children_raw = DB::fetchAll(
-    "SELECT * FROM children WHERE parent_id = ? OR secondary_parent_id = ?", 
-    [$user_id, $user_id]
-);
+// 2. RÉCUPÉRATION DES ENFANTS
+try {
+    $children_raw = DB::fetchAll(
+        "SELECT * FROM children WHERE parent_id = ?", 
+        [$user_id]
+    );
+} catch (Throwable $e) {
+    $children_raw = [];
+}
 
 // 3. LOGIQUE MÉTIER : Redirection si aucun enfant trouvé
 if (empty($children_raw)) {
@@ -25,13 +29,13 @@ if (empty($children_raw)) {
     exit;
 }
 
-// 4. PRÉPARATION DES DONNÉES (Pour AlpineJS ou Boucle PHP)
+// 4. PRÉPARATION DES DONNÉES
 $children = [];
 foreach ($children_raw as $child) {
     $children[] = [
         'id' => $child['id'],
-        'name' => $child['name'],
-        'grade' => $child['grade'],
+        'name' => $child['first_name'] ?? 'Enfant',
+        'grade' => $child['grade_level'] ?? 'N/A',
         'xp' => $child['xp_total'] ?? 0,
         'progress' => $child['progress_percent'] ?? 0,
         'interest' => $child['field_of_interest'] ?? 'Exploration',
