@@ -25,6 +25,7 @@ try {
             email VARCHAR(150) UNIQUE,
             password_hash VARCHAR(255),
             role VARCHAR(50) DEFAULT 'parent',
+            phone VARCHAR(50) DEFAULT NULL,
             declared_country VARCHAR(10) DEFAULT 'DZ',
             email_verified TINYINT(1) DEFAULT 0,
             oauth_provider VARCHAR(50) DEFAULT 'Direct',
