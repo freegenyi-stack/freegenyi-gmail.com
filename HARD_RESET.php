@@ -13,9 +13,12 @@ try {
 
     echo "<h1>💣 Destruction et Reconstruction en cours...</h1>";
 
+    // 0. Désactiver les contraintes pour pouvoir tout raser
+    $pdo->exec("SET FOREIGN_KEY_CHECKS = 0");
+
     // 1. On rase tout
-    $pdo->exec("DROP TABLE IF EXISTS children, chat_messages, conversation_members, conversations, notifications, users, invitations");
-    echo "✅ Tables existantes supprimées.<br>";
+    $pdo->exec("DROP TABLE IF EXISTS children, chat_messages, conversation_members, conversations, notifications, users, invitations, parental_controls");
+    echo "✅ Tables existantes (et parental_controls) supprimées.<br>";
 
     // 2. On recrée USERS proprement
     $pdo->exec("
