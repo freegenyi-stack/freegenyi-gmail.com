@@ -501,6 +501,17 @@ $is_rtl = $is_rtl ?? false;
             if (res.ok) {
                 await this.loadMessages();
                 this.scrollToBottom();
+
+                // Trigger Geny AI if it's an AI conversation
+                if (this.currentConv.type === 'ai') {
+                    await fetch('/api/chat/geny_ai.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ conversation_id: this.currentConv.id, message: messageBackup })
+                    });
+                    await this.loadMessages();
+                    this.scrollToBottom();
+                }
             }
         },
         async pickFile(type) {
@@ -530,6 +541,7 @@ $is_rtl = $is_rtl ?? false;
         },
         async sendMessage() {
             if (!this.newMessage.trim()) return;
+            const messageBackup = this.newMessage;
             const res = await fetch('/api/chat/send_message.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -584,20 +596,21 @@ $is_rtl = $is_rtl ?? false;
                 <div class="divide-y divide-slate-50">
                     <template x-for="conv in conversations" :key="conv.id">
                         <button @click="openChat(conv)" class="w-full p-4 flex items-center gap-4 hover:bg-slate-50 transition-colors text-left group">
-                            <div class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 relative shrink-0">
-                                <i class="fa-solid fa-users"></i>
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center relative shrink-0"
+                                :class="conv.type === 'ai' ? 'bg-orange-600 text-white shadow-lg shadow-orange-200' : 'bg-slate-200 text-slate-500'">
+                                <i :class="conv.type === 'ai' ? 'fa-solid fa-robot' : 'fa-solid fa-users'"></i>
                                 <!-- Online Status Badge -->
-                                <template x-if="conv.is_online == 1">
+                                <template x-if="conv.is_online == 1 || conv.type === 'ai'">
                                     <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></span>
                                 </template>
                                 <span x-show="conv.unread_count > 0" class="absolute -top-1 -right-1 w-5 h-5 bg-orange-600 text-white text-[10px] font-bold rounded-full border-2 border-white flex items-center justify-center" x-text="conv.unread_count"></span>
                             </div>
                             <div class="min-w-0 flex-1">
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="font-bold text-slate-900 text-sm" x-text="conv.type === 'family' ? 'Ma Famille' : 'Discussion Directe'"></span>
+                                    <span class="font-bold text-slate-900 text-sm" x-text="conv.type === 'ai' ? 'Geny Expert 🤖' : (conv.type === 'family' ? 'Ma Famille' : 'Discussion Directe')"></span>
                                     <span class="text-[10px] text-slate-400" x-text="conv.last_message_at ? new Date(conv.last_message_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : ''"></span>
                                 </div>
-                                <p class="text-xs text-slate-500 truncate" x-text="conv.last_message || 'Démarrer la discussion...'"></p>
+                                <p class="text-xs text-slate-500 truncate" x-text="conv.last_message || (conv.type === 'ai' ? 'Posez-moi une question...' : 'Démarrer la discussion...')"></p>
                             </div>
                         </button>
                     </template>
