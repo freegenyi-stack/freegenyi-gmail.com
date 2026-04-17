@@ -1,63 +1,57 @@
 <?php
 /**
- * api/chat/geny_ai.php - Le Cerveau de Geny Expert (Propulsé par Google Gemini)
+ * api/chat/geny_ai.php - Le Cerveau de Geny Expert (Propulsé par Hugging Face)
+ * ✅ 100% Gratuit
  */
 require_once __DIR__ . '/../../config/app.php';
 
 class GenyAI {
-    private static $api_key = null;
-    private static $model = "gemini-1.5-flash";
+    private static $api_token = null;
+    private static $model = "mistralai/Mistral-7B-Instruct-v0.3"; 
 
     /**
-     * Appelle l'API Gemini pour générer une réponse pédagogique
+     * Appelle Hugging Face pour une réponse pédagogique gratuite
      */
     public static function getResponse($user_message, $context = []) {
-        // 1. Récupérer la clé API depuis .env
-        if (self::$api_key === null) {
+        // 1. Récupérer le token Hugging Face depuis .env
+        if (self::$api_token === null) {
             $env = loadEnv(__DIR__ . '/../../.env');
-            self::$api_key = $env['GEMINI_API_KEY'] ?? null;
+            self::$api_token = $env['HF_API_TOKEN'] ?? null;
         }
 
-        if (!self::$api_key) {
-            return "Désolé, ma connexion avec le centre de savoir est en maintenance (Clé API manquante). Revenez vite !";
+        if (!self::$api_token) {
+            return "Bonjour ! Je suis Geny Expert. (Mode Démo : Veuillez configurer HF_API_TOKEN pour la pleine puissance). Je vous suggère d'encourager votre enfant par le jeu !";
         }
 
-        // 2. Préparer le "System Prompt" (La personnalité de Geny)
-        $system_prompt = "Tu es Geny Expert, un conseiller pédagogique d'élite pour FreeGeny. 
-        Ton rôle est d'aider les parents algériens et internationaux à accompagner la scolarité primaire de leurs enfants. 
-        Sois toujours encourageant, utilise des termes simples mais précis basés sur les neurosciences et les méthodes mondiales (Singapour, Oxford).
-        Réponds de manière concise (max 3-4 phrases).";
-
-        // 3. Préparer la requête
-        $url = "https://generativelanguage.googleapis.com/v1beta/models/" . self::$model . ":generateContent?key=" . self::$api_key;
+        // 2. Préparer l'appel API Hugging Face
+        $url = "https://api-inference.huggingface.co/models/" . self::$model;
         
+        $prompt = "<s>[INST] Tu es Geny Expert, conseiller pédagogique d'élite. Réponds de manière courte (3 phrases max) et encourageante à un parent sur ce sujet particulier : " . $user_message . " [/INST]";
+
         $payload = [
-            "contents" => [
-                [
-                    "role" => "user",
-                    "parts" => [
-                        ["text" => $system_prompt . "\n\nQuestion du parent : " . $user_message]
-                    ]
-                ]
-            ],
-            "generationConfig" => [
+            "inputs" => $prompt,
+            "parameters" => [
+                "max_new_tokens" => 250,
                 "temperature" => 0.7,
-                "maxOutputTokens" => 300
+                "return_full_text" => false
             ]
         ];
 
-        // 4. Exécuter l'appel CURL
+        // 3. Exécuter CURL
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Authorization: Bearer ' . self::$api_token
+        ]);
         
         $response = curl_exec($ch);
         $data = json_decode($response, true);
         curl_close($ch);
 
-        // 5. Extraire la réponse
-        return $data['candidates'][0]['content']['parts'][0]['text'] ?? "Oups, j'ai eu une petite absence. Pouvez-vous répéter ?";
+        // 4. Extraire le texte de réponse
+        return $data[0]['generated_text'] ?? $data['generated_text'] ?? "Le savoir est une aventure ! Reposons la question différemment.";
     }
 }

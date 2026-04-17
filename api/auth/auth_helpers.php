@@ -51,3 +51,31 @@ if (!function_exists('getInitials')) {
         return mb_strtoupper(mb_substr($words[0] ?? 'U', 0, 2));
     }
 }
+
+//        // --- Table des Invitations ---
+        DB::execute("
+            CREATE TABLE IF NOT EXISTS invitations (
+                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                sender_id INT UNSIGNED NOT NULL,
+                email VARCHAR(150) NOT NULL,
+                role VARCHAR(50) DEFAULT 'Parent',
+                status VARCHAR(20) DEFAULT 'En attente',
+                token VARCHAR(100) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ");
+
+        // --- Table des Enfants ---
+        DB::execute("
+            CREATE TABLE IF NOT EXISTS children (
+                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                parent_id INT UNSIGNED NOT NULL,
+                first_name VARCHAR(100) NOT NULL,
+                age INT NOT NULL,
+                country VARCHAR(5) DEFAULT 'DZ',
+                grade_level VARCHAR(50) NOT NULL,
+                school_name VARCHAR(150) DEFAULT NULL,
+                onboarding_completed TINYINT(1) DEFAULT 0,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ");
