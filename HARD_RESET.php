@@ -1,6 +1,6 @@
 <?php
 /**
- * HARD_RESET.php - LA SOLUTION FINALE ET COMPLÈTE
+ * HARD_RESET.php - VERSION FINALE ET BLINDÉE
  */
 $host = "localhost";
 $dbname = "freegen1_freegeny_db";
@@ -11,13 +11,13 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    echo "<h1>💣 Reset Système Total (Identité Unifiée)...</h1>";
+    echo "<h1>💣 Reset Système Total (Elite v2.0)...</h1>";
 
     $pdo->exec("SET FOREIGN_KEY_CHECKS = 0");
     $pdo->exec("DROP TABLE IF EXISTS children, chat_messages, conversation_members, conversations, notifications, users, invitations, parental_controls");
     echo "✅ Tables nettoyées.<br>";
 
-    // TABLE USERS (Version complète pour Social Login)
+    // TABLE USERS
     $pdo->exec("
         CREATE TABLE users (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -40,9 +40,9 @@ try {
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ");
-    echo "✅ Table USERS reconstruite (Social Login Prêt).<br>";
+    echo "✅ Table USERS reconstruite.<br>";
 
-    // TABLE CHILDREN (Version alignée Cockpit)
+    // TABLE CHILDREN
     $pdo->exec("
         CREATE TABLE children (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -61,6 +61,20 @@ try {
     ");
     echo "✅ Table CHILDREN reconstruite.<br>";
 
+    // TABLE INVITATIONS
+    $pdo->exec("
+        CREATE TABLE invitations (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            parent_id INT UNSIGNED NOT NULL,
+            invited_email VARCHAR(150) NOT NULL,
+            role VARCHAR(50) DEFAULT 'Parent',
+            status VARCHAR(20) DEFAULT 'pending',
+            token VARCHAR(100) DEFAULT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ");
+    echo "✅ Table INVITATIONS reconstruite.<br>";
+
     // TABLES DE CHAT
     $pdo->exec("CREATE TABLE conversations (id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, type VARCHAR(20), family_id INT UNSIGNED, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
     $pdo->exec("CREATE TABLE conversation_members (id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, conversation_id INT UNSIGNED, user_id INT UNSIGNED)");
@@ -70,7 +84,7 @@ try {
     $pdo->exec("SET FOREIGN_KEY_CHECKS = 1");
 
     echo "<h2>🚀 SYSTÈME ALIGNÉ ET PRÊT !</h2>";
-    echo "<p>C'est la version finale. Faites le PULL, lancez ce reset, et l'entrée dans le cockpit sera fluide.</p>";
+    echo "<p>Veuillez faire un PULL et relancer ce reset une SEULE fois.</p>";
 
 } catch (PDOException $e) {
     echo "❌ Erreur : " . $e->getMessage();
