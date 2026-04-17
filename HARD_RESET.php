@@ -26,7 +26,7 @@ try {
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             full_name VARCHAR(150),
             email VARCHAR(150) UNIQUE,
-            password VARCHAR(255),
+            password_hash VARCHAR(255),
             role VARCHAR(50) DEFAULT 'parent',
             family_id INT UNSIGNED DEFAULT NULL,
             onboarding_step INT DEFAULT 1,
