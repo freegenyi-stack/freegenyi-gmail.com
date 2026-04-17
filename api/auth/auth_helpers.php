@@ -37,16 +37,17 @@ function loginUser($user) {
     $_SESSION['user_theme'] = json_decode($user['theme_settings'] ?? '{}', true);
     $_SESSION['user_avatar_config'] = json_decode($user['avatar_config'] ?? '{}', true);
     
-    // Pour l'affichage dans le header
-    if (!function_exists('getInitials')) {
-        function getInitials($name) {
-            if (empty($name)) return 'U';
-            $words = array_values(array_filter(explode(' ', trim($name))));
-            if (count($words) >= 2) {
-                return mb_strtoupper(mb_substr($words[0], 0, 1) . mb_substr($words[count($words)-1], 0, 1));
-            }
-            return mb_strtoupper(mb_substr($words[0] ?? 'U', 0, 2));
-        }
-    }
     $_SESSION['user_initials'] = getInitials($user['full_name']);
+}
+
+// Pour l'affichage dans le header
+if (!function_exists('getInitials')) {
+    function getInitials($name) {
+        if (empty($name)) return 'U';
+        $words = array_values(array_filter(explode(' ', trim($name))));
+        if (count($words) >= 2) {
+            return mb_strtoupper(mb_substr($words[0], 0, 1) . mb_substr($words[count($words)-1], 0, 1));
+        }
+        return mb_strtoupper(mb_substr($words[0] ?? 'U', 0, 2));
+    }
 }

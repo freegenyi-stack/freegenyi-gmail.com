@@ -502,8 +502,8 @@ $is_rtl = $is_rtl ?? false;
                 await this.loadMessages();
                 this.scrollToBottom();
 
-                // Trigger Geny AI if it's an AI conversation
-                if (this.currentConv.type === 'ai') {
+                // Trigger Geny AI if it's an AI conversation and it's a text message (not applicable for media currently)
+                if (this.currentConv.type === 'ai' && typeof messageBackup !== 'undefined') {
                     await fetch('/api/chat/geny_ai.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
