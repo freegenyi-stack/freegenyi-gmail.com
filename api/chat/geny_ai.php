@@ -17,10 +17,18 @@ class GenyAI {
         if (self::$api_token === null) {
             $env = loadEnv(__DIR__ . '/../../.env');
             self::$api_token = $env['HF_API_TOKEN'] ?? null;
+            
+            // Double-check si loadEnv n'a pas chargé (cas spécifique cPanel)
+            if (!self::$api_token) {
+                $raw_env = @file_get_contents(__DIR__ . '/../../.env');
+                if (preg_match('/HF_API_TOKEN=(hf_[a-zA-Z0-9]+)/', $raw_env, $m)) {
+                    self::$api_token = $m[1];
+                }
+            }
         }
 
         if (!self::$api_token) {
-            return "Bonjour ! Je suis Geny Expert. (Mode Démo : Veuillez configurer HF_API_TOKEN pour la pleine puissance). Je vous suggère d'encourager votre enfant par le jeu !";
+            return "Bonjour ! Je suis Geny Expert. Votre token IA semble mal configuré dans le fichier .env (HF_API_TOKEN).";
         }
 
         // 2. Préparer l'appel API Hugging Face

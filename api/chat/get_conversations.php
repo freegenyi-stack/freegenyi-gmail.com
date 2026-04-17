@@ -45,7 +45,23 @@ try {
         ORDER BY last_message_at DESC
     ", [$user_id, $user_id, $user_id]);
 
-    jsonResponse(['conversations' => $conversations]);
+    foreach ($conversations as &$conv) {
+        if ($conv['type'] === 'ai') {
+            $conv['name'] = "Geny Expert 🤖";
+        } else {
+            // Aller chercher le nom de l'autre membre de la discussion
+            $other = DB::fetchOne("
+                SELECT u.full_name, u.role FROM users u
+                JOIN conversation_members m ON u.id = m.user_id
+                WHERE m.conversation_id = ? AND u.id != ? LIMIT 1
+            ", [$conv['id'], $user_id]);
+            
+            $conv['name'] = $other ? $other['full_name'] : "Ma Famille";
+            $conv['role'] = $other ? $other['role'] : "";
+        }
+    }
+
+    jsonResponse($conversations);
 
 } catch (Exception $e) {
     jsonResponse(['error' => $e->getMessage()], 500);

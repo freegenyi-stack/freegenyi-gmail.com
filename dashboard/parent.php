@@ -48,7 +48,7 @@ $children = [];
 foreach ($children_raw as $child) {
     $children[] = [
         'id' => $child['id'],
-        'name' => $child['first_name'] ?? 'Enfant',
+        'name' => (!empty($child['first_name']) && $child['first_name'] !== 'Enfant') ? $child['first_name'] : 'Votre Génie',
         'grade' => $child['grade_level'] ?? 'N/A',
         'xp' => $child['xp_total'] ?? 0,
         'progress' => $child['progress_percent'] ?? 0,
