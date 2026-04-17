@@ -246,6 +246,10 @@ $is_rtl = $is_rtl ?? false;
                                 <i class="fa-solid fa-clock-rotate-left w-4 opacity-50"></i> Mon Historique
                             </a>
 
+                            <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/dashboard/invite" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all">
+                                <i class="fa-solid fa-user-plus w-4 opacity-50"></i> Inviter un membre
+                            </a>
+
                             <a href="#" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all opacity-50 cursor-not-allowed">
                                 <i class="fa-solid fa-message w-4 opacity-50"></i> Notifications
                                 <?php if ($notif_count > 0): ?>
