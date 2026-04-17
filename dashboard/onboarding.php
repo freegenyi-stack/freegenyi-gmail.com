@@ -28,8 +28,10 @@ $user = DB::fetchOne("SELECT id, full_name, phone, onboarding_step FROM users WH
 $full_name_raw = ($user && !empty($user['full_name'])) ? $user['full_name'] : ($_SESSION['user_name'] ?? 'Parent');
 $parts = explode(' ', trim($full_name_raw));
 $first_name = !empty($parts[0]) ? $parts[0] : 'Parent';
+
 $onboarding_step = $user['onboarding_step'] ?? 1;
 $phone_val = $user['phone'] ?? '';
+$is_invited = $hasChildrenAsSecondary ? true : false;
 
 // Liste des Wilayas avec Codes Postaux (Format demandé)
 $wilayas_dz = [
