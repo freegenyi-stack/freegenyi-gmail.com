@@ -62,6 +62,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
         $lvl = $_POST['child_level'];
         $cnt = $_POST['child_country'];
         $school = $_POST['child_school'] ?? '';
+        
+        // 1. GÉNÉRER UN FAMILY_ID SI MANQUANT
+        $new_family_id = rand(100000, 999999);
+        DB::execute("UPDATE users SET family_id = ? WHERE id = ? AND family_id IS NULL", [$new_family_id, $user_id]);
+        
+        // On récupère le family_id actuel (soit le nouveau, soit celui déjà présent)
+        $current_family_id = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id])['family_id'];
+
+        // 2. INSÉRER L'ENFANT
         DB::execute("INSERT INTO children (parent_id, first_name, age, country, grade_level, school_name) VALUES (?, ?, ?, ?, ?, ?)", [$user_id, $child_name, $age, $cnt, $lvl, $school]);
     }
     // Marquage comme terminé (Sync)
