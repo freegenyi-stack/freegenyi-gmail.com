@@ -150,9 +150,20 @@ if ($email && $full_name) {
             exit;
         }
 
-        // ─── LIAISON PARENTALE ───────────────────────────────────
-        // Désactivé temporairement car la colonne secondary_parent_id n'existe pas en base
-        // $invite_parent_id = (int)($_SESSION['invite_parent'] ?? 0);
+        // ─── LIAISON PARENTALE AUTOMATIQUE ───────────────────────────────────
+        $invite_parent_id = (int)($_SESSION['invite_parent'] ?? $_GET['invite_parent'] ?? 0);
+        
+        if ($invite_parent_id > 0) {
+            // 1. On récupère le family_id du parent qui a invité
+            $inviter = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$invite_parent_id]);
+            if ($inviter && $inviter['family_id']) {
+                // 2. On lie le nouvel utilisateur à la même famille
+                DB::execute("UPDATE users SET family_id = ?, onboarding_step = 4 WHERE id = ?", [$inviter['family_id'], $user_id]);
+                
+                // 3. On lie l'enfant à ce nouveau parent secondaire
+                DB::execute("UPDATE children SET secondary_parent_id = ? WHERE parent_id = ?", [$user_id, $invite_parent_id]);
+            }
+        }
         
         // Bienvenue ! (Sécurisé)
         try {
