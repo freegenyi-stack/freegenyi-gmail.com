@@ -45,19 +45,12 @@ try {
     $conv = DB::fetchOne("SELECT type FROM conversations WHERE id = ?", [$conversation_id]);
     
     if ($conv && $conv['type'] === 'ai') {
-        // --- LOGIQUE IA GÉNIE EXPERT ---
-        // On simule une réponse intelligente (en attente de votre clé API Gemini/OpenAI)
-        // Pour l'instant, Geny répond avec des conseils pédagogiques de haut niveau.
+        // --- LOGIQUE IA GÉNIE EXPERT RÉELLE (GEMINI) ---
+        require_once __DIR__ . '/geny_ai.php';
         
-        $responses = [
-            "C'est une excellente question pour l'éveil de votre enfant ! Je vous suggère d'utiliser une approche basée sur l'expérimentation visuelle.",
-            "Bravo pour votre investissement ! Pour le niveau " . ($_SESSION['user_grade'] ?? 'Primaire') . ", la répétition ludique est la clé.",
-            "J'ai analysé les derniers exercices de votre génie. Il progresse vite en calcul !",
-            "N'oubliez pas d'envoyer un 'Boost Émotionnel' vocal, cela renforce la plasticité synaptique de l'apprentissage."
-        ];
-        $ai_reply = $responses[array_rand($responses)];
+        $ai_reply = GenyAI::getResponse($message);
         
-        // Simuler le délai de réflexion de l'IA
+        // Insérer la réponse réelle de l'IA
         DB::insert("
             INSERT INTO chat_messages (conversation_id, sender_id, message) 
             VALUES (?, ?, ?)

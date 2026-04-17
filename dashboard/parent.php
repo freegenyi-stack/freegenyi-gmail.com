@@ -25,7 +25,19 @@ try {
     $children_raw = [];
 }
 
-// 3. LOGIQUE MÉTIER : Redirection si aucun enfant trouvé
+// 3. RÉCUPÉRATION DU PARTENAIRE (Co-Parent)
+$partner = null;
+try {
+    $family_id = $_SESSION['family_id'] ?? DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id])['family_id'] ?? null;
+    if ($family_id) {
+        $partner = DB::fetchOne(
+            "SELECT id, full_name, role, profile_photo, last_login_at FROM users WHERE family_id = ? AND id != ? LIMIT 1", 
+            [$family_id, $user_id]
+        );
+    }
+} catch (Throwable $e) {}
+
+// 4. LOGIQUE MÉTIER : Redirection si aucun enfant trouvé
 if (empty($children_raw)) {
     header("Location: /" . ($country) . "-" . ($lang) . "/dashboard/onboarding");
     exit;
@@ -140,6 +152,41 @@ require_once __DIR__ . '/../includes/header.php';
 
             <!-- Colonne Latérale : Outils -->
             <div class="space-y-12">
+                <!-- ALLIANCE PARENTALE -->
+                <div class="bg-white rounded-[2.5rem] p-10 shadow-[0_32px_80px_rgba(0,0,0,0.03)] border border-white">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center">
+                            <i class="fa-solid fa-heart text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-slate-900 leading-tight">Alliance Parentale</h3>
+                    </div>
+                    
+                    <?php if ($partner): ?>
+                        <div class="flex items-center gap-4 mb-8 p-4 bg-slate-50/50 rounded-2xl border border-slate-100">
+                            <div class="w-12 h-12 rounded-full bg-slate-200 border-2 border-white overflow-hidden shrink-0">
+                                <?php if ($partner['profile_photo']): ?>
+                                    <img src="<?= $partner['profile_photo'] ?>" class="w-full h-full object-cover">
+                                <?php else: ?>
+                                    <div class="w-full h-full flex items-center justify-center font-bold text-slate-400"><?= mb_substr($partner['full_name'], 0, 1) ?></div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-sm font-black text-slate-900 truncate"><?= htmlspecialchars($partner['full_name']) ?></p>
+                                <p class="text-[9px] font-bold text-orange-600 uppercase tracking-widest"><?= htmlspecialchars($partner['role'] ?? 'Co-Parent') ?></p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <a href="/<?= $country ?>-<?= $lang ?>/messages" class="text-center bg-slate-950 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all">Message</a>
+                            <a href="/<?= $country ?>-<?= $lang ?>/messages?share=photo" class="text-center bg-white border border-slate-200 text-slate-700 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all">Photo</a>
+                        </div>
+                    <?php else: ?>
+                        <p class="text-xs text-slate-400 font-medium italic mb-6">Aucun partenaire associé pour le moment.</p>
+                        <a href="/<?= $country ?>-<?= $lang ?>/dashboard/onboarding" class="block text-center border-2 border-dashed border-slate-200 py-4 rounded-2xl text-[9px] font-black uppercase tracking-widest text-slate-400 hover:border-orange-300 hover:text-orange-600 transition-all">
+                            Inviter l'autre parent
+                        </a>
+                    <?php endif; ?>
+                </div>
+
                 <div class="bg-white rounded-[2.5rem] p-10 shadow-[0_32px_80px_rgba(0,0,0,0.03)] border border-white">
                     <div class="flex items-center gap-4 mb-8">
                         <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center">
