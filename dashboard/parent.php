@@ -2,12 +2,13 @@
 /**
  * dashboard/parent.php - Elite Dashboard Version (Unified Family Support)
  */
+require_once __DIR__ . '/../config/app.php';
 require_once __DIR__ . '/../api/auth/auth_helpers.php';
 initSession();
 
-// 1. SÉCURITÉ : Redirection immédiate si non connecté (AVANT TOUT AFFICHAGE)
+// 1. SÉCURITÉ : Redirection immédiate si non connecté
 if (empty($_SESSION['logged_in'])) {
-    header("Location: /" . ($country ?? 'DZ') . "-" . ($lang ?? 'fr') . "/auth/login");
+    header("Location: /" . ($country) . "-" . ($lang) . "/auth/login");
     exit;
 }
 
@@ -20,12 +21,13 @@ try {
         [$user_id]
     );
 } catch (Throwable $e) {
+    error_log("Parent Dashboard DB Error: " . $e->getMessage());
     $children_raw = [];
 }
 
 // 3. LOGIQUE MÉTIER : Redirection si aucun enfant trouvé
 if (empty($children_raw)) {
-    header("Location: /" . ($country ?? 'DZ') . "-" . ($lang ?? 'fr') . "/dashboard/onboarding");
+    header("Location: /" . ($country) . "-" . ($lang) . "/dashboard/onboarding");
     exit;
 }
 
