@@ -396,38 +396,43 @@ $is_rtl = $is_rtl ?? false;
     <div class="h-14"></div>
 
     <!-- MODALE DE PERSONNALISATION (Vague 3) -->
-    <div x-data="{ 
-        isOpen: false, 
-        currentPrimary: '<?= $_SESSION['user_theme']['primary'] ?? '#ea580c' ?>',
-        currentAvatarId: '<?= $_SESSION['user_avatar_config']['id'] ?? '' ?>',
-        colors: [
-            { name: 'Orange FreeGeny', hex: '#ea580c' },
-            { name: 'Bleu Royal', hex: '#2563eb' },
-            { name: 'Vert Émeraude', hex: '#059669' },
-            { name: 'Violet Élite', hex: '#7c3aed' },
-            { name: 'Rose Passion', hex: '#db2777' },
-            { name: 'Ardoise Sophistiquée', hex: '#475569' }
-        ],
-        async setTheme(color) {
-            this.currentPrimary = color;
-            document.documentElement.style.setProperty('--primary-color', color);
-            await fetch('/api/auth/update-theme.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ theme: { primary: color } })
-            });
-        },
-        async setAvatar(id, icon, bg) {
-            this.currentAvatarId = id;
-            await fetch('/api/auth/update-theme.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ avatar: { id, icon, bg } })
-            });
-            // Update local UI immediately (optionally reload or use Alpine state for header)
-            window.location.reload(); 
-        }
-    }" 
+    <script>
+    function themeSettings() {
+        return {
+            isOpen: false, 
+            currentPrimary: '<?= $_SESSION['user_theme']['primary'] ?? '#ea580c' ?>',
+            currentAvatarId: '<?= $_SESSION['user_avatar_config']['id'] ?? '' ?>',
+            colors: [
+                { name: 'Orange FreeGeny', hex: '#ea580c' },
+                { name: 'Bleu Royal', hex: '#2563eb' },
+                { name: 'Vert Émeraude', hex: '#059669' },
+                { name: 'Violet Élite', hex: '#7c3aed' },
+                { name: 'Rose Passion', hex: '#db2777' },
+                { name: 'Ardoise Sophistiquée', hex: '#475569' }
+            ],
+            async setTheme(color) {
+                this.currentPrimary = color;
+                document.documentElement.style.setProperty('--primary-color', color);
+                await fetch('/api/auth/update-theme.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ theme: { primary: color } })
+                });
+            },
+            async setAvatar(id, icon, bg) {
+                this.currentAvatarId = id;
+                await fetch('/api/auth/update-theme.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ avatar: { id, icon, bg } })
+                });
+                window.location.reload(); 
+            }
+        };
+    }
+    </script>
+
+    <div x-data="themeSettings()" 
     @open-theme-modal.window="isOpen = true"
     x-show="isOpen" 
     x-cloak 
