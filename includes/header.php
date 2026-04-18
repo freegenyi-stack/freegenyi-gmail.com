@@ -233,7 +233,8 @@ $is_rtl = $is_rtl ?? false;
                                 <p class="text-[10px] text-slate-500 font-bold italic mt-0.5">Role : <?php echo ucfirst($_SESSION['user_role'] ?? 'Parent'); ?></p>
                                 
                                 <?php 
-                                $family_id = $_SESSION['family_id'] ?? DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$_SESSION['user_id']])['family_id'] ?? 0;
+                                $user_row = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$_SESSION['user_id']]);
+                                $family_id = $_SESSION['family_id'] ?? ($user_row['family_id'] ?? 0);
                                 $linked_parent = DB::fetchOne("SELECT id, full_name, is_online FROM users WHERE family_id = ? AND role = 'parent' AND id != ?", [$family_id, $_SESSION['user_id']]);
                                 if ($linked_parent): ?>
                                     <div class="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between">
@@ -280,8 +281,8 @@ $is_rtl = $is_rtl ?? false;
 
                             <a href="#" class="flex items-center gap-3 px-5 py-3 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all opacity-50 cursor-not-allowed">
                                 <i class="fa-solid fa-message w-4 opacity-50"></i> Notifications
-                                <?php if ($notif_count > 0): ?>
-                                    <span class="ml-auto text-[9px] bg-red-600 text-white px-1.5 py-0.5 rounded-full font-bold"><?= $notif_count ?></span>
+                                <?php if ($notif_total > 0): ?>
+                                    <span class="ml-auto text-[9px] bg-red-600 text-white px-1.5 py-0.5 rounded-full font-bold"><?= $notif_total ?></span>
                                 <?php else: ?>
                                     <span class="ml-auto text-[8px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded uppercase">Bientôt</span>
                                 <?php endif; ?>
@@ -882,4 +883,5 @@ $is_rtl = $is_rtl ?? false;
                 </div>
             </div>
         </div>
-    </div><?php // End of Header ?>
+    </div>
+</div><?php // End of Header ?>
