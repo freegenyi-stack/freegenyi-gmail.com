@@ -17,7 +17,7 @@ try {
     DB::execute("SET FOREIGN_KEY_CHECKS = 0");
 
     // 2. Vider les tables
-    $tables = ['chat_messages', 'conversation_members', 'conversations', 'children', 'invitations', 'activity_log', 'users'];
+    $tables = ['chat_messages', 'conversation_members', 'conversations', 'children', 'invitations', 'users'];
     foreach ($tables as $table) {
         DB::execute("TRUNCATE TABLE $table");
         echo "<li>✅ Table <b>$table</b> vidée.</li>";
