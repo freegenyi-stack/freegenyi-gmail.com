@@ -883,5 +883,4 @@ $is_rtl = $is_rtl ?? false;
                 </div>
             </div>
         </div>
-    </div>
-</div><?php // End of Header ?>
+    </div><?php // End of Header ?>
