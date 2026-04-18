@@ -12,6 +12,17 @@ class Activity {
         if (!isset($_SESSION['user_id'])) return;
 
         try {
+            // Auto-create table if missing
+            DB::execute("
+                CREATE TABLE IF NOT EXISTS activity_logs (
+                    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                    user_id INT UNSIGNED NOT NULL,
+                    category VARCHAR(50),
+                    action VARCHAR(150),
+                    metadata TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ");
             DB::execute("
                 INSERT INTO activity_logs (user_id, category, action, metadata) 
                 VALUES (?, ?, ?, ?)
@@ -22,7 +33,7 @@ class Activity {
                 $metadata ? json_encode($metadata) : null
             ]);
         } catch (Throwable $e) {
-            // Silencieux pour ne pas bloquer l'expérience utilisateur
+            // Silencieux
         }
     }
 

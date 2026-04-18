@@ -33,7 +33,7 @@ try {
     $_SESSION['family_id'] = $family_id;
     if ($family_id) {
         $partner = DB::fetchOne(
-            "SELECT id, full_name, role, profile_photo, last_login_at, is_online FROM users WHERE family_id = ? AND id != ? AND role = 'parent' LIMIT 1", 
+            "SELECT id, full_name, role, profile_photo, last_login_at, is_online FROM users WHERE family_id = ? AND id != ? LIMIT 1", 
             [$family_id, $user_id]
         );
     }
@@ -178,24 +178,51 @@ require_once __DIR__ . '/../includes/header.php';
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
-                            <a href="/<?= $country ?>-<?= $lang ?>/messages" class="text-center bg-slate-950 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all">Message</a>
-                            <a href="/<?= $country ?>-<?= $lang ?>/messages?share=photo" class="text-center bg-white border border-slate-200 text-slate-700 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all">Photo</a>
+                            <button onclick="window.dispatchEvent(new CustomEvent('select-chat', { detail: { conv: {id: 'new_<?= $partner['id'] ?>', user_id: '<?= $partner['id'] ?>', name: '<?= htmlspecialchars($partner['full_name']) ?>', type: 'direct'} } }))" class="text-center bg-slate-950 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all cursor-pointer">Message</button>
+                            <button onclick="window.dispatchEvent(new CustomEvent('open-chat'))" class="text-center bg-white border border-slate-200 text-slate-700 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all cursor-pointer">Photo</button>
                         </div>
                     <?php else: 
+                        // Chercher aussi dans invitations avec 'accepted' status - le partenaire existe peut-être mais a un family_id différent
+                        $accepted_invite = DB::fetchOne("SELECT i.*, u.full_name, u.id as partner_id FROM invitations i JOIN users u ON u.email = i.invited_email WHERE i.parent_id = ? AND i.status = 'accepted' ORDER BY i.created_at DESC LIMIT 1", [$user_id]);
                         $pending_invite = DB::fetchOne("SELECT invited_email FROM invitations WHERE parent_id = ? AND status = 'pending' ORDER BY created_at DESC LIMIT 1", [$user_id]);
-                        if ($pending_invite):
+                        if ($accepted_invite): 
+                            // Forcer la mise à jour du family_id
+                            $inviter_data = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id]);
+                            if ($inviter_data && $inviter_data['family_id']) {
+                                DB::execute("UPDATE users SET family_id = ? WHERE email = ?", [$inviter_data['family_id'], $accepted_invite['invited_email']]);
+                            }
+                            $partner = DB::fetchOne("SELECT id, full_name, role, profile_photo, last_login_at, is_online FROM users WHERE email = ? LIMIT 1", [$accepted_invite['invited_email']]);
+                        endif;
+                        if ($partner):
                     ?>
+                        <div class="flex items-center gap-4 mb-8 p-4 bg-slate-50/50 rounded-2xl border border-slate-100">
+                            <div class="w-12 h-12 rounded-full bg-slate-200 border-2 border-white overflow-hidden shrink-0">
+                                <div class="w-full h-full flex items-center justify-center font-bold text-slate-400"><?= mb_substr($partner['full_name'], 0, 1) ?></div>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-sm font-black text-slate-900 truncate"><?= htmlspecialchars($partner['full_name']) ?></p>
+                                <p class="text-[9px] font-bold text-orange-600 uppercase tracking-widest">Co-Parent ✓</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="window.dispatchEvent(new CustomEvent('select-chat', { detail: { conv: {id: 'new_<?= $partner['id'] ?>', user_id: '<?= $partner['id'] ?>', name: '<?= htmlspecialchars($partner['full_name']) ?>', type: 'direct'} } }))" class="text-center bg-slate-950 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all cursor-pointer">Message</button>
+                            <button onclick="window.dispatchEvent(new CustomEvent('open-chat'))" class="text-center bg-white border border-slate-200 text-slate-700 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all cursor-pointer">Ouvrir Chat</button>
+                        </div>
+                    <?php elseif ($pending_invite): ?>
                         <div class="p-5 bg-orange-50 rounded-2xl border border-orange-100 mb-6">
                             <p class="text-[9px] font-black text-orange-600 uppercase tracking-widest mb-1">Invitation en attente</p>
                             <p class="text-xs font-bold text-slate-900 truncate"><?= htmlspecialchars($pending_invite['invited_email']) ?></p>
                         </div>
                         <p class="text-[10px] text-slate-400 font-medium italic mb-6 text-center">En attente que votre partenaire rejoigne l'alliance.</p>
-                    <?php else: ?>
-                        <p class="text-xs text-slate-400 font-medium italic mb-6">Aucun partenaire associé pour le moment.</p>
-                    <?php endif; ?>
                         <a href="/<?= $country ?>-<?= $lang ?>/dashboard/invite" class="block text-center border-2 border-dashed border-slate-200 py-4 rounded-2xl text-[9px] font-black uppercase tracking-widest text-slate-400 hover:border-orange-300 hover:text-orange-600 transition-all">
                             Inviter l'autre parent
                         </a>
+                    <?php else: ?>
+                        <p class="text-xs text-slate-400 font-medium italic mb-6">Aucun partenaire associé pour le moment.</p>
+                        <a href="/<?= $country ?>-<?= $lang ?>/dashboard/invite" class="block text-center border-2 border-dashed border-slate-200 py-4 rounded-2xl text-[9px] font-black uppercase tracking-widest text-slate-400 hover:border-orange-300 hover:text-orange-600 transition-all">
+                            Inviter l'autre parent
+                        </a>
+                    <?php endif; ?>
                     <?php endif; ?>
                 </div>
 
