@@ -20,7 +20,7 @@ if (!headers_sent()) {
 }
 
 // PROTECTION CONSTRUCTION (DÉSACTIVÉE TEMPORAIREMENT)
-if (!defined('MAINTENANCE_PASSWORD')) define('MAINTENANCE_PASSWORD', 'Yousr4568520&');
+if (!defined('MAINTENANCE_PASSWORD')) define('MAINTENANCE_PASSWORD', 'FreeGenyReset2026');
 
 $is_legal_page = str_contains($_SERVER['REQUEST_URI'] ?? '', 'privacy') || str_contains($_SERVER['REQUEST_URI'] ?? '', 'terms');
 
