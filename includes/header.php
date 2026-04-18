@@ -327,14 +327,12 @@ $is_rtl = $is_rtl ?? false;
                         </div>
                     </div>
 
-                    <!-- Chat Trigger (Vague 4) -->
+                    <!-- Chat Trigger (Premium) -->
                     <button @click="$dispatch('open-chat')" class="relative p-2 text-slate-500 hover:text-orange-600 transition-colors group">
                         <i class="fa-solid fa-comments text-lg"></i>
-                        <template x-if="<?= $notif_total ?> > 0">
-                            <span class="absolute top-1 right-1 w-4 h-4 bg-orange-600 text-[9px] font-bold text-white flex items-center justify-center rounded-full border-2 border-white shadow-sm transition-transform group-hover:scale-110">
-                                <?= $notif_total ?>
-                            </span>
-                        </template>
+                        <span id="chat-badge" class="<?= $notif_total > 0 ? '' : 'hidden' ?> absolute top-1 right-1 min-w-[16px] h-4 bg-orange-600 text-[9px] font-bold text-white flex items-center justify-center rounded-full border-2 border-white shadow-sm px-0.5">
+                            <?= $notif_total > 0 ? $notif_total : '' ?>
+                        </span>
                     </button>
                 <?php else: ?>
                     <a href="/<?php echo $country; ?>-<?php echo $lang; ?>/auth/login" class="hidden md:block text-[11px] font-black uppercase text-slate-900 tracking-widest hover:text-orange-600 transition p-2">Connexion</a>
