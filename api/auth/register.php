@@ -15,19 +15,19 @@ initSession();
 
 // Sécurité : POST uniquement
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /auth/register');
+    header('Location: /DZ-fr/auth/register');
     exit;
 }
 
 // 🛡️ Protection CSRF
 if (!CSRF::verify($_POST['csrf_token'] ?? '')) {
-    header('Location: /auth/register?error=' . urlencode('Session expirée ou invalide. Veuillez réessayer.'));
+    header('Location: /DZ-fr/auth/register?error=' . urlencode('Session expirée ou invalide. Veuillez réessayer.'));
     exit;
 }
 
 // 🛡️ Protection Rate Limiting
 if (!RateLimiter::check('register', 3, 60)) {
-    header('Location: /auth/register?error=' . urlencode('Trop d\'inscriptions. Veuillez patienter.'));
+    header('Location: /DZ-fr/auth/register?error=' . urlencode('Trop d\'inscriptions. Veuillez patienter.'));
     exit;
 }
 
