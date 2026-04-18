@@ -9,8 +9,8 @@ class GenyAI {
         
         if (!$api_token) {
             $raw_env = @file_get_contents(__DIR__ . '/../../.env');
-            if ($raw_env && preg_match('/HF_API_TOKEN\s*=\s*([^\s\n]+)/', $raw_env, $m)) {
-                $api_token = trim($m[1], '"\'');
+            if ($raw_env && preg_match('/^HF_API_TOKEN\s*=\s*(.+)$/m', $raw_env, $m)) {
+                $api_token = trim($m[1], " \t\n\r\0\x0B\"'");
             }
         }
 

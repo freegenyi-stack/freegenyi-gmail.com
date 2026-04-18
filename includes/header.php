@@ -918,25 +918,25 @@ $is_rtl = $is_rtl ?? false;
                                 </template>
 
                                 <div class="flex items-end gap-1.5" :class="msg.sender_id == userId ? 'flex-row-reverse' : 'flex-row'">
-                                    <div class="max-w-[78%] px-4 py-2.5 text-sm leading-relaxed"
+                                    <div class="max-w-[92%] px-5 py-3 text-[16px] leading-[1.6] tracking-tight font-medium"
                                          :class="[
                                             msg.sender_id == userId
                                                 ? 'bg-slate-900 text-white'
-                                                : 'bg-white text-slate-800 shadow-sm border border-slate-100',
-                                            isFirstInGroup(index) && isLastInGroup(index) ? 'rounded-2xl' : '',
+                                                : 'bg-white text-slate-800 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.05)] border border-slate-100',
+                                            isFirstInGroup(index) && isLastInGroup(index) ? 'rounded-3xl' : '',
                                             isFirstInGroup(index) && !isLastInGroup(index)
-                                                ? (msg.sender_id == userId ? 'rounded-2xl rounded-br-sm' : 'rounded-2xl rounded-bl-sm') : '',
+                                                ? (msg.sender_id == userId ? 'rounded-3xl rounded-br-sm' : 'rounded-3xl rounded-bl-sm') : '',
                                             !isFirstInGroup(index) && !isLastInGroup(index)
-                                                ? (msg.sender_id == userId ? 'rounded-xl rounded-r-sm' : 'rounded-xl rounded-l-sm') : '',
+                                                ? (msg.sender_id == userId ? 'rounded-2xl rounded-r-sm' : 'rounded-2xl rounded-l-sm') : '',
                                             !isFirstInGroup(index) && isLastInGroup(index)
-                                                ? (msg.sender_id == userId ? 'rounded-2xl rounded-tr-sm' : 'rounded-2xl rounded-tl-sm') : ''
+                                                ? (msg.sender_id == userId ? 'rounded-3xl rounded-tr-sm' : 'rounded-3xl rounded-tl-sm') : ''
                                          ]">
-                                        <p x-text="msg.message" class="whitespace-pre-wrap break-words"></p>
+                                        <p x-text="msg.message" class="whitespace-pre-wrap break-words" style="font-family: inherit; font-size: 1.05em;"></p>
                                         <template x-if="msg.media_path && msg.message_type === 'image'">
-                                            <img :src="msg.media_path" class="rounded-xl max-h-48 mt-2 cursor-pointer" @click="window.open(msg.media_path)">
+                                            <img :src="msg.media_path" class="rounded-2xl max-h-[300px] mt-3 cursor-pointer object-cover shadow-sm hover:opacity-95 transition-opacity w-full" @click="window.open(msg.media_path)">
                                         </template>
                                         <template x-if="msg.media_path && msg.message_type === 'audio'">
-                                            <audio controls class="mt-2 max-w-full"><source :src="msg.media_path"></audio>
+                                            <audio controls class="mt-3 max-w-full rounded-full border border-slate-200/20"><source :src="msg.media_path"></audio>
                                         </template>
                                     </div>
                                 </div>
