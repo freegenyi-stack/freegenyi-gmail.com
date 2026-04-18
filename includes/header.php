@@ -514,200 +514,185 @@ $is_rtl = $is_rtl ?? false;
     </div>
 
     <!-- ELITE CHAT PANEL (Vague 4 - Mobile First) -->
-    <div x-data="{ 
-        isOpen: false, 
-        view: 'list', // 'list' or 'chat'
-        conversations: [],
-        currentConv: null,
-        messages: [],
-        newMessage: '',
-        isRecording: false,
-        mediaRecorder: null,
-        audioChunks: [],
-        mediaMenuOpen: false,
-        userId: <?= $_SESSION['user_id'] ?? 0 ?>,
-        emojiPickerOpen: false,
-        emojis: ['😊','😂','❤️','😍','👍','🙌','✨','🔥','🤔','👏','🌟','🎉','🙏','🚀','💡','📚','🎓','🧒','👧','🏠','🌍','🎯','💎'],
-        contacts: [],
-        sounds: {
-            send: new Audio('https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3'),
-            receive: new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3')
-        },
+    <script>
+    function eliteChat(userId) {
+        return {
+            isOpen: false, 
+            view: 'list', 
+            conversations: [],
+            currentConv: null,
+            messages: [],
+            newMessage: '',
+            isRecording: false,
+            mediaRecorder: null,
+            audioChunks: [],
+            mediaMenuOpen: false,
+            userId: userId,
+            emojiPickerOpen: false,
+            emojis: ['😊','😂','❤️','😍','👍','🙌','✨','🔥','🤔','👏','🌟','🎉','🙏','🚀','💡','📚','🎓','🧒','👧','🏠','🌍','🎯','💎'],
+            contacts: [],
+            sounds: {
+                send: new Audio('https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3'),
+                receive: new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3')
+            },
 
-        init() {
-            this.loadConversations();
-            setInterval(() => {
-                if(this.isOpen) {
-                    if(this.view === 'list') this.loadConversations();
-                    else if(this.currentConv) this.loadMessages();
+            init() {
+                this.loadConversations();
+                setInterval(() => {
+                    if(this.isOpen) {
+                        if(this.view === 'list') this.loadConversations();
+                        else if(this.currentConv) this.loadMessages();
+                    } else {
+                        fetch('/api/auth/heartbeat.php').catch(() => {});
+                    }
+                }, 5000);
+            },
+
+            addEmoji(e) {
+                this.newMessage += e;
+                this.emojiPickerOpen = false;
+            },
+
+            async openAI() {
+                let aiConv = this.conversations.find(c => c.type === 'ai');
+                if (aiConv) {
+                    this.openChat(aiConv);
                 } else {
-                    fetch('/api/auth/heartbeat.php').catch(() => {});
+                    await this.loadConversations();
+                    aiConv = this.conversations.find(c => c.type === 'ai');
+                    if (aiConv) this.openChat(aiConv);
                 }
-            }, 5000);
-        },
+            },
 
-        addEmoji(e) {
-            this.newMessage += e;
-            this.emojiPickerOpen = false;
-        },
+            async loadContacts() {
+                this.view = 'contacts';
+                const res = await fetch('/api/chat/get_conversations.php?type=contacts');
+                const data = await res.json();
+                this.contacts = data.filter(c => c.type !== 'ai'); 
+            },
 
-        async openAI() {
-            // Find existing AI conv or create it
-            let aiConv = this.conversations.find(c => c.type === 'ai');
-            if (aiConv) {
-                this.openChat(aiConv);
-            } else {
-                // If not found, it will be auto-created by get_conversations on next load
-                // but let's just trigger load and try find again
-                await this.loadConversations();
-                aiConv = this.conversations.find(c => c.type === 'ai');
-                if (aiConv) this.openChat(aiConv);
-            }
-        },
-
-        async loadContacts() {
-            this.view = 'contacts';
-            // Fetch family and other potential contacts
-            const res = await fetch('/api/chat/get_conversations.php?type=contacts');
-            const data = await res.json();
-            // Since we don't have a dedicated contacts API yet, we'll use a trick or just fetch family
-            // Let's assume for now we list family members from local logic or a specific call
-            this.contacts = data.filter(c => c.type !== 'ai'); 
-        },
-
-        async startRecording() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                this.mediaRecorder = new MediaRecorder(stream);
-                this.audioChunks = [];
-                this.mediaRecorder.ondataavailable = e => this.audioChunks.push(e.data);
-                this.mediaRecorder.onstop = async () => {
-                    const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
-                    await this.uploadFile(audioBlob, 'audio');
-                };
-                this.mediaRecorder.start();
-                this.isRecording = true;
-            } catch (err) { alert('Micro non autorisé'); }
-        },
-        async stopRecording() {
-            this.mediaRecorder.stop();
-            this.isRecording = false;
-        },
-        async uploadFile(file, type) {
-            const formData = new FormData();
-            formData.append('file', file);
-            formData.append('conversation_id', this.currentConv.id);
-            formData.append('type', type);
-            
-            const res = await fetch('/api/chat/upload.php', { method: 'POST', body: formData });
-            if (res.ok) {
-                await this.loadMessages();
-                this.scrollToBottom();
-
-                // Trigger Geny AI if it's an AI conversation and it's a text message (not applicable for media currently)
-                if (this.currentConv.type === 'ai' && typeof messageBackup !== 'undefined') {
-                    await fetch('/api/chat/geny_ai.php', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ conversation_id: this.currentConv.id, message: messageBackup })
-                    });
+            async startRecording() {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    this.mediaRecorder = new MediaRecorder(stream);
+                    this.audioChunks = [];
+                    this.mediaRecorder.ondataavailable = e => this.audioChunks.push(e.data);
+                    this.mediaRecorder.onstop = async () => {
+                        const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
+                        await this.uploadFile(audioBlob, 'audio');
+                    };
+                    this.mediaRecorder.start();
+                    this.isRecording = true;
+                } catch (err) { alert('Micro non autorisé'); }
+            },
+            async stopRecording() {
+                this.mediaRecorder.stop();
+                this.isRecording = false;
+            },
+            async uploadFile(file, type) {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('conversation_id', this.currentConv.id);
+                formData.append('type', type);
+                
+                const res = await fetch('/api/chat/upload.php', { method: 'POST', body: formData });
+                if (res.ok) {
                     await this.loadMessages();
                     this.scrollToBottom();
                 }
-            }
-        },
-        async pickFile(type) {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = type === 'image' ? 'image/*' : '*/*';
-            input.onchange = e => this.uploadFile(e.target.files[0], type);
-            input.click();
-        },
+            },
+            async pickFile(type) {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = type === 'image' ? 'image/*' : '*/*';
+                input.onchange = e => this.uploadFile(e.target.files[0], type);
+                input.click();
+            },
 
-        async loadConversations() {
-            const res = await fetch('/api/chat/get_conversations.php');
-            const data = await res.json();
-            this.conversations = data || [];
-        },
-        async openChat(conv) {
-            if (conv.id && conv.id.toString().startsWith('new_')) {
-                const targetUserId = conv.user_id;
-                const res = await fetch('/api/chat/create_conversation.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ target_user_id: targetUserId })
-                });
-                const newConv = await res.json();
-                if (newConv.id) {
-                    conv.id = newConv.id;
-                    conv.type = 'direct';
-                } else return;
-            }
-            this.currentConv = conv;
-            this.view = 'chat';
-            await this.loadMessages();
-            this.scrollToBottom();
-        },
-        async loadMessages() {
-            if (!this.currentConv) return;
-            const res = await fetch('/api/chat/get_messages.php?conversation_id=' + this.currentConv.id);
-            const data = await res.json();
-            const newMessages = data.messages || [];
-            
-            // Si c'est un rechargement et qu'il y a plus de messages
-            if (this.messages.length > 0 && newMessages.length > this.messages.length) {
-                const last = newMessages[newMessages.length - 1];
-                if (last.sender_id != this.userId) {
-                    this.sounds.receive.play().catch(() => {});
+            async loadConversations() {
+                const res = await fetch('/api/chat/get_conversations.php');
+                const data = await res.json();
+                this.conversations = data || [];
+            },
+            async openChat(conv) {
+                if (conv.id && conv.id.toString().startsWith('new_')) {
+                    const targetUserId = conv.user_id;
+                    const res = await fetch('/api/chat/create_conversation.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ target_user_id: targetUserId })
+                    });
+                    const newConv = await res.json();
+                    if (newConv.id) {
+                        conv.id = newConv.id;
+                        conv.type = 'direct';
+                    } else return;
                 }
-            }
-            this.messages = newMessages;
-        },
-        async sendMessage() {
-            if (!this.newMessage.trim()) return;
-            const text = this.newMessage;
-            
-            // Optimistic UI : Ajout immédiat pour éviter l'effet "disparition"
-            const tempId = Date.now();
-            this.messages.push({
-                id: tempId,
-                sender_id: this.userId,
-                message: text,
-                created_at: new Date().toISOString(),
-                is_temp: true
-            });
-            this.newMessage = '';
-            this.scrollToBottom();
-            this.sounds.send.play().catch(() => {});
-
-            try {
-                const res = await fetch('/api/chat/send_message.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ conversation_id: this.currentConv.id, message: text })
-                });
+                this.currentConv = conv;
+                this.view = 'chat';
+                await this.loadMessages();
+                this.scrollToBottom();
+            },
+            async loadMessages() {
+                if (!this.currentConv) return;
+                const res = await fetch('/api/chat/get_messages.php?conversation_id=' + this.currentConv.id);
+                const data = await res.json();
+                const newMessages = data.messages || [];
                 
-                if (res.ok) {
-                    await this.loadMessages();
-                } else {
-                    const err = await res.json();
-                    console.error('Chat Error:', err);
-                    alert('Erreur envoi: ' + (err.error || 'Inconnu'));
-                    // On retire le message temporaire en cas d'erreur réelle
+                if (this.messages.length > 0 && newMessages.length > this.messages.length) {
+                    const last = newMessages[newMessages.length - 1];
+                    if (last.sender_id != this.userId) {
+                        this.sounds.receive.play().catch(() => {});
+                    }
+                }
+                this.messages = newMessages;
+            },
+            async sendMessage() {
+                if (!this.newMessage.trim()) return;
+                const text = this.newMessage;
+                
+                const tempId = Date.now();
+                this.messages.push({
+                    id: tempId,
+                    sender_id: this.userId,
+                    message: text,
+                    created_at: new Date().toISOString(),
+                    is_temp: true
+                });
+                this.newMessage = '';
+                this.scrollToBottom();
+                this.sounds.send.play().catch(() => {});
+
+                try {
+                    const res = await fetch('/api/chat/send_message.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ conversation_id: this.currentConv.id, message: text })
+                    });
+                    
+                    if (res.ok) {
+                        await this.loadMessages();
+                    } else {
+                        const err = await res.json();
+                        console.error('Chat Error:', err);
+                        this.messages = this.messages.filter(m => m.id !== tempId);
+                    }
+                } catch (e) {
+                    console.error('Network Error:', e);
                     this.messages = this.messages.filter(m => m.id !== tempId);
                 }
-            } catch (e) {
-                console.error('Network Error:', e);
-                this.messages = this.messages.filter(m => m.id !== tempId);
+            },
+            scrollToBottom() {
+                setTimeout(() => {
+                    const el = this.$refs.msgContainer;
+                    if (el) el.scrollTop = el.scrollHeight;
+                }, 100);
             }
-        },
-        scrollToBottom() {
-            setTimeout(() => {
-                const el = this.$refs.msgContainer;
-                if (el) el.scrollTop = el.scrollHeight;
-            }, 100);
-        }
-    }"
+        };
+    }
+    </script>
+
+    <div x-data="eliteChat(<?= $_SESSION['user_id'] ?? 0 ?>)"
     @open-chat.window="isOpen = true; loadConversations()"
     @select-chat.window="isOpen = true; openChat($event.detail.conv)"
     x-show="isOpen"
