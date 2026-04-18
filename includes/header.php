@@ -918,19 +918,19 @@ $is_rtl = $is_rtl ?? false;
                                 </template>
 
                                 <div class="flex items-end gap-1.5" :class="msg.sender_id == userId ? 'flex-row-reverse' : 'flex-row'" style="width: 100% !important;">
-                                    <div class="px-5 py-4 leading-[1.6] tracking-tight font-medium"
-                                         style="width: 90% !important; max-width: 90% !important; font-size: 1.3em !important;"
+                                    <div class="px-4 py-2.5 leading-relaxed tracking-tight font-medium"
+                                         style="max-width: 85% !important; font-size: 15px !important; border-radius: 18px !important;"
                                          :class="[
                                             msg.sender_id == userId
-                                                ? 'bg-slate-900 text-white rounded-3xl'
-                                                : 'bg-white text-slate-800 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.05)] border border-slate-100 rounded-3xl'
+                                                ? 'bg-[#0084ff] text-white shadow-sm'
+                                                : 'bg-[#e4e6eb] text-slate-800'
                                          ]">
                                         <p x-text="msg.message" class="whitespace-pre-wrap break-words" style="font-family: inherit;"></p>
                                         <template x-if="msg.media_path && msg.message_type === 'image'">
-                                            <img :src="msg.media_path" class="rounded-2xl mt-4 cursor-pointer object-cover shadow-sm hover:opacity-95 transition-opacity w-full" @click="window.open(msg.media_path)">
+                                            <img :src="msg.media_path" class="rounded-xl mt-3 cursor-pointer object-cover shadow-sm hover:opacity-95 transition-opacity w-full" @click="window.open(msg.media_path)">
                                         </template>
                                         <template x-if="msg.media_path && msg.message_type === 'audio'">
-                                            <audio controls class="mt-4 w-full rounded-full border border-slate-200/20"><source :src="msg.media_path"></audio>
+                                            <audio controls class="mt-3 w-full rounded-full border border-slate-200/20"><source :src="msg.media_path"></audio>
                                         </template>
                                     </div>
                                 </div>
