@@ -179,9 +179,19 @@ require_once __DIR__ . '/../includes/header.php';
                             <a href="/<?= $country ?>-<?= $lang ?>/messages" class="text-center bg-slate-950 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all">Message</a>
                             <a href="/<?= $country ?>-<?= $lang ?>/messages?share=photo" class="text-center bg-white border border-slate-200 text-slate-700 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all">Photo</a>
                         </div>
+                    <?php else: 
+                        $pending_invite = DB::fetchOne("SELECT invited_email FROM invitations WHERE parent_id = ? AND status = 'pending' ORDER BY created_at DESC LIMIT 1", [$user_id]);
+                        if ($pending_invite):
+                    ?>
+                        <div class="p-5 bg-orange-50 rounded-2xl border border-orange-100 mb-6">
+                            <p class="text-[9px] font-black text-orange-600 uppercase tracking-widest mb-1">Invitation en attente</p>
+                            <p class="text-xs font-bold text-slate-900 truncate"><?= htmlspecialchars($pending_invite['invited_email']) ?></p>
+                        </div>
+                        <p class="text-[10px] text-slate-400 font-medium italic mb-6 text-center">En attente que votre partenaire rejoigne l'alliance.</p>
                     <?php else: ?>
                         <p class="text-xs text-slate-400 font-medium italic mb-6">Aucun partenaire associé pour le moment.</p>
-                        <a href="/<?= $country ?>-<?= $lang ?>/dashboard/onboarding" class="block text-center border-2 border-dashed border-slate-200 py-4 rounded-2xl text-[9px] font-black uppercase tracking-widest text-slate-400 hover:border-orange-300 hover:text-orange-600 transition-all">
+                    <?php endif; ?>
+                        <a href="/<?= $country ?>-<?= $lang ?>/dashboard/invite" class="block text-center border-2 border-dashed border-slate-200 py-4 rounded-2xl text-[9px] font-black uppercase tracking-widest text-slate-400 hover:border-orange-300 hover:text-orange-600 transition-all">
                             Inviter l'autre parent
                         </a>
                     <?php endif; ?>

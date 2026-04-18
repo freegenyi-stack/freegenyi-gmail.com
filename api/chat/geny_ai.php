@@ -59,7 +59,11 @@ class GenyAI {
         $data = json_decode($response, true);
         curl_close($ch);
 
-        // 4. Extraire le texte de réponse
-        return $data[0]['generated_text'] ?? $data['generated_text'] ?? "Le savoir est une aventure ! Reposons la question différemment.";
+        // 4. Extraire le texte de réponse et nettoyer le prompt Mistral
+        $text = $data[0]['generated_text'] ?? $data['generated_text'] ?? "";
+        if (strpos($text, '[/INST]') !== false) {
+            $text = substr($text, strpos($text, '[/INST]') + 7);
+        }
+        return trim($text) ?: "Le savoir est une aventure ! Reposons la question différemment.";
     }
 }

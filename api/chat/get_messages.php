@@ -30,7 +30,7 @@ try {
     $messages = DB::fetchAll("
         SELECT m.*, u.full_name as sender_name, u.profile_photo as sender_avatar
         FROM chat_messages m
-        JOIN users u ON m.sender_id = u.id
+        LEFT JOIN users u ON m.sender_id = u.id
         WHERE m.conversation_id = ?
         ORDER BY m.created_at ASC
         LIMIT 100

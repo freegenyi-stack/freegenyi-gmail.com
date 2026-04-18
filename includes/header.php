@@ -228,11 +228,23 @@ $is_rtl = $is_rtl ?? false;
                                 
                                 <?php 
                                 $family_id = $_SESSION['family_id'] ?? DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$_SESSION['user_id']])['family_id'] ?? 0;
-                                $linked_parent = DB::fetchOne("SELECT full_name, is_online FROM users WHERE family_id = ? AND role = 'parent' AND id != ?", [$family_id, $_SESSION['user_id']]);
+                                $linked_parent = DB::fetchOne("SELECT id, full_name, is_online FROM users WHERE family_id = ? AND role = 'parent' AND id != ?", [$family_id, $_SESSION['user_id']]);
                                 if ($linked_parent): ?>
-                                    <div class="mt-3 pt-3 border-t border-slate-200 flex items-center gap-2">
-                                        <div class="w-2 h-2 rounded-full <?= $linked_parent['is_online'] ? 'bg-green-500' : 'bg-slate-300' ?>"></div>
-                                        <p class="text-[10px] font-bold text-slate-600">Parent lié : <span class="text-slate-900"><?= explode(' ', $linked_parent['full_name'])[0] ?></span></p>
+                                    <div class="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-2 h-2 rounded-full <?= $linked_parent['is_online'] ? 'bg-green-500' : 'bg-slate-300' ?>"></div>
+                                            <p class="text-[10px] font-bold text-slate-600">Parent lié : <span class="text-slate-900"><?= explode(' ', $linked_parent['full_name'])[0] ?></span></p>
+                                        </div>
+                                        <div class="flex items-center gap-1">
+                                            <button @click.stop="isOpen=true; view='chat'; openChat({id: 'new_<?= $linked_parent['id'] ?>', user_id: '<?= $linked_parent['id'] ?>', name: '<?= htmlspecialchars($linked_parent['full_name']) ?>', type: 'direct'})" 
+                                                    class="w-7 h-7 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 hover:text-orange-600 transition-all hover:bg-white hover:shadow-sm">
+                                                <i class="fa-solid fa-paper-plane text-[9px]"></i>
+                                            </button>
+                                            <button @click.stop="isOpen=true; view='chat'; openChat({id: 'new_<?= $linked_parent['id'] ?>', user_id: '<?= $linked_parent['id'] ?>', name: '<?= htmlspecialchars($linked_parent['full_name']) ?>', type: 'direct'})"
+                                                    class="w-7 h-7 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-all hover:bg-white hover:shadow-sm">
+                                                <i class="fa-solid fa-microphone text-[9px]"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -281,13 +293,12 @@ $is_rtl = $is_rtl ?? false;
                                 <i class="fa-solid fa-sliders w-4 opacity-50"></i> Réglages
                             </a>
 
-                            <!-- CERCLE FAMILIAL (DROPDOWN) -->
+                            <!-- CERCLE FAMILIAL (DROPDOWN MODIFIÉ) -->
                             <?php 
-                            $family_members = DB::fetchAll("SELECT full_name, role, is_online FROM users WHERE family_id = ? AND id != ?", [$family_id ?? 0, $_SESSION['user_id']]);
+                            $family_members = DB::fetchAll("SELECT id, full_name, role, is_online FROM users WHERE family_id = ? AND id != ? AND role != 'parent'", [$family_id ?? 0, $_SESSION['user_id']]);
                             if ($family_members):
                             ?>
-                                <div class="px-5 py-3 bg-slate-50/50">
-                                    <p class="text-[8px] font-black uppercase text-slate-400 tracking-widest mb-2">Cercle Familial</p>
+                                <div class="px-5 py-3 bg-slate-50/30">
                                     <div class="space-y-2">
                                         <?php foreach($family_members as $mem): ?>
                                             <div class="flex items-center justify-between">
@@ -511,6 +522,10 @@ $is_rtl = $is_rtl ?? false;
         emojiPickerOpen: false,
         emojis: ['😊','😂','❤️','😍','👍','🙌','✨','🔥','🤔','👏','🌟','🎉','🙏','🚀','💡','📚','🎓','🧒','👧','🏠','🌍','🎯','💎'],
         contacts: [],
+        sounds: {
+            send: new Audio('https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3'),
+            receive: new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3')
+        },
 
         addEmoji(e) {
             this.newMessage += e;
@@ -618,10 +633,18 @@ $is_rtl = $is_rtl ?? false;
             if (!this.currentConv) return;
             const res = await fetch('/api/chat/get_messages.php?conversation_id=' + this.currentConv.id);
             const data = await res.json();
-            this.messages = data.messages || [];
+            const newMessages = data.messages || [];
+            
+            if (newMessages.length > this.messages.length && this.messages.length > 0) {
+                const lastNew = newMessages[newMessages.length - 1];
+                if (lastNew.sender_id != this.userId) this.sounds.receive.play().catch(() => {});
+            }
+            
+            this.messages = newMessages;
         },
         async sendMessage() {
             if (!this.newMessage.trim()) return;
+            this.sounds.send.play().catch(() => {});
             const messageBackup = this.newMessage;
             const res = await fetch('/api/chat/send_message.php', {
                 method: 'POST',

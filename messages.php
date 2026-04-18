@@ -118,7 +118,7 @@ include_once __DIR__ . '/includes/header.php';
                     <div id="emoji-tooltip" class="hidden absolute bottom-24 right-20 bg-white shadow-2xl rounded-2xl p-4 grid grid-cols-5 gap-2 border border-slate-100 z-50 w-64">
                     </div>
 
-                    <div class="bg-white border border-slate-200 rounded-[2.5rem] p-4 flex items-center gap-4 shadow-xl shadow-slate-100 relative z-10">
+                    <div class="bg-white border border-slate-200 rounded-[2.5rem] p-4 flex items-center gap-4 shadow-xl shadow-slate-100 relative z-10 glass-input">
                         <button onclick="toggleMediaMenu()" class="w-10 h-10 rounded-full hover:bg-slate-50 text-slate-400 transition-colors flex items-center justify-center">
                             <i class="fa-solid fa-plus text-lg plus-icon transition-transform"></i>
                         </button>
@@ -143,6 +143,11 @@ let activeConvId = null;
 let currentConvType = 'direct';
 let mediaRecorder = null;
 let audioChunks = [];
+const sounds = {
+    send: new Audio('https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3'),
+    receive: new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3')
+};
+let messageCount = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     loadConversations();
@@ -218,6 +223,12 @@ function loadMessages(convId, isAutoLoad = false) {
             
             if (!isAutoLoad) container.innerHTML = '';
             
+            if (messages.length > messageCount && messageCount > 0) {
+                const last = messages[messages.length - 1];
+                if (last.sender_id != <?= $_SESSION['user_id'] ?>) sounds.receive.play().catch(() => {});
+            }
+            messageCount = messages.length;
+
             // Si c'est un reload, on ne veut ajouter que les nouveaux
             const existingCount = container.querySelectorAll('.message-bubble').length;
             const newMessages = messages.slice(existingCount);
@@ -225,23 +236,26 @@ function loadMessages(convId, isAutoLoad = false) {
             newMessages.forEach(msg => {
                 const isMe = msg.sender_id == <?= $_SESSION['user_id'] ?>;
                 const msgEl = document.createElement('div');
-                msgEl.className = `flex ${isMe ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-${isMe ? 'right' : 'left'}-4 message-bubble`;
+                msgEl.className = `flex ${isMe ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-${isMe ? 'right' : 'left'}-4 message-bubble mb-6`;
                 
                 let content = '';
                 if (msg.message_type === 'text') {
                     content = `<p class="text-sm font-medium leading-relaxed">${msg.message}</p>`;
                 } else if (msg.message_type === 'image') {
-                    content = `<img src="${msg.media_path}" class="rounded-xl max-h-60 w-full object-cover cursor-pointer" onclick="window.open('${msg.media_path}')">`;
+                    content = `<img src="${msg.media_path}" class="rounded-2xl max-h-80 w-full object-cover cursor-pointer shadow-lg" onclick="window.open('${msg.media_path}')">`;
                 } else if (msg.message_type === 'audio') {
                     content = `<audio controls class="max-w-full"><source src="${msg.media_path}"></audio>`;
                 } else {
-                    content = `<a href="${msg.media_path}" target="_blank" class="flex items-center gap-2 underline text-xs"><i class="fa-solid fa-file"></i> Fichier joint</a>`;
+                    content = `<a href="${msg.media_path}" target="_blank" class="flex items-center gap-2 underline text-xs font-bold"><i class="fa-solid fa-file"></i> Fichier joint</a>`;
                 }
 
                 msgEl.innerHTML = `
-                    <div class="max-w-[70%] rounded-[2rem] p-5 shadow-sm ${isMe ? 'bg-slate-900 text-white rounded-tr-none' : 'bg-white text-slate-900 border border-slate-100 rounded-tl-none'}">
+                    <div class="max-w-[75%] rounded-[2.5rem] p-6 shadow-sm border border-slate-100 ${isMe ? 'bg-slate-900 text-white rounded-tr-none' : 'bg-white text-slate-900 rounded-tl-none'} transition-all hover:shadow-md">
                         ${content}
-                        <span class="text-[8px] ${isMe ? 'text-slate-400' : 'text-slate-400'} uppercase font-black tracking-widest mt-2 block">${new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                        <div class="flex items-center gap-2 mt-3">
+                            <span class="text-[8px] ${isMe ? 'text-slate-400' : 'text-slate-400'} uppercase font-black tracking-widest block">${new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                            ${isMe ? '<i class="fa-solid fa-check-double text-[8px] text-blue-400"></i>' : ''}
+                        </div>
                     </div>
                 `;
                 container.appendChild(msgEl);
@@ -259,6 +273,7 @@ function sendMessage() {
     if (!text || !activeConvId) return;
 
     input.value = '';
+    sounds.send.play().catch(() => {});
     
     fetch('/api/chat/send_message.php', {
         method: 'POST',
@@ -348,7 +363,19 @@ function startAIChat() {
 <style>
 .custom-scroll::-webkit-scrollbar { width: 5px; }
 .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-#messages-container { scroll-behavior: smooth; }
+#messages-container { 
+    scroll-behavior: smooth; 
+    background-image: 
+        radial-gradient(circle at 2px 2px, rgba(226, 232, 240, 0.5) 1px, transparent 0);
+    background-size: 24px 24px;
+}
+.message-bubble { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.message-bubble:hover { transform: translateY(-2px); }
+.glass-input {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
 .animate-in { animation-duration: 0.3s; animation-fill-mode: both; }
 .fade-in { animation-name: fadeIn; }
 .slide-in-from-right-4 { animation-name: slideInRight; }
