@@ -223,8 +223,18 @@ $is_rtl = $is_rtl ?? false;
                                 <p class="text-[9px] font-black uppercase text-green-600 tracking-widest flex items-center gap-1.5 mb-0.5">
                                     <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Connecté
                                 </p>
-                                <p class="text-xs font-bold text-slate-900 truncate"><?php echo htmlspecialchars($_SESSION['user_name']); ?></p>
-                                <p class="text-[10px] text-slate-500 font-medium italic mt-0.5">Role : <?php echo ucfirst($_SESSION['user_role'] ?? 'Parent'); ?></p>
+                                <p class="text-sm font-black text-slate-900 truncate"><?php echo htmlspecialchars($_SESSION['user_name']); ?></p>
+                                <p class="text-[10px] text-slate-500 font-bold italic mt-0.5">Role : <?php echo ucfirst($_SESSION['user_role'] ?? 'Parent'); ?></p>
+                                
+                                <?php 
+                                $family_id = $_SESSION['family_id'] ?? DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$_SESSION['user_id']])['family_id'] ?? 0;
+                                $linked_parent = DB::fetchOne("SELECT full_name, is_online FROM users WHERE family_id = ? AND role = 'parent' AND id != ?", [$family_id, $_SESSION['user_id']]);
+                                if ($linked_parent): ?>
+                                    <div class="mt-3 pt-3 border-t border-slate-200 flex items-center gap-2">
+                                        <div class="w-2 h-2 rounded-full <?= $linked_parent['is_online'] ? 'bg-green-500' : 'bg-slate-300' ?>"></div>
+                                        <p class="text-[10px] font-bold text-slate-600">Parent lié : <span class="text-slate-900"><?= explode(' ', $linked_parent['full_name'])[0] ?></span></p>
+                                    </div>
+                                <?php endif; ?>
                             </div>
 
                             <!-- Critical Action: Profile Completion -->
@@ -498,6 +508,38 @@ $is_rtl = $is_rtl ?? false;
         audioChunks: [],
         mediaMenuOpen: false,
         userId: <?= $_SESSION['user_id'] ?? 0 ?>,
+        emojiPickerOpen: false,
+        emojis: ['😊','😂','❤️','😍','👍','🙌','✨','🔥','🤔','👏','🌟','🎉','🙏','🚀','💡','📚','🎓','🧒','👧','🏠','🌍','🎯','💎'],
+        contacts: [],
+
+        addEmoji(e) {
+            this.newMessage += e;
+            this.emojiPickerOpen = false;
+        },
+
+        async openAI() {
+            // Find existing AI conv or create it
+            let aiConv = this.conversations.find(c => c.type === 'ai');
+            if (aiConv) {
+                this.openChat(aiConv);
+            } else {
+                // If not found, it will be auto-created by get_conversations on next load
+                // but let's just trigger load and try find again
+                await this.loadConversations();
+                aiConv = this.conversations.find(c => c.type === 'ai');
+                if (aiConv) this.openChat(aiConv);
+            }
+        },
+
+        async loadContacts() {
+            this.view = 'contacts';
+            // Fetch family and other potential contacts
+            const res = await fetch('/api/chat/get_conversations.php?type=contacts');
+            const data = await res.json();
+            // Since we don't have a dedicated contacts API yet, we'll use a trick or just fetch family
+            // Let's assume for now we list family members from local logic or a specific call
+            this.contacts = data.filter(c => c.type !== 'ai'); 
+        },
 
         async startRecording() {
             try {
@@ -551,9 +593,22 @@ $is_rtl = $is_rtl ?? false;
         async loadConversations() {
             const res = await fetch('/api/chat/get_conversations.php');
             const data = await res.json();
-            this.conversations = data.conversations || [];
+            this.conversations = data || [];
         },
         async openChat(conv) {
+            if (conv.id && conv.id.toString().startsWith('new_')) {
+                const targetUserId = conv.user_id;
+                const res = await fetch('/api/chat/create_conversation.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ target_user_id: targetUserId })
+                });
+                const newConv = await res.json();
+                if (newConv.id) {
+                    conv.id = newConv.id;
+                    conv.type = 'direct';
+                } else return;
+            }
             this.currentConv = conv;
             this.view = 'chat';
             await this.loadMessages();
@@ -599,18 +654,33 @@ $is_rtl = $is_rtl ?? false;
             <!-- Header -->
             <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
                 <div class="flex items-center gap-3">
-                    <button x-show="view === 'chat'" @click="view = 'list'" class="p-2 text-slate-500">
+                    <button x-show="view !== 'list'" @click="view = 'list'" class="p-2 text-slate-500">
                         <i class="fa-solid fa-chevron-left"></i>
                     </button>
-                    <h3 class="font-black text-slate-900 tracking-tight" x-text="view === 'list' ? 'Messagerie 💬' : 'Discussion'"></h3>
+                    <h3 class="font-black text-slate-900 tracking-tight" x-text="view === 'list' ? 'Messagerie 💬' : (view === 'contacts' ? 'Nouveau Message' : 'Discussion')"></h3>
                 </div>
-                <button @click="isOpen = false" class="p-2 text-slate-400 hover:text-slate-900 transition-colors">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
+                <div class="flex items-center gap-2">
+                    <button x-show="view === 'list'" @click="openAI()" class="w-8 h-8 rounded-full bg-orange-600 text-white flex items-center justify-center shadow-lg shadow-orange-200 hover:scale-110 transition-transform" title="Discuter avec Geny Expert">
+                        <i class="fa-solid fa-robot text-xs"></i>
+                    </button>
+                    <button @click="isOpen = false" class="p-2 text-slate-400 hover:text-slate-900 transition-colors">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
             </div>
 
             <!-- Conversations List -->
             <div x-show="view === 'list'" class="flex-1 overflow-y-auto custom-scroll">
+                <!-- Search & Actions -->
+                <div class="p-4 grid grid-cols-2 gap-3">
+                    <button @click="loadContacts()" class="flex items-center justify-center gap-2 py-3 bg-slate-100 text-slate-600 rounded-xl font-bold text-[10px] hover:bg-slate-200 transition-all border border-slate-200/50 uppercase tracking-tighter">
+                        <i class="fa-solid fa-user-plus"></i> Contacts
+                    </button>
+                    <button @click="openAI()" class="flex items-center justify-center gap-2 py-3 bg-orange-600 text-white rounded-xl font-bold text-[10px] hover:bg-orange-700 transition-all shadow-lg shadow-orange-100 uppercase tracking-tighter">
+                        <i class="fa-solid fa-robot"></i> Aide IA
+                    </button>
+                </div>
+
                 <template x-if="conversations.length === 0">
                     <div class="p-20 text-center">
                         <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-300">
@@ -633,13 +703,36 @@ $is_rtl = $is_rtl ?? false;
                             </div>
                             <div class="min-w-0 flex-1">
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="font-bold text-slate-900 text-sm" x-text="conv.type === 'ai' ? 'Geny Expert 🤖' : (conv.type === 'family' ? 'Ma Famille' : 'Discussion Directe')"></span>
+                                    <span class="font-bold text-slate-900 text-sm" x-text="conv.name || (conv.type === 'ai' ? 'Geny Expert 🤖' : 'Ma Famille')"></span>
                                     <span class="text-[10px] text-slate-400" x-text="conv.last_message_at ? new Date(conv.last_message_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : ''"></span>
                                 </div>
                                 <p class="text-xs text-slate-500 truncate" x-text="conv.last_message || (conv.type === 'ai' ? 'Posez-moi une question...' : 'Démarrer la discussion...')"></p>
                             </div>
                         </button>
                     </template>
+                </div>
+            </div>
+
+            <!-- Contacts View -->
+            <div x-show="view === 'contacts'" class="flex-1 overflow-y-auto custom-scroll">
+                <div class="p-6">
+                    <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-4">Cercle Familial & Contacts</p>
+                    <div class="space-y-2">
+                        <template x-for="c in contacts" :key="c.id">
+                            <button @click="openChat(c)" class="w-full p-3 flex items-center gap-3 hover:bg-slate-50 rounded-2xl transition-all text-left border border-transparent hover:border-slate-100">
+                                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-900" x-text="c.name"></p>
+                                    <p class="text-[10px] text-slate-500 font-medium" x-text="c.role || 'Parent'"></p>
+                                </div>
+                            </button>
+                        </template>
+                        <a href="/dashboard/invite" class="mt-6 flex items-center justify-center gap-2 p-4 border-2 border-dashed border-slate-200 rounded-2xl text-slate-400 hover:text-orange-600 hover:border-orange-200 transition-all font-bold text-xs uppercase tracking-widest">
+                            <i class="fa-solid fa-user-plus"></i> Inviter un contact
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -678,16 +771,19 @@ $is_rtl = $is_rtl ?? false;
                     <!-- Media Toolbar -->
                     <div x-show="mediaMenuOpen" @click.away="mediaMenuOpen = false" x-transition 
                          class="absolute bottom-20 left-4 bg-white rounded-2xl shadow-2xl border border-slate-100 p-2 flex gap-2 z-[450]">
-                        <button @click="pickFile('image'); mediaMenuOpen = false" class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors">
+                        <button @click="pickFile('image'); mediaMenuOpen = false" class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex flex-col items-center justify-center hover:bg-blue-100 transition-colors">
                             <i class="fa-solid fa-image"></i>
+                            <span class="text-[7px] font-black uppercase mt-1">Image</span>
                         </button>
                         <button @mousedown="startRecording()" @mouseup="stopRecording()" @mouseleave="isRecording && stopRecording()"
                                 :class="isRecording ? 'bg-red-500 text-white animate-pulse' : 'bg-orange-50 text-orange-600'"
-                                class="w-10 h-10 rounded-xl flex items-center justify-center hover:opacity-80 transition-all">
+                                class="w-12 h-12 rounded-xl flex flex-col items-center justify-center hover:opacity-80 transition-all shadow-sm">
                             <i class="fa-solid fa-microphone"></i>
+                            <span class="text-[7px] font-black uppercase mt-1" x-text="isRecording ? 'REC...' : 'Vocal'"></span>
                         </button>
-                        <button @click="pickFile('file'); mediaMenuOpen = false" class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center hover:bg-emerald-100 transition-colors">
+                        <button @click="pickFile('file'); mediaMenuOpen = false" class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex flex-col items-center justify-center hover:bg-emerald-100 transition-colors">
                             <i class="fa-solid fa-folder-open"></i>
+                            <span class="text-[7px] font-black uppercase mt-1">Docs</span>
                         </button>
                     </div>
 
@@ -699,9 +795,17 @@ $is_rtl = $is_rtl ?? false;
                         <div class="relative flex-1">
                             <input type="text" x-model="newMessage" @keydown.enter="sendMessage()" placeholder="Votre message..." 
                                    class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-orange-500 shadow-sm transition-all font-medium">
-                            <button class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-600 transition-colors">
+                            <button @click="emojiPickerOpen = !emojiPickerOpen" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-600 transition-colors">
                                 <i class="fa-regular fa-face-smile text-lg"></i>
                             </button>
+
+                            <!-- Emoji Picker -->
+                            <div x-show="emojiPickerOpen" @click.away="emojiPickerOpen = false" x-transition 
+                                 class="absolute bottom-16 right-0 bg-white shadow-2xl rounded-2xl p-4 grid grid-cols-5 gap-2 border border-slate-100 z-[500] w-64">
+                                <template x-for="e in emojis" :key="e">
+                                    <button @click="addEmoji(e)" class="text-xl hover:scale-125 transition-transform p-1" x-text="e"></button>
+                                </template>
+                            </div>
                         </div>
 
                         <button @click="sendMessage()" class="w-12 h-10 bg-slate-900 text-white rounded-xl hover:bg-orange-600 transition-all shadow-lg flex items-center justify-center">
