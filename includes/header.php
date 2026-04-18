@@ -917,21 +917,15 @@ $is_rtl = $is_rtl ?? false;
                                     <span class="text-[10px] font-bold text-slate-400 mb-1 ml-1" x-text="msg.sender_name || 'Inconnu'"></span>
                                 </template>
 
-                                <div class="flex items-end gap-1.5" :class="msg.sender_id == userId ? 'flex-row-reverse' : 'flex-row'">
-                                    <div class="w-[90%] px-5 py-4 leading-[1.6] tracking-tight font-medium"
+                                <div class="flex items-end gap-1.5" :class="msg.sender_id == userId ? 'flex-row-reverse' : 'flex-row'" style="width: 100% !important;">
+                                    <div class="px-5 py-4 leading-[1.6] tracking-tight font-medium"
+                                         style="width: 90% !important; max-width: 90% !important; font-size: 1.3em !important;"
                                          :class="[
                                             msg.sender_id == userId
-                                                ? 'bg-slate-900 text-white'
-                                                : 'bg-white text-slate-800 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.05)] border border-slate-100',
-                                            isFirstInGroup(index) && isLastInGroup(index) ? 'rounded-3xl' : '',
-                                            isFirstInGroup(index) && !isLastInGroup(index)
-                                                ? (msg.sender_id == userId ? 'rounded-3xl rounded-br-sm' : 'rounded-3xl rounded-bl-sm') : '',
-                                            !isFirstInGroup(index) && !isLastInGroup(index)
-                                                ? (msg.sender_id == userId ? 'rounded-2xl rounded-r-sm' : 'rounded-2xl rounded-l-sm') : '',
-                                            !isFirstInGroup(index) && isLastInGroup(index)
-                                                ? (msg.sender_id == userId ? 'rounded-3xl rounded-tr-sm' : 'rounded-3xl rounded-tl-sm') : ''
+                                                ? 'bg-slate-900 text-white rounded-3xl'
+                                                : 'bg-white text-slate-800 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.05)] border border-slate-100 rounded-3xl'
                                          ]">
-                                        <p x-text="msg.message" class="whitespace-pre-wrap break-words" style="font-family: inherit; font-size: 1.3em;"></p>
+                                        <p x-text="msg.message" class="whitespace-pre-wrap break-words" style="font-family: inherit;"></p>
                                         <template x-if="msg.media_path && msg.message_type === 'image'">
                                             <img :src="msg.media_path" class="rounded-2xl mt-4 cursor-pointer object-cover shadow-sm hover:opacity-95 transition-opacity w-full" @click="window.open(msg.media_path)">
                                         </template>

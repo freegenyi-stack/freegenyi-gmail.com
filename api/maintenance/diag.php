@@ -6,8 +6,22 @@ header('Content-Type: text/html; charset=utf-8');
 echo "<style>body{font-family:monospace;padding:20px;background:#111;color:#eee;} .ok{color:#0f0;} .err{color:#f44;} .warn{color:#fa0;} h2{color:#08f;border-bottom:1px solid #333;}</style>";
 echo "<h1>🔍 FreeGeny Diagnostic</h1>";
 
-// ===== 1. TABLES =====
-echo "<h2>1. Tables existantes</h2>";
+// ===== 0. CONFIG CHECK =====
+echo "<h2>0. Configuration</h2>";
+$env_file = __DIR__ . '/../../.env';
+if (file_exists($env_file)) {
+    $content = file_get_contents($env_file);
+    if (strpos($content, 'HF_API_TOKEN') !== false) {
+        preg_match('/HF_API_TOKEN\s*=\s*(.+)/', $content, $m);
+        $val = trim($m[1] ?? '', " \t\n\r\0\x0B\"'");
+        $masked = substr($val, 0, 8) . '...' . substr($val, -4);
+        echo "<span class='ok'>✅ Fichier .env présent et contient HF_API_TOKEN ($masked)</span><br>";
+    } else {
+        echo "<span class='err'>❌ HF_API_TOKEN absent du fichier .env</span><br>";
+    }
+} else {
+    echo "<span class='err'>❌ Fichier .env INTROUVABLE à: $env_file</span><br>";
+}
 $tables = DB::fetchAll("SHOW TABLES");
 $table_names = [];
 foreach ($tables as $t) {
