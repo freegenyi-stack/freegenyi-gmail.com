@@ -33,7 +33,7 @@ try {
     $_SESSION['family_id'] = $family_id;
     if ($family_id) {
         $partner = DB::fetchOne(
-            "SELECT id, full_name, role, profile_photo, last_login_at, is_online FROM users WHERE family_id = ? AND id != ? LIMIT 1", 
+            "SELECT id, full_name, role, is_online, last_login_at FROM users WHERE family_id = ? AND id != ? LIMIT 1", 
             [$family_id, $user_id]
         );
     }
@@ -165,16 +165,15 @@ require_once __DIR__ . '/../includes/header.php';
                     
                     <?php if ($partner): ?>
                         <div class="flex items-center gap-4 mb-8 p-4 bg-slate-50/50 rounded-2xl border border-slate-100">
-                            <div class="w-12 h-12 rounded-full bg-slate-200 border-2 border-white overflow-hidden shrink-0">
-                                <?php if ($partner['profile_photo']): ?>
-                                    <img src="<?= $partner['profile_photo'] ?>" class="w-full h-full object-cover">
-                                <?php else: ?>
-                                    <div class="w-full h-full flex items-center justify-center font-bold text-slate-400"><?= mb_substr($partner['full_name'], 0, 1) ?></div>
-                                <?php endif; ?>
+                            <div class="w-12 h-12 rounded-full bg-slate-200 border-2 border-white overflow-hidden shrink-0 flex items-center justify-center font-bold text-slate-600 text-lg">
+                                <?= mb_strtoupper(mb_substr($partner['full_name'], 0, 1)) ?>
                             </div>
-                            <div class="min-w-0">
+                            <div class="min-w-0 flex-1">
                                 <p class="text-sm font-black text-slate-900 truncate"><?= htmlspecialchars($partner['full_name']) ?></p>
-                                <p class="text-[9px] font-bold text-orange-600 uppercase tracking-widest"><?= htmlspecialchars($partner['role'] ?? 'Co-Parent') ?></p>
+                                <div class="flex items-center gap-1.5 mt-0.5">
+                                    <span class="w-1.5 h-1.5 rounded-full <?= $partner['is_online'] ? 'bg-green-500' : 'bg-slate-300' ?>"></span>
+                                    <p class="text-[9px] font-bold text-orange-600 uppercase tracking-widest">Co-Parent <?= $partner['is_online'] ? '· En ligne' : '' ?></p>
+                                </div>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-3">

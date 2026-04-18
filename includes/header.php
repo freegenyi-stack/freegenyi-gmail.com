@@ -807,22 +807,15 @@ $is_rtl = $is_rtl ?? false;
                             <div class="max-w-[80%] p-3 rounded-2xl text-sm" 
                                  :class="msg.sender_id == userId ? 'bg-slate-900 text-white rounded-br-none' : 'bg-slate-100 text-slate-800 rounded-bl-none'">
                                 
-                                <template x-if="msg.message_type === 'text'">
-                                    <p x-text="msg.message"></p>
+                                <p x-text="msg.message" class="whitespace-pre-wrap break-words"></p>
+                                <template x-if="msg.media_path && msg.message_type === 'image'">
+                                    <img :src="msg.media_path" class="rounded-xl max-h-60 w-full object-cover cursor-pointer mt-2" @click="window.open(msg.media_path)">
                                 </template>
-
-                                <template x-if="msg.message_type === 'image'">
-                                    <img :src="msg.media_path" class="rounded-xl max-h-60 w-full object-cover cursor-pointer" @click="window.open(msg.media_path)">
+                                <template x-if="msg.media_path && msg.message_type === 'audio'">
+                                    <audio controls class="max-w-full mt-2"><source :src="msg.media_path"></audio>
                                 </template>
-
-                                <template x-if="msg.message_type === 'audio'">
-                                    <audio controls class="max-w-full"><source :src="msg.media_path"></audio>
-                                </template>
-
-                                <template x-if="msg.message_type === 'file'">
-                                    <a :href="msg.media_path" target="_blank" class="flex items-center gap-2 underline">
-                                        <i class="fa-solid fa-file"></i> Fichier joint
-                                    </a>
+                                <template x-if="msg.media_path && msg.message_type === 'file'">
+                                    <a :href="msg.media_path" target="_blank" class="flex items-center gap-2 underline mt-2"><i class="fa-solid fa-file"></i> Fichier joint</a>
                                 </template>
                             </div>
                             <span class="text-[9px] text-slate-400 mt-1" x-text="new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})"></span>
