@@ -8,9 +8,19 @@ class GenyAI {
         $api_token = $_ENV['HF_API_TOKEN'] ?? getenv('HF_API_TOKEN');
         
         if (!$api_token) {
-            $raw_env = @file_get_contents(__DIR__ . '/../../.env');
-            if ($raw_env && preg_match('/^HF_API_TOKEN\s*=\s*(.+)$/m', $raw_env, $m)) {
-                $api_token = trim($m[1], " \t\n\r\0\x0B\"'");
+            $env_file = __DIR__ . '/../../.env';
+            if (file_exists($env_file)) {
+                $lines = @file($env_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+                if ($lines) {
+                    foreach ($lines as $line) {
+                        if (strpos(trim($line), '#') === 0 || !strpos($line, '=')) continue;
+                        $parts = explode('=', $line, 2);
+                        if (trim($parts[0]) === 'HF_API_TOKEN') {
+                            $api_token = trim($parts[1], " \t\n\r\0\x0B\"'");
+                            break;
+                        }
+                    }
+                }
             }
         }
 

@@ -918,7 +918,7 @@ $is_rtl = $is_rtl ?? false;
                                 </template>
 
                                 <div class="flex items-end gap-1.5" :class="msg.sender_id == userId ? 'flex-row-reverse' : 'flex-row'">
-                                    <div class="max-w-[92%] px-5 py-3 text-[16px] leading-[1.6] tracking-tight font-medium"
+                                    <div class="w-[90%] px-5 py-4 leading-[1.6] tracking-tight font-medium"
                                          :class="[
                                             msg.sender_id == userId
                                                 ? 'bg-slate-900 text-white'
@@ -931,12 +931,12 @@ $is_rtl = $is_rtl ?? false;
                                             !isFirstInGroup(index) && isLastInGroup(index)
                                                 ? (msg.sender_id == userId ? 'rounded-3xl rounded-tr-sm' : 'rounded-3xl rounded-tl-sm') : ''
                                          ]">
-                                        <p x-text="msg.message" class="whitespace-pre-wrap break-words" style="font-family: inherit; font-size: 1.05em;"></p>
+                                        <p x-text="msg.message" class="whitespace-pre-wrap break-words" style="font-family: inherit; font-size: 1.3em;"></p>
                                         <template x-if="msg.media_path && msg.message_type === 'image'">
-                                            <img :src="msg.media_path" class="rounded-2xl max-h-[300px] mt-3 cursor-pointer object-cover shadow-sm hover:opacity-95 transition-opacity w-full" @click="window.open(msg.media_path)">
+                                            <img :src="msg.media_path" class="rounded-2xl mt-4 cursor-pointer object-cover shadow-sm hover:opacity-95 transition-opacity w-full" @click="window.open(msg.media_path)">
                                         </template>
                                         <template x-if="msg.media_path && msg.message_type === 'audio'">
-                                            <audio controls class="mt-3 max-w-full rounded-full border border-slate-200/20"><source :src="msg.media_path"></audio>
+                                            <audio controls class="mt-4 w-full rounded-full border border-slate-200/20"><source :src="msg.media_path"></audio>
                                         </template>
                                     </div>
                                 </div>
