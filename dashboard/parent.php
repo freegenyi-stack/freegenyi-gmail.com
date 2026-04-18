@@ -33,7 +33,7 @@ try {
     $_SESSION['family_id'] = $family_id;
     if ($family_id) {
         $partner = DB::fetchOne(
-            "SELECT id, full_name, role, profile_photo, last_login_at FROM users WHERE family_id = ? AND id != ? LIMIT 1", 
+            "SELECT id, full_name, role, profile_photo, last_login_at, is_online FROM users WHERE family_id = ? AND id != ? AND role = 'parent' LIMIT 1", 
             [$family_id, $user_id]
         );
     }

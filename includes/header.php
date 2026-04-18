@@ -622,16 +622,21 @@ $is_rtl = $is_rtl ?? false;
             async openChat(conv) {
                 if (conv.id && conv.id.toString().startsWith('new_')) {
                     const targetUserId = conv.user_id;
-                    const res = await fetch('/api/chat/create_conversation.php', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ target_user_id: targetUserId })
-                    });
-                    const newConv = await res.json();
-                    if (newConv.id) {
-                        conv.id = newConv.id;
-                        conv.type = 'direct';
-                    } else return;
+                    try {
+                        const res = await fetch('/api/chat/create_conversation.php', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ target_user_id: targetUserId })
+                        });
+                        const newConv = await res.json();
+                        if (newConv.id) {
+                            conv.id = newConv.id;
+                            conv.type = 'direct';
+                        } else throw new Error('Failed to create conv');
+                    } catch (e) {
+                        alert('Impossible de créer la discussion');
+                        return;
+                    }
                 }
                 this.currentConv = conv;
                 this.view = 'chat';
