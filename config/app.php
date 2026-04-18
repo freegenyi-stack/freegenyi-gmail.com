@@ -15,8 +15,7 @@ if (!headers_sent()) {
     header("X-Frame-Options: DENY");
     header("X-Content-Type-Options: nosniff");
     header("Referrer-Policy: strict-origin-when-cross-origin");
-    // CSP assouplie pour les CDNs nécessaires
-    header("Content-Security-Policy: default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://fonts.googleapis.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://static.cloudflareinsights.com;");
+    header("Content-Security-Policy: default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://fonts.googleapis.com https://static.cloudflareinsights.com https://cdnjs.cloudflare.com https://assets.mixkit.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://static.cloudflareinsights.com https://api-inference.huggingface.co https://assets.mixkit.co; media-src 'self' https://assets.mixkit.co blob:;");
 }
 
 // PROTECTION CONSTRUCTION (DÉSACTIVÉE TEMPORAIREMENT)
