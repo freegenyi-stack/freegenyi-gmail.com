@@ -645,17 +645,29 @@ $is_rtl = $is_rtl ?? false;
             },
             async loadMessages() {
                 if (!this.currentConv) return;
-                const res = await fetch('/api/chat/get_messages.php?conversation_id=' + this.currentConv.id);
-                const data = await res.json();
-                const newMessages = data.messages || [];
-                
-                if (this.messages.length > 0 && newMessages.length > this.messages.length) {
-                    const last = newMessages[newMessages.length - 1];
-                    if (last.sender_id != this.userId) {
-                        this.sounds.receive.play().catch(() => {});
+                try {
+                    const res = await fetch('/api/chat/get_messages.php?conversation_id=' + this.currentConv.id);
+                    const data = await res.json();
+                    
+                    // Si erreur serveur, on garde les messages déjà affichés
+                    if (data.error) {
+                        console.warn('Chat get_messages error:', data.error, '| conv_id:', this.currentConv.id);
+                        return;
                     }
+                    
+                    const newMessages = data.messages || [];
+                    
+                    if (this.messages.length > 0 && newMessages.length > this.messages.length) {
+                        const last = newMessages[newMessages.length - 1];
+                        if (last.sender_id != this.userId) {
+                            this.sounds.receive.play().catch(() => {});
+                        }
+                    }
+                    this.messages = newMessages;
+                } catch(e) {
+                    console.error('loadMessages network error:', e);
+                    // Garder les messages existants en cas d'erreur réseau
                 }
-                this.messages = newMessages;
             },
             async sendMessage() {
                 if (!this.newMessage.trim()) return;

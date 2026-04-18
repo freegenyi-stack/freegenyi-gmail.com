@@ -39,6 +39,14 @@ try {
     foreach ($cols as $c) echo "<span class='ok'>" . $c['Field'] . " (" . $c['Type'] . ")</span><br>";
 } catch (Exception $e) { echo "<span class='err'>❌ " . $e->getMessage() . "</span>"; }
 
+// ===== 5b. CONVERSATION MEMBERS =====
+echo "<h2>5b. Conversation Members</h2>";
+try {
+    $members = DB::fetchAll("SELECT cm.*, c.type FROM conversation_members cm JOIN conversations c ON c.id = cm.conversation_id ORDER BY cm.conversation_id");
+    if (empty($members)) echo "<span class='warn'>⚠️ Aucun membre en base</span><br>";
+    foreach ($members as $m) echo "<span class='ok'>conv:{$m['conversation_id']} ({$m['type']}) | user:{$m['user_id']}</span><br>";
+} catch (Exception $e) { echo "<span class='err'>❌ " . $e->getMessage() . "</span>"; }
+
 // ===== 5. USERS EN BASE =====
 echo "<h2>5. Utilisateurs (hors Geny)</h2>";
 $users = DB::fetchAll("SELECT id, email, full_name, role, family_id, onboarding_step FROM users WHERE id != 999");
