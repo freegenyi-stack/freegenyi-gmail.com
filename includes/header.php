@@ -691,13 +691,13 @@ $is_rtl = $is_rtl ?? false;
                     await this.loadMessages();
                 } else {
                     const err = await res.json();
-                    console.error("Chat Error:", err);
-                    alert("Erreur envoi: " + (err.error || "Inconnu"));
+                    console.error('Chat Error:', err);
+                    alert('Erreur envoi: ' + (err.error || 'Inconnu'));
                     // On retire le message temporaire en cas d'erreur réelle
                     this.messages = this.messages.filter(m => m.id !== tempId);
                 }
             } catch (e) {
-                console.error("Network Error:", e);
+                console.error('Network Error:', e);
                 this.messages = this.messages.filter(m => m.id !== tempId);
             }
         },
