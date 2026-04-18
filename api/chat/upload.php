@@ -46,9 +46,22 @@ if ($type === 'image' && !in_array(strtolower($extension), $allowedImages)) {
 // 5. Déplacement et insertion en base
 if (move_uploaded_file($file['tmp_name'], $targetPath)) {
     try {
+        // Auto-add message_type and media_path if missing
+        $cols = DB::fetchAll("SHOW COLUMNS FROM chat_messages");
+        $colNames = array_column($cols, 'Field');
+        if (!in_array('message_type', $colNames)) {
+            DB::execute("ALTER TABLE chat_messages ADD message_type VARCHAR(20) DEFAULT 'text' AFTER message");
+        }
+        if (!in_array('media_path', $colNames)) {
+            DB::execute("ALTER TABLE chat_messages ADD media_path VARCHAR(255) DEFAULT NULL AFTER message_type");
+        }
+        if (!in_array('message_status', $colNames)) {
+            DB::execute("ALTER TABLE chat_messages ADD message_status ENUM('sent','delivered','read') DEFAULT 'sent' AFTER is_read");
+        }
+
         $message_id = DB::insert("
-            INSERT INTO chat_messages (conversation_id, sender_id, message, message_type, media_path) 
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO chat_messages (conversation_id, sender_id, message, message_type, media_path, message_status) 
+            VALUES (?, ?, ?, ?, ?, 'sent')
         ", [$conversation_id, $user_id, '', $type, $publicPath]);
 
         jsonResponse([

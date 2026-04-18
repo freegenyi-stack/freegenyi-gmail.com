@@ -5,12 +5,14 @@
 class GenyAI {
     
     public static function getResponse($user_message) {
-        $env = [];
-        $raw_env = @file_get_contents(__DIR__ . '/../../.env');
-        if ($raw_env && preg_match('/HF_API_TOKEN\s*=\s*([^\s\n]+)/', $raw_env, $m)) {
-            $env['HF_API_TOKEN'] = trim($m[1], '"\'');
+        $api_token = $_ENV['HF_API_TOKEN'] ?? getenv('HF_API_TOKEN');
+        
+        if (!$api_token) {
+            $raw_env = @file_get_contents(__DIR__ . '/../../.env');
+            if ($raw_env && preg_match('/HF_API_TOKEN\s*=\s*([^\s\n]+)/', $raw_env, $m)) {
+                $api_token = trim($m[1], '"\'');
+            }
         }
-        $api_token = $env['HF_API_TOKEN'] ?? null;
 
         if (!$api_token) {
             return "Je suis Geny Expert 🎓 – Mon token IA n'est pas configuré. Contactez l'administrateur.";
