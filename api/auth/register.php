@@ -106,15 +106,27 @@ if (!$user_id) {
 // ─── 4. LIAISON PARENTALE (SI INVITATION) ───────────────────────────────────
 $invite_parent_id = (int)($_POST['invite_parent'] ?? 0);
 if ($invite_parent_id > 0) {
-    // 1. On récupère le family_id du parent qui a invité
+    // 1. On s'assure que le parent qui invite a un family_id
     $inviter = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$invite_parent_id]);
-    if ($inviter && $inviter['family_id']) {
-        // 2. On lie le nouvel utilisateur à la même famille et on saute l'onboarding
-        DB::execute("UPDATE users SET family_id = ?, onboarding_step = 4 WHERE id = ?", [$inviter['family_id'], $user_id]);
-        
-        // 3. On lie l'enfant à ce nouveau parent secondaire
-        DB::execute("UPDATE children SET secondary_parent_id = ? WHERE parent_id = ? AND secondary_parent_id IS NULL", [$user_id, $invite_parent_id]);
+    $family_id = $inviter['family_id'] ?? 0;
+    
+    if (!$family_id) {
+        $family_id = rand(200000, 999999);
+        DB::execute("UPDATE users SET family_id = ? WHERE id = ?", [$family_id, $invite_parent_id]);
     }
+
+    // 2. On lie le nouvel utilisateur à la même famille et on saute l'onboarding
+    DB::execute("UPDATE users SET family_id = ?, onboarding_step = 4 WHERE id = ?", [$family_id, $user_id]);
+    
+    // 3. On lie les enfants existants à ce nouveau parent secondaire
+    DB::execute("UPDATE children SET secondary_parent_id = ? WHERE parent_id = ? AND secondary_parent_id IS NULL", [$user_id, $invite_parent_id]);
+
+    // 4. On marque l'invitation comme acceptée
+    DB::execute("UPDATE invitations SET status = 'accepted' WHERE parent_id = ? AND invited_email = ?", [$invite_parent_id, $email]);
+} else {
+    // Créer un family_id par défaut même sans invitation pour éviter les conflits futurs
+    $family_id = rand(100000, 199999);
+    DB::execute("UPDATE users SET family_id = ? WHERE id = ?", [$family_id, $user_id]);
 }
 
 // ─── 5. ENVOI EMAIL VÉRIFICATION ─────────────────────────────────────────────

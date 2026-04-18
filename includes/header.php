@@ -236,11 +236,11 @@ $is_rtl = $is_rtl ?? false;
                                             <p class="text-[10px] font-bold text-slate-600">Parent lié : <span class="text-slate-900"><?= explode(' ', $linked_parent['full_name'])[0] ?></span></p>
                                         </div>
                                         <div class="flex items-center gap-1">
-                                            <button @click.stop="isOpen=true; view='chat'; openChat({id: 'new_<?= $linked_parent['id'] ?>', user_id: '<?= $linked_parent['id'] ?>', name: '<?= htmlspecialchars($linked_parent['full_name']) ?>', type: 'direct'})" 
+                                            <button @click.stop="$dispatch('select-chat', { conv: {id: 'new_<?= $linked_parent['id'] ?>', user_id: '<?= $linked_parent['id'] ?>', name: '<?= htmlspecialchars($linked_parent['full_name']) ?>', type: 'direct'} })" 
                                                     class="w-7 h-7 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 hover:text-orange-600 transition-all hover:bg-white hover:shadow-sm">
                                                 <i class="fa-solid fa-paper-plane text-[9px]"></i>
                                             </button>
-                                            <button @click.stop="isOpen=true; view='chat'; openChat({id: 'new_<?= $linked_parent['id'] ?>', user_id: '<?= $linked_parent['id'] ?>', name: '<?= htmlspecialchars($linked_parent['full_name']) ?>', type: 'direct'})"
+                                            <button @click.stop="$dispatch('select-chat', { conv: {id: 'new_<?= $linked_parent['id'] ?>', user_id: '<?= $linked_parent['id'] ?>', name: '<?= htmlspecialchars($linked_parent['full_name']) ?>', type: 'direct'} })"
                                                     class="w-7 h-7 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-all hover:bg-white hover:shadow-sm">
                                                 <i class="fa-solid fa-microphone text-[9px]"></i>
                                             </button>
@@ -527,6 +527,18 @@ $is_rtl = $is_rtl ?? false;
             receive: new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3')
         },
 
+        init() {
+            this.loadConversations();
+            setInterval(() => {
+                if(this.isOpen) {
+                    if(this.view === 'list') this.loadConversations();
+                    else if(this.currentConv) this.loadMessages();
+                } else {
+                    fetch('/api/auth/heartbeat.php').catch(() => {});
+                }
+            }, 5000);
+        },
+
         addEmoji(e) {
             this.newMessage += e;
             this.emojiPickerOpen = false;
@@ -635,11 +647,13 @@ $is_rtl = $is_rtl ?? false;
             const data = await res.json();
             const newMessages = data.messages || [];
             
-            if (newMessages.length > this.messages.length && this.messages.length > 0) {
-                const lastNew = newMessages[newMessages.length - 1];
-                if (lastNew.sender_id != this.userId) this.sounds.receive.play().catch(() => {});
+            // Si c'est un rechargement et qu'il y a plus de messages
+            if (this.messages.length > 0 && newMessages.length > this.messages.length) {
+                const last = newMessages[newMessages.length - 1];
+                if (last.sender_id != this.userId) {
+                    this.sounds.receive.play().catch(() => {});
+                }
             }
-            
             this.messages = newMessages;
         },
         async sendMessage() {
@@ -665,6 +679,7 @@ $is_rtl = $is_rtl ?? false;
         }
     }"
     @open-chat.window="isOpen = true; loadConversations()"
+    @select-chat.window="isOpen = true; openChat($event.detail.conv)"
     x-show="isOpen"
     x-cloak
     class="fixed inset-0 z-[400] overflow-hidden">

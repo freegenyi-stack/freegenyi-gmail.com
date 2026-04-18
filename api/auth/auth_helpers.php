@@ -9,6 +9,10 @@ function initSession() {
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+    // Heartbeat passif
+    if (isset($_SESSION['user_id'])) {
+        DB::execute("UPDATE users SET is_online = 1, last_login_at = NOW() WHERE id = ?", [$_SESSION['user_id']]);
+    }
 }
 
 // Réponse JSON standardisée pour les APIs
@@ -34,10 +38,10 @@ function loginUser($user) {
     
     // Variables pour le cockpit (Vague 1-3)
     $_SESSION['user_profile_pct'] = (int)($user['profile_completion_pct'] ?? 0);
-    $_SESSION['user_theme'] = json_decode($user['theme_settings'] ?? '{}', true);
-    $_SESSION['user_avatar_config'] = json_decode($user['avatar_config'] ?? '{}', true);
-    
     $_SESSION['user_initials'] = getInitials($user['full_name']);
+
+    // Statut en ligne immédiat
+    DB::execute("UPDATE users SET is_online = 1, last_login_at = NOW() WHERE id = ?", [$user['id']]);
 }
 
 // Pour l'affichage dans le header

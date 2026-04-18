@@ -215,8 +215,12 @@ function selectConversation(conv) {
 
 function loadMessages(convId, isAutoLoad = false) {
     fetch(`/api/chat/get_messages.php?conversation_id=${convId}`)
-        .then(r => r.json())
+        .then(r => {
+            if(!r.ok) console.error("Chat API Error:", r.status);
+            return r.json();
+        })
         .then(data => {
+            console.log("Chat Data Received:", data);
             const messages = data.messages || [];
             const container = document.getElementById('messages-container');
             const shouldScroll = container.scrollTop + container.clientHeight >= container.scrollHeight - 50;
