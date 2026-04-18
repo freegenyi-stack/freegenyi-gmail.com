@@ -187,10 +187,16 @@ $is_rtl = $is_rtl ?? false;
                     $profile_complete = ($_SESSION['user_profile_pct'] ?? 0) >= 100;
                     
                     // Notification count (vague 2) - Sécurisé
-                    $notif_count = 0;
+                    // Notification count (vague 2) + Chat unread count
+                    $notif_total = 0;
                     try {
                         $unread_notifs = DB::fetchOne("SELECT COUNT(*) as total FROM notifications WHERE user_id = ? AND is_read = 0", [$_SESSION['user_id']]);
-                        $notif_count = (int)($unread_notifs['total'] ?? 0);
+                        $unread_msgs = DB::fetchOne("
+                            SELECT COUNT(*) as total FROM chat_messages m
+                            JOIN conversation_members mem ON m.conversation_id = mem.conversation_id
+                            WHERE mem.user_id = ? AND m.sender_id != ? AND m.is_read = 0
+                        ", [$_SESSION['user_id'], $_SESSION['user_id']]);
+                        $notif_total = (int)($unread_notifs['total'] ?? 0) + (int)($unread_msgs['total'] ?? 0);
                     } catch (Throwable $e) {}
                 ?>
                     <div class="relative" x-data="{ userMenuOpen: false }">
@@ -323,9 +329,9 @@ $is_rtl = $is_rtl ?? false;
                     <!-- Chat Trigger (Vague 4) -->
                     <button @click="$dispatch('open-chat')" class="relative p-2 text-slate-500 hover:text-orange-600 transition-colors group">
                         <i class="fa-solid fa-comments text-lg"></i>
-                        <template x-if="notif_count > 0">
+                        <template x-if="<?= $notif_total ?> > 0">
                             <span class="absolute top-1 right-1 w-4 h-4 bg-orange-600 text-[9px] font-bold text-white flex items-center justify-center rounded-full border-2 border-white shadow-sm transition-transform group-hover:scale-110">
-                                <?= $notif_count ?>
+                                <?= $notif_total ?>
                             </span>
                         </template>
                     </button>
@@ -658,17 +664,40 @@ $is_rtl = $is_rtl ?? false;
         },
         async sendMessage() {
             if (!this.newMessage.trim()) return;
-            this.sounds.send.play().catch(() => {});
-            const messageBackup = this.newMessage;
-            const res = await fetch('/api/chat/send_message.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ conversation_id: this.currentConv.id, message: this.newMessage })
+            const text = this.newMessage;
+            
+            // Optimistic UI : Ajout immédiat pour éviter l'effet "disparition"
+            const tempId = Date.now();
+            this.messages.push({
+                id: tempId,
+                sender_id: this.userId,
+                message: text,
+                created_at: new Date().toISOString(),
+                is_temp: true
             });
-            if (res.ok) {
-                this.newMessage = '';
-                await this.loadMessages();
-                this.scrollToBottom();
+            this.newMessage = '';
+            this.scrollToBottom();
+            this.sounds.send.play().catch(() => {});
+
+            try {
+                const res = await fetch('/api/chat/send_message.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ conversation_id: this.currentConv.id, message: text })
+                });
+                
+                if (res.ok) {
+                    await this.loadMessages();
+                } else {
+                    const err = await res.json();
+                    console.error("Chat Error:", err);
+                    alert("Erreur envoi: " + (err.error || "Inconnu"));
+                    // On retire le message temporaire en cas d'erreur réelle
+                    this.messages = this.messages.filter(m => m.id !== tempId);
+                }
+            } catch (e) {
+                console.error("Network Error:", e);
+                this.messages = this.messages.filter(m => m.id !== tempId);
             }
         },
         scrollToBottom() {

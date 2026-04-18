@@ -28,7 +28,9 @@ try {
 // 3. RÉCUPÉRATION DU PARTENAIRE (Co-Parent)
 $partner = null;
 try {
-    $family_id = $_SESSION['family_id'] ?? DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id])['family_id'] ?? null;
+    $user_row = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id]);
+    $family_id = $user_row ? $user_row['family_id'] : 0;
+    $_SESSION['family_id'] = $family_id;
     if ($family_id) {
         $partner = DB::fetchOne(
             "SELECT id, full_name, role, profile_photo, last_login_at FROM users WHERE family_id = ? AND id != ? LIMIT 1", 
