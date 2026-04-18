@@ -518,12 +518,12 @@ $is_rtl = $is_rtl ?? false;
         </div>
     </div>
 
-    <!-- ELITE CHAT PANEL (Vague 4 - Mobile First) -->
+    <!-- ELITE CHAT PANEL - Premium Messenger -->
     <script>
     function eliteChat(userId) {
         return {
-            isOpen: false, 
-            view: 'list', 
+            isOpen: false,
+            view: 'list',
             conversations: [],
             currentConv: null,
             messages: [],
@@ -534,46 +534,95 @@ $is_rtl = $is_rtl ?? false;
             mediaMenuOpen: false,
             userId: userId,
             emojiPickerOpen: false,
+            toast: null,
             emojis: ['😊','😂','❤️','😍','👍','🙌','✨','🔥','🤔','👏','🌟','🎉','🙏','🚀','💡','📚','🎓','🧒','👧','🏠','🌍','🎯','💎'],
             contacts: [],
             sounds: {
-                send: new Audio('https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3'),
-                receive: new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3')
+                send:    new Audio('https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3'),
+                receive: new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3'),
+                notif:   new Audio('https://assets.mixkit.co/active_storage/sfx/1862/1862-preview.mp3')
             },
 
             init() {
                 this.loadConversations();
                 setInterval(() => {
-                    if(this.isOpen) {
-                        if(this.view === 'list') this.loadConversations();
-                        else if(this.currentConv) this.loadMessages();
+                    if (this.isOpen) {
+                        if (this.view === 'list') this.loadConversations();
+                        else if (this.currentConv) this.loadMessages();
                     } else {
-                        fetch('/api/auth/heartbeat.php').catch(() => {});
+                        // Polling discret pour notifications
+                        this.checkNotifications();
+                        fetch('/api/auth/heartbeat.php').catch(()=>{});
                     }
-                }, 5000);
+                }, 4000);
             },
 
-            addEmoji(e) {
-                this.newMessage += e;
-                this.emojiPickerOpen = false;
+            async checkNotifications() {
+                try {
+                    const res = await fetch('/api/chat/get_conversations.php');
+                    if (!res.ok) return;
+                    const data = await res.json();
+                    const convs = data || [];
+                    const totalUnread = convs.reduce((sum, c) => sum + (parseInt(c.unread_count)||0), 0);
+                    // Update badge dans le header
+                    const badge = document.getElementById('chat-badge');
+                    if (badge) {
+                        if (totalUnread > 0) {
+                            badge.textContent = totalUnread;
+                            badge.classList.remove('hidden');
+                        } else {
+                            badge.classList.add('hidden');
+                        }
+                    }
+                    // Toast si nouveau message
+                    if (totalUnread > 0 && !this.isOpen) {
+                        const newConv = convs.find(c => parseInt(c.unread_count) > 0);
+                        if (newConv && this.toast !== newConv.id) {
+                            this.toast = newConv.id;
+                            this.showToast(newConv.name, newConv.last_message);
+                            this.sounds.notif.play().catch(()=>{});
+                        }
+                    }
+                    this.conversations = convs;
+                } catch(e) {}
             },
+
+            showToast(name, msg) {
+                const el = document.createElement('div');
+                el.className = 'fixed bottom-6 left-4 right-4 md:left-auto md:right-6 md:w-80 bg-slate-900 text-white rounded-2xl shadow-2xl p-4 flex items-center gap-3 z-[500] cursor-pointer';
+                el.innerHTML = `
+                    <div class="w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-comment-dots"></i></div>
+                    <div class="min-w-0"><p class="font-bold text-sm truncate">${name}</p><p class="text-xs text-slate-400 truncate">${msg||'Nouveau message'}</p></div>
+                    <button onclick="this.parentElement.remove()" class="ml-auto text-slate-400 hover:text-white shrink-0"><i class="fa-solid fa-xmark"></i></button>
+                `;
+                el.onclick = (e) => {
+                    if (e.target.closest('button')) return;
+                    el.remove();
+                    this.isOpen = true;
+                    this.loadConversations();
+                };
+                document.body.appendChild(el);
+                setTimeout(() => el.remove && el.remove(), 5000);
+            },
+
+            addEmoji(e) { this.newMessage += e; this.emojiPickerOpen = false; },
 
             async openAI() {
                 let aiConv = this.conversations.find(c => c.type === 'ai');
-                if (aiConv) {
-                    this.openChat(aiConv);
-                } else {
+                if (!aiConv) {
                     await this.loadConversations();
                     aiConv = this.conversations.find(c => c.type === 'ai');
-                    if (aiConv) this.openChat(aiConv);
                 }
+                if (aiConv) this.openChat(aiConv);
             },
 
             async loadContacts() {
                 this.view = 'contacts';
-                const res = await fetch('/api/chat/get_conversations.php?type=contacts');
-                const data = await res.json();
-                this.contacts = data.filter(c => c.type !== 'ai'); 
+                try {
+                    const res = await fetch('/api/chat/get_conversations.php?type=contacts');
+                    const data = await res.json();
+                    this.contacts = (data || []).filter(c => c.type !== 'ai');
+                } catch(e) { this.contacts = []; }
             },
 
             async startRecording() {
@@ -583,28 +632,24 @@ $is_rtl = $is_rtl ?? false;
                     this.audioChunks = [];
                     this.mediaRecorder.ondataavailable = e => this.audioChunks.push(e.data);
                     this.mediaRecorder.onstop = async () => {
-                        const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
-                        await this.uploadFile(audioBlob, 'audio');
+                        const blob = new Blob(this.audioChunks, { type: 'audio/webm' });
+                        await this.uploadFile(blob, 'audio');
                     };
                     this.mediaRecorder.start();
                     this.isRecording = true;
-                } catch (err) { alert('Micro non autorisé'); }
+                } catch(err) { alert('Microphone non autorisé'); }
             },
-            async stopRecording() {
-                this.mediaRecorder.stop();
-                this.isRecording = false;
-            },
+            async stopRecording() { if(this.mediaRecorder) { this.mediaRecorder.stop(); this.isRecording = false; } },
+
             async uploadFile(file, type) {
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('conversation_id', this.currentConv.id);
-                formData.append('type', type);
-                
-                const res = await fetch('/api/chat/upload.php', { method: 'POST', body: formData });
-                if (res.ok) {
-                    await this.loadMessages();
-                    this.scrollToBottom();
-                }
+                const fd = new FormData();
+                fd.append('file', file);
+                fd.append('conversation_id', this.currentConv.id);
+                fd.append('type', type);
+                try {
+                    const res = await fetch('/api/chat/upload.php', { method: 'POST', body: fd });
+                    if (res.ok) { await this.loadMessages(); this.scrollToBottom(); }
+                } catch(e) {}
             },
             async pickFile(type) {
                 const input = document.createElement('input');
@@ -615,10 +660,14 @@ $is_rtl = $is_rtl ?? false;
             },
 
             async loadConversations() {
-                const res = await fetch('/api/chat/get_conversations.php');
-                const data = await res.json();
-                this.conversations = data || [];
+                try {
+                    const res = await fetch('/api/chat/get_conversations.php');
+                    if (!res.ok) return;
+                    const data = await res.json();
+                    this.conversations = data || [];
+                } catch(e) {}
             },
+
             async openChat(conv) {
                 if (conv.id && conv.id.toString().startsWith('new_')) {
                     const targetUserId = conv.user_id;
@@ -629,61 +678,51 @@ $is_rtl = $is_rtl ?? false;
                             body: JSON.stringify({ target_user_id: targetUserId })
                         });
                         const newConv = await res.json();
-                        if (newConv.id) {
-                            conv.id = newConv.id;
-                            conv.type = 'direct';
-                        } else throw new Error('Failed to create conv');
-                    } catch (e) {
-                        alert('Impossible de créer la discussion');
+                        if (newConv.id) { conv.id = newConv.id; conv.type = 'direct'; }
+                        else throw new Error('No conv id returned');
+                    } catch(e) {
+                        alert('Impossible de créer la discussion.');
                         return;
                     }
                 }
                 this.currentConv = conv;
                 this.view = 'chat';
+                this.messages = [];
                 await this.loadMessages();
                 this.scrollToBottom();
+                this.toast = null;
             },
+
             async loadMessages() {
                 if (!this.currentConv) return;
                 try {
                     const res = await fetch('/api/chat/get_messages.php?conversation_id=' + this.currentConv.id);
+                    if (!res.ok) { console.warn('get_messages HTTP', res.status); return; }
                     const data = await res.json();
-                    
-                    // Si erreur serveur, on garde les messages déjà affichés
-                    if (data.error) {
-                        console.warn('Chat get_messages error:', data.error, '| conv_id:', this.currentConv.id);
-                        return;
-                    }
-                    
-                    const newMessages = data.messages || [];
-                    
-                    if (this.messages.length > 0 && newMessages.length > this.messages.length) {
-                        const last = newMessages[newMessages.length - 1];
-                        if (last.sender_id != this.userId) {
-                            this.sounds.receive.play().catch(() => {});
+                    if (data.error) { console.warn('get_messages error:', data.error); return; }
+                    const newMsgs = data.messages || [];
+                    // Son de réception si nouveau message d'un autre
+                    if (this.messages.length > 0 && newMsgs.length > this.messages.length) {
+                        const last = newMsgs[newMsgs.length - 1];
+                        if (last && last.sender_id != this.userId) {
+                            this.sounds.receive.play().catch(()=>{});
                         }
                     }
-                    this.messages = newMessages;
-                } catch(e) {
-                    console.error('loadMessages network error:', e);
-                    // Garder les messages existants en cas d'erreur réseau
-                }
+                    this.messages = newMsgs;
+                } catch(e) { console.error('loadMessages error:', e); }
             },
+
             async sendMessage() {
-                if (!this.newMessage.trim()) return;
+                if (!this.newMessage.trim() || !this.currentConv) return;
                 const text = this.newMessage;
-                
-                const tempId = Date.now();
-                this.messages.push({
-                    id: tempId,
-                    sender_id: this.userId,
-                    message: text,
-                    created_at: new Date().toISOString(),
-                    is_temp: true
-                });
+                const tempId = 'temp_' + Date.now();
+                this.messages = [...this.messages, {
+                    id: tempId, sender_id: this.userId, message: text,
+                    created_at: new Date().toISOString(), message_status: 'sending', is_temp: true
+                }];
                 this.newMessage = '';
                 this.scrollToBottom();
-                this.sounds.send.play().catch(() => {});
+                this.sounds.send.play().catch(()=>{});
 
                 try {
                     const res = await fetch('/api/chat/send_message.php', {
@@ -691,24 +730,59 @@ $is_rtl = $is_rtl ?? false;
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ conversation_id: this.currentConv.id, message: text })
                     });
-                    
-                    if (res.ok) {
+                    const result = await res.json();
+                    if (res.ok && result.success) {
                         await this.loadMessages();
+                        this.scrollToBottom();
                     } else {
-                        const err = await res.json();
-                        console.error('Chat Error:', err);
+                        console.error('Send error:', result);
                         this.messages = this.messages.filter(m => m.id !== tempId);
+                        alert('Erreur: ' + (result.error || 'Inconnu'));
                     }
-                } catch (e) {
-                    console.error('Network Error:', e);
+                } catch(e) {
                     this.messages = this.messages.filter(m => m.id !== tempId);
                 }
             },
+
+            // Retourne l'icône de statut du message
+            statusIcon(msg) {
+                if (msg.is_temp || msg.message_status === 'sending') return '🕐';
+                if (msg.message_status === 'read') return '✓✓';
+                if (msg.message_status === 'delivered') return '✓✓';
+                return '✓';
+            },
+            statusClass(msg) {
+                if (msg.message_status === 'read') return 'text-blue-400';
+                return 'text-slate-400';
+            },
+
+            // Grouper les messages par expéditeur consécutif
+            isFirstInGroup(index) {
+                if (index === 0) return true;
+                return this.messages[index].sender_id !== this.messages[index-1].sender_id;
+            },
+            isLastInGroup(index) {
+                if (index === this.messages.length - 1) return true;
+                return this.messages[index].sender_id !== this.messages[index+1].sender_id;
+            },
+
+            // Afficher le timestamp uniquement si > 5 min depuis le message précédent
+            showTimestamp(index) {
+                if (index === 0) return true;
+                const curr = new Date(this.messages[index].created_at);
+                const prev = new Date(this.messages[index-1].created_at);
+                return (curr - prev) > 5 * 60 * 1000;
+            },
+
+            formatTime(dt) {
+                return new Date(dt).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+            },
+
             scrollToBottom() {
                 setTimeout(() => {
                     const el = this.$refs.msgContainer;
                     if (el) el.scrollTop = el.scrollHeight;
-                }, 100);
+                }, 80);
             }
         };
     }
@@ -813,24 +887,80 @@ $is_rtl = $is_rtl ?? false;
 
             <!-- Chat View -->
             <div x-show="view === 'chat'" class="flex-1 flex flex-col overflow-hidden">
-                <div class="flex-1 overflow-y-auto p-5 space-y-4 custom-scroll" x-ref="msgContainer">
-                    <template x-for="msg in messages" :key="msg.id">
-                        <div class="flex flex-col" :class="msg.sender_id == userId ? 'items-end' : 'items-start'">
-                            <div class="max-w-[80%] p-3 rounded-2xl text-sm" 
-                                 :class="msg.sender_id == userId ? 'bg-slate-900 text-white rounded-br-none' : 'bg-slate-100 text-slate-800 rounded-bl-none'">
-                                
-                                <p x-text="msg.message" class="whitespace-pre-wrap break-words"></p>
-                                <template x-if="msg.media_path && msg.message_type === 'image'">
-                                    <img :src="msg.media_path" class="rounded-xl max-h-60 w-full object-cover cursor-pointer mt-2" @click="window.open(msg.media_path)">
+                <!-- Conversation Header -->
+                <div x-show="currentConv" class="px-5 py-3 border-b border-slate-100 bg-white flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center text-white shrink-0 relative"
+                         :class="currentConv && currentConv.type === 'ai' ? 'bg-orange-600' : 'bg-slate-700'">
+                        <i :class="currentConv && currentConv.type === 'ai' ? 'fa-solid fa-robot text-sm' : 'fa-solid fa-user text-sm'"></i>
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-white"
+                              :class="currentConv && (currentConv.type === 'ai' || currentConv.is_online == 1) ? 'bg-green-500' : 'bg-slate-300'"></span>
+                    </div>
+                    <div>
+                        <p class="text-sm font-black text-slate-900" x-text="currentConv ? currentConv.name : ''"></p>
+                        <p class="text-[10px] text-slate-400" x-text="currentConv && (currentConv.type === 'ai' || currentConv.is_online == 1) ? 'En ligne' : 'Hors ligne'"></p>
+                    </div>
+                </div>
+
+                <div class="flex-1 overflow-y-auto p-4 space-y-1 custom-scroll" x-ref="msgContainer" style="background: #f8fafc;">
+                    <template x-for="(msg, index) in messages" :key="msg.id">
+                        <div>
+                            <!-- Séparateur de temps -->
+                            <template x-if="showTimestamp(index)">
+                                <div class="flex items-center gap-3 my-3">
+                                    <div class="flex-1 h-px bg-slate-200"></div>
+                                    <span class="text-[10px] text-slate-400 font-bold shrink-0" x-text="formatTime(msg.created_at)"></span>
+                                    <div class="flex-1 h-px bg-slate-200"></div>
+                                </div>
+                            </template>
+
+                            <div class="flex flex-col" :class="msg.sender_id == userId ? 'items-end' : 'items-start'">
+                                <!-- Nom expéditeur (premier de group, conv directe) -->
+                                <template x-if="isFirstInGroup(index) && msg.sender_id != userId && currentConv && currentConv.type !== 'ai'">
+                                    <span class="text-[10px] font-bold text-slate-400 mb-1 ml-1" x-text="msg.sender_name || 'Inconnu'"></span>
                                 </template>
-                                <template x-if="msg.media_path && msg.message_type === 'audio'">
-                                    <audio controls class="max-w-full mt-2"><source :src="msg.media_path"></audio>
-                                </template>
-                                <template x-if="msg.media_path && msg.message_type === 'file'">
-                                    <a :href="msg.media_path" target="_blank" class="flex items-center gap-2 underline mt-2"><i class="fa-solid fa-file"></i> Fichier joint</a>
+
+                                <div class="flex items-end gap-1.5" :class="msg.sender_id == userId ? 'flex-row-reverse' : 'flex-row'">
+                                    <div class="max-w-[78%] px-4 py-2.5 text-sm leading-relaxed"
+                                         :class="[
+                                            msg.sender_id == userId
+                                                ? 'bg-slate-900 text-white'
+                                                : 'bg-white text-slate-800 shadow-sm border border-slate-100',
+                                            isFirstInGroup(index) && isLastInGroup(index) ? 'rounded-2xl' : '',
+                                            isFirstInGroup(index) && !isLastInGroup(index)
+                                                ? (msg.sender_id == userId ? 'rounded-2xl rounded-br-sm' : 'rounded-2xl rounded-bl-sm') : '',
+                                            !isFirstInGroup(index) && !isLastInGroup(index)
+                                                ? (msg.sender_id == userId ? 'rounded-xl rounded-r-sm' : 'rounded-xl rounded-l-sm') : '',
+                                            !isFirstInGroup(index) && isLastInGroup(index)
+                                                ? (msg.sender_id == userId ? 'rounded-2xl rounded-tr-sm' : 'rounded-2xl rounded-tl-sm') : ''
+                                         ]">
+                                        <p x-text="msg.message" class="whitespace-pre-wrap break-words"></p>
+                                        <template x-if="msg.media_path && msg.message_type === 'image'">
+                                            <img :src="msg.media_path" class="rounded-xl max-h-48 mt-2 cursor-pointer" @click="window.open(msg.media_path)">
+                                        </template>
+                                        <template x-if="msg.media_path && msg.message_type === 'audio'">
+                                            <audio controls class="mt-2 max-w-full"><source :src="msg.media_path"></audio>
+                                        </template>
+                                    </div>
+                                </div>
+
+                                <!-- Statut + heure (dernier de group, mes messages) -->
+                                <template x-if="isLastInGroup(index) && msg.sender_id == userId">
+                                    <div class="flex items-center gap-1 mt-0.5 mr-1">
+                                        <span class="text-[10px]" :class="statusClass(msg)" x-text="statusIcon(msg)"></span>
+                                    </div>
                                 </template>
                             </div>
-                            <span class="text-[9px] text-slate-400 mt-1" x-text="new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})"></span>
+                        </div>
+                    </template>
+
+                    <!-- Empty state -->
+                    <template x-if="messages.length === 0">
+                        <div class="flex flex-col items-center justify-center h-full py-16 text-center">
+                            <div class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-comment-dots text-2xl text-orange-300"></i>
+                            </div>
+                            <p class="text-slate-400 font-bold text-sm">Démarrez la conversation</p>
+                            <p class="text-slate-300 text-xs mt-1">Votre premier message sera envoyé instantanément</p>
                         </div>
                     </template>
                 </div>
