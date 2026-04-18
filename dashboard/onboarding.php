@@ -68,7 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['child_name'])) {
         DB::execute("UPDATE users SET family_id = ? WHERE id = ? AND family_id IS NULL", [$new_family_id, $user_id]);
         
         // On récupère le family_id actuel (soit le nouveau, soit celui déjà présent)
-        $current_family_id = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id])['family_id'];
+        $user_data = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$user_id]);
+        $current_family_id = $user_data ? $user_data['family_id'] : 0;
 
         // 2. INSÉRER L'ENFANT
         DB::execute("INSERT INTO children (parent_id, first_name, age, country, grade_level, school_name) VALUES (?, ?, ?, ?, ?, ?)", [$user_id, $child_name, $age, $cnt, $lvl, $school]);
