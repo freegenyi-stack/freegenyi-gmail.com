@@ -15,8 +15,6 @@ $is_rtl = $is_rtl ?? false;
     ?>
     <title><?= htmlspecialchars($seo_title) ?></title>
     <meta name="description" content="<?= htmlspecialchars($seo_desc) ?>">
-    
-    <!-- URL Canonique -->
     <link rel="canonical" href="<?= $current_url ?>">
 
     <!-- Hreflang Tags (International SEO Parfait) -->
@@ -43,7 +41,10 @@ $is_rtl = $is_rtl ?? false;
     
     <!-- Polices premium -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Luxury Emoji Library -->
+    <script src="https://cdn.jsdelivr.net/npm/picmo@latest/dist/umd/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@picmo/renderer@latest/dist/umd/index.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png?v=4.0">
     
@@ -124,6 +125,7 @@ $is_rtl = $is_rtl ?? false;
         }
         .text-orange-600, .hover\:text-orange-600:hover { color: var(--primary-color) !important; }
         .bg-orange-600, .hover\:bg-orange-600:hover { background-color: var(--primary-color) !important; }
+        .picker { --font: 'Inter', sans-serif; }
     </style>
     <?php endif; ?>
 </head>
@@ -550,6 +552,7 @@ $is_rtl = $is_rtl ?? false;
                 receive: new Audio('https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3'), // Beep-beep pour la réception
                 notif:   new Audio('https://assets.mixkit.co/active_storage/sfx/1862/1862-preview.mp3')  // Sonnette notif
             },
+            toast: null,
             recordingTime: 0,
             recordingInterval: null,
 
@@ -560,11 +563,28 @@ $is_rtl = $is_rtl ?? false;
                         if (this.view === 'list') this.loadConversations();
                         else if (this.currentConv) this.loadMessages();
                     } else {
-                        // Polling discret pour notifications
                         this.checkNotifications();
                         fetch('/api/auth/heartbeat.php').catch(()=>{});
                     }
                 }, 4000);
+
+                // Initialize Picmo (Professional Luxury Emoji Picker)
+                setTimeout(() => {
+                    const container = document.getElementById('emoji-picker-container');
+                    if (container && window.picmo) {
+                        this.picker = picmo.createPicker({
+                            rootElement: container,
+                            showSearch: true,
+                            showPreview: false,
+                            emojiSize: '1.8rem',
+                            width: '100%',
+                            height: '350px'
+                        });
+                        this.picker.addEventListener('emoji:select', (selection) => {
+                            this.newMessage += selection.emoji;
+                        });
+                    }
+                }, 1000);
             },
 
             async checkNotifications() {
@@ -974,18 +994,24 @@ $is_rtl = $is_rtl ?? false;
                                             <img :src="msg.media_path" class="rounded-xl mt-3 cursor-pointer object-cover shadow-sm hover:opacity-95 transition-opacity w-full" @click="window.open(msg.media_path)">
                                         </template>
                                         <template x-if="msg.media_path && msg.message_type === 'audio'">
-                                            <div class="flex items-center gap-3 mt-2 min-w-[200px]">
-                                                <button @click="$el.nextElementSibling.paused ? $el.nextElementSibling.play() : $el.nextElementSibling.pause()" 
-                                                        class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                                                        :class="msg.sender_id == userId ? 'bg-white/20 text-white' : 'bg-orange-600 text-white'">
-                                                    <i class="fa-solid fa-play text-xs"></i>
+                                            <div class="flex items-center gap-3 mt-2 min-w-[210px] bg-black/5 p-2 rounded-2xl border border-white/10" x-data="{ playing: false, progress: 0 }">
+                                                <button @click="const aud = $el.parentElement.querySelector('audio'); if(aud.paused) { aud.play(); playing=true; } else { aud.pause(); playing=false; }" 
+                                                        class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all hover:scale-110 active:scale-95 shadow-sm"
+                                                        :class="msg.sender_id == userId ? 'bg-white text-[#0084ff]' : 'bg-[#0084ff] text-white'">
+                                                    <i class="fa-solid" :class="playing ? 'fa-pause' : 'fa-play'"></i>
                                                 </button>
                                                 <div class="flex-1">
-                                                    <div class="h-1 bg-current opacity-20 rounded-full w-full mb-1"></div>
-                                                    <p class="text-[9px] font-bold uppercase opacity-60">Message Vocal</p>
+                                                    <div class="h-1 bg-current opacity-20 rounded-full w-full mb-1 relative overflow-hidden">
+                                                        <div class="absolute inset-0 bg-current transition-all duration-300" :style="'width: ' + progress + '%'"></div>
+                                                    </div>
+                                                    <p class="text-[9px] font-black uppercase tracking-widest opacity-60">Message Vocal</p>
                                                 </div>
-                                                <audio class="hidden" @play="$el.previousElementSibling.previousElementSibling.innerHTML='<i class=\"fa-solid fa-pause text-xs\"></i>'" @pause="$el.previousElementSibling.previousElementSibling.innerHTML='<i class=\"fa-solid fa-play text-xs\"></i>'">
-                                                    <source :src="msg.media_path">
+                                                <audio class="hidden" 
+                                                       :src="msg.media_path"
+                                                       preload="auto"
+                                                       @timeupdate="progress = ($el.currentTime / $el.duration) * 100"
+                                                       @ended="playing = false; progress = 0" 
+                                                       @pause="playing = false">
                                                 </audio>
                                             </div>
                                         </template>
@@ -1053,28 +1079,10 @@ $is_rtl = $is_rtl ?? false;
                                 <i class="fa-regular fa-face-smile text-lg"></i>
                             </button>
 
-                            <!-- Professional Emoji Picker -->
+                            <!-- Luxury Emoji Picker (Picmo) -->
                             <div x-show="emojiPickerOpen" @click.away="emojiPickerOpen = false" x-transition 
-                                 class="absolute bottom-16 right-0 bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] w-[320px] overflow-hidden flex flex-col">
-                                <div class="px-4 py-3 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
-                                    <span class="text-[10px] font-black uppercase text-slate-400 tracking-widest" x-text="emojiCategory"></span>
-                                    <button @click="emojiPickerOpen = false" class="text-slate-400 hover:text-slate-900"><i class="fa-solid fa-xmark"></i></button>
-                                </div>
-                                <!-- Categories Nav -->
-                                <div class="flex overflow-x-auto p-2 gap-1 border-b border-slate-50 custom-scroll bg-white">
-                                    <template x-for="(list, cat) in emojis">
-                                        <button @click="emojiCategory = cat" 
-                                                class="px-3 py-1.5 rounded-xl text-[10px] font-bold whitespace-nowrap transition-all"
-                                                :class="emojiCategory === cat ? 'bg-orange-600 text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
-                                                x-text="cat"></button>
-                                    </template>
-                                </div>
-                                <!-- Emojis Grid -->
-                                <div class="p-3 grid grid-cols-6 gap-1 max-h-[250px] overflow-y-auto custom-scroll bg-white">
-                                    <template x-for="e in emojis[emojiCategory]" :key="e">
-                                        <button @click="addEmoji(e)" class="text-2xl hover:scale-125 transition-transform p-1 rounded-lg hover:bg-slate-50" x-text="e"></button>
-                                    </template>
-                                </div>
+                                 class="absolute bottom-16 right-0 bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] w-[350px] overflow-hidden flex flex-col">
+                                <div id="emoji-picker-container"></div>
                             </div>
                         </div>
 
