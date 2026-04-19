@@ -43,8 +43,7 @@ $is_rtl = $is_rtl ?? false;
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Luxury Emoji Library -->
-    <script src="https://cdn.jsdelivr.net/npm/picmo@latest/dist/umd/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@picmo/renderer@latest/dist/umd/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png?v=4.0">
     
@@ -569,22 +568,20 @@ $is_rtl = $is_rtl ?? false;
                 }, 4000);
             },
 
-            initPicmo() {
+            initEmojiPicker() {
                 setTimeout(() => {
                     const container = document.getElementById('emoji-picker-container');
-                    if (container && window.picmo && !this.picker) {
-                        this.picker = picmo.createPicker({
-                            rootElement: container,
-                            showSearch: true,
-                            showPreview: false,
-                            emojiSize: '1.5rem',
-                            categories: ['smileys-emotion', 'people-body', 'animals-nature', 'food-drink', 'activities', 'travel-places', 'objects', 'symbols', 'flags'],
-                            width: '100%',
-                            height: '350px'
+                    if (container && window.EmojiMart && !this.picker) {
+                        this.picker = new window.EmojiMart.Picker({
+                            onEmojiSelect: (selection) => {
+                                this.newMessage += selection.native;
+                            },
+                            locale: 'fr',
+                            theme: 'light',
+                            navPosition: 'bottom',
+                            previewPosition: 'none'
                         });
-                        this.picker.addEventListener('emoji:select', (selection) => {
-                            this.newMessage += selection.emoji;
-                        });
+                        container.appendChild(this.picker);
                     }
                 }, 50);
             },
@@ -1077,13 +1074,13 @@ $is_rtl = $is_rtl ?? false;
 
                             <input type="text" x-model="newMessage" @keydown.enter="sendMessage()" placeholder="Votre message..." 
                                    class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-orange-500 shadow-sm transition-all font-medium">
-                            <button @click="emojiPickerOpen = !emojiPickerOpen; if(emojiPickerOpen) initPicmo();" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-600 transition-colors">
+                            <button @click="emojiPickerOpen = !emojiPickerOpen; if(emojiPickerOpen) initEmojiPicker();" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-600 transition-colors">
                                 <i class="fa-regular fa-face-smile text-lg"></i>
                             </button>
 
-                            <!-- Luxury Emoji Picker (Picmo) -->
+                            <!-- Luxury Emoji Picker (Emoji Mart) -->
                             <div x-show="emojiPickerOpen" @click.away="emojiPickerOpen = false" x-transition 
-                                 class="absolute bottom-16 right-0 bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] w-[350px] overflow-hidden flex flex-col">
+                                 class="absolute bottom-16 right-0 bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] overflow-hidden flex flex-col">
                                 <div id="emoji-picker-container"></div>
                             </div>
                         </div>
