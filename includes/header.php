@@ -932,7 +932,10 @@ $is_rtl = $is_rtl ?? false;
                                     <span class="font-bold text-slate-900 text-sm" x-text="conv.name || (conv.type === 'ai' ? 'Geny Expert 🤖' : 'Ma Famille')"></span>
                                     <span class="text-[10px] text-slate-400" x-text="conv.last_message_at ? new Date(conv.last_message_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : ''"></span>
                                 </div>
-                                <p class="text-xs text-slate-500 truncate" x-text="conv.last_message || (conv.type === 'ai' ? 'Posez-moi une question...' : 'Démarrer la discussion...')"></p>
+                                <div class="flex items-center gap-2">
+                                    <p class="text-[10px] font-bold tracking-widest uppercase" :class="(conv.is_online == 1 || conv.type === 'ai') ? 'text-green-500' : 'text-slate-400'" x-text="(conv.is_online == 1 || conv.type === 'ai') ? 'En Ligne' : 'Hors ligne'"></p>
+                                    <p class="text-xs text-slate-500 truncate" x-text="'• ' + (conv.last_message || (conv.type === 'ai' ? 'Posez-moi une question...' : 'Démarrer la discussion...'))"></p>
+                                </div>
                             </div>
                         </button>
                     </template>
@@ -1098,10 +1101,9 @@ $is_rtl = $is_rtl ?? false;
                             <div x-show="emojiPickerOpen" @click.away="emojiPickerOpen = false" x-transition.opacity 
                                  class="fixed bottom-[90px] left-[50%] -translate-x-[50%] sm:absolute sm:bottom-[calc(100%+10px)] sm:right-0 sm:left-auto sm:translate-x-0 
                                         bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] 
-                                        w-[calc(100vw-2rem)] sm:w-[350px] overflow-hidden flex flex-col"
-                                 style="max-height: 400px; max-height: min(400px, 60vh);">
+                                        w-[300px] h-[350px] overflow-hidden flex flex-col">
                                 <style>
-                                    em-emoji-picker { width: 100% !important; height: 100% !important; max-height: 100% !important; }
+                                    em-emoji-picker { width: 100% !important; height: 100% !important; }
                                 </style>
                                 <div id="emoji-picker-container" class="w-full h-full"></div>
                             </div>
