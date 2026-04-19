@@ -567,16 +567,18 @@ $is_rtl = $is_rtl ?? false;
                         fetch('/api/auth/heartbeat.php').catch(()=>{});
                     }
                 }, 4000);
+            },
 
-                // Initialize Picmo (Professional Luxury Emoji Picker)
+            initPicmo() {
                 setTimeout(() => {
                     const container = document.getElementById('emoji-picker-container');
-                    if (container && window.picmo) {
+                    if (container && window.picmo && !this.picker) {
                         this.picker = picmo.createPicker({
                             rootElement: container,
                             showSearch: true,
                             showPreview: false,
-                            emojiSize: '1.8rem',
+                            emojiSize: '1.5rem',
+                            categories: ['smileys-emotion', 'people-body', 'animals-nature', 'food-drink', 'activities', 'travel-places', 'objects', 'symbols', 'flags'],
                             width: '100%',
                             height: '350px'
                         });
@@ -584,7 +586,7 @@ $is_rtl = $is_rtl ?? false;
                             this.newMessage += selection.emoji;
                         });
                     }
-                }, 1000);
+                }, 50);
             },
 
             async checkNotifications() {
@@ -1075,7 +1077,7 @@ $is_rtl = $is_rtl ?? false;
 
                             <input type="text" x-model="newMessage" @keydown.enter="sendMessage()" placeholder="Votre message..." 
                                    class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-orange-500 shadow-sm transition-all font-medium">
-                            <button @click="emojiPickerOpen = !emojiPickerOpen" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-600 transition-colors">
+                            <button @click="emojiPickerOpen = !emojiPickerOpen; if(emojiPickerOpen) initPicmo();" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-600 transition-colors">
                                 <i class="fa-regular fa-face-smile text-lg"></i>
                             </button>
 
