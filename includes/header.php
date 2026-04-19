@@ -533,7 +533,17 @@ $is_rtl = $is_rtl ?? false;
             userId: userId,
             emojiPickerOpen: false,
             toast: null,
-            emojis: ['😊','😂','❤️','😍','👍','🙌','✨','🔥','🤔','👏','🌟','🎉','🙏','🚀','💡','📚','🎓','🧒','👧','🏠','🌍','🎯','💎'],
+            emojis: {
+                'Visages': ['😊','😂','❤️','😍','👍','🙌','✨','🔥','🤔','👏','🌟','🎉','🙏','🚀','💡','📚','🎓','🧒','👧','🏠','🌍','🎯','💎','😎','🥰','🤩','😏','🙄','🤣','😭','😱','😡','🤡','👻','🎃','👽','👾','🤖','😺','😸','😻','😼','😽','🙀','😿','😾'],
+                'Gestes': ['👋','🤚','🖐️','✋','🖖','👌','🤏','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','🖕','👇','☝️','👍','👎','✊','👊','🤛','🤜','👏','🙌','👐','🤲','🤝','💪','🦾','👂','👃','🧠','👀','👅','👄'],
+                'Activités': ['⚽','🏀','🏈','⚾','🥎','🎾','🏐','🏉','🎱','🏓','🏸','🥅','⛳','🏹','Fishing','🥊','🥋','⛸️','🎿','🛹','🏋️','🤸','⛹️','🏌️','🏇','🧘','🏂','🏄','🏊','🤽','🚣','🧗','🚴'],
+                'Animaux': ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐨','🐯','🦁','🐮','🐷','🐵','🐒','🦍','🐕','🐩','🐺','🐈','🐅','🐆','🐴','🦄','🦓','🦌','🦬','🐂','🐏','🐑','🐐','🐪','🦒','🐘','🦏','🦛','🐁','🐇','🐿️','🦫','🦇','🦥','🦦','🦘','🐾','🐔','🐓','🐣','🐤','🐦','🐧','🕊️','🦅','🦆','🦉','🦩','🦚','parrot','🐸','🐊','🐢','🐍','🐲','🐳','🐬','🐟','🐠','🦈','🐙','🐚','🐌','🦋','🐝','🐞','🦗','🕷️','🦂','🦟','🦠'],
+                'Nourriture': ['🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍒','🍑','🥭','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥬','🥒','🌽','🥕','🧄','🥔','🥐','🍞','🥖','🥨','🥯','🧀','🥚','🍳','🧈','🥓','🥩','🍗','🍔','🍟','🍕','🥪','🌮','🌯','🥗','🍲','🍛','🍣','🍱','🥟','🍤','🍙','🍚','🍦','🥧','🧁','🍰','🎂','🍭','🍬','🍫','🍿','🍩','🍪','🌰','🥜','🍯','🥛','☕','🍵','🍹','🍾','🧊'],
+                'Voyage': ['🚗','🚕','🚙','🚌','🏎️','🚓','🚑','🚒','🚐','🚚','🚜','🚲','🛵','🏍️','🚨','🚔','✈️','🛫','🛬','🛰️','🚀','🛸','🚁','🛶','⛵','🚤','🛥️','🚢','⚓','⛽','🗺️','🗿','🗽','🗼','🏰','🏟️','🎡','🎢','🎠','⛲','⛱️','🏖️','🏝️','🌋','🏔️','⛰️','🏕️','🏠','🏡','🏢','🏤','🏥','🏦','🏨','🏪','🏫','🏛️','⛪','🕌','🕍','🕋','⛩️'],
+                'Objets': ['⌚','📱','📲','💻','⌨️','🖱️','🕹️','💽','💾','💿','📀','📼','📷','📸','📹','🎥','📽️','🎞️','📞','☎️','📺','📻','🎙️','🎚️','🎛️','🧭','⏱️','⏲️','⏰','⏳','⌛','📡','🔋','🔌','💡','🔦','🕯️','🪔','🧯','🛢️','💸','💵','💴','💶','💷','🪙','💰','💳','💎','⚖️','🪜','🧰','🪛','🔧','🔨','⚒️','🛠️','⛏️','🪓','🔬','🔭','🩺','🩹','💊','💉','🩸','🧬','🌡️','🧹','🪠','🧺','🧻','🧼','🪣','🧽','🪤','🪒','🧴','🧷'],
+                'Symboles': ['❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💔','❣️','💕','💞','💓','💗','💖','💘','💝','💟','☮️','✝️','☪️','🕉️','☸️','✡️','🔯','🕎','☯️','☦️','⛎','♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓','🆔','⚛️','🉑','☢️','☣️','📴','📳','🈶','🈚','✴️','🆚','💮','🉐','㊙️','㊗️','🈴','🈵','🈹','🈲','🅰️','🅱️','🆎','🆑','🅾️','🆘','❌','⭕','🛑','⛔','📛','🚫','💯','💢','♨️','🚷','🚯','🚳','🚱','🔞','📵','🚭','❗','❕','❓','❔','‼️','⁉️','🔅','🔆','〽️','⚠️','🚸','🔱','⚜️','🔰','♻️','✅','🈯','💹','❇️','✳️','❎','🌐','💠','🌀','💤','🏧','🚾','♿','🅿️','🚼','🚻','🚮','🚰','🛂','🛃','🛄','🛅','🔃','🔄','🔙','🔚','🔛','🔜','🔝']
+            },
+            emojiCategory: 'Visages',
             contacts: [],
             sounds: {
                 send:    new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3'), // Pop pour l'envoi
@@ -605,7 +615,7 @@ $is_rtl = $is_rtl ?? false;
                 setTimeout(() => el.remove && el.remove(), 5000);
             },
 
-            addEmoji(e) { this.newMessage += e; this.emojiPickerOpen = false; },
+            addEmoji(e) { this.newMessage += e; },
 
             async openAI() {
                 let aiConv = this.conversations.find(c => c.type === 'ai');
@@ -667,12 +677,18 @@ $is_rtl = $is_rtl ?? false;
 
             async uploadFile(file, type) {
                 const fd = new FormData();
-                fd.append('file', file);
+                // Important: specify filename for Blobs so PHP can detect extension
+                const filename = type === 'audio' ? 'vocal.webm' : (file.name || 'upload');
+                fd.append('file', file, filename);
                 fd.append('conversation_id', this.currentConv.id);
                 fd.append('type', type);
                 try {
                     const res = await fetch('/api/chat/upload.php', { method: 'POST', body: fd });
-                    if (res.ok) { await this.loadMessages(); this.scrollToBottom(); }
+                    if (res.ok) { 
+                        this.sounds.send.play().catch(()=>{});
+                        await this.loadMessages(); 
+                        this.scrollToBottom(); 
+                    }
                 } catch(e) {}
             },
             async pickFile(type) {
@@ -1037,12 +1053,28 @@ $is_rtl = $is_rtl ?? false;
                                 <i class="fa-regular fa-face-smile text-lg"></i>
                             </button>
 
-                            <!-- Emoji Picker -->
+                            <!-- Professional Emoji Picker -->
                             <div x-show="emojiPickerOpen" @click.away="emojiPickerOpen = false" x-transition 
-                                 class="absolute bottom-16 right-0 bg-white shadow-2xl rounded-2xl p-4 grid grid-cols-5 gap-2 border border-slate-100 z-[500] w-64">
-                                <template x-for="e in emojis" :key="e">
-                                    <button @click="addEmoji(e)" class="text-xl hover:scale-125 transition-transform p-1" x-text="e"></button>
-                                </template>
+                                 class="absolute bottom-16 right-0 bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] w-[320px] overflow-hidden flex flex-col">
+                                <div class="px-4 py-3 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
+                                    <span class="text-[10px] font-black uppercase text-slate-400 tracking-widest" x-text="emojiCategory"></span>
+                                    <button @click="emojiPickerOpen = false" class="text-slate-400 hover:text-slate-900"><i class="fa-solid fa-xmark"></i></button>
+                                </div>
+                                <!-- Categories Nav -->
+                                <div class="flex overflow-x-auto p-2 gap-1 border-b border-slate-50 custom-scroll bg-white">
+                                    <template x-for="(list, cat) in emojis">
+                                        <button @click="emojiCategory = cat" 
+                                                class="px-3 py-1.5 rounded-xl text-[10px] font-bold whitespace-nowrap transition-all"
+                                                :class="emojiCategory === cat ? 'bg-orange-600 text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
+                                                x-text="cat"></button>
+                                    </template>
+                                </div>
+                                <!-- Emojis Grid -->
+                                <div class="p-3 grid grid-cols-6 gap-1 max-h-[250px] overflow-y-auto custom-scroll bg-white">
+                                    <template x-for="e in emojis[emojiCategory]" :key="e">
+                                        <button @click="addEmoji(e)" class="text-2xl hover:scale-125 transition-transform p-1 rounded-lg hover:bg-slate-50" x-text="e"></button>
+                                    </template>
+                                </div>
                             </div>
                         </div>
 
