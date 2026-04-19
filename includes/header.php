@@ -608,14 +608,68 @@ $is_rtl = $is_rtl ?? false;
                     // Toast si nouveau message
                     if (totalUnread > 0 && !this.isOpen) {
                         const newConv = convs.find(c => parseInt(c.unread_count) > 0);
-                        if (newConv && this.toast !== newConv.id) {
-                            this.toast = newConv.id;
+                        if (newConv && this.toast !== 'msg_'+newConv.id) {
+                            this.toast = 'msg_'+newConv.id;
                             this.showToast(newConv.name, newConv.last_message);
                             this.sounds.notif.play().catch(()=>{});
                         }
                     }
-                    this.conversations = convs;
+
+                    // Fusionner les états en ligne et détecter les nouvelles connexions
+                    const mergedConvs = convs.map(c => {
+                        const old = this.conversations.find(oldC => oldC.id === c.id);
+                        if (old) {
+                            if (old.is_online == 0 && c.is_online == 1) {
+                                c.just_connected = true;
+                                c.connected_time = Date.now();
+                                if(!this.isOpen) {
+                                    this.toast = 'conn_'+c.id;
+                                    this.showToast(c.name, "vient de se connecter !");
+                                    this.sounds.notif.play().catch(()=>{});
+                                }
+                            } else if (old.just_connected && (Date.now() - old.connected_time < 30000)) {
+                                c.just_connected = true;
+                                c.connected_time = old.connected_time;
+                            }
+                        }
+                        return c;
+                    });
+                    
+                    this.conversations = mergedConvs;
+                    
+                    // MàJ de la conversation active si ouverte
+                    if (this.currentConv) {
+                        const updatedCur = mergedConvs.find(c => c.id === this.currentConv.id);
+                        if(updatedCur) this.currentConv = updatedCur;
+                    }
                 } catch(e) {}
+            },
+
+            statusText(conv) {
+                if (!conv) return '';
+                if (conv.type === 'ai') return 'En ligne';
+                if (conv.just_connected) return 'Vient de se connecter';
+                if (conv.is_online == 1) return 'En ligne';
+                
+                if (conv.other_user_last_login) {
+                    const diffMs = Date.now() - new Date(conv.other_user_last_login.replace(/-/g, '/')).getTime();
+                    const diffMins = Math.floor(diffMs / 60000);
+                    if (diffMins < 60) return diffMins === 0 ? 'À l\'instant' : `Vu(e) il y a ${diffMins} min`;
+                    const diffHrs = Math.floor(diffMins / 60);
+                    if (diffHrs < 24) return `Vu(e) il y a ${diffHrs}h`;
+                    const diffDays = Math.floor(diffHrs / 24);
+                    if (diffDays === 1) return 'Vu(e) hier';
+                    return `Vu(e) il y a ${diffDays} j`;
+                }
+                return 'Hors ligne';
+            },
+
+            statusColor(conv) {
+                if (!conv) return 'text-slate-400';
+                if (conv.type === 'ai') return 'text-green-500';
+                if (conv.just_connected) return 'text-emerald-500 animate-pulse';
+                if (conv.is_online == 1) return 'text-green-500';
+                return 'text-slate-400';
             },
 
             showToast(name, msg) {
@@ -933,7 +987,7 @@ $is_rtl = $is_rtl ?? false;
                                     <span class="text-[10px] text-slate-400" x-text="conv.last_message_at ? new Date(conv.last_message_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : ''"></span>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <p class="text-[10px] font-bold tracking-widest uppercase" :class="(conv.is_online == 1 || conv.type === 'ai') ? 'text-green-500' : 'text-slate-400'" x-text="(conv.is_online == 1 || conv.type === 'ai') ? 'En Ligne' : 'Hors ligne'"></p>
+                                    <p class="text-[10px] font-bold tracking-widest uppercase" :class="statusColor(conv)" x-text="statusText(conv)"></p>
                                     <p class="text-xs text-slate-500 truncate" x-text="'• ' + (conv.last_message || (conv.type === 'ai' ? 'Posez-moi une question...' : 'Démarrer la discussion...'))"></p>
                                 </div>
                             </div>
@@ -973,11 +1027,11 @@ $is_rtl = $is_rtl ?? false;
                          :class="currentConv && currentConv.type === 'ai' ? 'bg-orange-600' : 'bg-slate-700'">
                         <i :class="currentConv && currentConv.type === 'ai' ? 'fa-solid fa-robot text-sm' : 'fa-solid fa-user text-sm'"></i>
                         <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2 border-white"
-                              :class="currentConv && (currentConv.type === 'ai' || currentConv.is_online == 1) ? 'bg-green-500' : 'bg-slate-300'"></span>
+                              :class="statusColor(currentConv).includes('green') || statusColor(currentConv).includes('emerald') ? 'bg-green-500' : 'bg-slate-300'"></span>
                     </div>
                     <div>
                         <p class="text-sm font-black text-slate-900" x-text="currentConv ? currentConv.name : ''"></p>
-                        <p class="text-[10px] text-slate-400" x-text="currentConv && (currentConv.type === 'ai' || currentConv.is_online == 1) ? 'En ligne' : 'Hors ligne'"></p>
+                        <p class="text-[10px] font-bold tracking-widest uppercase" :class="statusColor(currentConv)" x-text="statusText(currentConv)"></p>
                     </div>
                 </div>
 
