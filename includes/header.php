@@ -578,6 +578,7 @@ $is_rtl = $is_rtl ?? false;
                             },
                             locale: 'fr',
                             theme: 'light',
+                            set: 'facebook',
                             navPosition: 'bottom',
                             previewPosition: 'none'
                         });
@@ -1078,10 +1079,15 @@ $is_rtl = $is_rtl ?? false;
                                 <i class="fa-regular fa-face-smile text-lg"></i>
                             </button>
 
-                            <!-- Luxury Emoji Picker (Emoji Mart) -->
-                            <div x-show="emojiPickerOpen" @click.away="emojiPickerOpen = false" x-transition 
-                                 class="absolute bottom-16 right-0 bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] overflow-hidden flex flex-col">
-                                <div id="emoji-picker-container"></div>
+                            <!-- Luxury Emoji Picker (Emoji Mart - Facebook Style) -->
+                            <div x-show="emojiPickerOpen" @click.away="emojiPickerOpen = false" x-transition.opacity 
+                                 class="absolute bottom-[calc(100%+10px)] right-0 bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] 
+                                        w-[350px] max-w-[calc(100vw-2rem)] overflow-hidden flex flex-col origin-bottom-right"
+                                 style="max-height: 400px; max-height: min(400px, 60vh);">
+                                <style>
+                                    em-emoji-picker { width: 100% !important; height: 100% !important; max-height: 100% !important; }
+                                </style>
+                                <div id="emoji-picker-container" class="w-full h-full"></div>
                             </div>
                         </div>
 
