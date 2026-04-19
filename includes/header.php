@@ -1104,9 +1104,8 @@ $is_rtl = $is_rtl ?? false;
 
                             <!-- Luxury Emoji Picker (Emoji Mart - Facebook Style) -->
                             <div x-show="emojiPickerOpen" @click.away="emojiPickerOpen = false" x-transition.opacity 
-                                 class="fixed bottom-[90px] left-[50%] -translate-x-[50%] bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] 
-                                        w-[calc(100vw-20px)] sm:absolute sm:bottom-[calc(100%+10px)] sm:right-0 sm:left-auto sm:translate-x-0 sm:w-[350px] 
-                                        h-[350px] overflow-hidden flex flex-col">
+                                 class="absolute bottom-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] 
+                                        w-[350px] max-w-[90vw] h-[350px] overflow-hidden flex flex-col">
                                 <style>
                                     em-emoji-picker { width: 100% !important; height: 100% !important; }
                                 </style>
