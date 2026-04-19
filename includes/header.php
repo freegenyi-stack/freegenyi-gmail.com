@@ -235,7 +235,7 @@ $is_rtl = $is_rtl ?? false;
                                 <?php 
                                 $user_row = DB::fetchOne("SELECT family_id FROM users WHERE id = ?", [$_SESSION['user_id']]);
                                 $family_id = $_SESSION['family_id'] ?? ($user_row['family_id'] ?? 0);
-                                $linked_parent = DB::fetchOne("SELECT id, full_name, is_online FROM users WHERE family_id = ? AND role = 'parent' AND id != ?", [$family_id, $_SESSION['user_id']]);
+                                $linked_parent = DB::fetchOne("SELECT id, full_name, (last_login_at > DATE_SUB(NOW(), INTERVAL 3 MINUTE)) as is_online FROM users WHERE family_id = ? AND role = 'parent' AND id != ?", [$family_id, $_SESSION['user_id']]);
                                 if ($linked_parent): ?>
                                     <div class="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between">
                                         <div class="flex items-center gap-2">
@@ -536,10 +536,12 @@ $is_rtl = $is_rtl ?? false;
             emojis: ['😊','😂','❤️','😍','👍','🙌','✨','🔥','🤔','👏','🌟','🎉','🙏','🚀','💡','📚','🎓','🧒','👧','🏠','🌍','🎯','💎'],
             contacts: [],
             sounds: {
-                send:    new Audio('https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3'),
-                receive: new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3'),
-                notif:   new Audio('https://assets.mixkit.co/active_storage/sfx/1862/1862-preview.mp3')
+                send:    new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3'), // Pop pour l'envoi
+                receive: new Audio('https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3'), // Beep-beep pour la réception
+                notif:   new Audio('https://assets.mixkit.co/active_storage/sfx/1862/1862-preview.mp3')  // Sonnette notif
             },
+            recordingTime: 0,
+            recordingInterval: null,
 
             init() {
                 this.loadConversations();
@@ -619,6 +621,13 @@ $is_rtl = $is_rtl ?? false;
                 try {
                     const res = await fetch('/api/chat/get_conversations.php?type=contacts');
                     const data = await res.json();
+                    if (data && data.length > this.messages.length) {
+                        // Jouer son si nouveau message reçu par l'autre
+                        const last = data[data.length-1];
+                        if (last.sender_id != this.userId) {
+                            this.sounds.receive.play().catch(()=>{});
+                        }
+                    }
                     this.contacts = (data || []).filter(c => c.type !== 'ai');
                 } catch(e) { this.contacts = []; }
             },
@@ -635,9 +644,26 @@ $is_rtl = $is_rtl ?? false;
                     };
                     this.mediaRecorder.start();
                     this.isRecording = true;
+                    this.recordingTime = 0;
+                    this.recordingInterval = setInterval(() => { this.recordingTime++; }, 1000);
+                    // Jouer petit bip début
+                    new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3').play().catch(()=>{});
                 } catch(err) { alert('Microphone non autorisé'); }
             },
-            async stopRecording() { if(this.mediaRecorder) { this.mediaRecorder.stop(); this.isRecording = false; } },
+            async stopRecording() { 
+                if(this.mediaRecorder && this.isRecording) { 
+                    this.mediaRecorder.stop(); 
+                    this.isRecording = false; 
+                    clearInterval(this.recordingInterval);
+                    // Jouer petit bip fin
+                    new Audio('https://assets.mixkit.co/active_storage/sfx/2567/2567-preview.mp3').play().catch(()=>{});
+                } 
+            },
+            formatDuration(s) {
+                const m = Math.floor(s / 60);
+                const rs = s % 60;
+                return `${m}:${rs < 10 ? '0' : ''}${rs}`;
+            },
 
             async uploadFile(file, type) {
                 const fd = new FormData();
@@ -729,7 +755,9 @@ $is_rtl = $is_rtl ?? false;
                         body: JSON.stringify({ conversation_id: this.currentConv.id, message: text })
                     });
                     const result = await res.json();
-                    if (res.ok && result.success) {
+                    if (res.ok) {
+                        this.newMessage = '';
+                        this.sounds.send.play().catch(()=>{});
                         await this.loadMessages();
                         this.scrollToBottom();
                     } else {
@@ -930,7 +958,20 @@ $is_rtl = $is_rtl ?? false;
                                             <img :src="msg.media_path" class="rounded-xl mt-3 cursor-pointer object-cover shadow-sm hover:opacity-95 transition-opacity w-full" @click="window.open(msg.media_path)">
                                         </template>
                                         <template x-if="msg.media_path && msg.message_type === 'audio'">
-                                            <audio controls class="mt-3 w-full rounded-full border border-slate-200/20"><source :src="msg.media_path"></audio>
+                                            <div class="flex items-center gap-3 mt-2 min-w-[200px]">
+                                                <button @click="$el.nextElementSibling.paused ? $el.nextElementSibling.play() : $el.nextElementSibling.pause()" 
+                                                        class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                                                        :class="msg.sender_id == userId ? 'bg-white/20 text-white' : 'bg-orange-600 text-white'">
+                                                    <i class="fa-solid fa-play text-xs"></i>
+                                                </button>
+                                                <div class="flex-1">
+                                                    <div class="h-1 bg-current opacity-20 rounded-full w-full mb-1"></div>
+                                                    <p class="text-[9px] font-bold uppercase opacity-60">Message Vocal</p>
+                                                </div>
+                                                <audio class="hidden" @play="$el.previousElementSibling.previousElementSibling.innerHTML='<i class=\"fa-solid fa-pause text-xs\"></i>'" @pause="$el.previousElementSibling.previousElementSibling.innerHTML='<i class=\"fa-solid fa-play text-xs\"></i>'">
+                                                    <source :src="msg.media_path">
+                                                </audio>
+                                            </div>
                                         </template>
                                     </div>
                                 </div>
@@ -983,6 +1024,13 @@ $is_rtl = $is_rtl ?? false;
                         </button>
                         
                         <div class="relative flex-1">
+                            <!-- Overlay Recording -->
+                            <div x-show="isRecording" class="absolute inset-0 bg-white z-10 flex items-center px-4 rounded-2xl border border-red-100">
+                                <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse mr-3"></div>
+                                <span class="text-xs font-bold text-red-600 tracking-tight">ENREGISTREMENT...</span>
+                                <span class="ml-auto text-xs font-black text-slate-400" x-text="formatDuration(recordingTime)"></span>
+                            </div>
+
                             <input type="text" x-model="newMessage" @keydown.enter="sendMessage()" placeholder="Votre message..." 
                                    class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-orange-500 shadow-sm transition-all font-medium">
                             <button @click="emojiPickerOpen = !emojiPickerOpen" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-600 transition-colors">

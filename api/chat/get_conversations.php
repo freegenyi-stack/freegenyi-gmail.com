@@ -35,7 +35,7 @@ try {
                (SELECT message FROM chat_messages WHERE conversation_id = conv.id ORDER BY created_at DESC LIMIT 1) as last_message,
                (SELECT created_at FROM chat_messages WHERE conversation_id = conv.id ORDER BY created_at DESC LIMIT 1) as last_message_at,
                (SELECT COUNT(*) FROM chat_messages WHERE conversation_id = conv.id AND is_read = 0 AND sender_id != ?) as unread_count,
-               (SELECT is_online FROM users u 
+               (SELECT (last_login_at > DATE_SUB(NOW(), INTERVAL 3 MINUTE)) FROM users u 
                 JOIN conversation_members m ON u.id = m.user_id 
                 WHERE m.conversation_id = conv.id AND u.id != ? LIMIT 1) as is_online
         FROM conversations conv
@@ -62,7 +62,7 @@ try {
     // 4. Si on demande les contacts : Ajouter les membres de la famille avec qui on n'a pas de discussion
     if (isset($_GET['type']) && $_GET['type'] === 'contacts') {
         $family_members = DB::fetchAll("
-            SELECT id, full_name, role, is_online FROM users 
+            SELECT id, full_name, role, (last_login_at > DATE_SUB(NOW(), INTERVAL 3 MINUTE)) as is_online FROM users 
             WHERE family_id = ? AND id != ?
         ", [$family_id, $user_id]);
 
