@@ -44,6 +44,7 @@ $is_rtl = $is_rtl ?? false;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Luxury Emoji Library -->
     <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="icon" type="image/png" href="<?php echo APP_URL; ?>/favicon.png?v=4.0">
     
@@ -579,7 +580,7 @@ $is_rtl = $is_rtl ?? false;
                             locale: 'fr',
                             theme: 'light',
                             set: 'facebook',
-                            navPosition: 'bottom',
+                            navPosition: 'top',
                             previewPosition: 'none'
                         });
                         container.appendChild(this.picker);
@@ -775,6 +776,20 @@ $is_rtl = $is_rtl ?? false;
             async sendMessage() {
                 if (!this.newMessage.trim() || !this.currentConv) return;
                 const text = this.newMessage;
+                
+                // Animated Emoji Traces
+                const sentEmojis = text.match(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu);
+                if (sentEmojis && sentEmojis.length > 0 && window.confetti) {
+                    const shapes = sentEmojis.map(e => confetti.shapeFromText({ text: e, scalar: 3 }));
+                    confetti({
+                        particleCount: 40,
+                        spread: 80,
+                        origin: { y: 0.85 },
+                        shapes: shapes,
+                        scalar: 2
+                    });
+                }
+
                 const tempId = 'temp_' + Date.now();
                 this.messages = [...this.messages, {
                     id: tempId, sender_id: this.userId, message: text,
@@ -1081,8 +1096,9 @@ $is_rtl = $is_rtl ?? false;
 
                             <!-- Luxury Emoji Picker (Emoji Mart - Facebook Style) -->
                             <div x-show="emojiPickerOpen" @click.away="emojiPickerOpen = false" x-transition.opacity 
-                                 class="absolute bottom-[calc(100%+10px)] right-0 bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] 
-                                        w-[350px] max-w-[calc(100vw-2rem)] overflow-hidden flex flex-col origin-bottom-right"
+                                 class="fixed bottom-[90px] left-[50%] -translate-x-[50%] sm:absolute sm:bottom-[calc(100%+10px)] sm:right-0 sm:left-auto sm:translate-x-0 
+                                        bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] 
+                                        w-[calc(100vw-2rem)] sm:w-[350px] overflow-hidden flex flex-col"
                                  style="max-height: 400px; max-height: min(400px, 60vh);">
                                 <style>
                                     em-emoji-picker { width: 100% !important; height: 100% !important; max-height: 100% !important; }
