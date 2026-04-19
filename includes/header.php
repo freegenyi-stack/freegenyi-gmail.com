@@ -1012,7 +1012,7 @@ $is_rtl = $is_rtl ?? false;
                                             <img :src="msg.media_path" class="rounded-xl mt-3 cursor-pointer object-cover shadow-sm hover:opacity-95 transition-opacity w-full" @click="window.open(msg.media_path)">
                                         </template>
                                         <template x-if="msg.media_path && msg.message_type === 'audio'">
-                                            <div class="flex items-center gap-3 mt-2 min-w-[210px] bg-black/5 p-2 rounded-2xl border border-white/10" x-data="{ playing: false, progress: 0 }">
+                                            <div class="flex items-center gap-3 mt-2 min-w-[210px] bg-black/5 p-2 rounded-2xl border border-white/10" x-data="{ playing: false, progress: 0, duration: 0, currentTime: 0 }">
                                                 <button @click="const aud = $el.parentElement.querySelector('audio'); if(aud.paused) { aud.play(); playing=true; } else { aud.pause(); playing=false; }" 
                                                         class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all hover:scale-110 active:scale-95 shadow-sm"
                                                         :class="msg.sender_id == userId ? 'bg-white text-[#0084ff]' : 'bg-[#0084ff] text-white'">
@@ -1022,13 +1022,18 @@ $is_rtl = $is_rtl ?? false;
                                                     <div class="h-1 bg-current opacity-20 rounded-full w-full mb-1 relative overflow-hidden">
                                                         <div class="absolute inset-0 bg-current transition-all duration-300" :style="'width: ' + progress + '%'"></div>
                                                     </div>
-                                                    <p class="text-[9px] font-black uppercase tracking-widest opacity-60">Message Vocal</p>
+                                                    <div class="flex justify-between items-center text-[9px] font-black tracking-widest opacity-60 w-full">
+                                                        <span x-text="formatDuration(currentTime)">0:00</span>
+                                                        <span>VOCAL</span>
+                                                        <span x-text="duration ? formatDuration(duration) : '...'">0:00</span>
+                                                    </div>
                                                 </div>
                                                 <audio class="hidden" 
                                                        :src="msg.media_path"
-                                                       preload="auto"
-                                                       @timeupdate="progress = ($el.currentTime / $el.duration) * 100"
-                                                       @ended="playing = false; progress = 0" 
+                                                       preload="metadata"
+                                                       @loadedmetadata="duration = $el.duration"
+                                                       @timeupdate="currentTime = $el.currentTime; progress = ($el.currentTime / duration) * 100"
+                                                       @ended="playing = false; progress = 0; currentTime = 0" 
                                                        @pause="playing = false">
                                                 </audio>
                                             </div>
@@ -1099,9 +1104,8 @@ $is_rtl = $is_rtl ?? false;
 
                             <!-- Luxury Emoji Picker (Emoji Mart - Facebook Style) -->
                             <div x-show="emojiPickerOpen" @click.away="emojiPickerOpen = false" x-transition.opacity 
-                                 class="fixed bottom-[90px] left-[50%] -translate-x-[50%] sm:absolute sm:bottom-[calc(100%+10px)] sm:right-0 sm:left-auto sm:translate-x-0 
-                                        bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] 
-                                        w-[300px] h-[350px] overflow-hidden flex flex-col">
+                                 class="absolute bottom-[calc(100%+10px)] right-0 bg-white shadow-2xl rounded-3xl border border-slate-100 z-[500] 
+                                        w-full sm:w-[350px] h-[350px] overflow-hidden flex flex-col origin-bottom-right">
                                 <style>
                                     em-emoji-picker { width: 100% !important; height: 100% !important; }
                                 </style>
