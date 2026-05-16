@@ -1,0 +1,200 @@
+{
+  "Hero": {
+    "title": "释放您孩子的潜能。",
+    "status": "卓越之桥现已开启",
+    "subtitle": "FreeGeny在父母、学校和孩子之间建立了一座技术桥梁，提供全方位的支持，迈向卓越。",
+    "cta": "开始冒险",
+    "approach": "我们的方法"
+  },
+  "Impact": {
+    "Geniuses": "天才",
+    "Countries": "国家",
+    "Schools": "学校",
+    "Languages": "语言",
+    "Courses": "课程与练习"
+  },
+  "Nav": {
+    "About": "关于",
+    "Approach": "方法",
+    "Parents": "父母",
+    "Schools": "学校",
+    "NGOs": "非政府组织",
+    "Science": "科学",
+    "Region": "地区"
+  },
+  "Auth": {
+    "Login": "登录",
+    "Register": "加入",
+    "Logout": "注销",
+    "Dashboard": "仪表板"
+  },
+  "Portals": {
+    "Tag": "探索门户",
+    "Title": "全面沉浸。",
+    "Subtitle": "三个相互连接的世界，实现无限进步。",
+    "Local": {
+      "Title": "本地门户",
+      "Desc": "掌握官方课程。AI巩固您的学校基础。",
+      "CTA": "探索世界？"
+    },
+    "World": {
+      "Title": "全球门户",
+      "Desc": "新加坡数学和牛津英语，助力无限抱负。",
+      "CTA": "探索世界？"
+    },
+    "Magic": {
+      "Title": "魔法竞技场",
+      "Desc": "动态调整的趣味挑战，通过游戏巩固每项技能。",
+      "CTA": "进入竞技场？"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "FreeGeny 生态系统",
+    "Title": "适合每个人的解决方案。",
+    "Subtitle": "因为卓越需要所有参与者之间的完美协同。",
+    "Parents": {
+      "Title": "家长空间",
+      "Desc": "成功的精准指南。跟踪进度，发送语音情感支持，并管理奖励。",
+      "CTA": "了解更多？"
+    },
+    "Schools": {
+      "Title": "FreeGeny 学校",
+      "Desc": "完整的数字化转型。管理您的班级、教师，并与家长实时沟通。",
+      "CTA": "了解更多？"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "情感支持",
+    "MomVoice": "妈妈的语音已录制",
+    "Congratulation": "恭喜 Amine！"
+  },
+  "Innovation": {
+    "Tag": "创新",
+    "Title": "卓越的领导力。",
+    "Boost": {
+      "Title": "情感支持",
+      "Desc": "用您自己的声音激励您的孩子。"
+    },
+    "AI": {
+      "Title": "自适应 AI 路径",
+      "Desc": "每次点击都会重新调整程序。"
+    }
+  },
+  "Footer": {
+    "Title": "准备好释放潜能了吗？",
+    "CTA": "免费注册"
+  },
+  "Dashboard": {
+    "Title": "家长驾驶舱",
+    "Subtitle": "管理和跟踪您小天才的进度。",
+    "AddChild": "添加孩子",
+    "ChildCard": {
+      "Level": "等级",
+      "XP": "总经验值",
+      "Progress": "进度",
+      "Interest": "热情",
+      "Status": "状态",
+      "Premium": "高级+",
+      "ModeLearner": "学习者模式",
+      "EmotionalBoost": {
+        "Title": "情感支持",
+        "Desc": "用语音信息鼓励 {name}。",
+        "Record": "录音"
+      }
+    },
+    "Alliance": {
+      "Title": "家长联盟",
+      "Online": "在线",
+      "CoParent": "共同父母",
+      "Message": "消息",
+      "Photo": "照片"
+    },
+    "Printable": {
+      "Title": "打印工厂",
+      "Desc": "根据他们的弱点生成个性化的复习本。",
+      "CTA": "生成文件"
+    },
+    "Bridge": {
+      "Tag": "桥梁建议",
+      "Validate": "验证",
+      "Ignore": "忽略"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "你好，{name}！",
+    "ParentDashboard": "家长仪表板",
+    "Portals": {
+      "School": {
+        "Title": "我的学校",
+        "Desc": "在玩耍中复习课堂课程。",
+        "CTA": "开始冒险"
+      },
+      "World": {
+        "Title": "世界",
+        "Desc": "探索新加坡、牛津，并接受全球挑战！",
+        "CTA": "发现"
+      },
+      "Arena": {
+        "Title": "竞技场",
+        "Desc": "逻辑游戏和魔法比赛。",
+        "CTA": "准备好玩了吗？"
+      }
+    },
+    "Mascot": {
+      "Message": "“那么 {name}，准备好迎接新的冒险了吗？别忘了查看父母发送的 {boost}！”",
+      "BoostTag": "语音支持"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "全球卓越",
+      "Family": "家庭团队",
+      "Genius": "小天才"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "您的孩子不再有国界。",
+        "Items": [
+          "新加坡数学",
+          "剑桥（英国）",
+          "芬兰模式",
+          "STEM / STEAM",
+          "蒙特梭利"
+        ]
+      },
+      "Step2": {
+        "Title": "教育是一项团队运动。",
+        "Subtitle": "为了他们的成功同步您的努力。"
+      },
+      "Step3": {
+        "Title": "专为小学设计。",
+        "Subtitle": "为他们的起步量身定制的支持。"
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "你好。",
+        "Tag": "第1步（共3步）— 您作为担保人的角色",
+        "PhoneLabel": "电话号码",
+        "Next": "下一步"
+      },
+      "Step2": {
+        "Title": "家庭联盟。",
+        "Tag": "第2步（共3步）— 邀请配偶",
+        "Desc": "为了他们的成功同步您的努力。",
+        "EmailPlaceholder": "配偶的电子邮件（可选）",
+        "Next": "下一步"
+      },
+      "Step3": {
+        "Title": "小天才。",
+        "Tag": "最后一步：他们的旅程",
+        "ChildName": "孩子的名字",
+        "Country": "国家",
+        "Level": "等级",
+        "Age": "年龄",
+        "Region": "州/省",
+        "CTA": "开始冒险！"
+      }
+    }
+  }
+}

@@ -1,1 +1,0 @@
-<?php return ['home'=>'Hem','login'=>'Logga in','register'=>'Registrera','subjects'=>'Ämnen','maths'=>'Matematik','arabic'=>'Arabiska','pricing'=>'Priser','dashboard'=>'Panel','logout'=>'Logga ut','change_region'=>'Ändra region'];

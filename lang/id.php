@@ -1,1 +1,0 @@
-<?php return ['home'=>'Beranda','login'=>'Masuk','register'=>'Daftar','subjects'=>'Mata Pelajaran','maths'=>'Matematika','arabic'=>'Bahasa Arab','pricing'=>'Harga','dashboard'=>'Dasbor','logout'=>'Keluar','change_region'=>'Ubah Wilayah'];

@@ -1,0 +1,200 @@
+{
+  "Hero": {
+    "title": "Unleash your child's genius.",
+    "status": "The Bridge of Excellence is open",
+    "subtitle": "FreeGeny builds a technological bridge between Parents, Schools, and Children for holistic support towards excellence.",
+    "cta": "Start the adventure",
+    "approach": "Our approach"
+  },
+  "Impact": {
+    "Geniuses": "Geniuses",
+    "Countries": "Countries",
+    "Schools": "Schools",
+    "Languages": "Languages",
+    "Courses": "Courses & Exercises"
+  },
+  "Nav": {
+    "About": "About",
+    "Approach": "Approach",
+    "Parents": "Parents",
+    "Schools": "Schools",
+    "NGOs": "NGOs",
+    "Science": "Science",
+    "Region": "Region"
+  },
+  "Auth": {
+    "Login": "Login",
+    "Register": "Join",
+    "Logout": "Logout",
+    "Dashboard": "Dashboard"
+  },
+  "Portals": {
+    "Tag": "Explore the Portals",
+    "Title": "A total immersion.",
+    "Subtitle": "Three interconnected worlds for boundless progress.",
+    "Local": {
+      "Title": "Local Portal",
+      "Desc": "Master the official curriculum. Your school foundations strengthened by AI.",
+      "CTA": "Discover the world?"
+    },
+    "World": {
+      "Title": "Global Portal",
+      "Desc": "Singapore Math and Oxford English for boundless ambition.",
+      "CTA": "Explore the world?"
+    },
+    "Magic": {
+      "Title": "Magic Arena",
+      "Desc": "Fun challenges dynamically adapted to anchor every skill through play.",
+      "CTA": "Enter the arena?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "The FreeGeny Ecosystem",
+    "Title": "Solutions for everyone.",
+    "Subtitle": "Because excellence requires perfect synergy between all actors.",
+    "Parents": {
+      "Title": "Parents Space",
+      "Desc": "Precise guidance for success. Track progress, send voice emotional boosts, and manage rewards.",
+      "CTA": "Learn more?"
+    },
+    "Schools": {
+      "Title": "FreeGeny Schools",
+      "Desc": "Complete digital transformation. Manage your classes, teachers, and communicate with parents in real time.",
+      "CTA": "Learn more?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Emotional Boost",
+    "MomVoice": "Mom's voice recorded",
+    "Congratulation": "Congratulations Amine!"
+  },
+  "Innovation": {
+    "Tag": "Innovation",
+    "Title": "Exceptional leadership.",
+    "Boost": {
+      "Title": "Emotional Boost",
+      "Desc": "Motivate your child with your own voice."
+    },
+    "AI": {
+      "Title": "Adaptive AI Path",
+      "Desc": "Every click readjusts the program."
+    }
+  },
+  "Footer": {
+    "Title": "Ready to unleash the genius?",
+    "CTA": "Sign up for free"
+  },
+  "Dashboard": {
+    "Title": "Parent Cockpit",
+    "Subtitle": "Manage and track the progress of your little geniuses.",
+    "AddChild": "Add a child",
+    "ChildCard": {
+      "Level": "Level",
+      "XP": "Total XP",
+      "Progress": "Progress",
+      "Interest": "Passion",
+      "Status": "Status",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Learner Mode",
+      "EmotionalBoost": {
+        "Title": "Emotional Boost",
+        "Desc": "Encourage {name} with a voice message.",
+        "Record": "Record"
+      }
+    },
+    "Alliance": {
+      "Title": "Parental Alliance",
+      "Online": "Online",
+      "CoParent": "Co-Parent",
+      "Message": "Message",
+      "Photo": "Photo"
+    },
+    "Printable": {
+      "Title": "Printable Factory",
+      "Desc": "Generate personalized review books based on their weak points.",
+      "CTA": "Generate file"
+    },
+    "Bridge": {
+      "Tag": "The Bridge suggests",
+      "Validate": "Validate",
+      "Ignore": "Ignore"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Hi, {name}!",
+    "ParentDashboard": "Parent Dashboard",
+    "Portals": {
+      "School": {
+        "Title": "My School",
+        "Desc": "Review your class lessons while having fun.",
+        "CTA": "Start the adventure"
+      },
+      "World": {
+        "Title": "The World",
+        "Desc": "Explore Singapore, Oxford and take on global challenges!",
+        "CTA": "Discover"
+      },
+      "Arena": {
+        "Title": "The Arena",
+        "Desc": "Logic games and magical competitions.",
+        "CTA": "Ready to play?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"So {name}, ready for a new adventure? Don't forget to check your {boost} sent by your parents!\"",
+      "BoostTag": "Voice Boost"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Global Excellence",
+      "Family": "Family Team",
+      "Genius": "The Little Genius"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Your child no longer has any borders.",
+        "Items": [
+          "Singapore Mathematics",
+          "Cambridge (UK)",
+          "Finnish Model",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Education is a team sport.",
+        "Subtitle": "Synchronize your efforts for their success."
+      },
+      "Step3": {
+        "Title": "Primary School Exclusively.",
+        "Subtitle": "Tailor-made support for their beginnings."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Hello.",
+        "Tag": "Step 1 of 3 — Your role as guarantor",
+        "PhoneLabel": "Phone number",
+        "Next": "Next"
+      },
+      "Step2": {
+        "Title": "Family Alliance.",
+        "Tag": "Step 2 of 3 — Inviting the spouse",
+        "Desc": "Synchronize your efforts for their success.",
+        "EmailPlaceholder": "Spouse's email (Optional)",
+        "Next": "Next Step"
+      },
+      "Step3": {
+        "Title": "The Little Genius.",
+        "Tag": "Final step: Their journey",
+        "ChildName": "Child's First Name",
+        "Country": "Country",
+        "Level": "Level",
+        "Age": "Age",
+        "Region": "State / Province",
+        "CTA": "Start the adventure!"
+      }
+    }
+  }
+}

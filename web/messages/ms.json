@@ -1,0 +1,200 @@
+{
+  "Hero": {
+    "title": "Cetuskan genius anak anda.",
+    "status": "Jambatan Kecemerlangan dibuka",
+    "subtitle": "FreeGeny membina jambatan teknologi antara Ibu Bapa, Sekolah, dan Kanak-kanak untuk sokongan holistik ke arah kecemerlangan.",
+    "cta": "Mulakan pengembaraan",
+    "approach": "Pendekatan kami"
+  },
+  "Impact": {
+    "Geniuses": "Genius",
+    "Countries": "Negara",
+    "Schools": "Sekolah",
+    "Languages": "Bahasa",
+    "Courses": "Kursus & Latihan"
+  },
+  "Nav": {
+    "About": "Tentang",
+    "Approach": "Pendekatan",
+    "Parents": "Ibu Bapa",
+    "Schools": "Sekolah",
+    "NGOs": "NGO",
+    "Science": "Sains",
+    "Region": "Wilayah"
+  },
+  "Auth": {
+    "Login": "Log Masuk",
+    "Register": "Sertai",
+    "Logout": "Log Keluar",
+    "Dashboard": "Papan Pemuka"
+  },
+  "Portals": {
+    "Tag": "Teroka Portal",
+    "Title": "Satu rendaman total.",
+    "Subtitle": "Tiga dunia yang saling berhubung untuk kemajuan tanpa had.",
+    "Local": {
+      "Title": "Portal Tempatan",
+      "Desc": "Kuasai kurikulum rasmi. Asas sekolah anda diperkukuh oleh AI.",
+      "CTA": "Temui dunia?"
+    },
+    "World": {
+      "Title": "Portal Global",
+      "Desc": "Matematik Singapura dan Bahasa Inggeris Oxford untuk cita-cita tanpa had.",
+      "CTA": "Teroka dunia?"
+    },
+    "Magic": {
+      "Title": "Arena Ajaib",
+      "Desc": "Cabaran menyeronokkan disesuaikan secara dinamik untuk mengukuhkan setiap kemahiran melalui permainan.",
+      "CTA": "Masuk ke arena?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "Ekosistem FreeGeny",
+    "Title": "Penyelesaian untuk semua.",
+    "Subtitle": "Kerana kecemerlangan memerlukan sinergi sempurna antara semua aktor.",
+    "Parents": {
+      "Title": "Ruang Ibu Bapa",
+      "Desc": "Panduan tepat untuk kejayaan. Jejaki kemajuan, hantar rangsangan emosi suara, dan urus ganjaran.",
+      "CTA": "Ketahui lebih lanjut?"
+    },
+    "Schools": {
+      "Title": "Sekolah FreeGeny",
+      "Desc": "Transformasi digital lengkap. Urus kelas, guru anda, dan berkomunikasi dengan ibu bapa dalam masa nyata.",
+      "CTA": "Ketahui lebih lanjut?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Rangsangan Emosi",
+    "MomVoice": "Suara ibu direkodkan",
+    "Congratulation": "Tahniah Amine!"
+  },
+  "Innovation": {
+    "Tag": "Inovasi",
+    "Title": "Kepimpinan yang luar biasa.",
+    "Boost": {
+      "Title": "Rangsangan Emosi",
+      "Desc": "Motivasikan anak anda dengan suara anda sendiri."
+    },
+    "AI": {
+      "Title": "Laluan AI Adaptif",
+      "Desc": "Setiap klik menyesuaikan semula program."
+    }
+  },
+  "Footer": {
+    "Title": "Bersedia untuk mencetuskan genius?",
+    "CTA": "Daftar secara percuma"
+  },
+  "Dashboard": {
+    "Title": "Kokpit Ibu Bapa",
+    "Subtitle": "Urus dan jejaki kemajuan genius kecil anda.",
+    "AddChild": "Tambah anak",
+    "ChildCard": {
+      "Level": "Tahap",
+      "XP": "Jumlah XP",
+      "Progress": "Kemajuan",
+      "Interest": "Sifat",
+      "Status": "Status",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Mod Pelajar",
+      "EmotionalBoost": {
+        "Title": "Rangsangan Emosi",
+        "Desc": "Galakkan {name} dengan mesej suara.",
+        "Record": "Rekod"
+      }
+    },
+    "Alliance": {
+      "Title": "Pakatan Ibu Bapa",
+      "Online": "Dalam Talian",
+      "CoParent": "Rakan Ibu Bapa",
+      "Message": "Mesej",
+      "Photo": "Foto"
+    },
+    "Printable": {
+      "Title": "Kilang Boleh Cetak",
+      "Desc": "Jana buku ulasan peribadi berdasarkan titik lemah mereka.",
+      "CTA": "Jana fail"
+    },
+    "Bridge": {
+      "Tag": "Jambatan mencadangkan",
+      "Validate": "Sahkan",
+      "Ignore": "Abaikan"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Hai, {name}!",
+    "ParentDashboard": "Papan Pemuka Ibu Bapa",
+    "Portals": {
+      "School": {
+        "Title": "Sekolah Saya",
+        "Desc": "Ulang kaji pelajaran kelas anda sambil berseronok.",
+        "CTA": "Mulakan pengembaraan"
+      },
+      "World": {
+        "Title": "Dunia",
+        "Desc": "Teroka Singapura, Oxford dan sahut cabaran global!",
+        "CTA": "Temui"
+      },
+      "Arena": {
+        "Title": "Arena",
+        "Desc": "Permainan logik dan pertandingan ajaib.",
+        "CTA": "Sedia untuk bermain?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Jadi {name}, sedia untuk pengembaraan baru? Jangan lupa semak {boost} anda yang dihantar oleh ibu bapa anda!\"",
+      "BoostTag": "Rangsangan Suara"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Kecemerlangan Global",
+      "Family": "Pasukan Keluarga",
+      "Genius": "Genius Kecil"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Anak anda tidak lagi mempunyai sempadan.",
+        "Items": [
+          "Matematik Singapura",
+          "Cambridge (UK)",
+          "Model Finland",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Pendidikan adalah sukan berpasukan.",
+        "Subtitle": "Segerakkan usaha anda untuk kejayaan mereka."
+      },
+      "Step3": {
+        "Title": "Sekolah Rendah Secara Eksklusif.",
+        "Subtitle": "Sokongan tersuai untuk permulaan mereka."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Helo.",
+        "Tag": "Langkah 1 dari 3 — Peranan anda sebagai penjamin",
+        "PhoneLabel": "Nombor telefon",
+        "Next": "Seterusnya"
+      },
+      "Step2": {
+        "Title": "Pakatan Keluarga.",
+        "Tag": "Langkah 2 dari 3 — Menjemput pasangan",
+        "Desc": "Segerakkan usaha anda untuk kejayaan mereka.",
+        "EmailPlaceholder": "E-mel pasangan (Pilihan)",
+        "Next": "Langkah Seterusnya"
+      },
+      "Step3": {
+        "Title": "Genius Kecil.",
+        "Tag": "Langkah terakhir: Perjalanan mereka",
+        "ChildName": "Nama Pertama Anak",
+        "Country": "Negara",
+        "Level": "Tahap",
+        "Age": "Umur",
+        "Region": "Negeri / Wilayah",
+        "CTA": "Mulakan pengembaraan!"
+      }
+    }
+  }
+}

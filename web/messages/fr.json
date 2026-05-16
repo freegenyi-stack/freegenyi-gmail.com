@@ -1,0 +1,201 @@
+{
+  "Hero": {
+    "title": "Libérez le génie de votre enfant.",
+    "status": "Le Pont de l'Excellence est ouvert",
+    "subtitle": "FreeGeny érige un pont technologique entre Parents, Écoles et Enfants pour un accompagnement holistique vers l’excellence.",
+    "cta": "Commencer l’aventure",
+    "approach": "Notre approche"
+  },
+  "Impact": {
+    "Geniuses": "Génies",
+    "Countries": "Pays",
+    "Schools": "Écoles",
+    "Languages": "Langues",
+    "Courses": "Cours & Exercices"
+  },
+  "Nav": {
+    "About": "À propos",
+    "Approach": "Approche",
+    "Parents": "Parents",
+    "Schools": "Écoles",
+    "NGOs": "ONG",
+    "Science": "Science",
+    "Region": "Région"
+  },
+  "Auth": {
+    "Login": "Connexion",
+    "Register": "Rejoindre",
+    "Logout": "Déconnexion",
+    "Dashboard": "Tableau de bord",
+    "Agreement": "En continuant, vous acceptez les conditions d'utilisation et la politique de confidentialité.",
+    "AlreadyHaveAccount": "Vous avez déjà un compte ? Connectez-vous",
+    "Placeholders": {
+      "FullName": "Mourad Belaid",
+      "Username": "mourad_dz",
+      "Email": "mourad@genie.dz"
+    }
+  },
+  "Portals": {
+    "Tag": "Explorez les Portails",
+    "Title": "Une immersion totale.",
+    "Subtitle": "Trois univers interconnectés pour une progression sans limites.",
+    "Local": {
+      "Title": "Portail Local",
+      "Desc": "Maîtrise du programme officiel. Vos fondations scolaires renforcées par l’IA.",
+      "CTA": "Découvrir l'univers ?"
+    },
+    "World": {
+      "Title": "Portail Mondial",
+      "Desc": "Maths de Singapour et Anglais Oxford pour une ambition sans frontières.",
+      "CTA": "Explorer le monde ?"
+    },
+    "Magic": {
+      "Title": "Arène Magique",
+      "Desc": "Défis ludiques adaptés dynamiquement pour ancrer chaque compétence par le jeu.",
+      "CTA": "Entrer dans l'arène ?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "L'écosystème FreeGeny",
+    "Title": "Des solutions pour chacun.",
+    "Subtitle": "Parce que l'excellence nécessite une synergie parfaite entre tous les acteurs.",
+    "Parents": {
+      "Title": "Espace Parents",
+      "Desc": "Pilotage précis de la réussite. Suivez les progrès, envoyez des boosts émotionnels vocaux et gérez les récompenses.",
+      "CTA": "En savoir plus ?"
+    },
+    "Schools": {
+      "Title": "FreeGeny écoles",
+      "Desc": "Transformation numérique complète. Gérez vos classes, vos professeurs et communiquez avec les parents en temps réel.",
+      "CTA": "En savoir plus ?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Boost émotionnel",
+    "MomVoice": "Vocal de maman enregistré",
+    "Congratulation": "Félicitations Amine !"
+  },
+  "Innovation": {
+    "Tag": "Innovation",
+    "Title": "Un pilotage d'exception.",
+    "Boost": {
+      "Title": "Boost émotionnel",
+      "Desc": "Motivez votre enfant avec votre propre voix."
+    },
+    "AI": {
+      "Title": "Parcours IA Adaptatif",
+      "Desc": "Chaque clic réajuste le programme."
+    }
+  },
+  "Footer": {
+    "Title": "Prêt à libérer le génie ?",
+    "CTA": "S'inscrire gratuitement"
+  },
+  "Dashboard": {
+    "Title": "Cockpit Parent",
+    "Subtitle": "Gérez et suivez l'évolution de vos petits génies.",
+    "AddChild": "Ajouter un enfant",
+    "ChildCard": {
+      "Level": "Niveau",
+      "XP": "XP Total",
+      "Progress": "Progrès",
+      "Interest": "Passion",
+      "Status": "Statut",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Mode Apprenant",
+      "EmotionalBoost": {
+        "Title": "Boost émotionnel",
+        "Desc": "Encouragez {name} avec un message vocal.",
+        "Record": "Enregistrer"
+      }
+    },
+    "Alliance": {
+      "Title": "Alliance Parentale",
+      "Online": "En ligne",
+      "CoParent": "Co-Parent",
+      "Message": "Message",
+      "Photo": "Photo"
+    },
+    "Printable": {
+      "Title": "Printable Factory",
+      "Desc": "Générez des cahiers de révision personnalisés basés sur ses points faibles.",
+      "CTA": "Générer le dossier"
+    },
+    "Bridge": {
+      "Tag": "Le Pont suggère",
+      "Validate": "Valider",
+      "Ignore": "Ignorer"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Salut, {name} !",
+    "ParentDashboard": "Tableau de bord Parent",
+    "Portals": {
+      "School": {
+        "Title": "Mon École",
+        "Desc": "Révise tes leçons de classe en t’amusant.",
+        "CTA": "Partir à l'aventure"
+      },
+      "World": {
+        "Title": "Le Monde",
+        "Desc": "Explore Singapour, Oxford et relève des défis mondiaux !",
+        "CTA": "Découvrir"
+      },
+      "Arena": {
+        "Title": "L’Arène",
+        "Desc": "Jeux de logique et compétitions magiques.",
+        "CTA": "Prêt à jouer ?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Alors {name}, prêt pour une nouvelle aventure ? N’oublie pas de vérifier ton {boost} envoyé par tes parents !\"",
+      "BoostTag": "Boost vocal"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "L'Excellence mondiale",
+      "Family": "Équipe Familiale",
+      "Genius": "Le petit Génie"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Votre enfant n'a plus aucune frontière.",
+        "Items": ["Mathématiques de Singapour", "Cambridge (UK)", "Modèle Finlandais", "STEM / STEAM", "Montessori"]
+      },
+      "Step2": {
+        "Title": "L'éducation est un sport d'équipe.",
+        "Subtitle": "Synchronisez vos efforts pour son succès."
+      },
+      "Step3": {
+        "Title": "Cycle Primaire Exclusivement.",
+        "Subtitle": "Un accompagnement sur mesure pour ses débuts."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Bonjour.",
+        "Tag": "Étape 1 sur 3 — Votre rôle de garant",
+        "PhoneLabel": "Numéro de téléphone",
+        "Next": "Suivant"
+      },
+      "Step2": {
+        "Title": "Alliance Familiale.",
+        "Tag": "Étape 2 sur 3 — Inviter le conjoint",
+        "Desc": "Synchronisez vos efforts pour son succès.",
+        "EmailPlaceholder": "Email du conjoint (Optionnel)",
+        "Next": "Étape Suivante"
+      },
+      "Step3": {
+        "Title": "Le petit Génie.",
+        "Tag": "Étape finale : Son parcours",
+        "ChildName": "Prénom de l'enfant",
+        "Country": "Pays",
+        "Level": "Niveau",
+        "Age": "Âge",
+        "Region": "Wilaya / Province",
+        "CTA": "Démarrer l'aventure !"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+Error: Failed query: select "id", "email", "username", "password_hash", "full_name", "phone", "image", "role", "email_verified", "verification_token", "verification_token_expires_at", "family_id", "onboarding_step", "login_attempts", "locked_until", "last_login_at", "theme_settings", "avatar_config", "metadata", "created_at", "updated_at" from "users" where "users"."email" = $1
+params: fk.bahloul@gmail.com
+Stack: Error: Failed query: select "id", "email", "username", "password_hash", "full_name", "phone", "image", "role", "email_verified", "verification_token", "verification_token_expires_at", "family_id", "onboarding_step", "login_attempts", "locked_until", "last_login_at", "theme_settings", "avatar_config", "metadata", "created_at", "updated_at" from "users" where "users"."email" = $1
+params: fk.bahloul@gmail.com
+    at NodePgPreparedQuery.queryWithCache (webpack-internal:///(rsc)/./node_modules/drizzle-orm/pg-core/session.js:53:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async eval (webpack-internal:///(rsc)/./node_modules/drizzle-orm/node-postgres/session.js:134:22)
+    at async signIn (webpack-internal:///(rsc)/./src/auth.ts:87:44)
+    at async handleAuthorized (webpack-internal:///(rsc)/./node_modules/@auth/core/lib/actions/callback/index.js:407:22)
+    at async Module.callback (webpack-internal:///(rsc)/./node_modules/@auth/core/lib/actions/callback/index.js:73:30)
+    at async AuthInternal (webpack-internal:///(rsc)/./node_modules/@auth/core/lib/index.js:43:24)
+    at async Auth (webpack-internal:///(rsc)/./node_modules/@auth/core/index.js:130:34)
+    at async AppRouteRouteModule.do (C:\Users\Yousr\freegonya\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:10:32804)
+    at async AppRouteRouteModule.handle (C:\Users\Yousr\freegonya\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:10:39698)
+    at async doRender (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\base-server.js:1452:42)
+    at async responseGenerator (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\base-server.js:1813:28)
+    at async DevServer.renderToResponseWithComponentsImpl (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\base-server.js:1823:28)
+    at async DevServer.renderPageComponent (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\base-server.js:2250:24)
+    at async DevServer.renderToResponseImpl (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\base-server.js:2288:32)
+    at async DevServer.pipeImpl (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\base-server.js:959:25)
+    at async NextNodeServer.handleCatchallRenderRequest (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\next-server.js:281:17)
+    at async DevServer.handleRequestImpl (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\base-server.js:853:17)
+    at async C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\dev\next-dev-server.js:371:20
+    at async Span.traceAsyncFn (C:\Users\Yousr\freegonya\web\node_modules\next\dist\trace\trace.js:153:20)
+    at async DevServer.handleRequest (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\dev\next-dev-server.js:368:24)
+    at async invokeRender (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\lib\router-server.js:230:21)
+    at async handleRequest (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\lib\router-server.js:408:24)
+    at async requestHandlerImpl (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\lib\router-server.js:432:13)
+    at async Server.requestListener (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\lib\start-server.js:146:13)

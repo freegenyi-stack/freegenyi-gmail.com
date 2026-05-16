@@ -1,1 +1,0 @@
-<?php return ['home'=>'Trang chủ','login'=>'Đăng nhập','register'=>'Đăng ký','subjects'=>'Môn học','maths'=>'Toán học','arabic'=>'Tiếng Ả Rập','pricing'=>'Bảng giá','dashboard'=>'Bảng điều khiển','logout'=>'Đăng xuất','change_region'=>'Đổi khu vực'];

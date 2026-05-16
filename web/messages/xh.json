@@ -1,0 +1,200 @@
+{
+  "Hero": {
+    "title": "Khupha ubukrelekrele bomntwana wakho.",
+    "status": "Ibhlorho Yobugqwesa ivuliwe",
+    "subtitle": "I-FreeGeny yakha ibhlorho yezobuchwepheshe phakathi kwaBazali, iZikolo, kunye naBantwana ukwenzela inkxaso epheleleyo.",
+    "cta": "Qala uhambo",
+    "approach": "Indlela yethu"
+  },
+  "Impact": {
+    "Geniuses": "Iingqondi",
+    "Countries": "Amazwe",
+    "Schools": "Izikolo",
+    "Languages": "Iilwimi",
+    "Courses": "Iikhosi"
+  },
+  "Nav": {
+    "About": "Malunga",
+    "Approach": "Indlela",
+    "Parents": "Abazali",
+    "Schools": "Izikolo",
+    "NGOs": "Ii-NGO",
+    "Science": "ISayensi",
+    "Region": "Ummandla"
+  },
+  "Auth": {
+    "Login": "Ngena",
+    "Register": "Joyina",
+    "Logout": "Phuma",
+    "Dashboard": "IDeshibhodi"
+  },
+  "Portals": {
+    "Tag": "Hlola ii-Portal",
+    "Title": "Ukucwiliswa ngokupheleleyo.",
+    "Subtitle": "Amahlabathi amathathu anxibeleleneyo kwinkqubela phambili.",
+    "Local": {
+      "Title": "I-Portal Yasekhaya",
+      "Desc": "Hlola ikharityhulam yaseburhulumenteni. Iziseko zesikolo sakho zomelezwa yi-AI.",
+      "CTA": "Fumanisa umhlaba?"
+    },
+    "World": {
+      "Title": "I-Portal Yehlabathi",
+      "Desc": "I-Singapore Math kunye ne-Oxford English kumabhongo angenamida.",
+      "CTA": "Hlola umhlaba?"
+    },
+    "Magic": {
+      "Title": "Inkundla Yomlingo",
+      "Desc": "Imingeni eyonwabisayo elungiselelwe ngokutsha ukuzinzisa yonke izakhono ngokudlala.",
+      "CTA": "Ngena kwinkundla?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "I-Ecosystem ye-FreeGeny",
+    "Title": "Izisombululo zomntu wonke.",
+    "Subtitle": "Kuba ubugqwesa bufuna indibaniselwano egqibeleleyo phakathi kwabo bonke.",
+    "Parents": {
+      "Title": "Indawo Yabazali",
+      "Desc": "Isikhokelo esichanekileyo sempumelelo. Landelela inkqubela phambili.",
+      "CTA": "Funda banzi?"
+    },
+    "Schools": {
+      "Title": "Izikolo ze-FreeGeny",
+      "Desc": "Utshintsho olupheleleyo lwedijithali. Lawula iiklasi zakho nootitshala.",
+      "CTA": "Funda banzi?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Ukunyuswa Kweemvakalelo",
+    "MomVoice": "Ilizwi likamama lirekhodiwe",
+    "Congratulation": "Siyavuyisana Amine!"
+  },
+  "Innovation": {
+    "Tag": "Uyilo",
+    "Title": "Ubunkokeli obukhethekileyo.",
+    "Boost": {
+      "Title": "Ukunyuswa Kweemvakalelo",
+      "Desc": "Khuthaza umntwana wakho ngelizwi lakho."
+    },
+    "AI": {
+      "Title": "Umendo we-AI",
+      "Desc": "Ngalo lonke ixesha ucofa ulungelelanisa inkqubo."
+    }
+  },
+  "Footer": {
+    "Title": "Ulungile ukukhupha ubukrelekrele?",
+    "CTA": "Bhalisa simahla"
+  },
+  "Dashboard": {
+    "Title": "Indawo Yomzali",
+    "Subtitle": "Lawula kwaye ulandelele inkqubela yomntwana wakho.",
+    "AddChild": "Yongeza umntwana",
+    "ChildCard": {
+      "Level": "Inqanaba",
+      "XP": "I-XP Epheleleyo",
+      "Progress": "Inkqubela phambili",
+      "Interest": "Umdla",
+      "Status": "Imeko",
+      "Premium": "I-Premium Plus",
+      "ModeLearner": "Imowudi Yomfundi",
+      "EmotionalBoost": {
+        "Title": "Ukunyuswa Kweemvakalelo",
+        "Desc": "Khuthaza u-{name} ngomyalezo welizwi.",
+        "Record": "Rekhoda"
+      }
+    },
+    "Alliance": {
+      "Title": "Umdibaniso Wabazali",
+      "Online": "Kwi-intanethi",
+      "CoParent": "Umzali-kunye",
+      "Message": "Umyalezo",
+      "Photo": "Ifoto"
+    },
+    "Printable": {
+      "Title": "Umzi Mveliso Oprintwayo",
+      "Desc": "Yenza iincwadi zokuhlaziya ezenzelwe umntu.",
+      "CTA": "Yenza ifayile"
+    },
+    "Bridge": {
+      "Tag": "Ibhlorho iphakamisa",
+      "Validate": "Ngqinisisa",
+      "Ignore": "Musa ukuhoya"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Molo, {name}!",
+    "ParentDashboard": "IDeshibhodi Yomzali",
+    "Portals": {
+      "School": {
+        "Title": "Isikolo Sam",
+        "Desc": "Hlaziya izifundo zakho zeklasi ngelixa wonwabile.",
+        "CTA": "Qala uhambo"
+      },
+      "World": {
+        "Title": "Ihlabathi",
+        "Desc": "Hlola iSingapore, iOxford kwaye uthathe imingeni yehlabathi!",
+        "CTA": "Fumanisa"
+      },
+      "Arena": {
+        "Title": "Inkundla",
+        "Desc": "Imidlalo yokuqiqa kunye nokhuphiswano lwemilingo.",
+        "CTA": "Ukulungele ukudlala?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Sengathi {name}, ukulungele uhambo olutsha? Ungalibali ukujonga i-{boost} yakho ethunyelwe ngabazali bakho!\"",
+      "BoostTag": "Ukunyuswa Kwezwi"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Ubugqwesa Behlabathi",
+      "Family": "Iqela Losapho",
+      "Genius": "Ingqondi Encinci"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Umntwana wakho akanayo imida kwakhona.",
+        "Items": [
+          "Izibalo zaseSingapore",
+          "ICambridge (UK)",
+          "Imodeli yaseFinland",
+          "STEM / STEAM",
+          "IMontessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Imfundo ngumdlalo weqela.",
+        "Subtitle": "Ngqamanisa iinzame zakho zempumelelo yabo."
+      },
+      "Step3": {
+        "Title": "Isikolo Samabanga Aphantsi Kuphela.",
+        "Subtitle": "Inkxaso eyenzelwe oko kubo."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Molo.",
+        "Tag": "Inyathelo 1 kwisi-3 — Indima yakho njengomqinisekisi",
+        "PhoneLabel": "Inombolo yomnxeba",
+        "Next": "Okulandelayo"
+      },
+      "Step2": {
+        "Title": "Umdibaniso Wosapho.",
+        "Tag": "Inyathelo 2 kwisi-3 — Ukumema iqabane",
+        "Desc": "Ngqamanisa iinzame zakho zempumelelo yabo.",
+        "EmailPlaceholder": "I-imeyile yeqabane",
+        "Next": "Inyathelo Elilandelayo"
+      },
+      "Step3": {
+        "Title": "Ingqondi Encinci.",
+        "Tag": "Inyathelo lokugqibela: Uhambo lwabo",
+        "ChildName": "Igama Lokuqala",
+        "Country": "Ilizwe",
+        "Level": "Inqanaba",
+        "Age": "Ubudala",
+        "Region": "Iphondo",
+        "CTA": "Qala uhambo!"
+      }
+    }
+  }
+}

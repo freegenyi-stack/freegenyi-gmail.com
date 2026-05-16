@@ -1,1 +1,0 @@
-<?php return ['home'=>'Início','login'=>'Entrar','register'=>'Registrar','subjects'=>'Matérias','maths'=>'Matemática','arabic'=>'Árabe','pricing'=>'Preços','dashboard'=>'Painel','logout'=>'Sair','change_region'=>'Mudar região'];

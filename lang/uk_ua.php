@@ -1,1 +1,0 @@
-<?php return ['home'=>'Головна','login'=>'Вхід','register'=>'Реєстрація','subjects'=>'Предмети','maths'=>'Математика','arabic'=>'Арабська','pricing'=>'Ціни','dashboard'=>'Панель','logout'=>'Вихід','change_region'=>'Змінити регіон'];

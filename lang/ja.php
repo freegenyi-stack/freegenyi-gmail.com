@@ -1,1 +1,0 @@
-<?php return ['home'=>'ホーム','login'=>'ログイン','register'=>'登録','subjects'=>'科目','maths'=>'数学','arabic'=>'アラビア語','pricing'=>'料金','dashboard'=>'ダッシュボード','logout'=>'ログアウト','change_region'=>'地域選択'];

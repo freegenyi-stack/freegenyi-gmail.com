@@ -1,0 +1,200 @@
+{
+  "Hero": {
+    "title": "Ontketen jou kind se genie.",
+    "status": "Die Brug van Uitnemendheid is oop",
+    "subtitle": "FreeGeny bou 'n tegnologiese brug tussen Ouers, Skole en Kinders vir holistiese ondersteuning tot uitnemendheid.",
+    "cta": "Begin die avontuur",
+    "approach": "Ons benadering"
+  },
+  "Impact": {
+    "Geniuses": "Genieë",
+    "Countries": "Lande",
+    "Schools": "Skole",
+    "Languages": "Tale",
+    "Courses": "Kursusse en Oefeninge"
+  },
+  "Nav": {
+    "About": "Oor ons",
+    "Approach": "Benadering",
+    "Parents": "Ouers",
+    "Schools": "Skole",
+    "NGOs": "NRO's",
+    "Science": "Wetenskap",
+    "Region": "Streek"
+  },
+  "Auth": {
+    "Login": "Teken aan",
+    "Register": "Sluit aan",
+    "Logout": "Teken uit",
+    "Dashboard": "Kontroleskerm"
+  },
+  "Portals": {
+    "Tag": "Verken die Portale",
+    "Title": "'n Totale onderdompeling.",
+    "Subtitle": "Drie onderling verbind wêrelde vir onbeperkte vordering.",
+    "Local": {
+      "Title": "Plaaslike Portaal",
+      "Desc": "Bemeester die amptelike kurrikulum. Jou skool fondamente versterk deur KI.",
+      "CTA": "Ontdek die wêreld?"
+    },
+    "World": {
+      "Title": "Wêreld Portaal",
+      "Desc": "Singapoer Wiskunde en Oxford Engels vir onbeperkte ambisie.",
+      "CTA": "Verken die wêreld?"
+    },
+    "Magic": {
+      "Title": "Magiese Arena",
+      "Desc": "Prettige uitdagings dinamies aangepas om elke vaardigheid deur spel vas te lê.",
+      "CTA": "Gaan die arena binne?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "Die FreeGeny Ekosisteem",
+    "Title": "Oplossings vir almal.",
+    "Subtitle": "Omdat uitnemendheid perfekte sinergie tussen alle akteurs vereis.",
+    "Parents": {
+      "Title": "Ouerspasie",
+      "Desc": "Presiese leiding vir sukses. Volg vordering, stuur stemboodskappe.",
+      "CTA": "Leer meer?"
+    },
+    "Schools": {
+      "Title": "FreeGeny Skole",
+      "Desc": "Volledige digitale transformasie. Bestuur jou klasse en onderwysers.",
+      "CTA": "Leer meer?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Emosionele Hupstoot",
+    "MomVoice": "Mamma se stem opgeneem",
+    "Congratulation": "Baie geluk Amine!"
+  },
+  "Innovation": {
+    "Tag": "Innovasie",
+    "Title": "Uitsonderlike leierskap.",
+    "Boost": {
+      "Title": "Emosionele Hupstoot",
+      "Desc": "Motiveer jou kind met jou eie stem."
+    },
+    "AI": {
+      "Title": "Aanpasbare KI-pad",
+      "Desc": "Elke klik pas die program aan."
+    }
+  },
+  "Footer": {
+    "Title": "Gereed om die genie te ontketen?",
+    "CTA": "Sluit gratis aan"
+  },
+  "Dashboard": {
+    "Title": "Ouer Kajuit",
+    "Subtitle": "Bestuur en volg die vordering van jou klein genieë.",
+    "AddChild": "Voeg 'n kind by",
+    "ChildCard": {
+      "Level": "Vlak",
+      "XP": "Totale XP",
+      "Progress": "Vordering",
+      "Interest": "Passie",
+      "Status": "Status",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Leerdermodus",
+      "EmotionalBoost": {
+        "Title": "Emosionele Hupstoot",
+        "Desc": "Moedig {name} aan met 'n stemboodskap.",
+        "Record": "Neem op"
+      }
+    },
+    "Alliance": {
+      "Title": "Ouer Alliansie",
+      "Online": "Aanlyn",
+      "CoParent": "Mede-ouer",
+      "Message": "Boodskap",
+      "Photo": "Foto"
+    },
+    "Printable": {
+      "Title": "Drukbare Fabriek",
+      "Desc": "Genereer gepersonaliseerde hersieningsboeke.",
+      "CTA": "Genereer lêer"
+    },
+    "Bridge": {
+      "Tag": "Die Brug stel voor",
+      "Validate": "Valideer",
+      "Ignore": "Ignoreer"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Hallo, {name}!",
+    "ParentDashboard": "Ouer Kontroleskerm",
+    "Portals": {
+      "School": {
+        "Title": "My Skool",
+        "Desc": "Hersien jou klaslesse terwyl jy pret het.",
+        "CTA": "Begin die avontuur"
+      },
+      "World": {
+        "Title": "Die Wêreld",
+        "Desc": "Verken Singapoer, Oxford en pak globale uitdagings aan!",
+        "CTA": "Ontdek"
+      },
+      "Arena": {
+        "Title": "Die Arena",
+        "Desc": "Logika speletjies en magiese kompetisies.",
+        "CTA": "Gereed om te speel?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"So {name}, gereed vir 'n nuwe avontuur? Moenie vergeet om jou {boost} te kyk wat deur jou ouers gestuur is nie!\"",
+      "BoostTag": "Stem Hupstoot"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Globale Uitnemendheid",
+      "Family": "Familie Span",
+      "Genius": "Die Klein Genie"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Jou kind het nie meer enige grense nie.",
+        "Items": [
+          "Singapoer Wiskunde",
+          "Cambridge (VK)",
+          "Finse Model",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Onderwys is 'n spansport.",
+        "Subtitle": "Sinkroniseer julle pogings vir hul sukses."
+      },
+      "Step3": {
+        "Title": "Laerskool Uitsluitlik.",
+        "Subtitle": "Pasmaak ondersteuning vir hul begin."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Hallo.",
+        "Tag": "Stap 1 van 3 — Jou rol",
+        "PhoneLabel": "Telefoonnommer",
+        "Next": "Volgende"
+      },
+      "Step2": {
+        "Title": "Familie Alliansie.",
+        "Tag": "Stap 2 van 3 — Nooi die gade uit",
+        "Desc": "Sinkroniseer julle pogings vir hul sukses.",
+        "EmailPlaceholder": "Gade se e-pos (Opsioneel)",
+        "Next": "Volgende Stap"
+      },
+      "Step3": {
+        "Title": "Die Klein Genie.",
+        "Tag": "Laaste stap: Hul reis",
+        "ChildName": "Kind se Voornaam",
+        "Country": "Land",
+        "Level": "Vlak",
+        "Age": "Ouderdom",
+        "Region": "Provinsie",
+        "CTA": "Begin die avontuur!"
+      }
+    }
+  }
+}

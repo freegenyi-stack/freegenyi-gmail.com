@@ -1,1 +1,0 @@
-<?php return ['home'=>'Kezdőlap','login'=>'Belépés','register'=>'Regisztráció','subjects'=>'Tantárgyak','maths'=>'Matematika','arabic'=>'Arab','pricing'=>'Árak','dashboard'=>'Vezérlőpult','logout'=>'Kilépés','change_region'=>'Régió módosítása'];

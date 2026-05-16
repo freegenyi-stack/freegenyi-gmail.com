@@ -1,1 +1,0 @@
-<?php return ['home'=>'Etusivu','login'=>'Kirjaudu','register'=>'Rekisteröidy','subjects'=>'Aiheet','maths'=>'Matematiikka','arabic'=>'Arabia','pricing'=>'Hinnasto','dashboard'=>'Paneeli','logout'=>'Kirjaudu ulos','change_region'=>'Vaihda aluetta'];

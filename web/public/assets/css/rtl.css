@@ -1,0 +1,75 @@
+/* ============================================================
+   FreeGeny — Support RTL (rtl.css)
+   Chargé uniquement pour la langue arabe (lang=ar)
+   ============================================================ */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  font-family: var(--font-arabic);
+}
+
+/* Navbar RTL */
+[dir="rtl"] .navbar-menu  { flex-direction: row-reverse; }
+[dir="rtl"] .navbar-logo  { flex-direction: row-reverse; }
+[dir="rtl"] .navbar-actions { flex-direction: row-reverse; }
+
+/* User dropdown RTL */
+[dir="rtl"] .user-dropdown { right: auto; left: 0; }
+
+/* Hero RTL */
+[dir="rtl"] .hero-content { text-align: right; }
+[dir="rtl"] .hero-cta { flex-direction: row-reverse; }
+[dir="rtl"] .hero-badge { flex-direction: row-reverse; }
+
+/* Alert RTL */
+[dir="rtl"] .alert { border-left: none; border-right: 3px solid; flex-direction: row-reverse; }
+
+/* Form RTL */
+[dir="rtl"] .form-select { background-position: left 12px center; padding-right: 1rem; padding-left: 2.5rem; }
+[dir="rtl"] .form-label   { text-align: right; }
+[dir="rtl"] .form-error   { flex-direction: row-reverse; }
+
+/* Lesson card RTL (slide left → slide right) */
+[dir="rtl"] .lesson-card:hover { transform: translateX(-6px); }
+
+/* Progress bar RTL */
+[dir="rtl"] .progress-bar-fill { background: linear-gradient(270deg, var(--clr-accent) 0%, var(--clr-accent-light) 100%); }
+[dir="rtl"] .progress-bar-fill::after { right: auto; left: 0; background: linear-gradient(270deg, transparent, rgba(255,255,255,0.3)); }
+
+/* Footer RTL */
+[dir="rtl"] .footer-grid    { } /* grid stays same */
+[dir="rtl"] .footer-bottom  { flex-direction: row-reverse; }
+[dir="rtl"] .footer-social  { flex-direction: row-reverse; }
+[dir="rtl"] .footer-men     { flex-direction: row-reverse; }
+[dir="rtl"] .footer-links a { text-align: right; }
+
+/* Dashboard RTL */
+[dir="rtl"] .dashboard-layout { grid-template-columns: 1fr 260px; }
+[dir="rtl"] .dashboard-sidebar { border-right: none; border-left: 1px solid var(--clr-border); }
+
+/* Dropdown RTL */
+[dir="rtl"] .user-info { text-align: right; }
+[dir="rtl"] .dropdown-item { text-align: right; }
+
+/* Hamburger RTL */
+[dir="rtl"] .hamburger { flex-direction: row-reverse; }
+
+/* Stat card */
+[dir="rtl"] .stat-card { text-align: right; }
+
+/* Font size ajustements pour l'arabe */
+[dir="rtl"] .hero-title   { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.3; }
+[dir="rtl"] .section-title { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+[dir="rtl"] .btn { letter-spacing: 0; }
+
+/* Exercices RTL */
+[dir="rtl"] .exercise-question { font-size: 1.5rem; }
+[dir="rtl"] .exercise-option { font-size: 1.25rem; font-family: var(--font-arabic); }
+[dir="rtl"] .exercise-feedback { font-family: var(--font-arabic); }
+
+/* Responsive RTL spécifique */
+@media (max-width: 992px) {
+  [dir="rtl"] .dashboard-layout { grid-template-columns: 1fr; }
+  [dir="rtl"] .dashboard-sidebar { border-left: none; border-bottom: 1px solid var(--clr-border); }
+}

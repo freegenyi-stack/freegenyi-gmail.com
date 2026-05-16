@@ -1,0 +1,200 @@
+{
+  "Hero": {
+    "title": "Bebaskan potensi anak Anda.",
+    "status": "Jembatan Keunggulan terbuka",
+    "subtitle": "FreeGeny membangun jembatan teknologi antara Orang Tua, Sekolah, dan Anak-anak untuk dukungan holistik menuju keunggulan.",
+    "cta": "Mulai petualangan",
+    "approach": "Pendekatan kami"
+  },
+  "Impact": {
+    "Geniuses": "Jenius",
+    "Countries": "Negara",
+    "Schools": "Sekolah",
+    "Languages": "Bahasa",
+    "Courses": "Kursus & Latihan"
+  },
+  "Nav": {
+    "About": "Tentang Kami",
+    "Approach": "Pendekatan",
+    "Parents": "Orang Tua",
+    "Schools": "Sekolah",
+    "NGOs": "LSM",
+    "Science": "Sains",
+    "Region": "Wilayah"
+  },
+  "Auth": {
+    "Login": "Masuk",
+    "Register": "Daftar",
+    "Logout": "Keluar",
+    "Dashboard": "Dasbor"
+  },
+  "Portals": {
+    "Tag": "Jelajahi Portal",
+    "Title": "Pendalaman total.",
+    "Subtitle": "Tiga dunia yang saling terhubung untuk kemajuan tanpa batas.",
+    "Local": {
+      "Title": "Portal Lokal",
+      "Desc": "Penguasaan program resmi. Fondasi sekolah Anda diperkuat oleh AI.",
+      "CTA": "Temukan dunianya?"
+    },
+    "World": {
+      "Title": "Portal Dunia",
+      "Desc": "Matematika Singapura dan Bahasa Inggris Oxford untuk ambisi tanpa batas.",
+      "CTA": "Jelajahi dunia?"
+    },
+    "Magic": {
+      "Title": "Arena Ajaib",
+      "Desc": "Tantangan menyenangkan yang disesuaikan secara dinamis untuk mengasah setiap keterampilan melalui permainan.",
+      "CTA": "Masuk ke arena?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "Ekosistem FreeGeny",
+    "Title": "Solusi untuk semua.",
+    "Subtitle": "Karena keunggulan membutuhkan sinergi yang sempurna antara semua pihak.",
+    "Parents": {
+      "Title": "Ruang Orang Tua",
+      "Desc": "Panduan tepat untuk sukses. Lacak kemajuan, kirim dorongan emosional suara, dan kelola hadiah.",
+      "CTA": "Pelajari lebih lanjut?"
+    },
+    "Schools": {
+      "Title": "Sekolah FreeGeny",
+      "Desc": "Transformasi digital lengkap. Kelola kelas, guru Anda, dan berkomunikasi dengan orang tua secara real time.",
+      "CTA": "Pelajari lebih lanjut?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Dorongan Emosional",
+    "MomVoice": "Suara Ibu direkam",
+    "Congratulation": "Selamat Amine!"
+  },
+  "Innovation": {
+    "Tag": "Inovasi",
+    "Title": "Kepemimpinan yang luar biasa.",
+    "Boost": {
+      "Title": "Dorongan Emosional",
+      "Desc": "Motivasi anak Anda dengan suara Anda sendiri."
+    },
+    "AI": {
+      "Title": "Jalur AI Adaptif",
+      "Desc": "Setiap klik menyesuaikan program."
+    }
+  },
+  "Footer": {
+    "Title": "Siap membebaskan sang jenius?",
+    "CTA": "Daftar gratis"
+  },
+  "Dashboard": {
+    "Title": "Kokpit Orang Tua",
+    "Subtitle": "Kelola dan lacak perkembangan jenius kecil Anda.",
+    "AddChild": "Tambahkan anak",
+    "ChildCard": {
+      "Level": "Tingkat",
+      "XP": "Total XP",
+      "Progress": "Kemajuan",
+      "Interest": "Gairah",
+      "Status": "Status",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Mode Pelajar",
+      "EmotionalBoost": {
+        "Title": "Dorongan Emosional",
+        "Desc": "Beri semangat pada {name} dengan pesan suara.",
+        "Record": "Rekam"
+      }
+    },
+    "Alliance": {
+      "Title": "Aliansi Orang Tua",
+      "Online": "Sedang Aktif",
+      "CoParent": "Rekan Orang Tua",
+      "Message": "Pesan",
+      "Photo": "Foto"
+    },
+    "Printable": {
+      "Title": "Pabrik Cetak",
+      "Desc": "Hasilkan buku ulasan khusus berdasarkan titik lemah mereka.",
+      "CTA": "Buat file"
+    },
+    "Bridge": {
+      "Tag": "Saran Jembatan",
+      "Validate": "Validasi",
+      "Ignore": "Abaikan"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Halo, {name}!",
+    "ParentDashboard": "Dasbor Orang Tua",
+    "Portals": {
+      "School": {
+        "Title": "Sekolahku",
+        "Desc": "Tinjau pelajaran kelas Anda sambil bersenang-senang.",
+        "CTA": "Mulai petualangan"
+      },
+      "World": {
+        "Title": "Dunia",
+        "Desc": "Jelajahi Singapura, Oxford, dan selesaikan tantangan global!",
+        "CTA": "Temukan"
+      },
+      "Arena": {
+        "Title": "Arena",
+        "Desc": "Game logika dan kompetisi magis.",
+        "CTA": "Siap bermain?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Jadi {name}, siap untuk petualangan baru? Jangan lupa periksa {boost} yang dikirim oleh orang tua Anda!\"",
+      "BoostTag": "Dorongan Suara"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Keunggulan Global",
+      "Family": "Tim Keluarga",
+      "Genius": "Jenius Kecil"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Anak Anda tidak lagi memiliki batasan.",
+        "Items": [
+          "Matematika Singapura",
+          "Cambridge (Inggris)",
+          "Model Finlandia",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Pendidikan adalah olahraga tim.",
+        "Subtitle": "Sinkronkan upaya Anda untuk kesuksesannya."
+      },
+      "Step3": {
+        "Title": "Eksklusif Sekolah Dasar.",
+        "Subtitle": "Dukungan yang disesuaikan untuk awalnya."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Halo.",
+        "Tag": "Langkah 1 dari 3 — Peran Anda sebagai penjamin",
+        "PhoneLabel": "Nomor Telepon",
+        "Next": "Berikutnya"
+      },
+      "Step2": {
+        "Title": "Aliansi Keluarga.",
+        "Tag": "Langkah 2 dari 3 — Mengundang pasangan",
+        "Desc": "Sinkronkan upaya Anda untuk kesuksesannya.",
+        "EmailPlaceholder": "Email pasangan (Opsional)",
+        "Next": "Langkah Berikutnya"
+      },
+      "Step3": {
+        "Title": "Sang Jenius Kecil.",
+        "Tag": "Langkah terakhir: Perjalanannya",
+        "ChildName": "Nama Anak",
+        "Country": "Negara",
+        "Level": "Tingkat",
+        "Age": "Umur",
+        "Region": "Provinsi",
+        "CTA": "Mulai petualangan!"
+      }
+    }
+  }
+}

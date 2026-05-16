@@ -1,1 +1,0 @@
-<?php return ['home'=>'Αρχική','login'=>'Είσοδος','register'=>'Εγγραφή','subjects'=>'Μαθήματα','maths'=>'Μαθηματικά','arabic'=>'Αραβικά','pricing'=>'Τιμές','dashboard'=>'Πίνακας','logout'=>'Έξοδος','change_region'=>'Αλλαγή περιοχής'];

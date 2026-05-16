@@ -1,1 +1,0 @@
-<?php return ['home'=>'Utama','login'=>'Log Masuk','register'=>'Daftar','subjects'=>'Subjek','maths'=>'Matematik','arabic'=>'Bahasa Arab','pricing'=>'Harga','dashboard'=>'Papan Pemuka','logout'=>'Log Keluar','change_region'=>'Tukar Wilayah'];
