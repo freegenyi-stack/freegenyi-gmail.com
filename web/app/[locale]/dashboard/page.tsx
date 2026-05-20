@@ -48,7 +48,7 @@ const childrenData = [
 export default function DashboardPage() {
   const t = useTranslations("Dashboard");
   const locale = useLocale();
-  const isRTL = locale === "ar";
+  const isRTL = (locale === "ar" || locale.endsWith("-ar"));
 
   return (
     <div className="min-h-screen bg-slate-50/50 pb-20" dir={isRTL ? "rtl" : "ltr"}>

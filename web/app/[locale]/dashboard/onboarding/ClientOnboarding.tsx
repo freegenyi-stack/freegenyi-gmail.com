@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import React, { useState, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -15,13 +16,14 @@ import { submitOnboardingAction } from "@/lib/actions/onboarding";
 import { checkUserAvailability } from "@/lib/actions/auth_elite";
 import { REGIONS } from "@/constants/regions";
 import Image from "next/image";
-import Link from "next/link";
+
 import Lottie from "lottie-react";
 import chatCurieux from "@/../public/assets/animations/chat_curieux.json";
-import { cn } from "@/lib/utils";
+import { cn, getLocalizedLevel } from "@/lib/utils";
 import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
+import SchoolPicker from "@/components/SchoolPicker";
 
 const handwrittenFont = `
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
@@ -48,9 +50,10 @@ function OnboardingContent({ locale }: { locale: string }) {
     const router = useRouter();
     const searchParams = useSearchParams();
     
+    const initialStep = parseInt(searchParams.get('step') || '1');
     const initialType = searchParams.get('type') || "parent";
 
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(initialStep);
     const [userType, setUserType] = useState(initialType);
     const [role, setRole] = useState("Parent"); 
     
@@ -70,6 +73,7 @@ function OnboardingContent({ locale }: { locale: string }) {
     const [childAge, setChildAge] = useState("");
     const [childRegion, setChildRegion] = useState("");
     const [childSchool, setChildSchool] = useState("");
+    const [selectedSchool, setSelectedSchool] = useState<{ id: number; name: string } | null>(null);
 
     const [selectedCountryCode, setSelectedCountryCode] = useState(COUNTRIES.find(c => c.code === (regionCountry || 'DZ')) || COUNTRIES[0]);
 
@@ -124,7 +128,13 @@ function OnboardingContent({ locale }: { locale: string }) {
     const currentLevels = levels[childCountry] || levels["INT"];
 
     const handleNext = () => {
-        if (step === 1) {
+        // Skip all validation in development mode
+        const isDev = process.env.NODE_ENV === 'development';
+        if (isDev && step === 1) {
+            const randomId = Math.floor(Math.random() * 10000);
+            if (!fullName || !fullName.trim()) setFullName("Testeur FreeGeny");
+            if (!username || !username.trim()) setUsername(`testeur_${randomId}`);
+        } else if (!isDev && step === 1) {
             if (!fullName || !fullName.trim()) {
                 toast.error("Champ nom complet non rempli");
                 return;
@@ -137,14 +147,15 @@ function OnboardingContent({ locale }: { locale: string }) {
                 toast.error("pseudo déjà existant");
                 return;
             }
-            // Email and passwords are automatically valid in Google Auth flow
         }
         setStep(step + 1);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!validateCaptcha(captchaValue)) {
+        // Skip captcha in dev mode for easier testing
+        const isDev = process.env.NODE_ENV === 'development';
+        if (!isDev && !validateCaptcha(captchaValue)) {
             toast.error("Code de sécurité incorrect.");
             setCaptchaValue("");
             return;
@@ -154,15 +165,16 @@ function OnboardingContent({ locale }: { locale: string }) {
         const formData = new FormData();
         formData.append("user_type", userType);
         formData.append("parent_role", role);
-        formData.append("full_name", fullName);
-        formData.append("username", username);
+        formData.append("full_name", fullName || "Testeur FreeGeny");
+        formData.append("username", username || `testeur_${Math.floor(Math.random() * 10000)}`);
         formData.append("phone", phone);
         formData.append("spouse_email", spouseEmail || spouseFirstName); 
-        formData.append("child_name", childName);
+        formData.append("child_name", childName || "Yasmine");
         formData.append("child_country", childCountry);
         formData.append("child_level", childLevel || currentLevels[0]);
-        formData.append("child_age", childAge);
-        formData.append("child_school", childSchool);
+        formData.append("child_age", childAge || "8");
+        formData.append("child_school", selectedSchool?.name || childSchool);
+        if (selectedSchool) formData.append("child_school_id", String(selectedSchool.id));
         formData.append("child_region", childRegion);
 
         const result = await submitOnboardingAction(formData);
@@ -293,7 +305,7 @@ function OnboardingContent({ locale }: { locale: string }) {
 
                         <div className="flex-1 overflow-y-auto scrollbar-hide flex flex-col relative z-20">
                             <div className="mb-3 flex justify-between items-center">
-                                <Link href={`/${locale}`} className="flex items-center gap-3 group">
+                                <Link href="/" className="flex items-center gap-3 group">
                                     <div className="bg-slate-50 p-3 rounded-2xl border border-slate-100 group-hover:border-orange-500 transition-all">
                                         <Image src="/assets/img/logo.png" alt="Logo" width={28} height={28} />
                                     </div>
@@ -555,22 +567,21 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                                     onChange={(e) => setChildLevel(e.target.value)} 
                                                                     className="w-full bg-white border-2 border-slate-100 focus:border-slate-950 px-4 py-3 pl-12 rounded-2xl outline-none font-black text-slate-950 text-xs shadow-sm appearance-none cursor-pointer font-jakarta uppercase tracking-tighter"
                                                                 >
-                                                                    {currentLevels.map(lvl => <option key={lvl} value={lvl}>{lvl}</option>)}
+                                                                    {currentLevels.map(lvl => (
+                                                                        <option key={lvl} value={lvl}>
+                                                                            {getLocalizedLevel(lvl, childCountry, (locale === "ar" || locale.endsWith("-ar")))}
+                                                                        </option>
+                                                                    ))}
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div className="space-y-1.5">
-                                                            <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">Établissement</label>
-                                                            <div className="relative group">
-                                                                <School className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                                                                <input 
-                                                                    type="text" 
-                                                                    value={childSchool} 
-                                                                    onChange={(e) => setChildSchool(e.target.value)} 
-                                                                    placeholder="Ex: École El-Nadjah" 
-                                                                    className="w-full bg-white border-2 border-slate-100 focus:border-slate-950 px-4 py-3 pl-12 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all placeholder:text-slate-300" 
-                                                                />
-                                                            </div>
+                                                        <div className="col-span-2 space-y-1.5">
+                                                            <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">École 🏫</label>
+                                                            <SchoolPicker
+                                                                value={selectedSchool}
+                                                                onChange={setSelectedSchool}
+                                                                country={childCountry || "DZ"}
+                                                            />
                                                         </div>
                                                     </>
                                                 ) : (
@@ -594,32 +605,32 @@ function OnboardingContent({ locale }: { locale: string }) {
 
                                             {/* CRYSTAL SECURITY VAULT */}
                                             <div className="relative mt-1">
-                                                <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1 mb-2 block">Vérification de Sécurité</label>
-                                                <div className="bg-slate-50/50 rounded-[2rem] p-5 border-2 border-slate-100/50 shadow-inner relative overflow-hidden">
-                                                    <div className="flex flex-col sm:flex-row items-center gap-5 relative z-10">
+                                                <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1 mb-1.5 block">Vérification de Sécurité</label>
+                                                <div className="bg-slate-50/50 rounded-xl p-3 border-2 border-slate-100/50 shadow-inner relative overflow-hidden">
+                                                    <div className="flex flex-col sm:flex-row items-center gap-3 relative z-10">
                                                         <div className="relative">
-                                                            <div className="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-center min-w-[140px]">
-                                                                <div className="scale-90 contrast-125 rounded-lg overflow-hidden">
+                                                            <div className="bg-white p-2 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center min-w-[120px]">
+                                                                <div className="scale-75 origin-center contrast-125 rounded-lg overflow-hidden h-[50px] flex items-center justify-center">
                                                                     <LoadCanvasTemplateNoReload />
                                                                 </div>
                                                             </div>
-                                                            <button type="button" onClick={() => loadCaptchaEnginge(6)} className="absolute -right-2 -top-2 bg-slate-950 text-white p-1.5 rounded-full shadow-lg hover:bg-orange-600 transition-all hover:rotate-180 duration-500"><RefreshCcw className="w-3 h-3" /></button>
+                                                            <button type="button" onClick={() => loadCaptchaEnginge(6)} className="absolute -right-1.5 -top-1.5 bg-slate-950 text-white p-1 rounded-full shadow-lg hover:bg-orange-600 transition-all hover:rotate-180 duration-500"><RefreshCcw className="w-2.5 h-2.5" /></button>
                                                         </div>
                                                         
-                                                        <div className="flex-1 w-full space-y-2">
+                                                        <div className="flex-1 w-full space-y-1.5">
                                                             <div className="relative group">
-                                                                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-slate-950 transition-colors">
-                                                                    <ShieldCheck className="w-4 h-4" />
+                                                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-slate-950 transition-colors">
+                                                                    <ShieldCheck className="w-3.5 h-3.5" />
                                                                 </div>
                                                                 <input 
                                                                     type="text" 
                                                                     placeholder="Entrez le code" 
                                                                     value={captchaValue} 
                                                                     onChange={(e) => setCaptchaValue(e.target.value)}
-                                                                    className="w-full bg-white border-2 border-slate-200 focus:border-slate-950 px-4 py-3 pl-11 rounded-xl outline-none font-black text-slate-950 text-sm transition-all tracking-[0.3em] placeholder:tracking-normal placeholder:font-bold placeholder:text-slate-400 shadow-sm" 
+                                                                    className="w-full bg-white border-2 border-slate-200 focus:border-slate-950 px-3 py-2 pl-9 rounded-xl outline-none font-black text-slate-950 text-xs transition-all tracking-[0.3em] placeholder:tracking-normal placeholder:font-bold placeholder:text-slate-400 shadow-sm" 
                                                                 />
                                                             </div>
-                                                            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-tighter px-1 flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" /> Protection Elite Active</p>
+                                                            <p className="text-[8px] font-bold text-slate-500 uppercase tracking-tighter px-1 flex items-center gap-1"><span className="w-1 h-1 bg-green-500 rounded-full animate-pulse" /> Protection Elite Active</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -637,10 +648,10 @@ function OnboardingContent({ locale }: { locale: string }) {
 
                                 <div className="mt-2 text-center space-y-1">
                                     <p className="text-[10px] font-bold text-slate-500 leading-tight px-12">
-                                        En continuant, vous acceptez nos <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline">conditions</Link> et notre <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">politique</Link>.
+                                        En continuant, vous acceptez nos <Link href="/terms" className="text-orange-600 hover:underline">conditions</Link> et notre <Link href="/privacy" className="text-teal-600 hover:underline font-bold">politique</Link>.
                                     </p>
                                     <p className="text-[10px] text-slate-500 font-black uppercase tracking-[0.1em]">
-                                        {t('Auth.AlreadyHaveAccount')} <Link href={`/${locale}/auth/login`} className="text-orange-600 hover:underline font-black">{t('Auth.Login')}</Link>
+                                        {t('Auth.AlreadyHaveAccount')} <Link href="/auth/login" className="text-orange-600 hover:underline font-black">{t('Auth.Login')}</Link>
                                     </p>
                                 </div>
                             </form>

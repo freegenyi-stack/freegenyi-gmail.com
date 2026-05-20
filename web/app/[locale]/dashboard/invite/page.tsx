@@ -1,8 +1,9 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import React, { useState } from "react";
 import { UserPlus, Send, ArrowLeft, CheckCircle, AlertCircle, ChevronDown } from "lucide-react";
-import Link from "next/link";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { sendInvitationAction } from "@/lib/actions/activity";
 import { toast } from "sonner";
@@ -120,7 +121,7 @@ export default function InvitePage() {
         {/* Footer Link */}
         <div className="mt-12 text-center">
           <Link 
-            href={`/${locale}/dashboard/parent`} 
+            href="/dashboard/parent"
             className="text-[11px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-950 transition-all flex items-center justify-center gap-3 group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />

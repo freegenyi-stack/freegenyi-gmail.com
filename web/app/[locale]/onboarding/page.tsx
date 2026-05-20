@@ -40,7 +40,7 @@ const levels: Record<string, string[]> = {
 export default function OnboardingPage() {
   const t = useTranslations("Onboarding");
   const locale = useLocale();
-  const isRTL = locale === "ar";
+  const isRTL = (locale === "ar" || locale.endsWith("-ar"));
   
   const [step, setStep] = useState<Step>(1);
   const [data, setData] = useState<OnboardingData>({

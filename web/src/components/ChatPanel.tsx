@@ -3,10 +3,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Search, Plus, Image as ImageIcon, Mic, Paperclip, Smile, Send, Check, CheckCheck } from "lucide-react";
+import dynamic from "next/dynamic";
 import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
 import { useChat } from "@/context/ChatContext";
 import { useSession } from "next-auth/react";
+
+const Picker = dynamic(() => import("@emoji-mart/react"), { ssr: false });
 
 export default function ChatPanel() {
   const { data: session } = useSession();

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+
 import Image from "next/image";
 import { useRegion } from "@/context/RegionContext";
 import { REGIONS } from "@/constants/regions";
@@ -11,7 +11,7 @@ import { clsx, type ClassValue } from "clsx";
 import NotificationCenter from "./NotificationCenter";
 import { twMerge } from "tailwind-merge";
 import { useTranslations, useLocale } from "next-intl";
-import { useRouter, usePathname } from "@/i18n/routing";
+import { Link, useRouter, usePathname } from "@/i18n/routing";
 import { useSession, signOut } from "next-auth/react";
 
 function cn(...inputs: ClassValue[]) {
@@ -83,7 +83,7 @@ export default function Header() {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const countryRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
-  const isRTL = locale === "ar";
+  const isRTL = (locale === "ar" || locale.endsWith("-ar"));
 
   // Fetch user profile data
   useEffect(() => {
@@ -116,7 +116,16 @@ export default function Header() {
   const handleRegionChange = (code: string, l: string) => {
     setRegion(code, l);
     setCountryOpen(false);
-    router.push(pathname, { locale: l });
+    
+    // Extraire le chemin brut depuis le navigateur et supprimer TOUT préfixe de locale existant
+    // (ex: /DZ-ar/auth/register → /auth/register, /fr/about → /about, / → /)
+    const rawPath = window.location.pathname;
+    const stripped = rawPath
+      .replace(/^\/[A-Z]{2}-[a-z]{2}(\/|$)/, "/")  // retire un préfixe composé /XX-xx
+      .replace(/^\/[a-z]{2}(\/|$)/, "/");            // retire un préfixe simple /xx
+    
+    const cleanPath = stripped === "" ? "/" : stripped;
+    window.location.href = `/${code}-${l}${cleanPath === "/" ? "/" : cleanPath}${window.location.search}`;
   };
 
   const sortedCountries = Object.keys(REGIONS).sort((a, b) =>
@@ -212,7 +221,7 @@ export default function Header() {
                           <div className="flex gap-1">
                             {region.langs.map((l: string) => (
                               <button key={l} onClick={() => handleRegionChange(code, l)}
-                                className={cn("px-2 py-1 text-[9px] font-black rounded-md uppercase", selectedCountry === code && locale === l ? "bg-orange-600 text-white" : "bg-slate-100 text-slate-400 hover:text-orange-600")}>
+                                className={cn("px-2 py-1 text-[9px] font-black rounded-md uppercase", selectedCountry === code && locale.endsWith(l) ? "bg-orange-600 text-white" : "bg-slate-100 text-slate-400 hover:text-orange-600")}>
                                 {l}
                               </button>
                             ))}
@@ -324,7 +333,7 @@ export default function Header() {
 
                         {/* ── Profile Incomplete Alert ── */}
                         {profile && !profile.profileComplete && (
-                          <Link href={`/${locale}/dashboard/settings`} onClick={() => setUserMenuOpen(false)}
+                          <Link href="/dashboard/settings" onClick={() => setUserMenuOpen(false)}
                             className="flex items-center justify-between px-5 py-2.5 text-xs font-bold text-red-600 hover:bg-red-50 transition-all group border-b border-slate-50">
                             <span className="flex items-center gap-2">
                               <AlertCircle className="w-4 h-4" />
@@ -336,15 +345,15 @@ export default function Header() {
 
                         {/* ── Main Links ── */}
                         <div className="py-1">
-                          <Link href={`/${locale}/dashboard/${dashRoute}`} onClick={() => setUserMenuOpen(false)}
+                          <Link href={`/dashboard/${dashRoute}`} onClick={() => setUserMenuOpen(false)}
                             className="flex items-center gap-3 px-5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all">
                             <LayoutDashboard className="w-4 h-4 opacity-50" /> Tableau de bord
                           </Link>
-                          <Link href={`/${locale}/dashboard/history`} onClick={() => setUserMenuOpen(false)}
+                          <Link href="/dashboard/history" onClick={() => setUserMenuOpen(false)}
                             className="flex items-center gap-3 px-5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all">
                             <Clock className="w-4 h-4 opacity-50" /> Mon Historique
                           </Link>
-                          <Link href={`/${locale}/dashboard/invite`} onClick={() => setUserMenuOpen(false)}
+                          <Link href="/dashboard/invite" onClick={() => setUserMenuOpen(false)}
                             className="flex items-center gap-3 px-5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all">
                             <UserPlus className="w-4 h-4 opacity-50" /> Inviter un membre
                           </Link>
@@ -360,7 +369,7 @@ export default function Header() {
                             className="w-full flex items-center gap-3 px-5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all">
                             <Palette className="w-4 h-4 opacity-50" /> Personnalisation 🎨
                           </button>
-                          <Link href={`/${locale}/dashboard/settings`} onClick={() => setUserMenuOpen(false)}
+                          <Link href="/dashboard/settings" onClick={() => setUserMenuOpen(false)}
                             className="flex items-center gap-3 px-5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all">
                             <Settings className="w-4 h-4 opacity-50" /> Réglages
                           </Link>
@@ -380,6 +389,9 @@ export default function Header() {
               </>
             ) : (
               <>
+                <Link href="/dashboard/guest" className="hidden sm:flex items-center gap-1.5 text-[10px] sm:text-[11px] font-black uppercase text-orange-600 tracking-wider hover:bg-orange-50 transition border border-orange-200/50 bg-orange-50/40 px-3.5 py-2 rounded-xl">
+                  🧭 {tNav("FreeExplore")}
+                </Link>
                 <Link href="/auth/login" className="hidden md:block text-[12px] font-black uppercase text-slate-900 tracking-widest hover:text-orange-600 transition p-2">
                   {tAuth("Login")}
                 </Link>

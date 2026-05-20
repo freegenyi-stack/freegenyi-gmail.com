@@ -1,6 +1,6 @@
 {
   "Hero": {
-    "title": "Unleash your child's genius.",
+    "title": "Open <orange>the gates of genius</orange> for your child.",
     "status": "The Bridge of Excellence is open",
     "subtitle": "FreeGeny builds a technological bridge between Parents, Schools, and Children for holistic support towards excellence.",
     "cta": "Start the adventure",
@@ -20,13 +20,21 @@
     "Schools": "Schools",
     "NGOs": "NGOs",
     "Science": "Science",
-    "Region": "Region"
+    "Region": "Region",
+    "FreeExplore": "Free Exploration"
   },
   "Auth": {
     "Login": "Login",
     "Register": "Join",
     "Logout": "Logout",
-    "Dashboard": "Dashboard"
+    "Dashboard": "Dashboard",
+    "Agreement": "By continuing, you agree to our terms of service and privacy policy.",
+    "AlreadyHaveAccount": "Already have an account? Login",
+    "Placeholders": {
+      "FullName": "Mourad Belaid",
+      "Username": "mourad_dz",
+      "Email": "mourad@genie.dz"
+    }
   },
   "Portals": {
     "Tag": "Explore the Portals",

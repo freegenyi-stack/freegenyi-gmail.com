@@ -1,6 +1,7 @@
+import { Link } from "@/i18n/routing";
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+
 import ChatOpener from "@/components/ChatOpener";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
@@ -91,7 +92,7 @@ export default async function ParentDashboardPage({
           </div>
           <div className="flex gap-4 w-full md:w-auto relative z-10">
             <Link 
-              href={`/${locale}/dashboard/children`}
+              href="/dashboard/children"
               className="flex-1 md:flex-none text-center bg-white border-2 border-slate-100 px-8 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:border-slate-300 hover:shadow-xl transition-all duration-300 text-slate-700"
             >
               + Gestion des enfants
@@ -101,19 +102,19 @@ export default async function ParentDashboardPage({
 
         {/* Navigation Rapide du Dashboard */}
         <div className="flex overflow-x-auto gap-3 pb-4 mb-12 relative z-10 hide-scrollbar">
-          <Link href={`/${locale}/dashboard/parent`} className="shrink-0 bg-slate-900 text-white px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest shadow-lg">
+          <Link href="/dashboard/parent" className="shrink-0 bg-slate-900 text-white px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest shadow-lg">
             Cockpit
           </Link>
-          <Link href={`/${locale}/dashboard/messages`} className="shrink-0 bg-white border border-slate-200 text-slate-600 hover:text-orange-600 hover:border-orange-200 px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all shadow-sm">
+          <Link href="/dashboard/messages" className="shrink-0 bg-white border border-slate-200 text-slate-600 hover:text-orange-600 hover:border-orange-200 px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all shadow-sm">
             Messages & IA
           </Link>
-          <Link href={`/${locale}/dashboard/children`} className="shrink-0 bg-white border border-slate-200 text-slate-600 hover:text-orange-600 hover:border-orange-200 px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all shadow-sm">
+          <Link href="/dashboard/children" className="shrink-0 bg-white border border-slate-200 text-slate-600 hover:text-orange-600 hover:border-orange-200 px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all shadow-sm">
             Enfants
           </Link>
-          <Link href={`/${locale}/dashboard/history`} className="shrink-0 bg-white border border-slate-200 text-slate-600 hover:text-orange-600 hover:border-orange-200 px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all shadow-sm">
+          <Link href="/dashboard/history" className="shrink-0 bg-white border border-slate-200 text-slate-600 hover:text-orange-600 hover:border-orange-200 px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all shadow-sm">
             Historique
           </Link>
-          <Link href={`/${locale}/dashboard/settings`} className="shrink-0 bg-white border border-slate-200 text-slate-600 hover:text-orange-600 hover:border-orange-200 px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all shadow-sm">
+          <Link href="/dashboard/settings" className="shrink-0 bg-white border border-slate-200 text-slate-600 hover:text-orange-600 hover:border-orange-200 px-6 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all shadow-sm">
             Réglages
           </Link>
         </div>
@@ -127,7 +128,7 @@ export default async function ParentDashboardPage({
                 <div className="w-20 h-20 bg-orange-50 rounded-3xl flex items-center justify-center mx-auto mb-6 text-4xl">🦊</div>
                 <h2 className="text-2xl font-black text-slate-900 mb-3 font-jakarta">Ajoutez votre premier génie !</h2>
                 <p className="text-slate-500 text-sm font-bold mb-8 max-w-sm mx-auto">Votre profil Elite est activé. Ajoutez maintenant le profil de votre enfant pour commencer le suivi.</p>
-                <Link href={`/${locale}/dashboard/children`} className="inline-block bg-slate-950 text-white px-10 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all shadow-xl">
+                <Link href="/dashboard/children" className="inline-block bg-slate-950 text-white px-10 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all shadow-xl">
                   + Ajouter un enfant
                 </Link>
               </div>
@@ -160,7 +161,7 @@ export default async function ParentDashboardPage({
                       </div>
                     </div>
                     <Link 
-                      href={`/${locale}/lobby/${child.id}`}
+                      href={`/lobby/${child.id}`}
                       className="w-full md:w-auto bg-slate-950 text-white px-8 py-5 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all duration-300 shadow-xl hover:shadow-orange-600/20 text-center"
                     >
                       Mode Apprenant
@@ -258,7 +259,7 @@ export default async function ParentDashboardPage({
                     Aucun partenaire associé pour le moment. L'éducation est un sport d'équipe !
                   </p>
                   <Link 
-                    href={`/${locale}/dashboard/invite`}
+                    href="/dashboard/invite"
                     className="block text-center border-2 border-dashed border-slate-200 py-5 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:border-orange-400 hover:text-orange-600 hover:bg-orange-50 transition-all duration-300"
                   >
                     Inviter l'autre parent

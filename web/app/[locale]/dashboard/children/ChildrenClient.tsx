@@ -2,9 +2,11 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Trash2, ShieldCheck, Calendar, GraduationCap, X } from "lucide-react";
+import { Plus, Trash2, ShieldCheck, Calendar, GraduationCap, X, School } from "lucide-react";
 import { addChildAction, deleteChildAction } from "@/lib/actions/children";
-import { toast } from "sonner"; // Assuming sonner is available, if not we'll use a fallback
+import SchoolPicker from "@/components/SchoolPicker";
+import { toast } from "sonner";
+import { getLocalizedLevel } from "@/lib/utils";
 
 interface Child {
   id: number;
@@ -17,17 +19,29 @@ interface Child {
 export default function ChildrenClient({ 
   initialChildren, 
   locale,
-  userName 
+  userName,
+  country
 }: { 
   initialChildren: Child[], 
   locale: string,
-  userName: string 
+  userName: string,
+  country: string
 }) {
   const [children, setChildren] = useState(initialChildren);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedSchool, setSelectedSchool] = useState<{ id: number; name: string } | null>(null);
 
-  const levels = ['Maternelle','CP','CE1','CE2','CM1','CM2','6ème','5ème','4ème','3ème'];
+  const levelsMap: Record<string, string[]> = {
+    DZ: ['1AP', '2AP', '3AP', '4AP', '5AP'],
+    MA: ['1AP', '2AP', '3AP', '4AP', '5AP', '6AP'],
+    TN: ['1ère', '2ème', '3ème', '4ème', '5ème', '6ème'],
+    FR: ['CP', 'CE1', 'CE2', 'CM1', 'CM2'],
+    US: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+    AU: ['Kindergarten', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6'],
+    INT: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
+  };
+  const levels = levelsMap[country] || levelsMap["FR"];
 
   const handleDelete = async (id: number) => {
     if (!confirm("Voulez-vous vraiment supprimer ce profil ?")) return;
@@ -45,11 +59,15 @@ export default function ChildrenClient({
     e.preventDefault();
     setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
-    
+    if (selectedSchool) {
+      formData.set("schoolId", String(selectedSchool.id));
+      formData.set("schoolName", selectedSchool.name);
+    }
     const result = await addChildAction(formData);
     if (result.success) {
       setIsModalOpen(false);
-      window.location.reload(); // Re-fetch from server
+      setSelectedSchool(null);
+      window.location.reload();
     } else {
       toast.error(result.error || "Erreur");
       setIsSubmitting(false);
@@ -225,9 +243,25 @@ export default function ChildrenClient({
                         name="niveau"
                         className="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-2xl focus:border-slate-900 transition-all outline-none text-sm font-bold appearance-none cursor-pointer"
                       >
-                        {levels.map(l => <option key={l} value={l}>{l}</option>)}
+                        {levels.map(l => (
+                          <option key={l} value={l}>
+                            {getLocalizedLevel(l, country, (locale === "ar" || locale.endsWith("-ar")))}
+                          </option>
+                        ))}
                       </select>
                     </div>
+                  </div>
+
+                  {/* School Picker */}
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 px-1 flex items-center gap-2">
+                      <School className="w-3.5 h-3.5" /> École (optionnel)
+                    </label>
+                    <SchoolPicker
+                      value={selectedSchool}
+                      onChange={setSelectedSchool}
+                      country={country}
+                    />
                   </div>
 
                   <div className="pt-6">

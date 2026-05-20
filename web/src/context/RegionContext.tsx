@@ -10,12 +10,44 @@ interface RegionContextType {
 
 const RegionContext = createContext<RegionContextType | undefined>(undefined);
 
-export function RegionProvider({ children }: { children: React.ReactNode }) {
-  const [selectedCountry, setSelectedCountry] = useState("DZ");
-  const [selectedLang, setSelectedLang] = useState("fr");
+export function RegionProvider({ 
+  children,
+  initialLocale
+}: { 
+  children: React.ReactNode;
+  initialLocale?: string;
+}) {
+  let defaultCountry = "DZ";
+  let defaultLang = "fr";
 
-  // Load from localStorage if available
+  if (initialLocale && initialLocale.includes("-")) {
+    const parts = initialLocale.split("-");
+    if (parts[0] && parts[1]) {
+      defaultCountry = parts[0];
+      defaultLang = parts[1];
+    }
+  }
+
+  const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
+  const [selectedLang, setSelectedLang] = useState(defaultLang);
+
+  // Load from localStorage or URL if available
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const pathParts = window.location.pathname.split("/");
+      const firstPart = pathParts[1]; // e.g. "DZ-ar"
+      if (firstPart && firstPart.includes("-") && firstPart.length === 5) {
+        const [country, lang] = firstPart.split("-");
+        if (country === country.toUpperCase() && lang === lang.toLowerCase()) {
+          setSelectedCountry(country);
+          setSelectedLang(lang);
+          localStorage.setItem("freegeny_country", country);
+          localStorage.setItem("freegeny_lang", lang);
+          return;
+        }
+      }
+    }
+
     const savedCountry = localStorage.getItem("freegeny_country");
     const savedLang = localStorage.getItem("freegeny_lang");
     if (savedCountry) setSelectedCountry(savedCountry);

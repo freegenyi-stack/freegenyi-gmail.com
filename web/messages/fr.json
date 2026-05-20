@@ -1,6 +1,6 @@
 {
   "Hero": {
-    "title": "Libérez le génie de votre enfant.",
+    "title": "Ouvrez <orange>les portes du génie</orange> à votre enfant.",
     "status": "Le Pont de l'Excellence est ouvert",
     "subtitle": "FreeGeny érige un pont technologique entre Parents, Écoles et Enfants pour un accompagnement holistique vers l’excellence.",
     "cta": "Commencer l’aventure",
@@ -20,7 +20,8 @@
     "Schools": "Écoles",
     "NGOs": "ONG",
     "Science": "Science",
-    "Region": "Région"
+    "Region": "Région",
+    "FreeExplore": "Exploration Libre"
   },
   "Auth": {
     "Login": "Connexion",
@@ -161,7 +162,13 @@
     "LeftPanel": {
       "Step1": {
         "Title": "Votre enfant n'a plus aucune frontière.",
-        "Items": ["Mathématiques de Singapour", "Cambridge (UK)", "Modèle Finlandais", "STEM / STEAM", "Montessori"]
+        "Items": [
+          "Mathématiques de Singapour",
+          "Cambridge (UK)",
+          "Modèle Finlandais",
+          "STEM / STEAM",
+          "Montessori"
+        ]
       },
       "Step2": {
         "Title": "L'éducation est un sport d'équipe.",

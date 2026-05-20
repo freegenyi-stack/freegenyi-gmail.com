@@ -1,7 +1,8 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import React from "react";
-import Link from "next/link";
+
 import { motion } from "framer-motion";
 import { Globe, BookOpen, Zap, ArrowRight, Home } from "lucide-react";
 
@@ -37,7 +38,7 @@ export default function LobbyClient({
       descColor: "text-blue-300/60",
       shadow: "shadow-[0_20px_50px_rgba(37,99,235,0.3)]",
       gradient: "from-blue-600/10",
-      href: `/${locale}/portal/local`,
+      href: "/portal/local",
       hoverRotate: "group-hover:rotate-6"
     },
     {
@@ -49,7 +50,7 @@ export default function LobbyClient({
       descColor: "text-orange-200/60",
       shadow: "shadow-[0_25px_60px_rgba(234,88,12,0.4)]",
       gradient: "from-orange-600/10",
-      href: `/${locale}/portal/world`,
+      href: "/portal/world",
       scale: "md:scale-110",
       isFeatured: true,
       hoverRotate: "group-hover:-rotate-6"
@@ -63,7 +64,7 @@ export default function LobbyClient({
       descColor: "text-teal-300/60",
       shadow: "shadow-[0_20px_50px_rgba(13,148,136,0.3)]",
       gradient: "from-teal-600/10",
-      href: `/${locale}/portal/magic`,
+      href: "/portal/magic",
       hoverRotate: "group-hover:rotate-12"
     }
   ];
@@ -118,7 +119,7 @@ export default function LobbyClient({
           animate={{ opacity: 1, x: 0 }}
         >
           <Link 
-            href={`/${locale}/dashboard/parent`}
+            href="/dashboard/parent"
             className="bg-white/5 backdrop-blur-xl px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-3"
           >
             <Home className="w-4 h-4" />

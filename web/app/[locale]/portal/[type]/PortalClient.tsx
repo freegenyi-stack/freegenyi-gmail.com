@@ -1,7 +1,8 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import React from "react";
-import Link from "next/link";
+
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 
@@ -54,7 +55,7 @@ export default function PortalClient({
           </button>
           
           <Link 
-            href={`/${locale}/dashboard/parent`} // In a real app, we'd need to know which child's lobby to return to
+            href="/dashboard/parent" // In a real app, we'd need to know which child's lobby to return to
             className="inline-flex items-center justify-center gap-2 text-white/40 font-bold uppercase tracking-widest text-[10px] hover:text-white transition-colors group"
           >
             <ArrowLeft className="w-3 h-3 transition-transform group-hover:-translate-x-1" />

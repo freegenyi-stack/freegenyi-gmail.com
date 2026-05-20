@@ -1,7 +1,8 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import React from "react";
-import Link from "next/link";
+
 import { motion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { 
@@ -22,7 +23,7 @@ function cn(...inputs: ClassValue[]) {
 export default function ChildLobbyPage() {
   const t = useTranslations("ChildLobby");
   const locale = useLocale();
-  const isRTL = locale === "ar";
+  const isRTL = (locale === "ar" || locale.endsWith("-ar"));
   
   // Mock data for now
   const childName = "Amine";
@@ -145,10 +146,19 @@ export default function ChildLobbyPage() {
         </div>
         <div className={isRTL ? "text-right" : "text-left"}>
           <p className={cn("text-slate-300 font-light leading-relaxed italic", isRTL && "font-lateef text-2xl")}>
-            {t.rich("Mascot.Message", {
-              name: <span className="text-orange-600 font-black" key="name">{childName}</span>,
-              boost: <span className="bg-orange-600/20 px-2 rounded text-orange-500 font-bold" key="boost">{t("Mascot.BoostTag")}</span>
-            })}
+            {(() => {
+              const rawMsg = t.raw("Mascot.Message") as string;
+              const parts = rawMsg.split(/({name}|{boost})/);
+              return parts.map((part, idx) => {
+                if (part === "{name}") {
+                  return <span className="text-orange-600 font-black" key={`name-${idx}`}>{childName}</span>;
+                }
+                if (part === "{boost}") {
+                  return <span className="bg-orange-600/20 px-2 rounded text-orange-500 font-bold mx-1" key={`boost-${idx}`}>{t("Mascot.BoostTag")}</span>;
+                }
+                return part;
+              });
+            })()}
           </p>
         </div>
       </motion.div>

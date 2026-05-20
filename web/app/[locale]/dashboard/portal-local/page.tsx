@@ -1,7 +1,8 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import React from "react";
-import Link from "next/link";
+
 import { motion } from "framer-motion";
 import { GraduationCap, ChevronLeft, ChevronRight, BookOpen, Star, Trophy } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
@@ -15,7 +16,7 @@ function cn(...inputs: ClassValue[]) {
 export default function PortalLocalPage() {
   const t = useTranslations("ChildLobby.Portals.School");
   const locale = useLocale();
-  const isRTL = locale === "ar";
+  const isRTL = (locale === "ar" || locale.endsWith("-ar"));
 
   return (
     <div className="min-h-screen flex items-center justify-center p-8 text-white relative overflow-hidden bg-slate-950" dir={isRTL ? "rtl" : "ltr"}>

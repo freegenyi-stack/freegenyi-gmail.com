@@ -28,6 +28,11 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: "FreeGeny | L'excellence éducative libérée",
   description: "Plateforme premium d'éducation sur-mesure pour révéler le génie de votre enfant.",
+  icons: {
+    icon: "/assets/img/logo.png",
+    shortcut: "/assets/img/logo.png",
+    apple: "/assets/img/logo.png",
+  },
 };
 
 export default async function LocaleLayout({
@@ -48,7 +53,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      dir={locale === "ar" ? "rtl" : "ltr"}
+      dir={(locale === "ar" || locale.endsWith("-ar")) ? "rtl" : "ltr"}
       className={`${readexPro.variable} ${cairo.variable} ${amiri.variable} ${reemKufi.variable} ${outfit.variable} ${playfair.variable} ${caveat.variable} ${greatVibes.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full bg-white">

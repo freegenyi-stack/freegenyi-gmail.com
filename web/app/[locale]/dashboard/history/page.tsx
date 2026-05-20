@@ -1,3 +1,4 @@
+import { Link } from "@/i18n/routing";
 import React from "react";
 import { auth } from "@/auth";
 import { db } from "@/db";
@@ -5,7 +6,7 @@ import { activityLogs } from "@/db/schema";
 import { eq, desc } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { History as HistoryIcon, Shield, BookOpen, PenTool, Search, Lock, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+
 
 export default async function HistoryPage({
   params,
@@ -64,7 +65,7 @@ export default async function HistoryPage({
             <p className="text-slate-500 font-medium mt-2">Retrouvez toutes vos activités et celles de vos enfants sur FreeGeny.</p>
           </div>
           <Link 
-            href={`/${locale}/dashboard/parent`}
+            href="/dashboard/parent"
             className="bg-white border-2 border-slate-100 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest text-slate-700 hover:border-slate-900 transition-all flex items-center gap-3 shadow-sm"
           >
             <ArrowLeft className="w-4 h-4" />

@@ -58,6 +58,8 @@ export async function registerEliteAction(formData: FormData, captchaAnswer: num
   const childAgeStr = formData.get("child_age") as string;
   const childAge = childAgeStr ? parseInt(childAgeStr) : null;
   const childSchool = formData.get("child_school") as string;
+  const childSchoolIdStr = formData.get("child_school_id") as string;
+  const childSchoolId = childSchoolIdStr ? parseInt(childSchoolIdStr) : null;
   const childRegion = formData.get("child_region") as string;
 
   // 2. Basic checks
@@ -120,6 +122,8 @@ export async function registerEliteAction(formData: FormData, captchaAnswer: num
         fullName: childName,
         birthDate: birthDate,
         educationLevel: childLevel,
+        schoolId: childSchoolId,
+        schoolName: childSchool,
       });
     }
 

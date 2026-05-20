@@ -1,7 +1,8 @@
 "use client";
+import { Link } from "@/i18n/routing";
 import React from "react";
 import MarketingHero from "@/components/MarketingHero";
-import Link from "next/link";
+
 
 export default function ParentsPage() {
   return (

@@ -1,7 +1,8 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import React from "react";
-import Link from "next/link";
+
 import { useRegion } from "@/context/RegionContext";
 import { 
   Globe, 

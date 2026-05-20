@@ -1,5 +1,6 @@
+import { Link } from "@/i18n/routing";
 import React from "react";
-import Link from "next/link";
+
 import { motion } from "framer-motion";
 import { Globe, BookOpen, Zap, ArrowLeft } from "lucide-react";
 import PortalClient from "./PortalClient";

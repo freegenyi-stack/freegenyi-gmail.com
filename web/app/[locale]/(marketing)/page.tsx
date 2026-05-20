@@ -1,7 +1,8 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRegion } from "@/context/RegionContext";
@@ -61,6 +62,7 @@ const ImpactCounter = ({ target, label, prefix = "", suffix = "" }: { target: nu
 
 export default function HomePage() {
   const t = useTranslations("Hero");
+  const tNav = useTranslations("Nav");
   const ti = useTranslations("Impact");
   const tp = useTranslations("Portals");
   const te = useTranslations("Ecosystem");
@@ -72,7 +74,7 @@ export default function HomePage() {
   const { selectedCountry } = useRegion();
   const variant = getVariant(selectedCountry, locale);
   console.log(`[HomePage] Country: ${selectedCountry}, Locale: ${locale}, Image: ${variant.heroImage}`);
-  const isRTL = locale === "ar";
+  const isRTL = (locale === "ar" || locale.endsWith("-ar"));
 
   return (
     <div className="min-h-screen bg-white" dir={isRTL ? "rtl" : "ltr"}>
@@ -94,7 +96,9 @@ export default function HomePage() {
               </div>
 
               <h1 className={cn("text-3xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.05] tracking-tighter mb-8 font-reem", isRTL && "text-4xl md:text-6xl lg:text-7xl tracking-normal")}>
-                {t("title")}
+                {t.rich("title", {
+                  orange: (chunks) => <span className="text-orange-500">{chunks}</span>
+                })}
               </h1>
 
               <p className={cn("text-lg md:text-xl text-slate-500 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-12 font-light", isRTL && "font-lateef text-3xl leading-snug ml-auto mr-0")}>
@@ -107,7 +111,11 @@ export default function HomePage() {
                   <ArrowRight className={cn("w-5 h-5", isRTL && "rotate-180")} />
                 </Link>
 
-                <Link href="/approach" className={cn("inline-flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 px-10 py-5 rounded-2xl text-sm font-bold uppercase tracking-widest hover:bg-slate-50 hover:border-slate-300 transition-all", isRTL && "font-amiri text-xl tracking-normal")}>
+                <Link href="/dashboard/guest" className={cn("inline-flex items-center justify-center gap-2 bg-orange-50/80 border border-orange-200 text-orange-600 hover:bg-orange-100/50 px-8 py-5 rounded-2xl text-sm font-bold uppercase tracking-widest transition-all shadow-md hover:-translate-y-1", isRTL && "font-amiri text-xl tracking-normal")}>
+                  🧭 {tNav("FreeExplore")}
+                </Link>
+
+                <Link href="/approach" className={cn("inline-flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 px-8 py-5 rounded-2xl text-sm font-bold uppercase tracking-widest hover:bg-slate-50 hover:border-slate-300 transition-all", isRTL && "font-amiri text-xl tracking-normal")}>
                   {t("approach")}
                 </Link>
               </div>
@@ -149,7 +157,7 @@ export default function HomePage() {
                     <div className="w-12 h-1 bg-orange-500 mt-6 rounded-full opacity-50"></div>
                   </div>
                 </motion.div>
-                <Image src={variant.heroImage} alt="FreeGeny Spirit" width={600} height={600} className="w-full max-w-xl mx-auto rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.15)] border-8 border-white ring-1 ring-slate-100 object-cover aspect-square" />
+                <Image src={variant.heroImage} alt="FreeGeny Spirit" width={600} height={600} priority={true} className="w-full max-w-xl mx-auto rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.15)] border-8 border-white ring-1 ring-slate-100 object-cover aspect-square" />
               </motion.div>
             </div>
           </div>

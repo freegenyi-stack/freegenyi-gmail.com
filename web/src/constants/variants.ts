@@ -339,6 +339,18 @@ export const REGION_VARIANTS: Record<string, Record<string, RegionVariant> | Reg
       heroQuote: "Big Ben has struck the hour with absolute precision for generations — our commitment to your child is made of the very same substance",
       scienceImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
       scienceQuote: "British excellence and precision for every child's future."
+    },
+    fr: {
+      heroImage: "/assets/img/regions/GB/fr/hero.png",
+      heroQuote: "Big Ben sonne l'heure avec une précision absolue depuis des générations — notre engagement envers votre enfant est fait de la même substance.",
+      scienceImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
+      scienceQuote: "L'excellence et la précision britanniques pour l'avenir de chaque enfant."
+    },
+    ar: {
+      heroImage: "/assets/img/regions/GB/ar/hero.png",
+      heroQuote: "دقّت ساعة بيغ بن بدقة متناهية لأجيال متعاقبة — والتزامنا تجاه طفلك ينبع من الجودة والحرص ذاتهما.",
+      scienceImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
+      scienceQuote: "التميز والدقة البريطانية من أجل مستقبل كل طفل."
     }
   },
 

@@ -3,9 +3,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Search, Plus, Image as ImageIcon, Mic, Paperclip, Smile, Send, Check, CheckCheck } from "lucide-react";
+import dynamic from "next/dynamic";
 import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
 import { useChat } from "@/context/ChatContext";
+
+const Picker = dynamic(() => import("@emoji-mart/react"), { ssr: false });
 
 export default function MessagesPage() {
   const { conversations, activeConvId, setActiveConvId, messages, sendMessage } = useChat();

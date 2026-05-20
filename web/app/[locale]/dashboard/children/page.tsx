@@ -42,6 +42,7 @@ export default async function ChildrenPage({
           initialChildren={childrenData} 
           locale={locale}
           userName={user.fullName || "Parent"}
+          country={locale.includes("-") ? locale.split("-")[0] : "DZ"}
         />
       </div>
     </div>
