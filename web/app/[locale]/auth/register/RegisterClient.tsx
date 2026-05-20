@@ -476,6 +476,20 @@ export default function RegisterClient({ locale }: { locale: string }) {
     };
     const currentLevels = levels[childCountry] || levels["INT"];
 
+    const getLevelLabel = (lvl: string) => {
+        if (isArabic && childCountry === 'DZ') {
+            const dzArabic: Record<string, string> = {
+                '1AP': 'السنة الأولى ابتدائي',
+                '2AP': 'السنة الثانية ابتدائي',
+                '3AP': 'السنة الثالثة ابتدائي',
+                '4AP': 'السنة الرابعة ابتدائي',
+                '5AP': 'السنة الخامسة ابتدائي'
+            };
+            return dzArabic[lvl] || lvl;
+        }
+        return lvl;
+    };
+
     // Make sure default childLevel matches the country levels
     useEffect(() => {
         if (currentLevels && currentLevels.length > 0 && !childLevel) {
@@ -1097,34 +1111,37 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                 )}
 
                                 {step === 3 && userType === 'parent' && (
-                                    <motion.div key="step3-parent" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4 flex-1">
-                                        <div className="grid grid-cols-2 gap-4">
-                                            <div className="space-y-1.5">
-                                                <label className={`text-[12px] font-black uppercase text-slate-950 tracking-widest ${isArabic ? "mr-1" : "ml-1"}`}>
+                                    <motion.div key="step3-parent" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-3 flex-1">
+                                        <div className="grid grid-cols-3 gap-2.5">
+                                            {/* Child First Name */}
+                                            <div className="space-y-1">
+                                                <label className={`text-[10px] font-black uppercase text-slate-950 tracking-wider ${isArabic ? "mr-1" : "ml-1"}`}>
                                                     {d.childFirstName}
                                                 </label>
                                                 <div className="relative group">
-                                                    <User className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors ${
-                                                        isArabic ? "right-4" : "left-4"
+                                                    <User className={`absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 group-focus-within:text-emerald-500 transition-colors ${
+                                                        isArabic ? "right-3" : "left-3"
                                                     }`} />
                                                     <input 
                                                         type="text" 
                                                         value={childName} 
                                                         onChange={(e) => setChildName(e.target.value)} 
                                                         placeholder={d.childFirstNamePlaceholder} 
-                                                        className={`w-full bg-white border-2 border-slate-100 focus:border-emerald-500 py-3 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all placeholder:text-slate-300 ${
-                                                            isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
+                                                        className={`w-full bg-white border-2 border-slate-100 focus:border-emerald-500 py-2 rounded-xl outline-none font-bold text-slate-950 text-[11px] shadow-sm transition-all placeholder:text-slate-300 ${
+                                                            isArabic ? "pr-9 pl-3 text-right" : "pl-9 pr-3 text-left"
                                                         }`} 
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="space-y-1.5">
-                                                <label className={`text-[12px] font-black uppercase text-slate-950 tracking-widest ${isArabic ? "mr-1" : "ml-1"}`}>
+
+                                            {/* Child Age */}
+                                            <div className="space-y-1">
+                                                <label className={`text-[10px] font-black uppercase text-slate-950 tracking-wider ${isArabic ? "mr-1" : "ml-1"}`}>
                                                     {d.childAge}
                                                 </label>
                                                 <div className="relative group">
-                                                    <Smartphone className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors ${
-                                                        isArabic ? "right-4" : "left-4"
+                                                    <Smartphone className={`absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 group-focus-within:text-emerald-500 transition-colors ${
+                                                        isArabic ? "right-3" : "left-3"
                                                     }`} />
                                                     <input 
                                                         type="number" 
@@ -1133,37 +1150,43 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                         value={childAge} 
                                                         onChange={(e) => setChildAge(e.target.value)} 
                                                         placeholder={d.childAgePlaceholder} 
-                                                        className={`w-full bg-white border-2 border-slate-100 focus:border-emerald-500 py-3 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all placeholder:text-slate-300 ${
-                                                            isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
+                                                        className={`w-full bg-white border-2 border-slate-100 focus:border-emerald-500 py-2 rounded-xl outline-none font-bold text-slate-950 text-[11px] shadow-sm transition-all placeholder:text-slate-300 ${
+                                                            isArabic ? "pr-9 pl-3 text-right" : "pl-9 pr-3 text-left"
                                                         }`} 
                                                     />
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div className="space-y-1.5 w-full">
-                                            <label className={`text-[12px] font-black uppercase text-slate-950 tracking-widest ${isArabic ? "mr-1" : "ml-1"}`}>
-                                                {d.childLevel}
-                                            </label>
-                                            <div className="relative group w-full">
-                                                <Sparkles className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors ${
-                                                    isArabic ? "right-4" : "left-4"
-                                                }`} />
-                                                <select 
-                                                    value={childLevel} 
-                                                    onChange={(e) => setChildLevel(e.target.value)}
-                                                    className={`w-full bg-white border-2 border-slate-100 focus:border-emerald-500 py-3 rounded-2xl outline-none font-black text-slate-950 text-xs shadow-sm transition-all appearance-none cursor-pointer font-jakarta uppercase tracking-tighter ${
-                                                        isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
-                                                    }`}
-                                                >
-                                                    {currentLevels.map(lvl => <option key={lvl} value={lvl}>{lvl}</option>)}
-                                                </select>
-                                                <ChevronDown className={`absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none ${isArabic ? "left-4" : "right-4"}`} />
+                                            {/* Child Level */}
+                                            <div className="space-y-1">
+                                                <label className={`text-[10px] font-black uppercase text-slate-950 tracking-wider ${isArabic ? "mr-1" : "ml-1"}`}>
+                                                    {d.childLevel}
+                                                </label>
+                                                <div className="relative group w-full">
+                                                    <Sparkles className={`absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 group-focus-within:text-emerald-500 transition-colors ${
+                                                        isArabic ? "right-3" : "left-3"
+                                                    }`} />
+                                                    <select 
+                                                        value={childLevel} 
+                                                        onChange={(e) => setChildLevel(e.target.value)}
+                                                        className={`w-full bg-white border-2 border-slate-100 focus:border-emerald-500 py-2 rounded-xl outline-none font-black text-slate-950 text-[11px] shadow-sm transition-all appearance-none cursor-pointer font-jakarta uppercase tracking-tighter ${
+                                                            isArabic ? "pr-9 pl-3 text-right" : "pl-9 pr-3 text-left"
+                                                        }`}
+                                                    >
+                                                        {currentLevels.map(lvl => (
+                                                            <option key={lvl} value={lvl}>
+                                                                {getLevelLabel(lvl)}
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                    <ChevronDown className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 text-slate-400 pointer-events-none ${isArabic ? "left-3" : "right-3"}`} />
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div className="space-y-1.5 w-full">
-                                            <label className={`text-[12px] font-black uppercase text-slate-950 tracking-widest ${isArabic ? "mr-1" : "ml-1"}`}>
+                                        {/* Child School Picker */}
+                                        <div className="space-y-1 w-full">
+                                            <label className={`text-[10px] font-black uppercase text-slate-950 tracking-wider ${isArabic ? "mr-1" : "ml-1"}`}>
                                                 {d.childSchool}
                                             </label>
                                             <div className="w-full">
@@ -1176,58 +1199,55 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                             </div>
                                         </div>
 
-                                        {/* CRYSTAL SECURITY VAULT (Captcha) */}
-                                        <div className="relative mt-1">
-                                            <label className={`text-[12px] font-black uppercase text-slate-950 tracking-widest ${isArabic ? "mr-1" : "ml-1"} mb-2 block`}>
+                                        {/* CRYSTAL SECURITY VAULT (Captcha) - Ultra Compact */}
+                                        <div className="relative mt-0.5">
+                                            <label className={`text-[10px] font-black uppercase text-slate-950 tracking-wider ${isArabic ? "mr-1" : "ml-1"} mb-1 block`}>
                                                 {d.securityCheck}
                                             </label>
-                                            <div className="bg-emerald-50/40 rounded-[2rem] p-5 border-2 border-emerald-100/50 shadow-inner relative overflow-hidden group">
-                                                <div className="flex flex-col sm:flex-row items-center gap-5 relative z-10">
-                                                    <div className="relative">
-                                                        <div className="bg-white p-3 rounded-2xl border border-emerald-200 shadow-sm flex items-center justify-center min-w-[140px]">
-                                                            <div className="scale-90 contrast-125 rounded-lg overflow-hidden">
+                                            <div className="bg-emerald-50/20 rounded-2xl p-2.5 border border-emerald-100/50 shadow-inner relative overflow-hidden group">
+                                                <div className="flex flex-row items-center gap-3 relative z-10 w-full">
+                                                    <div className="relative shrink-0">
+                                                        <div className="bg-white p-1 rounded-xl border border-emerald-100 shadow-sm flex items-center justify-center min-w-[110px]">
+                                                            <div className="scale-75 contrast-125 rounded-md overflow-hidden">
                                                                 <LoadCanvasTemplateNoReload />
                                                             </div>
                                                         </div>
                                                         <button 
                                                             type="button" 
                                                             onClick={() => loadCaptchaEnginge(6)} 
-                                                            className={`absolute bg-emerald-600 text-white p-1.5 rounded-full shadow-lg hover:bg-emerald-500 transition-all hover:rotate-180 duration-500 ${
-                                                                isArabic ? "-left-2 -top-2" : "-right-2 -top-2"
+                                                            className={`absolute bg-emerald-600 text-white p-1 rounded-full shadow-md hover:bg-emerald-500 transition-all hover:rotate-180 duration-500 ${
+                                                                isArabic ? "-left-1 -top-1" : "-right-1 -top-1"
                                                             }`}
                                                         >
-                                                            <RefreshCcw className="w-3 h-3" />
+                                                            <RefreshCcw className="w-2.5 h-2.5" />
                                                         </button>
                                                     </div>
                                                     
-                                                    <div className="flex-1 w-full space-y-2">
+                                                    <div className="flex-1 min-w-0">
                                                         <div className="relative group">
-                                                            <ShieldCheck className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-600 transition-colors ${
-                                                                isArabic ? "right-4" : "left-4"
+                                                            <ShieldCheck className={`absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 group-focus-within:text-emerald-600 transition-colors ${
+                                                                isArabic ? "right-3" : "left-3"
                                                             }`} />
                                                             <input 
                                                                 type="text" 
                                                                 placeholder={d.securityCodePlaceholder} 
                                                                 value={captchaValue} 
                                                                 onChange={(e) => setCaptchaValue(e.target.value)}
-                                                                className={`w-full bg-white border-2 border-emerald-100 focus:border-emerald-500 py-3 rounded-xl outline-none font-black text-slate-950 text-sm transition-all tracking-[0.3em] placeholder:tracking-normal placeholder:font-bold placeholder:text-slate-400 shadow-sm ${
-                                                                    isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
+                                                                className={`w-full bg-white border-2 border-emerald-50 focus:border-emerald-500 py-1.5 rounded-lg outline-none font-black text-slate-950 text-xs transition-all tracking-[0.2em] placeholder:tracking-normal placeholder:font-bold placeholder:text-slate-400 shadow-sm ${
+                                                                    isArabic ? "pr-8 pl-3 text-right" : "pl-8 pr-3 text-left"
                                                                 }`} 
                                                             />
                                                         </div>
-                                                        <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-tighter px-1 flex items-center gap-1.5">
-                                                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" /> {d.securityCheckDesc}
-                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div className="flex gap-3 justify-center pt-3">
+                                        <div className="flex gap-3 justify-center pt-2">
                                             <button type="button" onClick={() => setStep(2)} className="px-6 border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-slate-50 transition-all shadow-sm flex items-center justify-center">
                                                 {isArabic ? <ArrowRight size={20} /> : <ArrowLeft size={20} />}
                                             </button>
-                                            <button type="submit" disabled={isSubmitting} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-emerald-600 transition-all shadow-2xl flex items-center justify-center gap-3 group disabled:opacity-50 relative overflow-hidden">
+                                            <button type="submit" disabled={isSubmitting} className="px-12 bg-slate-950 text-white py-3.5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-emerald-600 transition-all shadow-2xl flex items-center justify-center gap-3 group disabled:opacity-50 relative overflow-hidden">
                                                 {isSubmitting ? (
                                                     <RefreshCcw className="w-4 h-4 animate-spin text-emerald-400" />
                                                 ) : (
@@ -1430,36 +1450,38 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                 )}
                             </AnimatePresence>
 
-                            <div className="mt-2 text-center space-y-1">
-                                <p className="text-[10px] font-bold text-slate-500 leading-tight px-12">
-                                    {activeLang === "ar" ? (
-                                        <>
-                                            بالاستمرار، فإنك توافق على{" "}
-                                            <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">الشروط</Link>{" "}
-                                            و{" "}
-                                            <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">سياسة الخصوصية</Link>{" "}
-                                            الخاصة بنا.
-                                        </>
-                                    ) : activeLang === "en" ? (
-                                        <>
-                                            By continuing, you agree to our{" "}
-                                            <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">terms</Link>{" "}
-                                            and{" "}
-                                            <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">privacy policy</Link>.
-                                        </>
-                                    ) : (
-                                        <>
-                                            En continuant, vous acceptez nos{" "}
-                                            <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">conditions</Link>{" "}
-                                            et notre{" "}
-                                            <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">politique de confidentialité</Link>.
-                                        </>
-                                    )}
-                                </p>
-                                <p className="text-[10px] text-slate-500 font-black uppercase tracking-[0.1em]">
-                                    {t('Auth.AlreadyHaveAccount')} <Link href={`/${locale}/auth/login`} className="text-orange-600 hover:underline font-black">{t('Auth.Login')}</Link>
-                                </p>
-                            </div>
+                            {step === 1 && (
+                                <div className="mt-2 text-center space-y-1">
+                                    <p className="text-[10px] font-bold text-slate-500 leading-tight px-12">
+                                        {activeLang === "ar" ? (
+                                            <>
+                                                بالاستمرار، فإنك توافق على{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">الشروط</Link>{" "}
+                                                و{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">سياسة الخصوصية</Link>{" "}
+                                                الخاصة بنا.
+                                            </>
+                                        ) : activeLang === "en" ? (
+                                            <>
+                                                By continuing, you agree to our{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">terms</Link>{" "}
+                                                and{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">privacy policy</Link>.
+                                            </>
+                                        ) : (
+                                            <>
+                                                En continuant, vous acceptez nos{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">conditions</Link>{" "}
+                                                et notre{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">politique de confidentialité</Link>.
+                                            </>
+                                        )}
+                                    </p>
+                                    <p className="text-[10px] text-slate-500 font-black uppercase tracking-[0.1em]">
+                                        {t('Auth.AlreadyHaveAccount')} <Link href={`/${locale}/auth/login`} className="text-orange-600 hover:underline font-black">{t('Auth.Login')}</Link>
+                                    </p>
+                                </div>
+                            )}
                         </form>
                     </div>
                 </motion.div>
