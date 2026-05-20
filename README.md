@@ -1,172 +1,64 @@
-# FreeGeny PHP — Guide de Déploiement DZHoster
+# FreeGeny Elite — Modern Stack (Next.js 15)
 
-## 📋 Prérequis
-- Hébergeur : **DZHoster** (cPanel)
-- PHP : **ea-php80** (PHP 8.0)
-- Domaine : **freegeny.com**
-- Accès : **FTP** + **phpMyAdmin**
+Bienvenue sur le dépôt de **FreeGeny Elite**, la plateforme éducative d'excellence de nouvelle génération. Le projet a été entièrement migré d'une stack PHP historique vers une architecture moderne et robuste en **Next.js 15**, **TypeScript**, **React 19**, et **Drizzle ORM**.
 
 ---
 
-## 🗄️ ÉTAPE 1 — Base de données MySQL
+## 🚀 Stack Technique
 
-1. Ouvrir **cPanel → MySQL Databases**
-2. Créer une base : `freegeny_db` (ou avec le préfixe cPanel)
-3. Créer un utilisateur MySQL et lui attribuer **tous les droits** sur la base
-4. Ouvrir **phpMyAdmin**
-5. Sélectionner la base `freegeny_db`
-6. Cliquer sur **Importer** → choisir le fichier : `install/schema.sql`
-7. Cliquer **Exécuter** ✅
-
----
-
-## ⚙️ ÉTAPE 2 — Fichier .env
-
-1. Copier `.env.example` → `.env`
-2. Editer `.env` avec vos valeurs réelles :
-
-```env
-APP_ENV=production
-APP_DEBUG=false
-
-DB_HOST=localhost
-DB_NAME=votre_prefix_freegenydb   # Exactement comme dans cPanel
-DB_USER=votre_prefix_freeuser
-DB_PASS=votre_mot_de_passe_fort
-```
-
-> ⚠️ Ne jamais uploader `.env` sur GitHub (déjà dans `.gitignore`)
+* **Framework** : [Next.js 15 (App Router)](https://nextjs.org/)
+* **Bibliothèque UI** : [React 19](https://react.dev/)
+* **Langage** : [TypeScript](https://www.typescriptlang.org/)
+* **ORM** : [Drizzle ORM](https://orm.drizzle.team/)
+* **Base de données** : PostgreSQL / MySQL
+* **Gestion des Langues (i18n)** : [next-intl](https://next-intl-docs.vercel.app/) (Support complet Arabe (ar) RTL, Français (fr) LTR, Anglais (en) LTR)
+* **Styling & Animations** : Vanilla CSS, TailwindCSS, Framer Motion et Lottie Animations
 
 ---
 
-## 📁 ÉTAPE 3 — Upload FTP
+## 🛠️ Installation & Démarrage en Local
 
-### Option A — FTP classique (FileZilla)
+### 1. Prérequis
+Assurez-vous d'avoir installé :
+* **Node.js** (v18.x ou supérieure)
+* **npm** ou **yarn** / **pnpm**
+* Un serveur de base de données (PostgreSQL ou MySQL)
 
-**Paramètres FTP DZHoster :**
-- Hôte : `ftp.freegeny.com` ou l'IP fournie par DZHoster
-- Port : 21
-- Identifiants : vos credentials cPanel
-
-**Ce que vous uploadez dans `public_html/` :**
-```
-Depuis votre PC : apps/web-php/
-↓
-Sur le serveur : public_html/
-```
-
-**Structure finale sur le serveur :**
-```
-public_html/
-├── .htaccess        ✅
-├── .env             ✅ (votre .env rempli, PAS le .env.example)
-├── index.php        ✅
-├── config/          ✅
-├── includes/        ✅
-├── api/             ✅
-├── pages/           ✅
-├── assets/          ✅
-├── data/            ✅ (contient les JSONs)
-├── lang/            ✅
-├── install/         ✅
-└── ...
-```
-
-> ⚠️ Ne pas uploader `node_modules/`, `.git/`, `.env.example`
-
-### Option B — Git via cPanel (si activé sur DZHoster)
-
+### 2. Configuration de l'environnement
+Allez dans le dossier `web/` et copiez le fichier d'exemple pour créer votre configuration locale :
 ```bash
-# Dans cPanel Terminal ou SSH
-cd public_html
-git clone https://github.com/votre-repo/freegonya.git .
-# Copier le contenu de apps/web-php/ à la racine
+cd web
+cp .env.example .env.local
 ```
+Remplissez les variables d'environnement requises (`DATABASE_URL`, `NEXTAUTH_SECRET`, etc.).
 
----
-
-## 📦 ÉTAPE 4 — Copie des fichiers JSON
-
-Avant d'uploader, exécuter le script PowerShell pour copier les JSONs :
-
-```powershell
-# Dans PowerShell, depuis la racine du projet
-.\apps\web-php\install\copy-json-data.ps1
-```
-
-Cela copie les JSONs depuis `Documentation_Programs_Contry/` vers `apps/web-php/data/`.
-
----
-
-## 🔧 ÉTAPE 5 — Configuration PHP DZHoster
-
-Dans **cPanel → MultiPHP Manager** :
-- Sélectionner `public_html/`
-- Choisir **ea-php80**
-
-Dans **cPanel → PHP Selector** ou via `.htaccess` (déjà inclus) :
-- `display_errors = Off`
-- `memory_limit = 256M`
-
----
-
-## ✅ ÉTAPE 6 — Test de déploiement
-
-1. Ouvrir `https://freegeny.com` → doit afficher la landing page
-2. Ouvrir `https://freegeny.com/auth/register` → page d'inscription
-3. S'inscrire avec un compte test
-4. Ouvrir `https://freegeny.com/dashboard/parent` → dashboard parent
-5. Ouvrir `https://freegeny.com/algeria/1ap/arabe` → page matière Arabe
-
----
-
-## 🔒 Sécurité post-déploiement
-
+### 3. Installation des Dépendances
+Installez tous les paquets nécessaires :
 ```bash
-# Via cPanel File Manager — changer les permissions
-chmod 644 .env          # Lecture seule
-chmod 755 public_html/  # Répertoire traversable
-chmod 644 *.php         # Fichiers PHP
+npm install
 ```
 
-- Vérifier que l'accès direct à `/config/` retourne 403 ✅
-- Vérifier que l'accès direct à `/.env` retourne 403 ✅
-- Vérifier HTTPS forcé ✅
+### 4. Lancement du Serveur de Développement
+Démarrez le serveur local :
+```bash
+npm run dev
+```
+L'application sera accessible sur [http://localhost:3000](http://localhost:3000).
+
+### 5. Peupler la Base de Données (Seeds)
+Pour importer les données initiales des écoles de chaque région :
+```bash
+# Données générales
+npm run db:seed
+
+# Données spécifiques à la France
+npm run db:seed:fr
+```
 
 ---
 
-## 🔄 Workflow de mise à jour
-
-```
-1. Modifier les fichiers localement (apps/web-php/)
-2. git add . && git commit -m "feat: ..."
-3. git push origin main
-4. Sur DZHoster : FTP upload des fichiers modifiés
-   OU git pull (si cPanel Git activé)
-```
-
----
-
-## 📞 Support DZHoster
-
-- **Panel** : https://panel.dzhoster.com
-- **phpMyAdmin** : accessible depuis cPanel
-- **PHP version** : cPanel → MultiPHP Manager → ea-php80
-
----
-
-## 🗂️ Structure des fichiers JSON sur le serveur
-
-```
-public_html/data/algeria/1ap/
-├── arabe/
-│   ├── presentation_arabe_1ap_latest.json
-│   ├── curriculum_map_arabe_1ap_latest.json
-│   ├── cours_arabe_1ap_latest.json
-│   ├── exercices_arabe_1ap_latest.json
-│   └── ... (autres JSONs)
-└── mathematiques/
-    ├── presentation_maths_1ap_latest.json
-    ├── curriculum_map_maths_1ap_latest.json
-    └── ... (autres JSONs)
-```
+## 🌍 Fonctionnalités Clés & Internationalisation
+* **Multi-régions & Multi-langues** : Support de l'Algérie (ar/fr), la France (fr), l'Australie (en) et le Royaume-Uni (en).
+* **Mirroring Dynamique RTL/LTR** : Bascule complète de la mise en page selon que la langue courante est l'arabe (RTL) ou une langue latine (LTR).
+* **SchoolPicker Intelligent** : Recherche et sélection dynamique des écoles primaires en fonction de la région de l'enfant.
+* **Formulaire Elite Flexible** : Flux d'inscription adapté pour les tests utilisateurs (bypass de captcha avec `"1234"` ou vide `""`, alertes non-bloquantes à l'étape 1, et étapes cliquables).

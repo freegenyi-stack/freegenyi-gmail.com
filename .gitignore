@@ -1,17 +1,30 @@
-# FreeGeny PHP — Root .gitignore
+# FreeGeny Elite — Root .gitignore
 
 # Secrets & Environnement
 .env
 .env.local
+.env*.local
+
+# Dépendances
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js Build Output & Cache
+.next/
+out/
+build/
 
 # Logs
 *.log
-error.log
-php_errors.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Caches & Temp
 .cache/
-cache/
 tmp/
 temp/
 
@@ -25,10 +38,5 @@ desktop.ini
 .vscode/
 *.swp
 *.swo
-
-# GitHub Actions / Deployment
-# Ne pas ignorer le dossier install/ car il contient le schema.sql
-!install/schema.sql
-
-# Note : On ne met plus Documentation_Programs_Contry dans le gitignore 
-# car vous voulez repartir sur une base propre avec tout le contenu sur GitHub.
+*.sublime-project
+*.sublime-workspace
