@@ -71,9 +71,9 @@ export default function HomePage() {
   const tf = useTranslations("Footer");
   
   const locale = useLocale();
-  const { selectedCountry } = useRegion();
-  const variant = getVariant(selectedCountry, locale);
-  console.log(`[HomePage] Country: ${selectedCountry}, Locale: ${locale}, Image: ${variant.heroImage}`);
+  const { selectedCountry, selectedLang } = useRegion();
+  const variant = getVariant(selectedCountry, selectedLang);
+  console.log(`[HomePage] Country: ${selectedCountry}, Lang: ${selectedLang}, Locale: ${locale}, Image: ${variant.heroImage}`);
   const isRTL = (locale === "ar" || locale.endsWith("-ar"));
 
   return (

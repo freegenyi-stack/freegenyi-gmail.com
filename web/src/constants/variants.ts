@@ -787,8 +787,18 @@ export function getVariant(country: string, lang: string): RegionVariant {
   const countryData = REGION_VARIANTS[country] || REGION_VARIANTS.default;
   
   if (typeof countryData === 'object' && !('heroImage' in countryData)) {
-    const langData = (countryData as Record<string, RegionVariant>)[lang];
-    if (langData) return langData;
+    // Extract base language (e.g. 'fr' from 'fr-CA')
+    const baseLang = lang.split('-')[0];
+    
+    // Try exact match first
+    if ((countryData as Record<string, RegionVariant>)[lang]) {
+      return (countryData as Record<string, RegionVariant>)[lang];
+    }
+    
+    // Try base language
+    if ((countryData as Record<string, RegionVariant>)[baseLang]) {
+      return (countryData as Record<string, RegionVariant>)[baseLang];
+    }
     
     // Fallback à la première langue disponible pour ce pays
     const firstLang = Object.keys(countryData)[0];

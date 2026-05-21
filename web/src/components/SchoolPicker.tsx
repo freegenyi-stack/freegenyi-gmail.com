@@ -63,7 +63,8 @@ export default function SchoolPicker({
 }: SchoolPickerProps) {
   const locale = useLocale();
   const isAr = (locale === "ar" || locale.endsWith("-ar"));
-  const isEnglish = ["AU", "GB", "US"].includes(country);
+  const isEnglish = ["AU", "GB", "US"].includes(country) || (country === "CA" && (locale === "en" || locale.endsWith("-en") || locale.startsWith("CA-en")));
+  const isCanada = country === "CA";
   
   const [query, setQuery] = useState("");
   const [regionCode, setRegionCode] = useState("");
@@ -205,7 +206,7 @@ export default function SchoolPicker({
 
   return (
     <div ref={containerRef} className="relative w-full text-slate-700" dir={isAr ? "rtl" : "ltr"}>
-      {/* Filters: Region / Wilaya / Commune / Département */}
+      {/* Filters: Region / Province / Commune / Département */}
       {country === "FR" ? (
         <div className="flex flex-col md:flex-row gap-2.5 mb-3 w-full">
           {/* 1. Région Administrative */}
@@ -372,8 +373,120 @@ export default function SchoolPicker({
             </AnimatePresence>
           </div>
         </div>
+      ) : isCanada ? (
+        /* Canada 2-column filters: Province > City */
+        <div className="flex flex-col sm:flex-row gap-2 mb-2">
+          {/* Province filter */}
+          <div className="relative flex-1">
+            <button
+              type="button"
+              onClick={() => {
+                setRegionOpen(!regionOpen);
+                setDistrictOpen(false);
+              }}
+              className="w-full flex items-center justify-between bg-white border-2 border-slate-100 hover:border-orange-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-600 transition-all shadow-sm"
+            >
+              <span className="flex items-center gap-2 truncate">
+                <MapPin className="w-3.5 h-3.5 text-orange-500 shrink-0" />
+                <span className="truncate">
+                  {selectedRegion
+                    ? getRegionName(selectedRegion)
+                    : (isAr ? "المقاطعة" : "Province")}
+                </span>
+              </span>
+              <div className="flex items-center gap-1 shrink-0 ml-1">
+                {regionCode && (
+                  <div
+                    onClick={(e) => { e.stopPropagation(); setRegionCode(""); }}
+                    className="p-1 hover:bg-slate-100 rounded-md"
+                  >
+                    <X className="w-3 h-3 text-slate-400" />
+                  </div>
+                )}
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${regionOpen ? "rotate-180" : ""}`} />
+              </div>
+            </button>
+
+            <AnimatePresence>
+              {regionOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 6 }}
+                  className="absolute top-full mt-1 left-0 right-0 z-[60] bg-white shadow-2xl rounded-xl border border-slate-100 max-h-56 overflow-y-auto"
+                >
+                  {regions.map((r) => (
+                    <button
+                      key={r.code}
+                      type="button"
+                      onClick={() => { setRegionCode(r.code); setRegionOpen(false); }}
+                      className={`w-full text-left px-3 py-2.5 text-xs font-bold hover:bg-orange-50 hover:text-orange-700 transition-colors ${r.code === regionCode ? "bg-orange-50 text-orange-700" : "text-slate-700"}`}
+                    >
+                      {getRegionName(r)}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* City filter */}
+          <div className="relative flex-1">
+            <button
+              type="button"
+              onClick={() => {
+                if (regionCode) setDistrictOpen(!districtOpen);
+                setRegionOpen(false);
+              }}
+              disabled={!regionCode}
+              className={`w-full flex items-center justify-between bg-white border-2 rounded-xl px-3 py-2 text-xs font-bold transition-all shadow-sm ${!regionCode ? 'border-slate-50 bg-slate-50 text-slate-400 cursor-not-allowed opacity-70' : 'border-slate-100 hover:border-orange-200 text-slate-600'}`}
+            >
+              <span className="flex items-center gap-2 truncate">
+                <Navigation className={`w-3.5 h-3.5 shrink-0 ${regionCode ? 'text-orange-500' : 'text-slate-300'}`} />
+                <span className="truncate">
+                  {selectedDistrict
+                    ? getDistrictName(selectedDistrict)
+                    : (isAr ? "المدينة" : isEnglish ? "City" : "Ville")}
+                </span>
+              </span>
+              <div className="flex items-center gap-1 shrink-0 ml-1">
+                {districtCode && (
+                  <div
+                    onClick={(e) => { e.stopPropagation(); setDistrictCode(""); }}
+                    className="p-1 hover:bg-slate-100 rounded-md"
+                  >
+                    <X className="w-3 h-3 text-slate-400" />
+                  </div>
+                )}
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${districtOpen ? "rotate-180" : ""} ${regionCode ? 'text-slate-400' : 'text-slate-300'}`} />
+              </div>
+            </button>
+
+            <AnimatePresence>
+              {districtOpen && districts.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 6 }}
+                  className="absolute top-full mt-1 left-0 right-0 z-[60] bg-white shadow-2xl rounded-xl border border-slate-100 max-h-56 overflow-y-auto"
+                >
+                  {districts.map((d) => (
+                    <button
+                      key={d.code}
+                      type="button"
+                      onClick={() => { setDistrictCode(d.code); setDistrictOpen(false); }}
+                      className={`w-full text-left px-3 py-2.5 text-xs font-bold hover:bg-orange-50 hover:text-orange-700 transition-colors ${d.code === districtCode ? "bg-orange-50 text-orange-700" : "text-slate-700"}`}
+                    >
+                      {getDistrictName(d)}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
       ) : (
-        /* Algeria 2-column filters */
+        /* Algeria & others 2-column filters */
         <div className="flex flex-col sm:flex-row gap-2 mb-2">
           {/* Wilaya filter */}
           <div className="relative flex-1">
@@ -388,9 +501,9 @@ export default function SchoolPicker({
               <span className="flex items-center gap-2 truncate">
                 <MapPin className="w-3.5 h-3.5 text-orange-500 shrink-0" />
                 <span className="truncate">
-                  {selectedRegion 
-                    ? getRegionName(selectedRegion) 
-                    : (isAr ? "الولاية" : country === "GB" ? "Region" : country === "AU" ? "State" : "Wilaya")}
+                  {selectedRegion
+                    ? getRegionName(selectedRegion)
+                    : (isAr ? "الولاية" : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : "Wilaya")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -443,9 +556,9 @@ export default function SchoolPicker({
               <span className="flex items-center gap-2 truncate">
                 <Navigation className={`w-3.5 h-3.5 shrink-0 ${regionCode ? 'text-orange-500' : 'text-slate-300'}`} />
                 <span className="truncate">
-                  {selectedDistrict 
-                    ? getDistrictName(selectedDistrict) 
-                    : (isAr ? "البلدية" : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : "Commune")}
+                  {selectedDistrict
+                    ? getDistrictName(selectedDistrict)
+                    : (isAr ? "البلدية" : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : country === "US" ? "District" : "Commune")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -532,15 +645,21 @@ export default function SchoolPicker({
         </div>
       ) : (
         <div className="bg-slate-50 border-2 border-dashed border-slate-100/80 rounded-2xl py-4 px-4 text-center text-[11px] font-extrabold text-slate-400/80 tracking-wide leading-relaxed">
-          {isAr 
-            ? "الرجاء اختيار الولاية والبلدية أولاً لتحديد المدرسة" 
+          {isAr
+            ? "الرجاء اختيار الولاية والبلدية أولاً لتحديد المدرسة"
             : country === "GB"
               ? "Please select the Region and Local Authority to choose your school 🏫"
               : country === "AU"
                 ? "Please select the State and Suburb to choose your school 🏫"
-                : (country === "FR" 
-                    ? "Veuillez sélectionner la Région, le Département et la Commune pour choisir votre école 🏫" 
-                    : "Veuillez sélectionner la Wilaya et la Commune pour choisir votre école 🏫")}
+                : country === "CA"
+                  ? (isEnglish
+                      ? "Please select the Province and City to find your school 🍁"
+                      : "Veuillez sélectionner la Province et la Ville pour trouver votre école 🍁")
+                  : country === "US"
+                    ? "Please select the State and District to find your school 🏫"
+                    : (country === "FR"
+                        ? "Veuillez sélectionner la Région, le Département et la Commune pour choisir votre école 🏫"
+                        : "Veuillez sélectionner la Wilaya et la Commune pour choisir votre école 🏫")}
         </div>
       )}
 
