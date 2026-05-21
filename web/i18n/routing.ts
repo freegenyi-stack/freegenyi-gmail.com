@@ -2,18 +2,7 @@ import { defineRouting } from "next-intl/routing";
 import { createNavigation } from "next-intl/navigation";
 
 export const locales = [
-  'ar', 'fr', 'en', 'nl', 'de', 'it', 'es', 'pt', 'tr', 'ru', 'be', 'uk', 'pl', 'ro', 'el', 'hu', 'cs', 'da', 'no', 'sv', 'fi', 'ga', 'af', 'zu', 'xh', 'zh', 'ms', 'ta', 'ja', 'ko', 'hi', 'mi', 'th', 'vi', 'id', 'ku',
-  'DZ-ar', 'DZ-fr', 'DZ-en', 'DZ-pt',
-  'FR-ar', 'FR-fr', 'FR-en', 'FR-pt',
-  'MA-ar', 'MA-fr', 'MA-en',
-  'TN-ar', 'TN-fr', 'TN-en',
-  'BE-ar', 'BE-fr', 'BE-nl', 'BE-en',
-  'CH-ar', 'CH-fr', 'CH-de', 'CH-en',
-  'CA-ar', 'CA-fr', 'CA-en',
-  'AU-ar', 'AU-fr', 'AU-en',
-  'AO-ar', 'AO-fr', 'AO-pt', 'AO-en',
-  'US-ar', 'US-fr', 'US-en',
-  'GB-ar', 'GB-fr', 'GB-en'
+  'ar', 'fr', 'en', 'nl', 'de', 'it', 'es', 'pt', 'tr', 'ru', 'be', 'uk', 'pl', 'ro', 'el', 'hu', 'cs', 'da', 'no', 'sv', 'fi', 'ga', 'af', 'zu', 'xh', 'zh', 'ms', 'ta', 'ja', 'ko', 'hi', 'mi', 'th', 'vi', 'id', 'ku', 'DZ-ar', 'DZ-fr', 'MA-ar', 'MA-fr', 'TN-ar', 'TN-fr', 'EG-ar', 'SA-ar', 'AE-ar', 'QA-ar', 'KW-ar', 'LB-ar', 'LB-fr', 'LY-ar', 'SY-ar', 'IQ-ar', 'IQ-ku', 'JO-ar', 'OM-ar', 'BH-ar', 'YE-ar', 'SD-ar', 'FR-fr', 'BE-fr', 'BE-nl', 'CH-fr', 'CH-de', 'CH-it', 'CA-fr', 'CA-en', 'US-en', 'GB-en', 'DE-de', 'ES-es', 'IT-it', 'PT-pt', 'BR-pt', 'TR-tr', 'RU-ru', 'BY-be', 'BY-ru', 'UA-uk', 'PL-pl', 'RO-ro', 'GR-el', 'HU-hu', 'CZ-cs', 'DK-da', 'NO-no', 'SE-sv', 'FI-fi', 'FI-sv', 'NL-nl', 'IE-en', 'IE-ga', 'AT-de', 'MX-es', 'AR-es', 'CO-es', 'CL-es', 'PE-es', 'SN-fr', 'AO-pt', 'ZA-en', 'ZA-af', 'ZA-zu', 'ZA-xh', 'CN-zh', 'SG-en', 'SG-zh', 'SG-ms', 'SG-ta', 'TW-zh', 'JP-ja', 'KR-ko', 'IN-hi', 'IN-en', 'AU-en', 'NZ-en', 'NZ-mi', 'TH-th', 'VN-vi', 'ID-id', 'MY-ms'
 ] as const;
 
 export const routing = defineRouting({
