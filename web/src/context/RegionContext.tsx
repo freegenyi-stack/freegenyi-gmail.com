@@ -31,7 +31,7 @@ export function RegionProvider({
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [selectedLang, setSelectedLang] = useState(defaultLang);
 
-  // Load from localStorage or URL if available
+  // Load from localStorage, URL, or cookie if available
   useEffect(() => {
     if (typeof window !== "undefined") {
       const pathParts = window.location.pathname.split("/");
@@ -46,12 +46,26 @@ export function RegionProvider({
           return;
         }
       }
-    }
 
-    const savedCountry = localStorage.getItem("freegeny_country");
-    const savedLang = localStorage.getItem("freegeny_lang");
-    if (savedCountry) setSelectedCountry(savedCountry);
-    if (savedLang) setSelectedLang(savedLang);
+      // Try to read from NEXT_COUNTRY cookie (set by middleware)
+      const getCookie = (name: string) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
+        return null;
+      };
+
+      const cookieCountry = getCookie("NEXT_COUNTRY");
+      if (cookieCountry) {
+        setSelectedCountry(cookieCountry);
+        localStorage.setItem("freegeny_country", cookieCountry);
+      }
+
+      const savedCountry = localStorage.getItem("freegeny_country");
+      const savedLang = localStorage.getItem("freegeny_lang");
+      if (savedCountry && !cookieCountry) setSelectedCountry(savedCountry);
+      if (savedLang) setSelectedLang(savedLang);
+    }
   }, []);
 
   const setRegion = (country: string, lang: string) => {
