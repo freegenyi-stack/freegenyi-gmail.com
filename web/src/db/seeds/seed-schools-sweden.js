@@ -168,23 +168,35 @@ async function main() {
     // In Sweden: Län (county) = Region, Kommun (municipality) = District
     // Use first 2 digits of commune code to get county name and as region code
     const countyCode = regionCode.substring(0, 2);
-    const regionName = SWEDISH_COUNTIES[countyCode] || regionCode; // Use mapping to get county name
-    regionsMap.set(countyCode, regionName); // Use countyCode (2 digits) as key to avoid duplicates
-    districtsMap.set(`${countyCode}_${districtCode}`, { regionCode: countyCode, districtCode, districtName });
+    const regionName = SWEDISH_COUNTIES[countyCode]; // Use mapping to get county name
+    // Only add region and school if it's a valid county code (ignore invalid codes like 22, 23, 24, 25)
+    if (regionName) {
+      regionsMap.set(countyCode, regionName); // Use countyCode (2 digits) as key to avoid duplicates
+      districtsMap.set(`${countyCode}_${districtCode}`, { regionCode: countyCode, districtCode, districtName });
 
-    validSchools.push({
-      code: code,
-      name: schoolName,
-      districtCode: districtCode,
-      regionCode: countyCode, // Use countyCode (2 digits) instead of full commune code
-      type: type,
-      lat: isNaN(lat) ? null : lat,
-      lng: isNaN(lng) ? null : lng
-    });
+      validSchools.push({
+        code: code,
+        name: schoolName,
+        districtCode: districtCode,
+        regionCode: countyCode, // Use countyCode (2 digits) instead of full commune code
+        type: type,
+        lat: isNaN(lat) ? null : lat,
+        lng: isNaN(lng) ? null : lng
+      });
+    }
   }
 
   console.log(`📊 Filtered down to ${validSchools.length} primary schools.`);
   console.log(`📊 Collected ${regionsMap.size} regions and ${districtsMap.size} districts.`);
+
+  // Add missing counties that have no schools in the dataset
+  const missingCounties = ["02", "11", "15", "16"]; // Uppsala, Halland, Västmanland, Dalarna
+  for (const code of missingCounties) {
+    if (!regionsMap.has(code) && SWEDISH_COUNTIES[code]) {
+      regionsMap.set(code, SWEDISH_COUNTIES[code]);
+    }
+  }
+  console.log(`📊 Total regions after adding missing counties: ${regionsMap.size}`);
 
   // 4. Seed Regions
   console.log("📁 Seeding Regions...");
