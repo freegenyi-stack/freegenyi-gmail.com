@@ -8,27 +8,27 @@ const CSV_SE = path.join(__dirname, "data", "ecoles_primaires_suede.csv");
 
 // Swedish county (Län) code to name mapping (based on first 2 digits of municipality code)
 const SWEDISH_COUNTIES = {
-  "01": "Stockholms län",
-  "02": "Uppsala län",
-  "03": "Södermanlands län",
-  "04": "Östergötlands län",
-  "05": "Jönköpings län",
-  "06": "Kronobergs län",
-  "07": "Kalmar län",
-  "08": "Gotlands län",
-  "09": "Blekinge län",
-  "10": "Skåne län",
-  "11": "Hallands län",
-  "12": "Västra Götalands län",
-  "13": "Värmlands län",
-  "14": "Örebro län",
-  "15": "Västmanlands län",
-  "16": "Dalarnas län",
-  "17": "Gävleborgs län",
-  "18": "Västernorrlands län",
-  "19": "Jämtlands län",
-  "20": "Västerbottens län",
-  "21": "Norrbottens län",
+  "01": "Stockholm",
+  "02": "Uppsala",
+  "03": "Södermanland",
+  "04": "Östergötland",
+  "05": "Jönköping",
+  "06": "Kronoberg",
+  "07": "Kalmar",
+  "08": "Gotland",
+  "09": "Blekinge",
+  "10": "Skåne",
+  "11": "Halland",
+  "12": "Västra Götaland",
+  "13": "Värmland",
+  "14": "Örebro",
+  "15": "Västmanland",
+  "16": "Dalarna",
+  "17": "Gävleborg",
+  "18": "Västernorrland",
+  "19": "Jämtland",
+  "20": "Västerbotten",
+  "21": "Norrbotten",
 };
 
 function parseCsvLine(line, delimiter = ',') {
@@ -166,17 +166,17 @@ async function main() {
 
     // Use commune code as region (län) and city as district (kommun)
     // In Sweden: Län (county) = Region, Kommun (municipality) = District
-    // Use first 2 digits of commune code to get county name
+    // Use first 2 digits of commune code to get county name and as region code
     const countyCode = regionCode.substring(0, 2);
     const regionName = SWEDISH_COUNTIES[countyCode] || regionCode; // Use mapping to get county name
-    regionsMap.set(regionCode, regionName);
-    districtsMap.set(`${regionCode}_${districtCode}`, { regionCode, districtCode, districtName });
+    regionsMap.set(countyCode, regionName); // Use countyCode (2 digits) as key to avoid duplicates
+    districtsMap.set(`${countyCode}_${districtCode}`, { regionCode: countyCode, districtCode, districtName });
 
     validSchools.push({
       code: code,
       name: schoolName,
       districtCode: districtCode,
-      regionCode: regionCode,
+      regionCode: countyCode, // Use countyCode (2 digits) instead of full commune code
       type: type,
       lat: isNaN(lat) ? null : lat,
       lng: isNaN(lng) ? null : lng
@@ -188,23 +188,13 @@ async function main() {
 
   // 4. Seed Regions
   console.log("📁 Seeding Regions...");
+  // Clear all existing SE regions to avoid duplicates
+  await client.query("DELETE FROM regions WHERE country_code = 'SE'");
   for (const [regionCode, regionName] of regionsMap.entries()) {
-    const exReg = await client.query(
-      "SELECT id FROM regions WHERE country_code = 'SE' AND code = $1",
-      [regionCode]
+    await client.query(
+      "INSERT INTO regions (country_code, code, name_local, name_fr, name_en) VALUES ('SE', $1, $2, $3, $4)",
+      [regionCode, regionName, regionName, regionName]
     );
-    if (exReg.rows.length === 0) {
-      await client.query(
-        "INSERT INTO regions (country_code, code, name_local, name_fr, name_en) VALUES ('SE', $1, $2, $3, $4)",
-        [regionCode, regionName, regionName, regionName]
-      );
-    } else {
-      // Update existing regions with correct names
-      await client.query(
-        "UPDATE regions SET name_local = $1, name_fr = $2, name_en = $3 WHERE country_code = 'SE' AND code = $4",
-        [regionName, regionName, regionName, regionCode]
-      );
-    }
   }
 
   // Cache SE regions
@@ -217,32 +207,22 @@ async function main() {
 
   // 5. Seed Districts (Municipalities)
   console.log("📁 Seeding Districts (Municipalities)...");
-  
-  const exDistRes = await client.query(`
-    SELECT d.id, d.code as dist_code, r.code as region_code 
-    FROM districts d
-    JOIN regions r ON d.region_id = r.id
-    WHERE r.country_code = 'SE'
+  // Clear all existing SE districts to avoid orphaned references
+  await client.query(`
+    DELETE FROM districts 
+    WHERE region_id IN (SELECT id FROM regions WHERE country_code = 'SE')
   `);
-  
-  const existingDistKeys = new Set();
-  for (const d of exDistRes.rows) {
-    existingDistKeys.add(`${d.region_code}_${d.dist_code}`);
-  }
 
   const missingDistricts = [];
   for (const d of districtsMap.values()) {
     const regionId = regIdMap.get(d.regionCode);
     if (!regionId) continue;
 
-    const key = `${d.regionCode}_${d.districtCode}`;
-    if (!existingDistKeys.has(key)) {
-      missingDistricts.push({
-        regionId,
-        code: d.districtCode,
-        distName: d.districtName
-      });
-    }
+    missingDistricts.push({
+      regionId,
+      code: d.districtCode,
+      distName: d.districtName
+    });
   }
 
   if (missingDistricts.length > 0) {
