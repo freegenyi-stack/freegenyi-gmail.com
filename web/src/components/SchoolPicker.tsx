@@ -63,7 +63,11 @@ export default function SchoolPicker({
 }: SchoolPickerProps) {
   const locale = useLocale();
   const isAr = (locale === "ar" || locale.endsWith("-ar"));
-  const isEnglish = ["AU", "GB", "US"].includes(country) || (country === "CA" && (locale === "en" || locale.endsWith("-en") || locale.startsWith("CA-en")));
+  const isMaori = (locale === "mi" || locale.endsWith("-mi"));
+  const isIrish = (locale === "ga" || locale.endsWith("-ga"));
+  const isDanish = (country === "DK" || locale === "da" || locale.endsWith("-da"));
+  const isSwedish = (country === "SE" || locale === "sv" || locale.endsWith("-sv"));
+  const isEnglish = ["AU", "GB", "US", "NZ", "IE"].includes(country) || (country === "CA" && (locale === "en" || locale.endsWith("-en") || locale.startsWith("CA-en")));
   const isCanada = country === "CA";
   
   const [query, setQuery] = useState("");
@@ -193,7 +197,7 @@ export default function SchoolPicker({
         <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" />
         <div className="flex-1 min-w-0">
           <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-0.5">
-            {isAr ? "المدرسة المحددة" : isEnglish ? "Selected School" : "École sélectionnée"}
+            {isAr ? "المدرسة المحددة" : isMaori ? "Kura Kua Tohua" : isIrish ? "Scoil Roghnaithe" : isDanish ? "Valgt skole" : isEnglish ? "Selected School" : "École sélectionnée"}
           </p>
           <p className="text-sm font-black text-slate-900 truncate">{value.name}</p>
         </div>
@@ -206,10 +210,8 @@ export default function SchoolPicker({
 
   return (
     <div ref={containerRef} className="relative w-full text-slate-700" dir={isAr ? "rtl" : "ltr"}>
-      {/* Filters: Region / Province / Commune / Département */}
       {country === "FR" ? (
         <div className="flex flex-col md:flex-row gap-2.5 mb-3 w-full">
-          {/* 1. Région Administrative */}
           <div className="relative flex-1">
             <button
               type="button"
@@ -260,7 +262,6 @@ export default function SchoolPicker({
             </AnimatePresence>
           </div>
 
-          {/* 2. Département */}
           <div className="relative flex-1">
             <button
               type="button"
@@ -319,7 +320,6 @@ export default function SchoolPicker({
             </AnimatePresence>
           </div>
 
-          {/* 3. Commune */}
           <div className="relative flex-1">
             <button
               type="button"
@@ -374,9 +374,7 @@ export default function SchoolPicker({
           </div>
         </div>
       ) : isCanada ? (
-        /* Canada 2-column filters: Province > City */
         <div className="flex flex-col sm:flex-row gap-2 mb-2">
-          {/* Province filter */}
           <div className="relative flex-1">
             <button
               type="button"
@@ -430,7 +428,6 @@ export default function SchoolPicker({
             </AnimatePresence>
           </div>
 
-          {/* City filter */}
           <div className="relative flex-1">
             <button
               type="button"
@@ -486,9 +483,7 @@ export default function SchoolPicker({
           </div>
         </div>
       ) : (
-        /* Algeria & others 2-column filters */
         <div className="flex flex-col sm:flex-row gap-2 mb-2">
-          {/* Wilaya filter */}
           <div className="relative flex-1">
             <button
               type="button"
@@ -503,7 +498,7 @@ export default function SchoolPicker({
                 <span className="truncate">
                   {selectedRegion
                     ? getRegionName(selectedRegion)
-                    : (isAr ? "الولاية" : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : "Wilaya")}
+                    : (isAr ? "الولاية" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : "Wilaya")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -542,7 +537,6 @@ export default function SchoolPicker({
             </AnimatePresence>
           </div>
 
-          {/* Commune filter */}
           <div className="relative flex-1">
             <button
               type="button"
@@ -558,7 +552,7 @@ export default function SchoolPicker({
                 <span className="truncate">
                   {selectedDistrict
                     ? getDistrictName(selectedDistrict)
-                    : (isAr ? "البلدية" : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : country === "US" ? "District" : "Commune")}
+                    : (isAr ? "البلدية" : country === "IE" ? (isIrish ? "Údarás Áitiúil" : "Local Authority") : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : country === "US" ? "District" : country === "NZ" ? (isMaori ? "Takiwā" : "Territorial Authority") : country === "DK" ? "Kommune" : country === "SE" ? "Kommun" : "Commune")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -599,7 +593,6 @@ export default function SchoolPicker({
         </div>
       )}
 
-      {/* Search Input and Type Filter (Visible only if districtCode/Commune is selected) */}
       {districtCode ? (
         <div className="space-y-2 mt-3">
           <div className="relative">
@@ -609,7 +602,7 @@ export default function SchoolPicker({
               value={query}
               onChange={(e) => { setQuery(e.target.value); setIsOpen(true); }}
               onFocus={() => setIsOpen(true)}
-              placeholder={isAr ? "ابحث عن المدرسة..." : placeholder}
+              placeholder={isAr ? "ابحث عن المدرسة..." : isDanish ? "Søg efter skole..." : placeholder}
               className={`w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 rounded-xl py-3 text-xs sm:text-sm font-bold text-slate-900 placeholder:text-slate-400 outline-none transition-all shadow-inner ${isAr ? 'pr-11 pl-4' : 'pl-11 pr-4'}`}
               dir={isAr ? "rtl" : "ltr"}
             />
@@ -618,28 +611,27 @@ export default function SchoolPicker({
             )}
           </div>
           
-          {/* Type Filter */}
           <div className="flex gap-2">
             <button
               type="button"
               onClick={() => setSchoolType(0)}
               className={`flex-1 py-1.5 px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors ${schoolType === 0 ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
             >
-              {isAr ? "الكل" : isEnglish ? "All" : "Toutes"}
+              {isAr ? "الكل" : isMaori ? "Katoa" : isIrish ? "Gach" : isDanish ? "Alle" : isEnglish ? "All" : "Toutes"}
             </button>
             <button
               type="button"
               onClick={() => setSchoolType(1)}
               className={`flex-1 py-1.5 px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors ${schoolType === 1 ? 'bg-emerald-600 text-white' : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'}`}
             >
-              {isAr ? "عام" : isEnglish ? "Public" : "Publiques"}
+              {isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isDanish ? "Folkeskole" : isEnglish ? "Public" : "Publiques"}
             </button>
             <button
               type="button"
               onClick={() => setSchoolType(2)}
               className={`flex-1 py-1.5 px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors ${schoolType === 2 ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600 hover:bg-blue-100'}`}
             >
-              {isAr ? "خاص" : isEnglish ? "Private" : "Privées"}
+              {isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isDanish ? "Privatskole / Friskole" : isEnglish ? "Private" : "Privées"}
             </button>
           </div>
         </div>
@@ -647,6 +639,10 @@ export default function SchoolPicker({
         <div className="bg-slate-50 border-2 border-dashed border-slate-100/80 rounded-2xl py-4 px-4 text-center text-[11px] font-extrabold text-slate-400/80 tracking-wide leading-relaxed">
           {isAr
             ? "الرجاء اختيار الولاية والبلدية أولاً لتحديد المدرسة"
+            : isMaori 
+            ? "Kōwhiria te rohe me te takiwā i te tuatahi kia kitea tētahi kura 🏫"
+            : country === "IE"
+              ? (isIrish ? "Roghnaigh an Contae agus an tÚdarás Áitiúil chun do scoil a aimsiú 🏫" : "Please select the County and Local Authority to choose your school 🏫")
             : country === "GB"
               ? "Please select the Region and Local Authority to choose your school 🏫"
               : country === "AU"
@@ -657,13 +653,16 @@ export default function SchoolPicker({
                       : "Veuillez sélectionner la Province et la Ville pour trouver votre école 🍁")
                   : country === "US"
                     ? "Please select the State and District to find your school 🏫"
-                    : (country === "FR"
-                        ? "Veuillez sélectionner la Région, le Département et la Commune pour choisir votre école 🏫"
-                        : "Veuillez sélectionner la Wilaya et la Commune pour choisir votre école 🏫")}
+                    : country === "DK"
+                      ? "Vælg venligst Region og Kommune for at finde din skole 🏫"
+                      : country === "SE"
+                        ? "Vänligen välj Län och Kommun för att hitta din skola 🏫"
+                        : (country === "FR"
+                          ? "Veuillez sélectionner la Région, le Département et la Commune pour choisir votre école 🏫"
+                          : "Veuillez sélectionner la Wilaya et la Commune pour choisir votre école 🏫")}
         </div>
       )}
 
-      {/* Results dropdown */}
       <AnimatePresence>
         {isOpen && results.length > 0 && (
           <motion.div
@@ -691,7 +690,7 @@ export default function SchoolPicker({
                       {getSchoolDistrict(school)} · {getSchoolRegion(school)}
                     </span>
                     <span className={`shrink-0 text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider ${school.type === 2 ? "bg-blue-100 text-blue-600" : "bg-emerald-100 text-emerald-600"}`}>
-                      {school.type === 2 ? (isAr ? "خاص" : isEnglish ? "Private" : "Privé") : (isAr ? "عام" : isEnglish ? "Public" : "Public")}
+                      {school.type === 2 ? (isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isDanish ? "Privatskole" : isEnglish ? "Private" : "Privé") : (isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isDanish ? "Folkeskole" : isEnglish ? "Public" : "Public")}
                     </span>
                   </div>
                 </div>
@@ -706,8 +705,8 @@ export default function SchoolPicker({
             className="absolute top-full mt-2 left-0 right-0 z-[70] bg-white shadow-xl rounded-2xl border border-slate-100 px-6 py-6 text-center"
           >
             <School className="w-8 h-8 text-slate-300 mx-auto mb-2" />
-            <p className="text-sm font-black text-slate-500">{isAr ? "لم يتم العثور على مدرسة" : isEnglish ? "No school found" : "Aucune école trouvée"}</p>
-            <p className="text-xs text-slate-400 mt-1">{isAr ? "يرجى تعديل الفلاتر أو تجربة اسم آخر" : isEnglish ? "Modify your filters or try another search" : "Modifiez vos filtres ou essayez un autre nom"}</p>
+            <p className="text-sm font-black text-slate-500">{isAr ? "لم يتم العثور على مدرسة" : isMaori ? "Kāore he kura i kitea" : isIrish ? "Níor aimsíodh aon scoil" : isDanish ? "Ingen skole fundet" : isEnglish ? "No school found" : "Aucune école trouvée"}</p>
+            <p className="text-xs text-slate-400 mt-1">{isAr ? "يرجى تعديل الفلاتر أو تجربة اسم آخر" : isMaori ? "Hurihia ō whiriwhiri, whakamātauhia tētahi atu ingoa rānei" : isIrish ? "Athraigh do chuid scagairí nó déan iarracht ainm eile a chuardach" : isDanish ? "Juster dine filtre eller prøv et andet navn" : isEnglish ? "Modify your filters or try another search" : "Modifiez vos filtres ou essayez un autre nom"}</p>
           </motion.div>
         )}
       </AnimatePresence>
