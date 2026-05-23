@@ -33,6 +33,7 @@ const COUNTRIES = [
     { name: 'Ireland', code: 'IE', flag: '🇮🇪', dial: '+353' },
     { name: 'Denmark / Danmark', code: 'DK', flag: '🇩🇰', dial: '+45' },
     { name: 'Sweden / Sverige', code: 'SE', flag: '🇸🇪', dial: '+46' },
+    { name: 'Norway / Norge', code: 'NO', flag: '🇳🇴', dial: '+47' },
 ];
 
 const dict = {
@@ -1775,7 +1776,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [userType, setUserType] = useState("parent");
 
     // Initialize country based on active region
-    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : COUNTRIES[0]) || COUNTRIES[0];
+    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || COUNTRIES[0];
     const [selectedCountry, setSelectedCountry] = useState(defaultCountryObj);
 
     const [phone, setPhone] = useState("");
