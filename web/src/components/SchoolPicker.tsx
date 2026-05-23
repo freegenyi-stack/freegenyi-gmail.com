@@ -705,8 +705,8 @@ export default function SchoolPicker({
             className="absolute top-full mt-2 left-0 right-0 z-[70] bg-white shadow-xl rounded-2xl border border-slate-100 px-6 py-6 text-center"
           >
             <School className="w-8 h-8 text-slate-300 mx-auto mb-2" />
-            <p className="text-sm font-black text-slate-500">{isAr ? "لم يتم العثور على مدرسة" : isMaori ? "Kāore he kura i kitea" : isIrish ? "Níor aimsíodh aon scoil" : isDanish ? "Ingen skole fundet" : isEnglish ? "No school found" : "Aucune école trouvée"}</p>
-            <p className="text-xs text-slate-400 mt-1">{isAr ? "يرجى تعديل الفلاتر أو تجربة اسم آخر" : isMaori ? "Hurihia ō whiriwhiri, whakamātauhia tētahi atu ingoa rānei" : isIrish ? "Athraigh do chuid scagairí nó déan iarracht ainm eile a chuardach" : isDanish ? "Juster dine filtre eller prøv et andet navn" : isEnglish ? "Modify your filters or try another search" : "Modifiez vos filtres ou essayez un autre nom"}</p>
+            <p className="text-sm font-black text-slate-500">{isAr ? "لم يتم العثور على مدرسة" : isMaori ? "Kāore he kura i kitea" : isIrish ? "Níor aimsíodh aon scoil" : isSwedish ? "Ingen skola hittades" : isDanish ? "Ingen skole fundet" : isEnglish ? "No school found" : "Aucune école trouvée"}</p>
+            <p className="text-xs text-slate-400 mt-1">{isAr ? "يرجى تعديل الفلاتر أو تجربة اسم آخر" : isMaori ? "Hurihia ō whiriwhiri, whakamātauhia tētahi atu ingoa rānei" : isIrish ? "Athraigh do chuid scagairí nó déan iarracht ainm eile a chuardach" : isSwedish ? "Ändra dina filter eller prova ett annat namn" : isDanish ? "Juster dine filtre eller prøv et andet navn" : isEnglish ? "Modify your filters or try another search" : "Modifiez vos filtres ou essayez un autre nom"}</p>
           </motion.div>
         )}
       </AnimatePresence>
