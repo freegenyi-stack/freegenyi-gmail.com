@@ -336,7 +336,7 @@ export default function SchoolPicker({
             >
               <span className="flex items-center gap-2 truncate">
                 <Navigation className={`w-3.5 h-3.5 shrink-0 ${regionCode ? 'text-orange-500' : 'text-slate-300'}`} />
-                <span className="truncate">{selectedDistrict ? getDistrictName(selectedDistrict) : (isAr ? "البلدية" : "Commune")}</span>
+                <span className="truncate">{selectedDistrict ? getDistrictName(selectedDistrict) : (isAr ? "البلدية" : country === "NO" ? "Kommune" : "Commune")}</span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
                 {districtCode && (
@@ -499,7 +499,7 @@ export default function SchoolPicker({
                 <span className="truncate">
                   {selectedRegion
                     ? getRegionName(selectedRegion)
-                    : (isAr ? "الولاية" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : "Wilaya")}
+                    : (isAr ? "الولاية" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : country === "NO" ? "Fylke" : "Wilaya")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -553,7 +553,7 @@ export default function SchoolPicker({
                 <span className="truncate">
                   {selectedDistrict
                     ? getDistrictName(selectedDistrict)
-                    : (isAr ? "البلدية" : country === "IE" ? (isIrish ? "Údarás Áitiúil" : "Local Authority") : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : country === "US" ? "District" : country === "NZ" ? (isMaori ? "Takiwā" : "Territorial Authority") : country === "DK" ? "Kommune" : country === "SE" ? "Kommuner" : "Commune")}
+                    : (isAr ? "البلدية" : country === "IE" ? (isIrish ? "Údarás Áitiúil" : "Local Authority") : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : country === "US" ? "District" : country === "NZ" ? (isMaori ? "Takiwā" : "Territorial Authority") : country === "DK" ? "Kommune" : country === "SE" ? "Kommuner" : country === "NO" ? "Kommune" : "Commune")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -658,9 +658,11 @@ export default function SchoolPicker({
                       ? "Vælg venligst Region og Kommune for at finde din skole 🏫"
                       : country === "SE"
                         ? "Vänligen välj Län och Kommun för att hitta din skola 🏫"
-                        : (country === "FR"
-                          ? "Veuillez sélectionner la Région, le Département et la Commune pour choisir votre école 🏫"
-                          : "Veuillez sélectionner la Wilaya et la Commune pour choisir votre école 🏫")}
+                        : country === "NO"
+                          ? "Vennligst velg Fylke og Kommune for å finne skolen din 🏫"
+                          : (country === "FR"
+                            ? "Veuillez sélectionner la Région, le Département et la Commune pour choisir votre école 🏫"
+                            : "Veuillez sélectionner la Wilaya et la Commune pour choisir votre école 🏫")}
         </div>
       )}
 
