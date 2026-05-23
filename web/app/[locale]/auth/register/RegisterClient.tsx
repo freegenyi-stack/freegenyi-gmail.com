@@ -1775,7 +1775,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [userType, setUserType] = useState("parent");
 
     // Initialize country based on active region
-    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || COUNTRIES[0];
+    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : COUNTRIES[0]) || COUNTRIES[0];
     const [selectedCountry, setSelectedCountry] = useState(defaultCountryObj);
 
     const [phone, setPhone] = useState("");
@@ -1783,7 +1783,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [spouseFirstName, setSpouseFirstName] = useState("");
     const [spouseLastName, setSpouseLastName] = useState("");
     const [childName, setChildName] = useState("");
-    const [childCountry, setChildCountry] = useState(regionCountry || "DZ");
+    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : "DZ"));
     const [childLevel, setChildLevel] = useState("");
     const [childAge, setChildAge] = useState("");
     const [childRegion, setChildRegion] = useState("");
