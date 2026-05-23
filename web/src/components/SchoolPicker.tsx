@@ -67,6 +67,7 @@ export default function SchoolPicker({
   const isIrish = (locale === "ga" || locale.endsWith("-ga"));
   const isDanish = (country === "DK" || locale === "da" || locale.endsWith("-da"));
   const isSwedish = (country === "SE" || locale === "sv" || locale.endsWith("-sv"));
+  const isNorwegian = (country === "NO" || locale === "no" || locale.endsWith("-no"));
   const isEnglish = ["AU", "GB", "US", "NZ", "IE"].includes(country) || (country === "CA" && (locale === "en" || locale.endsWith("-en") || locale.startsWith("CA-en")));
   const isCanada = country === "CA";
   
@@ -171,11 +172,11 @@ export default function SchoolPicker({
   const selectedRegion = regions.find((r) => r.code === regionCode);
   const selectedDistrict = districts.find((d) => d.code === districtCode);
 
-  const getRegionName = (r: Region) => isSwedish ? (r.nameLocal || r.nameFr) : isEnglish ? (r.nameLocal || r.nameFr) : isAr ? (r.nameLocal || r.nameFr) : (r.nameFr || r.nameLocal);
-  const getDistrictName = (d: District) => isSwedish ? (d.nameLocal || d.nameFr) : isEnglish ? (d.nameLocal || d.nameFr) : isAr ? (d.nameLocal || d.nameFr) : (d.nameFr || d.nameLocal);
-  const getSchoolName = (s: SchoolResult) => isSwedish ? (s.nameLocal || s.nameFr) : isEnglish ? (s.nameLocal || s.nameFr) : isAr ? (s.nameLocal || s.nameFr) : (s.nameFr || s.nameLocal);
-  const getSchoolRegion = (s: SchoolResult) => isSwedish ? (s.regionNameLocal || s.regionNameFr) : isEnglish ? (s.regionNameLocal || s.regionNameFr) : isAr ? (s.regionNameLocal || s.regionNameFr) : (s.regionNameFr || s.regionNameLocal);
-  const getSchoolDistrict = (s: SchoolResult) => isSwedish ? (s.districtNameLocal || s.districtNameFr) : isEnglish ? (s.districtNameLocal || s.districtNameFr) : isAr ? (s.districtNameLocal || s.districtNameFr) : (s.districtNameFr || s.districtNameLocal);
+  const getRegionName = (r: Region) => isNorwegian ? (r.nameLocal || r.nameFr) : isSwedish ? (r.nameLocal || r.nameFr) : isEnglish ? (r.nameLocal || r.nameFr) : isAr ? (r.nameLocal || r.nameFr) : (r.nameFr || r.nameLocal);
+  const getDistrictName = (d: District) => isNorwegian ? (d.nameLocal || d.nameFr) : isSwedish ? (d.nameLocal || d.nameFr) : isEnglish ? (d.nameLocal || d.nameFr) : isAr ? (d.nameLocal || d.nameFr) : (d.nameFr || d.nameLocal);
+  const getSchoolName = (s: SchoolResult) => isNorwegian ? (s.nameLocal || s.nameFr) : isSwedish ? (s.nameLocal || s.nameFr) : isEnglish ? (s.nameLocal || s.nameFr) : isAr ? (s.nameLocal || s.nameFr) : (s.nameFr || s.nameLocal);
+  const getSchoolRegion = (s: SchoolResult) => isNorwegian ? (s.regionNameLocal || s.regionNameFr) : isSwedish ? (s.regionNameLocal || s.regionNameFr) : isEnglish ? (s.regionNameLocal || s.regionNameFr) : isAr ? (s.regionNameLocal || s.regionNameFr) : (s.regionNameFr || s.regionNameLocal);
+  const getSchoolDistrict = (s: SchoolResult) => isNorwegian ? (s.districtNameLocal || s.districtNameFr) : isSwedish ? (s.districtNameLocal || s.districtNameFr) : isEnglish ? (s.districtNameLocal || s.districtNameFr) : isAr ? (s.districtNameLocal || s.districtNameFr) : (s.districtNameFr || s.districtNameLocal);
 
   const handleSelect = (school: SchoolResult) => {
     onChange({
@@ -197,7 +198,7 @@ export default function SchoolPicker({
         <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" />
         <div className="flex-1 min-w-0">
           <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-0.5">
-            {isAr ? "المدرسة المحددة" : isMaori ? "Kura Kua Tohua" : isIrish ? "Scoil Roghnaithe" : isSwedish ? "Vald skola" : isDanish ? "Valgt skole" : isEnglish ? "Selected School" : "École sélectionnée"}
+            {isAr ? "المدرسة المحددة" : isMaori ? "Kura Kua Tohua" : isIrish ? "Scoil Roghnaithe" : isNorwegian ? "Valgt skole" : isSwedish ? "Vald skola" : isDanish ? "Valgt skole" : isEnglish ? "Selected School" : "École sélectionnée"}
           </p>
           <p className="text-sm font-black text-slate-900 truncate">{value.name}</p>
         </div>
@@ -602,7 +603,7 @@ export default function SchoolPicker({
               value={query}
               onChange={(e) => { setQuery(e.target.value); setIsOpen(true); }}
               onFocus={() => setIsOpen(true)}
-              placeholder={isAr ? "ابحث عن المدرسة..." : isSwedish ? "Sök efter skola..." : isDanish ? "Søg efter skole..." : placeholder}
+              placeholder={isAr ? "ابحث عن المدرسة..." : isNorwegian ? "Søk etter skole..." : isSwedish ? "Sök efter skola..." : isDanish ? "Søg efter skole..." : placeholder}
               className={`w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 rounded-xl py-3 text-xs sm:text-sm font-bold text-slate-900 placeholder:text-slate-400 outline-none transition-all shadow-inner ${isAr ? 'pr-11 pl-4' : 'pl-11 pr-4'}`}
               dir={isAr ? "rtl" : "ltr"}
             />
@@ -617,21 +618,21 @@ export default function SchoolPicker({
               onClick={() => setSchoolType(0)}
               className={`flex-1 py-1.5 px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors ${schoolType === 0 ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
             >
-              {isAr ? "الكل" : isMaori ? "Katoa" : isIrish ? "Gach" : isSwedish ? "Alla" : isDanish ? "Alle" : isEnglish ? "All" : "Toutes"}
+              {isAr ? "الكل" : isMaori ? "Katoa" : isIrish ? "Gach" : isNorwegian ? "Alle" : isSwedish ? "Alla" : isDanish ? "Alle" : isEnglish ? "All" : "Toutes"}
             </button>
             <button
               type="button"
               onClick={() => setSchoolType(1)}
               className={`flex-1 py-1.5 px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors ${schoolType === 1 ? 'bg-emerald-600 text-white' : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'}`}
             >
-              {isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isSwedish ? "Grundskola" : isDanish ? "Folkeskole" : isEnglish ? "Public" : "Publiques"}
+              {isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isNorwegian ? "Offentlig" : isSwedish ? "Grundskola" : isDanish ? "Folkeskole" : isEnglish ? "Public" : "Publiques"}
             </button>
             <button
               type="button"
               onClick={() => setSchoolType(2)}
               className={`flex-1 py-1.5 px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors ${schoolType === 2 ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600 hover:bg-blue-100'}`}
             >
-              {isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isSwedish ? "Privatskola / Friskola" : isDanish ? "Privatskole / Friskole" : isEnglish ? "Private" : "Privées"}
+              {isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isNorwegian ? "Privat" : isSwedish ? "Privatskola / Friskola" : isDanish ? "Privatskole / Friskole" : isEnglish ? "Private" : "Privées"}
             </button>
           </div>
         </div>
@@ -690,7 +691,7 @@ export default function SchoolPicker({
                       {getSchoolDistrict(school)} · {getSchoolRegion(school)}
                     </span>
                     <span className={`shrink-0 text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider ${school.type === 2 ? "bg-blue-100 text-blue-600" : "bg-emerald-100 text-emerald-600"}`}>
-                      {school.type === 2 ? (isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isSwedish ? "Privatskola" : isDanish ? "Privatskole" : isEnglish ? "Private" : "Privé") : (isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isSwedish ? "Grundskola" : isDanish ? "Folkeskole" : isEnglish ? "Public" : "Public")}
+                      {school.type === 2 ? (isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isNorwegian ? "Privat" : isSwedish ? "Privatskola" : isDanish ? "Privatskole" : isEnglish ? "Private" : "Privé") : (isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isNorwegian ? "Offentlig" : isSwedish ? "Grundskola" : isDanish ? "Folkeskole" : isEnglish ? "Public" : "Public")}
                     </span>
                   </div>
                 </div>
@@ -705,8 +706,8 @@ export default function SchoolPicker({
             className="absolute top-full mt-2 left-0 right-0 z-[70] bg-white shadow-xl rounded-2xl border border-slate-100 px-6 py-6 text-center"
           >
             <School className="w-8 h-8 text-slate-300 mx-auto mb-2" />
-            <p className="text-sm font-black text-slate-500">{isAr ? "لم يتم العثور على مدرسة" : isMaori ? "Kāore he kura i kitea" : isIrish ? "Níor aimsíodh aon scoil" : isSwedish ? "Ingen skola hittades" : isDanish ? "Ingen skole fundet" : isEnglish ? "No school found" : "Aucune école trouvée"}</p>
-            <p className="text-xs text-slate-400 mt-1">{isAr ? "يرجى تعديل الفلاتر أو تجربة اسم آخر" : isMaori ? "Hurihia ō whiriwhiri, whakamātauhia tētahi atu ingoa rānei" : isIrish ? "Athraigh do chuid scagairí nó déan iarracht ainm eile a chuardach" : isSwedish ? "Ändra dina filter eller prova ett annat namn" : isDanish ? "Juster dine filtre eller prøv et andet navn" : isEnglish ? "Modify your filters or try another search" : "Modifiez vos filtres ou essayez un autre nom"}</p>
+            <p className="text-sm font-black text-slate-500">{isAr ? "لم يتم العثور على مدرسة" : isMaori ? "Kāore he kura i kitea" : isIrish ? "Níor aimsíodh aon scoil" : isNorwegian ? "Ingen skole funnet" : isSwedish ? "Ingen skola hittades" : isDanish ? "Ingen skole fundet" : isEnglish ? "No school found" : "Aucune école trouvée"}</p>
+            <p className="text-xs text-slate-400 mt-1">{isAr ? "يرجى تعديل الفلاتر أو تجربة اسم آخر" : isMaori ? "Hurihia ō whiriwhiri, whakamātauhia tētahi atu ingoa rānei" : isIrish ? "Athraigh do chuid scagairí nó déan iarracht ainm eile a chuardach" : isNorwegian ? "Juster filtrene dine eller prøv et annet søk" : isSwedish ? "Ändra dina filter eller prova ett annat namn" : isDanish ? "Juster dine filtre eller prøv et andet navn" : isEnglish ? "Modify your filters or try another search" : "Modifiez vos filtres ou essayez un autre nom"}</p>
           </motion.div>
         )}
       </AnimatePresence>

@@ -18,6 +18,7 @@ const DEFAULT_COUNTRY_FOR_LOCALE: Record<string, string> = {
   nl: "NL",
   da: "DK",
   sv: "SE",
+  no: "NO",
 };
 
 export default auth((req) => {
@@ -34,6 +35,7 @@ export default auth((req) => {
     else if (country === "AU" || country === "US" || country === "GB") locale = "en";
     else if (country === "AO" || country === "PT") locale = "pt";
     else if (country === "SE") locale = "sv";
+    else if (country === "NO") locale = "no";
     
     return NextResponse.redirect(new URL(`/${country}-${locale}/`, req.url));
   }
