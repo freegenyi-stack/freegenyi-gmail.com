@@ -171,11 +171,11 @@ export default function SchoolPicker({
   const selectedRegion = regions.find((r) => r.code === regionCode);
   const selectedDistrict = districts.find((d) => d.code === districtCode);
 
-  const getRegionName = (r: Region) => isEnglish ? (r.nameLocal || r.nameFr) : isAr ? (r.nameLocal || r.nameFr) : (r.nameFr || r.nameLocal);
-  const getDistrictName = (d: District) => isEnglish ? (d.nameLocal || d.nameFr) : isAr ? (d.nameLocal || d.nameFr) : (d.nameFr || d.nameLocal);
-  const getSchoolName = (s: SchoolResult) => isEnglish ? (s.nameLocal || s.nameFr) : isAr ? (s.nameLocal || s.nameFr) : (s.nameFr || s.nameLocal);
-  const getSchoolRegion = (s: SchoolResult) => isEnglish ? (s.regionNameLocal || s.regionNameFr) : isAr ? (s.regionNameLocal || s.regionNameFr) : (s.regionNameFr || s.regionNameLocal);
-  const getSchoolDistrict = (s: SchoolResult) => isEnglish ? (s.districtNameLocal || s.districtNameFr) : isAr ? (s.districtNameLocal || s.districtNameFr) : (s.districtNameFr || s.districtNameLocal);
+  const getRegionName = (r: Region) => isSwedish ? (r.nameLocal || r.nameFr) : isEnglish ? (r.nameLocal || r.nameFr) : isAr ? (r.nameLocal || r.nameFr) : (r.nameFr || r.nameLocal);
+  const getDistrictName = (d: District) => isSwedish ? (d.nameLocal || d.nameFr) : isEnglish ? (d.nameLocal || d.nameFr) : isAr ? (d.nameLocal || d.nameFr) : (d.nameFr || d.nameLocal);
+  const getSchoolName = (s: SchoolResult) => isSwedish ? (s.nameLocal || s.nameFr) : isEnglish ? (s.nameLocal || s.nameFr) : isAr ? (s.nameLocal || s.nameFr) : (s.nameFr || s.nameLocal);
+  const getSchoolRegion = (s: SchoolResult) => isSwedish ? (s.regionNameLocal || s.regionNameFr) : isEnglish ? (s.regionNameLocal || s.regionNameFr) : isAr ? (s.regionNameLocal || s.regionNameFr) : (s.regionNameFr || s.regionNameLocal);
+  const getSchoolDistrict = (s: SchoolResult) => isSwedish ? (s.districtNameLocal || s.districtNameFr) : isEnglish ? (s.districtNameLocal || s.districtNameFr) : isAr ? (s.districtNameLocal || s.districtNameFr) : (s.districtNameFr || s.districtNameLocal);
 
   const handleSelect = (school: SchoolResult) => {
     onChange({
