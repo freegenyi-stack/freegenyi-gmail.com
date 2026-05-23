@@ -299,7 +299,7 @@ async function main() {
       const lat = s.lat;
       const lng = s.lng;
 
-      values.push(districtId, code, name, name, type, lat, lng);
+      values.push(districtId, code, name, "", type, lat, lng);
       valuePlaceholders.push(`($${placeholderIndex}, $${placeholderIndex + 1}, $${placeholderIndex + 2}, $${placeholderIndex + 3}, $${placeholderIndex + 4}, $${placeholderIndex + 5}, $${placeholderIndex + 6})`);
       placeholderIndex += 7;
     }

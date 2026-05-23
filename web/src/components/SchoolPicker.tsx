@@ -197,7 +197,7 @@ export default function SchoolPicker({
         <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" />
         <div className="flex-1 min-w-0">
           <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-0.5">
-            {isAr ? "المدرسة المحددة" : isMaori ? "Kura Kua Tohua" : isIrish ? "Scoil Roghnaithe" : isDanish ? "Valgt skole" : isEnglish ? "Selected School" : "École sélectionnée"}
+            {isAr ? "المدرسة المحددة" : isMaori ? "Kura Kua Tohua" : isIrish ? "Scoil Roghnaithe" : isSwedish ? "Vald skola" : isDanish ? "Valgt skole" : isEnglish ? "Selected School" : "École sélectionnée"}
           </p>
           <p className="text-sm font-black text-slate-900 truncate">{value.name}</p>
         </div>
@@ -602,7 +602,7 @@ export default function SchoolPicker({
               value={query}
               onChange={(e) => { setQuery(e.target.value); setIsOpen(true); }}
               onFocus={() => setIsOpen(true)}
-              placeholder={isAr ? "ابحث عن المدرسة..." : isDanish ? "Søg efter skole..." : placeholder}
+              placeholder={isAr ? "ابحث عن المدرسة..." : isSwedish ? "Sök efter skola..." : isDanish ? "Søg efter skole..." : placeholder}
               className={`w-full bg-slate-50 border-2 border-slate-100 focus:border-orange-500 rounded-xl py-3 text-xs sm:text-sm font-bold text-slate-900 placeholder:text-slate-400 outline-none transition-all shadow-inner ${isAr ? 'pr-11 pl-4' : 'pl-11 pr-4'}`}
               dir={isAr ? "rtl" : "ltr"}
             />
@@ -617,21 +617,21 @@ export default function SchoolPicker({
               onClick={() => setSchoolType(0)}
               className={`flex-1 py-1.5 px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors ${schoolType === 0 ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
             >
-              {isAr ? "الكل" : isMaori ? "Katoa" : isIrish ? "Gach" : isDanish ? "Alle" : isEnglish ? "All" : "Toutes"}
+              {isAr ? "الكل" : isMaori ? "Katoa" : isIrish ? "Gach" : isSwedish ? "Alla" : isDanish ? "Alle" : isEnglish ? "All" : "Toutes"}
             </button>
             <button
               type="button"
               onClick={() => setSchoolType(1)}
               className={`flex-1 py-1.5 px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors ${schoolType === 1 ? 'bg-emerald-600 text-white' : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'}`}
             >
-              {isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isDanish ? "Folkeskole" : isEnglish ? "Public" : "Publiques"}
+              {isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isSwedish ? "Grundskola" : isDanish ? "Folkeskole" : isEnglish ? "Public" : "Publiques"}
             </button>
             <button
               type="button"
               onClick={() => setSchoolType(2)}
               className={`flex-1 py-1.5 px-2 rounded-lg text-[10px] sm:text-xs font-bold transition-colors ${schoolType === 2 ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600 hover:bg-blue-100'}`}
             >
-              {isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isDanish ? "Privatskole / Friskole" : isEnglish ? "Private" : "Privées"}
+              {isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isSwedish ? "Privatskola / Friskola" : isDanish ? "Privatskole / Friskole" : isEnglish ? "Private" : "Privées"}
             </button>
           </div>
         </div>
@@ -690,7 +690,7 @@ export default function SchoolPicker({
                       {getSchoolDistrict(school)} · {getSchoolRegion(school)}
                     </span>
                     <span className={`shrink-0 text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider ${school.type === 2 ? "bg-blue-100 text-blue-600" : "bg-emerald-100 text-emerald-600"}`}>
-                      {school.type === 2 ? (isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isDanish ? "Privatskole" : isEnglish ? "Private" : "Privé") : (isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isDanish ? "Folkeskole" : isEnglish ? "Public" : "Public")}
+                      {school.type === 2 ? (isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isSwedish ? "Privatskola" : isDanish ? "Privatskole" : isEnglish ? "Private" : "Privé") : (isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isSwedish ? "Grundskola" : isDanish ? "Folkeskole" : isEnglish ? "Public" : "Public")}
                     </span>
                   </div>
                 </div>

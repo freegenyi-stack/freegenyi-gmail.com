@@ -1734,6 +1734,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
         US: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
         CA: ['Maternelle / Kindergarten', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
         DK: ['Børnehaveklasse (0. kl.)', '1. klasse', '2. klasse', '3. klasse', '4. klasse', '5. klasse', '6. klasse'],
+        SE: ['Förskoleklass (F)', 'Årskurs 1', 'Årskurs 2', 'Årskurs 3', 'Årskurs 4', 'Årskurs 5', 'Årskurs 6'],
         INT: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
     };
     const currentLevels = levels[childCountry] || levels["INT"];
