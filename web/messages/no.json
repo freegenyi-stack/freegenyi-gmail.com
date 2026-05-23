@@ -1,0 +1,236 @@
+{
+  "Hero": {
+    "title": "Åpne <orange>geniets dører</orange> for barnet ditt.",
+    "status": "Broen til eksellens er åpen",
+    "subtitle": "FreeGeny bygger en teknologisk bro mellom Foreldre, Skoler og Barn for helhetlig støtte mot eksellens.",
+    "cta": "Start eventyret",
+    "approach": "Vår tilnærming"
+  },
+  "Impact": {
+    "Geniuses": "Genier",
+    "Countries": "Land",
+    "Schools": "Skoler",
+    "Languages": "Språk",
+    "Courses": "Kurs & Øvelser"
+  },
+  "Nav": {
+    "About": "Om oss",
+    "Approach": "Tilnærming",
+    "Parents": "Foreldre",
+    "Schools": "Skoler",
+    "NGOs": "NGOer",
+    "Science": "Vitenskap",
+    "Region": "Region",
+    "FreeExplore": "Fri Utforskning"
+  },
+  "Auth": {
+    "Login": "Logg inn",
+    "Register": "Bli med",
+    "Logout": "Logg ut",
+    "Dashboard": "Kontrollpanel",
+    "Agreement": "Ved å fortsette godtar du våre vilkår og personvernpolicy.",
+    "AlreadyHaveAccount": "Har du allerede en konto? Logg inn",
+    "Placeholders": {
+      "FullName": "Erik Andersen",
+      "Username": "erik_and",
+      "Email": "erik@eksempel.no"
+    }
+  },
+  "Portals": {
+    "Tag": "Utforsk Portalene",
+    "Title": "En total immersjon.",
+    "Subtitle": "Tre sammenkoblede universer for grenseløs utvikling.",
+    "Local": {
+      "Title": "Lokal Portal",
+      "Desc": "Mestring av det offisielle programmet. Skolens fundament forsterket av AI.",
+      "CTA": "Oppdag universet?"
+    },
+    "World": {
+      "Title": "Global Portal",
+      "Desc": "Matematikk fra Singapore og engelsk fra Oxford for ambisjoner uten grenser.",
+      "CTA": "Utforsk verden?"
+    },
+    "Magic": {
+      "Title": "Magisk Arena",
+      "Desc": "Lekne utfordringer tilpasset dynamisk for å forankre hver ferdighet gjennom spill.",
+      "CTA": "Gå inn i arenaen?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "FreeGeny-økosystemet",
+    "Title": "Løsninger for alle.",
+    "Subtitle": "Fordi eksellens krever perfekt synergi mellom alle aktører.",
+    "Parents": {
+      "Title": "Foreldrerom",
+      "Desc": "Presis styring av suksess. Følg fremgang, send stemmebaserte emosjonelle boosts og håndter belønninger.",
+      "CTA": "Les mer?"
+    },
+    "Schools": {
+      "Title": "FreeGeny Skoler",
+      "Desc": "Komplett digital transformasjon. Håndter klassene dine, lærerne dine og kommuniser med foreldre i sanntid.",
+      "CTA": "Les mer?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Emosjonell Boost",
+    "MomVoice": "Mors innspilte stemme",
+    "Congratulation": "Gratulerer Amine!"
+  },
+  "Innovation": {
+    "Tag": "Innovasjon",
+    "Title": "En exceptionell styring.",
+    "Boost": {
+      "Title": "Emosjonell Boost",
+      "Desc": "Motiver barnet ditt med din egen stemme."
+    },
+    "AI": {
+      "Title": "AI-tilpasset Bane",
+      "Desc": "Hvert klikk justerer programmet."
+    }
+  },
+  "Footer": {
+    "Title": "Klar til å frigjøre geniet?",
+    "CTA": "Registrer deg gratis"
+  },
+  "Dashboard": {
+    "Title": "Foreldrekontrollpanel",
+    "Subtitle": "Håndter og følg utviklingen av små geniene dine.",
+    "AddChild": "Legg til et barn",
+    "ChildCard": {
+      "Level": "Nivå",
+      "XP": "Total XP",
+      "Progress": "Fremgang",
+      "Interest": "Passion",
+      "Status": "Status",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Lærende Modus",
+      "EmotionalBoost": {
+        "Title": "Emosjonell Boost",
+        "Desc": "Oppmuntre {name} med en stemmemelding.",
+        "Record": "Ta opp"
+      }
+    },
+    "Alliance": {
+      "Title": "Foreldreallianse",
+      "Online": "Online",
+      "CoParent": "Medforelder",
+      "Message": "Melding",
+      "Photo": "Foto"
+    },
+    "Printable": {
+      "Title": "Printable Factory",
+      "Desc": "Generer tilpassede revisjonsbøker basert på svake punkter.",
+      "CTA": "Generer mappen"
+    },
+    "Bridge": {
+      "Tag": "Broen foreslår",
+      "Validate": "Valider",
+      "Ignore": "Ignorer"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Hei, {name}!",
+    "ParentDashboard": "Foreldrekontrollpanel",
+    "Portals": {
+      "School": {
+        "Title": "Min Skole",
+        "Desc": "Repeter leksjonene dine på en morsom måte.",
+        "CTA": "Start eventyret"
+      },
+      "World": {
+        "Title": "Verden",
+        "Desc": "Utforsk Singapore, Oxford og ta for deg globale utfordringer!",
+        "CTA": "Oppdag"
+      },
+      "Arena": {
+        "Title": "Arenaen",
+        "Desc": "Logikkspill og magiske konkurranser.",
+        "CTA": "Klar til å spille?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Så {name}, klar for et nytt eventyr? Ikke glem å sjekke din {boost} sendt av foreldrene dine!\"",
+      "BoostTag": "Stemmeboost"
+    }
+  },
+  "Regions": {
+    "Title": "Fylker (fylker)",
+    "Description": "Dette er landets hovedadministrative inndelinger. Siden reformen i 2024 har Norge 15 fylker.",
+    "Municipalities": {
+      "Title": "Kommuner (kommuner)",
+      "Description": "Hvert fylke er inndelt i kommuner. Det er omtrent 356 av dem i dag."
+    },
+    "Counties": {
+      "Title": "De 15 nåværende fylkene",
+      "List": [
+        "Østfold",
+        "Akershus",
+        "Oslo",
+        "Innlandet",
+        "Buskerud",
+        "Vestfold",
+        "Telemark",
+        "Agder",
+        "Rogaland",
+        "Vestland",
+        "Møre og Romsdal",
+        "Trøndelag",
+        "Nordland",
+        "Troms",
+        "Finnmark"
+      ]
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Global Eksellens",
+      "Family": "Familjelag",
+      "Genius": "Lille Geniet"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Barnet ditt har ingen grenser lenger.",
+        "Items": [
+          "Matematikk fra Singapore",
+          "Cambridge (UK)",
+          "Finsk Modell",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Utdanning er en lagidrett.",
+        "Subtitle": "Synkroniser innsatsen for deres suksess."
+      },
+      "Step3": {
+        "Title": "Kun Primær Syklus.",
+        "Subtitle": "Skreddersydd støtte for deres begynnelse."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Hei.",
+        "Tag": "Steg 1 av 3 — Din rolle som garant",
+        "PhoneLabel": "Telefonnummer",
+        "Next": "Neste"
+      },
+      "Step2": {
+        "Title": "Familjeallianse.",
+        "Tag": "Steg 2 av 3 — Inviter ektefellen",
+        "Desc": "Synkroniser innsatsen for deres suksess.",
+        "EmailPlaceholder": "Ektefellens e-post (Valgfritt)",
+        "Next": "Neste Steg"
+      },
+      "Step3": {
+        "Title": "Lille Geniet.",
+        "Tag": "Siste steget: Deres bane",
+        "ChildName": "Barnets fornavn",
+        "Country": "Land",
+        "Level": "Nivå",
+        "Age": "Alder",
+        "Region": "Fylke / Kommune",
+        "CTA": "Start eventyret!"
+      }
+    }
+  }
+}

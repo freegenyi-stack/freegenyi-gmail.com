@@ -93,36 +93,81 @@ description: Guide complet pour ajouter une nouvelle base de données de pays
 ## Étape 6 : Traductions
 
 1. **Ajouter le code pays dans `middleware.ts`**
-   - Ajouter dans `DEFAULT_COUNTRY_FOR_LOCALE` : `'sv: "SE"'`
-   - Ajouter la condition de détection de locale
+   - Ajouter dans `DEFAULT_COUNTRY_FOR_LOCALE` : `'no: "NO"'`
+   - Ajouter la condition de détection de locale pour le nouveau pays
 
 2. **Ajouter la locale dans `i18n/routing.ts`**
-   - Ajouter dans le tableau `locales` : `'SE-sv'`
+   - Ajouter dans le tableau `locales` : `'no'`
 
-3. **Traduire les labels dans `RegisterClient.tsx`**
-   - Ajouter les traductions pour le nouveau pays
+3. **Créer le fichier de traduction JSON**
+   - Créer `web/messages/[code_locale].json` (ex: `no.json`)
+   - Copier la structure depuis un fichier existant (ex: `sv.json`)
+   - Traduire toutes les sections :
+     - **Hero** : titre, sous-titre, CTA
+     - **Impact** : Geniuses, Countries, Schools, Languages, Courses
+     - **Nav** : About, Approach, Parents, Schools, NGOs, Science, FreeExplore
+     - **Auth** : Login, Register, Agreement, AlreadyHaveAccount, Placeholders
+     - **Portals** : Tag, Title, Subtitle, Local/World/Magic sections
+     - **Ecosystem** : Tag, Title, Subtitle, Parents, Schools
+     - **EmotionBoost** : Tag, MomVoice, Congratulation
+     - **Innovation** : Tag, Title, Boost, AI
+     - **Footer** : Title, CTA
+     - **Dashboard** : Title, Subtitle, AddChild, ChildCard, Alliance, Printable, Bridge
+     - **ChildLobby** : Greeting, ParentDashboard, Portals, Mascot
+     - **Onboarding** : Steps, LeftPanel, Form
+     - **Regions** (nouvelle section pour les pays avec divisions administratives spécifiques) :
+       - Title (ex: "Fylker")
+       - Description (explication des divisions)
+       - Municipalities (Title, Description)
+       - Counties (Title, List of all regions)
+
+4. **Traduire les labels dans `RegisterClient.tsx`**
+   - Ajouter le dictionnaire de traduction pour le nouveau pays
    - Labels à traduire :
+     - `vosAcces`, `lAlliance`, `sonProfil`
+     - `stepText`, `chooseRole`, `parentTab`, `schoolTab`, `ngoTab`
+     - `instantGoogle`, `orEmail`
+     - `fullNameParent`, `fullNameSchool`, `fullNameNgo`
+     - `fullNamePlaceholderParent`, `fullNamePlaceholderSchool`, `fullNamePlaceholderNgo`
+     - `username`, `usernamePlaceholder`
+     - `email`, `emailPlaceholder`
+     - `phone`, `phonePlaceholder` (indicatif téléphonique)
+     - `password`, `passwordPlaceholder`
+     - `confirmPassword`, `confirmPasswordPlaceholder`
+     - `matchPerfect`, `matchError`
+     - `eightChars`, `uppercase`, `number`, `specialChar`
+     - `next`, `previous`
+     - `titleParentStep1`, `titleSchoolStep1`, `titleNgoStep1`
+     - `subStep1Parent`, `subStep1School`, `subStep1Ngo`
+     - `leftTitle1`, `leftTitle1Orange`, `leftSub1`
+     - `leftTitle2`, `leftTitle2Orange`, `leftSub2`
+     - `leftTitle3`, `leftTitle3Orange`, `leftSub3`
+     - `allyTitle`, `allyDesc`
+     - `allyNamePlaceholder`, `allyEmailPlaceholder`
+     - `schoolIdentityTitle`, `schoolIdentityDesc`
+     - `privateSchool`, `publicSchool`
+     - `schoolAddressPlaceholder`, `schoolManagerPlaceholder`
+     - `ngoTitle`, `ngoDesc`
+     - `ngoDomainPlaceholder`, `ngoDomainEducation`, `ngoDomainSocial`, `ngoDomainCulture`, `ngoDomainHumanitarian`
+     - `ngoAddressPlaceholder`, `ngoManagerPlaceholder`
+     - `childFirstName`, `childFirstNamePlaceholder`
+     - `childAge`, `childAgePlaceholder`
+     - `childLevel` (niveaux scolaires)
      - `childSchool` (nom de la région)
      - `childSchoolPlaceholder` (placeholder de recherche)
-     - `childLevel` (niveaux scolaires)
-     - `privateSchool`, `publicSchool` (types d'écoles)
+     - `securityCheck`, `securityCheckDesc`, `securityCodePlaceholder`
+     - `finalizeButton`, `registerSchoolButton`, `registerNgoButton`
+     - `termsText` (conditions et politique de confidentialité)
+     - `alreadyHaveAccount`, `loginLink`
+     - `digitalPresence`, `digitalPresencePlaceholderSchool`, `digitalPresencePlaceholderNgo`
+     - `schoolDimension`, `classesCountPlaceholder`
+     - `instCheck`, `instCheckDesc`
+     - `beneficiariesCount`, `beneficiariesPlaceholder`
+     - `orgCheck`, `orgCheckDesc`
+     - Messages d'erreur : `errNameEmpty`, `errUsernameEmpty`, `errUsernameTaken`, `errEmailEmpty`, `errPasswordEmpty`, `errPasswordsDoNotMatch`, `errCaptchaIncorrect`
+     - `welcomeTitle`
 
-4. **Traduire dans `SchoolPicker.tsx`**
-   - Ajouter les conditions `is[Country]` pour :
-     - Labels de types d'écoles ("All", "Public", "Private")
-     - Placeholder de recherche
-     - Message "no school found"
-     - Label "Selected School"
-   - Mettre à jour les fonctions `getSchoolName`, `getRegionName`, `getDistrictName` pour prioriser `nameLocal` quand la locale correspond
-
-5. **Traduire dans `LoginClient.tsx`**
-   - Ajouter les traductions pour :
-     - Citation motivante
-     - Texte du bouton de connexion
-
-## Étape 7 : Niveaux scolaires
-
-1. **Ajouter les niveaux dans `RegisterClient.tsx`**
+5. **Ajouter les niveaux scolaires dans `RegisterClient.tsx`**
    - Ajouter dans l'objet `levels` :
      ```javascript
      const levels: Record<string, string[]> = {
@@ -131,7 +176,32 @@ description: Guide complet pour ajouter une nouvelle base de données de pays
      };
      ```
 
-## Étape 8 : Test et validation
+6. **Traduire dans `SchoolPicker.tsx`**
+   - Ajouter la condition `is[Country]` pour la détection de locale
+   - Traduire tous les éléments :
+     - Labels de types d'écoles ("All", "Public", "Private")
+     - Placeholder de recherche
+     - Message "no school found"
+     - Message de suggestion ("Modify your filters or try another search")
+     - Label "Selected School"
+   - Mettre à jour les fonctions `getSchoolName`, `getRegionName`, `getDistrictName`, `getSchoolRegion`, `getSchoolDistrict` pour prioriser `nameLocal` quand la locale correspond
+
+7. **Traduire dans `LoginClient.tsx`**
+   - Ajouter la condition `is[Country]` pour la détection de locale
+   - Traduire tous les éléments :
+     - Messages d'erreur/succès (toast)
+     - Citation motivante (titre et sous-titre)
+     - Texte "Welcome"
+     - Texte "Your Credentials"
+     - Texte "No account? Start the adventure"
+     - Label "E-mail"
+     - Placeholder d'email
+     - Label "Password"
+     - Texte "Forgot?"
+     - Texte bouton "Google Sign In"
+     - Texte bouton "Sign In" (état normal et "Connecting..." pendant le chargement)
+
+## Étape 7 : Test et validation
 
 1. **Exécuter le script de seed**
    ```bash
@@ -155,7 +225,14 @@ description: Guide complet pour ajouter une nouvelle base de données de pays
    - Coordonnées GPS valides
    - Type d'école correct
 
-## Étape 9 : Ajouter le script npm
+6. **Vérifier les traductions**
+   - Fichier JSON de traduction créé et complet
+   - RegisterClient.tsx : dictionnaire complet
+   - SchoolPicker.tsx : tous les labels traduits
+   - LoginClient.tsx : tous les labels traduits
+   - Middleware et routing mis à jour
+
+## Étape 8 : Ajouter le script npm
 
 1. **Ajouter dans `package.json`**
    ```json
@@ -164,7 +241,7 @@ description: Guide complet pour ajouter une nouvelle base de données de pays
    }
    ```
 
-## Étape 10 : Nettoyage
+## Étape 9 : Nettoyage
 
 1. **Supprimer les scripts de vérification temporaires**
 2. **Commit et push des changements**
@@ -182,7 +259,7 @@ description: Guide complet pour ajouter une nouvelle base de données de pays
 - [ ] Codes invalides filtrés
 - [ ] Anciennes données supprimées avant insertion
 - [ ] Régions manquantes ajoutées
-- [ ] Traductions ajoutées (middleware, routing, RegisterClient, SchoolPicker, LoginClient)
+- [ ] Traductions ajoutées (middleware, routing, messages/[locale].json, RegisterClient, SchoolPicker, LoginClient)
 - [ ] Niveaux scolaires ajoutés
 - [ ] Script npm ajouté
 - [ ] Base de données testée et validée
@@ -197,4 +274,5 @@ description: Guide complet pour ajouter une nouvelle base de données de pays
 2. **Toujours filtrer les codes invalides** (évite les régions avec des noms numériques)
 3. **Toujours supprimer les anciennes données avant insertion** (évite les conflits)
 4. **Toujours ajouter les régions manquantes** (complétude des données)
-5. **Toujours vérifier les traductions** (cohérence de l'interface)
+5. **Toujours créer le fichier JSON de traduction complet** (toutes les sections Hero, Impact, Nav, Auth, Portals, Ecosystem, etc.)
+6. **Toujours vérifier toutes les traductions dans les composants** (RegisterClient, SchoolPicker, LoginClient)
