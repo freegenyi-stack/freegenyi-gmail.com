@@ -10,7 +10,8 @@
     "db:seed": "node src/db/seeds/seed-schools.js",
     "db:seed:fr": "node src/db/seeds/seed-schools-france.js",
     "db:seed:dk": "node src/db/seeds/seed-schools-denmark.js",
-    "db:seed:se": "node src/db/seeds/seed-schools-sweden.js"
+    "db:seed:se": "node src/db/seeds/seed-schools-sweden.js",
+    "db:seed:no": "node src/db/seeds/seed-schools-norway.js"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.2.1",
