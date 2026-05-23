@@ -6,6 +6,31 @@ const readline = require('readline');
 const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:postgres@localhost:5433/freegenydb";
 const CSV_SE = path.join(__dirname, "data", "ecoles_primaires_suede.csv");
 
+// Swedish county (Län) code to name mapping (based on first 2 digits of municipality code)
+const SWEDISH_COUNTIES = {
+  "01": "Stockholms län",
+  "02": "Uppsala län",
+  "03": "Södermanlands län",
+  "04": "Östergötlands län",
+  "05": "Jönköpings län",
+  "06": "Kronobergs län",
+  "07": "Kalmar län",
+  "08": "Gotlands län",
+  "09": "Blekinge län",
+  "10": "Skåne län",
+  "11": "Hallands län",
+  "12": "Västra Götalands län",
+  "13": "Värmlands län",
+  "14": "Örebro län",
+  "15": "Västmanlands län",
+  "16": "Dalarnas län",
+  "17": "Gävleborgs län",
+  "18": "Västernorrlands län",
+  "19": "Jämtlands län",
+  "20": "Västerbottens län",
+  "21": "Norrbottens län",
+};
+
 function parseCsvLine(line, delimiter = ',') {
   const result = [];
   let current = "";
@@ -141,7 +166,10 @@ async function main() {
 
     // Use commune code as region (län) and city as district (kommun)
     // In Sweden: Län (county) = Region, Kommun (municipality) = District
-    regionsMap.set(regionCode, regionCode); // Use code as name for simplicity
+    // Use first 2 digits of commune code to get county name
+    const countyCode = regionCode.substring(0, 2);
+    const regionName = SWEDISH_COUNTIES[countyCode] || regionCode; // Use mapping to get county name
+    regionsMap.set(regionCode, regionName);
     districtsMap.set(`${regionCode}_${districtCode}`, { regionCode, districtCode, districtName });
 
     validSchools.push({
@@ -169,6 +197,12 @@ async function main() {
       await client.query(
         "INSERT INTO regions (country_code, code, name_local, name_fr, name_en) VALUES ('SE', $1, $2, $3, $4)",
         [regionCode, regionName, regionName, regionName]
+      );
+    } else {
+      // Update existing regions with correct names
+      await client.query(
+        "UPDATE regions SET name_local = $1, name_fr = $2, name_en = $3 WHERE country_code = 'SE' AND code = $4",
+        [regionName, regionName, regionName, regionCode]
       );
     }
   }
