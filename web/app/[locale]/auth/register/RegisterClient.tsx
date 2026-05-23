@@ -2846,6 +2846,13 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                 and{" "}
                                                 <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">privacy policy</Link>.
                                             </>
+                                        ) : activeLang === "no" ? (
+                                            <>
+                                                Ved å fortsette godtar du våre{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">vilkår</Link>{" "}
+                                                og{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">personvernpolicy</Link>.
+                                            </>
                                         ) : (
                                             <>
                                                 En continuant, vous acceptez nos{" "}
