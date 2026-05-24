@@ -502,7 +502,7 @@ export default function SchoolPicker({
                 <span className="truncate">
                   {selectedRegion
                     ? getRegionName(selectedRegion)
-                    : (isAr ? "الولاية" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : country === "NO" ? "Fylke" : country === "FI" ? "Maakunta" : country === "NL" ? "Provincie" : country === "PT" ? "Portugal" : "Wilaya")}
+                    : (isAr ? "الولاية" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : country === "NO" ? "Fylke" : country === "FI" ? "Maakunta" : country === "NL" ? "Provincie" : country === "PT" ? "Distrito" : "Wilaya")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -657,7 +657,9 @@ export default function SchoolPicker({
                       : "Veuillez sélectionner la Province et la Ville pour trouver votre école 🍁")
                   : country === "US"
                     ? "Please select the State and District to find your school 🏫"
-                    : country === "DK"
+                    : country === "PT"
+                      ? "Selecione Distrito e Município para encontrar a sua escola 🏫"
+                      : country === "DK"
                       ? "Vælg venligst Region og Kommune for at finde din skole 🏫"
                       : country === "SE"
                         ? "Vänligen välj Län och Kommun för att hitta din skola 🏫"
@@ -667,9 +669,7 @@ export default function SchoolPicker({
                             ? "Valitse Maakunta ja Kunta löytääksesi koulusi 🏫"
                             : country === "NL"
                               ? "Selecteer Provincie en Gemeente om uw school te vinden 🏫"
-                              : country === "PT"
-                                ? "Selecione Município para encontrar a sua escola 🏫"
-                                : (country === "FR"
+                              : (country === "FR"
                               ? "Veuillez sélectionner la Région, le Département et la Commune pour choisir votre école 🏫"
                               : "Veuillez sélectionner la Wilaya et la Commune pour choisir votre école 🏫")}
         </div>
