@@ -109,10 +109,10 @@ async function main() {
   // Delete existing NL regions
   await client.query("DELETE FROM regions WHERE country_code = 'NL'");
   
-  // Insert provinces
+  // Insert provinces with ON CONFLICT DO NOTHING
   for (const province of provincesArray) {
     await client.query(
-      "INSERT INTO regions (code, name_local, name_fr, country_code) VALUES ($1, $2, $3, 'NL')",
+      "INSERT INTO regions (code, name_local, name_fr, country_code) VALUES ($1, $2, $3, 'NL') ON CONFLICT (country_code, code) DO NOTHING",
       [province.code, province.nameLocal, province.nameFr]
     );
   }
@@ -147,7 +147,7 @@ async function main() {
 
     for (const mv of municipalityValues) {
       await client.query(
-        "INSERT INTO districts (code, name_local, name_fr, region_id) VALUES ($1, $2, $3, $4)",
+        "INSERT INTO districts (code, name_local, name_fr, region_id) VALUES ($1, $2, $3, $4) ON CONFLICT (code, region_id) DO NOTHING",
         mv
       );
     }
@@ -186,7 +186,7 @@ async function main() {
         
         await client.query(
           `INSERT INTO schools (code, name_local, name_fr, district_id, type, lat, lng) 
-           VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+           VALUES ($1, $2, $3, $4, $5, $6, $7) ON CONFLICT (code) DO NOTHING`,
           [school.code, school.name, school.name, districtId, school.type, school.lat, school.lng]
         );
         insertedCount++;
