@@ -34,14 +34,34 @@ async function main() {
     const line = lines[i].trim();
     if (!line) continue;
 
-    // Split by comma
-    const values = line.split(',').map(v => v.trim());
+    // Parse CSV line handling quoted fields with commas
+    const values = [];
+    let current = '';
+    let inQuotes = false;
+    
+    for (let j = 0; j < line.length; j++) {
+      const char = line[j];
+      if (char === '"') {
+        inQuotes = !inQuotes;
+      } else if (char === ',' && !inQuotes) {
+        values.push(current.trim());
+        current = '';
+      } else {
+        current += char;
+      }
+    }
+    values.push(current.trim());
 
     if (values.length !== headers.length) continue;
 
     const school = {};
     headers.forEach((header, index) => {
-      school[header] = values[index];
+      // Remove quotes from values if present
+      let value = values[index];
+      if (value.startsWith('"') && value.endsWith('"')) {
+        value = value.slice(1, -1);
+      }
+      school[header] = value;
     });
 
     // Filter for valid schools: codigo_escola_dgeec must be a numeric value
