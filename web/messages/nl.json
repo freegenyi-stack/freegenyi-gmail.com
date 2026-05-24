@@ -1,0 +1,96 @@
+{
+  "Hero": {
+    "title": "Open de <orange>deuren van genialiteit</orange> voor uw kind.",
+    "status": "De brug naar excellentie is open",
+    "subtitle": "FreeGeny bouwt een technologische brug tussen Ouders, Scholen en Kinderen voor holistische ondersteuning naar excellentie.",
+    "cta": "Start het avontuur",
+    "approach": "Onze aanpak"
+  },
+  "Impact": {
+    "Geniuses": "Genieën",
+    "Countries": "Landen",
+    "Schools": "Scholen",
+    "Languages": "Talen",
+    "Courses": "Cursussen & Oefeningen"
+  },
+  "Nav": {
+    "About": "Over ons",
+    "Approach": "Aanpak",
+    "Parents": "Ouders",
+    "Schools": "Scholen",
+    "NGOs": "NGO's",
+    "Science": "Wetenschap",
+    "Region": "Regio",
+    "FreeExplore": "Vrije Verkenning"
+  },
+  "Auth": {
+    "Login": "Inloggen",
+    "Register": "Word lid",
+    "Logout": "Uitloggen",
+    "Dashboard": "Dashboard",
+    "Agreement": "Door door te gaan gaat u akkoord met onze voorwaarden en privacybeleid.",
+    "AlreadyHaveAccount": "Heeft u al een account? Log in",
+    "Placeholders": {
+      "FullName": "Jan Jansen",
+      "Username": "jan_jan",
+      "Email": "jan@voorbeeld.nl"
+    }
+  },
+  "Portals": {
+    "Tag": "Verken de Portals",
+    "Title": "Een totale onderdompeling.",
+    "Subtitle": "Drie verbonden universa voor grenzeloze ontwikkeling.",
+    "Local": {
+      "Title": "Lokale Portal",
+      "Desc": "Beheersing van het officiële programma. De basis van de school versterkt door AI.",
+      "CTA": "Ontdek het universum?"
+    },
+    "World": {
+      "Title": "Wereldwijde Portal",
+      "Desc": "Wiskunde uit Singapore en Engels uit Oxford voor ambities zonder grenzen.",
+      "CTA": "Ontdek het universum?"
+    },
+    "Genius": {
+      "Title": "Genius Portal",
+      "Desc": "AI-gestuurde paden voor talentontwikkeling en cognitieve groei.",
+      "CTA": "Ontdek het universum?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "Het Ecosysteem",
+    "Title": "Drie werelden. Een missie.",
+    "Subtitle": "Een geïntegreerd ecosysteem voor holistische educatieve ontwikkeling.",
+    "Local": {
+      "Title": "Lokaal Ecosysteem",
+      "Desc": "Versterking van het nationale curriculum door AI-gestuurde personalisatie."
+    },
+    "World": {
+      "Title": "Wereldwijd Ecosysteem",
+      "Desc": "Toegang tot internationale curricula voor wereldwijde competenties."
+    },
+    "Genius": {
+      "Title": "Genius Ecosysteem",
+      "Desc": "Cognitieve versterking voor talentontwikkeling en excellentie."
+    }
+  },
+  "Regions": {
+    "Title": "Regio's",
+    "Description": "Provincies en gemeenten van Nederland",
+    "Provinces": "Provincies",
+    "Municipalities": "Gemeenten"
+  },
+  "Onboarding": {
+    "Step1": {
+      "Title": "Uw Gegevens",
+      "Description": "Maak uw account aan"
+    },
+    "Step2": {
+      "Title": "Uw Profiel",
+      "Description": "Vertel ons over uzelf"
+    },
+    "Step3": {
+      "Title": "Uw School",
+      "Description": "Kies uw school"
+    }
+  }
+}

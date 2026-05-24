@@ -12,7 +12,8 @@
     "db:seed:dk": "node src/db/seeds/seed-schools-denmark.js",
     "db:seed:se": "node src/db/seeds/seed-schools-sweden.js",
     "db:seed:no": "node src/db/seeds/seed-schools-norway.js",
-    "db:seed:fi": "node src/db/seeds/seed-schools-finland.js"
+    "db:seed:fi": "node src/db/seeds/seed-schools-finland.js",
+    "db:seed:nl": "node src/db/seeds/seed-schools-netherlands.js"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.2.1",

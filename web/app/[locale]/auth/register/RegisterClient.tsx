@@ -35,6 +35,7 @@ const COUNTRIES = [
     { name: 'Sweden / Sverige', code: 'SE', flag: '🇸🇪', dial: '+46' },
     { name: 'Norway / Norge', code: 'NO', flag: '🇳🇴', dial: '+47' },
     { name: 'Finland / Suomi', code: 'FI', flag: '🇫🇮', dial: '+358' },
+    { name: 'Netherlands / Nederland', code: 'NL', flag: '🇳🇱', dial: '+31' },
 ];
 
 const dict = {
@@ -1931,6 +1932,111 @@ const dict = {
         errPasswordsDoNotMatch: "Lösenorden matchar inte",
         errCaptchaIncorrect: "Fel säkerhetskod",
         welcomeTitle: "Välkommen till Eliten!"
+    },
+    nl: {
+        vosAcces: "Inloggegevens",
+        lAlliance: "Onderwijs partner",
+        sonProfil: "Profiel van het kind",
+        stepText: "Stap {step} van 3",
+        chooseRole: "Kies uw rol",
+        parentTab: "Ouders",
+        schoolTab: "Scholen",
+        ngoTab: "NGO's",
+        instantGoogle: "Inloggen met Google",
+        orEmail: "of met e-mail",
+        fullNameParent: "Volledige naam",
+        fullNameSchool: "Naam van de school",
+        fullNameNgo: "Naam van de NGO",
+        fullNamePlaceholderParent: "Jan Jansen",
+        fullNamePlaceholderSchool: "Voorbeeldschool",
+        fullNamePlaceholderNgo: "Voorbeeld NGO",
+        username: "Gebruikersnaam",
+        usernamePlaceholder: "jan_jan",
+        email: "E-mail",
+        emailPlaceholder: "jan@voorbeeld.nl",
+        phone: "Telefoonnummer",
+        phonePlaceholder: "06 12345678",
+        password: "Wachtwoord",
+        passwordPlaceholder: "••••••••",
+        confirmPassword: "Bevestig wachtwoord",
+        confirmPasswordPlaceholder: "••••••••",
+        matchPerfect: "Wachtwoorden komen overeen",
+        matchError: "Wachtwoorden komen niet overeen",
+        eightChars: "Minimaal 8 tekens",
+        uppercase: "1 hoofdletter",
+        number: "1 cijfer",
+        specialChar: "1 speciaal teken",
+        next: "Volgende",
+        previous: "Vorige",
+        titleParentStep1: "Als ouder",
+        titleSchoolStep1: "Als school",
+        titleNgoStep1: "Als NGO",
+        subStep1Parent: "Registreer als ouder",
+        subStep1School: "Registreer als school",
+        subStep1Ngo: "Registreer als NGO",
+        leftTitle1: "Uw kind heeft geen grenzen meer.",
+        leftTitle1Orange: "Onbegrensde potentie",
+        leftSub1: "Open wereldklasse onderwijs voor uw kind.",
+        leftTitle2: "Onderwijs is een teamsport.",
+        leftTitle2Orange: "Gezamenlijke inzet",
+        leftSub2: "Verbind uw krachten voor het succes van uw kind.",
+        leftTitle3: "Alleen primaire cyclus.",
+        leftTitle3Orange: "Vroeg begin",
+        leftSub3: "Gepersonaliseerde ondersteuning voor het begin van de basisschool.",
+        allyTitle: "Gezinsalliantie",
+        allyDesc: "Nodig uw partner uit voor de educatieve reis van uw kind.",
+        allyNamePlaceholder: "Naam van partner",
+        allyEmailPlaceholder: "partner@voorbeeld.nl",
+        schoolIdentityTitle: "Identiteit van de school",
+        schoolIdentityDesc: "Definieer de gegevens van uw school",
+        privateSchool: "Privéschool",
+        publicSchool: "Openbare school",
+        schoolAddressPlaceholder: "Adres van de school",
+        schoolManagerPlaceholder: "Naam van de directeur",
+        ngoTitle: "Gegevens van de NGO",
+        ngoDesc: "Definieer de gegevens van uw NGO",
+        ngoDomainPlaceholder: "Sector",
+        ngoDomainEducation: "Onderwijs",
+        ngoDomainSocial: "Sociaal",
+        ngoDomainCulture: "Cultuur",
+        ngoDomainHumanitarian: "Humanitair",
+        ngoAddressPlaceholder: "Adres van de NGO",
+        ngoManagerPlaceholder: "Naam van de manager",
+        childFirstName: "Voornaam van het kind",
+        childFirstNamePlaceholder: "Voornaam",
+        childAge: "Leeftijd",
+        childAgePlaceholder: "4-12",
+        childLevel: "Klas",
+        childSchool: "School",
+        childSchoolPlaceholder: "Zoek school...",
+        securityCheck: "Veiligheidscontrole",
+        securityCheckDesc: "Voer de onderstaande code in",
+        securityCodePlaceholder: "Code",
+        finalizeButton: "Voltooi registratie",
+        registerSchoolButton: "Registreer als school",
+        registerNgoButton: "Registreer als NGO",
+        termsText: "Door door te gaan gaat u akkoord met onze voorwaarden en privacybeleid.",
+        alreadyHaveAccount: "Heeft u al een account?",
+        loginLink: "Log in",
+        digitalPresence: "Digitale aanwezigheid",
+        digitalPresencePlaceholderSchool: "Website of Facebook-pagina (bijv. fb.com/school...)",
+        digitalPresencePlaceholderNgo: "Website (bijv. ngo.nl)",
+        schoolDimension: "Grootte van de school",
+        classesCountPlaceholder: "Aantal klassen",
+        instCheck: "Institutionele controle",
+        instCheckDesc: "Bevestig de officiële status van de school",
+        beneficiariesCount: "Aantal begunstigden",
+        beneficiariesPlaceholder: "Aantal leerlingen",
+        orgCheck: "NGO-controle",
+        orgCheckDesc: "Bevestig de officiële status van de NGO",
+        errNameEmpty: "Voer uw volledige naam in",
+        errUsernameEmpty: "Kies een gebruikersnaam",
+        errUsernameTaken: "Gebruikersnaam is al in gebruik",
+        errEmailEmpty: "Voer uw e-mailadres in",
+        errPasswordEmpty: "Voer een wachtwoord in",
+        errPasswordsDoNotMatch: "Wachtwoorden komen niet overeen",
+        errCaptchaIncorrect: "Onjuiste beveiligingscode",
+        welcomeTitle: "Welkom bij de Elite!"
     }
 };
 
@@ -1948,6 +2054,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const isNorwegian = regionCountry === 'NO' || locale === 'no' || locale.endsWith('-no') || selectedLang === 'no';
     const isFinnish = regionCountry === 'FI' || locale === 'fi' || locale.endsWith('-fi') || selectedLang === 'fi';
     const isFinnishSwedish = locale === 'sv-fi' || locale.endsWith('-sv-fi') || selectedLang === 'sv-fi';
+    const isDutch = regionCountry === 'NL' || locale === 'nl' || locale.endsWith('-nl') || selectedLang === 'nl';
     // Determine which dictionary to use, with country-specific variants taking priority
     const activeLang: keyof typeof dict = isArabic
         ? "ar"
@@ -1955,6 +2062,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
             ? "sv-fi"
         : isFinnish
             ? "fi"
+        : isDutch
+            ? "nl"
         : isSwedish
             ? "sv"
         : isNorwegian
@@ -1993,7 +2102,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [userType, setUserType] = useState("parent");
 
     // Initialize country based on active region
-    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || COUNTRIES[0];
+    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || COUNTRIES[0];
     const [selectedCountry, setSelectedCountry] = useState(defaultCountryObj);
 
     const [phone, setPhone] = useState("");
@@ -2001,7 +2110,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [spouseFirstName, setSpouseFirstName] = useState("");
     const [spouseLastName, setSpouseLastName] = useState("");
     const [childName, setChildName] = useState("");
-    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : "DZ")));
+    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : "DZ"))));
     const [childLevel, setChildLevel] = useState("");
     const [childAge, setChildAge] = useState("");
     const [childRegion, setChildRegion] = useState("");
@@ -2067,6 +2176,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
         SE: ['Förskoleklass (F)', 'Årskurs 1', 'Årskurs 2', 'Årskurs 3', 'Årskurs 4', 'Årskurs 5', 'Årskurs 6'],
         NO: ['1. klasse', '2. klasse', '3. klasse', '4. klasse', '5. klasse', '6. klasse', '7. klasse'],
         FI: ['Luokka 1', 'Luokka 2', 'Luokka 3', 'Luokka 4', 'Luokka 5', 'Luokka 6'],
+        NL: ['Groep 1', 'Groep 2', 'Groep 3', 'Groep 4', 'Groep 5', 'Groep 6', 'Groep 7', 'Groep 8'],
         INT: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
     };
     const currentLevels = levels[childCountry] || levels["INT"];
@@ -3078,6 +3188,13 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                 <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">ehdot</Link>{" "}
                                                 ja{" "}
                                                 <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">tietosuojakäytännön</Link>.
+                                            </>
+                                        ) : activeLang === "nl" ? (
+                                            <>
+                                                Door door te gaan gaat u akkoord met onze{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">voorwaarden</Link>{" "}
+                                                en{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">privacybeleid</Link>.
                                             </>
                                         ) : activeLang === "sv-fi" ? (
                                             <>

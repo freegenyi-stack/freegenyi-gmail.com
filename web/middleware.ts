@@ -38,6 +38,7 @@ export default auth((req) => {
     else if (country === "SE") locale = "sv";
     else if (country === "NO") locale = "no";
     else if (country === "FI") locale = "fi";
+    else if (country === "NL") locale = "nl";
     
     return NextResponse.redirect(new URL(`/${country}-${locale}/`, req.url));
   }
