@@ -44,11 +44,11 @@ async function main() {
       school[header] = values[index];
     });
 
-    // Filter for primary schools only (1er cycle)
-    // Include schools with: 1er_cycle_uniquement or 1er_et_2eme_cycle
-    const schoolType = school.source_donnees;
-    if (schoolType === '2eme_cycle_uniquement') continue; // Skip secondary-only schools
-    if (!schoolType) continue; // Skip schools without type information
+    // Filter for valid schools: codigo_escola_dgeec must be a numeric value
+    const schoolCode = school.codigo_escola_dgeec;
+    if (!schoolCode) continue;
+    if (schoolCode === '*' || schoolCode === '-') continue;
+    if (isNaN(parseInt(schoolCode))) continue; // Skip non-numeric codes
 
     schools.push(school);
   }
@@ -70,14 +70,12 @@ async function main() {
   });
 
   for (const school of schools) {
-    const districtName = school.distrito;
     const municipalityName = school.municipio;
     const schoolName = school.nome_escola;
     const schoolCode = school.codigo_escola_dgeec;
 
-    // Skip invalid entries - only require municipality, school name and code
-    if (!municipalityName || !schoolName || !schoolCode) continue;
-    if (schoolCode === '*' || schoolCode === '-') continue;
+    // Skip invalid entries - only require municipality and school name
+    if (!municipalityName || !schoolName) continue;
 
     // Use Portugal as the district code
     const districtCode = "PORTUGAL";
