@@ -1,0 +1,240 @@
+{
+  "Hero": {
+    "title": "Avaa <orange>nero</orange> lapsellesi.",
+    "status": "Huippuosaamisen silta on auki",
+    "subtitle": "FreeGeny rakentaa teknologisen sillan vanhempien, koulujen ja lasten välille kokonaisvaltaista tukea huippuosaamiseen.",
+    "cta": "Aloita seikkailu",
+    "approach": "Lähestymistapamme"
+  },
+  "Impact": {
+    "Geniuses": "Nerot",
+    "Countries": "Maat",
+    "Schools": "Koulut",
+    "Languages": "Kielet",
+    "Courses": "Kurssit & Harjoitukset"
+  },
+  "Nav": {
+    "About": "Meistä",
+    "Approach": "Lähestymistapa",
+    "Parents": "Vanhemmat",
+    "Schools": "Koulut",
+    "NGOs": "Järjestöt",
+    "Science": "Tiede",
+    "Region": "Alue",
+    "FreeExplore": "Vapaa tutkimus"
+  },
+  "Auth": {
+    "Login": "Kirjaudu sisään",
+    "Register": "Liity",
+    "Logout": "Kirjaudu ulos",
+    "Dashboard": "Kojelauta",
+    "Agreement": "Jatkamalla hyväksyt ehdot ja tietosuojakäytännön.",
+    "AlreadyHaveAccount": "Onko sinulla jo tili? Kirjaudu sisään",
+    "Placeholders": {
+      "FullName": "Matti Virtanen",
+      "Username": "matti_vir",
+      "Email": "matti@esimerkki.fi"
+    }
+  },
+  "Portals": {
+    "Tag": "Tutki portteja",
+    "Title": "Täydellinen upottautuminen.",
+    "Subtitle": "Kolme toisiinsa liittyvää universumia rajoittamattomaan kehitykseen.",
+    "Local": {
+      "Title": "Paikallinen portaali",
+      "Desc": "Virallisen opetussuunnitelman hallinta. Koulun perusta vahvistettu tekoälyllä.",
+      "CTA": "Löydä universumi?"
+    },
+    "World": {
+      "Title": "Globaali portaali",
+      "Desc": "Matematiikkaa Singapurista ja englantia Oxfordista rajoittamattomiin ambioihin.",
+      "CTA": "Tutki maailmaa?"
+    },
+    "Magic": {
+      "Title": "Maaginen areena",
+      "Desc": "Leikkimieliset haasteet, jotka on mukautettu dynaamisesti jokaisen taidon vahvistamiseksi pelien kautta.",
+      "CTA": "Mene areenaan?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "FreeGeny-ekosysteemi",
+    "Title": "Ratkaisut kaikille.",
+    "Subtitle": "Koska huippuosaaminen vaatii täydellistä synergiaa kaikkien toimijoiden kesken.",
+    "Parents": {
+      "Title": "Vanhempien huone",
+      "Desc": "Tarkka menestyksen hallinta. Seuraa edistymistä, lähetä äänipohjaisia emotionaalisia boosteja ja hallitse palkintoja.",
+      "CTA": "Lue lisää?"
+    },
+    "Schools": {
+      "Title": "FreeGeny Koulut",
+      "Desc": "Täydellinen digitaalinen muutos. Hallitse luokkasi, opettajasi ja viestii vanhempien kanssa reaaliajassa.",
+      "CTA": "Lue lisää?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Emotionaalinen Boost",
+    "MomVoice": "Äidin nauhoitettu ääni",
+    "Congratulation": "Onnittelut Amine!"
+  },
+  "Innovation": {
+    "Tag": "Innovaatio",
+    "Title": "Poikkeuksellinen hallinta.",
+    "Boost": {
+      "Title": "Emotionaalinen Boost",
+      "Desc": "Motivoi lastasi omalla äänelläsi."
+    },
+    "AI": {
+      "Title": "Tekoälysovitettu polku",
+      "Desc": "Jokainen napsautus säätää ohjelmaa."
+    }
+  },
+  "Footer": {
+    "Title": "Valmis vapauttamaan nerouden?",
+    "CTA": "Rekisteröidy ilmaiseksi"
+  },
+  "Dashboard": {
+    "Title": "Vanhempien kojelauta",
+    "Subtitle": "Hallitse ja seuraa pienten neroidesi kehitystä.",
+    "AddChild": "Lisää lapsi",
+    "ChildCard": {
+      "Level": "Taso",
+      "XP": "Kokonais XP",
+      "Progress": "Edistyminen",
+      "Interest": "Intohimo",
+      "Status": "Tila",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Oppimistila",
+      "EmotionalBoost": {
+        "Title": "Emotionaalinen Boost",
+        "Desc": "Kannusta {name} ääniviestillä.",
+        "Record": "Nauhoita"
+      }
+    },
+    "Alliance": {
+      "Title": "Vanhempien liitto",
+      "Online": "Online",
+      "CoParent": "Toinen vanhempi",
+      "Message": "Viesti",
+      "Photo": "Valokuva"
+    },
+    "Printable": {
+      "Title": "Tulostettava tehdas",
+      "Desc": "Luo mukautettuja kertauskirjoja heikkouksien perusteella.",
+      "CTA": "Luo kansio"
+    },
+    "Bridge": {
+      "Tag": "Silta ehdottaa",
+      "Validate": "Vahvista",
+      "Ignore": "Ohita"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Hei, {name}!",
+    "ParentDashboard": "Vanhempien kojelauta",
+    "Portals": {
+      "School": {
+        "Title": "Minun kouluni",
+        "Desc": "Toista oppituntisi hausalla tavalla.",
+        "CTA": "Aloita seikkailu"
+      },
+      "World": {
+        "Title": "Maailma",
+        "Desc": "Tutki Singaporea, Oxfordia ja kohta globaaleja haasteita!",
+        "CTA": "Löydä"
+      },
+      "Arena": {
+        "Title": "Areena",
+        "Desc": "Logiikkapelit ja maagiset kilpailut.",
+        "CTA": "Valmis pelaamaan?"
+      }
+    },
+    "Mascot": {
+      "Message": "Jotenkin {name}, valmis uuteen seikkailuun? Älä unohda tarkistaa {boost}, jonka vanhempasi lähettivät!",
+      "BoostTag": "Ääniboost"
+    }
+  },
+  "Regions": {
+    "Title": "Maakunnat (maakunnat)",
+    "Description": "Nämä ovat maan pääasialliset hallinnolliset alueet. Suomessa on 19 maakuntaa.",
+    "Municipalities": {
+      "Title": "Kunnat (kunnat)",
+      "Description": "Jokainen maakunta on jaettu kuntiin. Niitä on tällä hetkellä noin 309."
+    },
+    "Counties": {
+      "Title": "19 maakuntaa",
+      "List": [
+        "Uusimaa",
+        "Pohjois-Pohjanmaa",
+        "Pirkanmaa",
+        "Varsinais-Suomi",
+        "Satakunta",
+        "Kanta-Häme",
+        "Päijät-Häme",
+        "Kymenlaakso",
+        "Etelä-Karjala",
+        "Pohjois-Karjala",
+        "Pohjois-Savo",
+        "Etelä-Savo",
+        "Keski-Suomi",
+        "Pohjanmaa",
+        "Keski-Pohjanmaa",
+        "Etelä-Pohjanmaa",
+        "Lappi",
+        "Ahvenanmaa",
+        "Kainuu"
+      ]
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Globaali huippuosaaminen",
+      "Family": "Perhejoukkue",
+      "Genius": "Pieni nero"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Lapsellasi ei ole enää rajoja.",
+        "Items": [
+          "Matematiikkaa Singapurista",
+          "Cambridge (UK)",
+          "Suomalainen malli",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Koulutus on joukkuelaji.",
+        "Subtitle": "Synkronoi ponnistelunne heidän menestykseensä."
+      },
+      "Step3": {
+        "Title": "Vain peräsykli.",
+        "Subtitle": "Räätälöity tuki heidän alkuaan varten."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Hei.",
+        "Tag": "Vaihe 1/3 — Roolisi takaajana",
+        "PhoneLabel": "Puhelinnumero",
+        "Next": "Seuraava"
+      },
+      "Step2": {
+        "Title": "Perhe-liitto.",
+        "Tag": "Vaihe 2/3 — Kutsu puoliso",
+        "Desc": "Synkronoi ponnistelunne heidän menestykseensä.",
+        "EmailPlaceholder": "Puolison sähköposti (Valinnainen)",
+        "Next": "Seuraava vaihe"
+      },
+      "Step3": {
+        "Title": "Pieni nero.",
+        "Tag": "Viimeinen vaihe: Heidän polkunsa",
+        "ChildName": "Lapsen etunimi",
+        "Country": "Maa",
+        "Level": "Taso",
+        "Age": "Ikä",
+        "Region": "Maakunta / Kunta",
+        "CTA": "Aloita seikkailu!"
+      }
+    }
+  }
+}

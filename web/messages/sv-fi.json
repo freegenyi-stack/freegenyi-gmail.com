@@ -1,0 +1,240 @@
+{
+  "Hero": {
+    "title": "Öppna <orange>geniets</orange> dörr för ditt barn.",
+    "status": "Bron till excellens är öppen",
+    "subtitle": "FreeGeny bygger en teknologisk brygga mellan föräldrar, skolor och barn för helhetsstöd mot excellens.",
+    "cta": "Börja äventyret",
+    "approach": "Vår approach"
+  },
+  "Impact": {
+    "Geniuses": "Genier",
+    "Countries": "Länder",
+    "Schools": "Skolor",
+    "Languages": "Språk",
+    "Courses": "Kurser & Övningar"
+  },
+  "Nav": {
+    "About": "Om oss",
+    "Approach": "Approach",
+    "Parents": "Föräldrar",
+    "Schools": "Skolor",
+    "NGOs": "NGOer",
+    "Science": "Vetenskap",
+    "Region": "Region",
+    "FreeExplore": "Fri utforskning"
+  },
+  "Auth": {
+    "Login": "Logga in",
+    "Register": "Gå med",
+    "Logout": "Logga ut",
+    "Dashboard": "Kontrollpanel",
+    "Agreement": "Genom att fortsätta godkänner du våra villkor och integritetspolicy.",
+    "AlreadyHaveAccount": "Har du redan ett konto? Logga in",
+    "Placeholders": {
+      "FullName": "Matti Virtanen",
+      "Username": "matti_vir",
+      "Email": "matti@exempel.fi"
+    }
+  },
+  "Portals": {
+    "Tag": "Utforska portalerna",
+    "Title": "En total immersion.",
+    "Subtitle": "Tre sammankopplade universum för gränslös utveckling.",
+    "Local": {
+      "Title": "Lokal portal",
+      "Desc": "Hantering av det officiella programmet. Skolens grund förstärkt med AI.",
+      "CTA": "Upptäck universumet?"
+    },
+    "World": {
+      "Title": "Global portal",
+      "Desc": "Matematik från Singapore och engelska från Oxford för ambitioner utan gränser.",
+      "CTA": "Utforska världen?"
+    },
+    "Magic": {
+      "Title": "Magisk arena",
+      "Desc": "Lekfulla utmaningar anpassade dynamiskt för att förankra varje färdighet genom spel.",
+      "CTA": "Gå in i arenan?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "FreeGeny-ekosystemet",
+    "Title": "Lösningar för alla.",
+    "Subtitle": "Eftersom excellens kräver perfekt synergi mellan alla aktörer.",
+    "Parents": {
+      "Title": "Föräldrarum",
+      "Desc": "Precis styrning av framgång. Följ framsteg, skicka röstbaserade emotionella boosts och hantera belöningar.",
+      "CTA": "Läs mer?"
+    },
+    "Schools": {
+      "Title": "FreeGeny Skolor",
+      "Desc": "Komplett digital transformation. Hantera dina klasser, dina lärare och kommunicera med föräldrar i realtid.",
+      "CTA": "Läs mer?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Emotionell Boost",
+    "MomVoice": "Mors inspelade röst",
+    "Congratulation": "Grattis Amine!"
+  },
+  "Innovation": {
+    "Tag": "Innovation",
+    "Title": "En exceptionell styrning.",
+    "Boost": {
+      "Title": "Emotionell Boost",
+      "Desc": "Motivera ditt barn med din egen röst."
+    },
+    "AI": {
+      "Title": "AI-anpassad bana",
+      "Desc": "Varje klick justerar programmet."
+    }
+  },
+  "Footer": {
+    "Title": "Redo att frigöra geniet?",
+    "CTA": "Registrera dig gratis"
+  },
+  "Dashboard": {
+    "Title": "Förälderkontrollpanel",
+    "Subtitle": "Hantera och följ utvecklingen av dina små genier.",
+    "AddChild": "Lägg till ett barn",
+    "ChildCard": {
+      "Level": "Nivå",
+      "XP": "Total XP",
+      "Progress": "Framsteg",
+      "Interest": "Passion",
+      "Status": "Status",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Lärande läge",
+      "EmotionalBoost": {
+        "Title": "Emotionell Boost",
+        "Desc": "Uppmuntra {name} med ett röstmeddelande.",
+        "Record": "Spela in"
+      }
+    },
+    "Alliance": {
+      "Title": "Förädraallians",
+      "Online": "Online",
+      "CoParent": "Medförälder",
+      "Message": "Meddelande",
+      "Photo": "Foto"
+    },
+    "Printable": {
+      "Title": "Printable Factory",
+      "Desc": "Generera anpassade repetitionsböcker baserat på svaga punkter.",
+      "CTA": "Generera mappen"
+    },
+    "Bridge": {
+      "Tag": "Bron föreslår",
+      "Validate": "Validera",
+      "Ignore": "Ignorera"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Hej, {name}!",
+    "ParentDashboard": "Förälderkontrollpanel",
+    "Portals": {
+      "School": {
+        "Title": "Min skola",
+        "Desc": "Repetera dina lektioner på ett roligt sätt.",
+        "CTA": "Börja äventyret"
+      },
+      "World": {
+        "Title": "Världen",
+        "Desc": "Utforska Singapore, Oxford och ta dig an globala utmaningar!",
+        "CTA": "Upptäck"
+      },
+      "Arena": {
+        "Title": "Arenan",
+        "Desc": "Logikspel och magiska tävlingar.",
+        "CTA": "Redo att spela?"
+      }
+    },
+    "Mascot": {
+      "Message": "Så {name}, redo för ett nytt äventyr? Glöm inte att kolla din {boost} skickad av dina föräldrar!",
+      "BoostTag": "Röstboost"
+    }
+  },
+  "Regions": {
+    "Title": "Landskap (landskap)",
+    "Description": "Detta är landets huvudsakliga administrativa indelningar. Finland har 19 landskap.",
+    "Municipalities": {
+      "Title": "Kommuner (kommuner)",
+      "Description": "Varje landskap är indelat i kommuner. Det finns cirka 309 av dem idag."
+    },
+    "Counties": {
+      "Title": "De 19 landskapen",
+      "List": [
+        "Nyland",
+        "Norra Österbotten",
+        "Birkaland",
+        "Egentliga Finland",
+        "Satakunta",
+        "Egentliga Tavastland",
+        "Päijänne-Tavastland",
+        "Kymmenedalen",
+        "Södra Karelen",
+        "Norra Karelen",
+        "Norra Savolax",
+        "Södra Savolax",
+        "Mellersta Finland",
+        "Österbotten",
+        "Mellersta Österbotten",
+        "Södra Österbotten",
+        "Lappland",
+        "Åland",
+        "Kajanaland"
+      ]
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Global Excellens",
+      "Family": "Familjelag",
+      "Genius": "Lilla Geniet"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Ditt barn har inga gränser längre.",
+        "Items": [
+          "Matematik från Singapore",
+          "Cambridge (UK)",
+          "Finsk modell",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Utbildning är en lagidrott.",
+        "Subtitle": "Synkronisera er ansträngning för er framgång."
+      },
+      "Step3": {
+        "Title": "Endast Primär Cykel.",
+        "Subtitle": "Skräddarsytt stöd för er början."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Hej.",
+        "Tag": "Steg 1 av 3 — Din roll som garant",
+        "PhoneLabel": "Telefonnummer",
+        "Next": "Nästa"
+      },
+      "Step2": {
+        "Title": "Familjeallians.",
+        "Tag": "Steg 2 av 3 — Bjud in maken",
+        "Desc": "Synkronisera er ansträngning för er framgång.",
+        "EmailPlaceholder": "Makens e-post (Valfritt)",
+        "Next": "Nästa steg"
+      },
+      "Step3": {
+        "Title": "Lilla Geniet.",
+        "Tag": "Sista steget: Er bana",
+        "ChildName": "Barnets förnamn",
+        "Country": "Land",
+        "Level": "Nivå",
+        "Age": "Ålder",
+        "Region": "Landskap / Kommun",
+        "CTA": "Börja äventyret!"
+      }
+    }
+  }
+}

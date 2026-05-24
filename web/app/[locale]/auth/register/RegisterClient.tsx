@@ -34,6 +34,7 @@ const COUNTRIES = [
     { name: 'Denmark / Danmark', code: 'DK', flag: '🇩🇰', dial: '+45' },
     { name: 'Sweden / Sverige', code: 'SE', flag: '🇸🇪', dial: '+46' },
     { name: 'Norway / Norge', code: 'NO', flag: '🇳🇴', dial: '+47' },
+    { name: 'Finland / Suomi', code: 'FI', flag: '🇫🇮', dial: '+358' },
 ];
 
 const dict = {
@@ -1720,6 +1721,216 @@ const dict = {
         errPasswordsDoNotMatch: "Passordene matcher ikke",
         errCaptchaIncorrect: "Feil sikkerhetskode",
         welcomeTitle: "Velkommen til Eliten!"
+    },
+    fi: {
+        vosAcces: "Käyttäjätiedot",
+        lAlliance: "Koulutuskumppani",
+        sonProfil: "Lapsen profiili",
+        stepText: "Vaihe {step}/3",
+        chooseRole: "Valitse roolisi",
+        parentTab: "Vanhemmat",
+        schoolTab: "Koulut",
+        ngoTab: "Järjestöt",
+        instantGoogle: "Kirjaudu Googlella",
+        orEmail: "tai sähköpostilla",
+        fullNameParent: "Koko nimi",
+        fullNameSchool: "Koulun nimi",
+        fullNameNgo: "Järjestön nimi",
+        fullNamePlaceholderParent: "Matti Virtanen",
+        fullNamePlaceholderSchool: "Esimerkkikoulu",
+        fullNamePlaceholderNgo: "Esimerkkijärjestö",
+        username: "Käyttäjätunnus",
+        usernamePlaceholder: "matti_vir",
+        email: "Sähköposti",
+        emailPlaceholder: "matti@esimerkki.fi",
+        phone: "Puhelinnumero",
+        phonePlaceholder: "040 123 4567",
+        password: "Salasana",
+        passwordPlaceholder: "••••••••",
+        confirmPassword: "Vahvista salasana",
+        confirmPasswordPlaceholder: "••••••••",
+        matchPerfect: "Salasanat täsmäävät",
+        matchError: "Salasanat eivät täsmää",
+        eightChars: "Vähintään 8 merkkiä",
+        uppercase: "1 iso kirjain",
+        number: "1 numero",
+        specialChar: "1 erikoismerkki",
+        next: "Seuraava",
+        previous: "Edellinen",
+        titleParentStep1: "Vanhempana",
+        titleSchoolStep1: "Kouluna",
+        titleNgoStep1: "Järjestönä",
+        subStep1Parent: "Rekisteröidy lapsen huoltajana",
+        subStep1School: "Rekisteröidy kouluna",
+        subStep1Ngo: "Rekisteröidy järjestönä",
+        leftTitle1: "Lapsellasi ei ole enää rajoja.",
+        leftTitle1Orange: "Rajoittamaton potentiaali",
+        leftSub1: "Avaa maailmanluokan koulutus lapsellesi.",
+        leftTitle2: "Koulutus on joukkuelaji.",
+        leftTitle2Orange: "Perheen yhteistyö",
+        leftSub2: "Yhdistä voimanne lapsen menestykseksi.",
+        leftTitle3: "Vain peräsykli.",
+        leftTitle3Orange: "Varhainen alku",
+        leftSub3: "Räätälöity tuki peruskoulun alkuun.",
+        allyTitle: "Perhe-liitto",
+        allyDesc: "Kutsu kumppanisi mukaan lapsen koulutuspolulle.",
+        allyNamePlaceholder: "Kumppanin nimi",
+        allyEmailPlaceholder: "kumppani@esimerkki.fi",
+        schoolIdentityTitle: "Koulun identiteetti",
+        schoolIdentityDesc: "Määritä koulusi tiedot",
+        privateSchool: "Yksityiskoulu",
+        publicSchool: "Julkinen koulu",
+        schoolAddressPlaceholder: "Koulun osoite",
+        schoolManagerPlaceholder: "Rehtorin nimi",
+        ngoTitle: "Järjestön tiedot",
+        ngoDesc: "Määritä järjestösi tiedot",
+        ngoDomainPlaceholder: "Toimiala",
+        ngoDomainEducation: "Koulutus",
+        ngoDomainSocial: "Sosiaalinen",
+        ngoDomainCulture: "Kulttuuri",
+        ngoDomainHumanitarian: "Humanitaarinen",
+        ngoAddressPlaceholder: "Järjestön osoite",
+        ngoManagerPlaceholder: "Johtajan nimi",
+        childFirstName: "Lapsen etunimi",
+        childFirstNamePlaceholder: "Etunimi",
+        childAge: "Ikä",
+        childAgePlaceholder: "7-12",
+        childLevel: "Luokka-aste",
+        childSchool: "Koulu",
+        childSchoolPlaceholder: "Etsi koulu...",
+        securityCheck: "Turvallisuustarkistus",
+        securityCheckDesc: "Kirjoita alla oleva koodi",
+        securityCodePlaceholder: "Koodi",
+        finalizeButton: "Viimeistele rekisteröinti",
+        registerSchoolButton: "Rekisteröidy kouluksi",
+        registerNgoButton: "Rekisteröidy järjestöksi",
+        termsText: "Jatkamalla hyväksyt ehdot ja tietosuojakäytännön.",
+        alreadyHaveAccount: "Onko sinulla jo tili?",
+        loginLink: "Kirjaudu sisään",
+        digitalPresence: "Digitaalinen läsnäolo",
+        digitalPresencePlaceholderSchool: "Verkkosivu tai Facebook-sivu (esim. fb.com/koulu...)",
+        digitalPresencePlaceholderNgo: "Verkkosivu (esim. jarjesto.fi)",
+        schoolDimension: "Koulun koko",
+        classesCountPlaceholder: "Luokkien määrä",
+        instCheck: "Institutionaalinen tarkistus",
+        instCheckDesc: "Vahvista koulun virallinen asema",
+        beneficiariesCount: "Hyötyjiensäijien määrä",
+        beneficiariesPlaceholder: "Oppilaiden määrä",
+        orgCheck: "Järjestötarkistus",
+        orgCheckDesc: "Vahvista järjestön virallinen asema",
+        errNameEmpty: "Syötä koko nimesi",
+        errUsernameEmpty: "Valitse käyttäjätunnus",
+        errUsernameTaken: "Käyttäjätunnus on varattu",
+        errEmailEmpty: "Syötä sähköpostiosoitteesi",
+        errPasswordEmpty: "Syötä salasana",
+        errPasswordsDoNotMatch: "Salasanat eivät täsmää",
+        errCaptchaIncorrect: "Väärä turvallisuuskoodi",
+        welcomeTitle: "Tervetuloa Elittiin!"
+    },
+    "sv-fi": {
+        vosAcces: "Inloggningsuppgifter",
+        lAlliance: "Utbildningspartner",
+        sonProfil: "Barnets profil",
+        stepText: "Steg {step}/3",
+        chooseRole: "Välj din roll",
+        parentTab: "Föräldrar",
+        schoolTab: "Skolor",
+        ngoTab: "Organisationer",
+        instantGoogle: "Logga in med Google",
+        orEmail: "eller med e-post",
+        fullNameParent: "Fullständigt namn",
+        fullNameSchool: "Skolans namn",
+        fullNameNgo: "Organisationens namn",
+        fullNamePlaceholderParent: "Matti Virtanen",
+        fullNamePlaceholderSchool: "Exempelskola",
+        fullNamePlaceholderNgo: "Exempelorganisation",
+        username: "Användarnamn",
+        usernamePlaceholder: "matti_vir",
+        email: "E-post",
+        emailPlaceholder: "matti@exempel.fi",
+        phone: "Telefonnummer",
+        phonePlaceholder: "040 123 4567",
+        password: "Lösenord",
+        passwordPlaceholder: "••••••••",
+        confirmPassword: "Bekräfta lösenord",
+        confirmPasswordPlaceholder: "••••••••",
+        matchPerfect: "Lösenorden matchar",
+        matchError: "Lösenorden matchar inte",
+        eightChars: "Minst 8 tecken",
+        uppercase: "1 stor bokstav",
+        number: "1 siffra",
+        specialChar: "1 specialtecken",
+        next: "Nästa",
+        previous: "Föregående",
+        titleParentStep1: "Som förälder",
+        titleSchoolStep1: "Som skola",
+        titleNgoStep1: "Som organisation",
+        subStep1Parent: "Registrera dig som barnets vårdnadshavare",
+        subStep1School: "Registrera dig som skola",
+        subStep1Ngo: "Registrera dig som organisation",
+        leftTitle1: "Ditt barn har inga gränser längre.",
+        leftTitle1Orange: "Obegränsad potential",
+        leftSub1: "Öppna världsklass utbildning för ditt barn.",
+        leftTitle2: "Utbildning är en lagidrott.",
+        leftTitle2Orange: "Familjesamarbete",
+        leftSub2: "Förenka era krafter för barnets framgång.",
+        leftTitle3: "Endast primär cykel.",
+        leftTitle3Orange: "Tidig start",
+        leftSub3: "Skräddarsytt stöd för grundskolans början.",
+        allyTitle: "Familjeallians",
+        allyDesc: "Bjud in din partner till barnets utbildningsresa.",
+        allyNamePlaceholder: "Partnerns namn",
+        allyEmailPlaceholder: "partner@exempel.fi",
+        schoolIdentityTitle: "Skolans identitet",
+        schoolIdentityDesc: "Definiera din skolas information",
+        privateSchool: "Privatskola",
+        publicSchool: "Offentlig skola",
+        schoolAddressPlaceholder: "Skolans adress",
+        schoolManagerPlaceholder: "Rektorns namn",
+        ngoTitle: "Organisationsinformation",
+        ngoDesc: "Definiera din organisations information",
+        ngoDomainPlaceholder: "Verksamhetsområde",
+        ngoDomainEducation: "Utbildning",
+        ngoDomainSocial: "Social",
+        ngoDomainCulture: "Kultur",
+        ngoDomainHumanitarian: "Humanitär",
+        ngoAddressPlaceholder: "Organisationens adress",
+        ngoManagerPlaceholder: "Ledarens namn",
+        childFirstName: "Barnets förnamn",
+        childFirstNamePlaceholder: "Förnamn",
+        childAge: "Ålder",
+        childAgePlaceholder: "7-12",
+        childLevel: "Klassnivå",
+        childSchool: "Skola",
+        childSchoolPlaceholder: "Sök skola...",
+        securityCheck: "Säkerhetskontroll",
+        securityCheckDesc: "Ange koden nedan",
+        securityCodePlaceholder: "Kod",
+        finalizeButton: "Slutför registrering",
+        registerSchoolButton: "Registrera som skola",
+        registerNgoButton: "Registrera som organisation",
+        termsText: "Genom att fortsätta godkänner du villkor och integritetspolicy.",
+        alreadyHaveAccount: "Har du redan ett konto?",
+        loginLink: "Logga in",
+        digitalPresence: "Digital närvaro",
+        digitalPresencePlaceholderSchool: "Webbplats eller Facebook-sida (t.ex. fb.com/skola...)",
+        digitalPresencePlaceholderNgo: "Webbplats (t.ex. organisation.fi)",
+        schoolDimension: "Skolans storlek",
+        classesCountPlaceholder: "Antal klasser",
+        instCheck: "Institutionell kontroll",
+        instCheckDesc: "Bekräfta skolans officiella status",
+        beneficiariesCount: "Antal förmånstagare",
+        beneficiariesPlaceholder: "Antal elever",
+        orgCheck: "Organisationskontroll",
+        orgCheckDesc: "Bekräfta organisationens officiella status",
+        errNameEmpty: "Ange ditt fullständiga namn",
+        errUsernameEmpty: "Välj ett användarnamn",
+        errUsernameTaken: "Användarnamnet är upptaget",
+        errEmailEmpty: "Ange din e-postadress",
+        errPasswordEmpty: "Ange ett lösenord",
+        errPasswordsDoNotMatch: "Lösenorden matchar inte",
+        errCaptchaIncorrect: "Fel säkerhetskod",
+        welcomeTitle: "Välkommen till Eliten!"
     }
 };
 
@@ -1735,9 +1946,15 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const isDanish = regionCountry === 'DK' || locale === 'da' || locale.endsWith('-da') || selectedLang === 'da';
     const isSwedish = regionCountry === 'SE' || locale === 'sv' || locale.endsWith('-sv') || selectedLang === 'sv';
     const isNorwegian = regionCountry === 'NO' || locale === 'no' || locale.endsWith('-no') || selectedLang === 'no';
+    const isFinnish = regionCountry === 'FI' || locale === 'fi' || locale.endsWith('-fi') || selectedLang === 'fi';
+    const isFinnishSwedish = locale === 'sv-fi' || locale.endsWith('-sv-fi') || selectedLang === 'sv-fi';
     // Determine which dictionary to use, with country-specific variants taking priority
     const activeLang: keyof typeof dict = isArabic
         ? "ar"
+        : isFinnishSwedish
+            ? "sv-fi"
+        : isFinnish
+            ? "fi"
         : isSwedish
             ? "sv"
         : isNorwegian
@@ -1776,7 +1993,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [userType, setUserType] = useState("parent");
 
     // Initialize country based on active region
-    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || COUNTRIES[0];
+    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || COUNTRIES[0];
     const [selectedCountry, setSelectedCountry] = useState(defaultCountryObj);
 
     const [phone, setPhone] = useState("");
@@ -1784,7 +2001,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [spouseFirstName, setSpouseFirstName] = useState("");
     const [spouseLastName, setSpouseLastName] = useState("");
     const [childName, setChildName] = useState("");
-    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : "DZ"));
+    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : "DZ")));
     const [childLevel, setChildLevel] = useState("");
     const [childAge, setChildAge] = useState("");
     const [childRegion, setChildRegion] = useState("");
@@ -1849,6 +2066,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
         DK: ['Børnehaveklasse (0. kl.)', '1. klasse', '2. klasse', '3. klasse', '4. klasse', '5. klasse', '6. klasse'],
         SE: ['Förskoleklass (F)', 'Årskurs 1', 'Årskurs 2', 'Årskurs 3', 'Årskurs 4', 'Årskurs 5', 'Årskurs 6'],
         NO: ['1. klasse', '2. klasse', '3. klasse', '4. klasse', '5. klasse', '6. klasse', '7. klasse'],
+        FI: ['Luokka 1', 'Luokka 2', 'Luokka 3', 'Luokka 4', 'Luokka 5', 'Luokka 6'],
         INT: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
     };
     const currentLevels = levels[childCountry] || levels["INT"];
@@ -2853,6 +3071,20 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                 <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">vilkår</Link>{" "}
                                                 og{" "}
                                                 <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">personvernpolicy</Link>.
+                                            </>
+                                        ) : activeLang === "fi" ? (
+                                            <>
+                                                Jatkamalla hyväksyt{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">ehdot</Link>{" "}
+                                                ja{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">tietosuojakäytännön</Link>.
+                                            </>
+                                        ) : activeLang === "sv-fi" ? (
+                                            <>
+                                                Genom att fortsätta godkänner du våra{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">villkor</Link>{" "}
+                                                och{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">integritetspolicy</Link>.
                                             </>
                                         ) : (
                                             <>
