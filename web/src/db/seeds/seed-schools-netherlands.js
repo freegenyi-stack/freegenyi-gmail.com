@@ -186,7 +186,7 @@ async function main() {
         
         await client.query(
           `INSERT INTO schools (code, name_local, name_fr, district_id, type, lat, lng) 
-           VALUES ($1, $2, $3, $4, $5, $6, $7) ON CONFLICT (code) DO NOTHING`,
+           VALUES ($1, $2, $3, $4, $5, $6, $7)`,
           [school.code, school.name, school.name, districtId, school.type, school.lat, school.lng]
         );
         insertedCount++;
