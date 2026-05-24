@@ -44,8 +44,12 @@ async function main() {
       school[header] = values[index];
     });
 
-    // Filter for primary schools (escolas básicas)
-    // Include all schools as they are primary schools in Portugal
+    // Filter for primary schools only (1er cycle)
+    // Include schools with: 1er_cycle_uniquement or 1er_et_2eme_cycle
+    const schoolType = school.source_donnees;
+    if (schoolType === '2eme_cycle_uniquement') continue; // Skip secondary-only schools
+    if (!schoolType) continue; // Skip schools without type information
+
     schools.push(school);
   }
 
