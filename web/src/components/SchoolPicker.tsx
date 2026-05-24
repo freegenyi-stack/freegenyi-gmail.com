@@ -502,7 +502,7 @@ export default function SchoolPicker({
                 <span className="truncate">
                   {selectedRegion
                     ? getRegionName(selectedRegion)
-                    : (isAr ? "الولاية" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : country === "NO" ? "Fylke" : country === "FI" ? "Maakunta" : country === "NL" ? "Provincie" : country === "PT" ? "Distrito" : "Wilaya")}
+                    : (isAr ? "الولاية" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : country === "NO" ? "Fylke" : country === "FI" ? "Maakunta" : country === "NL" ? "Provincie" : country === "PT" ? "Portugal" : "Wilaya")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -668,7 +668,7 @@ export default function SchoolPicker({
                             : country === "NL"
                               ? "Selecteer Provincie en Gemeente om uw school te vinden 🏫"
                               : country === "PT"
-                                ? "Selecione Distrito e Município para encontrar a sua escola 🏫"
+                                ? "Selecione Município para encontrar a sua escola 🏫"
                                 : (country === "FR"
                               ? "Veuillez sélectionner la Région, le Département et la Commune pour choisir votre école 🏫"
                               : "Veuillez sélectionner la Wilaya et la Commune pour choisir votre école 🏫")}

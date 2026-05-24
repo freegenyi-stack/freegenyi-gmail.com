@@ -53,9 +53,17 @@ async function main() {
   console.log(`📊 Total schools: ${schools.length}.`);
 
   // 3. Collect unique districts (distritos) and municipalities (municipios)
+  // Since CSV doesn't have district data, we'll use a single "Portugal" region
   const districtsMap = new Map(); // distrito -> { code, nameLocal, nameFr }
   const municipalitiesMap = new Map(); // municipio -> { districtCode, municipalityCode, municipalityName }
   const validSchools = [];
+
+  // Add Portugal as the single region
+  districtsMap.set("PORTUGAL", {
+    code: "PORTUGAL",
+    nameLocal: "Portugal",
+    nameFr: "Portugal"
+  });
 
   for (const school of schools) {
     const districtName = school.distrito;
@@ -63,24 +71,15 @@ async function main() {
     const schoolName = school.nome_escola;
     const schoolCode = school.codigo_escola_dgeec;
 
-    // Skip invalid entries
-    if (!districtName || !municipalityName || !schoolName || !schoolCode) continue;
+    // Skip invalid entries - only require municipality, school name and code
+    if (!municipalityName || !schoolName || !schoolCode) continue;
     if (schoolCode === '*' || schoolCode === '-') continue;
 
-    // Create district code from district name (take first 10 chars, uppercase, no spaces)
-    const districtCode = districtName.toUpperCase().replace(/\s+/g, '_').replace(/[^A-Z_]/g, '').substring(0, 10);
+    // Use Portugal as the district code
+    const districtCode = "PORTUGAL";
     
     // Create municipality code from municipality name (take first 10 chars, uppercase, no spaces)
     const municipalityCode = municipalityName.toUpperCase().replace(/\s+/g, '_').replace(/[^A-Z_]/g, '').substring(0, 10);
-
-    // Add to districts map
-    if (!districtsMap.has(districtCode)) {
-      districtsMap.set(districtCode, {
-        code: districtCode,
-        nameLocal: districtName,
-        nameFr: districtName
-      });
-    }
 
     // Add to municipalities map
     if (!municipalitiesMap.has(municipalityCode)) {
@@ -102,23 +101,23 @@ async function main() {
     });
   }
 
-  console.log(`📊 Collected ${districtsMap.size} districts and ${municipalitiesMap.size} municipalities.`);
+  console.log(`📊 Collected ${districtsMap.size} region and ${municipalitiesMap.size} municipalities.`);
 
-  // 4. Seed Districts (Regions)
-  console.log("📁 Seeding Districts...");
+  // 4. Seed Portugal as the single Region
+  console.log("📁 Seeding Region...");
   const districtsArray = Array.from(districtsMap.values());
   
   // Delete existing PT regions
   await client.query("DELETE FROM regions WHERE country_code = 'PT'");
   
-  // Insert districts with ON CONFLICT DO NOTHING
+  // Insert Portugal region with ON CONFLICT DO NOTHING
   for (const district of districtsArray) {
     await client.query(
       "INSERT INTO regions (code, name_local, name_fr, country_code) VALUES ($1, $2, $3, 'PT') ON CONFLICT (country_code, code) DO NOTHING",
       [district.code, district.nameLocal, district.nameFr]
     );
   }
-  console.log("✅ Districts seeded and cached.");
+  console.log("✅ Region seeded and cached.");
 
   // 5. Seed Municipalities (Districts)
   console.log("📁 Seeding Municipalities...");
