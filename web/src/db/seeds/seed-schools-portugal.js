@@ -67,11 +67,11 @@ async function main() {
     if (!districtName || !municipalityName || !schoolName || !schoolCode) continue;
     if (schoolCode === '*' || schoolCode === '-') continue;
 
-    // Create district code from district name (uppercase, no spaces)
-    const districtCode = districtName.toUpperCase().replace(/\s+/g, '_').replace(/[^A-Z_]/g, '');
+    // Create district code from district name (take first 10 chars, uppercase, no spaces)
+    const districtCode = districtName.toUpperCase().replace(/\s+/g, '_').replace(/[^A-Z_]/g, '').substring(0, 10);
     
-    // Create municipality code from municipality name (uppercase, no spaces)
-    const municipalityCode = municipalityName.toUpperCase().replace(/\s+/g, '_').replace(/[^A-Z_]/g, '');
+    // Create municipality code from municipality name (take first 10 chars, uppercase, no spaces)
+    const municipalityCode = municipalityName.toUpperCase().replace(/\s+/g, '_').replace(/[^A-Z_]/g, '').substring(0, 10);
 
     // Add to districts map
     if (!districtsMap.has(districtCode)) {
