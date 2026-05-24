@@ -1,0 +1,80 @@
+{
+  "Hero": {
+    "title": "Abra as <orange>portas da genialidade</orange> para o seu filho.",
+    "status": "A ponte para a excelência está aberta",
+    "subtitle": "A FreeGeny constrói uma ponte tecnológica entre Pais, Escolas e Crianças para apoio holístico à excelência.",
+    "cta": "Iniciar a aventura",
+    "approach": "A nossa abordagem"
+  },
+  "Impact": {
+    "Geniuses": "Génios",
+    "Countries": "Países",
+    "Schools": "Escolas",
+    "Languages": "Línguas",
+    "Courses": "Cursos & Exercícios"
+  },
+  "Nav": {
+    "About": "Sobre nós",
+    "Approach": "Abordagem",
+    "Parents": "Pais",
+    "Schools": "Escolas",
+    "NGOs": "ONGs",
+    "Science": "Ciência",
+    "Region": "Região",
+    "FreeExplore": "Exploração Livre"
+  },
+  "Auth": {
+    "Login": "Entrar",
+    "Register": "Registar",
+    "Logout": "Sair",
+    "Dashboard": "Painel",
+    "Agreement": "Ao continuar, concorda com os nossos termos e política de privacidade.",
+    "AlreadyHaveAccount": "Já tem conta? Entre",
+    "Placeholders": {
+      "FullName": "João Silva",
+      "Username": "joao_silva",
+      "Email": "joao@exemplo.pt"
+    }
+  },
+  "Portals": {
+    "Tag": "Explore os Portais",
+    "Title": "Uma imersão total.",
+    "Subtitle": "Três universos conectados para desenvolvimento sem limites.",
+    "Local": {
+      "Title": "Portal Local",
+      "Desc": "Domínio do currículo oficial. A base escolar reforçada por IA.",
+      "CTA": "Descobrir o universo?"
+    },
+    "World": {
+      "Title": "Portal Mundial",
+      "Desc": "Matemática de Singapura e Inglês de Oxford para ambições sem fronteiras.",
+      "CTA": "Descobrir o universo?"
+    },
+    "Future": {
+      "Title": "Portal Futuro",
+      "Desc": "Competências do século XXI para liderar o mundo de amanhã.",
+      "CTA": "Descobrir o universo?"
+    }
+  },
+  "Footer": {
+    "Tag": "Junte-se à revolução educacional.",
+    "Title": "O futuro da educação é aqui.",
+    "Subtitle": "Milhões de pais, escolas e crianças já confiam na FreeGeny.",
+    "CTA": "Comece a sua jornada hoje",
+    "Links": {
+      "About": "Sobre nós",
+      "Contact": "Contacto",
+      "Privacy": "Privacidade",
+      "Terms": "Termos"
+    }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Pesquisar escola...",
+    "NoSchoolFound": "Nenhuma escola encontrada",
+    "TryAnotherSearch": "Modifique os seus filtros ou tente outra pesquisa",
+    "SelectSchool": "Escola Selecionada",
+    "All": "Todas",
+    "Public": "Pública",
+    "Private": "Privada"
+  }
+}
