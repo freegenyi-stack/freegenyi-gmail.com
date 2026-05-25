@@ -127,8 +127,8 @@ async function main() {
     // District de Beja
     "Aljustrel": "BEJA", "Almodôvar": "BEJA", "Alvito": "BEJA", "Barrancos": "BEJA",
     "Beja": "BEJA", "Castro Verde": "BEJA", "Cuba": "BEJA", "Ferreira do Alentejo": "BEJA",
-    "Mértola": "BEJA", "Moura": "BEJA", "Mourão": "BEJA", "Ourique": "BEJA", "Serpa": "BEJA",
-    "Vidigueira": "BEJA",
+    "Mértola": "BEJA", "Moura": "BEJA", "Mourão": "BEJA", "Odemira": "BEJA",
+    "Ourique": "BEJA", "Serpa": "BEJA", "Vidigueira": "BEJA",
 
     // District de Braga
     "Amares": "BRAGA", "Barcelos": "BRAGA", "Braga": "BRAGA", "Cabeceiras de Basto": "BRAGA",
@@ -145,7 +145,7 @@ async function main() {
 
     // District de Castelo Branco
     "Belmonte": "CASTELO", "Castelo Branco": "CASTELO", "Covilhã": "CASTELO", "Fundão": "CASTELO",
-    "Idanha-a-Nova": "CASTELO", "Penamacor": "CASTELO", "Proença-a-Nova": "CASTELO",
+    "Idanha-a-Nova": "CASTELO", "Oleiros": "CASTELO", "Penamacor": "CASTELO", "Proença-a-Nova": "CASTELO",
     "Sertã": "CASTELO", "Vila Nova de Foz Côa": "CASTELO", "Vila Velha de Ródão": "CASTELO",
 
     // District de Coimbra
@@ -169,9 +169,9 @@ async function main() {
 
     // District de Guarda
     "Aguiar da Beira": "GUARDA", "Almeida": "GUARDA", "Celorico da Beira": "GUARDA",
-    "Figueira de Castelo Rodrigo": "GUARDA", "Fornos de Algodres": "GUARDA", "Guarda": "GUARDA",
-    "Manteigas": "GUARDA", "Meda": "GUARDA", "Pinhel": "GUARDA", "Sabugal": "GUARDA",
-    "Seia": "GUARDA", "Trancoso": "GUARDA", "Vila Nova de Paiva": "GUARDA",
+    "Figueira de Castelo Rodrigo": "GUARDA", "Fornos de Algodres": "GUARDA", "Gouveia": "GUARDA",
+    "Guarda": "GUARDA", "Manteigas": "GUARDA", "Mêda": "GUARDA", "Pinhel": "GUARDA",
+    "Sabugal": "GUARDA", "Seia": "GUARDA", "Trancoso": "GUARDA", "Vila Nova de Paiva": "GUARDA",
 
     // District de Leiria
     "Alcobaça": "LEIRIA", "Alvaiázere": "LEIRIA", "Ansião": "LEIRIA", "Batalha": "LEIRIA",
@@ -201,17 +201,18 @@ async function main() {
     "Valongo": "PORTO", "Vila do Conde": "PORTO", "Vila Nova de Gaia": "PORTO",
 
     // District de Santarém
-    "Abrantes": "SANTARE", "Almeirim": "SANTARE", "Alpiarça": "SANTARE", "Azambuja": "SANTARE",
-    "Benavente": "SANTARE", "Cartaxo": "SANTARE", "Chamusca": "SANTARE", "Coruche": "SANTARE",
-    "Entroncamento": "SANTARE", "Ferreira do Zêzere": "SANTARE", "Golegã": "SANTARE",
-    "Rio Maior": "SANTARE", "Salvaterra de Magos": "SANTARE", "Santarém": "SANTARE",
-    "Sardoal": "SANTARE", "Tomar": "SANTARE", "Torres Novas": "SANTARE", "Vila Nova da Barquinha": "SANTARE",
-    "Vila Nova da Barquinha": "SANTARE", "Ourém": "SANTARE",
+    "Abrantes": "SANTARE", "Almeirim": "SANTARE", "Alpiarça": "SANTARE", "Alcanena": "SANTARE",
+    "Azambuja": "SANTARE", "Benavente": "SANTARE", "Cartaxo": "SANTARE", "Chamusca": "SANTARE",
+    "Constância": "SANTARE", "Coruche": "SANTARE", "Entroncamento": "SANTARE", "Ferreira do Zêzere": "SANTARE",
+    "Golegã": "SANTARE", "Mação": "SANTARE", "Rio Maior": "SANTARE", "Salvaterra de Magos": "SANTARE",
+    "Santarém": "SANTARE", "Sardoal": "SANTARE", "Tomar": "SANTARE", "Torres Novas": "SANTARE",
+    "Vila Nova da Barquinha": "SANTARE", "Vila de Rei": "SANTARE", "Ourém": "SANTARE",
 
     // District de Setúbal
-    "Alcochete": "SETUBAL", "Almada": "SETUBAL", "Barreiro": "SETUBAL", "Grândola": "SETUBAL",
-    "Moita": "SETUBAL", "Montijo": "SETUBAL", "Palmela": "SETUBAL", "Santiago do Cacém": "SETUBAL",
-    "Seixal": "SETUBAL", "Sesimbra": "SETUBAL", "Setúbal": "SETUBAL", "Sines": "SETUBAL",
+    "Alcochete": "SETUBAL", "Alcácer do Sal": "SETUBAL", "Almada": "SETUBAL", "Barreiro": "SETUBAL",
+    "Grândola": "SETUBAL", "Moita": "SETUBAL", "Montijo": "SETUBAL", "Palmela": "SETUBAL",
+    "Santiago do Cacém": "SETUBAL", "Seixal": "SETUBAL", "Sesimbra": "SETUBAL", "Setúbal": "SETUBAL",
+    "Sines": "SETUBAL",
 
     // District de Viana do Castelo
     "Arcos de Valdevez": "VIANA", "Caminha": "VIANA", "Melgaço": "VIANA", "Monção": "VIANA",
@@ -228,9 +229,9 @@ async function main() {
     "Armamar": "VISEU", "Carregal do Sal": "VISEU", "Castro Daire": "VISEU", "Cinfães": "VISEU",
     "Lamego": "VISEU", "Mangualde": "VISEU", "Moimenta da Beira": "VISEU", "Mortágua": "VISEU",
     "Nelas": "VISEU", "Oliveira de Frades": "VISEU", "Penalva do Castelo": "VISEU",
-    "Penedono": "VISEU", "Resende": "VISEU", "Santa Comba Dão": "VISEU", "São Pedro do Sul": "VISEU",
-    "Sátão": "VISEU", "Sernancelhe": "VISEU", "Tabuaço": "VISEU", "Tarouca": "VISEU",
-    "Tondela": "VISEU", "Vila Nova de Paiva": "VISEU", "Viseu": "VISEU", "Vouzela": "VISEU"
+    "Penedono": "VISEU", "Resende": "VISEU", "Santa Comba Dão": "VISEU", "São João da Pesqueira": "VISEU",
+    "São Pedro do Sul": "VISEU", "Sátão": "VISEU", "Sernancelhe": "VISEU", "Tabuaço": "VISEU",
+    "Tarouca": "VISEU", "Tondela": "VISEU", "Vila Nova de Paiva": "VISEU", "Viseu": "VISEU", "Vouzela": "VISEU"
   };
 
   for (const school of schools) {
