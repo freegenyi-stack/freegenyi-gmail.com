@@ -50,10 +50,42 @@
       "Desc": "Matemática de Singapura e Inglês de Oxford para ambições sem fronteiras.",
       "CTA": "Descobrir o universo?"
     },
-    "Future": {
-      "Title": "Portal Futuro",
-      "Desc": "Competências do século XXI para liderar o mundo de amanhã.",
-      "CTA": "Descobrir o universo?"
+    "Magic": {
+      "Title": "Arena Mágica",
+      "Desc": "Desafios lúdicos adaptados dinamicamente para ancorar cada competência pelo jogo.",
+      "CTA": "Entrar na arena?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "O ecossistema FreeGeny",
+    "Title": "Soluções para cada um.",
+    "Subtitle": "Porque a excelência requer uma sinergia perfeita entre todos os atores.",
+    "Parents": {
+      "Title": "Espaço Pais",
+      "Desc": "Pilotagem precisa do sucesso. Acompanhe o progresso, envie boosts emocionais vocais e gerencie as recompensas.",
+      "CTA": "Saber mais?"
+    },
+    "Schools": {
+      "Title": "FreeGeny escolas",
+      "Desc": "Transformação digital completa. Gerencie suas turmas, seus professores e comunique-se com os pais em tempo real.",
+      "CTA": "Saber mais?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Boost emocional",
+    "MomVoice": "Vocal de mãe gravado",
+    "Congratulation": "Parabéns João!"
+  },
+  "Innovation": {
+    "Tag": "Inovação",
+    "Title": "Um pilotagem de exceção.",
+    "Boost": {
+      "Title": "Boost emocional",
+      "Desc": "Motive seu filho com sua própria voz."
+    },
+    "AI": {
+      "Title": "Percurso IA Adaptativo",
+      "Desc": "Cada clique reajusta o programa."
     }
   },
   "Footer": {
@@ -66,6 +98,119 @@
       "Contact": "Contacto",
       "Privacy": "Privacidade",
       "Terms": "Termos"
+    }
+  },
+  "Dashboard": {
+    "Title": "Cockpit Parental",
+    "Subtitle": "Gerencie e acompanhe a evolução dos seus pequenos génios.",
+    "AddChild": "Adicionar uma criança",
+    "ChildCard": {
+      "Level": "Nível",
+      "XP": "XP Total",
+      "Progress": "Progresso",
+      "Interest": "Paixão",
+      "Status": "Estatuto",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Modo Aprendente",
+      "EmotionalBoost": {
+        "Title": "Boost emocional",
+        "Desc": "Encoraje {name} com uma mensagem vocal.",
+        "Record": "Gravar"
+      }
+    },
+    "Alliance": {
+      "Title": "Aliança Parental",
+      "Online": "Em linha",
+      "CoParent": "Co-Parente",
+      "Message": "Mensagem",
+      "Photo": "Foto"
+    },
+    "Printable": {
+      "Title": "Fábrica de Imprimíveis",
+      "Desc": "Gere cadernos de revisão personalizados baseados nos seus pontos fracos.",
+      "CTA": "Gerar o dossier"
+    },
+    "Bridge": {
+      "Tag": "A Ponte sugere",
+      "Validate": "Validar",
+      "Ignore": "Ignorar"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Olá, {name}!",
+    "ParentDashboard": "Painel Parental",
+    "Portals": {
+      "School": {
+        "Title": "A Minha Escola",
+        "Desc": "Revê as tuas aulas divertindo-te.",
+        "CTA": "Partir para a aventura"
+      },
+      "World": {
+        "Title": "O Mundo",
+        "Desc": "Explora Singapura, Oxford e supera desafios mundiais!",
+        "CTA": "Descobrir"
+      },
+      "Arena": {
+        "Title": "A Arena",
+        "Desc": "Jogos de lógica e competições mágicas.",
+        "CTA": "Pronto para jogar?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Então {name}, pronto para uma nova aventura? Não te esqueças de verificar o teu {boost} enviado pelos teus pais!\"",
+      "BoostTag": "Boost vocal"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "A Excelência mundial",
+      "Family": "Equipa Familiar",
+      "Genius": "O pequeno Génio"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "O seu filho já não tem qualquer fronteira.",
+        "Items": [
+          "Matemática de Singapura",
+          "Cambridge (UK)",
+          "Modelo Finlandês",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "A educação é um desporto de equipa.",
+        "Subtitle": "Sincronize os seus esforços para o seu sucesso."
+      },
+      "Step3": {
+        "Title": "Ciclo Primário Exclusivamente.",
+        "Subtitle": "Um acompanhamento personalizado para os seus inícios."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Olá.",
+        "Tag": "Etapa 1 de 3 — O seu papel de garantidor",
+        "PhoneLabel": "Número de telefone",
+        "Next": "Seguinte"
+      },
+      "Step2": {
+        "Title": "Aliança Familiar.",
+        "Tag": "Etapa 2 de 3 — Convidar o cônjuge",
+        "Desc": "Sincronize os seus esforços para o seu sucesso.",
+        "EmailPlaceholder": "Email do cônjuge (Opcional)",
+        "Next": "Etapa Seguinte"
+      },
+      "Step3": {
+        "Title": "O pequeno Génio.",
+        "Tag": "Etapa final: O seu percurso",
+        "ChildName": "Primeiro nome da criança",
+        "Country": "País",
+        "Level": "Nível",
+        "Age": "Idade",
+        "Region": "Distrito / Município",
+        "CTA": "Iniciar a aventura!"
+      }
     }
   },
   "SchoolPicker": {
