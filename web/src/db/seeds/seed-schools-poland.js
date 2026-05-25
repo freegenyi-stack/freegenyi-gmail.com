@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Client } = require('pg');
 const fs = require('fs');
 const path = require('path');
@@ -64,24 +65,24 @@ async function seedPolandSchools() {
     const municipalitiesMap = new Map(); // powiat -> { districtCode, municipalityCode, municipalityName }
     const validSchools = [];
 
-    // Define the 16 voivodeships of Poland
+    // Define the 16 voivodeships of Poland with codes <= 10 chars
     const polandVoivodeships = [
-      { code: "DOLNOSLASKIE", name: "Dolnośląskie", nameFr: "Basse-Silésie" },
-      { code: "KUJAWSKOPOMORSKIE", name: "Kujawsko-pomorskie", nameFr: "Couïavie-Poméranie" },
+      { code: "DOLNOSLASK", name: "Dolnośląskie", nameFr: "Basse-Silésie" },
+      { code: "KUJAWSPOMO", name: "Kujawsko-pomorskie", nameFr: "Couïavie-Poméranie" },
       { code: "LUBELSKIE", name: "Lubelskie", nameFr: "Lublin" },
       { code: "LUBUSKIE", name: "Lubuskie", nameFr: "Lubusz" },
       { code: "LODZKIE", name: "Łódzkie", nameFr: "Łódź" },
-      { code: "MALOPOLSKIE", name: "Małopolskie", nameFr: "Petite-Pologne" },
-      { code: "MAZOWIECKIE", name: "Mazowieckie", nameFr: "Mazovie" },
+      { code: "MALOPOLSK", name: "Małopolskie", nameFr: "Petite-Pologne" },
+      { code: "MAZOWIECK", name: "Mazowieckie", nameFr: "Mazovie" },
       { code: "OPOLSKIE", name: "Opolskie", nameFr: "Opole" },
-      { code: "PODKARPACKIE", name: "Podkarpackie", nameFr: "Bas-Carpathes" },
+      { code: "PODKARPACK", name: "Podkarpackie", nameFr: "Bas-Carpathes" },
       { code: "PODLASKIE", name: "Podlaskie", nameFr: "Podlachie" },
       { code: "POMORSKIE", name: "Pomorskie", nameFr: "Poméranie" },
       { code: "SLASKIE", name: "Śląskie", nameFr: "Silésie" },
-      { code: "SWIETOKRZYSKIE", name: "Świętokrzyskie", nameFr: "Sainte-Croix" },
-      { code: "WARMIINSKOMAZURSKIE", name: "Warmińsko-mazurskie", nameFr: "Varmie-Mazurie" },
-      { code: "WIELKOPOLSKIE", name: "Wielkopolskie", nameFr: "Grande-Pologne" },
-      { code: "ZACHODNIOPOMORSKIE", name: "Zachodniopomorskie", nameFr: "Poméranie occidentale" }
+      { code: "SWIETOKRZ", name: "Świętokrzyskie", nameFr: "Sainte-Croix" },
+      { code: "WARMIINSK", name: "Warmińsko-mazurskie", nameFr: "Varmie-Mazurie" },
+      { code: "WIELKOPOL", name: "Wielkopolskie", nameFr: "Grande-Pologne" },
+      { code: "ZACHODNIO", name: "Zachodniopomorskie", nameFr: "Poméranie occidentale" }
     ];
 
     // Add all voivodeships to the map
@@ -93,24 +94,31 @@ async function seedPolandSchools() {
       });
     }
 
-    // Map voivodeship names to codes
+    // Map voivodeship names to codes (CSV uses uppercase without accents)
     const voivodeshipNameToCode = {
-      "DOLNOŚLĄSKIE": "DOLNOSLASKIE",
-      "KUJAWSKO-POMORSKIE": "KUJAWSKOPOMORSKIE",
+      "DOLNOŚLĄSKIE": "DOLNOSLASK",
+      "DOLNOSLASKIE": "DOLNOSLASK",
+      "KUJAWSKO-POMORSKIE": "KUJAWSPOMO",
+      "KUJAWSKOPOMORSKIE": "KUJAWSPOMO",
       "LUBELSKIE": "LUBELSKIE",
       "LUBUSKIE": "LUBUSKIE",
       "ŁÓDZKIE": "LODZKIE",
-      "MAŁOPOLSKIE": "MALOPOLSKIE",
-      "MAZOWIECKIE": "MAZOWIECKIE",
+      "LODZKIE": "LODZKIE",
+      "MAŁOPOLSKIE": "MALOPOLSK",
+      "MALOPOLSKIE": "MALOPOLSK",
+      "MAZOWIECKIE": "MAZOWIECK",
       "OPOLSKIE": "OPOLSKIE",
-      "PODKARPACKIE": "PODKARPACKIE",
+      "PODKARPACKIE": "PODKARPACK",
       "PODLASKIE": "PODLASKIE",
       "POMORSKIE": "POMORSKIE",
       "ŚLĄSKIE": "SLASKIE",
-      "ŚWIĘTOKRZYSKIE": "SWIETOKRZYSKIE",
-      "WARMIŃSKO-MAZURSKIE": "WARMIINSKOMAZURSKIE",
-      "WIELKOPOLSKIE": "WIELKOPOLSKIE",
-      "ZACHODNIOPOMORSKIE": "ZACHODNIOPOMORSKIE"
+      "SLASKIE": "SLASKIE",
+      "ŚWIĘTOKRZYSKIE": "SWIETOKRZ",
+      "SWIETOKRZYSKIE": "SWIETOKRZ",
+      "WARMIŃSKO-MAZURSKIE": "WARMIINSK",
+      "WARMIINSKOMAZURSKIE": "WARMIINSK",
+      "WIELKOPOLSKIE": "WIELKOPOL",
+      "ZACHODNIOPOMORSKIE": "ZACHODNIO"
     };
 
     for (const school of schools) {
@@ -169,10 +177,10 @@ async function seedPolandSchools() {
     // Delete existing PL regions
     await client.query("DELETE FROM regions WHERE country_code = 'PL'");
     
-    // Insert voivodeships with ON CONFLICT DO NOTHING
+    // Insert voivodeships
     for (const district of districtsArray) {
       await client.query(
-        "INSERT INTO regions (code, name_local, name_fr, country_code) VALUES ($1, $2, $3, 'PL') ON CONFLICT (country_code, code) DO NOTHING",
+        "INSERT INTO regions (code, name_local, name_fr, country_code) VALUES ($1, $2, $3, 'PL')",
         [district.code, district.nameLocal, district.nameFr]
       );
     }
@@ -206,7 +214,7 @@ async function seedPolandSchools() {
       }
 
       await client.query(
-        "INSERT INTO districts (code, name_local, name_fr, region_id, country_code) VALUES ($1, $2, $3, $4, 'PL') ON CONFLICT (country_code, code) DO NOTHING",
+        "INSERT INTO districts (code, name_local, name_fr, region_id) VALUES ($1, $2, $3, $4)",
         [municipality.municipalityCode, municipality.municipalityName, municipality.municipalityName, regionId]
       );
     }
@@ -226,7 +234,7 @@ async function seedPolandSchools() {
     const districtIds = new Map();
     for (const municipality of municipalitiesArray) {
       const res = await client.query(
-        "SELECT id FROM districts WHERE code = $1 AND country_code = 'PL'",
+        "SELECT id FROM districts WHERE code = $1",
         [municipality.municipalityCode]
       );
       if (res.rows.length > 0) {
@@ -241,12 +249,12 @@ async function seedPolandSchools() {
       const values = batch.map(school => {
         const districtId = districtIds.get(school.districtCode);
         if (!districtId) return null;
-        return `('${school.code}', '${school.name.replace(/'/g, "''")}', ${districtId}, ${school.type}, ${school.lat ? school.lat : 'NULL'}, ${school.lng ? school.lng : 'NULL'})`;
+        return `('${school.code}', '${school.name.replace(/'/g, "''")}', '${school.name.replace(/'/g, "''")}', ${districtId}, ${school.type}, ${school.lat ? school.lat : 'NULL'}, ${school.lng ? school.lng : 'NULL'})`;
       }).filter(v => v !== null);
 
       if (values.length > 0) {
         await client.query(`
-          INSERT INTO schools (code, name, district_id, type, lat, lng)
+          INSERT INTO schools (code, name_local, name_fr, district_id, type, lat, lng)
           VALUES ${values.join(',')}
         `);
       }
