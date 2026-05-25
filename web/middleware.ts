@@ -20,6 +20,7 @@ const DEFAULT_COUNTRY_FOR_LOCALE: Record<string, string> = {
   sv: "SE",
   no: "NO",
   fi: "FI",
+  pl: "PL",
 };
 
 export default auth((req) => {
@@ -35,6 +36,7 @@ export default auth((req) => {
     if (country === "DZ" || country === "MA" || country === "TN") locale = "ar";
     else if (country === "AU" || country === "US" || country === "GB") locale = "en";
     else if (country === "AO" || country === "PT") locale = "pt";
+    else if (country === "PL") locale = "pl";
     else if (country === "SE") locale = "sv";
     else if (country === "NO") locale = "no";
     else if (country === "FI") locale = "fi";

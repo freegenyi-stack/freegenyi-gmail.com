@@ -37,6 +37,7 @@ const COUNTRIES = [
     { name: 'Finland / Suomi', code: 'FI', flag: '🇫🇮', dial: '+358' },
     { name: 'Netherlands / Nederland', code: 'NL', flag: '🇳🇱', dial: '+31' },
     { name: 'Portugal', code: 'PT', flag: '🇵🇹', dial: '+351' },
+    { name: 'Poland / Polska', code: 'PL', flag: '🇵🇱', dial: '+48' },
 ];
 
 const dict = {
@@ -2162,6 +2163,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const isFinnishSwedish = locale === 'sv-fi' || locale.endsWith('-sv-fi') || selectedLang === 'sv-fi';
     const isDutch = regionCountry === 'NL' || locale === 'nl' || locale.endsWith('-nl') || selectedLang === 'nl';
     const isPortuguese = regionCountry === 'PT' || locale === 'pt' || locale.endsWith('-pt') || selectedLang === 'pt';
+    const isPolish = regionCountry === 'PL' || locale === 'pl' || locale.endsWith('-pl') || selectedLang === 'pl';
     // Determine which dictionary to use, with country-specific variants taking priority
     const activeLang: keyof typeof dict = isArabic
         ? "ar"
@@ -2173,6 +2175,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
             ? "nl"
         : isPortuguese
             ? "pt"
+        : isPolish
+            ? "pl"
         : isSwedish
             ? "sv"
         : isNorwegian
@@ -2211,7 +2215,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [userType, setUserType] = useState("parent");
 
     // Initialize country based on active region
-    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || (isPortuguese ? COUNTRIES.find(c => c.code === "PT") : null) || COUNTRIES[0];
+    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || (isPortuguese ? COUNTRIES.find(c => c.code === "PT") : null) || (isPolish ? COUNTRIES.find(c => c.code === "PL") : null) || COUNTRIES[0];
     const [selectedCountry, setSelectedCountry] = useState(defaultCountryObj);
 
     const [phone, setPhone] = useState("");
@@ -2219,7 +2223,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [spouseFirstName, setSpouseFirstName] = useState("");
     const [spouseLastName, setSpouseLastName] = useState("");
     const [childName, setChildName] = useState("");
-    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : (isPortuguese ? "PT" : "DZ")))));
+    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : (isPortuguese ? "PT" : (isPolish ? "PL" : "DZ"))))));
     const [childLevel, setChildLevel] = useState("");
     const [childAge, setChildAge] = useState("");
     const [childRegion, setChildRegion] = useState("");
@@ -2287,6 +2291,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
         FI: ['Luokka 1', 'Luokka 2', 'Luokka 3', 'Luokka 4', 'Luokka 5', 'Luokka 6'],
         NL: ['Groep 1', 'Groep 2', 'Groep 3', 'Groep 4', 'Groep 5', 'Groep 6', 'Groep 7', 'Groep 8'],
         PT: ['1º ano', '2º ano', '3º ano', '4º ano', '5º ano', '6º ano'],
+        PL: ['Klasa 1', 'Klasa 2', 'Klasa 3', 'Klasa 4', 'Klasa 5', 'Klasa 6', 'Klasa 7', 'Klasa 8'],
         INT: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
     };
     const currentLevels = levels[childCountry] || levels["INT"];
@@ -3312,6 +3317,13 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                 <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">termos</Link>{" "}
                                                 e{" "}
                                                 <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">política de privacidade</Link>.
+                                            </>
+                                        ) : activeLang === "pl" ? (
+                                            <>
+                                                Kontynuując, zgadzasz się z naszymi{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">warunkami</Link>{" "}
+                                                i{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">polityką prywatności</Link>.
                                             </>
                                         ) : activeLang === "sv-fi" ? (
                                             <>

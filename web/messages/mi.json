@@ -1,0 +1,208 @@
+{
+  "Hero": {
+    "title": "Huakina <orange>ngā tatau o te pūmanawa</orange> ki tō tamaiti.",
+    "status": "Kua tuwhera te Arawhata o te Kairangi",
+    "subtitle": "E hanga ana a FreeGeny i tētahi arawhata hangarau i waenga i ngā Mātua, Kura, me ngā Tamariki mō te tautoko whānui kia tae ki te kairangi.",
+    "cta": "Tīmata i te haerenga",
+    "approach": "Tō mātou ara"
+  },
+  "Impact": {
+    "Geniuses": "Pūmanawa",
+    "Countries": "Whenua",
+    "Schools": "Kura",
+    "Languages": "Reo",
+    "Courses": "Akoranga & Mahi"
+  },
+  "Nav": {
+    "About": "Mō mātou",
+    "Approach": "Ara",
+    "Parents": "Mātua",
+    "Schools": "Kura",
+    "NGOs": "Pūtahi Kāwanatanga-Kore",
+    "Science": "Pūtaiao",
+    "Region": "Rohe",
+    "FreeExplore": "Tirotiro Noa"
+  },
+  "Auth": {
+    "Login": "Takiuru",
+    "Register": "Hono mai",
+    "Logout": "Takiputa",
+    "Dashboard": "Papatohu",
+    "Agreement": "Mā te haere tonu, e whakaae ana koe ki ā mātou tikanga me te kaupapa here tūmataiti.",
+    "AlreadyHaveAccount": "Kei a koe kē he pūkete? Takiuru",
+    "Placeholders": {
+      "FullName": "Hemi Takawe",
+      "Username": "hemi_nz",
+      "Email": "hemi@genie.co.nz"
+    }
+  },
+  "Portals": {
+    "Tag": "Tirohia ngā Tomokanga",
+    "Title": "He ruku kōhatu.",
+    "Subtitle": "E toru ngā ao tūhono mō te ahunga whakamua mutunga kore.",
+    "Local": {
+      "Title": "Tomokanga Rohe",
+      "Desc": "Kia matatau ki te marautanga whai mana. Ka whakapakarihia ō tūāpapa kura e AI.",
+      "CTA": "Tirohia te ao?"
+    },
+    "World": {
+      "Title": "Tomokanga Ao",
+      "Desc": "Pāngarau o Hingapoa me te Reo Ingarihi o Oxford mō te wawata mutunga kore.",
+      "CTA": "Tirohia te ao?"
+    },
+    "Magic": {
+      "Title": "Papa Maagic",
+      "Desc": "Ngā wero pārekareka kua urutau hihiko ki te whakakaha i ia pūkenga mā te tākaro.",
+      "CTA": "Uru ki te papa?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "Te Pūnaha Hauropi o FreeGeny",
+    "Title": "Ngā otinga mō te katoa.",
+    "Subtitle": "He mea nui te mahi tahi tino tika i waenga i ngā kaiwhakaari katoa kia tae ki te kairangi.",
+    "Parents": {
+      "Title": "Mokowā Mātua",
+      "Desc": "Tohu whāinga mō te angitu. Whaia te ahunga whakamua, tukuna ngā whakahau reo, me te whakahaere i ngā utu.",
+      "CTA": "Ako atu?"
+    },
+    "Schools": {
+      "Title": "Ngā Kura o FreeGeny",
+      "Desc": "He panonitanga matihiko katoa. Whakahaerehia āu akomanga, kaiako, me te whakawhitiwhiti ki ngā mātua i te wā tūturu.",
+      "CTA": "Ako atu?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Whakahau Ā-ngākau",
+    "MomVoice": "Te reo o Māmā kua hopukina",
+    "Congratulation": "Tino pai, Amine!"
+  },
+  "Innovation": {
+    "Tag": "Auahatanga",
+    "Title": "Hautūtanga ahurei.",
+    "Boost": {
+      "Title": "Whakahau Ā-ngākau",
+      "Desc": "Whakahihiri i tō tamaiti mā tōu ake reo."
+    },
+    "AI": {
+      "Title": "Ara AI Urutau",
+      "Desc": "I ia pāwhiritanga, ka whakahōu te kaupapa."
+    }
+  },
+  "Footer": {
+    "Title": "Kua reri ki te whakaputa i te pūmanawa?",
+    "CTA": "Rēhita kore utu"
+  },
+  "Dashboard": {
+    "Title": "Ruma Whakahaere Mātua",
+    "Subtitle": "Whakahaere me te whai i te ahunga whakamua o ō pūmanawa iti.",
+    "AddChild": "Tāpiri tamaiti",
+    "ChildCard": {
+      "Level": "Taumata",
+      "XP": "XP Katoa",
+      "Progress": "Ahunga",
+      "Interest": "Ngākau nuitanga",
+      "Status": "Tūnga",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Aratau Ākonga",
+      "EmotionalBoost": {
+        "Title": "Whakahau Ā-ngākau",
+        "Desc": "Whakatenatena i a {name} mā te karere reo.",
+        "Record": "Hopu"
+      }
+    },
+    "Alliance": {
+      "Title": "Hononga Mātua",
+      "Online": "I-tui",
+      "CoParent": "Mātua Hoa",
+      "Message": "Karere",
+      "Photo": "Whakaahua"
+    },
+    "Printable": {
+      "Title": "Wheketere Tā",
+      "Desc": "Hanga puka arotake i hāngai ki ō rātou wāhi ngoikore.",
+      "CTA": "Hanga kōnae"
+    },
+    "Bridge": {
+      "Tag": "Ka tohutohu te Arawhata",
+      "Validate": "Whakamana",
+      "Ignore": "Ero"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Kia ora, {name}!",
+    "ParentDashboard": "Papatohu Mātua",
+    "Portals": {
+      "School": {
+        "Title": "Taku Kura",
+        "Desc": "Arotake i āu akoranga kura me te ngahau.",
+        "CTA": "Tīmata i te haerenga"
+      },
+      "World": {
+        "Title": "Te Ao",
+        "Desc": "Tirotiro ki Hingapoa, Oxford, me te ārai i ngā wero o te ao!",
+        "CTA": "Tirohia"
+      },
+      "Arena": {
+        "Title": "Te Papa",
+        "Desc": "Kēmu arorau me ngā whakataetae makutu.",
+        "CTA": "Kua reri ki te tākaro?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Nā, e {name}, kua reri mō tētahi haerenga hou? Kaua e wareware ki te tirotiro i tō {boost} i tukuna mai e ō mātua!\"",
+      "BoostTag": "Whakahau Reo"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Kairangi Ao",
+      "Family": "Tīma Whānau",
+      "Genius": "Te Pūmanawa Iti"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Kāore he rohe tā tō tamaiti.",
+        "Items": [
+          "Pāngarau o Hingapoa",
+          "Cambridge (UK)",
+          "Tauira Finelana",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "He hākinakina ā-tīma te mātauranga.",
+        "Subtitle": "Tahi ngā mahi kia angitu rātou."
+      },
+      "Step3": {
+        "Title": "Kura Tuatahi Anahe.",
+        "Subtitle": "He tautoko ā-kaupapa mō ō rātou tīmatanga."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Kia ora.",
+        "Tag": "Hipanga 1 o 3 — Tō mahi hei kaitiaki",
+        "PhoneLabel": "Nama waea",
+        "Next": "Panuku"
+      },
+      "Step2": {
+        "Title": "Hononga Whānau.",
+        "Tag": "Hipanga 2 o 3 — Te pōwhiri i te hoa",
+        "Desc": "Tahi ngā mahi kia angitu rātou.",
+        "EmailPlaceholder": "Īmēra o te hoa (Kōwhiringa)",
+        "Next": "Hipanga Panuku"
+      },
+      "Step3": {
+        "Title": "Te Pūmanawa Iti.",
+        "Tag": "Hipanga Whakamutunga: Tō rātou haerenga",
+        "ChildName": "Ingoa Tuatahi o te Tamaiti",
+        "Country": "Whenua",
+        "Level": "Taumata",
+        "Age": "Tau",
+        "Region": "Kāwanatanga / Rohe",
+        "CTA": "Tīmata i te haerenga!"
+      }
+    }
+  }
+}

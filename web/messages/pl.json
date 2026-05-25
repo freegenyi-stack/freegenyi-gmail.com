@@ -1,0 +1,225 @@
+{
+  "Hero": {
+    "title": "Otwórz <orange>drzwi do genialności</orange> dla swojego dziecka.",
+    "status": "Most do doskonałości jest otwarty",
+    "subtitle": "FreeGeny buduje most technologiczny między Rodzicami, Szkołami a Dziećmi dla holistycznego wsparcia w dążeniu do doskonałości.",
+    "cta": "Rozpocznij przygodę",
+    "approach": "Nasze podejście"
+  },
+  "Impact": {
+    "Geniuses": "Geniusze",
+    "Countries": "Kraje",
+    "Schools": "Szkoły",
+    "Languages": "Języki",
+    "Courses": "Kursy i Ćwiczenia"
+  },
+  "Nav": {
+    "About": "O nas",
+    "Approach": "Podejście",
+    "Parents": "Rodzice",
+    "Schools": "Szkoły",
+    "NGOs": "NGO",
+    "Science": "Nauka",
+    "Region": "Region",
+    "FreeExplore": "Wolna Eksploracja"
+  },
+  "Auth": {
+    "Login": "Zaloguj się",
+    "Register": "Zarejestruj się",
+    "Logout": "Wyloguj się",
+    "Dashboard": "Panel",
+    "Agreement": "Kontynuując, zgadzasz się z naszymi warunkami i polityką prywatności.",
+    "AlreadyHaveAccount": "Masz już konto? Zaloguj się",
+    "Placeholders": {
+      "FullName": "Jan Kowalski",
+      "Username": "jan_kowalski",
+      "Email": "jan@przyklad.pl"
+    }
+  },
+  "Portals": {
+    "Tag": "Odkryj Portale",
+    "Title": "Całkowita immersja.",
+    "Subtitle": "Trzy połączone wszechświaty dla rozwoju bez granic.",
+    "Local": {
+      "Title": "Portal Lokalny",
+      "Desc": "Mistrzostwo oficjalnego programu. Twoje podstawy szkolne wzmocnione przez AI.",
+      "CTA": "Odkryć wszechświat?"
+    },
+    "World": {
+      "Title": "Portal Światowy",
+      "Desc": "Matematyka z Singapuru i angielski z Oxfordu dla ambicji bez granic.",
+      "CTA": "Odkryć wszechświat?"
+    },
+    "Magic": {
+      "Title": "Magiczna Arena",
+      "Desc": "Zabawowe wyzwania dostosowane dynamicznie, aby zakotwiczyć każdą umiejętność poprzez grę.",
+      "CTA": "Wejść do areny?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "Ekosystem FreeGeny",
+    "Title": "Rozwiązania dla każdego.",
+    "Subtitle": "Ponieważ doskonałość wymaga idealnej synergii między wszystkimi aktorami.",
+    "Parents": {
+      "Title": "Przestrzeń Rodziców",
+      "Desc": "Precyzyjne sterowanie sukcesem. Śledź postępy, wysyłaj emocjonalne wzmacniacze głosowe i zarządzaj nagrodami.",
+      "CTA": "Dowiedzieć się więcej?"
+    },
+    "Schools": {
+      "Title": "FreeGeny szkoły",
+      "Desc": "Całkowita transformacja cyfrowa. Zarządzaj swoimi klasami, nauczycielami i komunikuj się z rodzicami w czasie rzeczywistym.",
+      "CTA": "Dowiedzieć się więcej?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Emocjonalny wzmacniacz",
+    "MomVoice": "Nagrany głos mamy",
+    "Congratulation": "Gratulacje Jan!"
+  },
+  "Innovation": {
+    "Tag": "Innowacja",
+    "Title": "Wyjątkowe sterowanie.",
+    "Boost": {
+      "Title": "Emocjonalny wzmacniacz",
+      "Desc": "Zmotywuj swoje dziecko własnym głosem."
+    },
+    "AI": {
+      "Title": "Adaptacyjna ścieżka AI",
+      "Desc": "Każde kliknięcie readaptuje program."
+    }
+  },
+  "Footer": {
+    "Tag": "Dołącz do rewolucji edukacyjnej.",
+    "Title": "Przyszłość edukacji jest tutaj.",
+    "Subtitle": "Miliony rodziców, szkół i dzieci już ufają FreeGeny.",
+    "CTA": "Rozpocznij swoją podróż dziś",
+    "Links": {
+      "About": "O nas",
+      "Contact": "Kontakt",
+      "Privacy": "Prywatność",
+      "Terms": "Warunki"
+    }
+  },
+  "Dashboard": {
+    "Title": "Kokpit Rodzica",
+    "Subtitle": "Zarządzaj i śledź rozwój swoich małych geniuszy.",
+    "AddChild": "Dodaj dziecko",
+    "ChildCard": {
+      "Level": "Poziom",
+      "XP": "Całkowite XP",
+      "Progress": "Postęp",
+      "Interest": "Pasja",
+      "Status": "Status",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Tryb Ucznia",
+      "EmotionalBoost": {
+        "Title": "Emocjonalny wzmacniacz",
+        "Desc": "Zachęć {name} wiadomością głosową.",
+        "Record": "Nagrać"
+      }
+    },
+    "Alliance": {
+      "Title": "Rodzinny Sojusz",
+      "Online": "Online",
+      "CoParent": "Współrodzic",
+      "Message": "Wiadomość",
+      "Photo": "Zdjęcie"
+    },
+    "Printable": {
+      "Title": "Fabryka Materiałów do Druku",
+      "Desc": "Generuj spersonalizowane zeszyty do powtórki oparte na słabych punktach.",
+      "CTA": "Wygenerować dossier"
+    },
+    "Bridge": {
+      "Tag": "Most sugeruje",
+      "Validate": "Zatwierdzić",
+      "Ignore": "Ignorować"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Cześć, {name}!",
+    "ParentDashboard": "Panel Rodzica",
+    "Portals": {
+      "School": {
+        "Title": "Moja Szkoła",
+        "Desc": "Powtórz swoje lekcje w zabawny sposób.",
+        "CTA": "Wyrusz na przygodę"
+      },
+      "World": {
+        "Title": "Świat",
+        "Desc": "Odkryj Singapur, Oxford i podejmuj światowe wyzwania!",
+        "CTA": "Odkryć"
+      },
+      "Arena": {
+        "Title": "Arena",
+        "Desc": "Gry logiczne i magiczne zawody.",
+        "CTA": "Gotowy do gry?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Więc {name}, gotowy na nową przygodę? Nie zapomnij sprawdzić swojego {boost} wysłanego przez twoich rodziców!\"",
+      "BoostTag": "Głosowy boost"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Światowa Doskonałość",
+      "Family": "Rodzinna Drużyna",
+      "Genius": "Mały Geniusz"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Twoje dziecko nie ma już żadnych granic.",
+        "Items": [
+          "Matematyka z Singapuru",
+          "Cambridge (UK)",
+          "Model Fiński",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Edukacja to sport zespołowy.",
+        "Subtitle": "Zsynchronizuj swoje wysiłki dla jego sukcesu."
+      },
+      "Step3": {
+        "Title": "Tylko Cykl Podstawowy.",
+        "Subtitle": "Spersonalizowane wsparcie dla jego początków."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Cześć.",
+        "Tag": "Krok 1 z 3 — Twoja rola gwaranta",
+        "PhoneLabel": "Numer telefonu",
+        "Next": "Dalej"
+      },
+      "Step2": {
+        "Title": "Rodzinny Sojusz.",
+        "Tag": "Krok 2 z 3 — Zaproś małżonka",
+        "Desc": "Zsynchronizuj swoje wysiłki dla jego sukcesu.",
+        "EmailPlaceholder": "Email małżonka (Opcjonalne)",
+        "Next": "Następny krok"
+      },
+      "Step3": {
+        "Title": "Mały Geniusz.",
+        "Tag": "Krok końcowy: Jego ścieżka",
+        "ChildName": "Imię dziecka",
+        "Country": "Kraj",
+        "Level": "Poziom",
+        "Age": "Wiek",
+        "Region": "Województwo / Powiat",
+        "CTA": "Rozpocznij przygodę!"
+      }
+    }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Szukaj szkoły...",
+    "NoSchoolFound": "Nie znaleziono szkoły",
+    "TryAnotherSearch": "Zmodyfikuj filtry lub spróbuj innego wyszukiwania",
+    "SelectSchool": "Wybrana szkoła",
+    "All": "Wszystkie",
+    "Public": "Publiczna",
+    "Private": "Prywatna"
+  }
+}

@@ -30,6 +30,7 @@ export default function LoginClient({ locale }: { locale: string }) {
   const isFinnishSwedish = selectedLang === "sv-fi" || locale === "sv-fi" || locale.endsWith("-sv-fi");
   const isDutch = selectedLang === "nl" || locale === "nl" || locale.endsWith("-nl");
   const isPortuguese = selectedLang === "pt" || locale === "pt" || locale.endsWith("-pt");
+  const isPolish = selectedLang === "pl" || locale === "pl" || locale.endsWith("-pl");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,7 +63,9 @@ export default function LoginClient({ locale }: { locale: string }) {
                       ? "Onjuist e-mailadres of wachtwoord."
                       : isPortuguese
                         ? "E-mail ou palavra-passe incorretos."
-                        : isEnglish
+                        : isPolish
+                          ? "Nieprawidłowy e-mail lub hasło"
+                          : isEnglish
                       ? "Incorrect email or password."
                       : isArabic
                         ? "البريد الإلكتروني أو كلمة المرور غير صحيحة."
@@ -86,7 +89,9 @@ export default function LoginClient({ locale }: { locale: string }) {
                       ? "Welkom terug!"
                       : isPortuguese
                         ? "Bem-vindo de volta!"
-                        : isEnglish
+                        : isPolish
+                          ? "Witaj ponownie!"
+                          : isEnglish
                       ? "Welcome back!"
                       : isArabic
                         ? "أهلاً بك من جديد!"
@@ -140,6 +145,8 @@ export default function LoginClient({ locale }: { locale: string }) {
                    <>Het Ontwaken van <span className="text-orange-500">Geesten</span></>
                 ) : isPortuguese ? (
                    <>O Despertar de <span className="text-orange-500">Mentes</span></>
+                ) : isPolish ? (
+                   <>Budzenie <span className="text-orange-500">Umysłów</span></>
                 ) : isEnglish ? (
                    <>Awakening <span className="text-orange-500">Minds</span></>
                 ) : isArabic ? (
@@ -165,7 +172,9 @@ export default function LoginClient({ locale }: { locale: string }) {
                               ? "Elke stap naar excellentie vormt een buitengewoon bestemming."
                               : isPortuguese
                                 ? "Cada passo em direção à excelência molda um destino excepcional."
-                                : isEnglish
+                                : isPolish
+                                  ? "Każdy krok w stronę doskonałości kształtuje wyjątkowe przeznaczenie."
+                                  : isEnglish
                               ? "Every step towards excellence shapes an exceptional destiny."
                               : isArabic
                                 ? "كل خطوة نحو التميز ترسم قدرًا استثنائيًا."
@@ -193,15 +202,15 @@ export default function LoginClient({ locale }: { locale: string }) {
                  <div className="mb-8 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-3 pt-2">
                      <div className={isArabic ? "pr-2 text-right" : "pl-2 text-left"}>
                          <h1 className="text-2xl font-black text-slate-950 font-jakarta tracking-tight mb-1 uppercase">
-                             {isMaori ? "Nau mai" : isIrish ? "Fáilte" : isNorwegian ? "Velkommen" : isSwedish ? "Välkommen" : isDanish ? "Velkommen" : isFinnish || isFinnishSwedish ? "Tervetuloa" : isDutch ? "Welkom" : isPortuguese ? "Bem-vindo" : isEnglish ? "Welcome" : isArabic ? "مرحبًا" : "Bienvenue"}
+                             {isMaori ? "Nau mai" : isIrish ? "Fáilte" : isNorwegian ? "Velkommen" : isSwedish ? "Välkommen" : isDanish ? "Velkommen" : isFinnish || isFinnishSwedish ? "Tervetuloa" : isDutch ? "Welkom" : isPortuguese ? "Bem-vindo" : isPolish ? "Witaj" : isEnglish ? "Welcome" : isArabic ? "مرحبًا" : "Bienvenue"}
                          </h1>
                          <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.1em]">
-                             {isMaori ? "Pārongo Takiuru" : isIrish ? "D'Fhaisnéis Rochtana" : isNorwegian ? "Dine innloggingsopplysninger" : isSwedish ? "Dina inloggningsuppgifter" : isDanish ? "Dine adgangsoplysninger" : isFinnish || isFinnishSwedish ? "Kirjautumistietietosi" : isDutch ? "Uw inloggegevens" : isPortuguese ? "Suas credenciais" : isEnglish ? "Your Credentials" : isArabic ? "بيانات الاتصال" : "Vos identifiants de Connexion"}
+                             {isMaori ? "Pārongo Takiuru" : isIrish ? "D'Fhaisnéis Rochtana" : isNorwegian ? "Dine innloggingsopplysninger" : isSwedish ? "Dina inloggningsuppgifter" : isDanish ? "Dine adgangsoplysninger" : isFinnish || isFinnishSwedish ? "Kirjautumistietietosi" : isDutch ? "Uw inloggegevens" : isPortuguese ? "Suas credenciais" : isPolish ? "Twoje dane logowania" : isEnglish ? "Your Credentials" : isArabic ? "بيانات الاتصال" : "Vos identifiants de Connexion"}
                          </p>
                      </div>
                      <div className={isArabic ? "text-right pr-2 sm:pr-0 sm:text-left" : "text-left pl-2 sm:pl-0 sm:text-right"}>
                          <Link href="/auth/register" className="text-[11px] font-black text-orange-600 hover:underline uppercase tracking-wider block">
-                             {isMaori ? "Kāore he pūkete? Tīmata i te haerenga" : isIrish ? "Níl cuntas agat? Tosaigh an eachtra" : isNorwegian ? "Ingen konto? Start eventyret" : isSwedish ? "Inget konto? Börja äventyret" : isDanish ? "Ingen konto? Start eventyret" : isFinnish || isFinnishSwedish ? "Ei tiliä? Aloita seikkailu" : isDutch ? "Geen account? Start het avontuur" : isPortuguese ? "Não tem conta? Comece a aventura" : isEnglish ? "No account? Start the adventure" : isArabic ? "ليس لديك حساب؟ ابدأ المغامرة" : "Vous n'avez pas de compte ? Commencez l'aventure"}
+                             {isMaori ? "Kāore he pūkete? Tīmata i te haerenga" : isIrish ? "Níl cuntas agat? Tosaigh an eachtra" : isNorwegian ? "Ingen konto? Start eventyret" : isSwedish ? "Inget konto? Börja äventyret" : isDanish ? "Ingen konto? Start eventyret" : isFinnish || isFinnishSwedish ? "Ei tiliä? Aloita seikkailu" : isDutch ? "Geen account? Start het avontuur" : isPortuguese ? "Não tem conta? Comece a aventura" : isPolish ? "Nie masz konta? Rozpocznij przygodę" : isEnglish ? "No account? Start the adventure" : isArabic ? "ليس لديك حساب؟ ابدأ المغامرة" : "Vous n'avez pas de compte ? Commencez l'aventure"}
                          </Link>
                      </div>
                  </div>
@@ -227,10 +236,10 @@ export default function LoginClient({ locale }: { locale: string }) {
                          <div className="space-y-1.5">
                              <div className={`flex justify-between px-1 ${isArabic ? "flex-row-reverse" : ""}`}>
                                  <label className="block text-[11px] font-black uppercase tracking-wider text-slate-700">
-                                     {isMaori ? "Kupuhipa" : isIrish ? "Focal Faire" : isNorwegian ? "Passord" : isSwedish ? "Lösenord" : isDanish ? "Adgangskode" : isFinnish || isFinnishSwedish ? "Salasana" : isDutch ? "Wachtwoord" : isPortuguese ? "Palavra-passe" : isEnglish ? "Password" : isArabic ? "كلمة المرور" : "Mot de passe"}
+                                     {isMaori ? "Kupuhipa" : isIrish ? "Focal Faire" : isNorwegian ? "Passord" : isSwedish ? "Lösenord" : isDanish ? "Adgangskode" : isFinnish || isFinnishSwedish ? "Salasana" : isDutch ? "Wachtwoord" : isPortuguese ? "Palavra-passe" : isPolish ? "Hasło" : isEnglish ? "Password" : isArabic ? "كلمة المرور" : "Mot de passe"}
                                  </label>
                                  <Link href="/auth/forgot" className="text-[10px] font-bold text-orange-600 hover:underline uppercase tracking-wider">
-                                     {isMaori ? "Kua wareware?" : isIrish ? "Dearmad déanta?" : isNorwegian ? "Glemt?" : isSwedish ? "Glömt?" : isDanish ? "Glemt?" : isFinnish || isFinnishSwedish ? "Unohdut?" : isDutch ? "Wachtwoord vergeten?" : isPortuguese ? "Esqueceu a palavra-passe?" : isEnglish ? "Forgot?" : isArabic ? "نسيت كلمة المرور؟" : "Oublié ?"}
+                                     {isMaori ? "Kua wareware?" : isIrish ? "Dearmad déanta?" : isNorwegian ? "Glemt?" : isSwedish ? "Glömt?" : isDanish ? "Glemt?" : isFinnish || isFinnishSwedish ? "Unohdut?" : isDutch ? "Wachtwoord vergeten?" : isPortuguese ? "Esqueceu a palavra-passe?" : isPolish ? "Zapomniałeś?" : isEnglish ? "Forgot?" : isArabic ? "نسيت كلمة المرور؟" : "Oublié ?"}
                                  </Link>
                              </div>
                              <div className="relative">
@@ -258,7 +267,7 @@ export default function LoginClient({ locale }: { locale: string }) {
                          >
                              <img src="https://www.google.com/favicon.ico" className="w-4.5 h-4.5 group-hover:scale-110 transition" alt="G" />
                              <span className="text-[10px] font-black uppercase tracking-wider group-hover:text-orange-600">
-                                 {isMaori ? "Takiuru Google" : isIrish ? "Logáil isteach Google" : isNorwegian ? "Google Logg inn" : isSwedish ? "Google Logga in" : isDanish ? "Google Log ind" : isFinnish || isFinnishSwedish ? "Google Kirjaudu sisään" : isDutch ? "Google Inloggen" : isPortuguese ? "Entrar com Google" : isEnglish ? "Google Sign In" : isArabic ? "اتصال بجوجل" : "Connexion Google"}
+                                 {isMaori ? "Takiuru Google" : isIrish ? "Logáil isteach Google" : isNorwegian ? "Google Logg inn" : isSwedish ? "Google Logga in" : isDanish ? "Google Log ind" : isFinnish || isFinnishSwedish ? "Google Kirjaudu sisään" : isDutch ? "Google Inloggen" : isPortuguese ? "Entrar com Google" : isPolish ? "Zaloguj przez Google" : isEnglish ? "Google Sign In" : isArabic ? "اتصال بجوجل" : "Connexion Google"}
                              </span>
                          </button>
  
@@ -269,8 +278,8 @@ export default function LoginClient({ locale }: { locale: string }) {
                              className="w-full sm:w-auto px-8 py-4 bg-slate-950 text-white rounded-2xl font-black uppercase tracking-wider text-[11px] hover:bg-orange-600 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 group disabled:opacity-50 shrink-0"
                          >
                              {isSubmitting 
-                                 ? (isMaori ? "E hono ana..." : isIrish ? "Ag ceangal..." : isNorwegian ? "Kobler til..." : isSwedish ? "Ansluter..." : isDanish ? "Forbinder..." : isFinnish || isFinnishSwedish ? "Yhdistetään..." : isDutch ? "Verbinden..." : isPortuguese ? "A ligar..." : isEnglish ? "Connecting..." : isArabic ? "جاري الاتصال..." : "Accès...") 
-                                 : (isMaori ? "Takiuru" : isIrish ? "Logáil Isteach" : isNorwegian ? "Logg inn" : isSwedish ? "Logga in" : isDanish ? "Log ind" : isFinnish || isFinnishSwedish ? "Kirjaudu sisään" : isDutch ? "Inloggen" : isPortuguese ? "Entrar" : isEnglish ? "Sign In" : isArabic ? "تسجيل الدخول" : "Se connecter")}
+                                 ? (isMaori ? "E hono ana..." : isIrish ? "Ag ceangal..." : isNorwegian ? "Kobler til..." : isSwedish ? "Ansluter..." : isDanish ? "Forbinder..." : isFinnish || isFinnishSwedish ? "Yhdistetään..." : isDutch ? "Verbinden..." : isPortuguese ? "A ligar..." : isPolish ? "Łączenie..." : isEnglish ? "Connecting..." : isArabic ? "جاري الاتصال..." : "Accès...") 
+                                 : (isMaori ? "Takiuru" : isIrish ? "Logáil Isteach" : isNorwegian ? "Logg inn" : isSwedish ? "Logga in" : isDanish ? "Log ind" : isFinnish || isFinnishSwedish ? "Kirjaudu sisään" : isDutch ? "Inloggen" : isPortuguese ? "Entrar" : isPolish ? "Zaloguj się" : isEnglish ? "Sign In" : isArabic ? "تسجيل الدخول" : "Se connecter")}
                              <ArrowRight className={`w-4 h-4 group-hover:translate-x-1 transition-transform ${isArabic ? "rotate-180" : ""}`} />
                          </button>
                      </div>

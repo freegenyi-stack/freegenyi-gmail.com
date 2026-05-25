@@ -1,0 +1,208 @@
+{
+  "Hero": {
+    "title": "Åbn <orange>geniets porte</orange> for dit barn.",
+    "status": "Broen til ekspertise er åben",
+    "subtitle": "FreeGeny bygger en teknologisk bro mellem Forældre, Skoler og Børn for holistisk støtte mod ekspertise.",
+    "cta": "Start eventyret",
+    "approach": "Vores tilgang"
+  },
+  "Impact": {
+    "Geniuses": "Genier",
+    "Countries": "Lande",
+    "Schools": "Skoler",
+    "Languages": "Sprog",
+    "Courses": "Kurser & Øvelser"
+  },
+  "Nav": {
+    "About": "Om os",
+    "Approach": "Tilgang",
+    "Parents": "Forældre",
+    "Schools": "Skoler",
+    "NGOs": "NGO'er",
+    "Science": "Videnskab",
+    "Region": "Region",
+    "FreeExplore": "Fri udforskning"
+  },
+  "Auth": {
+    "Login": "Log ind",
+    "Register": "Deltag",
+    "Logout": "Log ud",
+    "Dashboard": "Dashboard",
+    "Agreement": "Ved at fortsætte accepterer du vores vilkår for brug og privatlivspolitik.",
+    "AlreadyHaveAccount": "Har du allerede en konto? Log ind",
+    "Placeholders": {
+      "FullName": "Mads Hansen",
+      "Username": "mads_hansen",
+      "Email": "mads@genie.dk"
+    }
+  },
+  "Portals": {
+    "Tag": "Udforsk portalerne",
+    "Title": "En total fordybelse.",
+    "Subtitle": "Tre forbundne verdener for grænseløs fremgang.",
+    "Local": {
+      "Title": "Lokal portal",
+      "Desc": "Mester den officielle læreplan. Dine skolefundamenter styrkes af kunstig intelligens.",
+      "CTA": "Opdag verden?"
+    },
+    "World": {
+      "Title": "Global portal",
+      "Desc": "Singapore-matematik og Oxford-engelsk for grænseløse ambitioner.",
+      "CTA": "Udforsk verden?"
+    },
+    "Magic": {
+      "Title": "Magisk arena",
+      "Desc": "Sjove udfordringer, der dynamisk tilpasser sig for at forankre enhver færdighed gennem leg.",
+      "CTA": "Gå ind i arenaen?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "FreeGeny-økosystemet",
+    "Title": "Løsninger for alle.",
+    "Subtitle": "Fordi ekspertise kræver perfekt synergi mellem alle aktører.",
+    "Parents": {
+      "Title": "Forældreområde",
+      "Desc": "Præcis vejledning til succes. Følg fremskridt, send følelsesmæssige stemme-boosts og administrer belønninger.",
+      "CTA": "Læs mere?"
+    },
+    "Schools": {
+      "Title": "FreeGeny Skoler",
+      "Desc": "Komplet digital transformation. Administrer dine klasser, lærere og kommuniker med forældre i realtid.",
+      "CTA": "Læs mere?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Følelsesmæssigt boost",
+    "MomVoice": "Mors stemme optaget",
+    "Congratulation": "Tillykke Emil!"
+  },
+  "Innovation": {
+    "Tag": "Innovation",
+    "Title": "Ekstraordinært lederskab.",
+    "Boost": {
+      "Title": "Følelsesmæssigt boost",
+      "Desc": "Motiver dit barn med din egen stemme."
+    },
+    "AI": {
+      "Title": "Adaptiv AI-sti",
+      "Desc": "Hvert klik tilpasser programmet."
+    }
+  },
+  "Footer": {
+    "Title": "Klar til at frigøre geniet?",
+    "CTA": "Tilmeld dig gratis"
+  },
+  "Dashboard": {
+    "Title": "Forældre-cockpit",
+    "Subtitle": "Administrer og følg dine små geniers fremskridt.",
+    "AddChild": "Tilføj et barn",
+    "ChildCard": {
+      "Level": "Klassetrin",
+      "XP": "Total XP",
+      "Progress": "Fremskridt",
+      "Interest": "Passion",
+      "Status": "Status",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Elevtilstand",
+      "EmotionalBoost": {
+        "Title": "Følelsesmæssigt boost",
+        "Desc": "Opmuntr {name} med en stemmebesked.",
+        "Record": "Optag"
+      }
+    },
+    "Alliance": {
+      "Title": "Forældrealliance",
+      "Online": "Online",
+      "CoParent": "Medforælder",
+      "Message": "Besked",
+      "Photo": "Foto"
+    },
+    "Printable": {
+      "Title": "Print-fabrik",
+      "Desc": "Generer personlige opgavebøger baseret på svage punkter.",
+      "CTA": "Generer fil"
+    },
+    "Bridge": {
+      "Tag": "Broen foreslår",
+      "Validate": "Godkend",
+      "Ignore": "Ignorer"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Hej, {name}!",
+    "ParentDashboard": "Forældre-dashboard",
+    "Portals": {
+      "School": {
+        "Title": "Min skole",
+        "Desc": "Repeter dine skolelektioner, mens du har det sjovt.",
+        "CTA": "Start eventyret"
+      },
+      "World": {
+        "Title": "Verden",
+        "Desc": "Udforsk Singapore, Oxford og tag imod globale udfordringer!",
+        "CTA": "Opdag"
+      },
+      "Arena": {
+        "Title": "Arenaen",
+        "Desc": "Logikspil og magiske konkurrencer.",
+        "CTA": "Klar til at spille?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Så {name}, klar til et nyt eventyr? Glem ikke at tjekke din {boost} sendt af dine forældre!\"",
+      "BoostTag": "Stemme-boost"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Global ekspertise",
+      "Family": "Familieteam",
+      "Genius": "Det lille geni"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Dit barn har ikke længere grænser.",
+        "Items": [
+          "Singapore-matematik",
+          "Cambridge (UK)",
+          "Finsk model",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Uddannelse er en holdsport.",
+        "Subtitle": "Synkroniser jeres indsats for deres succes."
+      },
+      "Step3": {
+        "Title": "Eksklusivt til folkeskolen.",
+        "Subtitle": "Skræddersyet støtte til deres start."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Hej.",
+        "Tag": "Trin 1 af 3 — Din rolle som garant",
+        "PhoneLabel": "Telefonnummer",
+        "Next": "Næste"
+      },
+      "Step2": {
+        "Title": "Familiealliance.",
+        "Tag": "Trin 2 af 3 — Inviter ægtefælle",
+        "Desc": "Synkroniser jeres indsats for deres succes.",
+        "EmailPlaceholder": "Ægtefælles e-mail (Valgfri)",
+        "Next": "Næste trin"
+      },
+      "Step3": {
+        "Title": "Det lille geni.",
+        "Tag": "Sidste trin: Deres rejse",
+        "ChildName": "Barnets fornavn",
+        "Country": "Land",
+        "Level": "Klassetrin",
+        "Age": "Alder",
+        "Region": "Stat / Provins",
+        "CTA": "Start eventyret!"
+      }
+    }
+  }
+}

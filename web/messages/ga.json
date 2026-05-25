@@ -1,0 +1,208 @@
+{
+  "Hero": {
+    "title": "Oscail <orange>doirse na buanna</orange> do do leanbh.",
+    "status": "Tá Droichead an Fheabhais ar oscailt",
+    "subtitle": "Tógann FreeGeny droichead teicneolaíochta idir Tuismitheoirí, Scoileanna agus Leanaí le haghaidh tacaíocht iomlánaíoch i dtreo feabhais.",
+    "cta": "Tosaigh an eachtra",
+    "approach": "Ár gcur chuige"
+  },
+  "Impact": {
+    "Geniuses": "Sár-éirimeacha",
+    "Countries": "Tíortha",
+    "Schools": "Scoileanna",
+    "Languages": "Teangacha",
+    "Courses": "Cúrsaí & Cleachtaí"
+  },
+  "Nav": {
+    "About": "Faoi",
+    "Approach": "Cur Chuige",
+    "Parents": "Tuismitheoirí",
+    "Schools": "Scoileanna",
+    "NGOs": "Eagraíochtaí Neamhrialtasacha",
+    "Science": "Eolaíocht",
+    "Region": "Contae",
+    "FreeExplore": "Taiscéalaíocht Saor in Aisce"
+  },
+  "Auth": {
+    "Login": "Logáil Isteach",
+    "Register": "Cláraigh",
+    "Logout": "Logáil Amach",
+    "Dashboard": "Painéal",
+    "Agreement": "Trí leanúint ar aghaidh, aontaíonn tú lenár dtéarmaí seirbhíse agus polasaí príobháideachais.",
+    "AlreadyHaveAccount": "An bhfuil cuntas agat cheana féin? Logáil Isteach",
+    "Placeholders": {
+      "FullName": "Aoife Kelly",
+      "Username": "aoife_k",
+      "Email": "aoife@eire.ie"
+    }
+  },
+  "Portals": {
+    "Tag": "Déan iniúchadh ar na Tairseacha",
+    "Title": "Tumoideachas iomlán.",
+    "Subtitle": "Trí shaol idirnasctha le haghaidh dul chun cinn gan teorainn.",
+    "Local": {
+      "Title": "Tairseach Áitiúil",
+      "Desc": "Máistreacht a fháil ar an gcuraclam oifigiúil. Do bhunús scoile neartaithe le AI.",
+      "CTA": "Faigh amach an saol?"
+    },
+    "World": {
+      "Title": "Tairseach Dhomhanda",
+      "Desc": "Matamaitic Shingeapór agus Béarla Oxford le haghaidh uaillmhian gan teorainn.",
+      "CTA": "Déan iniúchadh ar an domhan?"
+    },
+    "Magic": {
+      "Title": "Réimse Draíochta",
+      "Desc": "Dúshláin spraíúla in oiriúint go dinimiciúil chun gach scil a dhaingniú trí shúgradh.",
+      "CTA": "Isteach sa réimse?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "Éiceachóras FreeGeny",
+    "Title": "Réitigh do gach duine.",
+    "Subtitle": "Toisc go dteastaíonn sineirgíocht foirfe idir na gníomhaithe go léir chun feabhas a bhaint amach.",
+    "Parents": {
+      "Title": "Spás do Thuismitheoirí",
+      "Desc": "Treoir chruinn don rath. Rianaigh dul chun cinn, seol spreagadh gutha, agus bainistigh luach saothair.",
+      "CTA": "Faigh tuilleadh eolais?"
+    },
+    "Schools": {
+      "Title": "Scoileanna FreeGeny",
+      "Desc": "Claochlú digiteach iomlán. Bainistigh do ranganna, do mhúinteoirí, agus déan cumarsáid le tuismitheoirí i bhfíor-am.",
+      "CTA": "Faigh tuilleadh eolais?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Spreagadh Mothúchánach",
+    "MomVoice": "Guth na máthar taifeadta",
+    "Congratulation": "Comhghairdeas!"
+  },
+  "Innovation": {
+    "Tag": "Nuálaíocht",
+    "Title": "Ceannaireacht eisceachtúil.",
+    "Boost": {
+      "Title": "Spreagadh Mothúchánach",
+      "Desc": "Spreag do leanbh le do ghuth féin."
+    },
+    "AI": {
+      "Title": "Bealach Oiriúnaitheach AI",
+      "Desc": "Déanann gach cliceáil an clár a athigeartú."
+    }
+  },
+  "Footer": {
+    "Title": "Réidh leis an sár-éirimeach a scaoileadh?",
+    "CTA": "Cláraigh saor in aisce"
+  },
+  "Dashboard": {
+    "Title": "Painéal Tuismitheora",
+    "Subtitle": "Bainistigh agus rianaigh dul chun cinn do shár-éirimeacha beaga.",
+    "AddChild": "Cuir leanbh leis",
+    "ChildCard": {
+      "Level": "Leibhéal",
+      "XP": "Iomlán XP",
+      "Progress": "Dul chun cinn",
+      "Interest": "Páis",
+      "Status": "Stádas",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Mód Foghlaimeora",
+      "EmotionalBoost": {
+        "Title": "Spreagadh Mothúchánach",
+        "Desc": "Spreag {name} le teachtaireacht ghutha.",
+        "Record": "Taifead"
+      }
+    },
+    "Alliance": {
+      "Title": "Comhghuaillíocht Tuismitheoirí",
+      "Online": "Ar líne",
+      "CoParent": "Comhthuismitheoir",
+      "Message": "Teachtaireacht",
+      "Photo": "Grianghraf"
+    },
+    "Printable": {
+      "Title": "Monarcha Inphriontáilte",
+      "Desc": "Cruthaigh leabhair athbhreithnithe pearsantaithe bunaithe ar a laigí.",
+      "CTA": "Cruthaigh comhad"
+    },
+    "Bridge": {
+      "Tag": "Molann an Droichead",
+      "Validate": "Bailíochtaigh",
+      "Ignore": "Déan neamhaird"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Dia duit, {name}!",
+    "ParentDashboard": "Painéal Tuismitheora",
+    "Portals": {
+      "School": {
+        "Title": "Mo Scoil",
+        "Desc": "Déan athbhreithniú ar do cheachtanna ranga agus tú ag spraoi.",
+        "CTA": "Tosaigh an eachtra"
+      },
+      "World": {
+        "Title": "An Domhan",
+        "Desc": "Déan iniúchadh ar Shingeapór, Oxford agus tabhair faoi dhúshláin dhomhanda!",
+        "CTA": "Faigh amach"
+      },
+      "Arena": {
+        "Title": "An Réimse",
+        "Desc": "Cluichí loighce agus comórtais dhraíochta.",
+        "CTA": "Réidh le himirt?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Bhuel a {name}, réidh le haghaidh eachtra nua? Ná déan dearmad do {boost} seolta ag do thuismitheoirí a sheiceáil!\"",
+      "BoostTag": "Spreagadh Gutha"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Sármhaitheas Domhanda",
+      "Family": "Foireann Teaghlaigh",
+      "Genius": "An Sár-éirimeach Beag"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Níl aon teorainneacha ag do leanbh níos mó.",
+        "Items": [
+          "Matamaitic Shingeapór",
+          "Cambridge (RA)",
+          "Múnla na Fionlainne",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Spórt foirne is ea an t-oideachas.",
+        "Subtitle": "Sioncronaigh d'iarrachtaí dá rath."
+      },
+      "Step3": {
+        "Title": "Bunscoil Amháin.",
+        "Subtitle": "Tacaíocht saincheaptha dá dtús."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Dia duit.",
+        "Tag": "Céim 1 de 3 — Do ról mar ráthóir",
+        "PhoneLabel": "Uimhir theileafóin",
+        "Next": "Ar aghaidh"
+      },
+      "Step2": {
+        "Title": "Comhghuaillíocht Teaghlaigh.",
+        "Tag": "Céim 2 de 3 — Ag tabhairt cuireadh don chéile",
+        "Desc": "Sioncronaigh bhur n-iarrachtaí dá rath.",
+        "EmailPlaceholder": "Ríomhphost an chéile (Roghnach)",
+        "Next": "An Chéad Chéim Eile"
+      },
+      "Step3": {
+        "Title": "An Sár-éirimeach Beag.",
+        "Tag": "Céim dheireanach: A(h)aistear",
+        "ChildName": "Céadainm an linbh",
+        "Country": "Tír",
+        "Level": "Leibhéal",
+        "Age": "Aois",
+        "Region": "Contae",
+        "CTA": "Tosaigh an eachtra!"
+      }
+    }
+  }
+}

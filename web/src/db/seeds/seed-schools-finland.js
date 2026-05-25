@@ -174,7 +174,14 @@ async function main() {
 
   // 6. Clear existing FI schools
   console.log("🗑️ Clearing existing FI schools...");
-  await client.query("DELETE FROM schools WHERE country_code = 'FI'");
+  await client.query(`
+    DELETE FROM schools
+    WHERE district_id IN (
+      SELECT d.id FROM districts d
+      JOIN regions r ON d.region_id = r.id
+      WHERE r.country_code = 'FI'
+    )
+  `);
   console.log("✅ Existing FI schools cleared.");
 
   // 7. Seed FI primary schools
@@ -196,9 +203,9 @@ async function main() {
         const districtId = districtRes.rows[0].id;
         
         await client.query(
-          `INSERT INTO schools (code, name_local, name_fr, district_id, region_id, country_code, type, lat, lng) 
-           VALUES ($1, $2, $3, $4, (SELECT id FROM regions WHERE code = $5 AND country_code = 'FI'), 'FI', $6, $7, $8)`,
-          [school.code, school.name, school.name, districtId, school.regionCode, school.type, school.lat, school.lng]
+          `INSERT INTO schools (code, name_local, name_fr, district_id, type, lat, lng) 
+           VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+          [school.code, school.name, school.name, districtId, school.type, school.lat, school.lng]
         );
         insertedCount++;
       }
