@@ -45,6 +45,7 @@ const COUNTRIES = [
     { name: 'South Korea / 대한민국', code: 'KR', flag: '🇰🇷', dial: '+82' },
     { name: 'Japan / 日本', code: 'JP', flag: '🇯🇵', dial: '+81' },
     { name: 'Brazil / Brasil', code: 'BR', flag: '🇧🇷', dial: '+55' },
+    { name: 'Chile', code: 'CL', flag: '🇨🇱', dial: '+56' },
     { name: 'Argentina', code: 'AR', flag: '🇦🇷', dial: '+54' },
 ];
 
@@ -1672,7 +1673,7 @@ const dict = {
         titleSchoolStep1Orange: "Eliten",
         titleNgoStep1: "Oppvåkning av",
         titleNgoStep1Orange: "Eliten",
-        subStep1Parent: "Bli arkitekten bakom en ekstraordinær fremtid for dine barn.",
+        subStep1Parent: "Bli arkitekten bakom en ekstraordinær fremtid for dine børn.",
         subStep1School: "En fremtredende utdanningspartner for fremtidens elite.",
         subStep1Ngo: "Sammen bygger vi en bedre fremtid for barna.",
         leftTitle1: "Oppvåkning av",
@@ -2469,7 +2470,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [userType, setUserType] = useState("parent");
 
     // Initialize country based on active region
-    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || (isPortuguese ? COUNTRIES.find(c => c.code === "PT") : null) || (isSpanish ? COUNTRIES.find(c => c.code === "AR") : null) || (isPolish ? COUNTRIES.find(c => c.code === "PL") : null) || (isCzech ? COUNTRIES.find(c => c.code === "CZ") : null) || (isJapanese ? COUNTRIES.find(c => c.code === "JP") : null) || (regionCountry === "BR" ? COUNTRIES.find(c => c.code === "BR") : null) || (regionCountry === "SG" ? COUNTRIES.find(c => c.code === "SG") : null) || COUNTRIES[0];
+    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || (isPortuguese ? COUNTRIES.find(c => c.code === "PT") : null) || (isSpanish ? COUNTRIES.find(c => c.code === "AR") : null) || (isPolish ? COUNTRIES.find(c => c.code === "PL") : null) || (isCzech ? COUNTRIES.find(c => c.code === "CZ") : null) || (isJapanese ? COUNTRIES.find(c => c.code === "JP") : null) || (regionCountry === "BR" ? COUNTRIES.find(c => c.code === "BR") : null) || (regionCountry === "CL" ? COUNTRIES.find(c => c.code === "CL") : null) || (regionCountry === "SG" ? COUNTRIES.find(c => c.code === "SG") : null) || COUNTRIES[0];
     const [selectedCountry, setSelectedCountry] = useState(defaultCountryObj);
 
     const [phone, setPhone] = useState("");
@@ -2477,7 +2478,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [spouseFirstName, setSpouseFirstName] = useState("");
     const [spouseLastName, setSpouseLastName] = useState("");
     const [childName, setChildName] = useState("");
-    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : (isPortuguese ? "PT" : (isSpanish ? "AR" : (isPolish ? "PL" : (isCzech ? "CZ" : (isJapanese ? "JP" : (regionCountry === "BR" ? "BR" : (regionCountry === "SG" ? "SG" : "DZ")))))))))));
+    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : (isPortuguese ? "PT" : (isSpanish ? "AR" : (isPolish ? "PL" : (isCzech ? "CZ" : (isJapanese ? "JP" : (regionCountry === "BR" ? "BR" : (regionCountry === "CL" ? "CL" : (regionCountry === "SG" ? "SG" : "DZ"))))))))))));
     const [childLevel, setChildLevel] = useState("");
     const [childAge, setChildAge] = useState("");
     const [childRegion, setChildRegion] = useState("");
