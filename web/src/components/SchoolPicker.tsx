@@ -703,6 +703,8 @@ export default function SchoolPicker({
                             ? "Seleccione el Departamento y el Municipio para encontrar su escuela 🏫"
                             : country === "MX"
                               ? "Seleccione el Estado y el Municipio para encontrar su escuela 🏫"
+                              : country === "PE"
+                                ? "Seleccione el Departamento y la Provincia para encontrar su escuela 🏫"
                         : country === "AR"
                           ? "Seleccione Provincia y Departamento/Partido para encontrar su escuela 🏫"
                           : country === "PL"

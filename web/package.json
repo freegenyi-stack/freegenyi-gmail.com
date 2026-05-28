@@ -20,6 +20,7 @@
     "db:seed:cl": "node src/db/seeds/seed-schools-chile.js",
     "db:seed:co": "node src/db/seeds/seed-schools-colombia.js",
     "db:seed:mx": "node src/db/seeds/seed-schools-mexico.js",
+    "db:seed:pe": "node src/db/seeds/seed-schools-peru.js",
     "db:seed:sg": "node src/db/seeds/seed-schools-singapore.js",
     "db:seed:kr": "node src/db/seeds/seed-schools-korea.js",
     "db:seed:jp": "node src/db/seeds/seed-schools-japan.js",
