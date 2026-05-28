@@ -707,6 +707,8 @@ export default function SchoolPicker({
                                 ? "Seleccione el Departamento y la Provincia para encontrar su escuela 🏫"
                                 : country === "TW"
                                   ? "請選擇縣市和區/鎮/鄉以尋找您的學校 🏫"
+                                  : country === "RO"
+                                    ? "Selectați Județul și Localitatea pentru a găsi școala dumneavoastră 🏫"
                         : country === "AR"
                           ? "Seleccione Provincia y Departamento/Partido para encontrar su escuela 🏫"
                           : country === "PL"

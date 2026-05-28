@@ -53,6 +53,7 @@ export default auth((req) => {
     else if (country === "JP") locale = "ja";
     else if (country === "KR") locale = "ko";
     else if (country === "TW") locale = "zh";
+    else if (country === "RO") locale = "ro";
     
     return NextResponse.redirect(new URL(`/${country}-${locale}/`, req.url));
   }
