@@ -20,7 +20,8 @@
     "db:seed:sg": "node src/db/seeds/seed-schools-singapore.js",
     "db:seed:kr": "node src/db/seeds/seed-schools-korea.js",
     "db:seed:jp": "node src/db/seeds/seed-schools-japan.js",
-    "db:seed:br": "node src/db/seeds/seed-schools-brazil.js"
+    "db:seed:br": "node src/db/seeds/seed-schools-brazil.js",
+    "db:seed:ar": "node src/db/seeds/seed-schools-argentina.js"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.2.1",

@@ -43,6 +43,7 @@ export default auth((req) => {
     else if (country === "AU" || country === "US" || country === "GB") locale = "en";
     else if (country === "SG") locale = "en";
     else if (country === "AO" || country === "PT" || country === "BR") locale = "pt";
+    else if (country === "ES" || country === "MX" || country === "AR" || country === "CO" || country === "CL" || country === "PE") locale = "es";
     else if (country === "PL") locale = "pl";
     else if (country === "SE") locale = "sv";
     else if (country === "NO") locale = "no";

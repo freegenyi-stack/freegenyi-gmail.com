@@ -375,7 +375,7 @@ export default function SchoolPicker({
             >
               <span className="flex items-center gap-2 truncate">
                 <Navigation className={`w-3.5 h-3.5 shrink-0 ${regionCode ? 'text-orange-500' : 'text-slate-300'}`} />
-                <span className="truncate">{selectedDistrict ? getDistrictName(selectedDistrict) : (isAr ? "البلدية" : (country as string) === "SG" ? (isChinese ? "区域" : isMalay ? "Zon" : isTamil ? "மண்டலம்" : "Zone / DGP") : (country as string) === "NO" ? "Kommune" : (country as string) === "FI" ? "Kunta" : (country as string) === "NL" ? "Gemeente" : (country as string) === "PT" ? "Município" : (country as string) === "PL" ? "Powiat" : (country as string) === "KR" ? "관할조직 (구/군)" : (country as string) === "JP" ? "市区町村" : (country as string) === "CZ" ? "Okres" : isEnglish ? "District" : "Commune")}</span>
+                <span className="truncate">{selectedDistrict ? getDistrictName(selectedDistrict) : (isAr ? "البلدية" : (country as string) === "SG" ? (isChinese ? "区域" : isMalay ? "Zon" : isTamil ? "மண்டலம்" : "Zone / DGP") : (country as string) === "AR" ? "Departamento / Partido" : (country as string) === "NO" ? "Kommune" : (country as string) === "FI" ? "Kunta" : (country as string) === "NL" ? "Gemeente" : (country as string) === "PT" ? "Município" : (country as string) === "PL" ? "Powiat" : (country as string) === "KR" ? "관할조직 (구/군)" : (country as string) === "JP" ? "市区町村" : (country as string) === "CZ" ? "Okres" : isEnglish ? "District" : "Commune")}</span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
                 {districtCode && (
@@ -538,7 +538,7 @@ export default function SchoolPicker({
                 <span className="truncate">
                   {selectedRegion
                     ? getRegionName(selectedRegion)
-                    : (isAr ? "الولاية" : country === "SG" ? tSp("RegionSG") : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : country === "NO" ? "Fylke" : country === "FI" ? "Maakunta" : country === "NL" ? "Provincie" : country === "PT" ? "Distrito" : country === "BR" ? "Estado" : country === "PL" ? "Województwo" : country === "KR" ? "시/도" : country === "JP" ? "都道府県" : country === "CZ" ? "Kraj" : isEnglish ? "Region" : "Wilaya")}
+                    : (isAr ? "الولاية" : country === "SG" ? tSp("RegionSG") : country === "AR" ? "Provincia" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : country === "NO" ? "Fylke" : country === "FI" ? "Maakunta" : country === "NL" ? "Provincie" : country === "PT" ? "Distrito" : country === "BR" ? "Estado" : country === "PL" ? "Województwo" : country === "KR" ? "시/도" : country === "JP" ? "都道府県" : country === "CZ" ? "Kraj" : isEnglish ? "Region" : "Wilaya")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -592,7 +592,7 @@ export default function SchoolPicker({
                 <span className="truncate">
                   {selectedDistrict
                     ? getDistrictName(selectedDistrict)
-                    : (isAr ? "البلدية" : country === "SG" ? tSp("DistrictSG") : country === "IE" ? (isIrish ? "Údarás Áitiúil" : "Local Authority") : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : country === "US" ? "District" : country === "NZ" ? (isMaori ? "Takiwā" : "Territorial Authority") : country === "DK" ? "Kommune" : country === "SE" ? "Kommuner" : country === "NO" ? "Kommune" : country === "FI" ? "Kunta" : country === "NL" ? "Gemeente" : (country === "PT" || country === "BR") ? "Município" : country === "PL" ? "Powiat" : country === "KR" ? "관할조직 (구/군)" : country === "JP" ? "市区町村" : country === "CZ" ? "Okres" : isEnglish ? "District" : "Commune")}
+                    : (isAr ? "البلدية" : country === "SG" ? tSp("DistrictSG") : country === "AR" ? "Departamento / Partido" : country === "IE" ? (isIrish ? "Údarás Áitiúil" : "Local Authority") : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : country === "US" ? "District" : country === "NZ" ? (isMaori ? "Takiwā" : "Territorial Authority") : country === "DK" ? "Kommune" : country === "SE" ? "Kommuner" : country === "NO" ? "Kommune" : country === "FI" ? "Kunta" : country === "NL" ? "Gemeente" : (country === "PT" || country === "BR") ? "Município" : country === "PL" ? "Powiat" : country === "KR" ? "관할조직 (구/군)" : country === "JP" ? "市区町村" : country === "CZ" ? "Okres" : isEnglish ? "District" : "Commune")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -697,7 +697,9 @@ export default function SchoolPicker({
                       ? "Selecione Distrito e Município para encontrar a sua escola 🏫"
                       : country === "BR"
                         ? "Selecione Estado e Município para encontrar a sua escola 🏫"
-                        : country === "PL"
+                        : country === "AR"
+                          ? "Seleccione Provincia y Departamento/Partido para encontrar su escuela 🏫"
+                          : country === "PL"
                           ? "Wybierz Województwo i Powiat, aby znaleźć swoją szkołę 🏫"
                           : country === "KR"
                             ? "학교를 찾기 위해 시/도와 관할조직을 선택해주세요 🏫"

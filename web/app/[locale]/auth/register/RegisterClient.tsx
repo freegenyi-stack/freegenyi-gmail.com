@@ -16,7 +16,7 @@ import { REGIONS } from "@/constants/regions";
 import Lottie from "lottie-react";
 import chatCurieux from "@/../public/assets/animations/chat_curieux.json";
 import SchoolPicker from "@/components/SchoolPicker";
-import { registerDictZh, registerDictMs, registerDictTa, registerDictJa, registerDictKo } from "@/lib/registerDictExtras";
+import { registerDictZh, registerDictMs, registerDictTa, registerDictEs, registerDictJa, registerDictKo } from "@/lib/registerDictExtras";
 import { sgHeroImagePath } from "@/lib/sgGeoLabels";
 
 // Font import for the manual look
@@ -45,6 +45,7 @@ const COUNTRIES = [
     { name: 'South Korea / 대한민국', code: 'KR', flag: '🇰🇷', dial: '+82' },
     { name: 'Japan / 日本', code: 'JP', flag: '🇯🇵', dial: '+81' },
     { name: 'Brazil / Brasil', code: 'BR', flag: '🇧🇷', dial: '+55' },
+    { name: 'Argentina', code: 'AR', flag: '🇦🇷', dial: '+54' },
 ];
 
 const dict = {
@@ -281,6 +282,7 @@ const dict = {
         welcomeTitle: "Welcome to the Elite!"
     },
     zh: registerDictZh,
+    es: registerDictEs,
     ms: registerDictMs,
     ta: registerDictTa,
     ja: registerDictJa,
@@ -2398,6 +2400,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const isFinnishSwedish = locale === 'sv-fi' || locale.endsWith('-sv-fi') || selectedLang === 'sv-fi';
     const isDutch = regionCountry === 'NL' || locale === 'nl' || locale.endsWith('-nl') || selectedLang === 'nl';
     const isPortuguese = regionCountry === 'PT' || regionCountry === 'BR' || locale === 'pt' || locale.endsWith('-pt') || selectedLang === 'pt';
+    const isSpanish = regionCountry === 'AR' || regionCountry === 'ES' || regionCountry === 'MX' || regionCountry === 'CL' || regionCountry === 'CO' || regionCountry === 'PE' || locale === 'es' || locale.endsWith('-es') || selectedLang === 'es';
     const isPolish = regionCountry === 'PL' || locale === 'pl' || locale.endsWith('-pl') || selectedLang === 'pl';
     const isCzech = regionCountry === 'CZ' || locale === 'cs' || locale.endsWith('-cs') || selectedLang === 'cs';
     const isJapanese = regionCountry === 'JP' || locale === 'ja' || locale.endsWith('-ja') || selectedLang === 'ja';
@@ -2422,6 +2425,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
             ? "nl"
         : isPortuguese
             ? "pt"
+        : isSpanish
+            ? "es"
         : isPolish
             ? "pl"
         : isCzech
@@ -2464,7 +2469,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [userType, setUserType] = useState("parent");
 
     // Initialize country based on active region
-    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || (isPortuguese ? COUNTRIES.find(c => c.code === "PT") : null) || (isPolish ? COUNTRIES.find(c => c.code === "PL") : null) || (isCzech ? COUNTRIES.find(c => c.code === "CZ") : null) || (isJapanese ? COUNTRIES.find(c => c.code === "JP") : null) || (regionCountry === "BR" ? COUNTRIES.find(c => c.code === "BR") : null) || (regionCountry === "SG" ? COUNTRIES.find(c => c.code === "SG") : null) || COUNTRIES[0];
+    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || (isPortuguese ? COUNTRIES.find(c => c.code === "PT") : null) || (isSpanish ? COUNTRIES.find(c => c.code === "AR") : null) || (isPolish ? COUNTRIES.find(c => c.code === "PL") : null) || (isCzech ? COUNTRIES.find(c => c.code === "CZ") : null) || (isJapanese ? COUNTRIES.find(c => c.code === "JP") : null) || (regionCountry === "BR" ? COUNTRIES.find(c => c.code === "BR") : null) || (regionCountry === "SG" ? COUNTRIES.find(c => c.code === "SG") : null) || COUNTRIES[0];
     const [selectedCountry, setSelectedCountry] = useState(defaultCountryObj);
 
     const [phone, setPhone] = useState("");
@@ -2472,7 +2477,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [spouseFirstName, setSpouseFirstName] = useState("");
     const [spouseLastName, setSpouseLastName] = useState("");
     const [childName, setChildName] = useState("");
-    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : (isPortuguese ? "PT" : (isPolish ? "PL" : (isCzech ? "CZ" : (isJapanese ? "JP" : (regionCountry === "BR" ? "BR" : (regionCountry === "SG" ? "SG" : "DZ"))))))))));
+    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : (isPortuguese ? "PT" : (isSpanish ? "AR" : (isPolish ? "PL" : (isCzech ? "CZ" : (isJapanese ? "JP" : (regionCountry === "BR" ? "BR" : (regionCountry === "SG" ? "SG" : "DZ")))))))))));
     const [childLevel, setChildLevel] = useState("");
     const [childAge, setChildAge] = useState("");
     const [childRegion, setChildRegion] = useState("");
@@ -2556,6 +2561,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
         NL: ['Groep 1', 'Groep 2', 'Groep 3', 'Groep 4', 'Groep 5', 'Groep 6', 'Groep 7', 'Groep 8'],
         PT: ['1º ano', '2º ano', '3º ano', '4º ano', '5º ano', '6º ano'],
         BR: ['1º ano', '2º ano', '3º ano', '4º ano', '5º ano'],
+        AR: ['1° grado', '2° grado', '3° grado', '4° grado', '5° grado', '6° grado'],
         PL: ['Klasa 1', 'Klasa 2', 'Klasa 3', 'Klasa 4', 'Klasa 5', 'Klasa 6', 'Klasa 7', 'Klasa 8'],
         CZ: ['1. třída', '2. třída', '3. třída', '4. třída', '5. třída', '6. třída', '7. třída', '8. třída', '9. třída'],
         JP: ['小学1年', '小学2年', '小学3年', '小学4年', '小学5年', '小学6年'],
@@ -2702,6 +2708,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
             ? sgHeroImagePath(activeLang === "zh" || activeLang === "ms" || activeLang === "ta" ? activeLang : selectedLang || "en")
             : regionCountry === "JP"
               ? `/assets/img/regions/JP/${selectedLang || "ja"}/hero.png`
+              : regionCountry === "AR"
+                ? `/assets/img/regions/AR/${selectedLang || "es"}/hero.png`
               : `/assets/img/regions/${regionCountry.toLowerCase()}/${selectedLang}/hero.png`;
 
     return (
@@ -3627,6 +3635,13 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                 および{" "}
                                                 <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">プライバシーポリシー</Link>
                                                 に同意したものとみなされます。
+                                            </>
+                                        ) : activeLang === "es" ? (
+                                            <>
+                                                Al continuar, aceptas nuestros{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">términos</Link>{" "}
+                                                y nuestra{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">política de privacidad</Link>.
                                             </>
                                         ) : activeLang === "zh" ? (
                                             <>

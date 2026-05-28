@@ -1,0 +1,217 @@
+{
+  "Hero": {
+    "title": "Abre <orange>las puertas del genio</orange> a tu hijo.",
+    "status": "El Puente de la Excelencia está abierto",
+    "subtitle": "FreeGeny construye un puente tecnológico entre Padres, Escuelas y Niños para un acompañamiento integral hacia la excelencia.",
+    "cta": "Comenzar la aventura",
+    "approach": "Nuestro enfoque"
+  },
+  "Impact": {
+    "Geniuses": "Genios",
+    "Countries": "Países",
+    "Schools": "Escuelas",
+    "Languages": "Idiomas",
+    "Courses": "Cursos y ejercicios"
+  },
+  "Nav": {
+    "About": "Acerca de",
+    "Approach": "Enfoque",
+    "Parents": "Padres",
+    "Schools": "Escuelas",
+    "NGOs": "ONG",
+    "Science": "Ciencia",
+    "Region": "Región",
+    "FreeExplore": "Exploración libre"
+  },
+  "Auth": {
+    "Login": "Iniciar sesión",
+    "Register": "Unirse",
+    "Logout": "Cerrar sesión",
+    "Dashboard": "Panel",
+    "Agreement": "Al continuar, aceptas los términos de uso y la política de privacidad.",
+    "AlreadyHaveAccount": "¿Ya tienes una cuenta? Inicia sesión",
+    "Placeholders": {
+      "FullName": "Juan Pérez",
+      "Username": "juan_ar",
+      "Email": "juan@genio.ar"
+    }
+  },
+  "Portals": {
+    "Tag": "Explora los portales",
+    "Title": "Inmersión total.",
+    "Subtitle": "Tres universos conectados para una progresión sin límites.",
+    "Local": {
+      "Title": "Portal local",
+      "Desc": "Dominio del programa oficial. Tus bases escolares reforzadas por IA.",
+      "CTA": "¿Descubrir el universo?"
+    },
+    "World": {
+      "Title": "Portal mundial",
+      "Desc": "Matemática de Singapur e inglés de Oxford para una ambición sin fronteras.",
+      "CTA": "¿Explorar el mundo?"
+    },
+    "Magic": {
+      "Title": "Arena mágica",
+      "Desc": "Desafíos lúdicos ajustados dinámicamente para consolidar cada competencia.",
+      "CTA": "¿Entrar a la arena?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "Ecosistema FreeGeny",
+    "Title": "Soluciones para todos.",
+    "Subtitle": "Porque la excelencia requiere una sinergia perfecta entre todos los actores.",
+    "Parents": {
+      "Title": "Espacio para padres",
+      "Desc": "Gestión precisa del éxito: sigue el progreso, envía refuerzos emocionales por voz y administra recompensas.",
+      "CTA": "¿Saber más?"
+    },
+    "Schools": {
+      "Title": "FreeGeny escuelas",
+      "Desc": "Transformación digital completa. Gestiona clases, docentes y comunica con familias en tiempo real.",
+      "CTA": "¿Saber más?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Refuerzo emocional",
+    "MomVoice": "Mensaje de voz de mamá",
+    "Congratulation": "¡Felicitaciones Amine!"
+  },
+  "Innovation": {
+    "Tag": "Innovación",
+    "Title": "Dirección excepcional.",
+    "Boost": {
+      "Title": "Refuerzo emocional",
+      "Desc": "Motiva a tu hijo con tu propia voz."
+    },
+    "AI": {
+      "Title": "Ruta IA adaptativa",
+      "Desc": "Cada clic reajusta el programa."
+    }
+  },
+  "Footer": {
+    "Title": "¿Listo para liberar el genio?",
+    "CTA": "Registrarse gratis"
+  },
+  "Dashboard": {
+    "Title": "Cabina de padres",
+    "Subtitle": "Gestiona y sigue el progreso de tus pequeños genios.",
+    "AddChild": "Agregar niño",
+    "ChildCard": {
+      "Level": "Nivel",
+      "XP": "XP total",
+      "Progress": "Progreso",
+      "Interest": "Pasión",
+      "Status": "Estado",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Modo aprendiz",
+      "EmotionalBoost": {
+        "Title": "Refuerzo emocional",
+        "Desc": "Anima a {name} con un mensaje de voz.",
+        "Record": "Grabar"
+      }
+    },
+    "Alliance": {
+      "Title": "Alianza familiar",
+      "Online": "En línea",
+      "CoParent": "Copadre",
+      "Message": "Mensaje",
+      "Photo": "Foto"
+    },
+    "Printable": {
+      "Title": "Fábrica de imprimibles",
+      "Desc": "Genera cuadernos personalizados según sus debilidades.",
+      "CTA": "Generar archivo"
+    },
+    "Bridge": {
+      "Tag": "El puente sugiere",
+      "Validate": "Validar",
+      "Ignore": "Ignorar"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "¡Hola, {name}!",
+    "ParentDashboard": "Panel de padres",
+    "Portals": {
+      "School": {
+        "Title": "Mi escuela",
+        "Desc": "Repasa tus lecciones jugando.",
+        "CTA": "Comenzar aventura"
+      },
+      "World": {
+        "Title": "Mundo",
+        "Desc": "¡Descubre Singapur, Oxford y acepta retos globales!",
+        "CTA": "Descubrir"
+      },
+      "Arena": {
+        "Title": "Arena",
+        "Desc": "Juegos de lógica y desafíos mágicos.",
+        "CTA": "¿Listo para jugar?"
+      }
+    },
+    "Mascot": {
+      "Message": "“Entonces {name}, ¿listo para una nueva aventura? ¡No olvides revisar tu {boost} enviado por tus padres!”",
+      "BoostTag": "Refuerzo de voz"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Excelencia mundial",
+      "Family": "Equipo familiar",
+      "Genius": "Pequeño genio"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Tu hijo ya no tiene fronteras.",
+        "Items": [
+          "Matemática de Singapur",
+          "Cambridge (Reino Unido)",
+          "Modelo finlandés",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "La educación es un deporte en equipo.",
+        "Subtitle": "Sincronicen sus esfuerzos para su éxito."
+      },
+      "Step3": {
+        "Title": "Solo primaria.",
+        "Subtitle": "Acompañamiento personalizado para su comienzo."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Hola.",
+        "Tag": "Paso 1 de 3 — Tu rol como tutor",
+        "PhoneLabel": "Número de teléfono",
+        "Next": "Siguiente"
+      },
+      "Step2": {
+        "Title": "Alianza familiar.",
+        "Tag": "Paso 2 de 3 — Invitar al cónyuge",
+        "Desc": "Sincronicen sus esfuerzos para su éxito.",
+        "EmailPlaceholder": "Correo del cónyuge (Opcional)",
+        "Next": "Siguiente paso"
+      },
+      "Step3": {
+        "Title": "Pequeño genio.",
+        "Tag": "Paso final: su trayectoria",
+        "ChildName": "Nombre del niño",
+        "Country": "País",
+        "Level": "Nivel",
+        "Age": "Edad",
+        "Region": "Provincia / Departamento",
+        "CTA": "¡Comenzar la aventura!"
+      }
+    }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Buscar escuela...",
+    "NoSchoolFound": "No se encontró ninguna escuela",
+    "TryAnotherSearch": "Modifica los filtros o prueba otra búsqueda",
+    "SelectSchool": "Escuela seleccionada",
+    "All": "Todas",
+    "Public": "Públicas",
+    "Private": "Privadas"
+  }
+}
