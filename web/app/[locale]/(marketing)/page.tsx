@@ -157,7 +157,18 @@ export default function HomePage() {
                     <div className="w-12 h-1 bg-orange-500 mt-6 rounded-full opacity-50"></div>
                   </div>
                 </motion.div>
-                <Image src={variant.heroImage} alt="FreeGeny Spirit" width={600} height={600} priority={true} className="w-full max-w-xl mx-auto rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.15)] border-8 border-white ring-1 ring-slate-100 object-cover aspect-square" />
+                <Image
+                  src={variant.heroImage}
+                  alt="FreeGeny Spirit"
+                  width={600}
+                  height={600}
+                  priority={true}
+                  className="w-full max-w-xl mx-auto rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.15)] border-8 border-white ring-1 ring-slate-100 object-cover aspect-square"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "/assets/img/hero_elite.png";
+                  }}
+                />
               </motion.div>
             </div>
           </div>

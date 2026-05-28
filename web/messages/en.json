@@ -204,5 +204,17 @@
         "CTA": "Start the adventure!"
       }
     }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Search for a school...",
+    "NoSchoolFound": "No school found",
+    "TryAnotherSearch": "Modify your filters or try another search",
+    "SelectSchool": "Selected School",
+    "All": "All",
+    "Public": "Public",
+    "Private": "Private",
+    "RegionSG": "Region (Zone)",
+    "DistrictSG": "Zone / DGP",
+    "PromptSelect": "Please select the Region and Zone to find your school 🏫"
   }
 }

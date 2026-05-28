@@ -66,8 +66,23 @@ async function main() {
     const city = school.PLAATSNAAM;
 
     if (provinceName && municipalityName) {
-      // Create province code from name (first 3 letters uppercase)
-      const provinceCode = provinceName.substring(0, 3).toUpperCase();
+      // Map provinces to standard unique 2-letter codes (avoiding collision like NOO for Noord-Brabant/Holland)
+      const provinceCodes = {
+        'Drenthe': 'DR',
+        'Flevoland': 'FL',
+        'Friesland': 'FR',
+        'Fryslân': 'FR',
+        'Gelderland': 'GE',
+        'Groningen': 'GR',
+        'Limburg': 'LI',
+        'Noord-Brabant': 'NB',
+        'Noord-Holland': 'NH',
+        'Overijssel': 'OV',
+        'Utrecht': 'UT',
+        'Zeeland': 'ZE',
+        'Zuid-Holland': 'ZH'
+      };
+      const provinceCode = provinceCodes[provinceName] || provinceName.substring(0, 3).toUpperCase();
       provincesMap.set(provinceName, {
         code: provinceCode,
         nameLocal: provinceName,
@@ -112,7 +127,7 @@ async function main() {
   // Insert provinces with ON CONFLICT DO NOTHING
   for (const province of provincesArray) {
     await client.query(
-      "INSERT INTO regions (code, name_local, name_fr, country_code) VALUES ($1, $2, $3, 'NL') ON CONFLICT (country_code, code) DO NOTHING",
+      "INSERT INTO regions (code, name_local, name_fr, country_code) VALUES ($1, $2, $3, 'NL')",
       [province.code, province.nameLocal, province.nameFr]
     );
   }
@@ -147,7 +162,7 @@ async function main() {
 
     for (const mv of municipalityValues) {
       await client.query(
-        "INSERT INTO districts (code, name_local, name_fr, region_id) VALUES ($1, $2, $3, $4) ON CONFLICT (code, region_id) DO NOTHING",
+        "INSERT INTO districts (code, name_local, name_fr, region_id) VALUES ($1, $2, $3, $4)",
         mv
       );
     }

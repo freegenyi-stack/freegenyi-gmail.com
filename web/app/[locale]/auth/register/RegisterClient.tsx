@@ -16,6 +16,8 @@ import { REGIONS } from "@/constants/regions";
 import Lottie from "lottie-react";
 import chatCurieux from "@/../public/assets/animations/chat_curieux.json";
 import SchoolPicker from "@/components/SchoolPicker";
+import { registerDictZh, registerDictMs, registerDictTa, registerDictJa, registerDictKo } from "@/lib/registerDictExtras";
+import { sgHeroImagePath } from "@/lib/sgGeoLabels";
 
 // Font import for the manual look
 const handwrittenFont = `
@@ -38,6 +40,11 @@ const COUNTRIES = [
     { name: 'Netherlands / Nederland', code: 'NL', flag: '🇳🇱', dial: '+31' },
     { name: 'Portugal', code: 'PT', flag: '🇵🇹', dial: '+351' },
     { name: 'Poland / Polska', code: 'PL', flag: '🇵🇱', dial: '+48' },
+    { name: 'Czech Republic / Česká republika', code: 'CZ', flag: '🇨🇿', dial: '+420' },
+    { name: 'Singapore / 新加坡', code: 'SG', flag: '🇸🇬', dial: '+65' },
+    { name: 'South Korea / 대한민국', code: 'KR', flag: '🇰🇷', dial: '+82' },
+    { name: 'Japan / 日本', code: 'JP', flag: '🇯🇵', dial: '+81' },
+    { name: 'Brazil / Brasil', code: 'BR', flag: '🇧🇷', dial: '+55' },
 ];
 
 const dict = {
@@ -273,6 +280,11 @@ const dict = {
         errCaptchaIncorrect: "Incorrect security code",
         welcomeTitle: "Welcome to the Elite!"
     },
+    zh: registerDictZh,
+    ms: registerDictMs,
+    ta: registerDictTa,
+    ja: registerDictJa,
+    ko: registerDictKo,
     fr: {
         vosAcces: "Vos Accès",
         lAlliance: "L'Alliance",
@@ -2257,6 +2269,113 @@ const dict = {
         errPasswordsDoNotMatch: "Hasła nie pasują",
         errCaptchaIncorrect: "Nieprawidłowy kod bezpieczeństwa",
         welcomeTitle: "Witaj w Elicie!"
+    },
+    cs: {
+        vosAcces: "Přístupové údaje",
+        lAlliance: "Vzdělávací partner",
+        sonProfil: "Profil dítěte",
+        stepText: "Obrazovka {step} ze 3",
+        chooseRole: "Vyberte roli",
+        parentTab: "Rodiče",
+        schoolTab: "Škola",
+        ngoTab: "Organizace",
+        instantGoogle: "Rychlé přihlášení přes Google",
+        orEmail: "Nebo ručně e-mailem",
+        fullNameParent: "Jméno a příjmení",
+        fullNameSchool: "Název instituce",
+        fullNameNgo: "Název organizace",
+        fullNamePlaceholderParent: "Např: Jan Novák",
+        fullNamePlaceholderSchool: "Např: Základní škola Praha 1",
+        fullNamePlaceholderNgo: "Např: Český červený kříž",
+        username: "Uživatelské jméno",
+        usernamePlaceholder: "jan_novak",
+        email: "E-mail",
+        emailPlaceholder: "jan@gmail.com",
+        phone: "Telefon",
+        phonePlaceholder: "600 123 456",
+        password: "Heslo",
+        passwordPlaceholder: "••••••••",
+        confirmPassword: "Potvrďte heslo",
+        confirmPasswordPlaceholder: "••••••••",
+        matchPerfect: "Perfektní shoda",
+        matchError: "Hesla se neshodují",
+        eightChars: "8 znaků",
+        uppercase: "Velké písmeno",
+        number: "Číslice",
+        specialChar: "Speciální znak",
+        next: "Další",
+        previous: "Zpět",
+        titleParentStep1: "Probuzení",
+        titleParentStep1Orange: "Elity",
+        titleSchoolStep1: "Probuzení",
+        titleSchoolStep1Orange: "Elity",
+        titleNgoStep1: "Probuzení",
+        titleNgoStep1Orange: "Elity",
+        subStep1Parent: "Buďte architektem výjimečného osudu svých dětí.",
+        subStep1School: "Výjimečný vzdělávací partner pro elitu budoucnosti.",
+        subStep1Ngo: "Společně budujeme lepší budoucnost pro naše děti.",
+        leftTitle1: "Probuzení",
+        leftTitle1Orange: "Elity",
+        leftSub1: "Buďte architektem výjimečného osudu svých dětí.",
+        leftTitle2: "Harmonie",
+        leftTitle2Orange: "Partneři",
+        leftSub2: "Sladťte vztah pro společný start vašich dětí.",
+        leftTitle3: "Vzestup",
+        leftTitle3Orange: "Génius",
+        leftSub3: "Osvětlete jejich cestu k dokonalosti.",
+        allyTitle: "Váš vzdělávací partner",
+        allyDesc: "Vzdělávání je týmová práce. Pozvěte osobu, která vás podporuje (manžel/ka, starší dítě, strýc...), abyste koordinovali své úsilí.",
+        allyNamePlaceholder: "Např: Jan nebo Anna",
+        allyEmailPlaceholder: "E-mail partnera (volitelné)",
+        schoolIdentityTitle: "Identita instituce",
+        schoolIdentityDesc: "Připravte oficiální informace o vaší základní škole pro potvrzení našeho vzdělávacího partnerství.",
+        privateSchool: "Soukromá škola",
+        publicSchool: "Veřejná škola",
+        schoolAddressPlaceholder: "Úplná adresa sídla",
+        schoolManagerPlaceholder: "Příjmení odpovědného/ředitele",
+        ngoTitle: "Solidární závazek",
+        ngoDesc: "Určete oblast své humanitární činnosti pro ideální harmonii.",
+        ngoDomainPlaceholder: "Oblast činnosti",
+        ngoDomainEducation: "Vzdělávání a podpora",
+        ngoDomainSocial: "Sociální integrace",
+        ngoDomainCulture: "Kultura a povědomí",
+        ngoDomainHumanitarian: "Komplexní humanitární činnost",
+        ngoAddressPlaceholder: "Adresa společenského sídla",
+        ngoManagerPlaceholder: "Odpovědný za organizaci",
+        childFirstName: "Jméno dítěte",
+        childFirstNamePlaceholder: "Např: Anna nebo Jan",
+        childAge: "Věk",
+        childAgePlaceholder: "Např: 8",
+        childLevel: "Úroveň",
+        childSchool: "Škola / Instituce",
+        childSchoolPlaceholder: "Hledat školu...",
+        securityCheck: "Bezpečnostní ověření",
+        securityCheckDesc: "Ochranný systém proti botům",
+        securityCodePlaceholder: "Zadejte kód",
+        finalizeButton: "Dokončit registraci",
+        registerSchoolButton: "Registrovat instituci",
+        registerNgoButton: "Registrovat organizaci",
+        termsText: "Pokračováním souhlasíte s našimi podmínkami a zásadami ochrany osobních údajů.",
+        alreadyHaveAccount: "Již máte účet?",
+        loginLink: "Přihlásit se",
+        digitalPresence: "Digitální přítomnost",
+        digitalPresencePlaceholderSchool: "Webové stránky nebo Facebook (např: fb.com/skola...)",
+        schoolDimension: "Velikost instituce",
+        classesCountPlaceholder: "Počet základních tříd",
+        instCheck: "Institucionální ověření",
+        instCheckDesc: "Potvrďte oficiální status školy",
+        beneficiariesCount: "Počet příjemců",
+        beneficiariesPlaceholder: "Počet žáků",
+        orgCheck: "Ověření organizace",
+        orgCheckDesc: "Potvrďte oficiální status organizace",
+        errNameEmpty: "Zadejte své jméno a příjmení",
+        errUsernameEmpty: "Vyberte uživatelské jméno",
+        errUsernameTaken: "Uživatelské jméno je již obsazeno",
+        errEmailEmpty: "Zadejte svou e-mailovou adresu",
+        errPasswordEmpty: "Zadejte heslo",
+        errPasswordsDoNotMatch: "Hesla se neshodují",
+        errCaptchaIncorrect: "Nesprávný bezpečnostní kód",
+        welcomeTitle: "Vítejte v Elitě!"
     }
 };
 
@@ -2267,6 +2386,9 @@ export default function RegisterClient({ locale }: { locale: string }) {
 
     const isArabic = locale.endsWith("-ar") || locale === "ar" || selectedLang === "ar";
     const isEnglish = locale.endsWith("-en") || locale === "en" || selectedLang === "en" || ['AU', 'GB', 'US'].includes(regionCountry);
+    const isChinese = locale.endsWith("-zh") || locale === "zh" || selectedLang === "zh";
+    const isMalay = locale.endsWith("-ms") || locale === "ms" || selectedLang === "ms";
+    const isTamil = locale.endsWith("-ta") || locale === "ta" || selectedLang === "ta";
     const isCanada = regionCountry === 'CA';
     const isIreland = regionCountry === 'IE';
     const isDanish = regionCountry === 'DK' || locale === 'da' || locale.endsWith('-da') || selectedLang === 'da';
@@ -2275,11 +2397,23 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const isFinnish = regionCountry === 'FI' || locale === 'fi' || locale.endsWith('-fi') || selectedLang === 'fi';
     const isFinnishSwedish = locale === 'sv-fi' || locale.endsWith('-sv-fi') || selectedLang === 'sv-fi';
     const isDutch = regionCountry === 'NL' || locale === 'nl' || locale.endsWith('-nl') || selectedLang === 'nl';
-    const isPortuguese = regionCountry === 'PT' || locale === 'pt' || locale.endsWith('-pt') || selectedLang === 'pt';
+    const isPortuguese = regionCountry === 'PT' || regionCountry === 'BR' || locale === 'pt' || locale.endsWith('-pt') || selectedLang === 'pt';
     const isPolish = regionCountry === 'PL' || locale === 'pl' || locale.endsWith('-pl') || selectedLang === 'pl';
+    const isCzech = regionCountry === 'CZ' || locale === 'cs' || locale.endsWith('-cs') || selectedLang === 'cs';
+    const isJapanese = regionCountry === 'JP' || locale === 'ja' || locale.endsWith('-ja') || selectedLang === 'ja';
     // Determine which dictionary to use, with country-specific variants taking priority
     const activeLang: keyof typeof dict = isArabic
         ? "ar"
+        : isChinese
+            ? "zh"
+        : isMalay
+            ? "ms"
+        : isTamil
+            ? "ta"
+        : isJapanese
+            ? "ja"
+        : selectedLang === "ko" || locale.endsWith("-ko") || regionCountry === "KR"
+            ? "ko"
         : isFinnishSwedish
             ? "sv-fi"
         : isFinnish
@@ -2290,6 +2424,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
             ? "pt"
         : isPolish
             ? "pl"
+        : isCzech
+            ? "cs"
         : isSwedish
             ? "sv"
         : isNorwegian
@@ -2328,7 +2464,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [userType, setUserType] = useState("parent");
 
     // Initialize country based on active region
-    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || (isPortuguese ? COUNTRIES.find(c => c.code === "PT") : null) || (isPolish ? COUNTRIES.find(c => c.code === "PL") : null) || COUNTRIES[0];
+    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || (isPortuguese ? COUNTRIES.find(c => c.code === "PT") : null) || (isPolish ? COUNTRIES.find(c => c.code === "PL") : null) || (isCzech ? COUNTRIES.find(c => c.code === "CZ") : null) || (isJapanese ? COUNTRIES.find(c => c.code === "JP") : null) || (regionCountry === "BR" ? COUNTRIES.find(c => c.code === "BR") : null) || (regionCountry === "SG" ? COUNTRIES.find(c => c.code === "SG") : null) || COUNTRIES[0];
     const [selectedCountry, setSelectedCountry] = useState(defaultCountryObj);
 
     const [phone, setPhone] = useState("");
@@ -2336,11 +2472,25 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [spouseFirstName, setSpouseFirstName] = useState("");
     const [spouseLastName, setSpouseLastName] = useState("");
     const [childName, setChildName] = useState("");
-    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : (isPortuguese ? "PT" : (isPolish ? "PL" : "DZ"))))));
+    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : (isPortuguese ? "PT" : (isPolish ? "PL" : (isCzech ? "CZ" : (isJapanese ? "JP" : (regionCountry === "BR" ? "BR" : (regionCountry === "SG" ? "SG" : "DZ"))))))))));
     const [childLevel, setChildLevel] = useState("");
     const [childAge, setChildAge] = useState("");
     const [childRegion, setChildRegion] = useState("");
     const [childSchool, setChildSchool] = useState("");
+
+    // ── État dédié pour le formulaire École ─────────────────────────────────
+    const [institutionType, setInstitutionType] = useState("");     // "Privée" | "Publique"
+    const [institutionAddress, setInstitutionAddress] = useState(""); // Adresse de l'établissement
+    const [institutionManager, setInstitutionManager] = useState(""); // Directeur / Responsable
+    const [institutionWebsite, setInstitutionWebsite] = useState(""); // Site web / réseaux sociaux
+    const [classesCount, setClassesCount] = useState("");            // Nombre de classes
+
+    // ── État dédié pour le formulaire ONG ───────────────────────────────────
+    const [ngoDomain, setNgoDomain] = useState("");           // Domaine d'activité
+    const [ngoAddress, setNgoAddress] = useState("");         // Adresse du siège
+    const [ngoManager, setNgoManager] = useState("");         // Responsable
+    const [ngoWebsite, setNgoWebsite] = useState("");         // Site web / réseaux sociaux
+    const [beneficiariesCount, setBeneficiariesCount] = useState(""); // Nb bénéficiaires
     
     // SchoolPicker State
     const [selectedSchoolObj, setSelectedSchoolObj] = useState<{ id: number; name: string } | null>(null);
@@ -2396,6 +2546,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
         FR: ['CP', 'CE1', 'CE2', 'CM1', 'CM2'],
         GB: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6'],
         AU: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
+        SG: ['Primary 1', 'Primary 2', 'Primary 3', 'Primary 4', 'Primary 5', 'Primary 6'],
         US: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
         CA: ['Maternelle / Kindergarten', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
         DK: ['Børnehaveklasse (0. kl.)', '1. klasse', '2. klasse', '3. klasse', '4. klasse', '5. klasse', '6. klasse'],
@@ -2404,7 +2555,10 @@ export default function RegisterClient({ locale }: { locale: string }) {
         FI: ['Luokka 1', 'Luokka 2', 'Luokka 3', 'Luokka 4', 'Luokka 5', 'Luokka 6'],
         NL: ['Groep 1', 'Groep 2', 'Groep 3', 'Groep 4', 'Groep 5', 'Groep 6', 'Groep 7', 'Groep 8'],
         PT: ['1º ano', '2º ano', '3º ano', '4º ano', '5º ano', '6º ano'],
+        BR: ['1º ano', '2º ano', '3º ano', '4º ano', '5º ano'],
         PL: ['Klasa 1', 'Klasa 2', 'Klasa 3', 'Klasa 4', 'Klasa 5', 'Klasa 6', 'Klasa 7', 'Klasa 8'],
+        CZ: ['1. třída', '2. třída', '3. třída', '4. třída', '5. třída', '6. třída', '7. třída', '8. třída', '9. třída'],
+        JP: ['小学1年', '小学2年', '小学3年', '小学4年', '小学5年', '小学6年'],
         INT: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
     };
     const currentLevels = levels[childCountry] || levels["INT"];
@@ -2484,25 +2638,41 @@ export default function RegisterClient({ locale }: { locale: string }) {
         }
         setIsSubmitting(true);
         const formData = new FormData(e.currentTarget);
-        formData.append("parent_role", role);
+
+        // ── Champs communs ────────────────────────────────────────────────────
         formData.append("fullName", fullName);
         formData.append("username", username);
         formData.append("email", email);
         formData.append("user_type", userType);
         formData.append("password", password);
         formData.append("confirmPassword", confirmPassword);
+        formData.append("phone", selectedCountry.dial + phone);
+
+        // ── Champs Parent ────────────────────────────────────────────────────
+        formData.append("spouse_first_name", spouseFirstName);
         formData.append("spouse_email", spouseEmail);
         formData.append("child_name", childName);
         formData.append("child_country", childCountry);
         formData.append("child_level", childLevel || currentLevels[0]);
         formData.append("child_age", childAge);
-
+        formData.append("child_region", childRegion);
         const finalSchoolName = selectedSchoolObj ? selectedSchoolObj.name : childSchool;
         formData.append("child_school", finalSchoolName);
         formData.append("child_school_id", selectedSchoolObj ? selectedSchoolObj.id.toString() : "");
 
-        formData.append("child_region", childRegion);
-        formData.append("phone", selectedCountry.dial + phone);
+        // ── Champs École ─────────────────────────────────────────────────────
+        formData.append("institution_type", institutionType);
+        formData.append("institution_address", institutionAddress);
+        formData.append("institution_manager", institutionManager);
+        formData.append("institution_website", institutionWebsite);
+        formData.append("classes_count", classesCount);
+
+        // ── Champs ONG ───────────────────────────────────────────────────────
+        formData.append("ngo_domain", ngoDomain);
+        formData.append("ngo_address", ngoAddress);
+        formData.append("ngo_manager", ngoManager);
+        formData.append("ngo_website", ngoWebsite);
+        formData.append("beneficiaries_count", beneficiariesCount);
 
         const result = await registerEliteAction(formData, 0, 0);
         if (result.success) {
@@ -2510,7 +2680,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
             const dashRoute = userType === 'parent' ? 'parent' : userType === 'ecole' ? 'ecole' : 'ong';
             await signIn("credentials", { email, password, callbackUrl: `/${locale}/dashboard/${dashRoute}` });
         } else {
-            toast.error(mapServerError(result.error));
+            toast.error(mapServerError(result.error ?? ""));
             loadCaptchaEnginge(6);
         }
         setIsSubmitting(false);
@@ -2527,7 +2697,12 @@ export default function RegisterClient({ locale }: { locale: string }) {
     };
 
 
-    const bgImage = `/assets/img/regions/${regionCountry.toLowerCase()}/${selectedLang}/hero.png`;
+    const bgImage =
+        regionCountry === "SG"
+            ? sgHeroImagePath(activeLang === "zh" || activeLang === "ms" || activeLang === "ta" ? activeLang : selectedLang || "en")
+            : regionCountry === "JP"
+              ? `/assets/img/regions/JP/${selectedLang || "ja"}/hero.png`
+              : `/assets/img/regions/${regionCountry.toLowerCase()}/${selectedLang}/hero.png`;
 
     return (
         <div className="h-[100dvh] w-full flex items-center justify-center p-4 sm:p-6 lg:p-8 relative font-dm-sans overflow-hidden bg-slate-900">
@@ -2935,15 +3110,15 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                             
                                             <div className="space-y-3 max-w-sm mx-auto">
                                                 <div className="grid grid-cols-2 gap-3">
-                                                    <button type="button" onClick={() => setChildRegion('Privée')} className={`py-3 rounded-xl border-2 font-black text-[10px] uppercase transition-all ${childRegion === 'Privée' ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg scale-105' : 'bg-white border-slate-100 text-slate-400'}`}>{d.privateSchool}</button>
-                                                    <button type="button" onClick={() => setChildRegion('Publique')} className={`py-3 rounded-xl border-2 font-black text-[10px] uppercase transition-all ${childRegion === 'Publique' ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg scale-105' : 'bg-white border-slate-100 text-slate-400'}`}>{d.publicSchool}</button>
+                                                    <button type="button" onClick={() => setInstitutionType('Privée')} className={`py-3 rounded-xl border-2 font-black text-[10px] uppercase transition-all ${institutionType === 'Privée' ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg scale-105' : 'bg-white border-slate-100 text-slate-400'}`}>{d.privateSchool}</button>
+                                                    <button type="button" onClick={() => setInstitutionType('Publique')} className={`py-3 rounded-xl border-2 font-black text-[10px] uppercase transition-all ${institutionType === 'Publique' ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg scale-105' : 'bg-white border-slate-100 text-slate-400'}`}>{d.publicSchool}</button>
                                                 </div>
                                                 <div className="relative group">
                                                     <MapPin className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-indigo-500 transition-colors ${isArabic ? "right-4" : "left-4"}`} />
                                                     <input 
                                                         type="text" 
-                                                        value={childSchool} 
-                                                        onChange={(e) => setChildSchool(e.target.value)} 
+                                                        value={institutionAddress} 
+                                                        onChange={(e) => setInstitutionAddress(e.target.value)} 
                                                         placeholder={d.schoolAddressPlaceholder} 
                                                         className={`w-full bg-white border-2 border-slate-100 focus:border-indigo-500 py-3 rounded-xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all ${isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"}`} 
                                                     />
@@ -2952,8 +3127,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                     <UserCheck className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-indigo-500 transition-colors ${isArabic ? "right-4" : "left-4"}`} />
                                                     <input 
                                                         type="text" 
-                                                        value={spouseFirstName} 
-                                                        onChange={(e) => setSpouseFirstName(e.target.value)} 
+                                                        value={institutionManager} 
+                                                        onChange={(e) => setInstitutionManager(e.target.value)} 
                                                         placeholder={d.schoolManagerPlaceholder} 
                                                         className={`w-full bg-white border-2 border-slate-100 focus:border-indigo-500 py-3 rounded-xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all ${isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"}`} 
                                                     />
@@ -2990,8 +3165,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                         isArabic ? "right-4" : "left-4"
                                                     }`} />
                                                     <select 
-                                                        value={childLevel} 
-                                                        onChange={(e) => setChildLevel(e.target.value)}
+                                                        value={ngoDomain} 
+                                                        onChange={(e) => setNgoDomain(e.target.value)}
                                                         className={`w-full bg-white border-2 border-slate-100 focus:border-amber-500 py-3 rounded-xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all appearance-none cursor-pointer ${
                                                             isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
                                                         }`}
@@ -3010,8 +3185,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                     }`} />
                                                     <input 
                                                         type="text" 
-                                                        value={childSchool} 
-                                                        onChange={(e) => setChildSchool(e.target.value)} 
+                                                        value={ngoAddress} 
+                                                        onChange={(e) => setNgoAddress(e.target.value)} 
                                                         placeholder={d.ngoAddressPlaceholder} 
                                                         className={`w-full bg-white border-2 border-slate-100 focus:border-amber-500 py-3 rounded-xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all ${
                                                             isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
@@ -3024,8 +3199,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                     }`} />
                                                     <input 
                                                         type="text" 
-                                                        value={spouseFirstName} 
-                                                        onChange={(e) => setSpouseFirstName(e.target.value)} 
+                                                        value={ngoManager} 
+                                                        onChange={(e) => setNgoManager(e.target.value)} 
                                                         placeholder={d.ngoManagerPlaceholder} 
                                                         className={`w-full bg-white border-2 border-slate-100 focus:border-amber-500 py-3 rounded-xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all ${
                                                             isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
@@ -3207,8 +3382,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                     }`} />
                                                     <input 
                                                         type="text" 
-                                                        value={childName} 
-                                                        onChange={(e) => setChildName(e.target.value)} 
+                                                        value={institutionWebsite} 
+                                                        onChange={(e) => setInstitutionWebsite(e.target.value)} 
                                                         placeholder={d.digitalPresencePlaceholderSchool} 
                                                         className={`w-full bg-white border-2 border-slate-100 focus:border-indigo-500 py-3 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all ${
                                                             isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
@@ -3224,8 +3399,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                     }`} />
                                                     <input 
                                                         type="number" 
-                                                        value={childAge} 
-                                                        onChange={(e) => setChildAge(e.target.value)} 
+                                                        value={classesCount} 
+                                                        onChange={(e) => setClassesCount(e.target.value)} 
                                                         placeholder={d.classesCountPlaceholder} 
                                                         className={`w-full bg-white border-2 border-slate-100 focus:border-indigo-500 py-3 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all ${
                                                             isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
@@ -3301,9 +3476,9 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                     }`} />
                                                     <input 
                                                         type="text" 
-                                                        value={childName} 
-                                                        onChange={(e) => setChildName(e.target.value)} 
-                                                        placeholder={d.digitalPresencePlaceholderNgo} 
+                                                        value={ngoWebsite} 
+                                                        onChange={(e) => setNgoWebsite(e.target.value)} 
+                                                        placeholder={(d as any).digitalPresencePlaceholderNgo ?? d.digitalPresencePlaceholderSchool} 
                                                         className={`w-full bg-white border-2 border-slate-100 focus:border-amber-500 py-3 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all ${
                                                             isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
                                                         }`} 
@@ -3318,8 +3493,8 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                     }`} />
                                                     <input 
                                                         type="number" 
-                                                        value={childAge} 
-                                                        onChange={(e) => setChildAge(e.target.value)} 
+                                                        value={beneficiariesCount} 
+                                                        onChange={(e) => setBeneficiariesCount(e.target.value)} 
                                                         placeholder={d.beneficiariesPlaceholder} 
                                                         className={`w-full bg-white border-2 border-slate-100 focus:border-amber-500 py-3 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all ${
                                                             isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
@@ -3444,6 +3619,35 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                 <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">villkor</Link>{" "}
                                                 och{" "}
                                                 <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">integritetspolicy</Link>.
+                                            </>
+                                        ) : activeLang === "ja" ? (
+                                            <>
+                                                続行することで、当社の{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">利用規約</Link>{" "}
+                                                および{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">プライバシーポリシー</Link>
+                                                に同意したものとみなされます。
+                                            </>
+                                        ) : activeLang === "zh" ? (
+                                            <>
+                                                继续即表示您同意我们的{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">条款</Link>{" "}
+                                                和{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">隐私政策</Link>。
+                                            </>
+                                        ) : activeLang === "ms" ? (
+                                            <>
+                                                Dengan meneruskan, anda bersetuju dengan{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">terma</Link>{" "}
+                                                dan{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">dasar privasi</Link> kami.
+                                            </>
+                                        ) : activeLang === "ta" ? (
+                                            <>
+                                                தொடர்வதன் மூலம் எங்கள்{" "}
+                                                <Link href={`/${locale}/terms`} className="text-orange-600 hover:underline font-black">விதிமுறைகள்</Link>{" "}
+                                                மற்றும்{" "}
+                                                <Link href={`/${locale}/privacy`} className="text-teal-600 hover:underline font-bold">தனியுரிமைக் கொள்கை</Link>யை ஏற்கிறீர்கள்.
                                             </>
                                         ) : (
                                             <>

@@ -2,6 +2,7 @@
  
 import { Link } from "@/i18n/routing";
 import React, { useState } from "react";
+import { sgHeroImagePath } from "@/lib/sgGeoLabels";
 import { motion } from "framer-motion";
 import { Mail, Lock, ArrowRight, Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
@@ -31,6 +32,12 @@ export default function LoginClient({ locale }: { locale: string }) {
   const isDutch = selectedLang === "nl" || locale === "nl" || locale.endsWith("-nl");
   const isPortuguese = selectedLang === "pt" || locale === "pt" || locale.endsWith("-pt");
   const isPolish = selectedLang === "pl" || locale === "pl" || locale.endsWith("-pl");
+  const isCzech = selectedLang === "cs" || locale === "cs" || locale.endsWith("-cs");
+  const isKorean = selectedLang === "ko" || locale === "ko" || locale.endsWith("-ko");
+  const isChinese = selectedLang === "zh" || locale === "zh" || locale.endsWith("-zh");
+  const isMalay = selectedLang === "ms" || locale === "ms" || locale.endsWith("-ms");
+  const isTamil = selectedLang === "ta" || locale === "ta" || locale.endsWith("-ta");
+  const isJapanese = selectedLang === "ja" || locale === "ja" || locale.endsWith("-ja");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -65,7 +72,19 @@ export default function LoginClient({ locale }: { locale: string }) {
                         ? "E-mail ou palavra-passe incorretos."
                         : isPolish
                           ? "Nieprawidłowy e-mail lub hasło"
-                          : isEnglish
+                          : isCzech
+                            ? "Nesprávný e-mail nebo heslo"
+                            : isChinese
+                              ? "邮箱或密码不正确。"
+                              : isKorean
+                                ? "이메일 또는 비밀번호가 올바르지 않습니다."
+                              : isJapanese
+                                ? "メールアドレスまたはパスワードが正しくありません。"
+                              : isMalay
+                                ? "E-mel atau kata laluan tidak betul."
+                                : isTamil
+                                  ? "மின்னஞ்சல் அல்லது கடவுச்சொல் தவறாக உள்ளது."
+                            : isEnglish
                       ? "Incorrect email or password."
                       : isArabic
                         ? "البريد الإلكتروني أو كلمة المرور غير صحيحة."
@@ -91,7 +110,19 @@ export default function LoginClient({ locale }: { locale: string }) {
                         ? "Bem-vindo de volta!"
                         : isPolish
                           ? "Witaj ponownie!"
-                          : isEnglish
+                          : isCzech
+                            ? "Vítejte zpět!"
+                            : isChinese
+                              ? "欢迎回来！"
+                              : isKorean
+                                ? "다시 오신 것을 환영합니다!"
+                              : isJapanese
+                                ? "おかえりなさい！"
+                              : isMalay
+                                ? "Selamat kembali!"
+                                : isTamil
+                                  ? "மீண்டும் வரவேற்கிறோம்!"
+                            : isEnglish
                       ? "Welcome back!"
                       : isArabic
                         ? "أهلاً بك من جديد!"
@@ -103,7 +134,14 @@ export default function LoginClient({ locale }: { locale: string }) {
   };
 
   // Real region + lang homepage background
-  const bgImage = `/assets/img/regions/${selectedCountry.toLowerCase()}/${selectedLang}/hero.png`;
+  const bgImage =
+    selectedCountry === "SG"
+      ? sgHeroImagePath(
+          isChinese ? "zh" : isMalay ? "ms" : isTamil ? "ta" : isEnglish ? "en" : selectedLang || "en"
+        )
+      : selectedCountry === "JP"
+        ? `/assets/img/regions/JP/${selectedLang || "ja"}/hero.png`
+        : `/assets/img/regions/${selectedCountry.toLowerCase()}/${selectedLang}/hero.png`;
 
   return (
     <div className="h-[100dvh] w-full flex items-center justify-center p-4 sm:p-6 lg:p-12 relative font-dm-sans overflow-hidden bg-slate-900" dir={isArabic ? "rtl" : "ltr"}>
@@ -147,6 +185,18 @@ export default function LoginClient({ locale }: { locale: string }) {
                    <>O Despertar de <span className="text-orange-500">Mentes</span></>
                 ) : isPolish ? (
                    <>Budzenie <span className="text-orange-500">Umysłów</span></>
+                ) : isCzech ? (
+                   <>Probuzení <span className="text-orange-500">myslí</span></>
+                ) : isChinese ? (
+                   <>唤醒 <span className="text-orange-500">心灵</span></>
+                ) : isKorean ? (
+                   <>천재성의 <span className="text-orange-500">깨어남</span></>
+                ) : isJapanese ? (
+                   <>才能の<span className="text-orange-500">覚醒</span></>
+                ) : isMalay ? (
+                   <>Kebangkitan <span className="text-orange-500">Minda</span></>
+                ) : isTamil ? (
+                   <>மனங்களின் <span className="text-orange-500">விழிப்பு</span></>
                 ) : isEnglish ? (
                    <>Awakening <span className="text-orange-500">Minds</span></>
                 ) : isArabic ? (
@@ -174,7 +224,19 @@ export default function LoginClient({ locale }: { locale: string }) {
                                 ? "Cada passo em direção à excelência molda um destino excepcional."
                                 : isPolish
                                   ? "Każdy krok w stronę doskonałości kształtuje wyjątkowe przeznaczenie."
-                                  : isEnglish
+                                  : isCzech
+                                    ? "Každý krok k dokonalosti formuje výjimečný osud."
+                                    : isChinese
+                                      ? "迈向卓越的每一步，都在塑造非凡的命运。"
+                                      : isKorean
+                                        ? "탁월함을 향한 모든 발걸음이 비범한 운명을 만듭니다."
+                                      : isJapanese
+                                        ? "卓越への一歩一歩が、非凡な運命を形作ります。"
+                                      : isMalay
+                                        ? "Setiap langkah ke arah kecemerlangan membentuk takdir yang luar biasa."
+                                        : isTamil
+                                          ? "சிறப்பை நோக்கிய ஒவ்வொரு படியும் அசாதாரண விதியை வடிவமைக்கிறது."
+                                          : isEnglish
                               ? "Every step towards excellence shapes an exceptional destiny."
                               : isArabic
                                 ? "كل خطوة نحو التميز ترسم قدرًا استثنائيًا."
@@ -202,15 +264,15 @@ export default function LoginClient({ locale }: { locale: string }) {
                  <div className="mb-8 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-3 pt-2">
                      <div className={isArabic ? "pr-2 text-right" : "pl-2 text-left"}>
                          <h1 className="text-2xl font-black text-slate-950 font-jakarta tracking-tight mb-1 uppercase">
-                             {isMaori ? "Nau mai" : isIrish ? "Fáilte" : isNorwegian ? "Velkommen" : isSwedish ? "Välkommen" : isDanish ? "Velkommen" : isFinnish || isFinnishSwedish ? "Tervetuloa" : isDutch ? "Welkom" : isPortuguese ? "Bem-vindo" : isPolish ? "Witaj" : isEnglish ? "Welcome" : isArabic ? "مرحبًا" : "Bienvenue"}
+                             {isMaori ? "Nau mai" : isIrish ? "Fáilte" : isNorwegian ? "Velkommen" : isSwedish ? "Välkommen" : isDanish ? "Velkommen" : isFinnish || isFinnishSwedish ? "Tervetuloa" : isDutch ? "Welkom" : isPortuguese ? "Bem-vindo" : isPolish ? "Witaj" : isCzech ? "Vítejte" : isChinese ? "欢迎" : isKorean ? "환영합니다" : isJapanese ? "ようこそ" : isMalay ? "Selamat datang" : isTamil ? "வரவேற்கிறோம்" : isEnglish ? "Welcome" : isArabic ? "مرحبًا" : "Bienvenue"}
                          </h1>
                          <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.1em]">
-                             {isMaori ? "Pārongo Takiuru" : isIrish ? "D'Fhaisnéis Rochtana" : isNorwegian ? "Dine innloggingsopplysninger" : isSwedish ? "Dina inloggningsuppgifter" : isDanish ? "Dine adgangsoplysninger" : isFinnish || isFinnishSwedish ? "Kirjautumistietietosi" : isDutch ? "Uw inloggegevens" : isPortuguese ? "Suas credenciais" : isPolish ? "Twoje dane logowania" : isEnglish ? "Your Credentials" : isArabic ? "بيانات الاتصال" : "Vos identifiants de Connexion"}
+                             {isMaori ? "Pārongo Takiuru" : isIrish ? "D'Fhaisnéis Rochtana" : isNorwegian ? "Dine innloggingsopplysninger" : isSwedish ? "Dina inloggningsuppgifter" : isDanish ? "Dine adgangsoplysninger" : isFinnish || isFinnishSwedish ? "Kirjautumistietietosi" : isDutch ? "Uw inloggegevens" : isPortuguese ? "Suas credenciais" : isPolish ? "Twoje dane logowania" : isCzech ? "Vaše přihlašovací údaje" : isChinese ? "登录信息" : isKorean ? "로그인 정보" : isJapanese ? "ログイン情報" : isMalay ? "Maklumat log masuk" : isTamil ? "உள்நுழைவு விவரங்கள்" : isEnglish ? "Your Credentials" : isArabic ? "بيانات الاتصال" : "Vos identifiants de Connexion"}
                          </p>
                      </div>
                      <div className={isArabic ? "text-right pr-2 sm:pr-0 sm:text-left" : "text-left pl-2 sm:pl-0 sm:text-right"}>
                          <Link href="/auth/register" className="text-[11px] font-black text-orange-600 hover:underline uppercase tracking-wider block">
-                             {isMaori ? "Kāore he pūkete? Tīmata i te haerenga" : isIrish ? "Níl cuntas agat? Tosaigh an eachtra" : isNorwegian ? "Ingen konto? Start eventyret" : isSwedish ? "Inget konto? Börja äventyret" : isDanish ? "Ingen konto? Start eventyret" : isFinnish || isFinnishSwedish ? "Ei tiliä? Aloita seikkailu" : isDutch ? "Geen account? Start het avontuur" : isPortuguese ? "Não tem conta? Comece a aventura" : isPolish ? "Nie masz konta? Rozpocznij przygodę" : isEnglish ? "No account? Start the adventure" : isArabic ? "ليس لديك حساب؟ ابدأ المغامرة" : "Vous n'avez pas de compte ? Commencez l'aventure"}
+                             {isMaori ? "Kāore he pūkete? Tīmata i te haerenga" : isIrish ? "Níl cuntas agat? Tosaigh an eachtra" : isNorwegian ? "Ingen konto? Start eventyret" : isSwedish ? "Inget konto? Börja äventyret" : isDanish ? "Ingen konto? Start eventyret" : isFinnish || isFinnishSwedish ? "Ei tiliä? Aloita seikkailu" : isDutch ? "Geen account? Start het avontuur" : isPortuguese ? "Não tem conta? Comece a aventura" : isPolish ? "Nie masz konta? Rozpocznij przygodę" : isCzech ? "Nemáte účet? Začněte dobrodružství" : isChinese ? "没有账号？开始冒险" : isKorean ? "계정이 없으신가요? 모험 시작하기" : isJapanese ? "アカウントをお持ちでない方は、冒険を始めましょう" : isMalay ? "Tiada akaun? Mulakan pengembaraan" : isTamil ? "கணக்கு இல்லையா? பயணத்தை தொடங்குங்கள்" : isEnglish ? "No account? Start the adventure" : isArabic ? "ليس لديك حساب؟ ابدأ المغامرة" : "Vous n'avez pas de compte ? Commencez l'aventure"}
                          </Link>
                      </div>
                  </div>
@@ -236,10 +298,10 @@ export default function LoginClient({ locale }: { locale: string }) {
                          <div className="space-y-1.5">
                              <div className={`flex justify-between px-1 ${isArabic ? "flex-row-reverse" : ""}`}>
                                  <label className="block text-[11px] font-black uppercase tracking-wider text-slate-700">
-                                     {isMaori ? "Kupuhipa" : isIrish ? "Focal Faire" : isNorwegian ? "Passord" : isSwedish ? "Lösenord" : isDanish ? "Adgangskode" : isFinnish || isFinnishSwedish ? "Salasana" : isDutch ? "Wachtwoord" : isPortuguese ? "Palavra-passe" : isPolish ? "Hasło" : isEnglish ? "Password" : isArabic ? "كلمة المرور" : "Mot de passe"}
+                                     {isMaori ? "Kupuhipa" : isIrish ? "Focal Faire" : isNorwegian ? "Passord" : isSwedish ? "Lösenord" : isDanish ? "Adgangskode" : isFinnish || isFinnishSwedish ? "Salasana" : isDutch ? "Wachtwoord" : isPortuguese ? "Palavra-passe" : isPolish ? "Hasło" : isCzech ? "Heslo" : isChinese ? "密码" : isKorean ? "비밀번호" : isJapanese ? "パスワード" : isMalay ? "Kata laluan" : isTamil ? "கடவுச்சொல்" : isEnglish ? "Password" : isArabic ? "كلمة المرور" : "Mot de passe"}
                                  </label>
                                  <Link href="/auth/forgot" className="text-[10px] font-bold text-orange-600 hover:underline uppercase tracking-wider">
-                                     {isMaori ? "Kua wareware?" : isIrish ? "Dearmad déanta?" : isNorwegian ? "Glemt?" : isSwedish ? "Glömt?" : isDanish ? "Glemt?" : isFinnish || isFinnishSwedish ? "Unohdut?" : isDutch ? "Wachtwoord vergeten?" : isPortuguese ? "Esqueceu a palavra-passe?" : isPolish ? "Zapomniałeś?" : isEnglish ? "Forgot?" : isArabic ? "نسيت كلمة المرور؟" : "Oublié ?"}
+                                     {isMaori ? "Kua wareware?" : isIrish ? "Dearmad déanta?" : isNorwegian ? "Glemt?" : isSwedish ? "Glömt?" : isDanish ? "Glemt?" : isFinnish || isFinnishSwedish ? "Unohdut?" : isDutch ? "Wachtwoord vergeten?" : isPortuguese ? "Esqueceu a palavra-passe?" : isPolish ? "Zapomniałeś?" : isCzech ? "Zapomněli jste?" : isChinese ? "忘记了？" : isKorean ? "비밀번호 찾기" : isJapanese ? "お忘れですか？" : isMalay ? "Lupa?" : isTamil ? "மறந்துவிட்டீர்களா?" : isEnglish ? "Forgot?" : isArabic ? "نسيت كلمة المرور؟" : "Oublié ?"}
                                  </Link>
                              </div>
                              <div className="relative">
@@ -267,7 +329,7 @@ export default function LoginClient({ locale }: { locale: string }) {
                          >
                              <img src="https://www.google.com/favicon.ico" className="w-4.5 h-4.5 group-hover:scale-110 transition" alt="G" />
                              <span className="text-[10px] font-black uppercase tracking-wider group-hover:text-orange-600">
-                                 {isMaori ? "Takiuru Google" : isIrish ? "Logáil isteach Google" : isNorwegian ? "Google Logg inn" : isSwedish ? "Google Logga in" : isDanish ? "Google Log ind" : isFinnish || isFinnishSwedish ? "Google Kirjaudu sisään" : isDutch ? "Google Inloggen" : isPortuguese ? "Entrar com Google" : isPolish ? "Zaloguj przez Google" : isEnglish ? "Google Sign In" : isArabic ? "اتصال بجوجل" : "Connexion Google"}
+                                 {isMaori ? "Takiuru Google" : isIrish ? "Logáil isteach Google" : isNorwegian ? "Google Logg inn" : isSwedish ? "Google Logga in" : isDanish ? "Google Log ind" : isFinnish || isFinnishSwedish ? "Google Kirjaudu sisään" : isDutch ? "Google Inloggen" : isPortuguese ? "Entrar com Google" : isPolish ? "Zaloguj przez Google" : isCzech ? "Přihlásit se přes Google" : isChinese ? "使用 Google 登录" : isKorean ? "Google 로그인" : isJapanese ? "Googleでログイン" : isMalay ? "Log masuk dengan Google" : isTamil ? "Google மூலம் உள்நுழைக" : isEnglish ? "Google Sign In" : isArabic ? "اتصال بجوجل" : "Connexion Google"}
                              </span>
                          </button>
  
@@ -278,8 +340,8 @@ export default function LoginClient({ locale }: { locale: string }) {
                              className="w-full sm:w-auto px-8 py-4 bg-slate-950 text-white rounded-2xl font-black uppercase tracking-wider text-[11px] hover:bg-orange-600 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 group disabled:opacity-50 shrink-0"
                          >
                              {isSubmitting 
-                                 ? (isMaori ? "E hono ana..." : isIrish ? "Ag ceangal..." : isNorwegian ? "Kobler til..." : isSwedish ? "Ansluter..." : isDanish ? "Forbinder..." : isFinnish || isFinnishSwedish ? "Yhdistetään..." : isDutch ? "Verbinden..." : isPortuguese ? "A ligar..." : isPolish ? "Łączenie..." : isEnglish ? "Connecting..." : isArabic ? "جاري الاتصال..." : "Accès...") 
-                                 : (isMaori ? "Takiuru" : isIrish ? "Logáil Isteach" : isNorwegian ? "Logg inn" : isSwedish ? "Logga in" : isDanish ? "Log ind" : isFinnish || isFinnishSwedish ? "Kirjaudu sisään" : isDutch ? "Inloggen" : isPortuguese ? "Entrar" : isPolish ? "Zaloguj się" : isEnglish ? "Sign In" : isArabic ? "تسجيل الدخول" : "Se connecter")}
+                                ? (isMaori ? "E hono ana..." : isIrish ? "Ag ceangal..." : isNorwegian ? "Kobler til..." : isSwedish ? "Ansluter..." : isDanish ? "Forbinder..." : isFinnish || isFinnishSwedish ? "Yhdistetään..." : isDutch ? "Verbinden..." : isPortuguese ? "A ligar..." : isPolish ? "Łączenie..." : isCzech ? "Připojování..." : isChinese ? "连接中..." : isKorean ? "연결 중..." : isJapanese ? "接続中..." : isMalay ? "Menyambung..." : isTamil ? "இணைக்கிறது..." : isEnglish ? "Connecting..." : isArabic ? "جاري الاتصال..." : "Accès...") 
+                                : (isMaori ? "Takiuru" : isIrish ? "Logáil Isteach" : isNorwegian ? "Logg inn" : isSwedish ? "Logga in" : isDanish ? "Log ind" : isFinnish || isFinnishSwedish ? "Kirjaudu sisään" : isDutch ? "Inloggen" : isPortuguese ? "Entrar" : isPolish ? "Zaloguj się" : isCzech ? "Přihlásit se" : isChinese ? "登录" : isKorean ? "로그인" : isJapanese ? "ログイン" : isMalay ? "Log Masuk" : isTamil ? "உள்நுழை" : isEnglish ? "Sign In" : isArabic ? "تسجيل الدخول" : "Se connecter")}
                              <ArrowRight className={`w-4 h-4 group-hover:translate-x-1 transition-transform ${isArabic ? "rotate-180" : ""}`} />
                          </button>
                      </div>

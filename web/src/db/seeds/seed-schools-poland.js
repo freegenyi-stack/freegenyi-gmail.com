@@ -14,13 +14,17 @@ async function seedPolandSchools() {
     await client.connect();
     console.log("🔌 Connected to database.");
 
-    // Check if Poland exists in countries table
-    const countryRes = await client.query("SELECT id, code FROM countries WHERE code = 'PL'");
+    // Ensure Poland exists in countries table
+    let countryRes = await client.query("SELECT id, code FROM countries WHERE code = 'PL'");
     if (countryRes.rows.length === 0) {
-      console.error("❌ Poland not found in countries table. Please add it first.");
-      return;
+      console.log("⚠️ Poland not found in countries table. Inserting it now...");
+      await client.query(
+        "INSERT INTO countries (code, name_fr, name_en, name_local, flag_emoji, langs, is_active) VALUES ('PL', 'Pologne', 'Poland', 'Polska', '🇵🇱', 'pl', true)"
+      );
+      console.log("🇵🇱 Poland added to countries table.");
+    } else {
+      console.log("🇵🇱 Poland already exists in countries table.");
     }
-    console.log("🇵🇱 Poland already exists in countries table.");
 
     // Load CSV
     console.log("📖 Loading ecoles_primaires_pologne.csv...");

@@ -674,10 +674,10 @@ export const REGION_VARIANTS: Record<string, Record<string, RegionVariant> | Reg
     }
   },
 
-  // SINGAPORE
+  // SINGAPORE — hero par langue (public/assets/img/regions/SG/{en|zh|ms|ta}/hero.png)
   SG: {
     en: {
-      heroImage: "/assets/img/regions/SG/en/hero.png",
+      heroImage: "/assets/img/regions/SG/ms/hero.png",
       heroQuote: "Singapore proved that with will and rigour, even an island without resources becomes a global beacon — your child holds the same potential.",
       scienceImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
       scienceQuote: "Innovative education for the limitless potential of every Singaporean child."
@@ -689,14 +689,14 @@ export const REGION_VARIANTS: Record<string, Record<string, RegionVariant> | Reg
       scienceQuote: "为每个新加坡孩子的无限潜力提供创新教育。"
     },
     ms: {
-      heroImage: "/assets/img/regions/SG/en/hero.png",
+      heroImage: "/assets/img/regions/SG/ms/hero.png",
       heroQuote: "Singapura membuktikan bahawa dengan kehendak dan ketelitian, walaupun sebuah pulau tanpa sumber boleh menjadi suar global — anak anda memegang potensi yang sama.",
       scienceImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
       scienceQuote: "Pendidikan inovatif untuk potensi tanpa had setiap kanak-kanak Singapura."
     },
     ta: {
-      heroImage: "/assets/img/regions/SG/en/hero.png",
-      heroQuote: "சிங்கப்பூர் நிரூபித்தது, விருப்பம் மற்றும் கண்டிப்புடன், வளங்கள் இல்லாத தீவு கூட உலகளாவிய கலங்கரை விளக்கமாக மாறும் - உங்கள் குழந்தையும் அதே திறனைப் பெற்றுள்ளார்.",
+      heroImage: "/assets/img/regions/SG/ta/hero.png",
+      heroQuote: "சிங்கப்பூர் நிரூபித்தது, விருப்பம் மற்றும் கண்டிப்புடன், வளங்கள் இல்லாத தீவு கூட உலகளாவிய கலங்கரை விளக்கமாக மாறும் — உங்கள் குழந்தையும் அதே திறனைப் பெற்றுள்ளார்.",
       scienceImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
       scienceQuote: "ஒவ்வொரு சிங்கப்பூர் குழந்தையின் எல்லையற்ற திறனுக்கும் புதுமையான கல்வி."
     }

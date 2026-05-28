@@ -284,7 +284,7 @@ async function main() {
   // Insert districts with ON CONFLICT DO NOTHING
   for (const district of districtsArray) {
     await client.query(
-      "INSERT INTO regions (code, name_local, name_fr, country_code) VALUES ($1, $2, $3, 'PT') ON CONFLICT (country_code, code) DO NOTHING",
+      "INSERT INTO regions (code, name_local, name_fr, country_code) VALUES ($1, $2, $3, 'PT')",
       [district.code, district.nameLocal, district.nameFr]
     );
   }
@@ -319,7 +319,7 @@ async function main() {
 
     for (const mv of municipalityValues) {
       await client.query(
-        "INSERT INTO districts (code, name_local, name_fr, region_id) VALUES ($1, $2, $3, $4) ON CONFLICT (code, region_id) DO NOTHING",
+        "INSERT INTO districts (code, name_local, name_fr, region_id) VALUES ($1, $2, $3, $4)",
         mv
       );
     }

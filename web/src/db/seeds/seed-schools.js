@@ -95,6 +95,70 @@ async function main() {
 
   console.log(`📊 Processing a total of ${allSchools.length} schools...`);
 
+  // Ensure Algeria exists in countries table
+  let countryRes = await client.query("SELECT id FROM countries WHERE code = 'DZ'");
+  if (countryRes.rows.length === 0) {
+    console.log("⚠️ Algeria not found in countries table. Inserting it now...");
+    await client.query(
+      "INSERT INTO countries (code, name_fr, name_en, name_local, flag_emoji, langs, is_active) VALUES ('DZ', 'Algérie', 'Algeria', 'الجزائر', '🇩🇿', 'ar,fr', true)"
+    );
+    console.log("🇩🇿 Algeria added to countries table.");
+  }
+
+  // Parse and seed unique Regions (Wilayas) and Districts (Communes)
+  const regionsMap = new Map();
+  const districtsMapTemp = new Map();
+
+  for (const s of allSchools) {
+    const wilayaCode = (s.wilaya_code || "").padStart(2, "0");
+    const wilayaName = s.wilaya;
+    const communeCode = s.commune_code;
+    const communeName = s.commune;
+
+    if (wilayaCode && wilayaName) {
+      regionsMap.set(wilayaCode, wilayaName);
+    }
+    if (wilayaCode && communeCode && communeName) {
+      districtsMapTemp.set(`${wilayaCode}_${communeCode}`, {
+        communeCode,
+        communeName,
+        wilayaCode
+      });
+    }
+  }
+
+  console.log("📁 Seeding Algeria Regions (Wilayas)...");
+  await client.query("DELETE FROM regions WHERE country_code = 'DZ'");
+  for (const [code, name] of regionsMap.entries()) {
+    await client.query(
+      "INSERT INTO regions (code, name_local, name_fr, name_en, country_code) VALUES ($1, $2, $3, $4, 'DZ')",
+      [code, name, name, name]
+    );
+  }
+  console.log(`✅ ${regionsMap.size} regions seeded.`);
+
+  console.log("📁 Seeding Algeria Districts (Communes)...");
+  const regionIds = new Map();
+  const dbRegions = await client.query("SELECT id, code FROM regions WHERE country_code = 'DZ'");
+  for (const r of dbRegions.rows) {
+    regionIds.set(r.code, r.id);
+  }
+
+  await client.query(`
+    DELETE FROM districts 
+    WHERE region_id IN (SELECT id FROM regions WHERE country_code = 'DZ')
+  `);
+
+  for (const d of districtsMapTemp.values()) {
+    const regionId = regionIds.get(d.wilayaCode);
+    if (!regionId) continue;
+    await client.query(
+      "INSERT INTO districts (code, name_local, name_fr, name_en, region_id) VALUES ($1, $2, $3, $4, $5)",
+      [d.communeCode, d.communeName, d.communeName, d.communeName, regionId]
+    );
+  }
+  console.log(`✅ ${districtsMapTemp.size} districts seeded.`);
+
   // Fetch all districts to map them easily
   const distRes = await client.query(`
     SELECT d.id, d.code as district_code, r.code as region_code 

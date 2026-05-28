@@ -1,0 +1,220 @@
+{
+  "Hero": {
+    "title": "당신 아이의 <orange>천재성의 문을</orange> 열어주세요.",
+    "status": "탁월함의 다리가 열렸습니다",
+    "subtitle": "FreeGeny는 학부모, 학교, 아이들을 기술적으로 연결하여 탁월함을 향한 전인적 지원을 제공합니다.",
+    "cta": "모험 시작하기",
+    "approach": "우리의 접근법"
+  },
+  "Impact": {
+    "Geniuses": "천재들",
+    "Countries": "국가",
+    "Schools": "학교",
+    "Languages": "언어",
+    "Courses": "과정 및 연습문제"
+  },
+  "Nav": {
+    "About": "소개",
+    "Approach": "접근법",
+    "Parents": "학부모",
+    "Schools": "학교",
+    "NGOs": "NGO",
+    "Science": "과학",
+    "Region": "지역",
+    "FreeExplore": "무료 탐색"
+  },
+  "Auth": {
+    "Login": "로그인",
+    "Register": "가입하기",
+    "Logout": "로그아웃",
+    "Dashboard": "대시보드",
+    "Agreement": "계속 진행하면 이용 약관 및 개인정보 처리방침에 동의하는 것입니다.",
+    "AlreadyHaveAccount": "이미 계정이 있으신가요? 로그인",
+    "Placeholders": {
+      "FullName": "김민준",
+      "Username": "minjun_kim",
+      "Email": "minjun@genie.kr"
+    }
+  },
+  "Portals": {
+    "Tag": "포털 탐색하기",
+    "Title": "완전한 몰입.",
+    "Subtitle": "무한한 성장을 위해 상호 연결된 세 가지 세계.",
+    "Local": {
+      "Title": "로컬 포털",
+      "Desc": "공식 교육과정을 마스터하세요. AI로 학교의 기초를 강화합니다.",
+      "CTA": "세상 발견하기?"
+    },
+    "World": {
+      "Title": "글로벌 포털",
+      "Desc": "싱가포르 수학과 옥스퍼드 영어로 무한한 야망을 펼쳐보세요.",
+      "CTA": "세상 탐험하기?"
+    },
+    "Magic": {
+      "Title": "매직 아레나",
+      "Desc": "재미있는 도전을 통해 모든 기술을 놀이처럼 정착시킵니다.",
+      "CTA": "아레나 입장하기?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "FreeGeny 생태계",
+    "Title": "모두를 위한 솔루션.",
+    "Subtitle": "탁월함은 모든 참여자 간의 완벽한 시너지가 필요합니다.",
+    "Parents": {
+      "Title": "학부모 공간",
+      "Desc": "성공을 위한 정확한 지도. 진행 상황을 추적하고, 감성적인 음성 메시지를 보내며, 보상을 관리하세요.",
+      "CTA": "더 알아보기?"
+    },
+    "Schools": {
+      "Title": "FreeGeny 학교",
+      "Desc": "완벽한 디지털 전환. 학급, 교사를 관리하고 학부모와 실시간으로 소통하세요.",
+      "CTA": "더 알아보기?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "감성 부스트",
+    "MomVoice": "엄마의 음성 메시지",
+    "Congratulation": "축하해, 민준아!"
+  },
+  "Innovation": {
+    "Tag": "혁신",
+    "Title": "뛰어난 리더십.",
+    "Boost": {
+      "Title": "감성 부스트",
+      "Desc": "부모님의 목소리로 아이에게 동기를 부여하세요."
+    },
+    "AI": {
+      "Title": "적응형 AI 경로",
+      "Desc": "클릭할 때마다 프로그램이 실시간으로 조정됩니다."
+    }
+  },
+  "Footer": {
+    "Title": "천재성을 발휘할 준비가 되셨나요?",
+    "CTA": "무료로 가입하기"
+  },
+  "Dashboard": {
+    "Title": "학부모 콕핏",
+    "Subtitle": "꼬마 천재들의 진행 상황을 관리하고 추적하세요.",
+    "AddChild": "자녀 추가하기",
+    "ChildCard": {
+      "Level": "학년",
+      "XP": "총 경험치",
+      "Progress": "진행도",
+      "Interest": "관심사",
+      "Status": "상태",
+      "Premium": "프리미엄 플러스",
+      "ModeLearner": "학습자 모드",
+      "EmotionalBoost": {
+        "Title": "감성 부스트",
+        "Desc": "{name}에게 음성 메시지로 용기를 주세요.",
+        "Record": "녹음"
+      }
+    },
+    "Alliance": {
+      "Title": "학부모 연합",
+      "Online": "온라인",
+      "CoParent": "공동 부모",
+      "Message": "메시지",
+      "Photo": "사진"
+    },
+    "Printable": {
+      "Title": "학습지 공장",
+      "Desc": "취약점을 기반으로 개인 맞춤형 복습 교재를 생성합니다.",
+      "CTA": "파일 생성"
+    },
+    "Bridge": {
+      "Tag": "The Bridge 제안",
+      "Validate": "확인",
+      "Ignore": "무시"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "안녕, {name}!",
+    "ParentDashboard": "학부모 대시보드",
+    "Portals": {
+      "School": {
+        "Title": "나의 학교",
+        "Desc": "학교 수업을 재미있게 복습해보세요.",
+        "CTA": "모험 시작하기"
+      },
+      "World": {
+        "Title": "더 넓은 세상",
+        "Desc": "싱가포르, 옥스퍼드를 탐험하고 글로벌 도전에 참여하세요!",
+        "CTA": "발견하기"
+      },
+      "Arena": {
+        "Title": "아레나",
+        "Desc": "논리 게임과 마법의 대결.",
+        "CTA": "플레이 할 준비 됐나요?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"{name}, 새로운 모험을 떠날 준비가 됐니? 부모님이 보내신 {boost}를 확인하는 것도 잊지 마!\"",
+      "BoostTag": "음성 부스트"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "글로벌 탁월함",
+      "Family": "가족 팀",
+      "Genius": "꼬마 천재"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "아이의 잠재력에는 한계가 없습니다.",
+        "Items": [
+          "싱가포르 수학",
+          "캠브리지 (영국)",
+          "핀란드 모델",
+          "STEM / STEAM",
+          "몬테소리"
+        ]
+      },
+      "Step2": {
+        "Title": "교육은 팀 스포츠입니다.",
+        "Subtitle": "성공적인 교육을 위해 노력을 동기화하세요."
+      },
+      "Step3": {
+        "Title": "오직 초등학생을 위한 교육.",
+        "Subtitle": "아이들의 시작을 위한 맞춤형 지원."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "안녕하세요.",
+        "Tag": "1단계 (총 3단계) — 보호자로서의 역할",
+        "PhoneLabel": "전화번호",
+        "Next": "다음"
+      },
+      "Step2": {
+        "Title": "가족 연합.",
+        "Tag": "2단계 (총 3단계) — 배우자 초대",
+        "Desc": "성공적인 교육을 위해 노력을 동기화하세요.",
+        "EmailPlaceholder": "배우자 이메일 (선택 사항)",
+        "Next": "다음 단계"
+      },
+      "Step3": {
+        "Title": "꼬마 천재.",
+        "Tag": "마지막 단계: 학습 여정",
+        "ChildName": "자녀 이름",
+        "Country": "국가",
+        "Level": "학년",
+        "Age": "나이",
+        "Region": "시/도",
+        "CTA": "모험 시작하기!"
+      }
+    }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "학교 검색...",
+    "NoSchoolFound": "학교를 찾을 수 없습니다",
+    "TryAnotherSearch": "필터를 수정하거나 다시 검색해보세요",
+    "SelectSchool": "선택된 학교",
+    "All": "전체",
+    "Public": "공립",
+    "Private": "사립",
+    "RegionSG": "시/도",
+    "DistrictSG": "관할조직 (구/군)",
+    "PromptSelect": "학교를 찾기 위해 시/도와 관할조직을 선택해주세요 🏫"
+  }
+}

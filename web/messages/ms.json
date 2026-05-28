@@ -20,13 +20,21 @@
     "Schools": "Sekolah",
     "NGOs": "NGO",
     "Science": "Sains",
-    "Region": "Wilayah"
+    "Region": "Wilayah",
+    "FreeExplore": "Teroka Percuma"
   },
   "Auth": {
     "Login": "Log Masuk",
     "Register": "Sertai",
     "Logout": "Log Keluar",
-    "Dashboard": "Papan Pemuka"
+    "Dashboard": "Papan Pemuka",
+    "Agreement": "Dengan meneruskan, anda bersetuju dengan terma perkhidmatan dan dasar privasi kami.",
+    "AlreadyHaveAccount": "Sudah mempunyai akaun? Log masuk",
+    "Placeholders": {
+      "FullName": "Ahmad bin Ali",
+      "Username": "ahmad_sg",
+      "Email": "ahmad@example.com"
+    }
   },
   "Portals": {
     "Tag": "Teroka Portal",
@@ -196,5 +204,17 @@
         "CTA": "Mulakan pengembaraan!"
       }
     }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Cari sekolah...",
+    "NoSchoolFound": "Tiada sekolah ditemui",
+    "TryAnotherSearch": "Ubah penapis atau cuba carian lain",
+    "SelectSchool": "Sekolah dipilih",
+    "All": "Semua",
+    "Public": "Awam",
+    "Private": "Swasta",
+    "RegionSG": "Kawasan (Zon)",
+    "DistrictSG": "Zon / DGP",
+    "PromptSelect": "Sila pilih Kawasan dan Zon untuk mencari sekolah anda 🏫"
   }
 }

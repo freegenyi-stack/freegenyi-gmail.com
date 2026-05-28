@@ -15,7 +15,12 @@
     "db:seed:fi": "node src/db/seeds/seed-schools-finland.js",
     "db:seed:nl": "node src/db/seeds/seed-schools-netherlands.js",
     "db:seed:pt": "node src/db/seeds/seed-schools-portugal.js",
-    "db:seed:pl": "node src/db/seeds/seed-schools-poland.js"
+    "db:seed:pl": "node src/db/seeds/seed-schools-poland.js",
+    "db:seed:cz": "node src/db/seeds/seed-schools-czech.js",
+    "db:seed:sg": "node src/db/seeds/seed-schools-singapore.js",
+    "db:seed:kr": "node src/db/seeds/seed-schools-korea.js",
+    "db:seed:jp": "node src/db/seeds/seed-schools-japan.js",
+    "db:seed:br": "node src/db/seeds/seed-schools-brazil.js"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.2.1",

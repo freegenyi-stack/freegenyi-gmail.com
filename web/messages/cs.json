@@ -1,0 +1,225 @@
+{
+  "Hero": {
+    "title": "Otevřete <orange>brány géniovství</orange> svému dítěti.",
+    "status": "Most k dokonalosti je otevřen",
+    "subtitle": "FreeGeny buduje technologický most mezi rodiči, školami a dětmi pro komplexní podporu na cestě k excelenci.",
+    "cta": "Začít dobrodružství",
+    "approach": "Náš přístup"
+  },
+  "Impact": {
+    "Geniuses": "Géniové",
+    "Countries": "Země",
+    "Schools": "Školy",
+    "Languages": "Jazyky",
+    "Courses": "Kurzy a cvičení"
+  },
+  "Nav": {
+    "About": "O nás",
+    "Approach": "Přístup",
+    "Parents": "Rodiče",
+    "Schools": "Školy",
+    "NGOs": "NGO",
+    "Science": "Věda",
+    "Region": "Region",
+    "FreeExplore": "Volný průzkum"
+  },
+  "Auth": {
+    "Login": "Přihlásit se",
+    "Register": "Registrovat se",
+    "Logout": "Odhlásit se",
+    "Dashboard": "Nástěnka",
+    "Agreement": "Pokračováním souhlasíte s našimi podmínkami a zásadami ochrany osobních údajů.",
+    "AlreadyHaveAccount": "Již máte účet? Přihlaste se",
+    "Placeholders": {
+      "FullName": "Jan Novák",
+      "Username": "jan_novak",
+      "Email": "jan@priklad.cz"
+    }
+  },
+  "Portals": {
+    "Tag": "Objevte portály",
+    "Title": "Totální ponoření.",
+    "Subtitle": "Tři propojené světy pro rozvoj bez hranic.",
+    "Local": {
+      "Title": "Místní portál",
+      "Desc": "Zvládnutí oficiálního programu. Vaše školní základy posílené umělou inteligencí.",
+      "CTA": "Objevit svět?"
+    },
+    "World": {
+      "Title": "Světový portál",
+      "Desc": "Singapurská matematika a oxfordská angličtina pro ambice bez hranic.",
+      "CTA": "Objevit svět?"
+    },
+    "Magic": {
+      "Title": "Magická aréna",
+      "Desc": "Zábavné výzvy dynamicky přizpůsobené pro upevnění každé dovednosti hrou.",
+      "CTA": "Vstoupit do arény?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "Ekosystém FreeGeny",
+    "Title": "Řešení pro každého.",
+    "Subtitle": "Protože excelence vyžaduje dokonalou synergii mezi všemi aktéry.",
+    "Parents": {
+      "Title": "Prostor pro rodiče",
+      "Desc": "Přesné řízení úspěchu. Sledujte pokrok, posílejte emocionální hlasové podporu a spravujte odměny.",
+      "CTA": "Zjistit více?"
+    },
+    "Schools": {
+      "Title": "FreeGeny školy",
+      "Desc": "Kompletní digitální transformace. Spravujte třídy, učitele a komunikujte s rodiči v reálném čase.",
+      "CTA": "Zjistit více?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Emocionální podpora",
+    "MomVoice": "Nahraný hlas maminky",
+    "Congratulation": "Gratulujeme, Jan!"
+  },
+  "Innovation": {
+    "Tag": "Inovace",
+    "Title": "Výjimečné řízení.",
+    "Boost": {
+      "Title": "Emocionální podpora",
+      "Desc": "Motivujte své dítě vlastním hlasem."
+    },
+    "AI": {
+      "Title": "Adaptivní cesta AI",
+      "Desc": "Každé kliknutí přizpůsobí program."
+    }
+  },
+  "Footer": {
+    "Tag": "Připojte se k vzdělávací revoluci.",
+    "Title": "Budoucnost vzdělávání je tady.",
+    "Subtitle": "Miliony rodičů, škol a dětí již důvěřují FreeGeny.",
+    "CTA": "Začněte svou cestu dnes",
+    "Links": {
+      "About": "O nás",
+      "Contact": "Kontakt",
+      "Privacy": "Soukromí",
+      "Terms": "Podmínky"
+    }
+  },
+  "Dashboard": {
+    "Title": "Rodičovský kokpit",
+    "Subtitle": "Spravujte a sledujte rozvoj svých malých géniů.",
+    "AddChild": "Přidat dítě",
+    "ChildCard": {
+      "Level": "Úroveň",
+      "XP": "Celkové XP",
+      "Progress": "Pokrok",
+      "Interest": "Vášeň",
+      "Status": "Stav",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Režim žáka",
+      "EmotionalBoost": {
+        "Title": "Emocionální podpora",
+        "Desc": "Povzbuďte {name} hlasovou zprávou.",
+        "Record": "Nahrát"
+      }
+    },
+    "Alliance": {
+      "Title": "Rodinná aliance",
+      "Online": "Online",
+      "CoParent": "Spolurodič",
+      "Message": "Zpráva",
+      "Photo": "Fotografie"
+    },
+    "Printable": {
+      "Title": "Továrna na tiskové materiály",
+      "Desc": "Generujte personalizované sešity k opakování podle slabých stránek.",
+      "CTA": "Vygenerovat složku"
+    },
+    "Bridge": {
+      "Tag": "Most navrhuje",
+      "Validate": "Schválit",
+      "Ignore": "Ignorovat"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Ahoj, {name}!",
+    "ParentDashboard": "Rodičovská nástěnka",
+    "Portals": {
+      "School": {
+        "Title": "Moje škola",
+        "Desc": "Opakuj si lekce zábavnou formou.",
+        "CTA": "Vyrazit na dobrodružství"
+      },
+      "World": {
+        "Title": "Svět",
+        "Desc": "Objevuj Singapur, Oxford a přijímej světové výzvy!",
+        "CTA": "Objevit"
+      },
+      "Arena": {
+        "Title": "Aréna",
+        "Desc": "Logické hry a magické soutěže.",
+        "CTA": "Připraven hrát?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"Takže {name}, připraven na nové dobrodružství? Nezapomeň zkontrolovat svůj {boost} od rodičů!\"",
+      "BoostTag": "Hlasová podpora"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Světová excelence",
+      "Family": "Rodinný tým",
+      "Genius": "Malý génius"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Vaše dítě už nemá žádné hranice.",
+        "Items": [
+          "Singapurská matematika",
+          "Cambridge (UK)",
+          "Finský model",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Vzdělávání je týmový sport.",
+        "Subtitle": "Synchronizujte své úsilí pro jeho úspěch."
+      },
+      "Step3": {
+        "Title": "Pouze základní cyklus.",
+        "Subtitle": "Personalizovaná podpora pro jeho začátky."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Ahoj.",
+        "Tag": "Krok 1 ze 3 — Vaše role garanta",
+        "PhoneLabel": "Telefonní číslo",
+        "Next": "Další"
+      },
+      "Step2": {
+        "Title": "Rodinná aliance.",
+        "Tag": "Krok 2 ze 3 — Pozvěte manžela/manželku",
+        "Desc": "Synchronizujte své úsilí pro jeho úspěch.",
+        "EmailPlaceholder": "E-mail manžela/manželky (volitelné)",
+        "Next": "Další krok"
+      },
+      "Step3": {
+        "Title": "Malý génius.",
+        "Tag": "Závěrečný krok: Jeho cesta",
+        "ChildName": "Jméno dítěte",
+        "Country": "Země",
+        "Level": "Úroveň",
+        "Age": "Věk",
+        "Region": "Kraj / Okres",
+        "CTA": "Začít dobrodružství!"
+      }
+    }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Hledat školu...",
+    "NoSchoolFound": "Škola nenalezena",
+    "TryAnotherSearch": "Upravte filtry nebo zkuste jiné vyhledávání",
+    "SelectSchool": "Vybraná škola",
+    "All": "Všechny",
+    "Public": "Veřejná",
+    "Private": "Soukromá"
+  }
+}

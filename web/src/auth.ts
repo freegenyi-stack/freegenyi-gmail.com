@@ -11,7 +11,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
   providers: [
     // Provider Google avec sauvegarde automatique en base
-    Google(),
+    Google({}),
     // Provider Credentials (email + mot de passe)
     Credentials({
       name: "Credentials",

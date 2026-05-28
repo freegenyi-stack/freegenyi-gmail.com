@@ -1,0 +1,226 @@
+{
+  "Hero": {
+    "title": "お子様の<orange>才能の扉</orange>を開きましょう。",
+    "status": "卓越への架け橋が開かれました",
+    "subtitle": "FreeGenyは、保護者・学校・お子様をつなぐテクノロジーの架け橋として、卓越へのホリスティックな伴走を実現します。",
+    "cta": "冒険を始める",
+    "approach": "私たちのアプローチ"
+  },
+  "Impact": {
+    "Geniuses": "才能",
+    "Countries": "国",
+    "Schools": "学校",
+    "Languages": "言語",
+    "Courses": "授業と演習"
+  },
+  "Nav": {
+    "About": "概要",
+    "Approach": "アプローチ",
+    "Parents": "保護者",
+    "Schools": "学校",
+    "NGOs": "NGO",
+    "Science": "サイエンス",
+    "Region": "地域",
+    "FreeExplore": "自由な探索"
+  },
+  "Auth": {
+    "Login": "ログイン",
+    "Register": "参加する",
+    "Logout": "ログアウト",
+    "Dashboard": "ダッシュボード",
+    "Agreement": "続行することで、利用規約およびプライバシーポリシーに同意したものとみなされます。",
+    "AlreadyHaveAccount": "すでにアカウントをお持ちですか？ログイン",
+    "Placeholders": {
+      "FullName": "山田 太郎",
+      "Username": "taro_yamada",
+      "Email": "taro@example.jp"
+    }
+  },
+  "Portals": {
+    "Tag": "ポータルを探索",
+    "Title": "完全な没入体験。",
+    "Subtitle": "限界のない成長のための、3つのつながった世界。",
+    "Local": {
+      "Title": "ローカルポータル",
+      "Desc": "公式カリキュラムの習得。AIで強化された学校の基礎。",
+      "CTA": "世界を発見する？"
+    },
+    "World": {
+      "Title": "ワールドポータル",
+      "Desc": "シンガポール数学とオックスフォード英語で、国境のない志を。",
+      "CTA": "世界を探索する？"
+    },
+    "Magic": {
+      "Title": "マジックアリーナ",
+      "Desc": "遊びを通じてスキルを定着させる、動的に適応するチャレンジ。",
+      "CTA": "アリーナに入る？"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "FreeGenyエコシステム",
+    "Title": "すべての方へのソリューション。",
+    "Subtitle": "卓越には、すべての関係者の完璧なシナジーが必要です。",
+    "Parents": {
+      "Title": "保護者スペース",
+      "Desc": "成功への精密なナビゲーション。進捗の追跡、音声エモーショナルブースト、報酬の管理。",
+      "CTA": "詳しく見る？"
+    },
+    "Schools": {
+      "Title": "FreeGeny 学校",
+      "Desc": "完全なデジタル変革。クラス・教員の管理、保護者とのリアルタイム連携。",
+      "CTA": "詳しく見る？"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "エモーショナルブースト",
+    "MomVoice": "お母さんの録音ボイス",
+    "Congratulation": "おめでとう、太郎！"
+  },
+  "Innovation": {
+    "Tag": "イノベーション",
+    "Title": "卓越のナビゲーション。",
+    "Boost": {
+      "Title": "エモーショナルブースト",
+      "Desc": "あなた自身の声でお子様を励ましましょう。"
+    },
+    "AI": {
+      "Title": "適応型AIパス",
+      "Desc": "クリックのたびにプログラムが再調整されます。"
+    }
+  },
+  "Footer": {
+    "Tag": "教育革命に参加しよう。",
+    "Title": "教育の未来は、ここに。",
+    "Subtitle": "すでに何百万もの保護者・学校・お子様がFreeGenyを信頼しています。",
+    "CTA": "今日から旅を始める",
+    "Links": {
+      "About": "概要",
+      "Contact": "お問い合わせ",
+      "Privacy": "プライバシー",
+      "Terms": "利用規約"
+    }
+  },
+  "Dashboard": {
+    "Title": "保護者コックピット",
+    "Subtitle": "小さな天才たちの成長を管理・追跡します。",
+    "AddChild": "お子様を追加",
+    "ChildCard": {
+      "Level": "学年",
+      "XP": "合計XP",
+      "Progress": "進捗",
+      "Interest": "情熱",
+      "Status": "ステータス",
+      "Premium": "プレミアムプラス",
+      "ModeLearner": "学習者モード",
+      "EmotionalBoost": {
+        "Title": "エモーショナルブースト",
+        "Desc": "音声メッセージで{name}を励ましましょう。",
+        "Record": "録音"
+      }
+    },
+    "Alliance": {
+      "Title": "ファミリーアライアンス",
+      "Online": "オンライン",
+      "CoParent": "共同保護者",
+      "Message": "メッセージ",
+      "Photo": "写真"
+    },
+    "Printable": {
+      "Title": "プリント工房",
+      "Desc": "弱点に基づいたパーソナライズ復習ノートを生成。",
+      "CTA": "ファイルを生成"
+    },
+    "Bridge": {
+      "Tag": "ブリッジ提案",
+      "Validate": "承認",
+      "Ignore": "無視"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "こんにちは、{name}！",
+    "ParentDashboard": "保護者ダッシュボード",
+    "Portals": {
+      "School": {
+        "Title": "わたしの学校",
+        "Desc": "楽しく授業を復習しましょう。",
+        "CTA": "冒険を始める"
+      },
+      "World": {
+        "Title": "ワールド",
+        "Desc": "シンガポール、オックスフォードを探索し、世界に挑戦！",
+        "CTA": "発見する"
+      },
+      "Arena": {
+        "Title": "アリーナ",
+        "Desc": "論理ゲームとマジック対戦。",
+        "CTA": "プレイの準備はできた？"
+      }
+    },
+    "Mascot": {
+      "Message": "「{name}、新しい冒険の準備はできた？保護者から送られた{boost}も忘れずに見てね！」",
+      "BoostTag": "ボイスブースト"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "世界の卓越",
+      "Family": "ファミリーチーム",
+      "Genius": "小さな天才"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "お子様に国境はありません。",
+        "Items": [
+          "シンガポール数学",
+          "ケンブリッジ（英国）",
+          "フィンランドモデル",
+          "STEM / STEAM",
+          "モンテッソーリ"
+        ]
+      },
+      "Step2": {
+        "Title": "教育はチームスポーツです。",
+        "Subtitle": "成功のために、力を合わせましょう。"
+      },
+      "Step3": {
+        "Title": "小学校専用設計。",
+        "Subtitle": "はじめの一歩に合わせたサポート。"
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "こんにちは。",
+        "Tag": "ステップ 1/3 — 保証人としての役割",
+        "PhoneLabel": "電話番号",
+        "Next": "次へ"
+      },
+      "Step2": {
+        "Title": "ファミリーアライアンス。",
+        "Tag": "ステップ 2/3 — 配偶者を招待",
+        "Desc": "成功のために、力を合わせましょう。",
+        "EmailPlaceholder": "配偶者のメール（任意）",
+        "Next": "次のステップ"
+      },
+      "Step3": {
+        "Title": "小さな天才。",
+        "Tag": "最終ステップ：その旅路",
+        "ChildName": "お子様の名前",
+        "Country": "国",
+        "Level": "学年",
+        "Age": "年齢",
+        "Region": "都道府県",
+        "CTA": "冒険を始める！"
+      }
+    }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "学校を検索...",
+    "NoSchoolFound": "学校が見つかりません",
+    "TryAnotherSearch": "フィルターを変更するか、別の検索をお試しください",
+    "SelectSchool": "選択した学校",
+    "All": "すべて",
+    "Public": "公立",
+    "Private": "私立",
+    "PromptSelect": "都道府県と市区町村を選択して、学校を見つけてください 🏫"
+  }
+}

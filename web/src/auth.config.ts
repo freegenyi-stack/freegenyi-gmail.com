@@ -5,7 +5,7 @@ import Google from "next-auth/providers/google";
 // Configuration de base (compatible Edge Runtime pour le middleware)
 export default {
   providers: [
-    Google(),
+    Google({}),
     Credentials({}),
   ],
   pages: {

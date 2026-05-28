@@ -11,6 +11,9 @@ const DEFAULT_COUNTRY_FOR_LOCALE: Record<string, string> = {
   ar: "DZ",
   fr: "FR",
   en: "AU",
+  zh: "SG",
+  ms: "SG",
+  ta: "SG",
   pt: "AO",
   es: "ES",
   de: "DE",
@@ -21,6 +24,9 @@ const DEFAULT_COUNTRY_FOR_LOCALE: Record<string, string> = {
   no: "NO",
   fi: "FI",
   pl: "PL",
+  cs: "CZ",
+  ja: "JP",
+  ko: "KR",
 };
 
 export default auth((req) => {
@@ -35,12 +41,16 @@ export default auth((req) => {
     let locale = "fr";
     if (country === "DZ" || country === "MA" || country === "TN") locale = "ar";
     else if (country === "AU" || country === "US" || country === "GB") locale = "en";
-    else if (country === "AO" || country === "PT") locale = "pt";
+    else if (country === "SG") locale = "en";
+    else if (country === "AO" || country === "PT" || country === "BR") locale = "pt";
     else if (country === "PL") locale = "pl";
     else if (country === "SE") locale = "sv";
     else if (country === "NO") locale = "no";
     else if (country === "FI") locale = "fi";
     else if (country === "NL") locale = "nl";
+    else if (country === "CZ") locale = "cs";
+    else if (country === "JP") locale = "ja";
+    else if (country === "KR") locale = "ko";
     
     return NextResponse.redirect(new URL(`/${country}-${locale}/`, req.url));
   }
