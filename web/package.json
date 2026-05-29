@@ -27,7 +27,13 @@
     "db:seed:kr": "node src/db/seeds/seed-schools-korea.js",
     "db:seed:jp": "node src/db/seeds/seed-schools-japan.js",
     "db:seed:br": "node src/db/seeds/seed-schools-brazil.js",
-    "db:seed:ar": "node src/db/seeds/seed-schools-argentina.js"
+    "db:seed:ar": "node src/db/seeds/seed-schools-argentina.js",
+    "db:seed:au": "node src/db/seeds/seed-schools-australia.js",
+    "db:seed:gb": "node src/db/seeds/seed-schools-uk.js",
+    "db:seed:us": "node src/db/seeds/seed-schools-usa.js",
+    "db:seed:ca": "node src/db/seeds/seed-schools-canada.js",
+    "db:seed:nz": "node src/db/seeds/seed-schools-nz.js",
+    "db:seed:ie": "node src/db/seeds/seed-schools-ireland.js"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.2.1",
