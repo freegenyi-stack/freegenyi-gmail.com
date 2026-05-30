@@ -27,6 +27,7 @@ const handwrittenFont = `
 const COUNTRIES = [
     { name: 'Algérie / الجزائر', code: 'DZ', flag: '🇩🇿', dial: '+213' },
     { name: 'Qatar / قطر', code: 'QA', flag: '🇶🇦', dial: '+974' },
+    { name: 'Jordanie / الأردن', code: 'JO', flag: '🇯🇴', dial: '+962' },
     { name: 'Maroc / المغرب', code: 'MA', flag: '🇲🇦', dial: '+212' },
     { name: 'Tunisie / تونس', code: 'TN', flag: '🇹🇳', dial: '+216' },
     { name: 'France', code: 'FR', flag: '🇫🇷', dial: '+33' },
@@ -2415,6 +2416,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const isJapanese = regionCountry === 'JP' || locale === 'ja' || locale.endsWith('-ja') || selectedLang === 'ja';
     const isRomanian = regionCountry === 'RO' || locale === 'ro' || locale.endsWith('-ro') || selectedLang === 'ro';
     const isQatari = regionCountry === 'QA';
+    const isJordanian = regionCountry === 'JO';
     // Determine which dictionary to use, with country-specific variants taking priority
     const activeLang: keyof typeof dict = isArabic
         ? "ar"
@@ -2480,7 +2482,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [userType, setUserType] = useState("parent");
 
     // Initialize country based on active region
-    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || (isPortuguese ? COUNTRIES.find(c => c.code === "PT") : null) || (isSpanish ? COUNTRIES.find(c => c.code === "AR") : null) || (isPolish ? COUNTRIES.find(c => c.code === "PL") : null) || (isCzech ? COUNTRIES.find(c => c.code === "CZ") : null) || (isJapanese ? COUNTRIES.find(c => c.code === "JP") : null) || (isRomanian ? COUNTRIES.find(c => c.code === "RO") : null) || (isQatari ? COUNTRIES.find(c => c.code === "QA") : null) || (regionCountry === "BR" ? COUNTRIES.find(c => c.code === "BR") : null) || (regionCountry === "CL" ? COUNTRIES.find(c => c.code === "CL") : null) || (regionCountry === "CO" ? COUNTRIES.find(c => c.code === "CO") : null) || (regionCountry === "MX" ? COUNTRIES.find(c => c.code === "MX") : null) || (regionCountry === "PE" ? COUNTRIES.find(c => c.code === "PE") : null) || (regionCountry === "SG" ? COUNTRIES.find(c => c.code === "SG") : null) || (regionCountry === "TW" ? COUNTRIES.find(c => c.code === "TW") : null) || COUNTRIES[0];
+    const defaultCountryObj = COUNTRIES.find(c => c.code === regionCountry) || (isNorwegian ? COUNTRIES.find(c => c.code === "NO") : null) || (isFinnish || isFinnishSwedish ? COUNTRIES.find(c => c.code === "FI") : null) || (isDutch ? COUNTRIES.find(c => c.code === "NL") : null) || (isPortuguese ? COUNTRIES.find(c => c.code === "PT") : null) || (isSpanish ? COUNTRIES.find(c => c.code === "AR") : null) || (isPolish ? COUNTRIES.find(c => c.code === "PL") : null) || (isCzech ? COUNTRIES.find(c => c.code === "CZ") : null) || (isJapanese ? COUNTRIES.find(c => c.code === "JP") : null) || (isRomanian ? COUNTRIES.find(c => c.code === "RO") : null) || (isQatari ? COUNTRIES.find(c => c.code === "QA") : null) || (isJordanian ? COUNTRIES.find(c => c.code === "JO") : null) || (regionCountry === "BR" ? COUNTRIES.find(c => c.code === "BR") : null) || (regionCountry === "CL" ? COUNTRIES.find(c => c.code === "CL") : null) || (regionCountry === "CO" ? COUNTRIES.find(c => c.code === "CO") : null) || (regionCountry === "MX" ? COUNTRIES.find(c => c.code === "MX") : null) || (regionCountry === "PE" ? COUNTRIES.find(c => c.code === "PE") : null) || (regionCountry === "SG" ? COUNTRIES.find(c => c.code === "SG") : null) || (regionCountry === "TW" ? COUNTRIES.find(c => c.code === "TW") : null) || COUNTRIES[0];
     const [selectedCountry, setSelectedCountry] = useState(defaultCountryObj);
 
     const [phone, setPhone] = useState("");
@@ -2488,7 +2490,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [spouseFirstName, setSpouseFirstName] = useState("");
     const [spouseLastName, setSpouseLastName] = useState("");
     const [childName, setChildName] = useState("");
-    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : (isPortuguese ? "PT" : (isSpanish ? "AR" : (isPolish ? "PL" : (isCzech ? "CZ" : (isJapanese ? "JP" : (isRomanian ? "RO" : (isQatari ? "QA" : (regionCountry === "BR" ? "BR" : (regionCountry === "CL" ? "CL" : (regionCountry === "CO" ? "CO" : (regionCountry === "MX" ? "MX" : (regionCountry === "PE" ? "PE" : (regionCountry === "SG" ? "SG" : (regionCountry === "TW" ? "TW" : "DZ"))))))))))))))))));
+    const [childCountry, setChildCountry] = useState(regionCountry || (isNorwegian ? "NO" : (isFinnish || isFinnishSwedish ? "FI" : (isDutch ? "NL" : (isPortuguese ? "PT" : (isSpanish ? "AR" : (isPolish ? "PL" : (isCzech ? "CZ" : (isJapanese ? "JP" : (isRomanian ? "RO" : (isQatari ? "QA" : (isJordanian ? "JO" : (regionCountry === "BR" ? "BR" : (regionCountry === "CL" ? "CL" : (regionCountry === "CO" ? "CO" : (regionCountry === "MX" ? "MX" : (regionCountry === "PE" ? "PE" : (regionCountry === "SG" ? "SG" : (regionCountry === "TW" ? "TW" : "DZ")))))))))))))))))));
     const [childLevel, setChildLevel] = useState("");
     const [childAge, setChildAge] = useState("");
     const [childRegion, setChildRegion] = useState("");
@@ -2558,6 +2560,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const levels: Record<string, string[]> = {
         DZ: ['1AP', '2AP', '3AP', '4AP', '5AP'],
         QA: ['الصف الأول', 'الصف الثاني', 'الصف الثالث', 'الصف الرابع', 'الصف الخامس', 'الصف السادس'],
+        JO: ['الصف الأول', 'الصف الثاني', 'الصف الثالث', 'الصف الرابع', 'الصف الخامس', 'الصف السادس'],
         MA: ['1AP', '2AP', '3AP', '4AP', '5AP', '6AP'],
         TN: ['1ère', '2ème', '3ème', '4ème', '5ème', '6ème'],
         FR: ['CP', 'CE1', 'CE2', 'CM1', 'CM2'],

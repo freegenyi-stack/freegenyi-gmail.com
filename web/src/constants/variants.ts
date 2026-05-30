@@ -634,6 +634,16 @@ export const REGION_VARIANTS: Record<string, Record<string, RegionVariant> | Reg
     }
   },
 
+  // JORDAN
+  JO: {
+    ar: {
+      heroImage: "/assets/img/regions/JO/ar/hero.png",
+      heroQuote: "تشمخ جبال البتراء الشاهدة على عظمة الأجداد — ونحن نصنع لجيل الغد همماً تعانق السحاب.",
+      scienceImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
+      scienceQuote: "العلم والريادة لمستقبل كل طفل أردني."
+    }
+  },
+
   // ROMANIA
   RO: {
     ro: {

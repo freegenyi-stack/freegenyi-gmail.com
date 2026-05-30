@@ -36,7 +36,8 @@
     "db:seed:ca": "node src/db/seeds/seed-schools-canada.js",
     "db:seed:nz": "node src/db/seeds/seed-schools-nz.js",
     "db:seed:ie": "node src/db/seeds/seed-schools-ireland.js",
-    "db:seed:qa": "node src/db/seeds/seed-schools-qatar.js"
+    "db:seed:qa": "node src/db/seeds/seed-schools-qatar.js",
+    "db:seed:jo": "node src/db/seeds/seed-schools-jordan.js"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.2.1",

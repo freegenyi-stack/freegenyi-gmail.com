@@ -197,7 +197,9 @@ export default function SchoolPicker({
       ? maAdminLabels(maghrebLang)
       : country === "TN"
         ? tnAdminLabels(maghrebLang)
-        : null;
+        : country === "JO"
+          ? { region: isAr ? "المحافظة" : "Gouvernorat", commune: isAr ? "اللواء" : "Liwa" }
+          : null;
   const pickBilingual = (local: string | null, fr: string | null) =>
     maghrebLang === "ar" ? (local || fr || "") : (fr || local || "");
   const getRegionName = (r: Region) =>
@@ -786,6 +788,10 @@ export default function SchoolPicker({
                                 ? (isAr
                                   ? "يرجى اختيار المحافظة والمعتمدية لاختيار مدرستكم 🏫"
                                   : "Veuillez sélectionner le Gouvernorat et la Délégation pour choisir votre école 🏫")
+                              : country === "JO"
+                                ? (isAr
+                                  ? "يرجى اختيار المحافظة واللواء لاختيار مدرستكم 🏫"
+                                  : "Veuillez sélectionner le Gouvernorat et le Liwa pour choisir votre école 🏫")
                               : (country === "FR"
                               ? "Veuillez sélectionner la Région, le Département et la Commune pour choisir votre école 🏫"
                               : isAr
