@@ -31,9 +31,9 @@
     "Agreement": "En continuant, vous acceptez les conditions d'utilisation et la politique de confidentialité.",
     "AlreadyHaveAccount": "Vous avez déjà un compte ? Connectez-vous",
     "Placeholders": {
-      "FullName": "Mourad Belaid",
-      "Username": "mourad_dz",
-      "Email": "mourad@genie.dz"
+      "FullName": "Fatima Benali",
+      "Username": "fatima_ma",
+      "Email": "fatima@genie.ma"
     }
   },
   "Portals": {
@@ -200,9 +200,22 @@
         "Country": "Pays",
         "Level": "Niveau",
         "Age": "Âge",
-        "Region": "Wilaya / Province",
+        "Region": "Région / Gouvernorat",
+        "Commune": "Commune / Délégation",
         "CTA": "Démarrer l'aventure !"
       }
     }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Rechercher une école...",
+    "NoSchoolFound": "Aucune école trouvée",
+    "TryAnotherSearch": "Modifiez vos filtres ou essayez une autre recherche",
+    "SelectSchool": "École sélectionnée",
+    "All": "Toutes",
+    "Public": "Publiques",
+    "Private": "Privées",
+    "RegionSG": "Région (Zone)",
+    "DistrictSG": "Zone / DGP",
+    "PromptSelect": "Veuillez sélectionner la Région et la Zone pour trouver votre école 🏫"
   }
 }

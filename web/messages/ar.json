@@ -31,9 +31,9 @@
     "Agreement": "بالاستمرار، فإنك توافق على شروط الخدمة وسياسة الخصوصية.",
     "AlreadyHaveAccount": "لديك حساب بالفعل؟ تسجيل الدخول",
     "Placeholders": {
-      "FullName": "مراد بلعيد",
-      "Username": "mourad_dz",
-      "Email": "mourad@genie.dz"
+      "FullName": "فاطمة بنعلي",
+      "Username": "fatima_ma",
+      "Email": "fatima@genie.ma"
     }
   },
   "Portals": {
@@ -200,9 +200,22 @@
         "Country": "البلد",
         "Level": "المستوى",
         "Age": "العمر",
-        "Region": "الولاية / المحافظة",
+        "Region": "الجهة / المحافظة",
+        "Commune": "الجماعة / المعتمدية",
         "CTA": "ابدأ المغامرة!"
       }
     }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "البحث عن مدرسة...",
+    "NoSchoolFound": "لم يتم العثور على مدرسة",
+    "TryAnotherSearch": "عدّل عوامل التصفية أو جرّب بحثاً آخر",
+    "SelectSchool": "المدرسة المختارة",
+    "All": "الكل",
+    "Public": "عمومية",
+    "Private": "خاصة",
+    "RegionSG": "المنطقة (النطاق)",
+    "DistrictSG": "النطاق / DGP",
+    "PromptSelect": "يرجى اختيار المنطقة والنطاق للعثور على مدرستكم 🏫"
   }
 }

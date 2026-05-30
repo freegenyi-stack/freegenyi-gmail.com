@@ -5,6 +5,8 @@ import { Search, School, MapPin, ChevronDown, X, CheckCircle, Navigation } from 
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { formatSgDistrictName, formatSgRegionName } from "@/lib/sgGeoLabels";
+import { formatMaRegionName, maAdminLabels } from "@/lib/maGeoLabels";
+import { tnAdminLabels } from "@/lib/tnGeoLabels";
 
 interface Region {
   id: number;
@@ -189,8 +191,23 @@ export default function SchoolPicker({
   const selectedDistrict = districts.find((d) => d.code === districtCode);
 
   const sgLang = isChinese ? "zh" : isMalay ? "ms" : isTamil ? "ta" : "en";
+  const maghrebLang = isAr ? "ar" : "fr";
+  const adminLabels =
+    country === "MA"
+      ? maAdminLabels(maghrebLang)
+      : country === "TN"
+        ? tnAdminLabels(maghrebLang)
+        : null;
+  const pickBilingual = (local: string | null, fr: string | null) =>
+    maghrebLang === "ar" ? (local || fr || "") : (fr || local || "");
   const getRegionName = (r: Region) =>
-    country === "SG"
+    country === "TN"
+      ? pickBilingual(r.nameLocal, r.nameFr)
+      : country === "MA"
+      ? maghrebLang === "ar"
+        ? (r.nameLocal || formatMaRegionName(r.nameFr, maghrebLang))
+        : (r.nameFr || formatMaRegionName(r.nameLocal, maghrebLang))
+      : country === "SG"
       ? formatSgRegionName(r.code, r.nameLocal, sgLang)
       : isNorwegian || isFinnish || isDutch || isPortuguese || isPolish || isCzech || isKorean || isJapanese
         ? (r.nameLocal || r.nameFr)
@@ -202,7 +219,9 @@ export default function SchoolPicker({
               ? (r.nameLocal || r.nameFr)
               : (r.nameFr || r.nameLocal);
   const getDistrictName = (d: District) =>
-    country === "SG"
+    country === "MA" || country === "TN"
+      ? pickBilingual(d.nameLocal, d.nameFr)
+      : country === "SG"
       ? formatSgDistrictName(d.nameLocal || d.nameFr)
       : isNorwegian || isFinnish || isDutch || isPortuguese || isPolish || isCzech || isKorean || isJapanese
         ? (d.nameLocal || d.nameFr)
@@ -214,8 +233,34 @@ export default function SchoolPicker({
               ? (d.nameLocal || d.nameFr)
               : (d.nameFr || d.nameLocal);
   const getSchoolName = (s: SchoolResult) => isNorwegian || isFinnish || isDutch || isPortuguese || isPolish || isCzech || isKorean || isJapanese ? (s.nameLocal || s.nameFr) : isSwedish ? (s.nameLocal || s.nameFr) : isEnglish || isChinese || isMalay || isTamil ? (s.nameLocal || s.nameFr) : isAr ? (s.nameLocal || s.nameFr) : (s.nameFr || s.nameLocal);
-  const getSchoolRegion = (s: SchoolResult) => isNorwegian || isFinnish || isDutch || isPortuguese || isPolish || isCzech || isKorean || isJapanese ? (s.regionNameLocal || s.regionNameFr) : isSwedish ? (s.regionNameLocal || s.regionNameFr) : isEnglish || isChinese || isMalay || isTamil ? (s.regionNameLocal || s.regionNameFr) : isAr ? (s.regionNameLocal || s.regionNameFr) : (s.regionNameFr || s.regionNameLocal);
-  const getSchoolDistrict = (s: SchoolResult) => isNorwegian || isFinnish || isDutch || isPortuguese || isPolish || isCzech || isKorean || isJapanese ? (s.districtNameLocal || s.districtNameFr) : isSwedish ? (s.districtNameLocal || s.districtNameFr) : isEnglish || isChinese || isMalay || isTamil ? (s.districtNameLocal || s.districtNameFr) : isAr ? (s.districtNameLocal || s.districtNameFr) : (s.districtNameFr || s.districtNameLocal);
+  const getSchoolRegion = (s: SchoolResult) =>
+    country === "TN"
+      ? pickBilingual(s.regionNameLocal, s.regionNameFr)
+      : country === "MA"
+      ? maghrebLang === "ar"
+        ? (s.regionNameLocal || formatMaRegionName(s.regionNameFr, maghrebLang))
+        : (s.regionNameFr || formatMaRegionName(s.regionNameLocal, maghrebLang))
+      : isNorwegian || isFinnish || isDutch || isPortuguese || isPolish || isCzech || isKorean || isJapanese
+        ? (s.regionNameLocal || s.regionNameFr)
+        : isSwedish
+          ? (s.regionNameLocal || s.regionNameFr)
+          : isEnglish || isChinese || isMalay || isTamil
+            ? (s.regionNameLocal || s.regionNameFr)
+            : isAr
+              ? (s.regionNameLocal || s.regionNameFr)
+              : (s.regionNameFr || s.regionNameLocal);
+  const getSchoolDistrict = (s: SchoolResult) =>
+    country === "MA" || country === "TN"
+      ? pickBilingual(s.districtNameLocal, s.districtNameFr)
+      : isNorwegian || isFinnish || isDutch || isPortuguese || isPolish || isCzech || isKorean || isJapanese
+        ? (s.districtNameLocal || s.districtNameFr)
+        : isSwedish
+          ? (s.districtNameLocal || s.districtNameFr)
+          : isEnglish || isChinese || isMalay || isTamil
+            ? (s.districtNameLocal || s.districtNameFr)
+            : isAr
+              ? (s.districtNameLocal || s.districtNameFr)
+              : (s.districtNameFr || s.districtNameLocal);
 
   const handleSelect = (school: SchoolResult) => {
     onChange({
@@ -375,7 +420,7 @@ export default function SchoolPicker({
             >
               <span className="flex items-center gap-2 truncate">
                 <Navigation className={`w-3.5 h-3.5 shrink-0 ${regionCode ? 'text-orange-500' : 'text-slate-300'}`} />
-                <span className="truncate">{selectedDistrict ? getDistrictName(selectedDistrict) : (isAr ? "البلدية" : (country as string) === "SG" ? (isChinese ? "区域" : isMalay ? "Zon" : isTamil ? "மண்டலம்" : "Zone / DGP") : (country as string) === "AR" ? "Departamento / Partido" : (country as string) === "NO" ? "Kommune" : (country as string) === "FI" ? "Kunta" : (country as string) === "NL" ? "Gemeente" : (country as string) === "PT" ? "Município" : (country as string) === "PL" ? "Powiat" : (country as string) === "KR" ? "관할조직 (구/군)" : (country as string) === "JP" ? "市区町村" : (country as string) === "CZ" ? "Okres" : isEnglish ? "District" : "Commune")}</span>
+                <span className="truncate">{selectedDistrict ? getDistrictName(selectedDistrict) : adminLabels ? adminLabels.commune : (isAr ? "البلدية" : (country as string) === "SG" ? (isChinese ? "区域" : isMalay ? "Zon" : isTamil ? "மண்டலம்" : "Zone / DGP") : (country as string) === "AR" ? "Departamento / Partido" : (country as string) === "NO" ? "Kommune" : (country as string) === "FI" ? "Kunta" : (country as string) === "NL" ? "Gemeente" : (country as string) === "PT" ? "Município" : (country as string) === "PL" ? "Powiat" : (country as string) === "KR" ? "관할조직 (구/군)" : (country as string) === "JP" ? "市区町村" : (country as string) === "CZ" ? "Okres" : isEnglish ? "District" : "Commune")}</span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
                 {districtCode && (
@@ -538,7 +583,9 @@ export default function SchoolPicker({
                 <span className="truncate">
                   {selectedRegion
                     ? getRegionName(selectedRegion)
-                    : (isAr ? "الولاية" : country === "SG" ? tSp("RegionSG") : country === "AR" ? "Provincia" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : country === "NO" ? "Fylke" : country === "FI" ? "Maakunta" : country === "NL" ? "Provincie" : country === "PT" ? "Distrito" : country === "BR" ? "Estado" : country === "PL" ? "Województwo" : country === "KR" ? "시/도" : country === "JP" ? "都道府県" : country === "CZ" ? "Kraj" : isEnglish ? "Region" : "Wilaya")}
+                    : adminLabels
+                      ? adminLabels.region
+                      : (isAr ? "الولاية" : country === "SG" ? tSp("RegionSG") : country === "AR" ? "Provincia" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : country === "NO" ? "Fylke" : country === "FI" ? "Maakunta" : country === "NL" ? "Provincie" : country === "PT" ? "Distrito" : country === "BR" ? "Estado" : country === "PL" ? "Województwo" : country === "KR" ? "시/도" : country === "JP" ? "都道府県" : country === "CZ" ? "Kraj" : isEnglish ? "Region" : "Wilaya")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -592,7 +639,9 @@ export default function SchoolPicker({
                 <span className="truncate">
                   {selectedDistrict
                     ? getDistrictName(selectedDistrict)
-                    : (isAr ? "البلدية" : country === "SG" ? tSp("DistrictSG") : country === "AR" ? "Departamento / Partido" : country === "IE" ? (isIrish ? "Údarás Áitiúil" : "Local Authority") : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : country === "US" ? "District" : country === "NZ" ? (isMaori ? "Takiwā" : "Territorial Authority") : country === "DK" ? "Kommune" : country === "SE" ? "Kommuner" : country === "NO" ? "Kommune" : country === "FI" ? "Kunta" : country === "NL" ? "Gemeente" : (country === "PT" || country === "BR") ? "Município" : country === "PL" ? "Powiat" : country === "KR" ? "관할조직 (구/군)" : country === "JP" ? "市区町村" : country === "CZ" ? "Okres" : isEnglish ? "District" : "Commune")}
+                    : adminLabels
+                      ? adminLabels.commune
+                      : (isAr ? "البلدية" : country === "SG" ? tSp("DistrictSG") : country === "AR" ? "Departamento / Partido" : country === "IE" ? (isIrish ? "Údarás Áitiúil" : "Local Authority") : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : country === "US" ? "District" : country === "NZ" ? (isMaori ? "Takiwā" : "Territorial Authority") : country === "DK" ? "Kommune" : country === "SE" ? "Kommuner" : country === "NO" ? "Kommune" : country === "FI" ? "Kunta" : country === "NL" ? "Gemeente" : (country === "PT" || country === "BR") ? "Município" : country === "PL" ? "Powiat" : country === "KR" ? "관할조직 (구/군)" : country === "JP" ? "市区町村" : country === "CZ" ? "Okres" : isEnglish ? "District" : "Commune")}
                 </span>
               </span>
               <div className="flex items-center gap-1 shrink-0 ml-1">
@@ -729,9 +778,19 @@ export default function SchoolPicker({
                             ? "Valitse Maakunta ja Kunta löytääksesi koulusi 🏫"
                             : country === "NL"
                               ? "Selecteer Provincie en Gemeente om uw school te vinden 🏫"
+                              : country === "MA"
+                                ? (isAr
+                                  ? "يرجى اختيار الجهة والجماعة لاختيار مدرستكم 🏫"
+                                  : "Veuillez sélectionner la Région et la Commune pour choisir votre école 🏫")
+                              : country === "TN"
+                                ? (isAr
+                                  ? "يرجى اختيار المحافظة والمعتمدية لاختيار مدرستكم 🏫"
+                                  : "Veuillez sélectionner le Gouvernorat et la Délégation pour choisir votre école 🏫")
                               : (country === "FR"
                               ? "Veuillez sélectionner la Région, le Département et la Commune pour choisir votre école 🏫"
-                              : "Veuillez sélectionner la Wilaya et la Commune pour choisir votre école 🏫")}
+                              : isAr
+                                ? "يرجى اختيار الولاية والبلدية لاختيار مدرستكم 🏫"
+                                : "Veuillez sélectionner la Wilaya et la Commune pour choisir votre école 🏫")}
         </div>
       )}
 
