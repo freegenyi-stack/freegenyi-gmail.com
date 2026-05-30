@@ -49,6 +49,8 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
+  // Extract country from locale (e.g. "QA-ar" → "QA")
+  const initialCountry = locale.includes("-") ? locale.split("-")[0] : locale;
 
   return (
     <html
@@ -59,7 +61,7 @@ export default async function LocaleLayout({
       <body className="min-h-full bg-white">
         <SessionProvider>
           <NextIntlClientProvider messages={messages}>
-            <RegionProvider>
+            <RegionProvider initialLocale={locale}>
               <ChatProvider>
                 {children}
                 <ThemeModal />
