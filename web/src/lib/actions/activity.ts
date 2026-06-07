@@ -1,9 +1,9 @@
 "use server";
 
 import { db } from "@/db";
-import { activityLogs, invitations } from "@/db/schema";
+import { activityLogs } from "@/db/schema";
 import { auth } from "@/auth";
-import { revalidatePath } from "next/cache";
+import { createFamilyInvitation } from "@/lib/actions/family";
 
 /**
  * Record a new activity log
@@ -25,35 +25,26 @@ export async function logActivity(category: string, action: string, metadata?: a
 }
 
 /**
- * Send an invitation to a family member
+ * Send an invitation to a family member (co-parent)
  */
 export async function sendInvitationAction(formData: FormData) {
   const session = await auth();
   if (!session?.user?.id) return { error: "Non autorisé" };
 
   const email = (formData.get("email") as string)?.toLowerCase().trim();
-  const role = formData.get("role") as string;
+  const role = (formData.get("role") as string) || "coparent";
+  const locale = (formData.get("locale") as string) || undefined;
 
-  if (!email || !role) return { error: "Veuillez remplir tous les champs." };
+  if (!email) return { error: "Veuillez remplir tous les champs." };
 
-  try {
-    // 1. Record in DB
-    await db.insert(invitations).values({
-      parentId: parseInt(session.user.id),
-      invitedEmail: email,
-      role: role,
-    });
+  const result = await createFamilyInvitation(email, role, locale);
+  if ("error" in result) return result;
 
-    // 2. Log activity
-    await logActivity("invite", "Invitation envoyée", { target: email, role });
+  await logActivity("invite", "Invitation envoyée", { target: email, role, url: result.inviteUrl });
 
-    // 3. (Optional) Here we would integrate a mailer like Resend or Nodemailer
-    // For now, we return success as in the original PHP flow before mail failures
-    
-    revalidatePath("/[locale]/dashboard/invite", "page");
-    return { success: `L'invitation a été envoyée avec succès à ${email} !` };
-  } catch (error) {
-    console.error("Error sending invitation:", error);
-    return { error: "Erreur lors de l'envoi de l'invitation." };
-  }
+  return {
+    success: result.success,
+    inviteUrl: result.inviteUrl,
+    emailSent: result.emailSent,
+  };
 }

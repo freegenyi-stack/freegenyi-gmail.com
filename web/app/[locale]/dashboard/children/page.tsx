@@ -1,8 +1,8 @@
 import React from "react";
 import { auth } from "@/auth";
 import { db } from "@/db";
-import { users, children as childrenTable } from "@/db/schema";
-import { eq, desc } from "drizzle-orm";
+import { users } from "@/db/schema";
+import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import ChildrenClient from "./ChildrenClient";
 
@@ -28,15 +28,12 @@ export default async function ChildrenPage({
     redirect(`/${locale}/auth/login`);
   }
 
-  // Fetch children list
-  const childrenData = await db
-    .select()
-    .from(childrenTable)
-    .where(eq(childrenTable.parentId, user.id))
-    .orderBy(desc(childrenTable.createdAt));
+  // Fetch children list (whole family)
+  const { getFamilyChildren } = await import("@/lib/family/server");
+  const childrenData = await getFamilyChildren(user);
 
   return (
-    <div className="bg-slate-50 min-h-[calc(100vh-4rem)] pb-24 font-dm-sans">
+    <div className="bg-slate-50 min-h-full pb-24 font-dm-sans">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
         <ChildrenClient 
           initialChildren={childrenData} 

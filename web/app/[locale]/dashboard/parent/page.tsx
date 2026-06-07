@@ -7,8 +7,12 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { db } from "@/db";
 import { users, children as childrenTable } from "@/db/schema";
-import { eq, or, desc, and } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
+import { getFamilyChildren, isAdultProfileComplete } from "@/lib/family/server";
+import { isFamilyAdult } from "@/lib/family/constants";
+import ProfileCompleteBanner from "@/components/family/ProfileCompleteBanner";
+import ChildAccessPanel from "@/components/family/ChildAccessPanel";
 
 export default async function ParentDashboardPage({
   params,
@@ -31,11 +35,14 @@ export default async function ParentDashboardPage({
     redirect(`/${locale}/dashboard/onboarding`);
   }
 
-  // 2. Fetch children (no redirect if empty — dashboard shows empty state)
-  const childrenData = await db
-    .select()
-    .from(childrenTable)
-    .where(eq(childrenTable.parentId, user.id));
+  if (!isFamilyAdult(user.role)) {
+    redirect(`/${locale}/dashboard/${user.role === "enseignant" ? "enseignant" : "parent"}`);
+  }
+
+  const profileComplete = await isAdultProfileComplete(user.id, user.role);
+
+  // 2. Fetch family children
+  const childrenData = await getFamilyChildren(user);
 
 
   let partner = null;
@@ -75,7 +82,7 @@ export default async function ParentDashboardPage({
   };
 
   return (
-    <div className="bg-slate-50 min-h-[calc(100vh-4rem)] pb-24 font-dm-sans selection:bg-orange-600 selection:text-white">
+    <div className="bg-slate-50 min-h-full pb-24 font-dm-sans selection:bg-orange-600 selection:text-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
         
         {/* Header du Dashboard */}
@@ -91,6 +98,12 @@ export default async function ParentDashboardPage({
             </p>
           </div>
           <div className="flex gap-4 w-full md:w-auto relative z-10">
+            <Link 
+              href="/child"
+              className="flex-1 md:flex-none text-center bg-orange-500 text-white px-6 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-orange-600 transition-all shadow-lg"
+            >
+              Mode enfant
+            </Link>
             <Link 
               href="/dashboard/children"
               className="flex-1 md:flex-none text-center bg-white border-2 border-slate-100 px-8 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:border-slate-300 hover:shadow-xl transition-all duration-300 text-slate-700"
@@ -118,6 +131,8 @@ export default async function ParentDashboardPage({
             Réglages
           </Link>
         </div>
+
+        <ProfileCompleteBanner locale={locale} role={user.role || "parent"} complete={profileComplete} />
 
         <div className="grid lg:grid-cols-3 gap-12 relative z-10">
           
@@ -204,6 +219,14 @@ export default async function ParentDashboardPage({
                       Enregistrer
                     </button>
                   </div>
+
+                  {profileComplete && (
+                    <ChildAccessPanel
+                      childId={child.id}
+                      childName={child.fullName}
+                      hasPin={!!child.accessPinHash}
+                    />
+                  )}
                 </div>
               </div>
             ))}

@@ -17,16 +17,25 @@
     "About": "Mayelana nathi",
     "Approach": "Indlela",
     "Parents": "Abazali",
+    "Teachers": "Othisha",
     "Schools": "Izikole",
     "NGOs": "Izinhlangano",
     "Science": "Isayensi",
-    "Region": "Isifunda"
+    "Region": "Isifunda",
+    "FreeExplore": "Ukuhlola Okukhululekile"
   },
   "Auth": {
     "Login": "Ngena ngemvume",
     "Register": "Joyina",
     "Logout": "Phuma",
-    "Dashboard": "Ideshibhodi"
+    "Dashboard": "Ideshibhodi",
+    "Agreement": "Ngokuqhubeka, uyavuma imigomo yethu yenkonzo nenqubomgomo yobumfihlo.",
+    "AlreadyHaveAccount": "Sewunekhawunti? Ngena",
+    "Placeholders": {
+      "FullName": "Sipho Dlamini",
+      "Username": "sipho_zu",
+      "Email": "sipho@ningizimu.co.za"
+    }
   },
   "Portals": {
     "Tag": "Hlola ama-Portal",
@@ -196,5 +205,17 @@
         "CTA": "Qala uhambo!"
       }
     }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Sesha isikole...",
+    "NoSchoolFound": "Akukho sikole esifotshelwe",
+    "TryAnotherSearch": "Shintsha amahlelo akho noma uzame olunye usesho",
+    "SelectSchool": "Isikole Esikhethiwe",
+    "All": "Konke",
+    "Public": "Umphakathi",
+    "Private": "Sabucala",
+    "RegionSG": "Isifunda (Indawo)",
+    "DistrictSG": "Indawo / DGP",
+    "PromptSelect": "Sicela ukhethe Isifunda kanye Nendawo ukuze uthole isikole sakho 🏫"
   }
 }

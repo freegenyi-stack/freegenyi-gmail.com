@@ -5,13 +5,27 @@ import { db } from "@/db";
 import { users, children as childrenTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import ClientOnboarding from "./ClientOnboarding";
+import TeacherOnboarding from "@/components/teacher/TeacherOnboarding";
+import RegisterWizard from "@/components/register/RegisterWizard";
+import {
+  isUserFullyOnboarded,
+  resolveDashboardSegment,
+} from "@/lib/auth/dashboard-route";
+import { isRegisterRoleHidden } from "@/constants/publicNav";
+
+function isDzLocale(locale: string) {
+  return locale === "DZ-fr" || locale === "DZ-ar" || locale.startsWith("DZ-");
+}
 
 export default async function OnboardingServerPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ type?: string }>;
 }) {
   const { locale } = await params;
+  const { type: typeParam } = await searchParams;
   const session = await auth();
 
   // Redirection stricte si non connecté
@@ -34,12 +48,30 @@ export default async function OnboardingServerPage({
     hasChildren = childrenCount.length > 0;
   }
 
-  // Redirection intelligente selon le rôle
-  // Si onboarding_step >= 4 : profil validé, on redirige vers le bon cockpit
-  if (user && user.onboardingStep! >= 4) {
-    const userRole = user.role || 'parent';
-    const dashRoute = userRole === 'ecole' ? 'ecole' : userRole === 'ong' ? 'ong' : 'parent';
-    redirect(`/${locale}/dashboard/${dashRoute}`);
+  const isTeacherFlow = typeParam === "enseignant" || user?.role === "enseignant";
+
+  // Écoles / ONG masqués → repasser en parent et wizard (phase 2 plus tard)
+  if (user && isRegisterRoleHidden(user.role ?? "")) {
+    await db
+      .update(users)
+      .set({ role: "parent", onboardingStep: 1, metadata: null, updatedAt: new Date() })
+      .where(eq(users.id, user.id));
+  } else if (user && isUserFullyOnboarded(user.role, user.onboardingStep)) {
+    redirect(`/${locale}/dashboard/${resolveDashboardSegment(user.role)}`);
+  }
+
+  if (isDzLocale(locale)) {
+    return (
+      <RegisterWizard
+        locale={locale}
+        mode="google"
+        initialRole={isTeacherFlow ? "enseignant" : "parent"}
+      />
+    );
+  }
+
+  if (isTeacherFlow) {
+    return <TeacherOnboarding locale={locale} />;
   }
 
   return <ClientOnboarding locale={locale} />;

@@ -39,7 +39,7 @@ export default auth((req) => {
     const country = cookieCountry || ipCountry || "DZ";
     
     let locale = "fr";
-    if (country === "DZ" || country === "MA" || country === "TN" || country === "QA" || country === "JO") locale = "ar";
+    if (country === "DZ" || country === "MA" || country === "TN" || country === "QA" || country === "JO" || country === "LB") locale = "ar";
     else if (country === "AU" || country === "US" || country === "GB") locale = "en";
     else if (country === "SG") locale = "en";
     else if (country === "AO" || country === "PT" || country === "BR") locale = "pt";

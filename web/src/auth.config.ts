@@ -8,9 +8,9 @@ export default {
     Google({}),
     Credentials({}),
   ],
+  trustHost: true,
   pages: {
     signIn: "/fr/auth/login",
-    error: "/fr/auth/register",
   },
   session: {
     strategy: "jwt",

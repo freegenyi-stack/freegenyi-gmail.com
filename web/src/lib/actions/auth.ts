@@ -9,8 +9,8 @@ import bcrypt from "bcryptjs";
 
 export async function loginAction(formData: FormData) {
   try {
-    const email = formData.get("email");
-    const password = formData.get("password");
+    const email = (formData.get("email") as string)?.toLowerCase().trim();
+    const password = formData.get("password") as string;
 
     if (!email || !password) {
       return { error: "Veuillez remplir tous les champs." };
@@ -19,13 +19,19 @@ export async function loginAction(formData: FormData) {
     await signIn("credentials", {
       email,
       password,
-      redirect: false, // On gère la redirection côté client pour plus de fluidité
+      redirect: false,
     });
 
-    // Fetch user to get onboardingStep
-    const [user] = await db.select({ onboardingStep: users.onboardingStep }).from(users).where(eq(users.email, email as string));
+    const [user] = await db
+      .select({ onboardingStep: users.onboardingStep, role: users.role })
+      .from(users)
+      .where(eq(users.email, email));
 
-    return { success: true, onboardingStep: user?.onboardingStep || 1 };
+    return {
+      success: true,
+      onboardingStep: user?.onboardingStep || 1,
+      role: user?.role || "parent",
+    };
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -35,7 +41,8 @@ export async function loginAction(formData: FormData) {
           return { error: "Une erreur est survenue lors de la connexion." };
       }
     }
-    throw error;
+    console.error("loginAction error:", error);
+    return { error: "Une erreur inattendue est survenue." };
   }
 }
 

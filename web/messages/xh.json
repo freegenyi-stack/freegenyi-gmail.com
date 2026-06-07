@@ -17,16 +17,25 @@
     "About": "Malunga",
     "Approach": "Indlela",
     "Parents": "Abazali",
+    "Teachers": "Ootitshala",
     "Schools": "Izikolo",
     "NGOs": "Ii-NGO",
     "Science": "ISayensi",
-    "Region": "Ummandla"
+    "Region": "Ummandla",
+    "FreeExplore": "Uphononongo Olukhululekileyo"
   },
   "Auth": {
     "Login": "Ngena",
     "Register": "Joyina",
     "Logout": "Phuma",
-    "Dashboard": "IDeshibhodi"
+    "Dashboard": "IDeshibhodi",
+    "Agreement": "Ngokuqhubela phambili, uyavuma imigaqo yethu yenkonzo kunye nomgaqo-nkqubo wabucala.",
+    "AlreadyHaveAccount": "Usele uneakhawunti? Ngena",
+    "Placeholders": {
+      "FullName": "Sipho Ndlovu",
+      "Username": "sipho_xh",
+      "Email": "sipho@mzantsi.co.za"
+    }
   },
   "Portals": {
     "Tag": "Hlola ii-Portal",
@@ -196,5 +205,17 @@
         "CTA": "Qala uhambo!"
       }
     }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Khangela isikolo...",
+    "NoSchoolFound": "Akukho sikolo esiфunyenweyo",
+    "TryAnotherSearch": "Guqula izihlungi zakho okanye uzame olunye uphendlo",
+    "SelectSchool": "Isikolo Esikhethiweyo",
+    "All": "Zonke",
+    "Public": "Yoluntu",
+    "Private": "Yabucala",
+    "RegionSG": "Ummandla (Umphakathi)",
+    "DistrictSG": "Umphakathi / DGP",
+    "PromptSelect": "Nceda ukhethe uMmandla kunye noMphakathi ukufumana isikolo sakho 🏫"
   }
 }

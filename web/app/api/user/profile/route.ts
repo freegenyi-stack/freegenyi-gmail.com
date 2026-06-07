@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq, and, ne } from "drizzle-orm";
+import { getUnreadNotificationCount } from "@/lib/messaging/notify";
 
 export async function GET() {
   try {
@@ -72,6 +73,8 @@ export async function GET() {
     const avatarConfig = user.avatarConfig ? JSON.parse(user.avatarConfig) : null;
     const themeSettings = user.themeSettings ? JSON.parse(user.themeSettings) : null;
 
+    const notifCount = await getUnreadNotificationCount(user.id);
+
     return NextResponse.json({
       id: user.id,
       fullName: user.fullName,
@@ -83,7 +86,7 @@ export async function GET() {
       themeSettings,
       profileComplete,
       partner,
-      notifCount: 0, // Phase 5 will populate this
+      notifCount,
     });
   } catch (error) {
     console.error("Header API error:", error);

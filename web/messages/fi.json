@@ -1,4 +1,4 @@
-{
+﻿{
   "Hero": {
     "title": "Avaa <orange>nero</orange> lapsellesi.",
     "status": "Huippuosaamisen silta on auki",
@@ -17,6 +17,7 @@
     "About": "Meistä",
     "Approach": "Lähestymistapa",
     "Parents": "Vanhemmat",
+    "Teachers": "Opettajat",
     "Schools": "Koulut",
     "NGOs": "Järjestöt",
     "Science": "Tiede",
@@ -236,5 +237,18 @@
         "CTA": "Aloita seikkailu!"
       }
     }
+  }
+,
+  "SchoolPicker": {
+    "SearchPlaceholder": "Hae koulua...",
+    "NoSchoolFound": "Koulua ei löydy",
+    "TryAnotherSearch": "Muuta suodattimia tai kokeile toista hakua",
+    "SelectSchool": "Valittu koulu",
+    "All": "Kaikki",
+    "Public": "Julkinen",
+    "Private": "Yksityinen",
+    "RegionSG": "Alue (Vyöhyke)",
+    "DistrictSG": "Vyöhyke / DGP",
+    "PromptSelect": "Valitse alue ja vyöhyke löytääksesi koulusi 🏫"
   }
 }

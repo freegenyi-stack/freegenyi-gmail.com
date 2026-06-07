@@ -17,16 +17,25 @@
     "About": "Oor ons",
     "Approach": "Benadering",
     "Parents": "Ouers",
+    "Teachers": "Onderwysers",
     "Schools": "Skole",
     "NGOs": "NRO's",
     "Science": "Wetenskap",
-    "Region": "Streek"
+    "Region": "Streek",
+    "FreeExplore": "Vrye Verkenning"
   },
   "Auth": {
     "Login": "Teken aan",
     "Register": "Sluit aan",
     "Logout": "Teken uit",
-    "Dashboard": "Kontroleskerm"
+    "Dashboard": "Kontroleskerm",
+    "Agreement": "Deur voort te gaan, stem jy in met ons diensvoorwaardes en privaatbeleidsverklaring.",
+    "AlreadyHaveAccount": "Het jy reeds 'n rekening? Teken aan",
+    "Placeholders": {
+      "FullName": "Pieter van der Merwe",
+      "Username": "pieter_za",
+      "Email": "pieter@suid-afrika.co.za"
+    }
   },
   "Portals": {
     "Tag": "Verken die Portale",
@@ -196,5 +205,17 @@
         "CTA": "Begin die avontuur!"
       }
     }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Soek 'n skool...",
+    "NoSchoolFound": "Geen skool gevind nie",
+    "TryAnotherSearch": "Verander jou filters of probeer 'n ander soektog",
+    "SelectSchool": "Geselekteerde Skool",
+    "All": "Almal",
+    "Public": "Publiek",
+    "Private": "Privaat",
+    "RegionSG": "Streek (Sone)",
+    "DistrictSG": "Sone / DGP",
+    "PromptSelect": "Kies die Streek en Sone om jou skool te vind 🏫"
   }
 }

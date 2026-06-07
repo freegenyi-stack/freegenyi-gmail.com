@@ -27,12 +27,14 @@ export const users = pgTable("users", {
 export const children = pgTable("children", {
   id: serial("id").primaryKey(),
   parentId: integer("parent_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  familyId: text("family_id"),
   fullName: text("full_name").notNull(),
   birthDate: text("birth_date"), // date stored as string YYYY-MM-DD
   gender: text("gender"),
   educationLevel: text("education_level"),
   schoolId: integer("school_id"), // Reference to schools table (optional FK)
   schoolName: text("school_name"), // Cached name for display
+  accessPinHash: text("access_pin_hash"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
@@ -49,16 +51,40 @@ export const activityLogs = pgTable("activity_logs", {
 export const invitations = pgTable("invitations", {
   id: serial("id").primaryKey(),
   parentId: integer("parent_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  familyId: text("family_id"),
   invitedEmail: text("invited_email").notNull(),
-  role: varchar("role", { length: 20 }).default("papa"),
+  role: varchar("role", { length: 20 }).default("coparent"),
+  token: text("token").unique(),
   status: varchar("status", { length: 20 }).default("pending"),
+  expiresAt: timestamp("expires_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const childDevicePairings = pgTable("child_device_pairings", {
+  id: serial("id").primaryKey(),
+  childId: integer("child_id").notNull().references(() => children.id, { onDelete: "cascade" }),
+  deviceToken: text("device_token").notNull().unique(),
+  deviceLabel: text("device_label"),
+  lastUsedAt: timestamp("last_used_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const childPairingCodes = pgTable("child_pairing_codes", {
+  id: serial("id").primaryKey(),
+  childId: integer("child_id").notNull().references(() => children.id, { onDelete: "cascade" }),
+  code: text("code").notNull().unique(),
+  expiresAt: timestamp("expires_at").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
 export const conversations = pgTable("conversations", {
   id: serial("id").primaryKey(),
-  type: varchar("type", { length: 20 }).default("direct"), // direct, group, ai
-  name: text("name"), // For group chats
+  type: varchar("type", { length: 20 }).default("direct"), // direct, group, channel
+  name: text("name"),
+  directKey: varchar("direct_key", { length: 64 }),
+  schoolId: integer("school_id"),
+  lastMessageAt: timestamp("last_message_at"),
+  updatedAt: timestamp("updated_at").defaultNow(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -66,19 +92,44 @@ export const conversationMembers = pgTable("conversation_members", {
   id: serial("id").primaryKey(),
   conversationId: integer("conversation_id").notNull().references(() => conversations.id, { onDelete: "cascade" }),
   userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  lastReadAt: timestamp("last_read_at"),
+  muted: boolean("muted").default(false),
   joinedAt: timestamp("joined_at").defaultNow().notNull(),
-});
+}, (table) => [
+  uniqueIndex("conversation_members_pair_idx").on(table.conversationId, table.userId),
+]);
 
 export const chatMessages = pgTable("chat_messages", {
   id: serial("id").primaryKey(),
   conversationId: integer("conversation_id").notNull().references(() => conversations.id, { onDelete: "cascade" }),
   senderId: integer("sender_id").notNull().references(() => users.id, { onDelete: "cascade" }),
-  messageType: varchar("message_type", { length: 20 }).default("text"), // text, image, audio, file
+  messageType: varchar("message_type", { length: 20 }).default("text"),
   content: text("content"),
   mediaUrl: text("media_url"),
+  mediaBlocked: boolean("media_blocked").default(false),
+  moderatedAt: timestamp("moderated_at"),
+  moderatedBy: integer("moderated_by").references(() => users.id, { onDelete: "set null" }),
   isRead: boolean("is_read").default(false),
+  isDeleted: boolean("is_deleted").default(false),
+  editedAt: timestamp("edited_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
-});
+}, (table) => [
+  index("chat_messages_conversation_idx").on(table.conversationId, table.createdAt),
+]);
+
+export const messageSuggestions = pgTable("message_suggestions", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  targetUserId: integer("target_user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  reasonKey: varchar("reason_key", { length: 64 }).notNull(),
+  reasonParams: text("reason_params"),
+  sortOrder: integer("sort_order").default(0),
+  dismissed: boolean("dismissed").default(false),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  uniqueIndex("message_suggestions_unique_idx").on(table.userId, table.targetUserId, table.reasonKey),
+  index("message_suggestions_user_idx").on(table.userId, table.dismissed),
+]);
 
 export const notifications = pgTable("notifications", {
   id: serial("id").primaryKey(),
@@ -90,6 +141,31 @@ export const notifications = pgTable("notifications", {
   isRead: boolean("is_read").default(false),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+/** Abonnements Web Push (PC, tablette, mobile PWA) */
+export const pushSubscriptions = pgTable("push_subscriptions", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  endpoint: text("endpoint").notNull().unique(),
+  p256dh: text("p256dh").notNull(),
+  auth: text("auth").notNull(),
+  userAgent: text("user_agent"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+/** Mapping école / org → salons messagerie intégrée */
+export const chatRoomMappings = pgTable("chat_room_mappings", {
+  id: serial("id").primaryKey(),
+  schoolId: integer("school_id"),
+  orgUserId: integer("org_user_id").references(() => users.id, { onDelete: "cascade" }),
+  roomKey: varchar("room_key", { length: 64 }).notNull(),
+  rcRoomName: text("rc_room_name").notNull(),
+  rcRoomId: text("rc_room_id"),
+  visibility: varchar("visibility", { length: 10 }).notNull().default("private"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, (table) => [
+  index("chat_room_school_key_idx").on(table.schoolId, table.roomKey),
+]);
 
 // ============================================================
 // SCHOOL DATABASE — Countries → Regions → Districts → Schools
@@ -142,5 +218,24 @@ export const schools = pgTable("schools", {
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 }, (table) => [
-  unique("district_code_unique").on(table.districtId, table.code)
+  unique("district_code_unique").on(table.districtId, table.code),
+  index("schools_district_id_idx").on(table.districtId),
+]);
+
+export const organizationVerifications = pgTable("organization_verifications", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  orgType: varchar("org_type", { length: 10 }).notNull(),
+  trackingCode: varchar("tracking_code", { length: 30 }).notNull().unique(),
+  institutionSubtype: varchar("institution_subtype", { length: 50 }),
+  status: varchar("status", { length: 20 }).notNull().default("pending"),
+  documents: text("documents"),
+  rejectionReason: text("rejection_reason"),
+  reviewedAt: timestamp("reviewed_at"),
+  reviewedBy: text("reviewed_by"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+}, (table) => [
+  index("org_verifications_user_id_idx").on(table.userId),
+  index("org_verifications_status_idx").on(table.status),
 ]);

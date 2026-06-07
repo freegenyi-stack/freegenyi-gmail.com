@@ -1,0 +1,970 @@
+id,name,name_en,name_pt,amenity,operator_type,addr_city,addr_street,longitude,latitude
+node/1178801802,Pica Pau,,,school,,,,13.2617548,-8.8273333
+node/1489476610,,,,school,,,,13.1476559,-8.9937687
+node/1489657142,17 de Setembro,,,school,,,,13.2662004,-8.8310867
+node/1635383733,Alliance Francaise,,,school,,,Largo Sagrada Familia,13.2391512,-8.8241408
+node/1635396194,Colégio Elisangela Filomena,,,school,,,edificio 1 de maio,13.2428043,-8.8259537
+node/1637376041,,,,school,,,,13.2204576,-9.000745
+node/1651443296,,,,school,,,,13.2595838,-8.8390825
+node/1700724674,Escola Grande do Cazenga,,,school,,,,13.2903045,-8.8384892
+node/1719059411,,,,school,,,,13.2119306,-8.8337627
+node/2358240364,,,,school,,,Rua da Vaidade,13.2676331,-8.8242508
+node/2426637521,Escola da Betel,,,school,,,,13.2561813,-8.8247148
+node/2426692659,Alpega,,,school,,,,13.2506023,-8.8224619
+node/2426693334,Colégio Betânia,,,school,,Luanda,,13.2500873,-8.8228595
+node/2438967858,Escola do Luvassa,,,school,,,,12.1752328,-5.5807509
+node/2463023395,,,,school,,,,13.5574252,-12.3355337
+node/2463033640,Universidade Lusíadas,,,school,,,,13.4064904,-12.5762113
+node/2463044909,Nancys English School,,,school,,,,13.4032798,-12.5761721
+node/2463047938,Escola Amílcar Cabral Nº31,,,school,,,Av. GEN. Machado de Amorim,13.4058443,-12.5780597
+node/2493538641,Instituto de Veterinária da Huíla,,,school,,,,13.4265749,-14.9913125
+node/2757731674,Escola,,,school,,,,16.3011391,-9.5247809
+node/2847265449,Nancy's English School,,,school,,,,13.5464392,-12.3488191
+node/3074704776,Quatro Rodas,,,school,,,,13.5505179,-12.3421111
+node/3152619773,Capolo I,,,school,,,,13.2878184,-8.8654946
+node/3152619809,,,,school,,,,13.2974422,-8.8793812
+node/3184314464,Escola 3012,,,school,,,,13.2775826,-8.8160384
+node/3500048691,Liceu Comandante Kassanji,,,school,,Benguela,,13.4012647,-12.5896287
+node/3538187510,Escola de Condução Organizações Gervásio,,,school,,,Rua Alexandre Alberto da Rocha de Serpa Pinto,13.4073057,-12.5844396
+node/3644652964,Escola Católica São José,,,school,,,,13.1828111,-8.8960015
+node/4120945289,Instituto Superior de Ciências da Educação (ISCED),,,school,,Benguela,Rua Silva Porto,13.4088719,-12.5863442
+node/4188967389,Colégio A Colina do Sol,,,school,,Luanda,Rua Cónego Manuel das Neves,13.2435781,-8.8158358
+node/4189243259,Instituto Médio de Gestão (IMTG),,Instituto Médio de Gestão (IMTG),school,,Luanda,Rua M. Luther King,13.2388966,-8.8194578
+node/4189835940,Centro de Formação Vitécnica,,,school,,Luanda,Avenida Hoji Ya Henda (ex Avenida Brasil),13.2478129,-8.8203728
+node/4189842660,Ngola a Nzinga,,,school,government,Luanda,,13.2429126,-8.8205774
+node/4191342536,Colégio Boavisão,,,school,,Luanda,Rua dos Fieis,13.3180476,-8.8716914
+node/4191345140,Escola Nº 5064,,,school,,Luanda,,13.315932,-8.868931
+node/4205527189,Centro Formação de Jornalismo,,,school,,Luanda,Rua M. Luther King,13.2357349,-8.8218981
+node/4224379293,Colégio A Colina do Sol,,,school,,,,13.1661114,-8.9378758
+node/4357387515,Colégio Vila Estoril,,,school,,,,13.251701,-8.8867598
+node/4413718725,Colégio Fercal,,,school,,Lubango,Rua Comandante Hogi ya Henda,13.5010238,-14.9154767
+node/4555896190,Colégio Helvip,,Colégio Elvip,school,,Luanda,,13.1634727,-8.9366265
+node/4743329944,Escola Primária do Kalumue,,,school,,Lubango,,13.4934606,-14.9607884
+node/5005018821,Chimbicato,,Chimbicato,school,,,Rua do Chimbicato,13.242854,-8.929573
+node/5005232621,Escola do Secundária do 1º Ciclo do Kilamba Kiaxi 625 (Ana Paula),,,school,,,,13.2771776,-8.8810328
+node/5060321522,Colégio Devir,,Colégio Devir,school,,,,13.2084897,-8.9078729
+node/5060321523,Colégio San Pietro,,Colégio San Pietro,school,,Luanda,Rua do Jardim do Eden,13.2533783,-8.940855
+node/5060346021,Mundo das Letras,,Mundo das Letras,school,,,,13.2895107,-8.9084679
+node/5151070880,Escola Nº 3029 - Construção da Escola Secundária (Do 1º Ciclo),School No. 3029 - Construction of the Secondary School (1st Year),Escola Nº 3029 - Construção da Escola Secundária (Do 1º Ciclo),school,,Luanda,Avenida Murtala Mohamed (Ex Avenida Marchal Gomes da Costa),13.2549104,-8.7684219
+node/5159839333,CEP CAJU,,,school,,Luanda,Longa,13.1695625,-8.9241067
+node/5375271467,Escola Bencon,,,school,,Cabinda,,12.2334722,-5.5543516
+node/5505173593,Colégio Suely,,,school,,Luanda,Cristiano dos Santos,13.2552888,-8.8119715
+node/5653682823,Complexo Escolar Privado Politécnico Namunga,,,school,,,Rua Doutor Lacerda,15.7394936,-12.7805136
+node/5732653823,Escola Primária 328,,,school,,,,19.915703,-11.780164
+node/5732653824,Escola 52 Mandembue,,,school,,,,19.904234,-11.779064
+node/5732662722,LSU23 Amor do Povo Saurimo,,,school,,,,20.410973,-9.692844
+node/5735735424,LSU32 - Escola Primária 17 de Setembro,,,school,,,,20.398495,-9.680804
+node/5738930721,Escola Primária do Bairro Verde,,,school,,,,20.395095,-9.664878
+node/5739381521,Escola do Primário de Nanguanza,,,school,,,,20.366964,-9.889144
+node/5755040513,American Schools of Angola -Kulunga Atrium,,,school,,Luanda,Rua V. Pinheiro R. Gomes,13.2357723,-8.8114074
+node/5768950853,Escola Primária e 1 Ciclo - Aldeia Muenga,,,school,,,,15.149054,-7.613915
+node/5778823654,Divino Pastor,,,school,,,,15.031045,-7.607401
+node/5789210454,Escola Senga,,,school,,,,15.194473,-7.659629
+node/5865309514,Escola Gustave Eiffel,,,school,,Lobito,Avenida Sá da Bandeira,13.5368441,-12.3557045
+node/5877822886,Escola 2020,,,school,,,,13.225231,-9.020581
+node/5877822887,Escola 2009,,,school,,,,13.271559,-8.992249
+node/5877831585,Escola 2001,,,school,,,,13.261585,-8.995261
+node/5877837385,Escola 2008,,,school,,,,13.258534,-9.003618
+node/5877837386,Escola 2035,,,school,,,,13.051278,-9.083545
+node/5890756585,5051,,,school,,,,13.40692,-9.01652
+node/5893948786,Centro de Estudos ATL,,,school,,,,13.2769978,-8.9955388
+node/5895917985,Escola 5070,,,school,,,,13.400261,-9.015579
+node/5903320186,Escola 5131,,,school,,,,13.399003,-9.041432
+node/5913336185,5117,,,school,,,,13.389056,-9.055638
+node/5915691485,5120,,,school,,,,13.426099,-9.066126
+node/5915691486,5132,,,school,,,,13.392317,-9.048982
+node/5915691487,5136,,,school,,,,13.429132,-9.070795
+node/5915691601,Escola 5085,,,school,,,,13.409649,-9.020232
+node/5926559986,5011,,,school,,,,13.423011,-9.054386
+node/5926559987,5137,,,school,,,,13.4227648,-9.0491506
+node/5926571485,5133,,,school,,,,13.397213,-9.044593
+node/5942387485,Escola 5029,,,school,,,,13.401863,-9.079845
+node/5948070285,5044,,,school,,,,13.414169,-9.084402
+node/5948243485,5077,,,school,,,,13.415605,-9.080504
+node/5965694531,5021,,,school,,,,13.421423,-9.074337
+node/5978276303,Escola Oscar Ribas,,,school,,,,13.2744446,-8.811944
+node/5978377941,Colégio João de Deus,,,school,,,,13.2794509,-8.8151397
+node/5978655291,,,,school,,,,13.2501448,-8.8152348
+node/5995502888,5036,,,school,,,,13.381681,-8.954651
+node/5995578185,5035,,,school,,,,13.374994,-8.959955
+node/6007453086,5032 Baia,,,school,,,,13.525321,-8.956384
+node/6021534986,5116,,,school,,,,13.339284,-9.102737
+node/6021543585,5010 Baia,,,school,,,,13.477751,-8.971313
+node/6021543586,5097,,,school,,,,13.333234,-9.120729
+node/6024428787,5138,,,school,,,,13.409966,-9.115868
+node/6037867685,Cedars International School of Angola (CISA),Cedars International School of Angola - CISA,,school,,,Rua do Chimbicato,13.2477224,-8.9294449
+node/6041101485,5082,,,school,,,,13.414257,-9.147114
+node/6045808985,3105,,,school,,,,13.280439,-8.799181
+node/6045854585,3107,,,school,,,,13.289415,-8.796921
+node/6046173485,3109,,,school,,,,13.291871,-8.794097
+node/6046330585,3112,,,school,,,,13.296578,-8.789736
+node/6048525986,3003,,,school,,,,13.290756,-8.806932
+node/6048685185,3004,,,school,,,,13.293758,-8.809706
+node/6048850585,3079,,,school,,,,13.289173,-8.810167
+node/6061453985,Colégio Bankazi,,,school,,,Av. GEN. Machado de Amorim,13.4118695,-12.5821142
+node/6063149186,3005,,,school,,,,13.289372,-8.811165
+node/6231160236,Colégio Nossa Esperança - Ensino Primário e Secundário I e II Ciclo,,,school,,,,13.2133492,-8.9272103
+node/6330269996,Colégio S. Melo,,,school,,,,13.4137497,-9.0593853
+node/6353015306,Escola Primária,,,school,,Lubango,Avenida Mártires de 8 de Novembro,13.531593,-14.9234332
+node/6486364985,,,,school,,,,15.7687913,-17.1438745
+node/6583580524,Escola Primária Comisário Sembo,Primary School Comisário Sembo,,school,,,,13.786094,-10.7132717
+node/6583584293,Escola Primária 14 de Abril,Primary School 14 de Abril,,school,,,,13.7596374,-10.738881
+node/6583584294,Escola Primária 1 de Junho,Primary School 1 de Junho,,school,,,,13.7561189,-10.7370564
+node/7057855605,Complexo Escolar Privado Degrau do Saber,,,school,private,,,13.5359149,-14.8789086
+node/7116365485,Escola,School,,school,,,Rua Olímpio Macueria,13.2725152,-8.8559614
+node/7116365585,Escola Primária K.K125 Santa Teresa de Jesus,Primary School Santa Teresa de Jesus,,school,,,Rua da Santa Teresa,13.269423,-8.8573033
+node/7270010248,,,,school,,,,20.4627034,-9.664664
+node/7270010280,,,,school,,,,20.4619952,-9.6646446
+node/7283010255,American Schools of Angola,,Escolas Americanas de Angola,school,,Luanda,,13.1809129,-8.886981
+node/7556219786,1 de Dezembro,1 of December,,school,,,Rua do Lobito,13.2558473,-8.8131828
+node/7691197220,Complexo Escolar Paula Frassinetti nº 1849,,,school,public,Lubango,Rua Aníbal de Melo,13.4918064,-14.9134921
+node/7691570080,Complexo Escolar Privado Focus,,,school,private,Lubango,Rua Comandante Vidigal,13.4922006,-14.9144843
+node/7691671094,Centro Infantil Floresta Entrada O Caminho do Saber,,,school,private,Lubango,Rua Domingos Pedro,13.4961604,-14.9112281
+node/7699035738,Complexo Escolar de Necessidades Educativas Especiais,,,school,public,,,13.4683604,-14.8937258
+node/7699924213,Complexo Escolar Privado Pitágoras,,,school,private,,,13.4854507,-14.9394897
+node/7704734210,Complexo Escolar Privado O Sol,,,school,private,Lubango,,13.4932899,-14.9271814
+node/7704753293,Complexo Escolar Privado Evangélico Monte Carmo,,,school,private,Lubango,Rua Steve Biko,13.4959561,-14.9252668
+node/7712050040,Complexo Escolar nº 1690,,,school,public,Lubango,,13.5506635,-14.9280002
+node/7712050041,Centro de Formação Profissional do Tchioco,,,school,public,,,13.5514682,-14.9281246
+node/7723805380,Complexo Escolar Privado Estrela Académica,,,school,private,Lubango,Lubango/Hoque,13.5295465,-14.8838838
+node/7733655150,Centro de Formação Profissional Eloquente,,,school,private,Lubango,Rua Rei Katyavala,13.4989072,-14.9142954
+node/8475466850,Artes e oficios,,,school,,,,13.5481619,-15.0829559
+node/8522000766,Complexo Escolar Privado Santa Margarida,,,school,,Lubango,,13.4916154,-14.9018392
+node/8525168360,Salas de Explicações,,,school,,,,13.4678039,-14.9184744
+node/8532489207,Complexo Escolar Privado Paulino P Butu (PPB),,,school,,,,13.5274489,-14.9041086
+node/8878943976,Escola de Ensino Geral Nº 2002 Maianga,,,school,,Luanda,Avenida Revolução de Outubro,13.2288577,-8.8229955
+node/8887757706,Colégio Monte Sol,,,school,,Luanda,,13.2271375,-8.8469146
+node/9338706157,Colégio O Sítio dos Pequeninos,,,school,private,Moçâmedes,Avenida do Aeroporto,12.1532289,-15.2116152
+node/9924888825,Complexo Escolar Vade Mecum,,,school,,luanda,,13.1807262,-8.9630632
+node/9970329312,Colégio N.º 67 - Mandume,,,school,,,,13.4717722,-14.9155435
+node/10269302974,Escola do Ensino Primeiro do I Ciclo,,,school,,Lubango,Avenida do Estádio Nacional da Tundavala,13.5466822,-14.9410258
+node/10699876205,Aldeia de Nacavungo,,,school,,,,20.4787736,-11.5370932
+node/10750478571,Instituto de Ciências Religiosas de Angola (ICRA),,,school,,,,14.5484115,-14.8238801
+node/10931416118,Escola Primária do Bairro Ekuikui,,,school,public,,,13.3702787,-12.6494681
+node/10935335054,IPAG,,,school,,,,16.9232288,-12.4257744
+node/11056446855,Complexo Escolar Álvaro da Boavida Neto,,,school,public,Moçâmedes,,12.1533513,-15.2287052
+node/11056569665,Egídio Martins Torres,,,school,public,Moçâmedes,Avenida do Aeroporto,12.1441534,-15.2260404
+node/11056591844,Colégio Santo Agostinho,,,school,private,Moçâmedes,,12.1305439,-15.215389
+node/11056614940,Ekuiki II,,,school,public,Moçâmedes,,12.1409817,-15.2107644
+node/11056653436,Nova Plató,,,school,,Moçâmedes,Rua Comandante Dangereux,12.1299842,-15.2096255
+node/11056669196,Anexa à Ekuiki II (Comarca),,,school,community,Moçâmedes,Avenida Praia Azul,12.1288335,-15.2006632
+node/11056669197,16 de Junho,,,school,public,Moçâmedes,Acesso à UNINBE,12.1299222,-15.1987992
+node/11056720735,Anexa à EFP,,,school,public,,,12.1393908,-15.2064415
+node/11056740545,Primária 6M,,,school,public,Moçâmedes,Avenida Praia Azul,12.1012441,-15.2053715
+node/11057565299,Colégio ABC,,,school,private,Moçâmedes,,12.1472075,-15.2149992
+node/11057565300,Colégio Pitágoras,,,school,private,Moçâmedes,Avenida do Aeroporto,12.1454775,-15.2130192
+node/11057635978,4 de Agosto,,,school,public,Moçâmedes,,12.1626315,-15.1850965
+node/11057635979,Welwitschia Mirabilis,,,school,public,Moçâmedes,Avenida Eduardo Mondlane,12.1594801,-15.1867252
+node/11057635980,São João Paulo II,,,school,public,Moçâmedes,,12.1638298,-15.1873004
+node/11057635981,Kussy 2,,,school,public,Moçâmedes,,12.163773,-15.1887786
+node/11057639205,Creche O Sítio dos Pequeninos,,,school,private,Moçâmedes,Rua 14 de Abril,12.1441062,-15.197642
+node/11057639206,Creche e Colégio ABC,,,school,private,Moçâmedes,Rua 14 de Abril,12.146929,-15.1963329
+node/11057646778,Colégio MELV,,,school,private,Moçâmedes,Rua Eurico Gonçalves,12.1425163,-15.1997528
+node/11057649651,Escola Primária nro 56,,,school,public,Moçâmedes,Rua do Arquivo Histórico,12.158015,-15.191212
+node/11057655112,Escola 31 de Janeiro,,,school,public,Moçâmedes,,12.1593112,-15.1817943
+node/11057692641,Kumangala,,,school,public,Moçâmedes,,12.1720017,-15.1868638
+node/11059278928,Augusto Ngangula,,,school,public,Moçâmedes,,12.1718635,-15.1962439
+node/11059281783,Bom Deus,,,school,public,Moçâmedes,Estrada do Bairro 5 de Abril,12.1694532,-15.198374
+node/11059375830,Escola nro 61,,,school,public,Moçâmedes,Avenida da Cortina Florestal,12.173921,-15.2204425
+node/11059398566,Escola Primária,,,school,public,Moçâmedes,,12.1909218,-15.2169689
+node/11060343065,Escola Bom Jesus,,,school,public,Moçâmedes,Avenida  Hospital Materno Liepey,12.1428539,-15.2121634
+node/11165926544,RAD LUCK,,,school,,,,13.2653689,-8.9242163
+node/11169528743,Lanvo Emmanuel norma,,,school,,,,13.3623577,-8.9345331
+node/11179486437,Primária de Luanguirico,,,school,,,,19.892649,-11.6598104
+node/11407391471,,,,school,,,,19.8620076,-11.6090752
+node/11435365371,Salas anexas da escola primaria número 43,,,school,,,,20.530635,-12.1736165
+node/11435365373,Aldeia de  Chafinda,,,school,,,,20.4367176,-11.9178696
+node/11711888124,Colegio 1046 Catanha Mbandi,,,school,,,Catanha Mbandi,14.3626401,-14.3039428
+node/11711920924,Escola Primária,,,school,,Catanha Mawelequesse,,14.3370458,-14.2717545
+node/11803543025,Colégio 1771- Nossa Senhora de Fátima -Lalula,,,school,public,Lalula,Avenida Comandante Kwenha,13.5188419,-14.9077551
+node/11980235495,Igreja Simão Toco,,,school,private,,,13.2929266,-8.8956111
+node/11980235496,Complexo Escolar Privado Fidel Filipe Muanza,,,school,private,,,13.2881568,-8.898415
+node/11980235497,Colégio Multe Saber,,,school,private,,,13.288525,-8.8977214
+node/11980235498,Complexo Escolar Privado Jhon Luck,,,school,private,,,13.2877955,-8.8973431
+node/11983480881,Escola do Ensino Secundário Ana Paula,,,school,public,,,13.2766793,-8.8798564
+node/12338852531,C.E.A.R.T - Escola de Artes,,,school,,,,13.2298669,-8.958326
+node/12384960218,Complexo Escolar nº 319 Rev. João Sepele Castro,,,school,public,Cuito,Avenida Don José Nambi,16.9151149,-12.4245274
+node/12423531709,Colégio 27 de Março,,,school,public,Agostinho Neto,,13.4843703,-14.9287396
+node/12474262352,Escola Primaria Missão de Camundambala,Camundambala Mission Primary School,Escola Primaria Missão de Camundambala,school,,,,20.3999533,-9.7473311
+node/12643117747,Salas anexas de Alfabetização nº 292,,,school,,,,13.5095315,-14.9106953
+node/12849569808,escola do 1º ciclo secundário do bloco S,,,school,,,bloco S,13.4622733,-9.0891385
+node/12857803512,Escola Virgem Milagrosa,,,school,,,,13.2264445,-8.8388016
+node/12926569751,Escola Branca,,,school,public,,,13.2496379,-8.8873794
+node/12926569754,Colégio Adventista da Vila Estoril (CAV),,,school,religious,,,13.2487531,-8.8874573
+node/12926569758,Deus Salva,,,school,,,,13.2422646,-8.8939576
+node/13148393512,Colegio Nzala Nsega,,,school,,Soyo,Rua Teresa Gonçalo,12.3736461,-6.1374
+node/13267670303,Colégio Cônego Zagalo,,,school,,,,11.849148,-15.8023427
+node/13274381894,Instituto Politécnico da Humpata,,,school,,,,13.3719365,-15.005463
+node/13274419832,Liceu da Humpata,,,school,,,,13.3727333,-15.0062798
+node/13336988402,Complexo Escolar BG 3015 Mutu-Ya-Kevela,,,school,,,Equimina,12.789423,-13.1955822
+node/13412969701,,,,school,,,,13.2081278,-8.9728047
+node/13670909075,Colegio Dom Dmingos Franque,,,school,,Cabinda,Av. Duque de Chiazi,12.1947601,-5.6036152
+node/13680444752,,,,school,,,,12.1739761,-5.5807878
+node/13684403736,Lar Otchio,,,school,,Comandante Cowboy,,13.4614354,-14.9201111
+node/13684523386,SOS_Lubangog,,,school,,,,13.4421736,-14.9243465
+node/13684567048,Complexo Escolar Privado Passuka,,,school,,Municipio dos Navegantes,Kairro Ekuikui II,13.3623476,-12.6501934
+node/13684572272,Colegio Essanju,,,school,,,,13.4540044,-14.9163222
+node/13688636301,,,,school,,,,13.2944979,-8.9899775
+way/60447567,Escola Internacional de Luanda,Luanda International School,Escola Internacional de Luanda,school,,,,,
+way/62129442,"Complex Escolar ""General Pedale"" - Talatona - Escola do 1º Ciclo Secundário",,,school,,Luanda,Avenida Pedro de C. Vandunem-Loy,,
+way/67490765,,,,school,,,,,
+way/67490770,,,,school,,,,,
+way/135664880,Escola Grande,,,school,,,,,
+way/143238790,Instituto Médio Normal de Educação Marista (IMNE Marista),,,school,,Luanda,"Rua 2, Bairro da Madeira",,
+way/143239555,Instituto Médio Comercial de Luanda (IMCL),Luanda Comercial Secondary School (IMEL),Instituto Médio Comercial de Luanda (IMCL),school,,Luanda,Avenida Deolinda Rodrigues,,
+way/143240092,Liceu Frances Alioune Blondin Beye de Luanda,Alioune Blondin Beye French Lyceum of Luanda,Liceu Frances Alioune Blondin Beye de Luanda,school,,Luanda,Largo das Escolas,,
+way/143240315,Escola Portuguesa de Luanda,Luanda Portuguese School,Escola Portuguesa de Luanda,school,,Luanda,Largod das Escolas,,
+way/150640518,Nzinga Mbandi,,,school,,Luanda,,,
+way/151217827,Ginguba,,,school,,,Rua da Cela,,
+way/151223796,Micate,,,school,,,,,
+way/151225205,Escola Ché-Guevara,,,school,,,Av. Deolinda Rodrigues,,
+way/151227332,Escola Especial para Deficientes Auditivos,Special School for the Hearing Impaired,Escola Especial para Deficientes Auditivos,school,,Luanda,,,
+way/151231040,Escola 1º de Junho,,,school,,,,,
+way/184413424,27 de Março,,,school,government,Agostinho Neto,Rua do Bairro da Lage,,
+way/190450740,,,,school,,,,,
+way/193640023,,,,school,,Luanda,Avenida Pedro de C. Vandunem-Loy,,
+way/204353470,Escola de Regentes Agrícolas Francisco Vieira Machado,,,school,,,,,
+way/207201158,,,,school,,,,,
+way/207203834,Escola 47,,,school,,,,,
+way/207278067,,,,school,,,,,
+way/207278073,,,,school,,,,,
+way/210358389,Escola B,,,school,,,,,
+way/210358390,Escola B,,,school,,,,,
+way/210358391,Escola Profissional de Cacuso,,,school,,,,,
+way/210365285,Escola B,,,school,,,,,
+way/210365286,Escola B de Mufuma,,,school,,,,,
+way/210365287,Escola B do Soqueco,,,school,,,,,
+way/210365288,Escola P,,,school,,,,,
+way/210365289,Escopla P,,,school,,,,,
+way/224478592,Escola 3008,,,school,,Luanda,"Marechal Tito ""Presidente""",,
+way/226741835,Escola São José de Cluny,,,school,,Luanda,,,
+way/227091828,Mini-Ya-Lukeni,,,school,,,Rua do Sr. Coelho,,
+way/227093567,Creche Nelito Soares,,,school,,,,,
+way/227120233,,,,school,,,,,
+way/227124223,,,,school,,Luanda,,,
+way/227663137,,,,school,,,,,
+way/227664149,,,,school,,,,,
+way/227675457,,,,school,,,,,
+way/234383698,Kiluange,,,school,,,,,
+way/234413767,Escola Ex-83,,,school,,,Rua de João de Deus,,
+way/234795228,Instituto Médio João Paulo Segundo,,,school,,,,,
+way/234795452,Instituto Medio de Sáude (IMIS),,,school,,,Rua das Mangueiras,,
+way/235341255,,,,school,,,,,
+way/235626262,Escola do 1º Ciclo Luis Gomes Sambo,,,school,,Benguela,,,
+way/235838540,Escola,,,school,,,,,
+way/235838699,Escola CMDT. Valodia,,,school,,,,,
+way/235839302,Escola Sagrada Esperança,,,school,,,,,
+way/238468943,Escola Primária,,,school,,,,,
+way/240487546,Instituto Médio Industrial de Luanda (IMIL),Luanda Industrial Secondary School (IMIL),Instituto Médio Industrial de Luanda (IMIL),school,,Luanda,Rua G. João de Almeida,,
+way/240610811,Escola 15,,,school,,,,,
+way/240622796,Escola Angola e Cuba,,,school,,,,,
+way/240938296,Escola,,,school,,,,,
+way/242196309,Escola Bloco A,,,school,,,,,
+way/242200234,Escola Bloco D,,,school,,,,,
+way/242206231,Instituto Superior de Ciências da Comunicação (ISUCIC),,,school,,,,,
+way/242347868,Escola Sagrada Esperança,,,school,,Kilamba,,,
+way/242347877,Escola Sagrada Esperança,,,school,,,,,
+way/242592452,Escola Bloco Y,,,school,,,,,
+way/242592481,Escola Bloco M,,,school,,,,,
+way/242683487,Escola Bloco W,,,school,,,,,
+way/242683494,EScola Bloco T,,,school,,,,,
+way/242683495,Escola Bloco P,,,school,,,,,
+way/242684289,Escola Bloco S,,,school,,,,,
+way/242697978,Escola 16 de Junho,,,school,,,,,
+way/242723876,Escola Bloco K,,,school,,,,,
+way/242797970,Escola Bloco G,,,school,,,,,
+way/242907832,Creche Bloco K,,,school,,,,,
+way/242930638,Escola Bloco U,,,school,,,,,
+way/242930669,Escola Bloco X,,,school,,,,,
+way/243148110,Escola Bloco J,,,school,,,,,
+way/243276916,Escola Bloco V,,,school,,,,,
+way/270786885,,,,school,,,,,
+way/270786888,,,,school,,,,,
+way/270786891,,,,school,,,,,
+way/276921056,Instituto Médio de Economia do Lubango (IMELub),,,school,public,Lubango,Largo do Soweto,,
+way/276921058,Liceu 1º de Dezembro,,,school,public,Lubango,Largo do Soweto,,
+way/276924991,1 de Maio,,,school,public,Moçâmedes,,,
+way/277722657,Paraíso da Dozinha,,,school,,,,,
+way/277798726,Cantinho da Olívia,,,school,,,,,
+way/282497392,Escola,,,school,,,,,
+way/282792207,Instituto Médio de Ciências Policial,,,school,,,,,
+way/283160985,Escola Primaria,,,school,,,,,
+way/283161611,Creche do Chimbicato,,,school,,Luanda,,,
+way/301782615,Escola Primária (Nº 6) D. Rodrigues,,,school,,Lobito,Rua Oliveira Cardonega,,
+way/302557576,Escola Ensino Primario e 1º Ciclo E. Secundário,,,school,,Luanda,Avenida Deolinda Rodrigues,,
+way/305665918,Creche Aniela,,,school,,,,,
+way/307872783,"Instituto Médio Técnico de Administração e Gestão N.º 50 ""António Jacinto"" - Namibe (IMAGN)",,,school,,Namibe,Sacomar-Intersecção NBE 101.3 (Pipas),,
+way/307872784,"Instituto Médio Politécnico N.º 55 ""Pascoal Luvualo"" - Namibe (IMPN)",,,school,,,,,
+way/309929710,Centro de Formação Profissional,,,school,,Luanda,,,
+way/310044374,,,,school,,,,,
+way/310917654,Pre-Universitário Pascoal Luvualu,,,school,,,,,
+way/310925184,,,,school,,,,,
+way/319158004,,,,school,,,,,
+way/343918854,Escola de Administração Militar,,,school,,,,,
+way/366682465,Escola José Marti (ex Sindicato),,,school,,,,,
+way/366682471,Escola de Cima,,,school,,,,,
+way/369696223,,,,school,,,,,
+way/370992824,Escola Dom Bosco,,,school,,,,,
+way/373093994,Colégio Os Brilhantes,,,school,,,,,
+way/374385580,,,,school,,,,,
+way/376037374,"Escola de Saúde Castelo, Lda (ESCA)",,,school,private,Luanda,Rua D,,
+way/392650838,Colégio nº 811 - 1º de Maio,,,school,,Lubango,Estrada da Mapunda de Baixo,,
+way/393219332,Liceu n.º 257 - Arimba,,,school,,Lubango,Estrada da Arimba,,
+way/395343795,Complexo Escolar 11 de Novembro,,,school,,Lubango,avenida do aeroporto,,
+way/405459246,Escola Secundária 27 de Março,,,school,public,,,,
+way/411398492,,,,school,,Luanda,,,
+way/414606172,,,,school,,,,,
+way/418028153,Colégio Episalque - Escola de Ensino Primário e do 1º Ciclo Secundário,,,school,,Luanda,,,
+way/418597806,Escola Primária Ngola Nzinga,,,school,government,Luanda,Rua Augusto Silvério Ferreira,,
+way/419724473,Escola Portuguesa do Lubango,,,school,private_non_profit,Lubango,Rua da Escola Portuguesa do Lubango,,
+way/420812526,Escola Russa,,,school,,,,,
+way/420845643,Complexo Escolar Eliada,,,school,,"Viana, Luanda",Rua da Sanzala,,
+way/424801604,Instituto Médio de Economia do Kilamba Kiaxi,Economics Secondary School of Kilamba Kiaxi,Instituto Médio de Economia do Kilamba Kiaxi,school,,Luanda,,,
+way/426334371,Liceu nº 134 - Nambambe,,,school,,Lubango,,,
+way/426335058,Magistério Primário da Huíla,,,school,public,Lubango,,,
+way/427206917,Colégio Pomba da Amizade,,,school,,,,,
+way/427207649,Colégio Esperança,,,school,,Lubango,Rua Secundária Rainha Lussinga,,
+way/427211430,Complexo Escolar Privado Cléusia Alexandre,,,school,,Lubango,,,
+way/432396357,Colégio Pitabel - Ensino Geral do Pré-escolar até Segundo Ciclo,,,school,,Luanda,Cristovão Falcão,,
+way/437461427,Escola Primária nº 55,,,school,,Lubango,Rua Domingos Pedro,,
+way/437462368,Escola Primária nº 60,,,school,public,Lubango,Avenida Dr. Agostinho Neto,,
+way/437463491,Escola Primária (N.º 193),,,school,,Lubango,Rua da Mitcha,,
+way/437465504,Escola Primária N.º 50,,,school,public,Lubango,Ana Paula,,
+way/437466560,Escola Primária nº 99,,,school,,Bula Matadi,Joao de Almeida,,
+way/437467687,Escola Primária Nº 292,,,school,,Lubango,Bula Matadi,,
+way/443824385,Instituto de Ciências Religiosas de Angola (ICRA),,,school,,Lubango,Rua Comandante Vidigal,,
+way/443824619,Complexo Escolar Privado António Houaiss,,,school,,Lubango,Rua Comandante Vidigal,,
+way/443826975,Colégio Pitágoras,,,school,,,,,
+way/443827218,Colégio Cruzeiro do Sul,,,school,,Lubango,Rua Comandante Hogi ya Henda,,
+way/443827679,Colégio Amigos do Saber,,,school,,Lubango,Rua Comandante Saidi Mingas,,
+way/447548117,Colégio nº 62,,,school,,Lubango,Avenida 21 de Janeiro,,
+way/447555495,Escola do I Ciclo nº 187 - Fundo de Apoio Social (FAS),,,school,,Lubango,Avenida Mártires de 8 de Novembro,,
+way/447558311,Escola Primária nº 1007,,,school,,Lubango,Avenida Mártires de 8 de Novembro,,
+way/447560079,Escola do Primeiro Ciclo Mandume,,,school,,,,,
+way/447560449,Escola Primária Nº 13,,,school,,,,,
+way/447561460,Escola Primária Nº 61,,,school,,Lubango,Rua do Hospital,,
+way/448317180,Colégio AfriLaure,,,school,,,,,
+way/451866060,"TIIBS, Lda - Technology Consultants",,,school,,Luanda,Mirantes,,
+way/481398467,Escola Primária da Heva Nº 22,,,school,,Humpata,,,
+way/487034266,Colégio Patrícia Rossana II (Ensino Geral da Iniciação a 8ª),,,school,,Luanda,,,
+way/497349180,Colégio Julio Verne,,,school,,Luanda,,,
+way/499628425,,,,school,,,,,
+way/547698469,Tchitemo,,,school,,,,,
+way/552199487,,,,school,,,,,
+way/574587709,,,,school,,Luanda,Estrada de Cacuaco,,
+way/577539818,Escola Primária,,,school,,Luanda,Comandante Eurico,,
+way/583775710,Escola das Madres,,,school,,,,,
+way/591162256,Colégio Mualaca,,,school,,Cuíto,,,
+way/591162295,Instituto Politecnico de Administração e Gestãi do Cuito,,,school,,,,,
+way/603337882,Colégio Império da Aprendizagem,,,school,,Luanda,Rua 35,,
+way/608128377,,,,school,,Luanda,Rua 175,,
+way/611450170,Escola Sabiente,,,school,,Luanda,Rua 35,,
+way/612498784,Complexo Escolar Vade Mecum,,,school,,Luanda,,,
+way/619526391,,,,school,,Luanda,,,
+way/620834515,Escola Gustave Eiffel,,,school,,,Avenida Sá da Bandeira,,
+way/625987044,Complexo Escolar Frei João Domingos,Friar João Domingos School Complex,Complexo Escolar Frei João Domingos,school,,Luanda,,,
+way/636133085,Escola de São Domingos,,,school,,Luanda,,,
+way/637610340,Complexo Escolar São Marcos,,,school,,,,,
+way/645598378,,,,school,,,,,
+way/645598642,,,,school,,,,,
+way/645598855,,,,school,,,,,
+way/645598897,,,,school,,,,,
+way/645600175,,,,school,,,,,
+way/645600342,,,,school,,,,,
+way/645600802,,,,school,,,,,
+way/645601224,,,,school,,,,,
+way/645602640,,,,school,,,,,
+way/645603821,,,,school,,,,,
+way/645604330,,,,school,,,,,
+way/645604450,,,,school,,,,,
+way/645604717,,,,school,,,,,
+way/645606608,,,,school,,,,,
+way/645606843,,,,school,,,,,
+way/645606972,,,,school,,,,,
+way/645607034,,,,school,,,,,
+way/645607213,,,,school,,,,,
+way/645607537,,,,school,,,,,
+way/645607566,,,,school,,,,,
+way/645608477,,,,school,,,,,
+way/645608544,,,,school,,,,,
+way/645608580,,,,school,,,,,
+way/645608899,Escola 5124,,,school,,,,,
+way/645609111,,,,school,,,,,
+way/645609661,,,,school,,,,,
+way/645609758,,,,school,,,,,
+way/645610110,Colégio 22 de Novembro,,,school,,Uíge,,,
+way/645610317,,,,school,,,,,
+way/645610449,Instituto Médio Politécnico do Uíge,,,school,,Uíge,,,
+way/645610665,Escola N° 20 Mbemba Ngango,,,school,,Uíge,,,
+way/645611062,Colégio da Papelão (I.E.B.A.),,,school,,Uíge,,,
+way/645612478,,,,school,,,,,
+way/645613001,,,,school,,,,,
+way/645613230,,,,school,,,,,
+way/645614916,,,,school,,,,,
+way/645615512,,,,school,,,,,
+way/645615621,5126,,,school,,,,,
+way/645615772,,,,school,,,,,
+way/645616199,Colégio do Kilamba Kiaxi,,,school,,Uíge,,,
+way/645616330,,,,school,,,,,
+way/645616336,Escola 27,,,school,,,,,
+way/645616564,,,,school,,,,,
+way/645702785,,,,school,,Luanda,,,
+way/656268824,Escola Primaria Nº 59,,,school,public,Lubango,Rua Rei Ekuikui,,
+way/659385234,,,,school,,,,,
+way/665694581,,,,school,,,,,
+way/666209075,Complexo Escolar Domingas da Cruz,,,school,,,,,
+way/672845485,,,,school,,,,,
+way/676992424,,,,school,,,,,
+way/678477752,Escola Primária Nº 113,,,school,,Estrada da Mapunda,Estrada da Mapunda,,
+way/678478015,Complexo Polivalente de Escolar de Necessidades Educativas Especiais da Huíla,,,school,government,Lubango,Estradada da Mapunda velha,,
+way/678479858,Complexo Escolar nº 63 - Mapunda,,,school,public,Lubango,,,
+way/678483605,Escola Primária N.º 53 - Ferrovia,,,school,,,,,
+way/678487959,Escola Primária N.º 8  - Tchima,,,school,,Lubango,Avenida do Estádio Nacional da Tundavala,,
+way/678488109,Complexo Escolar (N.º 875) Engenheiro Samuel Monteiro,,,school,,Lubango,Avenida Mártires de 8 de Novembro,,
+way/686627774,Complexo Escolar nº 1841 - Madre Trindade,,,school,religious,Lubango,Avenida Lopo do Nascimento,,
+way/689638188,Colégio 123,,,school,,Lubango,Avenida Lopo do Nascimento,,
+way/693614286,Colégio Arco Íris,,Colégio Arco Íris,school,,,Estrada do Kimbango,,
+way/694673830,,,,school,,,,,
+way/699763116,,,,school,,,,,
+way/704810212,,,,school,,,,,
+way/705413861,Primary School no. 101 N'gola Mbandi,,,school,,,,,
+way/705413864,Escola Primária N.º 102 Agusto de Angola,Primary School no. 102 Agusto de Angola,,school,,,,,
+way/705413865,Escola N.º 118 António Luís,School no. 118 António Luís,,school,,,,,
+way/705413866,Escola Primária N.º 109,Primary School no. 109,,school,,,,,
+way/705413867,Escola Primária,,,school,,,,,
+way/728288494,Escola Secundária 4 de Abril,Secondary School 4 de Abril,,school,,,,,
+way/735174671,Complexo Escolar (N.º 22) Nsa. Sra. de Fátima,,,school,,Moçâmedes,Avenida Pereira da Cruz,,
+way/735174672,Escola de Magistério (N.º 57/M) Patrice Lumumba,,,school,public,Moçâmedes,Rua Gerrilheiro Faria,,
+way/736522752,Escola do II Ciclo Liceu da Ganda,,,school,,Ganda,,,
+way/736644217,Antiga Escola,,,school,,,,,
+way/741808853,Escola do Ensino Primário Nº 021 Candamba-Muxima,,,school,,Muxima,,,
+way/777520298,Complexo Escolar da Centralidade da Eywa,,,school,public,,,,
+way/777716994,Escola Missionária de Vila Paula,,,school,religious,Vila Paula,Rua das Missionárias das Irmãs de Santa Doroteia,,
+way/778689423,,,,school,,,,,
+way/781010387,Escola Kifica,,,school,public,,,,
+way/782181162,Colégio Angolano,,,school,,Benguela,Avenida Dr. Fausto Frazão,,
+way/784634378,,,,school,,,,,
+way/815874170,Colégio a Colina do Sol - Actividades Tempos Livres (ATL),,,school,,Lubango,Avenida Doutor Agostinho Neto,,
+way/824268961,Complexo Escolar Privado Kamongua,,,school,,,,,
+way/824288153,Complexo Escolar (N.º 505),,,school,public,,,,
+way/824499030,Escola 2 de Dezembro,,,school,public,,,,
+way/824513108,Seminário Maior Padre Jonas Sukufinde Secção de Filosofia,,,school,private,,,,
+way/824516412,Escola de Nossa Senhora de La Salette,,,school,public,Lubango,Mapunda,,
+way/824520813,Complexo Escolar Privado Bê-a-Ba,,,school,private,,,,
+way/824526549,Complexo Escolar Privado Owil,,,school,private,,,,
+way/824531462,Complexo Escolar nº 11,,,school,public,,,,
+way/824597776,Complexo Escolar Privado Esandju,,,school,private,Lubango,Estrada da Mapunda,,
+way/824605230,Instituto de Ciências Religiosas de Angola (ICRA) - Regional do Lubango,,,school,religious,Lubango,Rua da Escola Portuguesa do Lubango,,
+way/825120270,Complexo Escolar Privado Pedra escrita,,,school,,,Rua da Tourada,,
+way/825457625,Salas Anexa ao Complexo Escolar nº 2,,,school,public,Lubango,Lubango/Hoque,,
+way/825458173,Complexo Escolar Privado Degrau do Saber,,,school,private,Lubango,Lubango/Hoque,,
+way/825460408,Complexo Escolar Privado Zehinamba,,,school,private,Lubango,Lubango/Hoque,,
+way/825461221,Complexo Escolar nº 504,,,school,public,Lubango,,,
+way/825461985,Complexo Escolar Privado Kusseteka,,,school,private,Lubango,Lubango/Hoque,,
+way/825469726,Complexo Escolar nº 75,,,school,public,Lubango,Lubango/Hoque,,
+way/825470121,Complexo Escolar do Tchituno,,,school,public,Lubango,,,
+way/825716662,"Liceu nº 1677 ""Logística""",,,school,public,Lubango,Avenida Comandante Kwenha,,
+way/825730692,Centro e Formação Profissional e Académica ABC-Associação Cristã,,,school,private,Lubango,Rua Comandante Cuenha,,
+way/825730694,Complexo Escolar Privado Luntemo,,,school,private,Lubango,Avenida Comandante Kwenha,,
+way/825798663,Colégio nº 1771 - Nossa Senhora de Fátima,,,school,public,Lubango,Avenida Comandante Kwenha,,
+way/825810844,Complexo Escolar nº 340,,,school,public,Lubango,Rua Deolinda Rodrigues,,
+way/825818582,Escola Primária n.º 371,,,school,public,Lubango,Estrada do Hipódromo,,
+way/826309725,Colégio Elizângela Filomena (CEF) Benfica,,,school,,Luanda,Rua do Elizangela Filomena,,
+way/826461920,Complexo Escolar nº 1846 - Bom Deus,,,school,public,Lubango,Avenida do Estádio Nacional da Tundavala,,
+way/826467016,Complexo Escolar Privado C.J,,,school,private,Lubango,Avenida Mártires de 8 de Novembro,,
+way/827312180,Complexo Escolar Privado Estrela Académica,,,school,private,Lubango,Lubango/Hoque,,
+way/827879601,Escola 4 de Janeiro,,,school,,Ondjiva,,,
+way/828418668,,,,school,,,,,
+way/828440084,Centro de Formação Profissional - Instituto Nacional de Emprego e Formação Profissional (INEFOP),,,school,,Lubango,,,
+way/828452365,Escola (No. 8) Fidel Castro,,,school,,,,,
+way/828459814,Escola (No. 6) Dr. António Agostinho Neto,,,school,,Tômbua,,,
+way/828459816,Escola (No. 16) 8 de Setembro,,,school,,,,,
+way/828466586,Escola (No. 11) 8 de Janeiro,,,school,,Tômbua,,,
+way/828466587,Escola (No. 3) General Simione Mukune,,,school,,,,,
+way/828466588,Escola (No. 20) 23 de Abril,,,school,,,,,
+way/828468302,Escola (No. 17) 8 de Dezembro,,,school,,,,,
+way/828468303,Escola (No. 15) Comandante Kassanje,,,school,,Tômbua,,,
+way/828468304,,,,school,,Tômbua,,,
+way/828469006,Escola (No. 7) João Firmino Tchinanga,,,school,,Tômbua,,,
+way/828469522,Escola (No. 1) Nzinga Mbandi,,,school,,Tômbua,,,
+way/828795986,Escola (No. 2),,,school,,Tômbua,,,
+way/828844997,Colégio Nº 1771- Nossa Senhora de Fátima - Lalula,,,school,public,Lalula,Rua Comandante Cuenha,,
+way/833625451,,,,school,,,,,
+way/839782651,Escola Primária N.º 97 - Tchivanda,,,school,public,,,,
+way/840365437,Complexo escolar privado de Altefran,,,school,,,,,
+way/841807654,,,,school,,,,,
+way/841884756,,,,school,,,,,
+way/845314807,,,,school,,,,,
+way/846991376,Complexo Escolar Nossa Senhora de Fátima,,,school,,Malanje,,,
+way/850681251,,,,school,,,,,
+way/851581203,,,,school,,,,,
+way/852668177,Escola Primária Cangombe,,,school,,,,,
+way/854493911,Instituto Politécnico de Saúde da Igreja Evangélica Congregacional em Angola (IECA),,,school,,Lubango,,,
+way/854505398,Centro de Formação Profissional Eloquente,,,school,,,,,
+way/863488944,,,,school,,,,,
+way/887685409,,,,school,,,,,
+way/889333288,,,,school,,,,,
+way/903106927,,,,school,,,,,
+way/903991980,CD-4: Educação e Formação,,,school,,,,,
+way/903991986,CD-4: Educação e Formação,,,school,,,,,
+way/904286144,Escola Primaria,,,school,,Sassalemba,,,
+way/904287168,Escola Beniamino,,,school,,Funda,,,
+way/904772473,Complexo Escolar Católico da Imaculada Conceição nº 116,,,school,religious,Lubango,Avenida 21 de Janeiro,,
+way/906966608,CD-4: Educação e Formação,,,school,,,,,
+way/908468707,Escola Primária N.º 167 - Chibia,,,school,public,,,,
+way/909024319,,,,school,,Chipindo,,,
+way/909128322,Escola Primária N.º 103,School no. 113,,school,,,,,
+way/911054531,Escola primário Nº 177- Mucuio-Hoque,,,school,,,,,
+way/911057273,Escola Primária Nº 1321-Ndimba-Hoque,,,school,,,,,
+way/911181928,Complexo Escolar nº 50 - Salas Anexas,,,school,,,,,
+way/911185233,Colégio Baptista,,,school,,,,,
+way/911195249,Escola do Ensino Primário 10 de Dezembro,,,school,public,Huíla,Estrada da Huila,,
+way/911413798,Escola Primária N.º 43 - Mukuandinda,,,school,public,,,,
+way/911413921,Liceu N.º 454 da Chibia,,,school,public,Chibia,Variante da Chibia,,
+way/911691511,Instituto Politécnico Pitágoras - Chimba,,,school,,,,,
+way/912313003,Escola do 1º ciclo 10 de Dezembro,,,school,public,,,,
+way/912808360,Escola de Hotelaria e Turismo,,,school,,,,,
+way/912873833,Complexo Escolar Dom Bosco n 1045,,,school,,"Navegantes, Benguela, Angola",,,
+way/913149280,Complexo Escolar Privado - Sol Nascente,,,school,private,,,,
+way/913186340,Escola Primária nº 156,,,school,,Hoque,,,
+way/913195801,Colégio nº 1730 - Sede,,,school,,Hoque,Lubango/Hoque,,
+way/913233959,,,,school,,,,,
+way/913490823,Escola Anexa da 27 de Março,,,school,,Lubango,Rua da Mitcha,,
+way/914118442,,,,school,,,,,
+way/914694802,Escola Primária 26 de Junho - Tchavola,,,school,,Lubango,,,
+way/915042197,Escola Primária (Nº 705) 8 de Março,,,school,,Lubango,Tchavola,,
+way/915518816,Colégio Fernanda,,,school,,Lubango,Rua da Mitcha,,
+way/915536170,Complexo Escolar nº 48 Igreja de Deus em Angola (IDA) - Lubango,,,school,,Patrice Lumumba,,,
+way/915551411,Complexo Escolar 1 de Junho (ADRA),,,school,,Lubango,,,
+way/915832051,Escola Primária de Chiange,,,school,,,,,
+way/915855000,Escola da Capelinha de Santo António,,,school,,Lubango,Rua da Subestação,,
+way/916058110,Escola,,,school,,,,,
+way/916243517,"Salas Anéxas ao Complexo Escolar nº 48 - Igreja de Deus em Angola (IDA), Lubango",,,school,government,Rio Capitão,,,
+way/916250102,Complexo Escolar nº 458 Baptista,,,school,,,,,
+way/916359497,Escola Primária Che Guevara,,,school,,,,,
+way/916385301,Escola Primária Shihetekela,,,school,,"Ombadja, Cunene",Xangongo,,
+way/916405380,Escola Anexa A Imaculada Conceição,,,school,,Lubango,,,
+way/917038629,Colégio Polo Sul,,,school,,Lubango,,,
+way/917059479,Escola da Bétel,,,school,,Lubango,,,
+way/917061231,Salas Anexas da Bétel,,,school,,Lubango,,,
+way/917089376,Escola da Igreja Evangélica Congregacional em Angola (IECA),,,school,public,A Luta Continua,Rua Alternativa Casa Pato-Tchioco,,
+way/917100971,Complexo escolar Pitágoras,,,school,,Lubango,Estrada Adjacente ao Mercado do Sófrio,,
+way/917102615,Escola Primária N.º 400 - Sofrio,,,school,,,,,
+way/917107793,Escola do Jango,,,school,,Lubango,,,
+way/917468429,Complexo Escolar nº 458 Baptista,,,school,,Patrice Lumumba,,,
+way/917534351,Complexo Escolar,,,school,,Chioco,,,
+way/917638858,Compelxo Escolar Igreja de Cristo em Angola (ICA) Boa Esperança,,,school,,Lubango,,,
+way/917810910,,,,school,,,,,
+way/917827409,Escola Primária,,,school,,Lubango,Joaquim Kapango,,
+way/917864709,Colégio 4 de Fevereiro - Quipungo,,,school,public,,,,
+way/917882170,Escola Primária,,,school,,,,,
+way/917891899,Centro Infantil e Actividades de Tempos Livres (ATL),,,school,,,,,
+way/917975743,Colégio Pentágono,,,school,,,,,
+way/918008297,Salas Anexas da Missão Católica do Lubango,,,school,,Lubango,,,
+way/918009467,Salas Anexas da Missão Católica do Lubango (Dom Altino Ribeiro de Santana),,,school,public,Lubango,,,
+way/918189885,Salas Anexas (IASD) da Gilgal,,,school,,Lubango,,,
+way/919670163,Escola Primária N.º 318 A,,,school,,Lubango,rua da substação,,
+way/921866049,Colégio N.º 1485 - Lar dos Estudantes,,,school,,,,,
+way/922013131,Escola N.º 119 - Nzinga Mbandi - Cuvango,,,school,,,,,
+way/923200355,Escola do Ensino Primário - Mwene Tchiwaco,,,school,,,,,
+way/923420318,Escola do I Ciclo,,,school,,Tchioco Lubango,Avenida do Estádio Nacional da Tundavala,,
+way/925536776,Colégio 123,,,school,,Lubango,Avenida Lopo do Nascimento,,
+way/925542977,Colégio Madre Trindade,,,school,,Lubango,Avenida Lopo do Nascimento,,
+way/939462309,Liceu nº 792 - Lubango,,,school,public,,,,
+way/939462312,Complexo Escolar 14 de Abril,,,school,public,Lubango,Avenida Presidente Samora Machel,,
+way/941384271,Escola Nº 56,,,school,,Moçâmedes,,,
+way/944696146,Escola Primária da Quilemba,,,school,,Quilemba,,,
+way/949321119,Complexo Escolar Nº 5,,,school,public,Lubango,,,
+way/950072463,Escola Primária N.º 370,,,school,,Lubango,Rua Mário Carlos,,
+way/952589943,,,,school,,Centralidade do Lossambo,,,
+way/952590222,Escola Primária,,,school,,Centralidade do Lossambo,,,
+way/952603430,Leceu 11 de Novembro,,,school,,Centralidade do Lossambo,,,
+way/952604370,Liceu Dr Agostinho Neto,,,school,,Centralidade do Lossambo,,,
+way/956443516,Instituto Politécnico Estrela da Huíla N.º 1830,,,school,,Lubango,Rua Demóstenes de Almeida,,
+way/960909258,Escola Primária N.º 194 - Lucrécia Paim,,,school,,,,,
+way/961981719,Instituto Médio Agrário do Missombo - Menongue (IMA-M),,,school,,Missombo,EN140,,
+way/961981724,"Instituto Politécnico do Ambiente ""31 de Janeiro"" (IPAT)",,,school,public,Missombo,Rua das Escolas,,
+way/962085369,Escola de Magistério ADPP - Cuando Cubango,,,school,,Missombo,Rua das Escolas,,
+way/962561099,Lar dos Pequeninos,,,school,,Huambo,,,
+way/964622030,Complexo Escolar Privado Politécnico Do Huambo,,,school,private,Huambo,Rua Vincente Ferreira,,
+way/968155975,Complexo Escolar (No. 22) José Francisco Republicano,,,school,,Tômbua,,,
+way/969630170,,,,school,,,,,
+way/972008886,Liceu N.º 15 - António Júlio dos Santos - Camucuio,,,school,public,,,,
+way/976151844,Liceu N.º 58M - Welwitschia Mirabilis,,,school,,Moçâmedes,Avenida Eduardo Mondlane,,
+way/992240226,,,,school,,Namibe,Sacomar-Intersecção NBE 101.3 (Pipas),,
+way/996628792,,,,school,,,,,
+way/996659573,Complexo Escolar Privado Espírito Santo,,,school,,Lubango,,,
+way/997161350,Instituto Politécnico Marítimo e Pesqueiro (N.º 54) Hélder Neto,,,school,public,,,,
+way/1003021672,Escola do Ensino Primário (N.º 67M) Álvaro António Mavela,,,school,,Moçâmedes,,,
+way/1003021673,Escola do Ensino Primário (N.º 17/M) Pioneiro Zeca,,,school,public,Moçâmedes,Rua Eurico Gonçalves,,
+way/1005782577,Colégio (N.º 49/M) Saidy Mingas,,,school,,Moçâmedes,Avenida Joaquim Morais,,
+way/1041623094,Colégio António Houais,,,school,private,Lubango,Rua 8 de Março,,
+way/1041637456,Escola Primária da 120,,,school,,,,,
+way/1041637795,Escola Secundária nº 915 - Matala,,,school,,,,,
+way/1050662632,,,,school,,,,,
+way/1052307980,,,,school,,,,,
+way/1053081564,Escola Mista Eusebe Biu de Britu,Mixed School Eusebe Biu de Britu,,school,,,,,
+way/1053081571,,Secondary School 21 de Março,,school,,,,,
+way/1053081595,Escola Primária Eduardo Bondo,Primary School Eduardo Bondo,,school,,,,,
+way/1053081596,Escola Primária Casua Bloco 2,Primary School Casua Bloco 2,,school,,,,,
+way/1053081615,Escola Primária Nossa Senhora de Graça,,,school,,Sumbe,,,
+way/1053081635,Escola Primária 11 de Novembro,Primary School 11 de Novembro,,school,,,,,
+way/1053081640,Escola Mista Comisário Ngongo,Mixed School Comisário Ngongo,,school,,,,,
+way/1053081657,Escola Primária N.º 336,Primary School no. 336,,school,,,,,
+way/1053081660,Liceu Viriatu da Cruz,Secondary School Liceu Viriatu da Cruz,,school,,,,,
+way/1053081674,Escola Secundária Magistério Primário Secção IMN-P.A.,Secondary School Magistério Primário Secção IMN-P.A.,,school,,,,,
+way/1053081689,Escola Paroquial Nossa Senhora da Graça,Parish School Nossa Senhora da Graça,,school,,,,,
+way/1053081699,Escola Primárial Magistério,Primary School Magistério,,school,,,,,
+way/1053081704,Escola Mista José Sabino,Mixed School José Sabino,,school,,,,,
+way/1053081707,Escola Primária Ekuikui Cauíla,Primary School Ekuikui Cauíla,,school,,,,,
+way/1053081721,Escola Primária Che Guevera,Primary School Che Guevera,,school,,,,,
+way/1057178276,,,,school,,,,,
+way/1067915477,Complexo Escolar N.º 1804 - Mumba,,,school,,,,,
+way/1073959373,Colégio de Jamba-Cueio - Menongue,,,school,public,,,,
+way/1080051666,,,,school,,,,,
+way/1080233860,,,,school,,,,,
+way/1080235490,Colégio N.º 1484 - Cuvango,,,school,,,,,
+way/1086816740,Escola n 18-Manguxi,,,school,,,,,
+way/1087707011,Complexo Escolar Lucunga B Nº 1739,,,school,,,,,
+way/1088167168,,,,school,,,,,
+way/1088202257,Colégio Nº 943,,,school,,,,,
+way/1088202258,Escola Kilamba,,,school,,,,,
+way/1088202259,Escola Primária da Cuanja,,,school,,,,,
+way/1088202262,Escola Primária do Morro,,,school,,,,,
+way/1088202264,Escola Primária de Vihongue,,,school,,,,,
+way/1088202268,Escola Primária de Cacola,,,school,,,,,
+way/1088202272,Escola Primária de Indungo,,,school,,,,,
+way/1088202276,Escola Primária do Calundungo,,,school,,,,,
+way/1088202278,Escola Primária do Cavongue,,,school,,,,,
+way/1088202280,Escola do Ensino Primário n.º 1489 - Cassangui,,,school,,,,,
+way/1088202282,Escola Missionária Padre Carlos Estermann,,,school,,,,,
+way/1088202285,Complexo Escolar (Nº 1776) Dom Samuel,,,school,,Lubango,,,
+way/1088209030,Escola Padre Ramoso Vieta,,,school,,,,,
+way/1088209037,Escola Primária N.º 12 (Casa Verde),,,school,,,,,
+way/1088209040,Escola dos Irmãos,,,school,,,,,
+way/1088245893,Escola Primária Ernesto Che Guevara,,,school,,,,,
+way/1088445635,Complexo Escolar Tawisa,,,school,,,,,
+way/1088445661,Escola Primária da Figueira,,,school,,,,,
+way/1088814634,Escola Primária N.º 24 - Muhaha - Poiares,,,school,,,,,
+way/1088814643,Escola Primária de Poiares,,,school,,,,,
+way/1088814645,Escola Primária de Hinhinhiqui,,,school,,,,,
+way/1090509290,Escola Primária N.º 622 - Irene Neto - Cangumbe,,,school,,,,,
+way/1090509294,Escola Primária N.º 748 - Muene Tchikuango,,,school,,,,,
+way/1090509298,Colégio Camôngua,,,school,private,Lubango,Via de Acesso à 7ª Esquadra,,
+way/1090509299,Escola 16 de Junho,,,school,,,,,
+way/1092133063,Escola primária,,,school,,,,,
+way/1092139319,Escola de ensino primário n°192 - Cahila,,,school,,,,,
+way/1092139321,Escola do Ensino Secundario,,,school,,Calai,,,
+way/1092163925,Escola Primária Vihamba,,,school,,,,,
+way/1092194597,Escola de ensino Primário,,,school,,,,,
+way/1092194598,Escola de ensino Primário,,,school,,,,,
+way/1092194599,Escola de ensino Primário,,,school,,,,,
+way/1092319544,Complexo Escolar Privado Politécnico Do Huambo,,,school,private,,,,
+way/1093132537,Escola primária n°111 Benfica,,,school,,,,,
+way/1093319176,,,,school,,,,,
+way/1093355392,,,,school,,,,,
+way/1120395714,,,,school,,,,,
+way/1122850403,"Complexo Escolar Privado - Igreja Nova Apostólica - ""A Verdade Vos libertará""",,,school,,,,,
+way/1122851266,Complexo Escolar dos Navegantes,,,school,public,Benguela,,,
+way/1122855955,,,,school,,,,,
+way/1125678479,Escola Primária do Tchitundo,,,school,,,,,
+way/1125678481,Escola Primária do Muyongo,,,school,,,,,
+way/1129255445,Escola Primária (N.º 369) Mitcha,,,school,,,,,
+way/1129255451,anexas da 369(comboio),,,school,,,,,
+way/1129726443,Complexo Escolar Graceland,,,school,,,,,
+way/1130879044,Complexo Escolar (N.º 16),,,school,,,Kuawa,,
+way/1130909872,"Escola de Magistério Secundário N.º 135 ""Comandante Liberdade""- Lubango",,,school,,,,,
+way/1131523684,Escola do Ensino Primário N.º 1833 - Centralidade da Quilemba,,,school,,,,,
+way/1131956922,Escola Primária N.º 32 - Luyovo,,,school,,,,,
+way/1132251077,Escola Primária do Quewa,,,school,,,,,
+way/1132255195,Escola Primária N.º 31 - Tunda,,,school,,,,,
+way/1132255198,Escola Primária N.º 1116 - Bio,,,school,,,,,
+way/1132494002,Escola Oulondelo,,,school,,Ondjiva,,,
+way/1133016562,Escola da Caxila,,,school,,,,,
+way/1133018158,EFTSO,,,school,,Ondjiva,,,
+way/1133177243,Escola do Bastos,,,school,,,,,
+way/1133271466,Salas Anexas da Escola N.º 200,,,school,,,,,
+way/1137664491,,,,school,,,,,
+way/1138725466,Escola Nova,,,school,,,,,
+way/1149523630,,,,school,,,,,
+way/1149634395,,,,school,,,,,
+way/1149876368,Escola Primária da Arimba-figueira,,,school,,,,,
+way/1153000919,,,,school,,,,,
+way/1154221140,,,,school,,,,,
+way/1154221144,Liceu N.º 412 - Quipungo,,,school,public,,,,
+way/1154221145,"Escola Primária N.º 592 - ""Kundi Paihama"" - Dôngua",,,school,,,,,
+way/1154628294,Escola (No. 12) Rei Mandume,,,school,,,,,
+way/1155103147,Escola Primária Mavinda I,,,school,public,,,,
+way/1155744414,,,,school,,Tômbua,,,
+way/1155744415,Escola 17 de Junho,,,school,,Tômbua,,,
+way/1155747116,Escola (No. 21) 2 de Abril,,,school,,Tômbua,,,
+way/1155907736,Escola Primária BG 1050,,,school,,,,,
+way/1156006384,Escola Primária do Ngungu,,,school,,,,,
+way/1156006449,Escola Primária Embala do Ngungu,,,school,,,,,
+way/1156007529,,,,school,,,,,
+way/1156174813,,,,school,,,,,
+way/1156279322,Escola Primária,,,school,,,,,
+way/1156622897,,,,school,,,,,
+way/1157539842,,,,school,,,,,
+way/1157656729,,,,school,,,,,
+way/1157857338,Escola de Formação de Técnicos da Saúde de Caluquembe – Huíla,,,school,,,,,
+way/1157857348,Escola Primária de Nondua,,,school,,,,,
+way/1157915663,Complexo Escolar N.º 822 - Ucáli (Povoação),,,school,,,,,
+way/1158015736,Instituto Médio Agrário de Malanje (IMAM),,,school,,,,,
+way/1158375090,Escola Primária Nº 1109,,,school,government,Benguela,Rua 13,,
+way/1158385497,Complexo Escolar do Ensino Especial,,,school,government,Benguela,,,
+way/1158385521,Escola Primária de 15 Agosto,,,school,,Benguela,,,
+way/1158385540,,,,school,,,,,
+way/1158430582,Escola da Paróquia de Santo Estevão,,,school,,,,,
+way/1158459216,Escola Primária BG 1327 Deolinda Rodrigues,,,school,,Benguela,,,
+way/1158462152,Escola do ensino secundário (Puniv),,,school,,Benguela,,,
+way/1158467956,Escola 9,,,school,,Benguela,,,
+way/1159279124,,,,school,,,,,
+way/1159284475,,,,school,,,,,
+way/1159284476,Magistério 65M ICRA Namibe,,,school,,Moçâmedes,Rua Vila Celeste,,
+way/1159458674,Escola Primária do Calépi - Sede,,,school,,,,,
+way/1160420306,Escola Eduardo Kunha,,,school,,Moçâmedes,,,
+way/1160421759,Complexo escolar 5 de Abril,,,school,,Moçâmedes,,,
+way/1160423101,Escola Tchinducuto,,,school,,Moçâmedes,,,
+way/1160895094,Complexo Escolar Rui Luís Falcão Pinto de Andrade,,,school,,Moçâmedes,,,
+way/1160949225,Colégio Nº 51M 1 de Maio,,,school,,,,,
+way/1160949226,Kumanga,,,school,,,,,
+way/1160949230,Complexo Escolar João Paulo II,,,school,,,,,
+way/1161375019,Aida,,,school,,Moçâmedes,,,
+way/1164404450,Escola Primária da Camunda-Leprosaria,,,school,,,,,
+way/1167930894,,,,school,,,,,
+way/1169045878,Escola Missionária Evangélica de Caluquembe,,,school,religious,,,,
+way/1169335991,Escola Primária de Cacomba,,,school,,,,,
+way/1173156463,,,,school,,,,,
+way/1173249403,Escola Primária BG-4077 - Londjombele,,,school,,,,,
+way/1177759102,,,,school,,,,,
+way/1177878073,,,,school,,,,,
+way/1178483430,Escola primária Muhonda II,,,school,,,,,
+way/1178486716,Escola primária 1 de Fevereiro,,,school,,,,,
+way/1178487865,Colégio 17B 59,,,school,,Bibala,,,
+way/1178487880,Magistério 5 de Outubro,,,school,,Bibala,,,
+way/1178487882,Liceu Joao Maria Tyndumbili,,,school,,Bibala,,,
+way/1178487883,Escola primária Campo de Aviação,,,school,,Bibala,,,
+way/1178489015,Colégio 19B José Eduardo dos Santos,,,school,,Bibala,,,
+way/1178534687,Instituto Politécnico da Mahita,,,school,,Bibala,,,
+way/1180240450,Escola Primária da Bela Vista,,,school,,Benguela,,,
+way/1180251911,,,,school,,,,,
+way/1180258144,,,,school,,,,,
+way/1180300661,,,,school,,,,,
+way/1181292149,,,,school,,,,,
+way/1181321622,,,,school,,,,,
+way/1181763341,,,,school,,,,,
+way/1181768379,,,,school,,,,,
+way/1182583589,,,,school,,,,,
+way/1186510080,Escola da Missão Católica do Zenze do Lucula,,,school,,,,,
+way/1186539900,,,,school,,,,,
+way/1186544880,,,,school,,,,,
+way/1186643656,,,,school,,,,,
+way/1188534911,Escola Primária,,,school,,Xangongo,,,
+way/1188546392,Escola Primária Canísio,,,school,,Xangongo,,,
+way/1188546404,Escola do I Ciclo do Ensino Secundário 22 de Novembro,,,school,,Xangongo,,,
+way/1188549556,Escola do II Ciclo do Ensino Secundário Liceu do Xangongo,,,school,,Xangongo,,,
+way/1189616138,Escola Primária BG5244,,,school,,Ganda,,,
+way/1189902034,,,,school,,,,,
+way/1190650254,Colégio Mbanda Ngó Bilolo - Nº 263 - Tando Zinze,,,school,,,,,
+way/1192510362,,,,school,,,,,
+way/1192513943,Escola Primária da Tchiamena,,,school,,,,,
+way/1194884926,,,,school,,,,,
+way/1195016564,Seminário São Bento,,,school,,,,,
+way/1198268575,Escola Emílio Ngongo,,,school,,Moçâmedes,,,
+way/1198268576,Escola Afonso Van-Dúnem M’Binda,,,school,,Moçâmedes,,,
+way/1198268579,Escola Amália Simnes Alves Patrocínio,,,school,,Moçâmedes,,,
+way/1198268582,Escola António da Conceição Ananás,,,school,,Moçâmedes,,,
+way/1198270640,Escola António Lopes da Câmara,,,school,,Moçâmedes,Rua da ETA,,
+way/1198270641,Escola Dom Mateus Feliciano,,,school,,Moçâmedes,,,
+way/1198464763,Liceu Welwitschia Mirábilis,,,school,,Moçâmedes,,,
+way/1198464764,Escola Maria de Lourdes Van-Dúnen,,,school,,Moçâmedes,,,
+way/1198464765,Escola 11 de Novembro,,,school,,Moçâmedes,,,
+way/1198464766,Colégio Mendes Garcia,,,school,,Moçâmedes,,,
+way/1198657439,Escola São João Baptista,,,school,public,Moçâmedes,,,
+way/1199471607,Escola Primária de Fortaleza,,,school,,,,,
+way/1199650013,Escola Deolinda Rodrigues,,,school,public,Moçâmedes,,,
+way/1199650017,Escola São Tomás de Aquino,,,school,,Moçâmedes,Avenida 5 de Abril,,
+way/1199650018,,,,school,,,,,
+way/1199650023,Escola São José Operário,,,school,,,,,
+way/1199650034,Escola Torre do Tombo,,,school,,Moçâmedes,,,
+way/1199650035,Escola John Wesley,,,school,,Moçâmedes,,,
+way/1199651969,Escola 4 de Fevereiro,,,school,,Moçâmedes,Avenida 5 de Abril,,
+way/1199651970,Escola de Ensino Especial,,,school,,Moçâmedes,,,
+way/1199651972,Escola 1 de Junho,,,school,,Moçâmedes,Avenida 5 de Abril,,
+way/1199651979,Escola Júli Lopes,,,school,,Moçâmedes,Avenida do Aeroporto,,
+way/1199652677,Escola Rainha Ginga Mbandi,,,school,,Moçâmedes,,,
+way/1199652678,Escola 22 de Novembro,,,school,,Moçâmedes,,,
+way/1199652680,Escola Comandante Dangereux,,,school,,Moçâmedes,Rua Comandante Dangereux,,
+way/1199653155,Escola Domingos Kapewa,,,school,,Moçâmedes,,,
+way/1199653156,Escola Emília de Almeida,,,school,,Moçâmedes,,,
+way/1199653157,Escola 4 de Janeiro,,,school,,Moçãmedes,,,
+way/1199653999,Escola Técnica de Saúde,,,school,,Moçâmedes,Avenida 5 de Abril,,
+way/1199654888,Colégio Amigos do Saber,,,school,,Moçâmedes,Rua Gerrilheiro Faria,,
+way/1201678355,,,,school,,,,,
+way/1201891667,Escola Primária Nº 49,,,school,,Moçâmedes,Rua Gerrilheiro Faria,,
+way/1201894967,Escola 10 de Dezembro,,,school,,Moçâmedes,,,
+way/1202209499,,,,school,,,,,
+way/1203759620,,,,school,,,,,
+way/1205498820,,,,school,,,,,
+way/1214658643,Escola Primária No 32,,,school,,Huambo,Rua Silva da Carvalho,,
+way/1218285096,,,,school,,,,,
+way/1218322902,,,,school,,,,,
+way/1219401078,,,,school,,,,,
+way/1219695168,Escola do I ciclo IECA-Aboa Nova,,,school,,,,,
+way/1226764012,Escola Primária de Tali Sumbi,,,school,,,,,
+way/1231341620,Escola primária 4 de Abril - Chibodo,,,school,,,,,
+way/1234284290,Complexo Escolar São Francisco de Assis,,,school,,Negage,,,
+way/1234288190,,,,school,,,,,
+way/1234291490,,,,school,,,,,
+way/1234291493,,,,school,,,,,
+way/1235176295,Salas Exenas  do 1º Ciclo do Ensino Secundário do Mucuio,,,school,,"Mucuio, Hoque",Lubango/Quipungo/Matala,,
+way/1235179729,Escola do Kaputo,,,school,public,Hoque,Lubango/Quipungo/Matala,,
+way/1235902082,Magistério Nº 1104 Ciências Religiosas de Angola - ICRA-Matala,,,school,,,,,
+way/1237114380,,,,school,,,,,
+way/1237238519,,,,school,,,,,
+way/1237254129,,,,school,,,,,
+way/1237255486,,,,school,,,,,
+way/1237351212,,,,school,,,,,
+way/1237351222,,,,school,,,,,
+way/1239058669,,,,school,,,,,
+way/1252136273,Escola Primaria da Alsa nº 1327,,,school,public,,,,
+way/1252136281,Colégio Privado Kautindi,,,school,private,,,,
+way/1252136282,"Escola do II Ciclo do Ensino Secundário Liceu nº 1068-Matala, Matala",,,school,public,,,,
+way/1252136283,Magistério Primário da Matala,,,school,public,,,,
+way/1252136287,Escola do Iº Ciclo - Mukula Pingui - Candjanguite - Matala,,,school,,,,,
+way/1274030149,,,,school,,,,,
+way/1274036708,Escola Primária da Taca,,,school,,,,,
+way/1275714043,,,,school,,,,,
+way/1275718446,Escola do Kwahamba,,,school,public,Kwahamba,,,
+way/1275726105,Complexo Escolar Mama Muxima doToco Nº 1792,,,school,public,Toco,,,
+way/1275726106,,,,school,,,,,
+way/1275732331,EScola Primária Nº 66 do Toco,,,school,,,,,
+way/1281275354,Escola,,,school,,,,,
+way/1281275356,Escola,,,school,,,,,
+way/1281282147,,,,school,,,,,
+way/1287511505,,,,school,,,,,
+way/1292134223,,,,school,,,,,
+way/1292134224,,,,school,,,,,
+way/1306518734,Escola do Magistério do Andulo,,,school,,Andulo,,,
+way/1306531998,Escola Luíz Ngongoyavo,,,school,,Andulo,,,
+way/1306866837,,,,school,,,,,
+way/1323822294,Colégio Boleth Salu,,,school,,Ondjiva,,,
+way/1323863203,Escola Primária Nº 122,,,school,,Ondjiva,,,
+way/1323863534,Instituto Médio Politécnico,,,school,,Ondjiva,,,
+way/1323865237,Liceu Eiffel,,,school,,Ondjiva,,,
+way/1323868796,Complexo Escolar Pitágoras,,,school,,Ondjiva,,,
+way/1323869456,Complexo Escolar Sheefeni Sha Mukwiyu,,,school,,Ondjiva,,,
+way/1323874778,Escola do Ensino Secundário,,,school,,Ondjiva,,,
+way/1323882390,,,,school,,,,,
+way/1323979566,,,,school,,,,,
+way/1324057116,Escola do Okapale (CESMO),,,school,,Ondjiva,,,
+way/1324629701,,,,school,,Soyo,,,
+way/1324743922,Escola Primária Nº 10,,,school,,N'Zeto,,,
+way/1325109252,Colégio Manuel Dembi,,,school,,Soyo,,,
+way/1325194084,Instituto Politécnico do Soyo,,,school,,Soyo,,,
+way/1325252027,Colegio Ensasi,,,school,,Soyo,,,
+way/1325538603,Instituto Superior Politécnico do Soyo,,,school,,Soyo,,,
+way/1325538604,Instituto Médio Politécnico dos Petróleos do Soyo,,,school,,Soyo,,,
+way/1326279021,Escola Primária,,,school,,,,,
+way/1326308590,Centro de Formação Profissional N'gangula,,,school,,Uíge,,,
+way/1326313046,Escola 11 de Novembro,,,school,,Uíge,,,
+way/1326974048,Instituto Técnico de Saude,,,school,,Uíge,,,
+way/1327093244,Instituto Médio Politécnico Manuel Quarta Punza,,,school,,Uíge,,,
+way/1327094322,Escola Primária do Banza Polo,,,school,,,,,
+way/1327179691,,,,school,,,,,
+way/1327606168,,,,school,,,,,
+way/1328251295,,,,school,,,,,
+way/1329040215,,,,school,,,,,
+way/1329040221,Colégio 27 de Março,,,school,public,Lubango,Praça 17 de Setembro,,
+way/1330129116,27 de Março,,,school,government,Agostinho Neto,Praça 17 de Setembro,,
+way/1337643870,IPOCET,,,school,,Cidade do Camama,Rua das Artes,,
+way/1337643871,C.E.A.R.T,,,school,,Cidade do Camama,Rua das Artes,,
+way/1347122940,,,,school,,,,,
+way/1365282852,,,,school,,,,,
+way/1365289596,colégio missão católica nº90,,,school,,Lubango,Rua Patrice Lumumba,,
+way/1388632836,Colégio Vindos Das Águas,,,school,,,,,
+way/1389625491,Colégio Ndala,,,school,,,,,
+way/1389629315,Segredo do Manansa,,,school,,,,,
+way/1393366363,,,,school,,,,,
+way/1415903615,,,,school,,,,,
+way/1415903616,,,,school,,,,,
+way/1415903624,,,,school,,,,,
+way/1416181698,Complexo Escolar Rei Livongue,,,school,,Huambo,,,
+way/1416252353,Instituto Politécnico de Administração e Gestão,,,school,,Huambo,,,
+way/1416533500,Complexo Escolar São Jose de Cluny,,,school,,Huambo,,,
+way/1416533511,Instituto Politécnico Privado 7 Cores,,,school,,Huambo,,,
+way/1417192492,Escola de Ensino Primário n°105 Chiva,,,school,,,,,
+way/1417222060,,,,school,,,,,
+way/1426117042,Escola São José de Cluny,,,school,,,,,
+way/1426618401,Escola Nº 314,,,school,,Cuíto,Rua Artur de Paiva,,
+way/1426706947,,,,school,,,,,
+way/1426939207,,,,school,,,,,
+way/1428959339,Escola Comandante Bula Matadi,,,school,,Huambo,Avenida Comandante N'zaji,,
+way/1428959735,Escola Comandante Dangereux,,,school,,Huambo,Avenida Comandante N'zaji,,
+way/1429008618,Escola Primária No 53,,,school,,Huambo,,,
+way/1429951637,Centro de Formação Profissional do Cuacra,,,school,,,,,
+way/1429962758,,,,school,,,,,
+way/1433333119,Escola Primária da Aldeia 3,,,school,,Cela,Rua da Aldeia 3,,
+way/1433363880,,,,school,,,,,
+way/1434375162,Escola do I e II Ciclos do Ensino Secundário da Sanga,,,school,,,,,
+way/1442636438,Colégio Cdte Dangereux,,,school,,Catumbela,,,
+way/1442652965,Escola Primária Mutuyakevela,,,school,,Catumbela,,,
+way/1442850665,Colégio os Pupilos,,,school,,Dack-Doy,,,
+way/1443085654,,,,school,,,,,
+way/1444039495,,,,school,,,,,
+way/1444614602,Colégio Emanuel IESA,,,school,,Lobito,,,
+way/1444692320,Instituto politécnico do Cachiungo,,,school,,Cachiungo,,,
+way/1444692336,,,,school,,,,,
+way/1444726583,,,,school,,,,,
+way/1444806869,,,,school,,,,,
+way/1444807962,,,,school,,,,,
+way/1445318021,Escola Leonardo Chinga,,,school,,Cassai Sul,,,
+way/1445951777,Complexo Escolar Victória Noelana,,,school,,Moçâmedes,Estrada para Virei,,
+way/1446058928,Escola sra. de Fátima,,,school,,,Avenida Pereira da Cruz,,
+way/1446484829,Escola Secundária,,,school,,Caconda,Rua Principal,,
+way/1446493389,repartição da educação,,,school,government,,,,
+way/1446777472,COMPLEXO ESCOLAR SALOMÉ INÁCIO,,,school,,Lucira,,,
+way/1446778569,CENTRO DE ARTES E OFICIOS DA LUCIRA,,,school,,Lucira,,,
+way/1447841926,,,,school,,,,,
+way/1447841935,,,,school,,,,,
+way/1451568157,Escola,,,school,,,,,
+way/1455198952,,,,school,,,,,
+way/1487481098,Colegio Dom Alfredo Sungo,,,school,,,,,
+way/1491676721,,,,school,,,,,
+way/1491742756,Instituto Politécnico Privado Padre Builo,,,school,,Cabinda,"Próximo do, Largo da República",,
+way/1492918571,Complexo Escolar do Luvassa,,,school,,Cabinda,Rua 1 de Maio,,
+way/1492918572,Complexo Escolar e Instituto Politecnico Privado Jeusalem,,,school,,Cabinda,Rua 1 de Maio,,
+way/1492918573,Escola Betania,,,school,,Cabinda,Rua 1 de Maio,,
+way/1492944697,Escola Saidy Mingas,,,school,,cabinda,bairro A luta continua,,
+way/1492944698,Colégio Apolónia,,,school,,Cabinda,Cabassango - Cabinda,,
+way/1492944700,Complexo Escolar Privado Campos de Flores,,,school,,Cabinda,Cabassango - Cabinda,,
+way/1492944702,Medium Institute of Economy of Cabassango (IMEC),,,school,,,,,
+way/1492944703,Barão Puna,,,school,,Cabinda,"C5WP+G62, Cabinda, Angola",,
+way/1492944704,Colégio Chenguenene,,,school,,,,,
+way/1492944711,,,,school,,,,,
+way/1492944712,Instituto Politécnico Privado Padre Builo,,,school,,Cabinda,Rua das Mangueiras,,
+way/1492944714,Colégio Padre pitra,,,school,,Cabinda,Rua das Mangueiras,,
+way/1492944715,São José de Cluny,,,school,,Cabinda,Rua da Missão,,
+way/1492944719,IMNE,,,school,,Cabinda,Av. do Duque de Chiazi,,
+way/1493317328,,,,school,,,,,
+way/1493385222,Complexo escolar IECA,,,school,,,,,
+way/1493386859,"Escola anexa da 61, Emanuel.",,,school,,Lubango,Rua do Hospital,,
+way/1493387601,Complexo Esolar Privado Solange,,,school,private,,Rua da Comarca,,
+way/1493387750,Escola o PIqui,,,school,,,Rua do Centro de Formação Profissional Mecanização,,
+way/1493387995,Escola primária e secundária número 50,,,school,pública,,,,
+way/1493390552,Escola Primária Anexa a Igreja Católica,,,school,private,A Luta Continua,VIA CIRCULAR EXTERNA AO LUBANGO,,
+way/1493391018,Salas de Aulas,,,school,public,Bula Matadi,Joao de Ameida,,
+way/1493391117,Complexo escolar Pitágoras,,,school,,,Estrada Adjacente ao Mercado do Sófrio,,
+way/1493391603,Salas anexas da Missão Católica do Lubango (Dom Altino Ribeiro de Santana),,,school,public,,Bula Matady,,
+way/1493396517,Complexo Escolar Privado Passuka,,,school,,Municipio dos Navegantes,Bairro Ekuikui II,,
+way/1493400617,Colégio Horion,,,school,,,,,
+way/1493401067,Salas Anexas do Complexo Escolar Passuka,,,school,private,Municipio dos Navegantes,Bairro Ekuikui II,,
+way/1513072565,Ruy Duarte de Carvalho,,,school,public,Moçâmedes,Rua do Mercado Municipal dos Eucaliptos,,
+way/1523633959,China-Angola Friendship Primary School,,,school,,,,,
+way/1524007702,"Complexo Escolar nº 120 - Samuel Marcolino, Matala",,,school,,,,,
+way/1524007703,Escola Missionária da ALSSA,,,school,,,,,
+way/1524007708,Instituto de Ciências Religiosas de Angola - Matala,,,school,,,,,
+way/1524704954,,,,school,,,,,
+relation/934923,Escola São José de Cluny,,,school,,,,,
+relation/10664787,Escola Primária nº 98,,,school,public,Lubango,Rua do Bairro da Lage,,

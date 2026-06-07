@@ -17,6 +17,7 @@
     "About": "Over ons",
     "Approach": "Aanpak",
     "Parents": "Ouders",
+    "Teachers": "Leraren",
     "Schools": "Scholen",
     "NGOs": "NGO's",
     "Science": "Wetenschap",
@@ -92,5 +93,17 @@
       "Title": "Uw School",
       "Description": "Kies uw school"
     }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Zoek een school...",
+    "NoSchoolFound": "Geen school gevonden",
+    "TryAnotherSearch": "Pas uw filters aan of probeer een andere zoekopdracht",
+    "SelectSchool": "Geselecteerde school",
+    "All": "Alle",
+    "Public": "Openbaar",
+    "Private": "Privaat",
+    "RegionSG": "Regio (Zone)",
+    "DistrictSG": "Zone / DGP",
+    "PromptSelect": "Selecteer de regio en zone om uw school te vinden 🏫"
   }
 }

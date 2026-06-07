@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Link } from "@/i18n/routing";
 
 interface ChatOpenerProps {
   userId?: number;
@@ -12,16 +13,10 @@ interface ChatOpenerProps {
   title?: string;
 }
 
-export default function ChatOpener({ userId, convId, type, name, children, className, title }: ChatOpenerProps) {
-  const handleClick = () => {
-    // Dispatch custom event caught by ChatContext
-    const event = new CustomEvent("open-chat", { detail: { convId, userId, type, name } });
-    window.dispatchEvent(event);
-  };
-
+export default function ChatOpener({ children, className, title }: ChatOpenerProps) {
   return (
-    <button onClick={handleClick} className={className} title={title}>
+    <Link href="/dashboard/messages" className={className} title={title}>
       {children}
-    </button>
+    </Link>
   );
 }

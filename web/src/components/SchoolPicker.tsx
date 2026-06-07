@@ -7,6 +7,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { formatSgDistrictName, formatSgRegionName } from "@/lib/sgGeoLabels";
 import { formatMaRegionName, maAdminLabels } from "@/lib/maGeoLabels";
 import { tnAdminLabels } from "@/lib/tnGeoLabels";
+import { formatDzWilayaName, formatDzCommuneName, dzAdminLabels } from "@/lib/dzGeoLabels";
+import { cn } from "@/lib/utils";
+import { DZ_WILAYAS } from "@/data/dz-wilayas-data.js";
 
 interface Region {
   id: number;
@@ -51,12 +54,22 @@ const FR_REGIONS = [
   { name: "Outre-Mer", depts: ["971", "972", "973", "974", "976"] }
 ];
 
+export interface SchoolPickerValue {
+  id: number;
+  name: string;
+  type?: number; // 1 = public, 2 = private
+  address?: string;
+}
+
 interface SchoolPickerProps {
-  value?: { id: number; name: string } | null;
-  onChange: (school: { id: number; name: string } | null) => void;
+  value?: SchoolPickerValue | null;
+  onChange: (school: SchoolPickerValue | null) => void;
   country?: string;
   placeholder?: string;
 }
+
+const regionsCache = new Map<string, Region[]>();
+const districtsCache = new Map<string, District[]>();
 
 export default function SchoolPicker({
   value,
@@ -101,6 +114,8 @@ export default function SchoolPicker({
   
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [regionsLoading, setRegionsLoading] = useState(false);
+  const [districtsLoading, setDistrictsLoading] = useState(false);
   
   const [regionOpen, setRegionOpen] = useState(false);
   const [districtOpen, setDistrictOpen] = useState(false);
@@ -119,60 +134,133 @@ export default function SchoolPicker({
     setResults([]);
   }, [country]);
 
-  // Fetch wilayas
+  const geoFont = isAr ? "font-amiri" : "font-inter";
+  const geoTriggerBase = `w-full flex items-center justify-between rounded-2xl border-2 px-4 py-3 text-sm font-bold transition-all shadow-sm ${geoFont}`;
+  const geoTriggerActive = `${geoTriggerBase} border-neutral-300 bg-white text-black hover:border-orange-400`;
+  const geoTriggerDisabled = `${geoTriggerBase} border-neutral-200 bg-neutral-50 text-neutral-400 cursor-not-allowed opacity-70`;
+  const geoListPanel =
+    "absolute top-full mt-1 left-0 right-0 z-[200] bg-white shadow-xl rounded-2xl border-2 border-neutral-200 max-h-56 overflow-y-auto";
+  const geoListItem = (active: boolean) =>
+    cn(
+      "w-full px-4 py-3 text-sm font-bold transition-colors",
+      geoFont,
+      isAr ? "text-right" : "text-left",
+      active
+        ? "bg-orange-50 text-orange-700"
+        : "text-neutral-800 hover:bg-orange-50 hover:text-orange-700"
+    );
+
+  // Wilayas DZ : données statiques (pas d'appel API)
   useEffect(() => {
+    if (country === "DZ") {
+      const cacheKey = "DZ";
+      const cached = regionsCache.get(cacheKey);
+      if (cached) {
+        setRegions(cached);
+        return;
+      }
+      const staticRegions: Region[] = DZ_WILAYAS.map((w: { code: string; fr: string; ar: string }, i: number) => ({
+        id: i + 1,
+        code: w.code,
+        nameLocal: w.ar,
+        nameFr: w.fr,
+      }));
+      regionsCache.set(cacheKey, staticRegions);
+      setRegions(staticRegions);
+      setRegionsLoading(false);
+      return;
+    }
+
+    const cacheKey = country;
+    const cached = regionsCache.get(cacheKey);
+    if (cached) {
+      setRegions(cached);
+      return;
+    }
+    setRegionsLoading(true);
     fetch(`/api/schools/regions?country=${country}`)
       .then((r) => r.json())
       .then((data) => {
-        if (Array.isArray(data)) setRegions(data);
+        if (Array.isArray(data)) {
+          regionsCache.set(cacheKey, data);
+          setRegions(data);
+        }
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setRegionsLoading(false));
   }, [country]);
 
-  // Fetch communes when wilaya changes
+  // Fetch communes when wilaya changes (cached)
   useEffect(() => {
-    setDistrictCode(""); // Reset district
+    setDistrictCode("");
     setDistricts([]);
     if (!regionCode) return;
-    
+
+    const cacheKey = `${country}:${regionCode}`;
+    const cached = districtsCache.get(cacheKey);
+    if (cached) {
+      setDistricts(cached);
+      return;
+    }
+
+    setDistrictsLoading(true);
     fetch(`/api/schools/districts?region=${regionCode}&country=${country}`)
       .then((r) => r.json())
       .then((data) => {
-        if (Array.isArray(data)) setDistricts(data);
+        if (Array.isArray(data)) {
+          districtsCache.set(cacheKey, data);
+          setDistricts(data);
+        }
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setDistrictsLoading(false));
   }, [regionCode, country]);
 
   // Debounced search
+  const useNativeGeoSelects = country === "DZ" || country === "MA" || country === "TN";
+
   const doSearch = useCallback(
     (q: string, region: string, district: string, type: 0 | 1 | 2) => {
       clearTimeout(searchTimeout.current);
+      // DZ/MA/TN : ne chercher qu'après sélection commune (évite spam API + liste vide)
+      if (useNativeGeoSelects && !district) {
+        setResults([]);
+        return;
+      }
       if (q.length < 2 && !region && !district) {
         setResults([]);
         return;
       }
+      const delay = useNativeGeoSelects && district ? 0 : 200;
       searchTimeout.current = setTimeout(async () => {
         setIsLoading(true);
         try {
-          const params = new URLSearchParams({ q, country });
+          const params = new URLSearchParams({ q, country, limit: "50" });
           if (region) params.set("region", region);
           if (district) params.set("district", district);
           if (type !== 0) params.set("type", type.toString());
-          
+
           const res = await fetch(`/api/schools/search?${params}`);
           const data = await res.json();
           if (Array.isArray(data)) setResults(data);
         } finally {
           setIsLoading(false);
         }
-      }, 300);
+      }, delay);
     },
-    [country]
+    [country, useNativeGeoSelects]
   );
 
   useEffect(() => {
     doSearch(query, regionCode, districtCode, schoolType);
   }, [query, regionCode, districtCode, schoolType, doSearch]);
+
+  // Liste inline DZ/MA/TN : ouvrir dès qu'une commune est choisie
+  useEffect(() => {
+    if (useNativeGeoSelects && districtCode) {
+      setIsOpen(true);
+    }
+  }, [useNativeGeoSelects, districtCode, results.length]);
 
   // Close on outside click
   useEffect(() => {
@@ -193,17 +281,120 @@ export default function SchoolPicker({
   const sgLang = isChinese ? "zh" : isMalay ? "ms" : isTamil ? "ta" : "en";
   const maghrebLang = isAr ? "ar" : "fr";
   const adminLabels =
-    country === "MA"
+    country === "DZ"
+      ? dzAdminLabels(maghrebLang)
+      : country === "MA"
       ? maAdminLabels(maghrebLang)
       : country === "TN"
         ? tnAdminLabels(maghrebLang)
-        : country === "JO"
+          : country === "JO"
           ? { region: isAr ? "المحافظة" : "Gouvernorat", commune: isAr ? "اللواء" : "Liwa" }
           : null;
+  const defaultRegionLabel =
+    adminLabels?.region ??
+    (isAr
+      ? "الولاية"
+      : country === "SG"
+        ? tSp("RegionSG")
+        : country === "AR"
+          ? "Provincia"
+          : country === "IE"
+            ? isIrish
+              ? "Contae"
+              : "County"
+            : country === "GB"
+              ? "Region"
+              : country === "AU"
+                ? "State"
+                : country === "US"
+                  ? "State"
+                  : country === "NZ"
+                    ? isMaori
+                      ? "Rohe"
+                      : "Regional Council"
+                    : country === "DK"
+                      ? "Region"
+                      : country === "SE"
+                        ? "Län"
+                        : country === "NO"
+                          ? "Fylke"
+                          : country === "FI"
+                            ? "Maakunta"
+                            : country === "NL"
+                              ? "Provincie"
+                              : country === "PT"
+                                ? "Distrito"
+                                : country === "BR"
+                                  ? "Estado"
+                                  : country === "PL"
+                                    ? "Województwo"
+                                    : country === "KR"
+                                      ? "시/도"
+                                      : country === "JP"
+                                        ? "都道府県"
+                                        : country === "CZ"
+                                          ? "Kraj"
+                                          : isEnglish
+                                            ? "Region"
+                                            : "Wilaya");
+  const defaultCommuneLabel =
+    adminLabels?.commune ??
+    (isAr
+      ? "البلدية"
+      : country === "SG"
+        ? tSp("DistrictSG")
+        : country === "AR"
+          ? "Departamento / Partido"
+          : country === "IE"
+            ? isIrish
+              ? "Údarás Áitiúil"
+              : "Local Authority"
+            : country === "GB"
+              ? "Local Authority"
+              : country === "AU"
+                ? "Suburb"
+                : country === "US"
+                  ? "District"
+                  : country === "NZ"
+                    ? isMaori
+                      ? "Takiwā"
+                      : "Territorial Authority"
+                    : country === "DK"
+                      ? "Kommune"
+                      : country === "SE"
+                        ? "Kommuner"
+                        : country === "NO"
+                          ? "Kommune"
+                          : country === "FI"
+                            ? "Kunta"
+                            : country === "NL"
+                              ? "Gemeente"
+                              : country === "PT" || country === "BR"
+                                ? "Município"
+                                : country === "PL"
+                                  ? "Powiat"
+                                  : country === "KR"
+                                    ? "관할조직 (구/군)"
+                                    : country === "JP"
+                                      ? "市区町村"
+                                      : country === "CZ"
+                                        ? "Okres"
+                                        : isEnglish
+                                          ? "District"
+                                          : "Commune");
+  const regionFirstHint = isAr
+    ? "اختر الولاية أولاً"
+    : useNativeGeoSelects
+      ? "Choisir la wilaya"
+      : isEnglish
+        ? "Select region first"
+        : "Choisir la région";
   const pickBilingual = (local: string | null, fr: string | null) =>
     maghrebLang === "ar" ? (local || fr || "") : (fr || local || "");
   const getRegionName = (r: Region) =>
-    country === "TN"
+    country === "DZ"
+      ? formatDzWilayaName(r.code, r.nameFr || r.nameLocal, maghrebLang)
+      : country === "TN"
       ? pickBilingual(r.nameLocal, r.nameFr)
       : country === "MA"
       ? maghrebLang === "ar"
@@ -221,7 +412,9 @@ export default function SchoolPicker({
               ? (r.nameLocal || r.nameFr)
               : (r.nameFr || r.nameLocal);
   const getDistrictName = (d: District) =>
-    country === "MA" || country === "TN"
+    country === "DZ"
+      ? formatDzCommuneName(d.nameLocal || d.nameFr, maghrebLang)
+      : country === "MA" || country === "TN"
       ? pickBilingual(d.nameLocal, d.nameFr)
       : country === "SG"
       ? formatSgDistrictName(d.nameLocal || d.nameFr)
@@ -236,7 +429,9 @@ export default function SchoolPicker({
               : (d.nameFr || d.nameLocal);
   const getSchoolName = (s: SchoolResult) => isNorwegian || isFinnish || isDutch || isPortuguese || isPolish || isCzech || isKorean || isJapanese ? (s.nameLocal || s.nameFr) : isSwedish ? (s.nameLocal || s.nameFr) : isEnglish || isChinese || isMalay || isTamil ? (s.nameLocal || s.nameFr) : isAr ? (s.nameLocal || s.nameFr) : (s.nameFr || s.nameLocal);
   const getSchoolRegion = (s: SchoolResult) =>
-    country === "TN"
+    country === "DZ"
+      ? formatDzWilayaName("", s.regionNameFr || s.regionNameLocal, maghrebLang)
+      : country === "TN"
       ? pickBilingual(s.regionNameLocal, s.regionNameFr)
       : country === "MA"
       ? maghrebLang === "ar"
@@ -252,7 +447,9 @@ export default function SchoolPicker({
               ? (s.regionNameLocal || s.regionNameFr)
               : (s.regionNameFr || s.regionNameLocal);
   const getSchoolDistrict = (s: SchoolResult) =>
-    country === "MA" || country === "TN"
+    country === "DZ"
+      ? formatDzCommuneName(s.districtNameLocal || s.districtNameFr, maghrebLang)
+      : country === "MA" || country === "TN"
       ? pickBilingual(s.districtNameLocal, s.districtNameFr)
       : isNorwegian || isFinnish || isDutch || isPortuguese || isPolish || isCzech || isKorean || isJapanese
         ? (s.districtNameLocal || s.districtNameFr)
@@ -265,9 +462,13 @@ export default function SchoolPicker({
               : (s.districtNameFr || s.districtNameLocal);
 
   const handleSelect = (school: SchoolResult) => {
+    const region = getSchoolRegion(school);
+    const district = getSchoolDistrict(school);
     onChange({
       id: school.id,
       name: getSchoolName(school) as string,
+      type: school.type,
+      address: [region, district].filter(Boolean).join(" — "),
     });
     setQuery("");
     setIsOpen(false);
@@ -570,7 +771,7 @@ export default function SchoolPicker({
           </div>
         </div>
       ) : (
-        <div className="flex flex-col sm:flex-row gap-2 mb-2">
+        <div className={`flex flex-col sm:flex-row gap-2.5 mb-2 ${geoFont}`}>
           <div className="relative flex-1">
             <button
               type="button"
@@ -578,45 +779,40 @@ export default function SchoolPicker({
                 setRegionOpen(!regionOpen);
                 setDistrictOpen(false);
               }}
-              className="w-full flex items-center justify-between bg-white border-2 border-slate-100 hover:border-orange-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-600 transition-all shadow-sm"
+              disabled={regionsLoading}
+              className={regionsLoading ? geoTriggerDisabled : geoTriggerActive}
             >
-              <span className="flex items-center gap-2 truncate">
-                <MapPin className="w-3.5 h-3.5 text-orange-500 shrink-0" />
+              <span className={`flex items-center gap-2 truncate min-w-0 ${isAr ? "flex-row-reverse" : ""}`}>
+                <MapPin className="w-4 h-4 text-orange-500 shrink-0" />
                 <span className="truncate">
-                  {selectedRegion
-                    ? getRegionName(selectedRegion)
-                    : adminLabels
-                      ? adminLabels.region
-                      : (isAr ? "الولاية" : country === "SG" ? tSp("RegionSG") : country === "AR" ? "Provincia" : country === "IE" ? (isIrish ? "Contae" : "County") : country === "GB" ? "Region" : country === "AU" ? "State" : country === "US" ? "State" : country === "NZ" ? (isMaori ? "Rohe" : "Regional Council") : country === "DK" ? "Region" : country === "SE" ? "Län" : country === "NO" ? "Fylke" : country === "FI" ? "Maakunta" : country === "NL" ? "Provincie" : country === "PT" ? "Distrito" : country === "BR" ? "Estado" : country === "PL" ? "Województwo" : country === "KR" ? "시/도" : country === "JP" ? "都道府県" : country === "CZ" ? "Kraj" : isEnglish ? "Region" : "Wilaya")}
+                  {regionsLoading
+                    ? (isAr ? "جاري التحميل…" : "Chargement…")
+                    : selectedRegion
+                      ? getRegionName(selectedRegion)
+                      : defaultRegionLabel}
                 </span>
               </span>
-              <div className="flex items-center gap-1 shrink-0 ml-1">
-                {regionCode && (
-                  <div 
-                    onClick={(e) => { e.stopPropagation(); setRegionCode(""); }}
-                    className="p-1 hover:bg-slate-100 rounded-md"
-                  >
-                    <X className="w-3 h-3 text-slate-400" />
-                  </div>
-                )}
-                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${regionOpen ? "rotate-180" : ""}`} />
-              </div>
+              <ChevronDown className={`w-4 h-4 shrink-0 text-neutral-400 transition-transform ${regionOpen ? "rotate-180" : ""}`} />
             </button>
- 
+
             <AnimatePresence>
-              {regionOpen && (
+              {regionOpen && !regionsLoading && (
                 <motion.div
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 6 }}
-                  className="absolute top-full mt-1 left-0 right-0 z-[60] bg-white shadow-2xl rounded-xl border border-slate-100 max-h-56 overflow-y-auto"
+                  className={geoListPanel}
                 >
                   {regions.map((r) => (
                     <button
                       key={r.code}
                       type="button"
-                      onClick={() => { setRegionCode(r.code); setRegionOpen(false); }}
-                      className={`w-full text-${isAr ? "right" : "left"} px-3 py-2.5 text-xs font-bold hover:bg-orange-50 hover:text-orange-700 transition-colors ${r.code === regionCode ? "bg-orange-50 text-orange-700" : "text-slate-700"}`}
+                      onMouseDown={(e) => e.preventDefault()}
+                      onClick={() => {
+                        setRegionCode(r.code);
+                        setRegionOpen(false);
+                      }}
+                      className={geoListItem(r.code === regionCode)}
                     >
                       {getRegionName(r)}
                     </button>
@@ -625,7 +821,7 @@ export default function SchoolPicker({
               )}
             </AnimatePresence>
           </div>
- 
+
           <div className="relative flex-1">
             <button
               type="button"
@@ -633,50 +829,56 @@ export default function SchoolPicker({
                 if (regionCode) setDistrictOpen(!districtOpen);
                 setRegionOpen(false);
               }}
-              disabled={!regionCode}
-              className={`w-full flex items-center justify-between bg-white border-2 rounded-xl px-3 py-2 text-xs font-bold transition-all shadow-sm ${!regionCode ? 'border-slate-50 bg-slate-50 text-slate-400 cursor-not-allowed opacity-70' : 'border-slate-100 hover:border-orange-200 text-slate-600'}`}
+              disabled={!regionCode || districtsLoading}
+              className={!regionCode || districtsLoading ? geoTriggerDisabled : geoTriggerActive}
             >
-              <span className="flex items-center gap-2 truncate">
-                <Navigation className={`w-3.5 h-3.5 shrink-0 ${regionCode ? 'text-orange-500' : 'text-slate-300'}`} />
+              <span className={`flex items-center gap-2 truncate min-w-0 ${isAr ? "flex-row-reverse" : ""}`}>
+                <Navigation className={`w-4 h-4 shrink-0 ${regionCode ? "text-orange-500" : "text-neutral-300"}`} />
                 <span className="truncate">
-                  {selectedDistrict
-                    ? getDistrictName(selectedDistrict)
-                    : adminLabels
-                      ? adminLabels.commune
-                      : (isAr ? "البلدية" : country === "SG" ? tSp("DistrictSG") : country === "AR" ? "Departamento / Partido" : country === "IE" ? (isIrish ? "Údarás Áitiúil" : "Local Authority") : country === "GB" ? "Local Authority" : country === "AU" ? "Suburb" : country === "US" ? "District" : country === "NZ" ? (isMaori ? "Takiwā" : "Territorial Authority") : country === "DK" ? "Kommune" : country === "SE" ? "Kommuner" : country === "NO" ? "Kommune" : country === "FI" ? "Kunta" : country === "NL" ? "Gemeente" : (country === "PT" || country === "BR") ? "Município" : country === "PL" ? "Powiat" : country === "KR" ? "관할조직 (구/군)" : country === "JP" ? "市区町村" : country === "CZ" ? "Okres" : isEnglish ? "District" : "Commune")}
+                  {!regionCode
+                    ? regionFirstHint
+                    : districtsLoading
+                      ? (isAr ? "جاري التحميل…" : "Chargement…")
+                      : selectedDistrict
+                        ? getDistrictName(selectedDistrict)
+                        : defaultCommuneLabel}
                 </span>
               </span>
-              <div className="flex items-center gap-1 shrink-0 ml-1">
-                {districtCode && (
-                  <div 
-                    onClick={(e) => { e.stopPropagation(); setDistrictCode(""); }}
-                    className="p-1 hover:bg-slate-100 rounded-md"
-                  >
-                    <X className="w-3 h-3 text-slate-400" />
-                  </div>
-                )}
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${districtOpen ? "rotate-180" : ""} ${regionCode ? 'text-slate-400' : 'text-slate-300'}`} />
-              </div>
+              <ChevronDown className={`w-4 h-4 shrink-0 text-neutral-400 transition-transform ${districtOpen ? "rotate-180" : ""}`} />
             </button>
 
             <AnimatePresence>
-              {districtOpen && districts.length > 0 && (
+              {districtOpen && regionCode && (
                 <motion.div
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 6 }}
-                  className="absolute top-full mt-1 left-0 right-0 z-[60] bg-white shadow-2xl rounded-xl border border-slate-100 max-h-56 overflow-y-auto"
+                  className={geoListPanel}
                 >
-                  {districts.map((d) => (
-                    <button
-                      key={d.code}
-                      type="button"
-                      onClick={() => { setDistrictCode(d.code); setDistrictOpen(false); }}
-                      className={`w-full text-${isAr ? "right" : "left"} px-3 py-2.5 text-xs font-bold hover:bg-orange-50 hover:text-orange-700 transition-colors ${d.code === districtCode ? "bg-orange-50 text-orange-700" : "text-slate-700"}`}
-                    >
-                      {getDistrictName(d)}
-                    </button>
-                  ))}
+                  {districtsLoading ? (
+                    <p className={`px-4 py-4 text-sm font-bold text-neutral-400 text-center ${geoFont}`}>
+                      {isAr ? "جاري التحميل…" : "Chargement…"}
+                    </p>
+                  ) : districts.length > 0 ? (
+                    districts.map((d) => (
+                      <button
+                        key={d.code}
+                        type="button"
+                        onMouseDown={(e) => e.preventDefault()}
+                        onClick={() => {
+                          setDistrictCode(d.code);
+                          setDistrictOpen(false);
+                        }}
+                        className={geoListItem(d.code === districtCode)}
+                      >
+                        {getDistrictName(d)}
+                      </button>
+                    ))
+                  ) : (
+                    <p className={`px-4 py-4 text-sm font-bold text-neutral-400 text-center ${geoFont}`}>
+                      {isAr ? "لا توجد بلديات" : "Aucune commune"}
+                    </p>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -800,53 +1002,89 @@ export default function SchoolPicker({
         </div>
       )}
 
-      <AnimatePresence>
-        {isOpen && results.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            className="absolute top-full mt-2 left-0 right-0 z-[70] bg-white shadow-2xl rounded-2xl border border-slate-100 max-h-64 sm:max-h-72 overflow-y-auto"
-          >
-            {results.map((school) => (
-              <button
-                key={school.id}
-                type="button"
-                onClick={() => handleSelect(school)}
-                className={`w-full flex items-start gap-3 px-3 sm:px-4 py-3 hover:bg-orange-50 transition-colors border-b border-slate-50 last:border-0 text-${isAr ? 'right' : 'left'}`}
-              >
-                <div className="w-8 h-8 rounded-xl bg-slate-100 items-center justify-center shrink-0 mt-0.5 hidden sm:flex">
-                  <School className="w-4 h-4 text-slate-500" />
-                </div>
-                <div className="min-w-0 flex-1 flex flex-col gap-1">
-                  <p className={`text-[13px] sm:text-sm font-black text-slate-900 leading-tight truncate ${isAr ? 'font-arabic' : ''}`}>
-                    {getSchoolName(school)}
-                  </p>
-                  <div className="flex items-center gap-1.5 mt-0.5">
-                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-wider truncate">
-                      {getSchoolDistrict(school)} · {getSchoolRegion(school)}
-                    </span>
-                    <span className={`shrink-0 text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider ${school.type === 2 ? "bg-blue-100 text-blue-600" : "bg-emerald-100 text-emerald-600"}`}>
-                      {school.type === 2 ? (isAr ? "خاص" : isMaori ? "Tūmataiti" : isIrish ? "Príobháideach" : isNorwegian ? "Privat" : isSwedish ? "Privatskola" : isDanish ? "Privatskole" : isFinnish ? "Yksityinen" : isDutch ? "Particulier" : isPortuguese ? "Privada" : isPolish ? "Prywatna" : isKorean ? "사립" : isCzech ? "Soukromá" : isChinese ? "私立" : isMalay ? "Swasta" : isTamil ? "தனியார்" : isEnglish ? "Private" : "Privé") : (isAr ? "عام" : isMaori ? "Tūmatanui" : isIrish ? "Poiblí" : isNorwegian ? "Offentlig" : isSwedish ? "Grundskola" : isDanish ? "Folkeskole" : isFinnish ? "Julkinen" : isDutch ? "Openbaar" : isPortuguese ? "Pública" : isPolish ? "Publiczna" : isKorean ? "공립" : isCzech ? "Veřejná" : isChinese ? "公立" : isMalay ? "Awam" : isTamil ? "அரசு" : isEnglish ? "Public" : "Public")}
+      {useNativeGeoSelects && districtCode ? (
+        <div className="mt-2 rounded-xl border-2 border-slate-100 bg-white shadow-inner overflow-hidden">
+          {isLoading ? (
+            <p className="px-4 py-6 text-center text-xs font-bold text-slate-400">
+              {isAr ? "جاري تحميل المدارس…" : "Chargement des écoles…"}
+            </p>
+          ) : results.length > 0 ? (
+            <div className="max-h-44 overflow-y-auto">
+              {results.map((school) => (
+                <button
+                  key={school.id}
+                  type="button"
+                  onClick={() => handleSelect(school)}
+                  className={`w-full flex items-start gap-3 px-3 py-2.5 hover:bg-orange-50 transition-colors border-b border-slate-50 last:border-0 text-${isAr ? "right" : "left"}`}
+                >
+                  <School className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                  <div className="min-w-0 flex-1">
+                    <p className={cn("text-sm font-bold text-slate-900 leading-snug", geoFont)}>
+                      {getSchoolName(school)}
+                    </p>
+                    <span className={`text-[8px] font-black uppercase tracking-wider ${school.type === 2 ? "text-blue-600" : "text-emerald-600"}`}>
+                      {school.type === 2 ? (isAr ? "خاص" : "Privé") : (isAr ? "عام" : "Public")}
                     </span>
                   </div>
-                </div>
-              </button>
-            ))}
-          </motion.div>
-        )}
-        {isOpen && !isLoading && results.length === 0 && (query.length >= 2 || regionCode) && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="absolute top-full mt-2 left-0 right-0 z-[70] bg-white shadow-xl rounded-2xl border border-slate-100 px-6 py-6 text-center"
-          >
-            <School className="w-8 h-8 text-slate-300 mx-auto mb-2" />
-            <p className="text-sm font-black text-slate-500">{tSp("NoSchoolFound")}</p>
-            <p className="text-xs text-slate-400 mt-1">{tSp("TryAnotherSearch")}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className="px-4 py-5 text-center text-xs font-bold text-slate-400">
+              {isAr ? "لا توجد مدارس في هذه البلدية" : "Aucune école dans cette commune"}
+            </p>
+          )}
+        </div>
+      ) : (
+        <AnimatePresence>
+          {isOpen && results.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              className="absolute top-full mt-2 left-0 right-0 z-[200] bg-white shadow-2xl rounded-2xl border border-slate-100 max-h-64 sm:max-h-72 overflow-y-auto"
+            >
+              {results.map((school) => (
+                <button
+                  key={school.id}
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => handleSelect(school)}
+                  className={`w-full flex items-start gap-3 px-3 sm:px-4 py-3 hover:bg-orange-50 transition-colors border-b border-slate-50 last:border-0 text-${isAr ? 'right' : 'left'}`}
+                >
+                  <div className="w-8 h-8 rounded-xl bg-slate-100 items-center justify-center shrink-0 mt-0.5 hidden sm:flex">
+                    <School className="w-4 h-4 text-slate-500" />
+                  </div>
+                  <div className="min-w-0 flex-1 flex flex-col gap-1">
+                    <p className={`text-[13px] sm:text-sm font-black text-slate-900 leading-tight truncate ${isAr ? 'font-arabic' : ''}`}>
+                      {getSchoolName(school)}
+                    </p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <span className="text-[9px] font-black text-slate-400 uppercase tracking-wider truncate">
+                        {getSchoolDistrict(school)} · {getSchoolRegion(school)}
+                      </span>
+                      <span className={`shrink-0 text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider ${school.type === 2 ? "bg-blue-100 text-blue-600" : "bg-emerald-100 text-emerald-600"}`}>
+                        {school.type === 2 ? (isAr ? "خاص" : "Privé") : (isAr ? "عام" : "Public")}
+                      </span>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </motion.div>
+          )}
+          {isOpen && !isLoading && results.length === 0 && (query.length >= 2 || regionCode) && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="absolute top-full mt-2 left-0 right-0 z-[200] bg-white shadow-xl rounded-2xl border border-slate-100 px-6 py-6 text-center"
+            >
+              <School className="w-8 h-8 text-slate-300 mx-auto mb-2" />
+              <p className="text-sm font-black text-slate-500">{tSp("NoSchoolFound")}</p>
+              <p className="text-xs text-slate-400 mt-1">{tSp("TryAnotherSearch")}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </div>
   );
 }

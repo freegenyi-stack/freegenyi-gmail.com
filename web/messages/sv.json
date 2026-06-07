@@ -1,4 +1,4 @@
-{
+﻿{
   "Hero": {
     "title": "Öppna <orange>geniets dörrar</orange> för ditt barn.",
     "status": "Bron till excellens är öppen",
@@ -17,6 +17,7 @@
     "About": "Om oss",
     "Approach": "Approach",
     "Parents": "Föräldrar",
+    "Teachers": "Lärare",
     "Schools": "Skolor",
     "NGOs": "NGOs",
     "Science": "Vetenskap",
@@ -204,5 +205,18 @@
         "CTA": "Starta äventyret!"
       }
     }
+  }
+,
+  "SchoolPicker": {
+    "SearchPlaceholder": "Sök efter en skola...",
+    "NoSchoolFound": "Ingen skola hittades",
+    "TryAnotherSearch": "Ändra dina filter eller prova en annan sökning",
+    "SelectSchool": "Vald skola",
+    "All": "Alla",
+    "Public": "Offentlig",
+    "Private": "Privat",
+    "RegionSG": "Region (Zon)",
+    "DistrictSG": "Zon / DGP",
+    "PromptSelect": "Välj Region och Zon för att hitta din skola 🏫"
   }
 }

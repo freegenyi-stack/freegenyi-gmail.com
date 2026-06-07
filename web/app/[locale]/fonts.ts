@@ -1,4 +1,11 @@
-import { Readex_Pro, Cairo, Amiri, Reem_Kufi, Outfit, Playfair_Display } from 'next/font/google'
+import { Readex_Pro, Cairo, Amiri, Reem_Kufi, Outfit, Playfair_Display, Inter } from 'next/font/google'
+
+export const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap',
+})
 
 export const readexPro = Readex_Pro({
   subsets: ['arabic', 'latin'],

@@ -17,6 +17,7 @@
     "About": "Om os",
     "Approach": "Tilgang",
     "Parents": "Forældre",
+    "Teachers": "Lærere",
     "Schools": "Skoler",
     "NGOs": "NGO'er",
     "Science": "Videnskab",
@@ -204,5 +205,17 @@
         "CTA": "Start eventyret!"
       }
     }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Søg efter en skole...",
+    "NoSchoolFound": "Ingen skole fundet",
+    "TryAnotherSearch": "Ændr dine filtre eller prøv en anden søgning",
+    "SelectSchool": "Valgt skole",
+    "All": "Alle",
+    "Public": "Offentlig",
+    "Private": "Privat",
+    "RegionSG": "Region (Zone)",
+    "DistrictSG": "Zone / DGP",
+    "PromptSelect": "Vælg venligst Region og Zone for at finde din skole 🏫"
   }
 }

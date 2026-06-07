@@ -1,4 +1,4 @@
-{
+﻿{
   "Hero": {
     "title": "Åpne <orange>geniets dører</orange> for barnet ditt.",
     "status": "Broen til eksellens er åpen",
@@ -17,6 +17,7 @@
     "About": "Om oss",
     "Approach": "Tilnærming",
     "Parents": "Foreldre",
+    "Teachers": "Lærere",
     "Schools": "Skoler",
     "NGOs": "NGOer",
     "Science": "Vitenskap",
@@ -232,5 +233,18 @@
         "CTA": "Start eventyret!"
       }
     }
+  }
+,
+  "SchoolPicker": {
+    "SearchPlaceholder": "Søk etter en skole...",
+    "NoSchoolFound": "Ingen skole funnet",
+    "TryAnotherSearch": "Endre filtrene eller prøv et annet søk",
+    "SelectSchool": "Valgt skole",
+    "All": "Alle",
+    "Public": "Offentlig",
+    "Private": "Privat",
+    "RegionSG": "Region (Sone)",
+    "DistrictSG": "Sone / DGP",
+    "PromptSelect": "Velg Region og Sone for å finne skolen din 🏫"
   }
 }

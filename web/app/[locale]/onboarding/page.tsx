@@ -67,7 +67,7 @@ export default function OnboardingPage() {
   const prevStep = () => step > 1 && setStep((s) => (s - 1) as Step);
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center p-4 md:p-10 bg-slate-50/50 interface-child" dir={isRTL ? "rtl" : "ltr"}>
+    <div className="min-h-[calc(100dvh-64px)] flex items-center justify-center p-4 md:p-10 bg-slate-50/50 interface-child" dir={isRTL ? "rtl" : "ltr"}>
       <motion.div 
         layout
         className="w-full max-w-[1200px] bg-white rounded-[3.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-white/20 flex flex-col lg:flex-row overflow-hidden min-h-[700px]"

@@ -17,16 +17,25 @@
     "About": "Tentang Kami",
     "Approach": "Pendekatan",
     "Parents": "Orang Tua",
+    "Teachers": "Guru",
     "Schools": "Sekolah",
     "NGOs": "LSM",
     "Science": "Sains",
-    "Region": "Wilayah"
+    "Region": "Wilayah",
+    "FreeExplore": "Eksplorasi Bebas"
   },
   "Auth": {
     "Login": "Masuk",
     "Register": "Daftar",
     "Logout": "Keluar",
-    "Dashboard": "Dasbor"
+    "Dashboard": "Dasbor",
+    "Agreement": "Dengan melanjutkan, Anda menyetujui syarat layanan dan kebijakan privasi kami.",
+    "AlreadyHaveAccount": "Sudah punya akun? Masuk",
+    "Placeholders": {
+      "FullName": "Budi Santoso",
+      "Username": "budi_id",
+      "Email": "budi@genius.id"
+    }
   },
   "Portals": {
     "Tag": "Jelajahi Portal",
@@ -196,5 +205,17 @@
         "CTA": "Mulai petualangan!"
       }
     }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Cari sekolah...",
+    "NoSchoolFound": "Sekolah tidak ditemukan",
+    "TryAnotherSearch": "Ubah filter Anda atau coba pencarian lain",
+    "SelectSchool": "Sekolah Terpilih",
+    "All": "Semua",
+    "Public": "Negeri",
+    "Private": "Swasta",
+    "RegionSG": "Wilayah (Zona)",
+    "DistrictSG": "Zona / DGP",
+    "PromptSelect": "Silakan pilih Wilayah dan Zona untuk menemukan sekolah Anda 🏫"
   }
 }

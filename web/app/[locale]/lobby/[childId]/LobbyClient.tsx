@@ -20,11 +20,13 @@ interface Stats {
 export default function LobbyClient({ 
   child, 
   locale, 
-  stats 
+  stats,
+  isChildMode = false,
 }: { 
   child: Child, 
   locale: string, 
-  stats: Stats 
+  stats: Stats,
+  isChildMode?: boolean,
 }) {
   const childFirstName = child.fullName.split(" ")[0];
 
@@ -70,7 +72,7 @@ export default function LobbyClient({
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 relative selection:bg-orange-600 selection:text-white">
+    <div className="min-h-[calc(100dvh-64px)] flex flex-col p-8 relative selection:bg-orange-600 selection:text-white">
       
       {/* Nebula Background Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-30 overflow-hidden">
@@ -87,7 +89,7 @@ export default function LobbyClient({
       </div>
 
       {/* Top Bar */}
-      <header className="fixed top-0 left-0 right-0 p-8 flex justify-between items-center z-50">
+      <header className="w-full flex justify-between items-center z-10 mb-8">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -114,6 +116,7 @@ export default function LobbyClient({
           </div>
         </motion.div>
 
+        {!isChildMode && (
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -126,10 +129,12 @@ export default function LobbyClient({
             Dashboard Parent
           </Link>
         </motion.div>
+        )}
       </header>
 
       {/* Portal Grid */}
-      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-3 gap-10 relative z-10 py-24">
+      <div className="flex-1 flex items-center justify-center w-full">
+      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-3 gap-10 relative z-10">
         {portals.map((portal, index) => (
           <motion.div
             key={portal.title}
@@ -162,6 +167,7 @@ export default function LobbyClient({
             </Link>
           </motion.div>
         ))}
+      </div>
       </div>
 
       {/* Mascot Message Box */}

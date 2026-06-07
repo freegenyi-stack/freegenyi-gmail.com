@@ -1,12 +1,22 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Bell, Check, X, Award, MessageCircle, AlertCircle, Info } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { Bell, Check, Award, MessageCircle, AlertCircle, Info, Sparkles } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
+import { PushNotificationToggle } from "@/components/PushNotificationPrompt";
+import { playNotifySound, unlockChatSounds } from "@/lib/messaging/chat-sounds";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export interface Notification {
   id: number;
-  type: "message" | "achievement" | "system" | "alert";
+  type: string;
   title: string;
   content: string | null;
   link: string | null;
@@ -14,120 +24,221 @@ export interface Notification {
   createdAt: string;
 }
 
-export default function NotificationCenter() {
-  const [isOpen, setIsOpen] = useState(false);
+let openPanel: (() => void) | null = null;
+
+/** Ouvre le panneau notifications (header, menu profil, etc.) */
+export function openNotificationPanel() {
+  openPanel?.();
+}
+
+/** Panneau latéral — monté une fois dans le Header */
+export function NotificationPanel() {
+  const t = useTranslations("UserMenu");
+  const locale = useLocale();
+  const isRTL = locale === "ar" || locale.endsWith("-ar");
+  const [open, setOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
+  const prevUnreadRef = useRef(0);
+  const notifyInitRef = useRef(true);
 
-  // Simulated notifications for MVP
   useEffect(() => {
-    // In a real app, fetch from /api/notifications
-    setNotifications([
-      {
-        id: 1,
-        type: "achievement",
-        title: "Nouveau Badge !",
-        content: "Adam a obtenu le badge 'Explorateur de l'Espace'.",
-        link: "/dashboard/children",
-        isRead: false,
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: 2,
-        type: "system",
-        title: "Rapport Hebdomadaire",
-        content: "Le rapport d'activité de la semaine est disponible.",
-        link: "/dashboard/history",
-        isRead: false,
-        createdAt: new Date(Date.now() - 86400000).toISOString()
+    openPanel = () => setOpen(true);
+    return () => {
+      openPanel = null;
+    };
+  }, []);
+
+  const load = useCallback(async () => {
+    try {
+      const res = await fetch("/api/notifications");
+      const data = await res.json();
+      const list = (data.notifications || []) as Notification[];
+      const unread = list.filter((n) => !n.isRead).length;
+      setNotifications(list);
+      setUnreadCount(unread);
+      if (notifyInitRef.current) {
+        notifyInitRef.current = false;
+        prevUnreadRef.current = unread;
+      } else if (unread > prevUnreadRef.current) {
+        playNotifySound();
       }
-    ]);
+      prevUnreadRef.current = unread;
+    } catch {
+      setNotifications([]);
+    }
   }, []);
 
   useEffect(() => {
-    setUnreadCount(notifications.filter(n => !n.isRead).length);
-  }, [notifications]);
+    if (open) load();
+  }, [open, load]);
 
-  const markAsRead = (id: number) => {
-    setNotifications(prev => prev.map(n => n.id === id ? { ...n, isRead: true } : n));
-    // Here we would call API to update status in DB
+  useEffect(() => {
+    load();
+    const id = setInterval(load, 15000);
+    return () => clearInterval(id);
+  }, [load]);
+
+  const markAsRead = async (id: number) => {
+    await fetch("/api/notifications", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+    setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, isRead: true } : n)));
+    setUnreadCount((c) => Math.max(0, c - 1));
   };
 
-  const markAllAsRead = () => {
-    setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
+  const markAllAsRead = async () => {
+    await fetch("/api/notifications", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ all: true }),
+    });
+    setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })));
+    setUnreadCount(0);
   };
 
   const getIcon = (type: string) => {
     switch (type) {
-      case "message": return <MessageCircle className="w-5 h-5 text-blue-500" />;
-      case "achievement": return <Award className="w-5 h-5 text-orange-500" />;
-      case "alert": return <AlertCircle className="w-5 h-5 text-red-500" />;
-      default: return <Info className="w-5 h-5 text-slate-500" />;
+      case "message":
+        return <MessageCircle className="w-5 h-5 text-blue-500" />;
+      case "achievement":
+        return <Award className="w-5 h-5 text-orange-500" />;
+      case "alert":
+        return <AlertCircle className="w-5 h-5 text-red-500" />;
+      case "suggestion":
+        return <Sparkles className="w-5 h-5 text-orange-500" />;
+      case "family":
+        return <Info className="w-5 h-5 text-emerald-600" />;
+      default:
+        return <Info className="w-5 h-5 text-slate-500" />;
     }
   };
 
-  return (
-    <div className="relative">
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between px-5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-600 transition-all"
-      >
-        <span className="flex items-center gap-3">
-          <Bell className="w-4 h-4 opacity-50" /> Notifications
-        </span>
-        {unreadCount > 0 && (
-          <span className="text-[9px] bg-red-600 text-white px-1.5 py-0.5 rounded-full font-bold">{unreadCount}</span>
-        )}
-      </button>
+  const dateLocale = isRTL ? "ar-DZ" : locale.startsWith("fr") || locale.endsWith("-fr") ? "fr-FR" : "en-US";
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="absolute top-0 right-full mr-2 w-80 bg-white shadow-2xl rounded-2xl border border-slate-100 overflow-hidden z-[300]"
-          >
-            <div className="flex items-center justify-between p-4 border-b border-slate-50 bg-slate-50/50">
-              <h3 className="font-black text-slate-900 text-sm">Notifications</h3>
-              {unreadCount > 0 && (
-                <button onClick={markAllAsRead} className="text-[10px] font-bold text-orange-600 hover:text-orange-700">
-                  Tout marquer comme lu
-                </button>
-              )}
+  return (
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetContent
+        side={isRTL ? "left" : "right"}
+        className="flex w-full max-w-md flex-col gap-0 p-0"
+        dir={isRTL ? "rtl" : "ltr"}
+      >
+        <div className="border-b border-slate-100 bg-gradient-to-br from-orange-50/80 to-white px-6 pb-4 pt-8">
+          <div className={cn("flex items-center justify-between gap-3", isRTL && "flex-row-reverse")}>
+            <div className={cn("flex items-center gap-3", isRTL && "flex-row-reverse")}>
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-orange-500 text-white shadow-lg shadow-orange-500/25">
+                <Bell className="h-5 w-5" />
+              </div>
+              <div className={isRTL ? "text-right" : ""}>
+                <h2 className={cn("text-lg font-black text-slate-900", isRTL && "font-amiri")}>{t("notifications")}</h2>
+                {unreadCount > 0 && (
+                  <p className={cn("text-xs font-bold text-orange-600", isRTL && "font-amiri")}>
+                    {unreadCount} non lue{unreadCount > 1 ? "s" : ""}
+                  </p>
+                )}
+              </div>
             </div>
-            
-            <div className="max-h-96 overflow-y-auto">
-              {notifications.length > 0 ? (
-                notifications.map(n => (
-                  <div key={n.id} className={`p-4 border-b border-slate-50 transition-colors ${!n.isRead ? "bg-orange-50/30" : "bg-white hover:bg-slate-50"}`}>
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5">{getIcon(n.type)}</div>
-                      <div className="flex-1 min-w-0">
-                        <p className={`text-xs font-black truncate ${!n.isRead ? "text-slate-900" : "text-slate-700"}`}>{n.title}</p>
-                        {n.content && <p className="text-[11px] font-medium text-slate-500 mt-0.5 leading-snug">{n.content}</p>}
-                        <p className="text-[9px] font-bold text-slate-400 mt-2 uppercase tracking-wider">
-                          {new Date(n.createdAt).toLocaleDateString()}
-                        </p>
-                      </div>
-                      {!n.isRead && (
-                        <button onClick={() => markAsRead(n.id)} className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center hover:bg-green-100 hover:text-green-600 text-slate-400 transition-colors">
-                          <Check className="w-3 h-3" />
-                        </button>
-                      )}
-                    </div>
+            {unreadCount > 0 && (
+              <button
+                type="button"
+                onClick={markAllAsRead}
+                className={cn("text-[10px] font-bold text-orange-600 hover:text-orange-700 shrink-0", isRTL && "font-amiri")}
+              >
+                {t("markAllRead")}
+              </button>
+            )}
+          </div>
+        </div>
+
+        <div className="border-b border-slate-100 px-3 py-3">
+          <PushNotificationToggle onStatusChange={load} />
+        </div>
+
+        <div className="flex-1 overflow-y-auto">
+          {notifications.length > 0 ? (
+            notifications.map((n) => (
+              <div
+                key={n.id}
+                className={cn(
+                  "border-b border-slate-50 p-4 transition-colors",
+                  !n.isRead ? "bg-orange-50/40" : "bg-white hover:bg-slate-50"
+                )}
+              >
+                <div className={cn("flex items-start gap-3", isRTL && "flex-row-reverse")}>
+                  <div className="mt-0.5 shrink-0">{getIcon(n.type)}</div>
+                  <div className="min-w-0 flex-1">
+                    {n.link ? (
+                      <Link
+                        href={n.link}
+                        onClick={() => {
+                          markAsRead(n.id);
+                          setOpen(false);
+                        }}
+                        className={cn(
+                          "block text-sm font-black hover:text-orange-600",
+                          !n.isRead ? "text-slate-900" : "text-slate-700",
+                          isRTL && "font-amiri text-right"
+                        )}
+                      >
+                        {n.title}
+                      </Link>
+                    ) : (
+                      <p className={cn("text-sm font-black", !n.isRead ? "text-slate-900" : "text-slate-700", isRTL && "font-amiri text-right")}>
+                        {n.title}
+                      </p>
+                    )}
+                    {n.content && (
+                      <p className={cn("mt-1 text-xs font-medium leading-relaxed text-slate-500", isRTL && "font-lateef text-sm text-right")}>
+                        {n.content}
+                      </p>
+                    )}
+                    <p className={cn("mt-2 text-[10px] font-bold uppercase tracking-wide text-slate-400", isRTL && "font-amiri normal-case text-right")}>
+                      {new Date(n.createdAt).toLocaleDateString(dateLocale)}
+                    </p>
                   </div>
-                ))
-              ) : (
-                <div className="p-8 text-center text-slate-400">
-                  <Bell className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                  <p className="text-xs font-bold">Aucune notification</p>
+                  {!n.isRead && (
+                    <button
+                      type="button"
+                      onClick={() => markAsRead(n.id)}
+                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-400 transition hover:bg-green-100 hover:text-green-600"
+                    >
+                      <Check className="h-3.5 w-3.5" />
+                    </button>
+                  )}
                 </div>
-              )}
+              </div>
+            ))
+          ) : (
+            <div className="flex flex-col items-center justify-center px-6 py-16 text-center text-slate-400">
+              <Bell className="mb-3 h-10 w-10 opacity-40" />
+              <p className={cn("text-sm font-bold", isRTL && "font-amiri")}>{t("noNotifications")}</p>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+          )}
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
+/** Entrée menu profil */
+export default function NotificationMenuItem() {
+  const t = useTranslations("UserMenu");
+  const locale = useLocale();
+  const isRTL = locale === "ar" || locale.endsWith("-ar");
+
+  return (
+    <button
+      type="button"
+      onClick={() => openNotificationPanel()}
+      className={cn(
+        "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-orange-600",
+        isRTL && "flex-row-reverse font-amiri"
+      )}
+    >
+      <Bell className="h-4 w-4 opacity-50 shrink-0" />
+      {t("notifications")}
+    </button>
   );
 }

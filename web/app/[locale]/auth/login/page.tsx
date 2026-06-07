@@ -9,7 +9,7 @@ export default async function LoginPage({
   const { locale } = await params;
 
   return (
-    <main className="min-h-[100dvh] w-full">
+    <main className="w-full flex-1 overflow-hidden">
       <LoginClient locale={locale} />
     </main>
   );

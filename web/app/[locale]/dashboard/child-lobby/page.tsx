@@ -30,7 +30,7 @@ export default function ChildLobbyPage() {
   const xp = 1250;
 
   return (
-    <div className="min-h-screen text-white flex flex-col items-center justify-center p-8 relative overflow-hidden bg-slate-950" dir={isRTL ? "rtl" : "ltr"}>
+    <div className="min-h-[calc(100dvh-64px)] text-white flex flex-col p-8 relative overflow-hidden bg-slate-950" dir={isRTL ? "rtl" : "ltr"}>
       
       {/* Background Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-30 overflow-hidden">
@@ -51,7 +51,7 @@ export default function ChildLobbyPage() {
       </div>
 
       {/* Top Bar */}
-      <div className={cn("fixed top-0 left-0 right-0 p-8 flex justify-between items-center z-50", isRTL && "flex-row-reverse")}>
+      <div className={cn("w-full flex justify-between items-center z-10 mb-8", isRTL && "flex-row-reverse")}>
         <div className={cn("flex items-center gap-6", isRTL && "flex-row-reverse")}>
           <div className="w-16 h-16 bg-white/5 backdrop-blur-xl rounded-[2rem] border border-white/10 flex items-center justify-center shadow-2xl">
             <span className="text-3xl">🦊</span>
@@ -80,7 +80,8 @@ export default function ChildLobbyPage() {
       </div>
 
       {/* Portals Grid */}
-      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-3 gap-10 relative z-10 py-20">
+      <div className="flex-1 flex items-center justify-center w-full">
+      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-3 gap-10 relative z-10">
         
         {/* Portal: Local */}
         <motion.div
@@ -133,6 +134,7 @@ export default function ChildLobbyPage() {
             {isRTL ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
           </Link>
         </motion.div>
+      </div>
       </div>
 
       {/* Mascot Message */}

@@ -32,6 +32,11 @@ export function verifyRequestSecurity(req: NextRequest, limitPerMin = 60): {
   allowed: boolean;
   errorResponse?: { error: string; status: number };
 } {
+  // Dev local : pas de blocage (tests UI wilaya/commune/écoles)
+  if (process.env.NODE_ENV === "development") {
+    return { allowed: true };
+  }
+
   const now = Date.now();
   cleanupExpired();
 

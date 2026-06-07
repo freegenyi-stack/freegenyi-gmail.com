@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, User, Lock, ArrowRight, ArrowLeft, Sparkles, Eye, EyeOff, Smartphone, RefreshCcw, ShieldCheck, Users, ChevronDown, School, Globe, MapPin, UserCheck, Heart, Target } from "lucide-react";
+import { Mail, User, Lock, ArrowRight, ArrowLeft, Sparkles, Eye, EyeOff, Smartphone, RefreshCcw, ShieldCheck, Users, ChevronDown, School, Globe, MapPin, UserCheck, Heart, Target, GraduationCap } from "lucide-react";
 import { checkUserAvailability, registerEliteAction } from "@/lib/actions/auth_elite";
+import { loginAction } from "@/lib/actions/auth";
+import { devLoginTestAction } from "@/lib/actions/dev_auth";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import RegisterOrgDocumentsStep from "@/components/register/RegisterOrgDocumentsStep";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -18,6 +21,21 @@ import chatCurieux from "@/../public/assets/animations/chat_curieux.json";
 import SchoolPicker from "@/components/SchoolPicker";
 import { registerDictZh, registerDictMs, registerDictTa, registerDictEs, registerDictJa, registerDictKo } from "@/lib/registerDictExtras";
 import { sgHeroImagePath } from "@/lib/sgGeoLabels";
+import { isRegisterRoleHidden } from "@/constants/publicNav";
+
+const REGISTER_ROLES_DESKTOP = [
+  { id: "parent", icon: Users, color: "emerald", delay: 0.2 },
+  { id: "enseignant", icon: GraduationCap, color: "teal", delay: 0.25 },
+  { id: "ecole", icon: School, color: "indigo", delay: 0.3 },
+  { id: "ong", icon: Globe, color: "amber", delay: 0.4 },
+].filter((r) => !isRegisterRoleHidden(r.id));
+
+const REGISTER_ROLES_MOBILE = [
+  { id: "parent", icon: Users, color: "emerald" },
+  { id: "enseignant", icon: GraduationCap, color: "teal" },
+  { id: "ecole", icon: School, color: "indigo" },
+  { id: "ong", icon: Globe, color: "amber" },
+].filter((r) => !isRegisterRoleHidden(r.id));
 
 // Font import for the manual look
 const handwrittenFont = `
@@ -68,6 +86,7 @@ const dict = {
         parentTab: "الوالدين",
         schoolTab: "المدرسة",
         ngoTab: "الجمعيات",
+        teacherTab: "المعلّم",
         instantGoogle: "دخول سريع مع جوجل",
         orEmail: "أو عبر البريد الإلكتروني اليدوي",
         fullNameParent: "الاسم الكامل",
@@ -125,6 +144,9 @@ const dict = {
         publicSchool: "مدرسة عمومية",
         schoolAddressPlaceholder: "العنوان الكامل للمقر",
         schoolManagerPlaceholder: "اسم المسؤول / المدير",
+        schoolPickLabel: "اختر مدرستكم من القاعدة الوطنية (ولاية ← بلدية)",
+        schoolNotInList: "مدرستي غير موجودة في القائمة",
+        schoolBackToPicker: "← العودة إلى قائمة المدارس",
         // Step 2 NGO
         ngoTitle: "الالتزام التضامني",
         ngoDesc: "حدد مجال مهمتك الإنسانية لتحقيق تآزر مثالي.",
@@ -159,6 +181,16 @@ const dict = {
         classesCountPlaceholder: "عدد الفصول الابتدائية",
         instCheck: "التحقق المؤسسي",
         instCheckDesc: "نظام حماية مؤسسي آمن",
+        docStepTitle: "الوثائق الرسمية",
+        docStepDesc: "أرسلوا صوراً أو ملفات PDF للوثائق المطلوبة. نتحقق من هويتكم قبل تفعيل مساحتكم.",
+        docPv: "محضر التنصيب (PV)",
+        docLicence: "رخصة ممارسة النشاط",
+        docDeclaration: "تصريح بالوجود",
+        docId: "بطاقة التعريف أو رخصة السياقة",
+        docStatuts: "النظام الأساسي للجمعية",
+        docRecepisse: "وصل إيداع التصريح",
+        privateLicence: "رخصة",
+        privateDeclaration: "تصريح الوجود",
         // Step 3 NGO
         digitalPresencePlaceholderNgo: "الموقع الإلكتروني أو الحساب الاجتماعي",
         beneficiariesCount: "عدد المستفيدين",
@@ -306,6 +338,7 @@ const dict = {
         parentTab: "Parents",
         schoolTab: "École",
         ngoTab: "ONG",
+        teacherTab: "Enseignant",
         instantGoogle: "Accès Instantané avec Google",
         orEmail: "Ou via email manuel",
         fullNameParent: "Nom Complet",
@@ -363,6 +396,9 @@ const dict = {
         publicSchool: "École Publique",
         schoolAddressPlaceholder: "Adresse complète de l'établissement",
         schoolManagerPlaceholder: "Nom du Directeur / Directrice",
+        schoolPickLabel: "Sélectionnez votre école (wilaya → commune)",
+        schoolNotInList: "Mon école n'est pas dans la liste",
+        schoolBackToPicker: "← Retour à la liste des écoles",
         // Step 2 NGO
         ngoTitle: "Engagement Solidaire",
         ngoDesc: "Définissez le périmètre de votre mission humanitaire pour une synergie parfaite.",
@@ -397,6 +433,16 @@ const dict = {
         classesCountPlaceholder: "Nombre de classes primaires",
         instCheck: "Vérification Institutionnelle",
         instCheckDesc: "Accès Institutionnel Sécurisé",
+        docStepTitle: "Documents officiels",
+        docStepDesc: "Envoyez une photo ou un PDF de vos papiers. Nous vérifions votre identité avant d'activer votre espace FreeGeny.",
+        docPv: "PV d'installation",
+        docLicence: "Licence d'exercer",
+        docDeclaration: "Déclaration d'existence",
+        docId: "Carte d'identité ou permis de conduire",
+        docStatuts: "Statuts de l'association",
+        docRecepisse: "Récépissé de déclaration",
+        privateLicence: "Licence",
+        privateDeclaration: "Déclaration",
         // Step 3 NGO
         digitalPresencePlaceholderNgo: "Site Web ou Profil Social",
         beneficiariesCount: "Nombre de Bénéficiaires",
@@ -2509,9 +2555,23 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [ngoManager, setNgoManager] = useState("");         // Responsable
     const [ngoWebsite, setNgoWebsite] = useState("");         // Site web / réseaux sociaux
     const [beneficiariesCount, setBeneficiariesCount] = useState(""); // Nb bénéficiaires
+    const [privateDocType, setPrivateDocType] = useState<"licence" | "declaration">("licence");
+
+    const searchParams = useSearchParams();
+    useEffect(() => {
+        const type = searchParams.get("type");
+        if (!type || isRegisterRoleHidden(type)) return;
+        if (type === "enseignant") {
+            window.location.href = `/${locale}/auth/register/teacher`;
+        }
+    }, [searchParams, locale]);
     
-    // SchoolPicker State
+    // SchoolPicker State (parent)
     const [selectedSchoolObj, setSelectedSchoolObj] = useState<{ id: number; name: string } | null>(null);
+    // SchoolPicker State (école — base nationale DZ)
+    const [selectedInstitutionSchool, setSelectedInstitutionSchool] = useState<{ id: number; name: string; type?: number; address?: string } | null>(null);
+    const [ecoleManualMode, setEcoleManualMode] = useState(false);
+    const isDzEcole = regionCountry === "DZ" || selectedCountry?.code === "DZ";
 
     // Keep childCountry synced with selected country code
     useEffect(() => {
@@ -2522,8 +2582,28 @@ export default function RegisterClient({ locale }: { locale: string }) {
     const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
     const [captchaValue, setCaptchaValue] = useState("");
 
+    const captchaStep = (userType === "ecole" || userType === "ong") ? 4 : 3;
+    const isDevMode = process.env.NEXT_PUBLIC_FREEGENY_DEV_AUTO_APPROVE === "true";
+    const formOverflowVisible =
+        step === 4 || (step === 2 && (userType === "ecole" || userType === "ong"));
+
+    const handleDevTestLogin = async () => {
+        const dashRoute = userType === "ong" ? "ong" : "ecole";
+        const result = await devLoginTestAction(locale, dashRoute);
+        if ("error" in result) {
+            toast.error(
+                isArabic
+                    ? result.error
+                    : result.error
+            );
+            return;
+        }
+        router.push(result.redirectTo);
+        router.refresh();
+    };
+
     useEffect(() => {
-        if (step === 3) {
+        if (step === captchaStep) {
             const timer = setTimeout(() => {
                 try {
                     const canvas = document.getElementById('reload_canvas');
@@ -2536,7 +2616,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
             }, 300);
             return () => clearTimeout(timer);
         }
-    }, [step, userType]);
+    }, [step, userType, captchaStep]);
 
     useEffect(() => {
         const timer = setTimeout(async () => {
@@ -2605,8 +2685,81 @@ export default function RegisterClient({ locale }: { locale: string }) {
         }
     }, [childCountry, currentLevels, childLevel]);
 
+    const totalSteps = userType === "ecole" || userType === "ong" ? 4 : 3;
+    const resolvedInstitutionType =
+        institutionType ||
+        (selectedInstitutionSchool
+            ? selectedInstitutionSchool.type === 2
+                ? "Privée"
+                : "Publique"
+            : "");
+
+    const getStepCounter = () => {
+        if (isArabic) return `الشاشة ${step} من ${totalSteps}`;
+        if (activeLang === "en" || isEnglish) return `Screen ${step} of ${totalSteps}`;
+        return `Écran ${step} sur ${totalSteps}`;
+    };
+
+    const getRoleTabLabel = (roleId: string) => {
+        if (roleId === "parent") return d.parentTab;
+        if (roleId === "ecole") return d.schoolTab;
+        if (roleId === "ong") return d.ngoTab;
+        return (d as { teacherTab?: string }).teacherTab ?? (isArabic ? "المعلّم" : "Enseignant");
+    };
+
+    const handleRoleSelect = (roleId: string) => {
+        if (isRegisterRoleHidden(roleId)) return;
+        if (roleId === "enseignant") {
+            window.location.href = `/${locale}/auth/register/teacher`;
+            return;
+        }
+        setUserType(roleId);
+    };
+
+    const getHeaderTitle = () => {
+        if (step === 1) return d.vosAcces;
+        if (step === 2) {
+            if (userType === "ecole") return (d as { schoolIdentityTitle?: string }).schoolIdentityTitle ?? d.schoolTab;
+            if (userType === "ong") return (d as { ngoTitle?: string }).ngoTitle ?? d.ngoTab;
+            return d.lAlliance;
+        }
+        if (step === 3) {
+            if (userType === "ecole") return (d as { digitalPresence?: string }).digitalPresence ?? d.schoolTab;
+            if (userType === "ong") return (d as { digitalPresence?: string }).digitalPresence ?? d.ngoTab;
+            return d.sonProfil;
+        }
+        return (d as { docStepTitle?: string }).docStepTitle ?? (isArabic ? "الوثائق الرسمية" : "Documents officiels");
+    };
+
+    const getLeftPane = () => {
+        if (userType === "ecole") {
+            if (step === 1) return { t: d.leftTitle1, o: d.leftTitle1Orange, s: (d as { subStep1School?: string }).subStep1School ?? d.leftSub1 };
+            if (step === 2) return { t: isArabic ? "هوية" : "Identité", o: isArabic ? "المؤسسة" : "Établissement", s: (d as { schoolIdentityDesc?: string }).schoolIdentityDesc ?? "" };
+            if (step === 3) return { t: isArabic ? "رقمنة" : "Présence", o: isArabic ? "المدرسة" : "Digitale", s: isArabic ? "أكملوا بيانات مؤسستكم التعليمية." : "Complétez les informations de votre école." };
+            return { t: isArabic ? "وثائق" : "Documents", o: isArabic ? "الرسمية" : "Officiels", s: (d as { docStepDesc?: string }).docStepDesc ?? "" };
+        }
+        if (userType === "ong") {
+            if (step === 1) return { t: d.leftTitle1, o: d.leftTitle1Orange, s: (d as { subStep1Ngo?: string }).subStep1Ngo ?? d.leftSub1 };
+            if (step === 2) return { t: isArabic ? "التزام" : "Engagement", o: isArabic ? "التضامني" : "Solidaire", s: (d as { ngoDesc?: string }).ngoDesc ?? "" };
+            if (step === 3) return { t: isArabic ? "تأثير" : "Impact", o: isArabic ? "الجمعية" : "ONG", s: isArabic ? "حددوا نطاق عملكم الإنساني." : "Définissez votre champ d'action." };
+            return { t: isArabic ? "وثائق" : "Documents", o: isArabic ? "الرسمية" : "Officiels", s: (d as { docStepDesc?: string }).docStepDesc ?? "" };
+        }
+        if (step === 1) return { t: d.leftTitle1, o: d.leftTitle1Orange, s: d.leftSub1 };
+        if (step === 2) return { t: d.leftTitle2, o: d.leftTitle2Orange, s: d.leftSub2 };
+        return { t: d.leftTitle3, o: d.leftTitle3Orange, s: d.leftSub3 };
+    };
+
     const handleNext = () => {
-        // Validation assouplie (non bloquante) pour les tests faciles de l'utilisateur
+        if (step === 2 && userType === "ecole") {
+            if (isDzEcole && !ecoleManualMode && !selectedInstitutionSchool) {
+                toast.error(isArabic ? "يرجى اختيار مدرستكم من القائمة." : "Veuillez sélectionner votre école dans la liste.");
+                return;
+            }
+            if (ecoleManualMode && (!institutionType || !institutionAddress.trim())) {
+                toast.error(isArabic ? "يرجى تحديد نوع المدرسة والعنوان." : "Veuillez indiquer le type d'établissement et l'adresse.");
+                return;
+            }
+        }
         if (step === 1) {
             if (!fullName || !fullName.trim()) {
                 toast.warning(d.errNameEmpty + " (Test: Passage autorisé)");
@@ -2620,7 +2773,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
                 toast.warning(d.errPasswordsDoNotMatch + " (Test: Passage autorisé)");
             }
         }
-        setStep(step + 1);
+        if (step < totalSteps) setStep(step + 1);
     };
 
     const mapServerError = (err: string): string => {
@@ -2652,59 +2805,141 @@ export default function RegisterClient({ locale }: { locale: string }) {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (captchaValue !== "1234" && captchaValue !== "" && !validateCaptcha(captchaValue)) {
+        if ((userType === "ecole" || userType === "ong") && step < 4) {
+            setStep(step + 1);
+            return;
+        }
+        const devSkipCaptcha = process.env.NEXT_PUBLIC_FREEGENY_DEV_AUTO_APPROVE === "true";
+        if (
+            !devSkipCaptcha &&
+            captchaValue !== "1234" &&
+            captchaValue !== "" &&
+            !validateCaptcha(captchaValue)
+        ) {
             toast.error(d.errCaptchaIncorrect);
             setCaptchaValue("");
             return;
         }
-        setIsSubmitting(true);
-        const formData = new FormData(e.currentTarget);
 
-        // ── Champs communs ────────────────────────────────────────────────────
-        formData.append("fullName", fullName);
-        formData.append("username", username);
-        formData.append("email", email);
-        formData.append("user_type", userType);
-        formData.append("password", password);
-        formData.append("confirmPassword", confirmPassword);
-        formData.append("phone", selectedCountry.dial + phone);
+        // Mode test : valeurs par défaut si l'utilisateur a sauté l'étape 1
+        let submitFullName = fullName.trim();
+        let submitUsername = username.trim();
+        let submitEmail = email.trim().toLowerCase();
+        let submitPassword = password;
+        let submitConfirm = confirmPassword;
+        let submitPhone = phone.trim();
 
-        // ── Champs Parent ────────────────────────────────────────────────────
-        formData.append("spouse_first_name", spouseFirstName);
-        formData.append("spouse_email", spouseEmail);
-        formData.append("child_name", childName);
-        formData.append("child_country", childCountry);
-        formData.append("child_level", childLevel || currentLevels[0]);
-        formData.append("child_age", childAge);
-        formData.append("child_region", childRegion);
-        const finalSchoolName = selectedSchoolObj ? selectedSchoolObj.name : childSchool;
-        formData.append("child_school", finalSchoolName);
-        formData.append("child_school_id", selectedSchoolObj ? selectedSchoolObj.id.toString() : "");
-
-        // ── Champs École ─────────────────────────────────────────────────────
-        formData.append("institution_type", institutionType);
-        formData.append("institution_address", institutionAddress);
-        formData.append("institution_manager", institutionManager);
-        formData.append("institution_website", institutionWebsite);
-        formData.append("classes_count", classesCount);
-
-        // ── Champs ONG ───────────────────────────────────────────────────────
-        formData.append("ngo_domain", ngoDomain);
-        formData.append("ngo_address", ngoAddress);
-        formData.append("ngo_manager", ngoManager);
-        formData.append("ngo_website", ngoWebsite);
-        formData.append("beneficiaries_count", beneficiariesCount);
-
-        const result = await registerEliteAction(formData, 0, 0);
-        if (result.success) {
-            toast.success(d.welcomeTitle);
-            const dashRoute = userType === 'parent' ? 'parent' : userType === 'ecole' ? 'ecole' : 'ong';
-            await signIn("credentials", { email, password, callbackUrl: `/${locale}/dashboard/${dashRoute}` });
-        } else {
-            toast.error(mapServerError(result.error ?? ""));
-            loadCaptchaEnginge(6);
+        if (isDevMode && (userType === "ecole" || userType === "ong")) {
+            const stamp = Date.now();
+            if (!submitEmail) submitEmail = `ecole.dev.${stamp}@freegeny.local`;
+            if (!submitUsername) submitUsername = `ecole_${stamp}`;
+            if (!submitPassword) submitPassword = "Test@FreeGeny2026!";
+            if (!submitConfirm) submitConfirm = submitPassword;
+            if (!submitFullName) {
+                submitFullName =
+                    selectedInstitutionSchool?.name || institutionManager || "École Test FreeGeny";
+            }
+            if (!submitPhone) submitPhone = "550000000";
         }
-        setIsSubmitting(false);
+
+        if (!submitEmail || !submitUsername || !submitPassword || !submitFullName) {
+            toast.error(
+                isArabic
+                    ? "يرجى ملء البريد واسم المستخدم وكلمة المرور في الشاشة 1."
+                    : "Remplissez email, pseudo et mot de passe à l'écran 1."
+            );
+            setStep(1);
+            return;
+        }
+
+        setIsSubmitting(true);
+        try {
+            const formData = new FormData();
+            const raw = new FormData(e.currentTarget);
+            for (const [key, value] of raw.entries()) {
+                if (key.startsWith("doc_") && value instanceof File && value.size > 0) {
+                    formData.set(key, value);
+                }
+            }
+
+            formData.set("fullName", submitFullName);
+            formData.set("username", submitUsername);
+            formData.set("email", submitEmail);
+            formData.set("user_type", userType);
+            formData.set("password", submitPassword);
+            formData.set("confirmPassword", submitConfirm || submitPassword);
+            formData.set("phone", (selectedCountry?.dial || "+213") + submitPhone);
+
+            formData.set("spouse_first_name", spouseFirstName);
+            formData.set("spouse_email", spouseEmail);
+            formData.set("child_name", childName);
+            formData.set("child_country", childCountry);
+            formData.set("child_level", childLevel || currentLevels[0]);
+            formData.set("child_age", childAge);
+            formData.set("child_region", childRegion);
+            const finalSchoolName = selectedSchoolObj ? selectedSchoolObj.name : childSchool;
+            formData.set("child_school", finalSchoolName);
+            formData.set("child_school_id", selectedSchoolObj ? selectedSchoolObj.id.toString() : "");
+
+            formData.set("institution_type", resolvedInstitutionType || "Publique");
+            formData.set(
+                "institution_address",
+                institutionAddress || selectedInstitutionSchool?.address || "Algérie"
+            );
+            formData.set("institution_manager", institutionManager || submitFullName);
+            formData.set("institution_website", institutionWebsite);
+            formData.set("classes_count", classesCount);
+            formData.set(
+                "institution_school_id",
+                selectedInstitutionSchool ? String(selectedInstitutionSchool.id) : ""
+            );
+            formData.set(
+                "institution_school_name",
+                selectedInstitutionSchool ? selectedInstitutionSchool.name : submitFullName
+            );
+
+            formData.set("ngo_domain", ngoDomain);
+            formData.set("ngo_address", ngoAddress);
+            formData.set("ngo_manager", ngoManager);
+            formData.set("ngo_website", ngoWebsite);
+            formData.set("beneficiaries_count", beneficiariesCount);
+            formData.set("private_doc_type", privateDocType);
+
+            const result = await registerEliteAction(formData, 0, 0);
+            if (result.success) {
+                if (result.trackingCode) {
+                    toast.success(`${d.welcomeTitle} — ${result.trackingCode}`);
+                } else {
+                    toast.success(d.welcomeTitle);
+                }
+                const dashRoute =
+                    userType === "parent" ? "parent" : userType === "ecole" ? "ecole" : "ong";
+                const loginFd = new FormData();
+                loginFd.set("email", submitEmail);
+                loginFd.set("password", submitPassword);
+                const loginRes = await loginAction(loginFd);
+                if ("success" in loginRes && loginRes.success) {
+                    window.location.href = `/${locale}/dashboard/${dashRoute}`;
+                    return;
+                } else {
+                    toast.message(
+                        isArabic
+                            ? "تم التسجيل! سجّل الدخول بنفس البريد وكلمة المرور."
+                            : "Inscription OK ! Connectez-vous avec le même email/mot de passe."
+                    );
+                    router.push(`/${locale}/auth/login`);
+                }
+            } else {
+                toast.error(mapServerError(result.error ?? ""));
+                if (step === captchaStep) loadCaptchaEnginge(6);
+            }
+        } catch {
+            toast.error(
+                isArabic ? "حدث خطأ غير متوقع." : "Une erreur inattendue est survenue."
+            );
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const getCountryName = (code: string) => {
@@ -2730,7 +2965,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
               : `/assets/img/regions/${regionCountry.toLowerCase()}/${selectedLang}/hero.png`;
 
     return (
-        <div className="h-[100dvh] w-full flex items-center justify-center p-4 sm:p-6 lg:p-8 relative font-dm-sans overflow-hidden bg-slate-900">
+        <div className="min-h-[calc(100dvh-64px)] w-full flex items-center justify-center p-4 sm:p-6 lg:p-8 relative font-dm-sans overflow-hidden bg-slate-900">
 
             <div className="absolute inset-0 z-0">
                 <Image src={bgImage} alt="Background" fill className="object-cover opacity-60" priority onError={(e) => { (e.target as any).src = "/assets/img/hero_elite.png"; }} />
@@ -2741,17 +2976,17 @@ export default function RegisterClient({ locale }: { locale: string }) {
 
                 <div className="hidden lg:flex lg:w-[35%] flex-col items-center justify-center text-center p-8">
                     <AnimatePresence mode="wait">
-                        <motion.div key={step} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="space-y-4">
+                        <motion.div key={`${userType}-${step}`} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="space-y-4">
                             <h2 className="text-4xl font-black text-white font-jakarta tracking-tight uppercase leading-none drop-shadow-2xl">
-                                {step === 1 ? d.leftTitle1 : step === 2 ? d.leftTitle2 : d.leftTitle3} <span className="text-orange-500">{step === 1 ? d.leftTitle1Orange : step === 2 ? d.leftTitle2Orange : d.leftTitle3Orange}</span>
+                                {getLeftPane().t} <span className="text-orange-500">{getLeftPane().o}</span>
                             </h2>
                             <p className="text-white/80 font-medium italic text-lg drop-shadow-md">
-                                {step === 1 ? d.leftSub1 : step === 2 ? d.leftSub2 : d.leftSub3}
+                                {getLeftPane().s}
                             </p>
                         </motion.div>
                     </AnimatePresence>
                     <div className="flex gap-3 justify-center mt-12">
-                        {[1, 2, 3].map(s => (
+                        {Array.from({ length: totalSteps }, (_, i) => i + 1).map(s => (
                             <button 
                                 key={s} 
                                 type="button"
@@ -2763,7 +2998,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
                 </div>
 
                 <div className="w-full lg:w-[65%] flex items-center justify-center p-4 overflow-visible relative">
-                        <motion.div layout dir={isArabic ? "rtl" : "ltr"} className="bg-white rounded-[2.5rem] shadow-2xl border border-slate-200 p-5 sm:p-7 relative w-full max-w-[650px] max-h-[90vh] flex flex-col z-10 overflow-visible">
+                        <motion.div layout dir={isArabic ? "rtl" : "ltr"} className={`bg-white rounded-[2.5rem] shadow-2xl border border-slate-200 relative w-full max-w-[650px] flex flex-col z-10 overflow-visible ${step === 4 && (userType === "ecole" || userType === "ong") ? "p-4 sm:p-5 max-h-[88vh]" : "p-5 sm:p-7 max-h-[90vh]"}`}>
                             
                             {/* INTERNAL CURIOUS CAT (Peeking from inside the card corner) - Balanced size */}
                             <div className={`absolute bottom-4 w-[100px] h-[180px] overflow-hidden pointer-events-none z-0 opacity-80 ${isArabic ? "right-4" : "left-4"}`}>
@@ -2794,11 +3029,7 @@ export default function RegisterClient({ locale }: { locale: string }) {
 
                             {/* NOTEBOOK TABS (Desktop - With Entrance Animation & Glow) */}
                             <div className={`absolute top-4 flex flex-col gap-2 hidden lg:flex z-[100] ${isArabic ? "-left-36" : "-right-36"}`}>
-                                {[
-                                    { id: 'parent', icon: Users, color: 'emerald', delay: 0.2 },
-                                    { id: 'ecole', icon: School, color: 'indigo', delay: 0.3 },
-                                    { id: 'ong', icon: Globe, color: 'amber', delay: 0.4 },
-                                ].map((role) => {
+                                {REGISTER_ROLES_DESKTOP.map((role) => {
                                     const isActive = userType === role.id;
                                     return (
                                         <motion.button
@@ -2813,10 +3044,11 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                             }}
                                             whileHover={{ scale: 1.05, x: isActive ? (isArabic ? -35 : 35) : (isArabic ? -5 : 5) }}
                                             type="button"
-                                            onClick={() => setUserType(role.id)}
+                                            onClick={() => handleRoleSelect(role.id)}
                                             className={`relative flex items-center gap-3 h-14 rounded-2xl border-2 transition-all duration-500 group shadow-2xl ${
                                                 isActive 
                                                 ? role.color === 'emerald' ? 'bg-emerald-500 border-emerald-400 text-white w-[170px]' 
+                                                  : role.color === 'teal' ? 'bg-teal-500 border-teal-400 text-white w-[170px]'
                                                   : role.color === 'indigo' ? 'bg-indigo-500 border-indigo-400 text-white w-[170px]'
                                                   : 'bg-amber-500 border-amber-400 text-white w-[170px]'
                                                 : 'bg-white/95 backdrop-blur-sm border-slate-200 text-slate-400 hover:border-orange-200 w-[65px]'
@@ -2825,13 +3057,13 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                             {/* Pulsing Aura for Active or Attention */}
                                             {isActive && (
                                                 <div className={`absolute inset-0 rounded-2xl blur-xl opacity-40 animate-pulse -z-10 ${
-                                                    role.color === 'emerald' ? 'bg-emerald-400' : role.color === 'indigo' ? 'bg-indigo-400' : 'bg-amber-400'
+                                                    role.color === 'emerald' ? 'bg-emerald-400' : role.color === 'teal' ? 'bg-teal-400' : role.color === 'indigo' ? 'bg-indigo-400' : 'bg-amber-400'
                                                 }`}></div>
                                             )}
                                             
                                             <role.icon className={`w-6 h-6 shrink-0 transition-transform ${isActive ? 'scale-110' : 'scale-90 opacity-40'} ${isArabic ? 'mr-3' : 'ml-3'}`} />
                                             <span className={`text-[11px] font-black uppercase tracking-widest whitespace-nowrap transition-all duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
-                                                {role.id === 'parent' ? d.parentTab : role.id === 'ecole' ? d.schoolTab : d.ngoTab}
+                                                {getRoleTabLabel(role.id)}
                                             </span>
 
                                             {/* Visual hint for non-active */}
@@ -2844,19 +3076,16 @@ export default function RegisterClient({ locale }: { locale: string }) {
                             </div>
 
                             {/* COMPACT TABS (Mobile/Small Screens) */}
-                            <div className="flex gap-2 mb-3 lg:hidden justify-center">
-                                {[
-                                    { id: 'parent', icon: Users, color: 'emerald' },
-                                    { id: 'ecole', icon: School, color: 'indigo' },
-                                    { id: 'ong', icon: Globe, color: 'amber' },
-                                ].map((role) => (
+                            <div className="flex gap-2 mb-3 lg:hidden justify-center flex-wrap">
+                                {REGISTER_ROLES_MOBILE.map((role) => (
                                     <button
                                         key={role.id}
                                         type="button"
-                                        onClick={() => setUserType(role.id)}
+                                        onClick={() => handleRoleSelect(role.id)}
                                         className={`flex items-center gap-2 px-3 py-1.5 rounded-full border-2 transition-all ${
                                             userType === role.id 
                                             ? role.color === 'emerald' ? 'border-emerald-500 bg-emerald-50 text-emerald-600' 
+                                              : role.color === 'teal' ? 'border-teal-500 bg-teal-50 text-teal-600'
                                               : role.color === 'indigo' ? 'border-indigo-500 bg-indigo-50 text-indigo-600'
                                               : 'border-amber-500 bg-amber-50 text-amber-600'
                                             : 'border-slate-100 bg-white text-slate-400'
@@ -2864,15 +3093,15 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                     >
                                         <role.icon className="w-3.5 h-3.5" />
                                         <span className="text-[9px] font-black uppercase tracking-tighter">
-                                            {role.id === 'parent' ? d.parentTab : role.id === 'ecole' ? d.schoolTab : d.ngoTab}
+                                            {getRoleTabLabel(role.id)}
                                         </span>
                                     </button>
                                 ))}
                             </div>
 
-                            <div className="flex-1 overflow-y-auto scrollbar-hide flex flex-col">
+                            <div className={`flex-1 flex flex-col min-h-0 ${formOverflowVisible ? "overflow-visible" : "overflow-y-auto scrollbar-hide"}`}>
 
-                        <div className="mb-3 flex justify-between items-center">
+                        <div className="mb-2 flex justify-between items-center shrink-0">
                             <Link href={`/${locale}`} className="flex items-center gap-3 group">
                                 <div className="bg-slate-50 p-3 rounded-2xl border border-slate-100 group-hover:border-orange-500 transition-all">
                                     <Image src="/assets/img/logo.png" alt="Logo" width={28} height={28} />
@@ -2881,15 +3110,27 @@ export default function RegisterClient({ locale }: { locale: string }) {
                             </Link>
                             <div className={isArabic ? "text-left" : "text-right"}>
                                 <span className={`text-[10px] font-black uppercase text-orange-600 tracking-[0.3em] block mb-1 ${isArabic ? "text-left" : "text-right"}`}>
-                                    {d.stepText.replace("{step}", step.toString())}
+                                    {getStepCounter()}
                                 </span>
                                 <h1 className={`text-2xl font-black text-slate-950 font-jakarta tracking-tighter uppercase leading-none ${isArabic ? "text-left" : "text-right"}`}>
-                                    {step === 1 ? d.vosAcces : step === 2 ? d.lAlliance : d.sonProfil}
+                                    {getHeaderTitle()}
                                 </h1>
                             </div>
                         </div>
 
-                        <form onSubmit={handleSubmit} autoComplete="none" className="flex-1 flex flex-col">
+                        {isDevMode && (userType === "ecole" || userType === "ong") && (
+                            <button
+                                type="button"
+                                onClick={handleDevTestLogin}
+                                className="mb-2 w-full py-2 px-3 rounded-xl border-2 border-dashed border-orange-300 bg-orange-50 text-orange-700 text-[9px] font-black uppercase tracking-wide hover:bg-orange-100 transition-colors shrink-0"
+                            >
+                                {isArabic
+                                    ? "⚡ دخول تجريبي مباشر للوحة التحكم (بدون تعبئة النموذج)"
+                                    : "⚡ Accès test direct au dashboard (sans remplir le formulaire)"}
+                            </button>
+                        )}
+
+                        <form onSubmit={handleSubmit} noValidate autoComplete="none" encType="multipart/form-data" className={`flex-1 flex flex-col min-h-0 ${formOverflowVisible ? "overflow-visible" : "overflow-hidden"}`}>
                             <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true">
                                 <input type="text" name="fake_user_name" tabIndex={-1} />
                                 <input type="email" name="fake_email_addr" tabIndex={-1} />
@@ -3133,21 +3374,66 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                                 </p>
                                             </div>
                                             
-                                            <div className="space-y-3 max-w-sm mx-auto">
-                                                <div className="grid grid-cols-2 gap-3">
-                                                    <button type="button" onClick={() => setInstitutionType('Privée')} className={`py-3 rounded-xl border-2 font-black text-[10px] uppercase transition-all ${institutionType === 'Privée' ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg scale-105' : 'bg-white border-slate-100 text-slate-400'}`}>{d.privateSchool}</button>
-                                                    <button type="button" onClick={() => setInstitutionType('Publique')} className={`py-3 rounded-xl border-2 font-black text-[10px] uppercase transition-all ${institutionType === 'Publique' ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg scale-105' : 'bg-white border-slate-100 text-slate-400'}`}>{d.publicSchool}</button>
-                                                </div>
-                                                <div className="relative group">
-                                                    <MapPin className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-indigo-500 transition-colors ${isArabic ? "right-4" : "left-4"}`} />
-                                                    <input 
-                                                        type="text" 
-                                                        value={institutionAddress} 
-                                                        onChange={(e) => setInstitutionAddress(e.target.value)} 
-                                                        placeholder={d.schoolAddressPlaceholder} 
-                                                        className={`w-full bg-white border-2 border-slate-100 focus:border-indigo-500 py-3 rounded-xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all ${isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"}`} 
-                                                    />
-                                                </div>
+                                            <div className="space-y-3 max-w-md mx-auto w-full">
+                                                {isDzEcole && !ecoleManualMode ? (
+                                                    <>
+                                                        <p className={`text-[10px] font-black uppercase text-indigo-600 tracking-widest ${isArabic ? "text-right" : "text-left"}`}>
+                                                            {(d as { schoolPickLabel?: string }).schoolPickLabel ?? (isArabic ? "اختر مدرستكم من القاعدة الوطنية" : "Sélectionnez votre école (wilaya → commune)")}
+                                                        </p>
+                                                        <SchoolPicker
+                                                            value={selectedInstitutionSchool}
+                                                            onChange={(school) => {
+                                                                setSelectedInstitutionSchool(school);
+                                                                if (school) {
+                                                                    setInstitutionType(school.type === 2 ? "Privée" : "Publique");
+                                                                    if (school.address) setInstitutionAddress(school.address);
+                                                                    setFullName(school.name);
+                                                                }
+                                                            }}
+                                                            country="DZ"
+                                                            placeholder={d.childSchoolPlaceholder}
+                                                        />
+                                                        {selectedInstitutionSchool && (
+                                                            <p className={`text-[9px] font-bold text-slate-500 ${isArabic ? "text-right" : "text-left"}`}>
+                                                                {selectedInstitutionSchool.type === 2 ? d.privateSchool : d.publicSchool}
+                                                                {selectedInstitutionSchool.address ? ` · ${selectedInstitutionSchool.address}` : ""}
+                                                            </p>
+                                                        )}
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => { setEcoleManualMode(true); setSelectedInstitutionSchool(null); }}
+                                                            className="text-[9px] font-bold text-slate-400 hover:text-indigo-600 underline w-full text-center"
+                                                        >
+                                                            {(d as { schoolNotInList?: string }).schoolNotInList ?? (isArabic ? "مدرستي غير موجودة في القائمة" : "Mon école n'est pas dans la liste")}
+                                                        </button>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        {isDzEcole && (
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => { setEcoleManualMode(false); setInstitutionType(""); setInstitutionAddress(""); }}
+                                                                className="text-[9px] font-bold text-indigo-600 hover:underline w-full text-center mb-1"
+                                                            >
+                                                                {(d as { schoolBackToPicker?: string }).schoolBackToPicker ?? (isArabic ? "← العودة إلى قائمة المدارس" : "← Retour à la liste des écoles")}
+                                                            </button>
+                                                        )}
+                                                        <div className="grid grid-cols-2 gap-3">
+                                                            <button type="button" onClick={() => setInstitutionType('Privée')} className={`py-3 rounded-xl border-2 font-black text-[10px] uppercase transition-all ${institutionType === 'Privée' ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg scale-105' : 'bg-white border-slate-100 text-slate-400'}`}>{d.privateSchool}</button>
+                                                            <button type="button" onClick={() => setInstitutionType('Publique')} className={`py-3 rounded-xl border-2 font-black text-[10px] uppercase transition-all ${institutionType === 'Publique' ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg scale-105' : 'bg-white border-slate-100 text-slate-400'}`}>{d.publicSchool}</button>
+                                                        </div>
+                                                        <div className="relative group">
+                                                            <MapPin className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-indigo-500 transition-colors ${isArabic ? "right-4" : "left-4"}`} />
+                                                            <input 
+                                                                type="text" 
+                                                                value={institutionAddress} 
+                                                                onChange={(e) => setInstitutionAddress(e.target.value)} 
+                                                                placeholder={d.schoolAddressPlaceholder} 
+                                                                className={`w-full bg-white border-2 border-slate-100 focus:border-indigo-500 py-3 rounded-xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all ${isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"}`} 
+                                                            />
+                                                        </div>
+                                                    </>
+                                                )}
                                                 <div className="relative group">
                                                     <UserCheck className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-indigo-500 transition-colors ${isArabic ? "right-4" : "left-4"}`} />
                                                     <input 
@@ -3435,56 +3721,12 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                             </div>
                                         </div>
 
-                                        {/* CRYSTAL SECURITY VAULT (Indigo Version) */}
-                                        <div className="relative mt-1">
-                                            <label className={`text-[12px] font-black uppercase text-slate-950 tracking-widest ${isArabic ? "mr-1" : "ml-1"} mb-2 block`}>{d.instCheck}</label>
-                                            <div className="bg-indigo-50/40 rounded-[2rem] p-5 border-2 border-indigo-100/50 shadow-inner relative overflow-hidden">
-                                                <div className="flex flex-col sm:flex-row items-center gap-5 relative z-10">
-                                                    <div className="relative">
-                                                        <div className="bg-white p-3 rounded-2xl border border-indigo-200 shadow-sm flex items-center justify-center min-w-[140px]">
-                                                            <div className="scale-90 contrast-125 rounded-lg overflow-hidden">
-                                                                <LoadCanvasTemplateNoReload />
-                                                            </div>
-                                                        </div>
-                                                        <button 
-                                                            type="button" 
-                                                            onClick={() => loadCaptchaEnginge(6)} 
-                                                            className={`absolute bg-indigo-600 text-white p-1.5 rounded-full shadow-lg hover:bg-indigo-500 transition-all hover:rotate-180 duration-500 ${
-                                                                isArabic ? "-left-2 -top-2" : "-right-2 -top-2"
-                                                            }`}
-                                                        >
-                                                            <RefreshCcw className="w-3 h-3" />
-                                                        </button>
-                                                    </div>
-                                                    <div className="flex-1 w-full space-y-2">
-                                                        <div className="relative group">
-                                                            <ShieldCheck className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-600 transition-colors ${
-                                                                isArabic ? "right-4" : "left-4"
-                                                            }`} />
-                                                            <input 
-                                                                type="text" 
-                                                                placeholder={d.securityCodePlaceholder} 
-                                                                value={captchaValue} 
-                                                                onChange={(e) => setCaptchaValue(e.target.value)} 
-                                                                className={`w-full bg-white border-2 border-indigo-100 focus:border-indigo-500 py-3 rounded-xl outline-none font-black text-slate-950 text-sm transition-all tracking-[0.3em] placeholder:tracking-normal placeholder:font-bold placeholder:text-slate-400 shadow-sm ${
-                                                                    isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
-                                                                }`} 
-                                                            />
-                                                        </div>
-                                                        <p className="text-[9px] font-bold text-indigo-600 uppercase tracking-tighter px-1 flex items-center gap-1.5">
-                                                            <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse" /> {d.instCheckDesc}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div className="flex gap-3 justify-center pt-3">
                                             <button type="button" onClick={() => setStep(2)} className="px-6 border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-slate-50 transition-all shadow-sm flex items-center justify-center">
                                                 {isArabic ? <ArrowRight size={20} /> : <ArrowLeft size={20} />}
                                             </button>
-                                            <button type="submit" disabled={isSubmitting} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-indigo-600 transition-all shadow-2xl flex items-center justify-center gap-3 group disabled:opacity-50">
-                                                {isSubmitting ? <RefreshCcw className="w-4 h-4 animate-spin text-indigo-400" /> : d.registerSchoolButton}
+                                            <button type="button" onClick={handleNext} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-indigo-600 transition-all shadow-2xl flex items-center justify-center gap-3 group">
+                                                {d.next} {isArabic ? <ArrowLeft size={18} /> : <ArrowRight size={18} />}
                                             </button>
                                         </div>
                                     </motion.div>
@@ -3529,59 +3771,83 @@ export default function RegisterClient({ locale }: { locale: string }) {
                                             </div>
                                         </div>
 
-                                        {/* CRYSTAL SECURITY VAULT (Amber Version) */}
-                                        <div className="relative mt-1">
-                                            <label className={`text-[12px] font-black uppercase text-slate-950 tracking-widest ${isArabic ? "mr-1" : "ml-1"} mb-2 block`}>{d.orgCheck}</label>
-                                            <div className="bg-amber-50/40 rounded-[2rem] p-5 border-2 border-amber-100/50 shadow-inner relative overflow-hidden">
-                                                <div className="flex flex-col sm:flex-row items-center gap-5 relative z-10">
-                                                    <div className="relative">
-                                                        <div className="bg-white p-3 rounded-2xl border border-amber-200 shadow-sm flex items-center justify-center min-w-[140px]">
-                                                            <div className="scale-90 contrast-125 rounded-lg overflow-hidden">
-                                                                <LoadCanvasTemplateNoReload />
-                                                            </div>
-                                                        </div>
-                                                        <button 
-                                                            type="button" 
-                                                            onClick={() => loadCaptchaEnginge(6)} 
-                                                            className={`absolute bg-amber-600 text-white p-1.5 rounded-full shadow-lg hover:bg-amber-500 transition-all hover:rotate-180 duration-500 ${
-                                                                isArabic ? "-left-2 -top-2" : "-right-2 -top-2"
-                                                            }`}
-                                                        >
-                                                            <RefreshCcw className="w-3 h-3" />
-                                                        </button>
-                                                    </div>
-                                                    <div className="flex-1 w-full space-y-2">
-                                                        <div className="relative group">
-                                                            <ShieldCheck className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-amber-600 transition-colors ${
-                                                                isArabic ? "right-4" : "left-4"
-                                                            }`} />
-                                                            <input 
-                                                                type="text" 
-                                                                placeholder={d.securityCodePlaceholder} 
-                                                                value={captchaValue} 
-                                                                onChange={(e) => setCaptchaValue(e.target.value)} 
-                                                                className={`w-full bg-white border-2 border-amber-100 focus:border-amber-500 py-3 rounded-xl outline-none font-black text-slate-950 text-sm transition-all tracking-[0.3em] placeholder:tracking-normal placeholder:font-bold placeholder:text-slate-400 shadow-sm ${
-                                                                    isArabic ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
-                                                                }`} 
-                                                            />
-                                                        </div>
-                                                        <p className="text-[9px] font-bold text-amber-600 uppercase tracking-tighter px-1 flex items-center gap-1.5">
-                                                            <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" /> {d.orgCheckDesc}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div className="flex gap-3 justify-center pt-3">
                                             <button type="button" onClick={() => setStep(2)} className="px-6 border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-slate-50 transition-all shadow-sm flex items-center justify-center">
                                                 {isArabic ? <ArrowRight size={20} /> : <ArrowLeft size={20} />}
                                             </button>
-                                            <button type="submit" disabled={isSubmitting} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-amber-600 transition-all shadow-2xl flex items-center justify-center gap-3 group disabled:opacity-50">
-                                                {isSubmitting ? <RefreshCcw className="w-4 h-4 animate-spin text-amber-400" /> : d.registerNgoButton}
+                                            <button type="button" onClick={handleNext} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-amber-600 transition-all shadow-2xl flex items-center justify-center gap-3 group">
+                                                {d.next} {isArabic ? <ArrowLeft size={18} /> : <ArrowRight size={18} />}
                                             </button>
                                         </div>
                                     </motion.div>
+                                )}
+
+                                {step === 4 && userType === 'ecole' && (
+                                    <RegisterOrgDocumentsStep
+                                        userType="ecole"
+                                        institutionType={resolvedInstitutionType}
+                                        privateDocType={privateDocType}
+                                        setPrivateDocType={setPrivateDocType}
+                                        isArabic={isArabic}
+                                        isSubmitting={isSubmitting}
+                                        captchaValue={captchaValue}
+                                        setCaptchaValue={setCaptchaValue}
+                                        onBack={() => setStep(3)}
+                                        onReloadCaptcha={() => loadCaptchaEnginge(6)}
+                                        d={{
+                                            docStepTitle: (d as any).docStepTitle ?? (isArabic ? "الوثائق الرسمية" : "Documents officiels"),
+                                            docStepDesc: (d as any).docStepDesc ?? "",
+                                            docPv: (d as any).docPv ?? "PV d'installation",
+                                            docLicence: (d as any).docLicence ?? "Licence",
+                                            docDeclaration: (d as any).docDeclaration ?? "Déclaration",
+                                            docId: (d as any).docId ?? "Carte d'identité",
+                                            docStatuts: (d as any).docStatuts ?? "Statuts",
+                                            docRecepisse: (d as any).docRecepisse ?? "Récépissé",
+                                            privateLicence: (d as any).privateLicence ?? "Licence",
+                                            privateDeclaration: (d as any).privateDeclaration ?? "Déclaration",
+                                            instCheck: d.instCheck,
+                                            instCheckDesc: d.instCheckDesc,
+                                            orgCheck: (d as any).orgCheck ?? "",
+                                            orgCheckDesc: (d as any).orgCheckDesc ?? "",
+                                            registerSchoolButton: d.registerSchoolButton,
+                                            registerNgoButton: (d as any).registerNgoButton ?? "",
+                                            securityCodePlaceholder: d.securityCodePlaceholder,
+                                        }}
+                                    />
+                                )}
+
+                                {step === 4 && userType === 'ong' && (
+                                    <RegisterOrgDocumentsStep
+                                        userType="ong"
+                                        institutionType=""
+                                        privateDocType={privateDocType}
+                                        setPrivateDocType={setPrivateDocType}
+                                        isArabic={isArabic}
+                                        isSubmitting={isSubmitting}
+                                        captchaValue={captchaValue}
+                                        setCaptchaValue={setCaptchaValue}
+                                        onBack={() => setStep(3)}
+                                        onReloadCaptcha={() => loadCaptchaEnginge(6)}
+                                        d={{
+                                            docStepTitle: (d as any).docStepTitle ?? (isArabic ? "الوثائق الرسمية" : "Documents officiels"),
+                                            docStepDesc: (d as any).docStepDesc ?? "",
+                                            docPv: (d as any).docPv ?? "",
+                                            docLicence: (d as any).docLicence ?? "",
+                                            docDeclaration: (d as any).docDeclaration ?? "",
+                                            docId: (d as any).docId ?? "Carte d'identité",
+                                            docStatuts: (d as any).docStatuts ?? "Statuts",
+                                            docRecepisse: (d as any).docRecepisse ?? "Récépissé",
+                                            privateLicence: (d as any).privateLicence ?? "",
+                                            privateDeclaration: (d as any).privateDeclaration ?? "",
+                                            instCheck: (d as any).instCheck ?? "",
+                                            instCheckDesc: (d as any).instCheckDesc ?? "",
+                                            orgCheck: (d as any).orgCheck ?? "Vérification",
+                                            orgCheckDesc: (d as any).orgCheckDesc ?? "",
+                                            registerSchoolButton: (d as any).registerSchoolButton ?? "",
+                                            registerNgoButton: d.registerNgoButton,
+                                            securityCodePlaceholder: d.securityCodePlaceholder,
+                                        }}
+                                    />
                                 )}
                             </AnimatePresence>
 

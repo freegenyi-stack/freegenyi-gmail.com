@@ -28,7 +28,7 @@ export default async function SettingsPage({
   }
 
   return (
-    <div className="bg-slate-50 min-h-[calc(100vh-4rem)] pb-24 font-dm-sans">
+    <div className="bg-slate-50 min-h-full pb-24 font-dm-sans">
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-12">
         <header className="mb-12">
           <h1 className="text-4xl font-black text-slate-900 tracking-tight font-jakarta">Configuration</h1>

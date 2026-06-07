@@ -1,4 +1,4 @@
-{
+﻿{
   "Hero": {
     "title": "Oscail <orange>doirse na buanna</orange> do do leanbh.",
     "status": "Tá Droichead an Fheabhais ar oscailt",
@@ -17,6 +17,7 @@
     "About": "Faoi",
     "Approach": "Cur Chuige",
     "Parents": "Tuismitheoirí",
+    "Teachers": "Múinteoirí",
     "Schools": "Scoileanna",
     "NGOs": "Eagraíochtaí Neamhrialtasacha",
     "Science": "Eolaíocht",
@@ -204,5 +205,18 @@
         "CTA": "Tosaigh an eachtra!"
       }
     }
+  }
+,
+  "SchoolPicker": {
+    "SearchPlaceholder": "Cuardaigh scoil...",
+    "NoSchoolFound": "Níor aimsíodh scoil",
+    "TryAnotherSearch": "Athraigh do scagairí nó bain triail as cuardach eile",
+    "SelectSchool": "Scoil roghnaithe",
+    "All": "Gach ceann",
+    "Public": "Poiblí",
+    "Private": "Príobháideach",
+    "RegionSG": "Réigiún (Crios)",
+    "DistrictSG": "Crios / DGP",
+    "PromptSelect": "Roghnaigh an Réigiún agus an Crios chun do scoil a fháil 🏫"
   }
 }

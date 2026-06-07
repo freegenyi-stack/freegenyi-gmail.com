@@ -28,16 +28,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const [user] = await db.select().from(users).where(eq(users.email, email));
 
         if (!user || !user.passwordHash) {
-          throw new Error("Identifiants incorrects.");
+          return null;
         }
 
         const isValid = await bcrypt.compare(password, user.passwordHash);
         if (!isValid) {
-          throw new Error("Identifiants incorrects.");
+          return null;
         }
 
         if (user.lockedUntil && new Date(user.lockedUntil) > new Date()) {
-          throw new Error("Compte temporairement verrouillé.");
+          return null;
         }
 
         // Mise à jour de la dernière connexion
@@ -81,11 +81,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             });
             console.log("✅ Nouvel utilisateur Google créé:", email);
           } else {
-            // 🔄 Mettre à jour la dernière connexion
+            // 🔄 Compte existant — connexion Google (ne pas recréer)
             await db.update(users)
-              .set({ lastLoginAt: new Date() })
+              .set({
+                lastLoginAt: new Date(),
+                ...(user.image && !existingUser.image ? { image: user.image } : {}),
+                ...(existingUser.emailVerified ? {} : { emailVerified: new Date() }),
+              })
               .where(eq(users.email, email));
-            console.log("🔄 Utilisateur Google reconnecté:", email);
+            console.log("🔄 Utilisateur Google reconnecté:", email, "rôle:", existingUser.role);
           }
           return true;
         } catch (error: any) {
@@ -106,7 +110,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (url.startsWith("/")) return `${baseUrl}${url}`
       // Allows callback URLs on the same origin
       else if (new URL(url).origin === baseUrl) return url
-      return `${baseUrl}/fr/dashboard/parent`
+      return `${baseUrl}/DZ-fr/auth/google-bridge`
     },
 
     // Session enrichie avec le rôle et l'ID

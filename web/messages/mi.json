@@ -1,4 +1,4 @@
-{
+﻿{
   "Hero": {
     "title": "Huakina <orange>ngā tatau o te pūmanawa</orange> ki tō tamaiti.",
     "status": "Kua tuwhera te Arawhata o te Kairangi",
@@ -17,6 +17,7 @@
     "About": "Mō mātou",
     "Approach": "Ara",
     "Parents": "Mātua",
+    "Teachers": "Kaiako",
     "Schools": "Kura",
     "NGOs": "Pūtahi Kāwanatanga-Kore",
     "Science": "Pūtaiao",
@@ -204,5 +205,18 @@
         "CTA": "Tīmata i te haerenga!"
       }
     }
+  }
+,
+  "SchoolPicker": {
+    "SearchPlaceholder": "Rapua he kura...",
+    "NoSchoolFound": "Kāore he kura i kitea",
+    "TryAnotherSearch": "Whakarerekē ō tātari, me whakaaro ki tētahi rapunga kē atu",
+    "SelectSchool": "Kura Kua Whiriwhiria",
+    "All": "Katoa",
+    "Public": "Tūmatanui",
+    "Private": "Tūmataiti",
+    "RegionSG": "Rohe (Tōpuni)",
+    "DistrictSG": "Tōpuni / DGP",
+    "PromptSelect": "Tīpakohia te Rohe me te Tōpuni hei kimi kura 🏫"
   }
 }

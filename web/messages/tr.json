@@ -1,0 +1,222 @@
+{
+  "Hero": {
+    "title": "Çocuğunuz için <orange>deha kapılarını</orange> açın.",
+    "status": "Mükemmellik Köprüsü açık",
+    "subtitle": "FreeGeny, Ebeveynler, Okullar ve Çocuklar arasında mükemmelliğe yönelik bütünsel destek için teknolojik bir köprü kurar.",
+    "cta": "Maceraya başla",
+    "approach": "Yaklaşımımız"
+  },
+  "Impact": {
+    "Geniuses": "Dahi",
+    "Countries": "Ülke",
+    "Schools": "Okul",
+    "Languages": "Dil",
+    "Courses": "Dersler ve Alıştırmalar"
+  },
+  "Nav": {
+    "About": "Hakkımızda",
+    "Approach": "Yaklaşım",
+    "Parents": "Ebeveynler",
+    "Teachers": "Öğretmenler",
+    "Schools": "Okullar",
+    "NGOs": "STK'lar",
+    "Science": "Bilim",
+    "Region": "Bölge",
+    "FreeExplore": "Özgür Keşif"
+  },
+  "Auth": {
+    "Login": "Giriş",
+    "Register": "Katıl",
+    "Logout": "Çıkış",
+    "Dashboard": "Panel",
+    "Agreement": "Devam ederek hizmet şartlarımızı ve gizlilik politikamızı kabul etmiş olursunuz.",
+    "AlreadyHaveAccount": "Zaten hesabınız var mı? Giriş yapın",
+    "Placeholders": {
+      "FullName": "Ahmet Yılmaz",
+      "Username": "ahmet_tr",
+      "Email": "ahmet@deha.tr"
+    }
+  },
+  "Portals": {
+    "Tag": "Portalları Keşfet",
+    "Title": "Tam bir dalış.",
+    "Subtitle": "Sınırsız ilerleme için birbirine bağlı üç dünya.",
+    "Local": {
+      "Title": "Yerel Portal",
+      "Desc": "Resmi müfredatta ustalaşın. AI destekli okul temelleri.",
+      "CTA": "Dünyayı keşfet?"
+    },
+    "World": {
+      "Title": "Dünya Portalı",
+      "Desc": "Sınırsız hırs için Singapur Matematiği ve Oxford İngilizcesi.",
+      "CTA": "Dünyayı keşfet?"
+    },
+    "Magic": {
+      "Title": "Sihirli Arena",
+      "Desc": "Her beceriyi oyunla pekiştirmek için dinamik olarak uyarlanan eğlenceli meydan okumalar.",
+      "CTA": "Arenaya gir?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "FreeGeny Ekosistemi",
+    "Title": "Herkes için çözümler.",
+    "Subtitle": "Çünkü mükemmellik, tüm paydaşlar arasında mükemmel bir sinerji gerektirir.",
+    "Parents": {
+      "Title": "Ebeveyn Alanı",
+      "Desc": "Başarının hassas yönetimi. İlerlemeyi takip edin, sesli duygusal destekler gönderin ve ödülleri yönetin.",
+      "CTA": "Daha fazla bilgi?"
+    },
+    "Schools": {
+      "Title": "FreeGeny Okulları",
+      "Desc": "Tam dijital dönüşüm. Sınıflarınızı, öğretmenlerinizi yönetin ve ebeveynlerle gerçek zamanlı iletişim kurun.",
+      "CTA": "Daha fazla bilgi?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Duygusal Destek",
+    "MomVoice": "Annenin sesi kaydedildi",
+    "Congratulation": "Tebrikler Amine!"
+  },
+  "Innovation": {
+    "Tag": "İnovasyon",
+    "Title": "Olağanüstü liderlik.",
+    "Boost": {
+      "Title": "Duygusal Destek",
+      "Desc": "Çocuğunuzu kendi sesinizle motive edin."
+    },
+    "AI": {
+      "Title": "Uyarlanabilir AI Rotası",
+      "Desc": "Her tıklama programı yeniden ayarlar."
+    }
+  },
+  "Footer": {
+    "Title": "Dehayı serbest bırakmaya hazır mısınız?",
+    "CTA": "Ücretsiz kaydol"
+  },
+  "Dashboard": {
+    "Title": "Ebeveyn Kokpiti",
+    "Subtitle": "Küçük dehalarınızın gelişimini yönetin ve takip edin.",
+    "AddChild": "Çocuk ekle",
+    "ChildCard": {
+      "Level": "Seviye",
+      "XP": "Toplam XP",
+      "Progress": "İlerleme",
+      "Interest": "Tutku",
+      "Status": "Durum",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Öğrenme Modu",
+      "EmotionalBoost": {
+        "Title": "Duygusal Destek",
+        "Desc": "{name}'i sesli mesajla teşvik edin.",
+        "Record": "Kaydet"
+      }
+    },
+    "Alliance": {
+      "Title": "Ebeveyn İttifakı",
+      "Online": "Çevrimiçi",
+      "CoParent": "Ortak Ebeveyn",
+      "Message": "Mesaj",
+      "Photo": "Fotoğraf"
+    },
+    "Printable": {
+      "Title": "Baskı Fabrikası",
+      "Desc": "Zayıf noktalara göre kişiselleştirilmiş tekrar kitapları oluşturun.",
+      "CTA": "Dosya oluştur"
+    },
+    "Bridge": {
+      "Tag": "Köprü önerir",
+      "Validate": "Onayla",
+      "Ignore": "Yoksay"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Merhaba, {name}!",
+    "ParentDashboard": "Ebeveyn Paneli",
+    "Portals": {
+      "School": {
+        "Title": "Okulum",
+        "Desc": "Sınıf derslerini eğlenerek tekrarla.",
+        "CTA": "Maceraya başla"
+      },
+      "World": {
+        "Title": "Dünya",
+        "Desc": "Singapur, Oxford'u keşfet ve küresel meydan okumaları üstlen!",
+        "CTA": "Keşfet"
+      },
+      "Arena": {
+        "Title": "Arena",
+        "Desc": "Mantık oyunları ve sihirli yarışmalar.",
+        "CTA": "Oynamaya hazır mısın?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"{name}, yeni bir maceraya hazır mısın? Ebeveynlerin tarafından gönderilen {boost}'u kontrol etmeyi unutma!\"",
+      "BoostTag": "Ses Desteği"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Küresel Mükemmellik",
+      "Family": "Aile Takımı",
+      "Genius": "Küçük Dahi"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Çocuğunuzun artık hiçbir sınırı yok.",
+        "Items": [
+          "Singapur Matematiği",
+          "Cambridge (İngiltere)",
+          "Fin Modeli",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Eğitim bir takım sporudur.",
+        "Subtitle": "Onun başarısı için çabalarınızı senkronize edin."
+      },
+      "Step3": {
+        "Title": "Yalnızca İlkokul Düzeyi.",
+        "Subtitle": "Başlangıçları için özel destek."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Merhaba.",
+        "Tag": "Adım 1/3 — Veli rolünüz",
+        "PhoneLabel": "Telefon numarası",
+        "Next": "İleri"
+      },
+      "Step2": {
+        "Title": "Aile İttifakı.",
+        "Tag": "Adım 2/3 — Eşi davet et",
+        "Desc": "Onun başarısı için çabalarınızı senkronize edin.",
+        "EmailPlaceholder": "Eşin e-postası (İsteğe bağlı)",
+        "Next": "Sonraki Adım"
+      },
+      "Step3": {
+        "Title": "Küçük Dahi.",
+        "Tag": "Son adım: Onun yolculuğu",
+        "ChildName": "Çocuğun Adı",
+        "Country": "Ülke",
+        "Level": "Seviye",
+        "Age": "Yaş",
+        "Region": "İl / Bölge",
+        "Commune": "İlçe",
+        "CTA": "Maceraya başla!"
+      }
+    }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Okul ara...",
+    "NoSchoolFound": "Okul bulunamadı",
+    "TryAnotherSearch": "Filtrelerinizi değiştirin veya başka bir arama deneyin",
+    "SelectSchool": "Seçilen Okul",
+    "All": "Tümü",
+    "Public": "Devlet",
+    "Private": "Özel",
+    "RegionSG": "İl (Bölge)",
+    "DistrictSG": "İlçe",
+    "PromptSelect": "Okulunuzu bulmak için İl ve İlçe seçin 🏫"
+  }
+}

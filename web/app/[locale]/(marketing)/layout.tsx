@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function MarketingLayout({
@@ -8,10 +7,9 @@ export default function MarketingLayout({
 }) {
   return (
     <>
-      <Header />
-      <main className="flex-1">
+      <div className="flex-1">
         {children}
-      </main>
+      </div>
       <Footer />
     </>
   );

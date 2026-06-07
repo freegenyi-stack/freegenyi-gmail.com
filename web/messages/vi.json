@@ -1,0 +1,222 @@
+{
+  "Hero": {
+    "title": "Mở <orange>cánh cửa thiên tài</orange> cho con bạn.",
+    "status": "Cầu nối xuất sắc đã mở",
+    "subtitle": "FreeGeny xây dựng cầu nối công nghệ giữa Phụ huynh, Trường học và Trẻ em để hỗ trợ toàn diện hướng tới xuất sắc.",
+    "cta": "Bắt đầu hành trình",
+    "approach": "Phương pháp của chúng tôi"
+  },
+  "Impact": {
+    "Geniuses": "Thiên tài",
+    "Countries": "Quốc gia",
+    "Schools": "Trường học",
+    "Languages": "Ngôn ngữ",
+    "Courses": "Bài học & Bài tập"
+  },
+  "Nav": {
+    "About": "Về chúng tôi",
+    "Approach": "Phương pháp",
+    "Parents": "Phụ huynh",
+    "Teachers": "Giáo viên",
+    "Schools": "Trường học",
+    "NGOs": "Tổ chức phi lợi nhuận",
+    "Science": "Khoa học",
+    "Region": "Khu vực",
+    "FreeExplore": "Khám phá tự do"
+  },
+  "Auth": {
+    "Login": "Đăng nhập",
+    "Register": "Tham gia",
+    "Logout": "Đăng xuất",
+    "Dashboard": "Bảng điều khiển",
+    "Agreement": "Khi tiếp tục, bạn đồng ý với điều khoản dịch vụ và chính sách quyền riêng tư của chúng tôi.",
+    "AlreadyHaveAccount": "Đã có tài khoản? Đăng nhập",
+    "Placeholders": {
+      "FullName": "Nguyễn Văn An",
+      "Username": "an_nguyen_vn",
+      "Email": "an@genius.vn"
+    }
+  },
+  "Portals": {
+    "Tag": "Khám phá các Cổng học",
+    "Title": "Học tập toàn diện.",
+    "Subtitle": "Ba thế giới kết nối cho sự tiến bộ không giới hạn.",
+    "Local": {
+      "Title": "Cổng Địa phương",
+      "Desc": "Nắm vững chương trình chính thức. Nền tảng học tập được AI củng cố.",
+      "CTA": "Khám phá ngay?"
+    },
+    "World": {
+      "Title": "Cổng Thế giới",
+      "Desc": "Toán học Singapore và Tiếng Anh Oxford cho tham vọng không biên giới.",
+      "CTA": "Khám phá thế giới?"
+    },
+    "Magic": {
+      "Title": "Đấu trường Kỳ diệu",
+      "Desc": "Thử thách vui nhộn được điều chỉnh linh hoạt để rèn luyện kỹ năng qua trò chơi.",
+      "CTA": "Bước vào đấu trường?"
+    }
+  },
+  "Ecosystem": {
+    "Tag": "Hệ sinh thái FreeGeny",
+    "Title": "Giải pháp cho tất cả.",
+    "Subtitle": "Vì xuất sắc đòi hỏi sự phối hợp hoàn hảo giữa tất cả các bên.",
+    "Parents": {
+      "Title": "Không gian Phụ huynh",
+      "Desc": "Theo dõi chính xác hành trình thành công. Theo dõi tiến độ, gửi tin nhắn động viên bằng giọng nói.",
+      "CTA": "Tìm hiểu thêm?"
+    },
+    "Schools": {
+      "Title": "Trường học FreeGeny",
+      "Desc": "Chuyển đổi số toàn diện. Quản lý lớp học, giáo viên và giao tiếp với phụ huynh theo thời gian thực.",
+      "CTA": "Tìm hiểu thêm?"
+    }
+  },
+  "EmotionBoost": {
+    "Tag": "Tiếp thêm năng lượng cảm xúc",
+    "MomVoice": "Giọng mẹ được ghi âm",
+    "Congratulation": "Chúc mừng Amine!"
+  },
+  "Innovation": {
+    "Tag": "Sáng tạo",
+    "Title": "Dẫn dắt xuất sắc.",
+    "Boost": {
+      "Title": "Tiếp năng lượng cảm xúc",
+      "Desc": "Động viên con bằng chính giọng nói của bạn."
+    },
+    "AI": {
+      "Title": "Lộ trình AI thích ứng",
+      "Desc": "Mỗi lần nhấp chuột điều chỉnh lại chương trình."
+    }
+  },
+  "Footer": {
+    "Title": "Sẵn sàng giải phóng thiên tài?",
+    "CTA": "Đăng ký miễn phí"
+  },
+  "Dashboard": {
+    "Title": "Bảng Phụ huynh",
+    "Subtitle": "Quản lý và theo dõi sự phát triển của những thiên tài nhỏ.",
+    "AddChild": "Thêm con",
+    "ChildCard": {
+      "Level": "Cấp độ",
+      "XP": "Tổng XP",
+      "Progress": "Tiến độ",
+      "Interest": "Đam mê",
+      "Status": "Trạng thái",
+      "Premium": "Premium Plus",
+      "ModeLearner": "Chế độ học",
+      "EmotionalBoost": {
+        "Title": "Tiếp năng lượng cảm xúc",
+        "Desc": "Động viên {name} bằng tin nhắn giọng nói.",
+        "Record": "Ghi âm"
+      }
+    },
+    "Alliance": {
+      "Title": "Liên minh Phụ huynh",
+      "Online": "Trực tuyến",
+      "CoParent": "Phụ huynh đồng hành",
+      "Message": "Tin nhắn",
+      "Photo": "Ảnh"
+    },
+    "Printable": {
+      "Title": "Xưởng In ấn",
+      "Desc": "Tạo sách ôn tập cá nhân hóa dựa trên điểm yếu.",
+      "CTA": "Tạo tài liệu"
+    },
+    "Bridge": {
+      "Tag": "Cầu nối gợi ý",
+      "Validate": "Xác nhận",
+      "Ignore": "Bỏ qua"
+    }
+  },
+  "ChildLobby": {
+    "Greeting": "Xin chào, {name}!",
+    "ParentDashboard": "Bảng Phụ huynh",
+    "Portals": {
+      "School": {
+        "Title": "Trường của tôi",
+        "Desc": "Ôn lại bài học một cách vui vẻ.",
+        "CTA": "Bắt đầu cuộc phiêu lưu"
+      },
+      "World": {
+        "Title": "Thế giới",
+        "Desc": "Khám phá Singapore, Oxford và chinh phục thử thách toàn cầu!",
+        "CTA": "Khám phá"
+      },
+      "Arena": {
+        "Title": "Đấu trường",
+        "Desc": "Trò chơi logic và cuộc thi kỳ diệu.",
+        "CTA": "Sẵn sàng chơi chưa?"
+      }
+    },
+    "Mascot": {
+      "Message": "\"{name}, sẵn sàng cho cuộc phiêu lưu mới chưa? Đừng quên kiểm tra {boost} mà bố mẹ gửi cho con!\"",
+      "BoostTag": "Tiếp sức giọng nói"
+    }
+  },
+  "Onboarding": {
+    "Steps": {
+      "Excellence": "Xuất sắc toàn cầu",
+      "Family": "Đội gia đình",
+      "Genius": "Thiên tài nhỏ"
+    },
+    "LeftPanel": {
+      "Step1": {
+        "Title": "Con bạn không còn bị giới hạn nữa.",
+        "Items": [
+          "Toán học Singapore",
+          "Cambridge (Anh)",
+          "Mô hình Phần Lan",
+          "STEM / STEAM",
+          "Montessori"
+        ]
+      },
+      "Step2": {
+        "Title": "Giáo dục là môn thể thao đồng đội.",
+        "Subtitle": "Phối hợp nỗ lực vì thành công của con."
+      },
+      "Step3": {
+        "Title": "Dành riêng cho Tiểu học.",
+        "Subtitle": "Hỗ trợ được thiết kế riêng cho những bước đầu tiên."
+      }
+    },
+    "Form": {
+      "Step1": {
+        "Greeting": "Xin chào.",
+        "Tag": "Bước 1 / 3 — Vai trò của bạn",
+        "PhoneLabel": "Số điện thoại",
+        "Next": "Tiếp theo"
+      },
+      "Step2": {
+        "Title": "Liên minh Gia đình.",
+        "Tag": "Bước 2 / 3 — Mời vợ/chồng",
+        "Desc": "Phối hợp nỗ lực vì thành công của con.",
+        "EmailPlaceholder": "Email vợ/chồng (Tùy chọn)",
+        "Next": "Bước tiếp theo"
+      },
+      "Step3": {
+        "Title": "Thiên tài nhỏ.",
+        "Tag": "Bước cuối: Hành trình của con",
+        "ChildName": "Tên con",
+        "Country": "Quốc gia",
+        "Level": "Cấp độ",
+        "Age": "Tuổi",
+        "Region": "Tỉnh / Thành phố",
+        "Commune": "Quận / Huyện",
+        "CTA": "Bắt đầu cuộc phiêu lưu!"
+      }
+    }
+  },
+  "SchoolPicker": {
+    "SearchPlaceholder": "Tìm kiếm trường...",
+    "NoSchoolFound": "Không tìm thấy trường",
+    "TryAnotherSearch": "Thay đổi bộ lọc hoặc thử tìm kiếm khác",
+    "SelectSchool": "Trường đã chọn",
+    "All": "Tất cả",
+    "Public": "Công lập",
+    "Private": "Tư thục",
+    "RegionSG": "Tỉnh (Khu vực)",
+    "DistrictSG": "Quận / Huyện",
+    "PromptSelect": "Vui lòng chọn Tỉnh và Quận để tìm trường của bạn 🏫"
+  }
+}

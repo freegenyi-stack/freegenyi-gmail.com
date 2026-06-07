@@ -187,12 +187,12 @@ function OnboardingContent({ locale }: { locale: string }) {
         }
     };
 
-    const bgImage = `/assets/img/regions/${regionCountry.toLowerCase()}/${selectedLang}/hero.png`;
+    const bgImage = `/assets/img/regions/${regionCountry}/${selectedLang}/hero.png`;
 
-    if (status === "loading") return <div className="h-screen bg-slate-950 flex items-center justify-center text-white font-black uppercase tracking-widest italic animate-pulse">Initialisation Elite...</div>;
+    if (status === "loading") return <div className="min-h-[calc(100dvh-64px)] bg-slate-950 flex items-center justify-center text-white font-black uppercase tracking-widest italic animate-pulse">Initialisation Elite...</div>;
 
     return (
-        <div className="h-[100dvh] w-full flex items-center justify-center p-4 sm:p-6 lg:p-8 relative font-dm-sans overflow-hidden bg-slate-900">
+        <div className="min-h-[calc(100dvh-64px)] w-full flex items-center justify-center p-4 sm:p-6 lg:p-8 relative font-dm-sans overflow-hidden bg-slate-900">
             
             <div className="absolute inset-0 z-0">
                 <Image src={bgImage} alt="Background" fill className="object-cover opacity-60" priority onError={(e) => { (e.target as any).src = "/assets/img/hero_elite.png"; }} />
@@ -665,7 +665,7 @@ function OnboardingContent({ locale }: { locale: string }) {
 
 export default function ClientOnboarding({ locale }: { locale: string }) {
     return (
-        <Suspense fallback={<div className="h-screen bg-slate-950 flex items-center justify-center text-white">Elite...</div>}>
+        <Suspense fallback={<div className="min-h-[calc(100dvh-64px)] bg-slate-950 flex items-center justify-center text-white">Elite...</div>}>
             <OnboardingContent locale={locale} />
         </Suspense>
     );

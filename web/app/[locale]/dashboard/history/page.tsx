@@ -55,7 +55,7 @@ export default async function HistoryPage({
   };
 
   return (
-    <div className="bg-slate-50 min-h-[calc(100vh-4rem)] pb-24 font-dm-sans">
+    <div className="bg-slate-50 min-h-full pb-24 font-dm-sans">
       <div className="max-w-4xl mx-auto px-6 md:px-12 py-12">
         
         {/* Header */}

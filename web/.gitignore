@@ -20,6 +20,10 @@
 # production
 /build
 
+# uploaded verification documents
+/uploads
+/public/uploads/chat
+
 # misc
 .DS_Store
 *.pem
@@ -39,3 +43,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Seed trop volumineux pour GitHub (>100 Mo) — garder en local uniquement
+src/db/seeds/data/ecoles_primaires_inde.csv
