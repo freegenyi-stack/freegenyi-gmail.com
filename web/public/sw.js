@@ -1,4 +1,35 @@
-/* FreeGeny — Service Worker Web Push (VAPID) */
+/* FreeGeny — Service Worker Web Push + cache bibliothèque offline */
+
+const LIBRARY_CACHE = "freegeny-library-v2";
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(self.skipWaiting());
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(self.clients.claim());
+});
+
+self.addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
+  if (
+    event.request.method === "GET" &&
+    (url.pathname.startsWith("/api/library/") || url.pathname.includes("/readium/"))
+  ) {
+    event.respondWith(
+      caches.open(LIBRARY_CACHE).then(async (cache) => {
+        const cached = await cache.match(event.request);
+        const network = fetch(event.request)
+          .then((res) => {
+            if (res.ok) void cache.put(event.request, res.clone());
+            return res;
+          })
+          .catch(() => cached);
+        return cached || network;
+      })
+    );
+  }
+});
 
 self.addEventListener("push", (event) => {
   let data = {

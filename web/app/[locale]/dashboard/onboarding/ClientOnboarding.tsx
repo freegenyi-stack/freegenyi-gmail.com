@@ -24,6 +24,11 @@ import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from 
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
 import SchoolPicker from "@/components/SchoolPicker";
+import InterestPicker from "@/components/onboarding/InterestPicker";
+import ChildNeedsStep from "@/components/onboarding/ChildNeedsStep";
+import ChildLearningPreferencesStep from "@/components/onboarding/ChildLearningPreferencesStep";
+import { appendNotificationInterests, MAX_NOTIFICATION_INTERESTS } from "@/lib/onboarding/interest-topics";
+import type { ChildLearningProfile } from "@/lib/child/learning-profile";
 
 const handwrittenFont = `
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
@@ -45,6 +50,8 @@ const COUNTRIES = [
 
 function OnboardingContent({ locale }: { locale: string }) {
     const t = useTranslations();
+    const te = useTranslations("Onboarding.elite");
+    const tInterest = useTranslations("InterestTopics");
     const { data: session, status } = useSession();
     const { selectedCountry: regionCountry, selectedLang } = useRegion();
     const router = useRouter();
@@ -79,8 +86,20 @@ function OnboardingContent({ locale }: { locale: string }) {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [captchaValue, setCaptchaValue] = useState("");
+    const [notificationInterests, setNotificationInterests] = useState<string[]>([]);
+    const [childLearningProfile, setChildLearningProfile] = useState<ChildLearningProfile>({
+        conditionIds: [],
+        questionnaire: {},
+        learningMode: "semi_guided",
+        dailyScreenMinutes: 20,
+        updatedAt: new Date().toISOString(),
+    });
 
-    const firstName = session?.user?.name?.split(" ")[0] || "Elite";
+    const maxStep = userType === "parent" ? 6 : 3;
+    const isRTL = locale === "ar" || locale.endsWith("-ar");
+    const isParentFlow = userType === "parent";
+    const inspireKey = step === 1 ? "1" : step === 2 ? "2" : "3";
+    const stepTitleKey = String(step) as "1" | "2" | "3" | "4" | "5" | "6";
 
     // Pré-remplissage avec les données de Google
     useEffect(() => {
@@ -92,7 +111,8 @@ function OnboardingContent({ locale }: { locale: string }) {
     }, [session]);
 
     useEffect(() => {
-        if (step === 3) {
+        const captchaStep = userType === "parent" ? 6 : 3;
+        if (step === captchaStep) {
             const timer = setTimeout(() => {
                 try {
                     loadCaptchaEnginge(6, '#f8fafc', '#0f172a', 'numbers');
@@ -136,15 +156,15 @@ function OnboardingContent({ locale }: { locale: string }) {
             if (!username || !username.trim()) setUsername(`testeur_${randomId}`);
         } else if (!isDev && step === 1) {
             if (!fullName || !fullName.trim()) {
-                toast.error("Champ nom complet non rempli");
+                toast.error(te("errors.fullName"));
                 return;
             }
             if (!username || !username.trim()) {
-                toast.error("Veuillez choisir un pseudo.");
+                toast.error(te("errors.usernameRequired"));
                 return;
             }
             if (usernameAvailable === false) {
-                toast.error("pseudo déjà existant");
+                toast.error(te("errors.usernameTaken"));
                 return;
             }
         }
@@ -156,8 +176,13 @@ function OnboardingContent({ locale }: { locale: string }) {
         // Skip captcha in dev mode for easier testing
         const isDev = process.env.NODE_ENV === 'development';
         if (!isDev && !validateCaptcha(captchaValue)) {
-            toast.error("Code de sécurité incorrect.");
+            toast.error(te("errors.captcha"));
             setCaptchaValue("");
+            return;
+        }
+
+        if (userType === "parent" && notificationInterests.length !== MAX_NOTIFICATION_INTERESTS) {
+            toast.error(tInterest("errPickThree"));
             return;
         }
 
@@ -176,10 +201,14 @@ function OnboardingContent({ locale }: { locale: string }) {
         formData.append("child_school", selectedSchool?.name || childSchool);
         if (selectedSchool) formData.append("child_school_id", String(selectedSchool.id));
         formData.append("child_region", childRegion);
+        if (userType === "parent") {
+            appendNotificationInterests(formData, notificationInterests);
+            formData.append("child_learning_profile", JSON.stringify(childLearningProfile));
+        }
 
         const result = await submitOnboardingAction(formData);
         if (result.success) {
-            toast.success("Profil Elite activé !");
+            toast.success(te("toast.activated"));
             router.push(`/${locale}/dashboard/${userType}`);
         } else {
             toast.error(result.error);
@@ -189,7 +218,7 @@ function OnboardingContent({ locale }: { locale: string }) {
 
     const bgImage = `/assets/img/regions/${regionCountry}/${selectedLang}/hero.png`;
 
-    if (status === "loading") return <div className="min-h-[calc(100dvh-64px)] bg-slate-950 flex items-center justify-center text-white font-black uppercase tracking-widest italic animate-pulse">Initialisation Elite...</div>;
+    if (status === "loading") return <div className="min-h-[calc(100dvh-64px)] bg-slate-950 flex items-center justify-center text-white font-black uppercase tracking-widest italic animate-pulse">{te("loading")}</div>;
 
     return (
         <div className="min-h-[calc(100dvh-64px)] w-full flex items-center justify-center p-4 sm:p-6 lg:p-8 relative font-dm-sans overflow-hidden bg-slate-900">
@@ -206,21 +235,30 @@ function OnboardingContent({ locale }: { locale: string }) {
                     <AnimatePresence mode="wait">
                         <motion.div key={step} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="space-y-4">
                             <h2 className="text-4xl font-black text-white font-jakarta tracking-tight uppercase leading-none drop-shadow-2xl">
-                                {step === 1 ? "L'Éveil de" : step === 2 ? "L'Harmonie des" : "L'Essor du"} <span className="text-orange-500">{step === 1 ? "l'Élite" : step === 2 ? "Alliances" : "Génie"}</span>
+                                {te(`inspire.${inspireKey}.prefix`)} <span className="text-orange-500">{te(`inspire.${inspireKey}.accent`)}</span>
                             </h2>
                             <p className="text-white/80 font-medium italic text-lg drop-shadow-md">
-                                {step === 1 ? "Devenez l'architecte d'un destin d'exception." : step === 2 ? "Scellez l'union pour un envol partagé." : "Illuminez le chemin de son ascension."}
+                                {te(`inspire.${inspireKey}.subtitle`)}
                             </p>
                         </motion.div>
                     </AnimatePresence>
                     <div className="flex gap-3 justify-center mt-12">
-                        {[1, 2, 3].map(s => <div key={s} className={`h-1.5 rounded-full transition-all duration-500 ${step === s ? 'w-12 bg-orange-500' : 'w-4 bg-white/20'}`}></div>)}
+                        {Array.from({ length: maxStep }, (_, i) => i + 1).map((s) => (
+                            <div key={s} className={`h-1.5 rounded-full transition-all duration-500 ${step === s ? 'w-12 bg-orange-500' : 'w-4 bg-white/20'}`} />
+                        ))}
                     </div>
                 </div>
 
                 {/* Right Side: Form Cockpit */}
                 <div className="w-full lg:w-[65%] flex items-center justify-center p-4 overflow-visible relative">
-                    <motion.div layout className="bg-white rounded-[2.5rem] shadow-2xl border border-slate-200 p-5 sm:p-7 relative w-full max-w-[650px] max-h-[90vh] flex flex-col z-10 overflow-visible">
+                    <motion.div
+                        layout
+                        dir={isRTL ? "rtl" : "ltr"}
+                        className={cn(
+                            "rounded-[2.5rem] shadow-2xl p-5 sm:p-7 relative w-full max-w-[650px] max-h-[90vh] flex flex-col z-10 overflow-visible",
+                            isParentFlow ? "bg-[#FFFBF7] border border-orange-100" : "bg-white border border-slate-200"
+                        )}
+                    >
                         
                         {/* INTERNAL CURIOUS CAT */}
                         <div className="absolute bottom-4 left-4 w-[100px] h-[180px] overflow-hidden pointer-events-none z-0 opacity-80">
@@ -235,7 +273,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                 <style dangerouslySetInnerHTML={{ __html: handwrittenFont }} />
                                 <div className="relative">
                                     <span style={{ fontFamily: "'Caveat', cursive" }} className="text-2xl text-white drop-shadow-lg block -rotate-3 text-right">
-                                        Choisissez votre rôle
+                                        {te("chooseRole")}
                                     </span>
                                 </div>
                             </motion.div>
@@ -244,9 +282,9 @@ function OnboardingContent({ locale }: { locale: string }) {
                         {/* NOTEBOOK TABS */}
                         <div className="absolute -right-36 top-4 flex flex-col gap-2 hidden lg:flex z-[100]">
                             {[
-                                { id: 'parent', label: 'Parents', icon: Users, color: 'emerald', delay: 0.2 },
-                                { id: 'ecole', label: 'École', icon: School, color: 'indigo', delay: 0.3 },
-                                { id: 'ong', label: 'ONG', icon: Globe, color: 'amber', delay: 0.4 },
+                                { id: 'parent', label: te('roles.parent'), icon: Users, color: 'orange', delay: 0.2 },
+                                { id: 'ecole', label: te('roles.school'), icon: School, color: 'indigo', delay: 0.3 },
+                                { id: 'ong', label: te('roles.ngo'), icon: Globe, color: 'amber', delay: 0.4 },
                             ].map((r) => {
                                 const isActive = userType === r.id;
                                 return (
@@ -259,7 +297,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                         onClick={() => setUserType(r.id)}
                                         className={`relative flex items-center gap-3 h-14 rounded-2xl border-2 transition-all duration-500 group shadow-2xl ${
                                             isActive 
-                                            ? r.color === 'emerald' ? 'bg-emerald-500 border-emerald-400 text-white w-[170px]' 
+                                            ? r.color === 'orange' ? 'bg-orange-500 border-orange-400 text-white w-[170px]' 
                                               : r.color === 'indigo' ? 'bg-indigo-500 border-indigo-400 text-white w-[170px]'
                                               : 'bg-amber-500 border-amber-400 text-white w-[170px]'
                                             : 'bg-white/95 backdrop-blur-sm border-slate-200 text-slate-400 hover:border-orange-200 w-[65px]'
@@ -267,7 +305,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                     >
                                         {isActive && (
                                             <div className={`absolute inset-0 rounded-2xl blur-xl opacity-40 animate-pulse -z-10 ${
-                                                r.color === 'emerald' ? 'bg-emerald-400' : r.color === 'indigo' ? 'bg-indigo-400' : 'bg-amber-400'
+                                                r.color === 'orange' ? 'bg-orange-400' : r.color === 'indigo' ? 'bg-indigo-400' : 'bg-amber-400'
                                             }`}></div>
                                         )}
                                         <r.icon className={`w-6 h-6 shrink-0 transition-transform ${isActive ? 'scale-110 ml-3' : 'ml-3 scale-90 opacity-40'}`} />
@@ -283,15 +321,15 @@ function OnboardingContent({ locale }: { locale: string }) {
                         {/* COMPACT TABS */}
                         <div className="flex gap-2 mb-3 lg:hidden justify-center relative z-20">
                             {[
-                                { id: 'parent', label: 'PAR', icon: Users, color: 'emerald' },
-                                { id: 'ecole', label: 'ECO', icon: School, color: 'indigo' },
-                                { id: 'ong', label: 'ONG', icon: Globe, color: 'amber' },
+                                { id: 'parent', label: te('rolesMobile.parent'), icon: Users, color: 'orange' },
+                                { id: 'ecole', label: te('rolesMobile.school'), icon: School, color: 'indigo' },
+                                { id: 'ong', label: te('rolesMobile.ngo'), icon: Globe, color: 'amber' },
                             ].map((r) => (
                                 <button
                                     key={r.id} type="button" onClick={() => setUserType(r.id)}
                                     className={`flex items-center gap-2 px-3 py-1.5 rounded-full border-2 transition-all ${
                                         userType === r.id 
-                                        ? r.color === 'emerald' ? 'border-emerald-500 bg-emerald-50 text-emerald-600' 
+                                        ? r.color === 'orange' ? 'border-orange-500 bg-orange-50 text-orange-600' 
                                           : r.color === 'indigo' ? 'border-indigo-500 bg-indigo-50 text-indigo-600'
                                           : 'border-amber-500 bg-amber-50 text-amber-600'
                                         : 'border-slate-100 bg-white text-slate-400'
@@ -312,9 +350,9 @@ function OnboardingContent({ locale }: { locale: string }) {
                                     <span className="text-xl font-black text-orange-500 font-jakarta tracking-tighter uppercase group-hover:text-orange-600 transition-all">FreeGeny</span>
                                 </Link>
                                 <div>
-                                    <span className="text-[10px] font-black uppercase text-orange-600 tracking-[0.3em] block mb-1 text-right">Ecran {step} sur 3</span>
+                                    <span className="text-[10px] font-black uppercase text-orange-600 tracking-[0.3em] block mb-1 text-right">{te("screenCounter", { step, max: maxStep })}</span>
                                     <h1 className="text-2xl font-black text-slate-950 font-jakarta tracking-tighter uppercase leading-none text-right">
-                                        {step === 1 ? "Vos Accès" : step === 2 ? "L'Alliance" : "Son Profil"}
+                                        {te(`stepTitle.${stepTitleKey}`)}
                                     </h1>
                                 </div>
                             </div>
@@ -327,7 +365,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                                 <div className="space-y-1">
                                                     <label className="text-[10px] font-black uppercase text-slate-950 px-1">
-                                                        {userType === 'parent' ? "Nom Complet" : userType === 'ecole' ? "Nom de l'Établissement" : "Nom de l'Organisation"}
+                                                        {userType === 'parent' ? te("labels.fullNameParent") : userType === 'ecole' ? te("labels.fullNameSchool") : te("labels.fullNameNgo")}
                                                     </label>
                                                     <div className="relative group">
                                                         {userType === 'parent' ? <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" /> 
@@ -339,7 +377,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                             value={fullName} 
                                                             onChange={(e) => setFullName(e.target.value)} 
                                                             className={`w-full bg-white border-2 px-3 py-2.5 pl-10 rounded-xl outline-none font-bold text-slate-950 text-xs transition-all ${
-                                                                userType === 'parent' ? 'border-slate-100 focus:border-emerald-500' 
+                                                                userType === 'parent' ? 'border-orange-100 focus:border-orange-500 bg-[#FFFBF7]' 
                                                                 : userType === 'ecole' ? 'border-slate-100 focus:border-indigo-500'
                                                                 : 'border-slate-100 focus:border-amber-500'
                                                             }`} 
@@ -348,7 +386,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                 </div>
                                                 <div className="space-y-1">
                                                     <label className="text-[10px] font-black uppercase text-slate-950 px-1 flex justify-between">
-                                                        Pseudo {username.length >= 3 && <span className={usernameAvailable ? 'text-green-600' : 'text-red-600'}>{usernameAvailable ? '✓' : '✗'}</span>}
+                                                        {te("labels.username")} {username.length >= 3 && <span className={usernameAvailable ? 'text-green-600' : 'text-red-600'}>{usernameAvailable ? '✓' : '✗'}</span>}
                                                     </label>
                                                     <div className="relative group">
                                                         <Sparkles className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -365,7 +403,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                 {/* LOCKED FIELDS FROM GOOGLE */}
                                                 <div className="space-y-1 sm:col-span-2">
                                                     <label className="text-[10px] font-black uppercase text-slate-500 px-1 flex justify-between items-center">
-                                                        E-mail <Lock className="w-3 h-3 text-orange-500" />
+                                                        {te("labels.email")} <Lock className="w-3 h-3 text-orange-500" />
                                                     </label>
                                                     <div className="relative group">
                                                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -379,7 +417,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                 </div>
                                                 
                                                 <div className="space-y-1 sm:col-span-2">
-                                                    <label className="text-[10px] font-black uppercase text-slate-950 px-1">Téléphone Principal</label>
+                                                    <label className="text-[10px] font-black uppercase text-slate-950 px-1">{te("labels.phone")}</label>
                                                     <div className="flex gap-2">
                                                         <div className="relative group min-w-[90px]">
                                                             <div className="absolute left-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1 pointer-events-none">
@@ -405,7 +443,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                                 type="tel" 
                                                                 value={phone} 
                                                                 onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))} 
-                                                                placeholder="550 12 34 56" 
+                                                                placeholder={te("labels.phonePlaceholder")} 
                                                                 className="w-full bg-white border-2 border-slate-100 focus:border-slate-950 px-3 py-2.5 pl-10 rounded-xl outline-none font-bold text-slate-950 text-xs transition-all" 
                                                             />
                                                         </div>
@@ -415,7 +453,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                 {/* LOCKED PASSWORD FIELDS */}
                                                 <div className="space-y-1">
                                                     <label className="text-[10px] font-black uppercase text-slate-500 px-1 flex justify-between items-center">
-                                                        Mot de passe <Lock className="w-3 h-3 text-slate-300" />
+                                                        {te("labels.password")} <Lock className="w-3 h-3 text-slate-300" />
                                                     </label>
                                                     <div className="relative group">
                                                         <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300" />
@@ -429,7 +467,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                 </div>
                                                 <div className="space-y-1">
                                                     <label className="text-[10px] font-black uppercase text-slate-500 px-1 flex justify-between items-center">
-                                                        Confirmation <Lock className="w-3 h-3 text-slate-300" />
+                                                        {te("labels.passwordConfirm")} <Lock className="w-3 h-3 text-slate-300" />
                                                     </label>
                                                     <div className="relative group">
                                                         <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300" />
@@ -445,7 +483,7 @@ function OnboardingContent({ locale }: { locale: string }) {
 
                                             <div className="pt-4 flex justify-center w-full mt-auto">
                                                 <button type="button" onClick={handleNext} className="w-full max-w-xs px-12 bg-slate-950 text-white py-3.5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl flex items-center justify-center gap-3 group">
-                                                    Suivant <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                                    {te("next")} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                                 </button>
                                             </div>
                                         </motion.div>
@@ -455,20 +493,20 @@ function OnboardingContent({ locale }: { locale: string }) {
                                         <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6 flex-1 flex flex-col justify-center">
                                             <div className={cn(
                                                 "border-2 rounded-[2.5rem] p-8 space-y-5 text-center transition-all duration-500",
-                                                userType === 'parent' ? "bg-emerald-50/30 border-emerald-50" : userType === 'ecole' ? "bg-indigo-50/30 border-indigo-50" : "bg-amber-50/30 border-amber-50"
+                                                userType === 'parent' ? "bg-orange-50/40 border-orange-100" : userType === 'ecole' ? "bg-indigo-50/30 border-indigo-50" : "bg-amber-50/30 border-amber-50"
                                             )}>
                                                 <div className={cn(
                                                     "w-16 h-16 rounded-2xl flex items-center justify-center mx-auto shadow-sm",
-                                                    userType === 'parent' ? "bg-emerald-100" : userType === 'ecole' ? "bg-indigo-100" : "bg-amber-100"
+                                                    userType === 'parent' ? "bg-orange-100" : userType === 'ecole' ? "bg-indigo-100" : "bg-amber-100"
                                                 )}>
-                                                    {userType === 'parent' ? <Users className="text-emerald-600 w-8 h-8" /> : userType === 'ecole' ? <School className="text-indigo-600 w-8 h-8" /> : <Heart className="text-amber-600 w-8 h-8" />}
+                                                    {userType === 'parent' ? <Users className="text-orange-600 w-8 h-8" /> : userType === 'ecole' ? <School className="text-indigo-600 w-8 h-8" /> : <Heart className="text-amber-600 w-8 h-8" />}
                                                 </div>
                                                 <div className="space-y-2">
                                                     <h3 className="text-xl font-black text-slate-950 uppercase tracking-tighter">
-                                                        {userType === 'parent' ? "Alliance Parentale" : userType === 'ecole' ? "Identité Scolaire" : "Engagement Solidaire"}
+                                                        {userType === 'parent' ? te("alliance.parentTitle") : userType === 'ecole' ? te("alliance.schoolTitle") : te("alliance.ngoTitle")}
                                                     </h3>
                                                     <p className="text-slate-500 font-bold text-xs leading-relaxed max-w-[400px] mx-auto italic">
-                                                        {userType === 'parent' ? "Invitez votre allié pour synchroniser l'éducation." : userType === 'ecole' ? "Précisez le statut et l'emplacement de votre école." : "Définissez le périmètre de votre mission solidaire."}
+                                                        {userType === 'parent' ? te("alliance.parentDesc") : userType === 'ecole' ? te("alliance.schoolDesc") : te("alliance.ngoDesc")}
                                                     </p>
                                                 </div>
                                                 
@@ -479,7 +517,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                             type="text" 
                                                             value={userType === 'parent' ? spouseFirstName : childSchool} 
                                                             onChange={(e) => userType === 'parent' ? setSpouseFirstName(e.target.value) : setChildSchool(e.target.value)} 
-                                                            placeholder={userType === 'parent' ? "Prénom de l'allié" : "Adresse du Siège"} 
+                                                            placeholder={userType === 'parent' ? te("alliance.allyFirstName") : te("alliance.hqAddress")} 
                                                             className="w-full bg-white border-2 border-slate-100 focus:border-slate-950 px-4 py-3.5 pl-12 rounded-xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all" 
                                                         />
                                                     </div>
@@ -489,7 +527,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                             type={userType === 'parent' ? "email" : "text"} 
                                                             value={userType === 'parent' ? spouseEmail : spouseFirstName} 
                                                             onChange={(e) => userType === 'parent' ? setSpouseEmail(e.target.value) : setSpouseFirstName(e.target.value)} 
-                                                            placeholder={userType === 'parent' ? "Email de l'allié" : "Nom du Responsable"} 
+                                                            placeholder={userType === 'parent' ? te("alliance.allyEmail") : te("alliance.managerName")} 
                                                             className="w-full bg-white border-2 border-slate-100 focus:border-slate-950 px-4 py-3.5 pl-12 rounded-xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all" 
                                                         />
                                                     </div>
@@ -498,7 +536,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                             <div className="flex gap-3 justify-center pt-2 mt-auto">
                                                 <button type="button" onClick={() => setStep(1)} className="px-6 border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-slate-50 transition-all flex items-center justify-center"><ArrowLeft size={20} /></button>
                                                 <button type="button" onClick={handleNext} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl flex items-center justify-center gap-3 group">
-                                                    Continuer <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                                    {te("continue")} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                                                 </button>
                                             </div>
                                         </motion.div>
@@ -509,7 +547,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div className="space-y-1.5">
                                                     <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">
-                                                        {userType === 'parent' ? "Prénom enfant" : "Présence Web"}
+                                                        {userType === 'parent' ? te("child.firstName") : te("child.webPresence")}
                                                     </label>
                                                     <div className="relative group">
                                                         {userType === 'parent' ? <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" /> : <Globe className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />}
@@ -517,14 +555,14 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                             type="text" 
                                                             value={childName} 
                                                             onChange={(e) => setChildName(e.target.value)} 
-                                                            placeholder={userType === 'parent' ? "Ex: Yasmine" : "URL ou Réseaux"} 
+                                                            placeholder={userType === 'parent' ? te("child.namePlaceholder") : te("child.webPlaceholder")} 
                                                             className="w-full bg-white border-2 border-slate-100 focus:border-slate-950 px-4 py-3 pl-12 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all" 
                                                         />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-1.5">
                                                     <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">
-                                                        {userType === 'parent' ? "Âge" : "Impact"}
+                                                        {userType === 'parent' ? te("child.age") : te("child.impact")}
                                                     </label>
                                                     <div className="relative group">
                                                         <Target className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -532,7 +570,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                             type="number" 
                                                             value={childAge} 
                                                             onChange={(e) => setChildAge(e.target.value)} 
-                                                            placeholder={userType === 'parent' ? "Ex: 8" : "Bénéficiaires"} 
+                                                            placeholder={userType === 'parent' ? te("child.agePlaceholder") : te("child.beneficiariesPlaceholder")} 
                                                             className="w-full bg-white border-2 border-slate-100 focus:border-slate-950 px-4 py-3 pl-12 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all" 
                                                         />
                                                     </div>
@@ -541,7 +579,7 @@ function OnboardingContent({ locale }: { locale: string }) {
 
                                             <div className="space-y-1.5">
                                                 <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">
-                                                    {userType === 'parent' ? "Région de résidence" : "Région / Siège social"}
+                                                    {userType === 'parent' ? te("child.regionParent") : te("child.regionOrg")}
                                                 </label>
                                                 <div className="relative group">
                                                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -549,7 +587,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                         type="text" 
                                                         value={childRegion} 
                                                         onChange={(e) => setChildRegion(e.target.value)} 
-                                                        placeholder="Wilaya / Ville / Quartier" 
+                                                        placeholder={te("child.regionPlaceholder")} 
                                                         className="w-full bg-white border-2 border-slate-100 focus:border-slate-950 px-4 py-3 pl-12 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm transition-all" 
                                                     />
                                                 </div>
@@ -559,7 +597,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                 {userType === 'parent' ? (
                                                     <>
                                                         <div className="space-y-1.5">
-                                                            <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">Niveau</label>
+                                                            <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">{te("child.level")}</label>
                                                             <div className="relative group">
                                                                 <Sparkles className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                                                                 <select 
@@ -576,7 +614,7 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                             </div>
                                                         </div>
                                                         <div className="col-span-2 space-y-1.5">
-                                                            <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">École 🏫</label>
+                                                            <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">{te("child.school")} 🏫</label>
                                                             <SchoolPicker
                                                                 value={selectedSchool}
                                                                 onChange={setSelectedSchool}
@@ -587,14 +625,14 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                 ) : (
                                                     <>
                                                         <div className="space-y-1.5 col-span-2">
-                                                            <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">Établissement / Structure</label>
+                                                            <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1">{te("child.structure")}</label>
                                                             <div className="relative group">
                                                                 <School className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                                                                 <input 
                                                                     type="text" 
                                                                     value={childSchool} 
                                                                     onChange={(e) => setChildSchool(e.target.value)} 
-                                                                    placeholder="Nom exact de la structure" 
+                                                                    placeholder={te("child.structurePlaceholder")} 
                                                                     className="w-full bg-white border-2 border-slate-100 focus:border-slate-950 px-4 py-3 pl-12 rounded-2xl outline-none font-bold text-slate-950 text-xs shadow-sm" 
                                                                 />
                                                             </div>
@@ -603,9 +641,11 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                 )}
                                             </div>
 
+                                            {userType !== "parent" && (
+                                                <>
                                             {/* CRYSTAL SECURITY VAULT */}
                                             <div className="relative mt-1">
-                                                <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1 mb-1.5 block">Vérification de Sécurité</label>
+                                                <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1 mb-1.5 block">{te("security.title")}</label>
                                                 <div className="bg-slate-50/50 rounded-xl p-3 border-2 border-slate-100/50 shadow-inner relative overflow-hidden">
                                                     <div className="flex flex-col sm:flex-row items-center gap-3 relative z-10">
                                                         <div className="relative">
@@ -624,13 +664,13 @@ function OnboardingContent({ locale }: { locale: string }) {
                                                                 </div>
                                                                 <input 
                                                                     type="text" 
-                                                                    placeholder="Entrez le code" 
+                                                                    placeholder={te("security.codePlaceholder")} 
                                                                     value={captchaValue} 
                                                                     onChange={(e) => setCaptchaValue(e.target.value)}
                                                                     className="w-full bg-white border-2 border-slate-200 focus:border-slate-950 px-3 py-2 pl-9 rounded-xl outline-none font-black text-slate-950 text-xs transition-all tracking-[0.3em] placeholder:tracking-normal placeholder:font-bold placeholder:text-slate-400 shadow-sm" 
                                                                 />
                                                             </div>
-                                                            <p className="text-[8px] font-bold text-slate-500 uppercase tracking-tighter px-1 flex items-center gap-1"><span className="w-1 h-1 bg-green-500 rounded-full animate-pulse" /> Protection Elite Active</p>
+                                                            <p className="text-[8px] font-bold text-slate-500 uppercase tracking-tighter px-1 flex items-center gap-1"><span className="w-1 h-1 bg-green-500 rounded-full animate-pulse" /> {te("security.active")}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -639,7 +679,96 @@ function OnboardingContent({ locale }: { locale: string }) {
                                             <div className="flex gap-3 justify-center pt-2 mt-auto">
                                                 <button type="button" onClick={() => setStep(2)} className="px-6 border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-slate-50 transition-all flex items-center justify-center"><ArrowLeft size={20} /></button>
                                                 <button type="submit" disabled={isSubmitting} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl flex items-center justify-center gap-3 group disabled:opacity-50">
-                                                    {isSubmitting ? <RefreshCcw className="w-5 h-5 animate-spin" /> : "Activer mon Compte Elite"}
+                                                    {isSubmitting ? <RefreshCcw className="w-5 h-5 animate-spin" /> : te("activate")}
+                                                </button>
+                                            </div>
+                                                </>
+                                            )}
+
+                                            {userType === "parent" && (
+                                            <div className="flex gap-3 justify-center pt-2 mt-auto">
+                                                <button type="button" onClick={() => setStep(2)} className="px-6 border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-slate-50 transition-all flex items-center justify-center"><ArrowLeft size={20} /></button>
+                                                <button type="button" onClick={() => setStep(4)} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl flex items-center justify-center gap-3 group">
+                                                    {te("continue")} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                                </button>
+                                            </div>
+                                            )}
+                                        </motion.div>
+                                    )}
+
+                                    {step === 4 && userType === "parent" && (
+                                        <motion.div key="step4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4 flex-1 flex flex-col">
+                                            <ChildNeedsStep
+                                                value={childLearningProfile}
+                                                onChange={setChildLearningProfile}
+                                            />
+                                            <div className="flex gap-3 justify-center pt-2 mt-auto">
+                                                <button type="button" onClick={() => setStep(3)} className="px-6 border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-slate-50 transition-all flex items-center justify-center"><ArrowLeft size={20} /></button>
+                                                <button type="button" onClick={() => setStep(5)} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl flex items-center justify-center gap-3 group">
+                                                    {te("continue")} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                                </button>
+                                            </div>
+                                        </motion.div>
+                                    )}
+
+                                    {step === 5 && userType === "parent" && (
+                                        <motion.div key="step5" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4 flex-1 flex flex-col">
+                                            <ChildLearningPreferencesStep
+                                                childAge={childAge || "8"}
+                                                value={childLearningProfile}
+                                                onChange={setChildLearningProfile}
+                                            />
+                                            <div className="flex gap-3 justify-center pt-2 mt-auto">
+                                                <button type="button" onClick={() => setStep(4)} className="px-6 border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-slate-50 transition-all flex items-center justify-center"><ArrowLeft size={20} /></button>
+                                                <button type="button" onClick={() => setStep(6)} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl flex items-center justify-center gap-3 group">
+                                                    {te("continue")} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                                </button>
+                                            </div>
+                                        </motion.div>
+                                    )}
+
+                                    {step === 6 && userType === "parent" && (
+                                        <motion.div key="step6" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4 flex-1 flex flex-col justify-center">
+                                            <InterestPicker
+                                                value={notificationInterests}
+                                                onChange={setNotificationInterests}
+                                                compact
+                                            />
+
+                                            <div className="relative mt-1">
+                                                <label className="text-[12px] font-black uppercase text-slate-950 tracking-widest ml-1 mb-1.5 block">{te("security.title")}</label>
+                                                <div className="bg-slate-50/50 rounded-xl p-3 border-2 border-slate-100/50 shadow-inner relative overflow-hidden">
+                                                    <div className="flex flex-col sm:flex-row items-center gap-3 relative z-10">
+                                                        <div className="relative">
+                                                            <div className="bg-white p-2 rounded-xl border border-slate-200 shadow-sm flex items-center justify-center min-w-[120px]">
+                                                                <div className="scale-75 origin-center contrast-125 rounded-lg overflow-hidden h-[50px] flex items-center justify-center">
+                                                                    <LoadCanvasTemplateNoReload />
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" onClick={() => loadCaptchaEnginge(6)} className="absolute -right-1.5 -top-1.5 bg-slate-950 text-white p-1 rounded-full shadow-lg hover:bg-orange-600 transition-all hover:rotate-180 duration-500"><RefreshCcw className="w-2.5 h-2.5" /></button>
+                                                        </div>
+                                                        <div className="flex-1 w-full space-y-1.5">
+                                                            <div className="relative group">
+                                                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-slate-950 transition-colors">
+                                                                    <ShieldCheck className="w-3.5 h-3.5" />
+                                                                </div>
+                                                                <input 
+                                                                    type="text" 
+                                                                    placeholder={te("security.codePlaceholder")} 
+                                                                    value={captchaValue} 
+                                                                    onChange={(e) => setCaptchaValue(e.target.value)}
+                                                                    className="w-full bg-white border-2 border-slate-200 focus:border-slate-950 px-3 py-2 pl-9 rounded-xl outline-none font-black text-slate-950 text-xs transition-all tracking-[0.3em] placeholder:tracking-normal placeholder:font-bold placeholder:text-slate-400 shadow-sm" 
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex gap-3 justify-center pt-2 mt-auto">
+                                                <button type="button" onClick={() => setStep(5)} className="px-6 border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-slate-50 transition-all flex items-center justify-center"><ArrowLeft size={20} /></button>
+                                                <button type="submit" disabled={isSubmitting} className="px-12 bg-slate-950 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-orange-600 transition-all shadow-xl flex items-center justify-center gap-3 group disabled:opacity-50">
+                                                    {isSubmitting ? <RefreshCcw className="w-5 h-5 animate-spin" /> : te("activate")}
                                                 </button>
                                             </div>
                                         </motion.div>
@@ -648,7 +777,10 @@ function OnboardingContent({ locale }: { locale: string }) {
 
                                 <div className="mt-2 text-center space-y-1">
                                     <p className="text-[10px] font-bold text-slate-500 leading-tight px-12">
-                                        En continuant, vous acceptez nos <Link href="/terms" className="text-orange-600 hover:underline">conditions</Link> et notre <Link href="/privacy" className="text-teal-600 hover:underline font-bold">politique</Link>.
+                                        {te("legalPrefix")}{" "}
+                                        <Link href="/terms" className="text-orange-600 hover:underline">{te("legalTerms")}</Link>{" "}
+                                        {te("legalMiddle")}{" "}
+                                        <Link href="/privacy" className="text-orange-600 hover:underline font-bold">{te("legalPrivacy")}</Link>.
                                     </p>
                                     <p className="text-[10px] text-slate-500 font-black uppercase tracking-[0.1em]">
                                         {t('Auth.AlreadyHaveAccount')} <Link href="/auth/login" className="text-orange-600 hover:underline font-black">{t('Auth.Login')}</Link>
@@ -664,8 +796,9 @@ function OnboardingContent({ locale }: { locale: string }) {
 }
 
 export default function ClientOnboarding({ locale }: { locale: string }) {
+    const te = useTranslations("Onboarding.elite");
     return (
-        <Suspense fallback={<div className="min-h-[calc(100dvh-64px)] bg-slate-950 flex items-center justify-center text-white">Elite...</div>}>
+        <Suspense fallback={<div className="min-h-[calc(100dvh-64px)] bg-slate-950 flex items-center justify-center text-white">{te("loadingShort")}</div>}>
             <OnboardingContent locale={locale} />
         </Suspense>
     );

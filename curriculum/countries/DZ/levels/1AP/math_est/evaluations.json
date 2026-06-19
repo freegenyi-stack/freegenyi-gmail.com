@@ -1,0 +1,13 @@
+{
+  "metadata": { "moduleId": "FG-DZ-1AP-MATH", "version": 1 },
+  "evaluations": [
+    {
+      "evaluationId": "DZ_1AP_MATH_EVAL_T1_FLASH",
+      "type": "Flash",
+      "trimesterId": "t1",
+      "durationFr": "10 minutes",
+      "competencyIds": ["DZ_1AP_MATH_NUM_01", "DZ_1AP_MATH_NUM_02", "DZ_1AP_EST_SENSES_01"],
+      "itemCount": 6
+    }
+  ]
+}

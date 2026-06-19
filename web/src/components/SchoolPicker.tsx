@@ -134,7 +134,7 @@ export default function SchoolPicker({
     setResults([]);
   }, [country]);
 
-  const geoFont = isAr ? "font-amiri" : "font-inter";
+  const geoFont = isAr ? "font-ui-ar" : "font-inter";
   const geoTriggerBase = `w-full flex items-center justify-between rounded-2xl border-2 px-4 py-3 text-sm font-bold transition-all shadow-sm ${geoFont}`;
   const geoTriggerActive = `${geoTriggerBase} border-neutral-300 bg-white text-black hover:border-orange-400`;
   const geoTriggerDisabled = `${geoTriggerBase} border-neutral-200 bg-neutral-50 text-neutral-400 cursor-not-allowed opacity-70`;

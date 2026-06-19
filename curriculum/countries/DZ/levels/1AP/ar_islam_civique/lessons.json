@@ -1,0 +1,18 @@
+{
+  "metadata": { "moduleId": "FG-DZ-1AP-AR", "version": 1, "status": "skeleton" },
+  "lessons": [
+    { "lessonId": "L_u01_ahmad", "unitId": "u01_ahmad", "contentKind": "lesson", "status": "pending_scan", "formats": ["interactive", "pdf"], "figmaTemplateSlot": "lesson_ar_standard" },
+    { "lessonId": "L_u02_family", "unitId": "u02_family", "contentKind": "lesson", "status": "pending_scan", "formats": ["interactive", "pdf"], "figmaTemplateSlot": "lesson_ar_standard" },
+    { "lessonId": "L_u03_home", "unitId": "u03_home", "contentKind": "lesson", "status": "pending_scan", "formats": ["interactive", "pdf"], "figmaTemplateSlot": "lesson_ar_standard" },
+    { "lessonId": "L_u04_family_together", "unitId": "u04_family_together", "contentKind": "lesson", "status": "pending_scan", "formats": ["interactive", "pdf"], "figmaTemplateSlot": "lesson_ar_standard" },
+    { "lessonId": "L_u05_letters", "unitId": "u05_letters", "contentKind": "lesson", "status": "pending_scan", "formats": ["interactive", "pdf"], "figmaTemplateSlot": "lesson_trace_letters" },
+    { "lessonId": "L_u06_obey_parents", "unitId": "u06_obey_parents", "contentKind": "lesson", "status": "pending_scan", "formats": ["interactive", "pdf"], "figmaTemplateSlot": "lesson_islam_standard" },
+    { "lessonId": "L_u07_fatiha", "unitId": "u07_fatiha", "contentKind": "surah", "status": "pending_scan", "formats": ["interactive", "audio"], "audioRef": null, "figmaTemplateSlot": "lesson_surah_audio" },
+    { "lessonId": "L_u08_ask_permission", "unitId": "u08_ask_permission", "contentKind": "lesson", "status": "pending_scan", "formats": ["interactive", "pdf"], "figmaTemplateSlot": "lesson_islam_standard" },
+    { "lessonId": "L_u09_love_family", "unitId": "u09_love_family", "contentKind": "lesson", "status": "pending_scan", "formats": ["interactive", "pdf"], "figmaTemplateSlot": "lesson_islam_standard" },
+    { "lessonId": "L_u10_greeting", "unitId": "u10_greeting", "contentKind": "lesson", "status": "pending_scan", "formats": ["interactive", "pdf"], "figmaTemplateSlot": "lesson_civic_standard" },
+    { "lessonId": "L_u11_qisma", "unitId": "u11_qisma", "contentKind": "mahfoudat", "status": "pending_scan", "formats": ["interactive", "audio"], "audioRef": null, "figmaTemplateSlot": "lesson_mahfoudat_audio" },
+    { "lessonId": "L_u12_draw_home", "unitId": "u12_draw_home", "contentKind": "project", "status": "pending_scan", "formats": ["interactive"], "figmaTemplateSlot": "lesson_project_draw" },
+    { "lessonId": "L_u13_family_tree", "unitId": "u13_family_tree", "contentKind": "project", "status": "pending_scan", "formats": ["interactive"], "figmaTemplateSlot": "lesson_project_integrate" }
+  ]
+}

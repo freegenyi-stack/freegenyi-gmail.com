@@ -32,6 +32,16 @@ const DEFAULT_COUNTRY_FOR_LOCALE: Record<string, string> = {
 export default auth((req) => {
   const pathname = req.nextUrl.pathname;
 
+  // Proxy activités interactives (iframe same-origin, pas de locale)
+  if (pathname.startsWith("/ix/")) {
+    return NextResponse.next();
+  }
+
+  // Fichiers statiques uploads (mur, profils…) — hors middleware i18n
+  if (pathname.startsWith("/uploads/")) {
+    return NextResponse.next();
+  }
+
   // 1. Intercepter la racine "/"
   if (pathname === "/") {
     const ipCountry = req.headers.get("x-vercel-ip-country") || req.headers.get("cloudfront-viewer-country");
@@ -87,9 +97,17 @@ export default auth((req) => {
     }
   }
 
+  // Rediriger l'ancien espace guest vers exploration libre
+  if (pathname.includes("/dashboard/guest")) {
+    const explorePath = pathname.replace("/dashboard/guest", "/dashboard/explore");
+    return NextResponse.redirect(new URL(`${explorePath}${req.nextUrl.search}`, req.url));
+  }
+
   // 4. Pour les requêtes de tableau de bord, s'assurer que l'utilisateur est authentifié
+  //    (sauf exploration libre sans compte)
+  const isExploreDashboard = pathname.includes("/dashboard/explore");
   const isDashboard = pathname.includes("/dashboard");
-  if (isDashboard && !req.auth) {
+  if (isDashboard && !isExploreDashboard && !req.auth) {
     const pathParts = pathname.split("/");
     const locale = routing.locales.includes(pathParts[1] as any) ? pathParts[1] : "fr";
     const cookieCountry = req.cookies.get("NEXT_COUNTRY")?.value || DEFAULT_COUNTRY_FOR_LOCALE[locale] || "DZ";
@@ -100,6 +118,6 @@ export default auth((req) => {
 });
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ["/", "/(ar|fr|en|nl|de|it|es|pt|tr|ru|be|uk|pl|ro|el|hu|cs|da|no|sv|fi|ga|af|zu|xh|zh|ms|ta|ja|ko|hi|mi|th|vi|id|ku)/:path*", "/((?!api|_next|_static|_vercel|assets|[\\w-]+\\.\\w+).*)"],
+  // Match only internationalized pathnames + proxy activités interactives
+  matcher: ["/", "/ix/:path*", "/(ar|fr|en|nl|de|it|es|pt|tr|ru|be|uk|pl|ro|el|hu|cs|da|no|sv|fi|ga|af|zu|xh|zh|ms|ta|ja|ko|hi|mi|th|vi|id|ku)/:path*", "/((?!api|_next|_static|_vercel|assets|locales|[\\w-]+\\.\\w+).*)"],
 };

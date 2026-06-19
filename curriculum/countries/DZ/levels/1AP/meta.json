@@ -1,0 +1,10 @@
+{
+  "country": "DZ",
+  "level": "1AP",
+  "schoolYearLabelFr": "Année 1 primaire",
+  "status": "pilot",
+  "version": 1,
+  "referenceDocs": ["Master_1_AP.docx", "Sommaire_arabe_1ap.pdf"],
+  "trimesters": 3,
+  "notesFr": "Pilote maqta 1 arabe + leçons maths nombres 1-5"
+}

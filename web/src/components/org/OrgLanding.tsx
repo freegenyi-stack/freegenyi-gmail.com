@@ -97,7 +97,7 @@ export default function OrgLanding({ variant }: { variant: Variant }) {
   const accentRing = isSchool ? "ring-indigo-100" : "ring-amber-100";
 
   return (
-    <main className={`min-h-screen font-cairo overflow-hidden bg-gradient-to-b ${c.light}`}>
+    <main className={`min-h-screen font-ui-ar overflow-hidden bg-gradient-to-b ${c.light}`}>
       {/* Hero */}
       <section className="relative pt-8 pb-16 lg:pt-12 lg:pb-24">
         <div className={`absolute inset-0 bg-gradient-to-br ${c.gradient} opacity-[0.07]`} />

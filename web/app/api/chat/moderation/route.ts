@@ -5,11 +5,17 @@ import {
   unblockChatMedia,
 } from "@/lib/messaging/media-moderation.server";
 import { requireMessagingUser } from "@/lib/messaging/conversations.server";
+import {
+  messagingAccessDenied,
+  messagingInvalidId,
+  messagingResultError,
+  messagingUnauthorized,
+} from "@/lib/messaging/api-response";
 
 export async function GET() {
   const user = await requireMessagingUser();
-  if (!user) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
-  if (user.role !== "ecole") return NextResponse.json({ error: "Accès refusé" }, { status: 403 });
+  if (!user) return messagingUnauthorized();
+  if (user.role !== "ecole") return messagingAccessDenied();
 
   const items = await listMediaForSchoolModerator(user);
   return NextResponse.json({ items });
@@ -17,17 +23,17 @@ export async function GET() {
 
 export async function PATCH(req: NextRequest) {
   const user = await requireMessagingUser();
-  if (!user) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+  if (!user) return messagingUnauthorized();
 
   const body = await req.json().catch(() => ({}));
   const messageId = parseInt(String(body.messageId), 10);
   const action = String(body.action || "block");
 
-  if (Number.isNaN(messageId)) return NextResponse.json({ error: "ID invalide" }, { status: 400 });
+  if (Number.isNaN(messageId)) return messagingInvalidId();
 
   const result =
     action === "unblock" ? await unblockChatMedia(messageId, user) : await blockChatMedia(messageId, user);
 
-  if ("error" in result) return NextResponse.json({ error: result.error }, { status: 400 });
+  if ("error" in result) return messagingResultError(result);
   return NextResponse.json(result);
 }

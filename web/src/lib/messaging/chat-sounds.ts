@@ -25,10 +25,11 @@ export function unlockChatSounds(): void {
   getContext();
 }
 
-function playTone(freq: number, durationSec: number, volume = 0.07, type: OscillatorType = "sine") {
+function playTone(freq: number, durationSec: number, volume = 0.12, type: OscillatorType = "sine") {
   if (!isChatSoundsEnabled()) return;
   const ctx = getContext();
   if (!ctx) return;
+  if (ctx.state === "suspended") void ctx.resume();
 
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
@@ -44,13 +45,15 @@ function playTone(freq: number, durationSec: number, volume = 0.07, type: Oscill
 }
 
 export function playSendSound(): void {
-  playTone(880, 0.07, 0.05);
-  setTimeout(() => playTone(1175, 0.05, 0.035), 45);
+  unlockChatSounds();
+  playTone(880, 0.08, 0.09);
+  setTimeout(() => playTone(1175, 0.06, 0.07), 50);
 }
 
 export function playReceiveSound(): void {
-  playTone(520, 0.09, 0.06);
-  setTimeout(() => playTone(780, 0.07, 0.04), 60);
+  unlockChatSounds();
+  playTone(520, 0.1, 0.1);
+  setTimeout(() => playTone(780, 0.08, 0.08), 70);
 }
 
 export function playNotifySound(): void {

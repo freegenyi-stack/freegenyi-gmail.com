@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "country": "DZ",
+    "level": "1AP",
+    "subject": "math_est",
+    "moduleId": "FG-DZ-1AP-MATH",
+    "labelFr": "Mathématiques et éducation scientifique",
+    "labelAr": "رياضيات وتربية علمية وتكنologique",
+    "version": 1
+  },
+  "domaines": [
+    { "code": "math", "labelFr": "Mathématiques", "labelAr": "رياضيات" },
+    { "code": "est", "labelFr": "Éducation scientifique", "labelAr": "تربية علمية" }
+  ],
+  "trimesters": [
+    {
+      "trimesterId": "t1",
+      "order": 1,
+      "titreFr": "Trimestre 1",
+      "nodes": [
+        {
+          "nodeId": "DZ_1AP_MATH_NUM_01",
+          "type": "competency",
+          "domaine": "math",
+          "order": 1,
+          "titreFr": "Nombres de 1 à 5 (1)",
+          "titreAr": "الأعداد من 1 إلى 5 (1)",
+          "pageRef": 14,
+          "learningObjectivesFr": [
+            "Compter de petites quantités organisées",
+            "Lire les nombres de 1 à 5"
+          ],
+          "officialObjectiveAr": "عد كميات صغيرة متجانسة ومنظمة وقراءة الأعداد من 1 إلى 5."
+        },
+        {
+          "nodeId": "DZ_1AP_MATH_NUM_02",
+          "type": "competency",
+          "domaine": "math",
+          "order": 2,
+          "titreFr": "Nombres de 1 à 5 (2)",
+          "titreAr": "الأعداد من 1 إلى 5 (2)",
+          "pageRef": 17,
+          "learningObjectivesFr": ["Comparer des quantités", "Utiliser plus que, moins que, autant"],
+          "officialObjectiveAr": "مقارنة كميات واستعمال التعبير (أكثر من، أقل من، بقدر)."
+        },
+        {
+          "nodeId": "DZ_1AP_EST_SENSES_01",
+          "type": "competency",
+          "domaine": "est",
+          "order": 3,
+          "titreFr": "Les cinq sens (1)",
+          "titreAr": "الحواس (1)",
+          "pageRef": 16,
+          "learningObjectivesFr": ["Identifier les cinq sens et les organes"],
+          "officialObjectiveAr": "يتعرف على الحواس الخمس وعلى أهمية أعضاء الحس."
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,11 @@
-import { Readex_Pro, Cairo, Amiri, Reem_Kufi, Outfit, Playfair_Display, Inter } from 'next/font/google'
+import { Readex_Pro, Cairo, Amiri, Reem_Kufi, Outfit, Playfair_Display, Inter, IBM_Plex_Sans_Arabic } from 'next/font/google'
+
+export const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
+  subsets: ['arabic'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-ibm-plex-ar',
+  display: 'swap',
+})
 
 export const inter = Inter({
   subsets: ['latin'],

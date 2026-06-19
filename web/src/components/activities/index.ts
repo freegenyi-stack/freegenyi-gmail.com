@@ -1,0 +1,12 @@
+export { ActivityQCM } from "./ActivityQCM";
+export { ActivityVraiFaux } from "./ActivityVraiFaux";
+export { ActivityFlashcards } from "./ActivityFlashcards";
+export { ActivityMemoryGame } from "./ActivityMemoryGame";
+export { ActivityTexteATrous } from "./ActivityTexteATrous";
+export { ActivityDragDrop } from "./ActivityDragDrop";
+export { ActivitySequencing } from "./ActivitySequencing";
+export { ActivityMatching } from "./ActivityMatching";
+export { ActivityImageHotspot } from "./ActivityImageHotspot";
+export { ActivityColoriage } from "./ActivityColoriage";
+export { ActivityLettresManquantes } from "./ActivityLettresManquantes";
+export { ActivityCalculInteractif } from "./ActivityCalculInteractif";

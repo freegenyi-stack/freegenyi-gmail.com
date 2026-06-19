@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "descriptionFr": "Templates Figma gratuits (Community) pour génération semi-auto leçons",
+  "freeStack": {
+    "figma": { "tier": "free", "noteFr": "Figma Free suffit pour templates + export PDF via plugin" },
+    "figmaCommunity": { "tier": "free", "searchTerms": ["kids worksheet arabic", "education lesson template", "primary school"] },
+    "iaOptional": {
+      "noteFr": "IA gratuite limitée (Gemini free tier, etc.) pour brouillon texte — relecture humaine obligatoire",
+      "fallbackFr": "Si quota dépassé → saisie manuelle dans le template Figma"
+    }
+  },
+  "slots": [
+    { "id": "lesson_ar_standard", "useFor": ["u01_ahmad", "u02_family", "u03_home", "u04_family_together"], "pages": ["cover", "objectives", "content", "activity", "parent_tip"] },
+    { "id": "lesson_trace_letters", "useFor": ["u05_letters"], "pages": ["cover", "trace_demo", "practice", "parent_tip"] },
+    { "id": "lesson_islam_standard", "useFor": ["u06_obey_parents", "u08_ask_permission", "u09_love_family"], "pages": ["cover", "story", "values", "activity"] },
+    { "id": "lesson_surah_audio", "useFor": ["u07_fatiha"], "pages": ["cover", "verses", "audio_player", "repeat_activity"] },
+    { "id": "lesson_civic_standard", "useFor": ["u10_greeting"], "pages": ["cover", "dialogue", "roleplay", "quiz_light"] },
+    { "id": "lesson_mahfoudat_audio", "useFor": ["u11_qisma"], "pages": ["cover", "poem", "audio", "recitation"] },
+    { "id": "lesson_project_draw", "useFor": ["u12_draw_home"], "pages": ["cover", "instructions", "canvas", "describe"] },
+    { "id": "lesson_project_integrate", "useFor": ["u13_family_tree"], "pages": ["cover", "tree_template", "labels", "present"] }
+  ]
+}

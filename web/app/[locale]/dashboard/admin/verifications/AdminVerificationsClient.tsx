@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import { reviewVerificationAction } from "@/lib/actions/org_verification";
+import { parseVerificationDocuments } from "@/lib/admin/verification-documents";
 import { toast } from "sonner";
-import { CheckCircle2, XCircle, Building2, Heart } from "lucide-react";
+import { CheckCircle2, XCircle, Building2, Heart, GraduationCap, FileText, ExternalLink } from "lucide-react";
 
 type Row = {
   id: number;
@@ -44,16 +45,19 @@ export default function AdminVerificationsClient({ rows }: { rows: Row[] }) {
   return (
     <div className="space-y-4">
       {rows.map((row) => {
-        const docs = row.documents ? JSON.parse(row.documents) : {};
+        const docItems = parseVerificationDocuments(row.documents);
         const isEcole = row.orgType === "ecole";
+        const isTeacher = row.orgType === "enseignant";
+        const OrgIcon = isTeacher ? GraduationCap : isEcole ? Building2 : Heart;
+        const orgLabel = isTeacher ? "Enseignant" : isEcole ? "École" : "ONG";
         return (
           <div key={row.id} className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
             <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
               <div className="flex items-center gap-3">
-                {isEcole ? <Building2 className="w-5 h-5 text-indigo-600" /> : <Heart className="w-5 h-5 text-amber-600" />}
+                <OrgIcon className={`w-5 h-5 ${isTeacher ? "text-teal-600" : isEcole ? "text-indigo-600" : "text-amber-600"}`} />
                 <div>
                   <p className="font-black text-slate-900">{row.userName}</p>
-                  <p className="text-xs text-slate-500">{row.userEmail} · {row.userPhone}</p>
+                  <p className="text-xs text-slate-500">{row.userEmail}{row.userPhone ? ` · ${row.userPhone}` : ""}</p>
                   <p className="text-[10px] font-mono text-orange-600 mt-1">{row.trackingCode}</p>
                 </div>
               </div>
@@ -66,15 +70,35 @@ export default function AdminVerificationsClient({ rows }: { rows: Row[] }) {
               </span>
             </div>
             <p className="text-xs text-slate-500 mb-3">
-              {isEcole ? "École" : "ONG"} — {row.institutionSubtype ?? "—"}
+              {orgLabel} — {row.institutionSubtype ?? "—"}
             </p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {Object.entries(docs).map(([key, path]) => (
-                <span key={key} className="text-[9px] bg-slate-100 px-2 py-1 rounded font-mono">
-                  {key}: {String(path)}
-                </span>
-              ))}
-            </div>
+            {docItems.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {docItems.map((item, i) =>
+                  item.kind === "dev" ? (
+                    <span
+                      key={`dev-${i}`}
+                      className="inline-flex items-center gap-1.5 rounded-xl bg-amber-50 px-3 py-1.5 text-[11px] font-medium text-amber-900 ring-1 ring-amber-200"
+                    >
+                      <FileText className="h-3.5 w-3.5" />
+                      {item.message}
+                    </span>
+                  ) : (
+                    <a
+                      key={item.key}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-xl bg-slate-100 px-3 py-1.5 text-[11px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-800"
+                    >
+                      <FileText className="h-3.5 w-3.5" />
+                      {item.label}
+                      <ExternalLink className="h-3 w-3 opacity-50" />
+                    </a>
+                  )
+                )}
+              </div>
+            )}
             {row.status === "pending" && (
               <div className="flex flex-wrap gap-2">
                 <button

@@ -5,6 +5,8 @@ import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { isAdultProfileComplete } from "@/lib/family/server";
+import { getTranslations } from "next-intl/server";
+import ParentShell, { ParentPageHeader } from "@/components/parent/ParentShell";
 import CompleteProfileClient from "./CompleteProfileClient";
 
 export default async function CompleteProfilePage({
@@ -23,5 +25,14 @@ export default async function CompleteProfilePage({
   const complete = await isAdultProfileComplete(userId, user.role);
   if (complete) redirect(`/${locale}/dashboard/parent`);
 
-  return <CompleteProfileClient locale={locale} />;
+  const t = await getTranslations("CompleteProfile");
+
+  return (
+    <ParentShell>
+      <div className="mx-auto max-w-lg">
+        <ParentPageHeader badge={t("badge")} title={t("title")} subtitle={t("subtitle")} premium />
+        <CompleteProfileClient locale={locale} />
+      </div>
+    </ParentShell>
+  );
 }

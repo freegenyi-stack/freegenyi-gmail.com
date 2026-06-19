@@ -39,7 +39,7 @@ export default function AuthRolePicker({ value, onChange, isRTL }: Props) {
 
   return (
     <div className="space-y-2">
-      <p className={cn("text-xs font-semibold text-slate-500", isRTL && "font-amiri text-sm text-right")}>
+      <p className={cn("text-xs font-semibold text-slate-500", isRTL && "font-ui-ar text-sm text-right")}>
         {t("chooseRole")}
       </p>
       <div className={cn("grid grid-cols-2 gap-2", isRTL && "direction-rtl")}>
@@ -53,7 +53,7 @@ export default function AuthRolePicker({ value, onChange, isRTL }: Props) {
               className={cn(
                 "flex items-center gap-2 rounded-xl border-2 px-3 py-3 text-left text-xs font-bold transition-all",
                 active ? activeColor : "border-slate-100 bg-slate-50 text-slate-600 hover:border-slate-200 hover:bg-white",
-                isRTL && "flex-row-reverse text-right font-amiri text-sm"
+                isRTL && "flex-row-reverse text-right font-ui-ar text-sm"
               )}
             >
               <Icon className={cn("w-4 h-4 shrink-0", !active && color)} />

@@ -53,4 +53,14 @@ const SheetContent = React.forwardRef<
 ));
 SheetContent.displayName = DialogPrimitive.Content.displayName;
 
-export { Sheet, SheetTrigger, SheetClose, SheetContent, SheetPortal };
+const SheetHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("flex flex-col gap-1.5", className)} {...props} />
+);
+SheetHeader.displayName = "SheetHeader";
+
+const SheetTitle = ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  <h2 className={cn("text-base font-semibold text-gray-800", className)} {...props} />
+);
+SheetTitle.displayName = "SheetTitle";
+
+export { Sheet, SheetTrigger, SheetClose, SheetContent, SheetPortal, SheetHeader, SheetTitle };

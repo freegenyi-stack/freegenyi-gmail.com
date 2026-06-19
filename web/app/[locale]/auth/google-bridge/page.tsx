@@ -9,10 +9,7 @@ import {
   resolveDashboardSegment,
 } from "@/lib/auth/dashboard-route";
 import { isRegisterRoleHidden } from "@/constants/publicNav";
-
-function isDzLocale(locale: string) {
-  return locale === "DZ-fr" || locale === "DZ-ar" || locale.startsWith("DZ-");
-}
+import { isAdminEmail } from "@/lib/admin/requireAdmin";
 
 /**
  * Point d'atterrissage après OAuth Google (login ou inscription).
@@ -33,6 +30,10 @@ export default async function GoogleBridgePage({
     redirect(`/${locale}/auth/login`);
   }
 
+  if (isAdminEmail(session.user.email)) {
+    redirect(`/${locale}/dashboard/admin`);
+  }
+
   const fromRegister = fromParam === "register";
   const isTeacherIntent = typeParam === "enseignant";
   const registerRole = isTeacherIntent ? "enseignant" : "parent";
@@ -51,7 +52,7 @@ export default async function GoogleBridgePage({
     .limit(1);
 
   if (!user) {
-    if (fromRegister && isDzLocale(locale)) {
+    if (fromRegister) {
       redirectToRegisterGoogle();
     }
     const onboardingType = isTeacherIntent ? "?type=enseignant" : "";
@@ -60,7 +61,7 @@ export default async function GoogleBridgePage({
 
   // Écoles / ONG masqués — ne pas envoyer vers leur dashboard (phase 2)
   if (isRegisterRoleHidden(user.role ?? "")) {
-    if (fromRegister && isDzLocale(locale)) {
+    if (fromRegister) {
       redirectToRegisterGoogle();
     }
     redirect(`/${locale}/dashboard/onboarding?type=parent`);
@@ -71,7 +72,7 @@ export default async function GoogleBridgePage({
     redirect(`/${locale}/dashboard/${segment}`);
   }
 
-  if (fromRegister && isDzLocale(locale)) {
+  if (fromRegister) {
     redirectToRegisterGoogle();
   }
 

@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "moduleId": "FG-DZ-1AP-AR",
+    "totalExercises": 6,
+    "version": 1
+  },
+  "items": [
+    {
+      "id": "DZ_1AP_AR_EX001",
+      "competencyId": "DZ_1AP_AR_MQ01_CIVIC_01",
+      "variantGroup": "vg_greeting_01",
+      "type": "multiple_choice",
+      "domaine": "civique",
+      "difficulty": 1,
+      "points": 10,
+      "profiles": ["parent", "teacher", "official_path"],
+      "statementFr": "{{personnage}} entre dans la classe. Que dit-il ?",
+      "statementAr": "يدخل {{personnage}} إلى القسم. ماذا يقول؟",
+      "optionsFr": ["السلام عليكم", "مع السلامة", "شكراً", "صباح الخير فقط"],
+      "optionsAr": ["السلام عليكم", "مع السلامة", "شكراً", "صباح الخير فقط"],
+      "correctAnswer": "السلام عليكم",
+      "explanationFr": "On accueille avec « السلام عليكم ».",
+      "feedback": {
+        "correctFr": "ممتاز !",
+        "incorrectFr": "Rappelle-toi : on entre en saluant avec السلام عليكم."
+      },
+      "templateVars": { "personnage": ["أحمد", "فاطمة", "ياسين"] }
+    },
+    {
+      "id": "DZ_1AP_AR_EX002",
+      "competencyId": "DZ_1AP_AR_MQ01_ISLAM_01",
+      "variantGroup": "vg_fatiha_01",
+      "type": "true_false",
+      "domaine": "islamique",
+      "difficulty": 1,
+      "points": 5,
+      "profiles": ["parent", "teacher", "official_path"],
+      "statementFr": "La sourate Al-Fatiha commence par « بسم الله الرحمن الرحيم ».",
+      "statementAr": "تبدأ سورة الفاتحة بـ « بسم الله الرحمن الرحيم ».",
+      "correctAnswer": true,
+      "explanationFr": "C'est la basmala, le début de la sourate.",
+      "feedback": {
+        "correctFr": "صحيح !",
+        "incorrectFr": "Réécoute le début de la sourate avec ton parent."
+      }
+    },
+    {
+      "id": "DZ_1AP_AR_EX003",
+      "competencyId": "DZ_1AP_AR_MQ01_LETTERS_01",
+      "variantGroup": "vg_lines_01",
+      "type": "multiple_choice",
+      "domaine": "arabe",
+      "difficulty": 1,
+      "points": 10,
+      "profiles": ["parent", "teacher", "official_path"],
+      "statementFr": "Quelle forme est un cercle ?",
+      "statementAr": "أي شكل دائرة؟",
+      "optionsFr": ["○", "—", "|", "△"],
+      "optionsAr": ["○", "—", "|", "△"],
+      "correctAnswer": "○",
+      "explanationFr": "Le cercle est rond, sans coins.",
+      "feedback": {
+        "correctFr": "أحسنت !",
+        "incorrectFr": "Le cercle ressemble à une roue ou au soleil."
+      }
+    }
+  ]
+}

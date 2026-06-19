@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "descriptionFr": "Référentiel unique — moteur activités natif (12 types) + extensions curriculum",
+  "nativeActivityTypes": [
+    { "id": "QCM", "curriculumType": "multiple_choice", "labelFr": "QCM — Choix multiple", "mq01Priority": "high" },
+    { "id": "VRAI_FAUX", "curriculumType": "true_false", "labelFr": "Vrai ou Faux", "mq01Priority": "high" },
+    { "id": "FLASHCARDS", "curriculumType": "flashcards", "labelFr": "Flashcards", "mq01Priority": "high" },
+    { "id": "MEMORY_GAME", "curriculumType": "memory_game", "labelFr": "Jeu des paires", "mq01Priority": "medium" },
+    { "id": "TEXTE_A_TROUS", "curriculumType": "fill_blank", "labelFr": "Texte à trous", "mq01Priority": "high" },
+    { "id": "DRAG_DROP", "curriculumType": "drag_drop", "labelFr": "Glisser-déposer", "mq01Priority": "high" },
+    { "id": "SEQUENCING", "curriculumType": "ordering", "labelFr": "Remettre dans l'ordre", "mq01Priority": "medium" },
+    { "id": "MATCHING", "curriculumType": "matching", "labelFr": "Relier", "mq01Priority": "high" },
+    { "id": "IMAGE_HOTSPOT", "curriculumType": "image_hotspot", "labelFr": "Image interactive", "mq01Priority": "medium" },
+    { "id": "COLORIAGE", "curriculumType": "coloriage", "labelFr": "Coloriage", "mq01Priority": "high" },
+    { "id": "LETTRES_MANQUANTES", "curriculumType": "letters_missing", "labelFr": "Lettres manquantes", "mq01Priority": "high" },
+    { "id": "CALCUL_INTERACTIF", "curriculumType": "calcul_interactif", "labelFr": "Calcul interactif", "mq01Priority": "math_only" }
+  ],
+  "plannedExtensions": [
+    { "id": "AUDIO_LISTEN_REPEAT", "labelFr": "Écouter et répéter (sourates, mahfoudat)", "mq01Priority": "critical" },
+    { "id": "TRACE_LETTER", "labelFr": "Tracer lettres/formes", "mq01Priority": "critical" },
+    { "id": "DRAW_PROJECT", "labelFr": "Dessin / projet créatif", "mq01Priority": "high" },
+    { "id": "INTERACTIVE_LESSON", "labelFr": "Leçon interactive (scroll + hotspots)", "mq01Priority": "critical" }
+  ],
+  "mq01Recommended": [
+    "QCM", "VRAI_FAUX", "FLASHCARDS", "TEXTE_A_TROUS", "MATCHING", "DRAG_DROP",
+    "LETTRES_MANQUANTES", "COLORIAGE", "SEQUENCING", "AUDIO_LISTEN_REPEAT", "TRACE_LETTER", "INTERACTIVE_LESSON"
+  ]
+}

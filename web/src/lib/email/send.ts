@@ -1,4 +1,5 @@
 import { buildEliteEmailBody } from "@/lib/email/template";
+import { FREEGENY_EMAILS, freegenyFromAddress } from "@/lib/site-emails";
 
 type SendEmailParams = {
   to: string;
@@ -9,6 +10,8 @@ type SendEmailParams = {
   /** Si true, html est envoyé tel quel (déjà enveloppé). */
   rawHtml?: boolean;
   dir?: "rtl" | "ltr";
+  /** Adresse expéditeur optionnelle (ex. contact@freegeny.com) */
+  from?: string;
 };
 
 export type SendEmailResult =
@@ -19,8 +22,15 @@ function getFromAddress(): string {
   return (
     process.env.EMAIL_FROM ||
     process.env.RESEND_FROM ||
-    "FreeGeny Elite <contact@freegeny.com>"
+    freegenyFromAddress("FreeGeny")
   );
+}
+
+function resolveFromAddress(params: SendEmailParams): string {
+  if (params.from?.includes("@")) {
+    return params.from.includes("<") ? params.from : `FreeGeny <${params.from}>`;
+  }
+  return getFromAddress();
 }
 
 function useAyradeLocalSmtp(): boolean {
@@ -37,7 +47,7 @@ function getSmtpConfig() {
   const authDisabled =
     process.env.SMTP_AUTH === "false" ||
     (ayrade && process.env.SMTP_AUTH !== "true");
-  const user = process.env.SMTP_USER || "contact@freegeny.com";
+  const user = process.env.SMTP_USER || FREEGENY_EMAILS.contact;
   const pass = process.env.SMTP_PASS || "";
   const secure =
     process.env.SMTP_SECURE === "true" || (!authDisabled && port === 465);
@@ -62,7 +72,7 @@ async function sendViaResend(params: SendEmailParams): Promise<SendEmailResult> 
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: getFromAddress(),
+      from: resolveFromAddress(params),
       to: [params.to],
       subject: params.subject,
       html,
@@ -97,7 +107,7 @@ async function sendViaSmtp(params: SendEmailParams): Promise<SendEmailResult> {
     });
 
     await transporter.sendMail({
-      from: getFromAddress(),
+      from: resolveFromAddress(params),
       to: params.to,
       subject: params.subject,
       html: wrapHtml(params),
@@ -149,7 +159,7 @@ export async function sendEmail(params: SendEmailParams): Promise<SendEmailResul
     console.log("[email:dev]", {
       to,
       subject: params.subject,
-      from: getFromAddress(),
+      from: resolveFromAddress(params),
       text: params.text,
     });
     return { ok: true, provider: "dev" };

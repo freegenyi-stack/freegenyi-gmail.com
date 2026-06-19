@@ -1,0 +1,26 @@
+{
+  "__instructionsFr": [
+    "Remplir après scan OCR/IA de la section mq01 (عائلتي).",
+    "1 fichier par unité scannée → fusionner dans curriculum.json + lessons.json + competences.json + exercise_bank.json",
+    "Ne pas modifier les unitId — ils sont la clé stable."
+  ],
+  "maqtaId": "mq01",
+  "titreAr": "عائلتي",
+  "scannedAt": null,
+  "sourcePages": [],
+  "units": [
+    { "unitId": "u01_ahmad", "pageRef": 9, "titreAr": "أَحْمَدُ يُرَحِّبُ بِكُمْ", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u02_family", "pageRef": 13, "titreAr": "تعرف على عائلتي", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u03_home", "pageRef": 17, "titreAr": "في منزلنا", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u04_family_together", "pageRef": 21, "titreAr": "العائلة مجتمعة", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u05_letters", "pageRef": null, "titreAr": "رسم الخطوط والأشكال", "block": "arab_letters", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u06_obey_parents", "pageRef": 12, "titreAr": "أطيع والدي", "block": "islamique", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u07_fatiha", "pageRef": 16, "titreAr": "سورة الفاتحة (1)", "block": "islamique", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u08_ask_permission", "pageRef": 20, "titreAr": "استأذن", "block": "islamique", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u09_love_family", "pageRef": 24, "titreAr": "أحب عائلتي", "block": "islamique", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u10_greeting", "pageRef": 25, "titreAr": "التحية وردها", "block": "civique", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u11_qisma", "pageRef": 26, "titreAr": "قسما", "block": "mahfoudat", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u12_draw_home", "pageRef": 27, "titreAr": "أرسم منزلنا وأصفه", "block": "integration", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } },
+    { "unitId": "u13_family_tree", "pageRef": 3, "titreAr": "أدمج: شجرة عائلتي", "block": "integration", "scanNotes": "", "lessonExtracted": false, "exercisesGenerated": { "d1": 0, "d2": 0, "d3": 0 } }
+  ]
+}

@@ -32,14 +32,14 @@ export default function PortalWorldPage() {
         <div className="w-32 h-32 bg-orange-600 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-2xl group-hover:rotate-6 transition-transform">
           <Globe className="w-16 h-16 text-white" />
         </div>
-        <h1 className={cn("text-5xl font-black mb-6 tracking-tighter font-title text-orange-400", isRTL && "font-amiri text-6xl")}>{t("Title")}</h1>
+        <h1 className={cn("text-5xl font-black mb-6 tracking-tighter font-title text-orange-400", isRTL && "font-ui-ar text-6xl")}>{t("Title")}</h1>
         <p className={cn("text-xl text-orange-200/60 font-light mb-12", isRTL && "font-lateef text-3xl")}>{t("Desc")}</p>
         
         <div className="grid grid-cols-1 gap-4">
-          <button className={cn("bg-orange-600 hover:bg-orange-700 text-white px-10 py-5 rounded-3xl font-black uppercase tracking-widest text-sm transition-all shadow-xl hover:shadow-orange-900/40", isRTL && "font-amiri text-2xl tracking-normal")}>
+          <button className={cn("bg-orange-600 hover:bg-orange-700 text-white px-10 py-5 rounded-3xl font-black uppercase tracking-widest text-sm transition-all shadow-xl hover:shadow-orange-900/40", isRTL && "font-ui-ar text-2xl tracking-normal")}>
             {t("CTA")}
           </button>
-          <Link href="/dashboard/child-lobby" className={cn("inline-flex items-center justify-center gap-2 text-orange-400 font-bold uppercase tracking-widest text-xs hover:text-white transition-colors mt-4", isRTL && "flex-row-reverse font-amiri text-xl tracking-normal")}>
+          <Link href="/dashboard/child-lobby" className={cn("inline-flex items-center justify-center gap-2 text-orange-400 font-bold uppercase tracking-widest text-xs hover:text-white transition-colors mt-4", isRTL && "flex-row-reverse font-ui-ar text-xl tracking-normal")}>
             {isRTL ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
             {isRTL ? "العودة إلى اللوبي" : "Retour au Lobby"}
           </Link>

@@ -69,7 +69,8 @@ export function verifyRequestSecurity(req: NextRequest, limitPerMin = 60): {
 
   // In production, we enforce that the referer starts with our host
   // In development, we permit localhost or 127.0.0.1
-  const isDev = process.env.NODE_ENV === "development" || host.includes("localhost") || host.includes("127.0.0.1");
+  const isDev =
+    process.env.NODE_ENV !== "production" || host.includes("localhost") || host.includes("127.0.0.1");
   
   if (!isDev) {
     if (!referer && !origin) {

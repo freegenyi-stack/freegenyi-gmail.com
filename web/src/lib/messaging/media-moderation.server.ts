@@ -3,6 +3,11 @@ import { chatMessages, conversations } from "@/db/schema";
 import { and, desc, eq, isNotNull } from "drizzle-orm";
 import { getSchoolIdForUser } from "./channels.server";
 import { displayName, getMessagingUserById, type MessagingUser } from "./session";
+import {
+  MESSAGING_ERROR,
+  messagingError,
+  type MessagingErrorResult,
+} from "./messaging-errors";
 
 export type ModeratedMediaItem = {
   messageId: number;
@@ -70,11 +75,11 @@ export async function listMediaForSchoolModerator(
 export async function blockChatMedia(
   messageId: number,
   moderator: MessagingUser
-): Promise<{ ok: true } | { error: string }> {
-  if (moderator.role !== "ecole") return { error: "Accès refusé." };
+): Promise<{ ok: true } | MessagingErrorResult> {
+  if (moderator.role !== "ecole") return messagingError(MESSAGING_ERROR.ACCESS_DENIED);
 
   const schoolId = await getSchoolIdForUser(moderator);
-  if (!schoolId) return { error: "École introuvable." };
+  if (!schoolId) return messagingError(MESSAGING_ERROR.ACCESS_DENIED);
 
   const [row] = await db
     .select({
@@ -86,8 +91,8 @@ export async function blockChatMedia(
     .where(eq(chatMessages.id, messageId))
     .limit(1);
 
-  if (!row) return { error: "Message introuvable." };
-  if (row.convSchoolId !== schoolId) return { error: "Hors périmètre école." };
+  if (!row) return messagingError(MESSAGING_ERROR.MESSAGE_NOT_FOUND);
+  if (row.convSchoolId !== schoolId) return messagingError(MESSAGING_ERROR.ACCESS_DENIED);
 
   await db
     .update(chatMessages)
@@ -104,11 +109,11 @@ export async function blockChatMedia(
 export async function unblockChatMedia(
   messageId: number,
   moderator: MessagingUser
-): Promise<{ ok: true } | { error: string }> {
-  if (moderator.role !== "ecole") return { error: "Accès refusé." };
+): Promise<{ ok: true } | MessagingErrorResult> {
+  if (moderator.role !== "ecole") return messagingError(MESSAGING_ERROR.ACCESS_DENIED);
 
   const schoolId = await getSchoolIdForUser(moderator);
-  if (!schoolId) return { error: "École introuvable." };
+  if (!schoolId) return messagingError(MESSAGING_ERROR.ACCESS_DENIED);
 
   const [row] = await db
     .select({ id: chatMessages.id, convSchoolId: conversations.schoolId })
@@ -117,7 +122,7 @@ export async function unblockChatMedia(
     .where(eq(chatMessages.id, messageId))
     .limit(1);
 
-  if (!row || row.convSchoolId !== schoolId) return { error: "Message introuvable." };
+  if (!row || row.convSchoolId !== schoolId) return messagingError(MESSAGING_ERROR.MESSAGE_NOT_FOUND);
 
   await db
     .update(chatMessages)

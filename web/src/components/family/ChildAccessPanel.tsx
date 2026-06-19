@@ -47,6 +47,7 @@ export default function ChildAccessPanel({ childId, childName, hasPin }: Props) 
       setLoading(false);
       return;
     }
+    if (!("code" in result)) return;
     const origin = typeof window !== "undefined" ? window.location.origin : "";
     const url = `${origin}/${locale}/child/pair?code=${result.code}`;
     setPairCode(result.code);

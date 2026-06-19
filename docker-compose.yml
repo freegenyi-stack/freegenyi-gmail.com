@@ -26,8 +26,8 @@ services:
     container_name: freegeny-minio
     restart: always
     ports:
-      - "9000:9000" # API
-      - "9001:9001" # Console
+      - "9000:9000"
+      - "9001:9001"
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER:-admin}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-password}
@@ -35,7 +35,60 @@ services:
     volumes:
       - minio_data:/data
 
+  calibre-web:
+    image: lscr.io/linuxserver/calibre-web:latest
+    container_name: freegeny-calibre-web
+    restart: unless-stopped
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/Paris
+    ports:
+      - "8083:8083"
+    volumes:
+      - calibre_config:/config
+      - calibre_books:/books
+
+  coqui-tts:
+    image: ghcr.io/coqui-ai/tts:latest
+    container_name: freegeny-coqui-tts
+    restart: unless-stopped
+    profiles:
+      - tts
+    ports:
+      - "5002:5002"
+    command: ["tts-server", "--model_name", "tts_models/fr/css10/vits", "--port", "5002"]
+
+  mongo:
+    image: mongo:7
+    container_name: freegeny-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  h5p:
+    build:
+      context: ./web/h5p-server
+    container_name: freegeny-h5p
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    ports:
+      - "8088:8088"
+    env_file:
+      - ./web/.env.local
+    environment:
+      MONGODB_URL: mongodb://mongo:27017/h5p
+      H5P_PORT: "8088"
+      H5P_BASE_URL: http://localhost:8088
+      H5P_API_KEY: ${H5P_API_KEY:-}
+
 volumes:
   postgres_data:
   redis_data:
   minio_data:
+  calibre_config:
+  calibre_books:
+  mongo_data:

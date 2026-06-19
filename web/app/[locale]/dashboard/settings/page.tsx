@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
+import { isFamilyAdult } from "@/lib/family/constants";
 import SettingsClient from "./SettingsClient";
 
 export default async function SettingsPage({
@@ -25,6 +26,10 @@ export default async function SettingsPage({
 
   if (!user) {
     redirect(`/${locale}/auth/login`);
+  }
+
+  if (isFamilyAdult(user.role)) {
+    redirect(`/${locale}/dashboard/parent/reglages`);
   }
 
   return (

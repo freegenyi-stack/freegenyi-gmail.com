@@ -44,7 +44,9 @@ async function classLevelsForUser(user: MessagingUser, schoolId: number): Promis
 
   if (role === "enseignant") {
     const meta = user.metadata;
-    const assigned = meta.teacherLevels ?? meta.classLevels;
+    const tp = meta.teacherProfile as { levels?: string[] } | undefined;
+    const profileLevels = tp?.levels;
+    const assigned = meta.teacherLevels ?? meta.classLevels ?? profileLevels;
     if (Array.isArray(assigned) && assigned.length) {
       assigned.forEach((l) => typeof l === "string" && levels.add(l));
     } else if (typeof meta.teacherLevel === "string" && meta.teacherLevel) {

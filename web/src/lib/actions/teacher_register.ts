@@ -1,17 +1,26 @@
 "use server";
 
 import { db } from "@/db";
-import { users, organizationVerifications } from "@/db/schema";
+import { users } from "@/db/schema";
 import {
   generateTrackingCode,
   saveVerificationDocument,
 } from "@/lib/orgVerification.server";
+import { upsertPendingVerification } from "@/lib/actions/org_verification";
 import { regenerateSuggestionsForUser, refreshSchoolMessagingGraph } from "@/lib/messaging/suggestions.server";
 import { getMessagingUserById } from "@/lib/messaging/session";
 import { isPasswordStrong } from "@/lib/passwordPolicy";
 import { eq, or } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 import { auth } from "@/auth";
+import {
+  MAX_NOTIFICATION_INTERESTS,
+  parseNotificationInterestsFromForm,
+} from "@/lib/onboarding/interest-topics";
+import {
+  buildTeacherMetadataFields,
+  parseTeacherSubjectsLevelsFromForm,
+} from "@/lib/teacher/form-fields";
 
 export async function registerTeacherAction(
   formData: FormData
@@ -34,10 +43,9 @@ export async function registerTeacherAction(
 
   const teacherSchoolId = (formData.get("teacher_school_id") as string) || "";
   const teacherSchoolName = (formData.get("teacher_school_name") as string) || "";
-  const teacherSubject = (formData.get("teacher_subject") as string) || "";
   const teacherBio = (formData.get("teacher_bio") as string) || "";
-  const interestCreative = formData.get("interest_creative") === "on";
-  const interestTraining = formData.get("interest_training") === "on";
+  const { subjects, levels } = parseTeacherSubjectsLevelsFromForm(formData);
+  const notificationInterests = parseNotificationInterestsFromForm(formData);
 
   if (!email || !username || !password || !fullName) {
     return { error: "Veuillez remplir tous les champs." };
@@ -53,6 +61,15 @@ export async function registerTeacherAction(
   }
   if (!teacherSchoolName.trim()) {
     return { error: "Veuillez sélectionner votre établissement." };
+  }
+  if (subjects.length === 0) {
+    return { error: "Choisissez au moins une matière." };
+  }
+  if (levels.length === 0) {
+    return { error: "Choisissez au moins un niveau." };
+  }
+  if (notificationInterests.length !== MAX_NOTIFICATION_INTERESTS) {
+    return { error: "Choisissez 3 centres d'intérêt pour personnaliser vos notifications." };
   }
 
   const identityFileCheck = formData.get("doc_identity") as File | null;
@@ -72,18 +89,20 @@ export async function registerTeacherAction(
     }
 
     const trackingCode = generateTrackingCode();
-    const metadata = {
-      teacherSchoolId,
-      teacherSchoolName,
-      teacherSubject,
-      teacherBio,
-      verificationStatus: "pending",
-      trackingCode,
-      interests: {
-        creative: interestCreative,
-        training: interestTraining,
+    const metadata = buildTeacherMetadataFields(
+      {
+        verificationStatus: "pending",
+        trackingCode,
       },
-    };
+      {
+        teacherSchoolId,
+        teacherSchoolName,
+        subjects,
+        levels,
+        bio: teacherBio,
+        notificationInterests,
+      }
+    );
 
     const passwordHash = await bcrypt.hash(password, 12);
 
@@ -105,13 +124,12 @@ export async function registerTeacherAction(
           identity: await saveVerificationDocument(newUser.id, "identity", identityFile as File),
         };
 
-    await db.insert(organizationVerifications).values({
+    await upsertPendingVerification({
       userId: newUser.id,
       orgType: "enseignant",
       trackingCode,
       institutionSubtype: "identity",
-      status: "pending",
-      documents: JSON.stringify(docs),
+      documents: docs,
     });
 
     const schoolIdNum = teacherSchoolId ? parseInt(teacherSchoolId, 10) : NaN;
@@ -139,13 +157,21 @@ export async function completeTeacherOnboardingAction(
 
   const teacherSchoolId = (formData.get("teacher_school_id") as string) || "";
   const teacherSchoolName = (formData.get("teacher_school_name") as string) || "";
-  const teacherSubject = (formData.get("teacher_subject") as string) || "";
   const teacherBio = (formData.get("teacher_bio") as string) || "";
-  const interestCreative = formData.get("interest_creative") === "on";
-  const interestTraining = formData.get("interest_training") === "on";
+  const { subjects, levels } = parseTeacherSubjectsLevelsFromForm(formData);
+  const notificationInterests = parseNotificationInterestsFromForm(formData);
 
   if (!teacherSchoolName.trim()) {
     return { error: "Veuillez sélectionner votre établissement." };
+  }
+  if (subjects.length === 0) {
+    return { error: "Choisissez au moins une matière." };
+  }
+  if (levels.length === 0) {
+    return { error: "Choisissez au moins un niveau." };
+  }
+  if (notificationInterests.length !== MAX_NOTIFICATION_INTERESTS) {
+    return { error: "Choisissez 3 centres d'intérêt pour personnaliser vos notifications." };
   }
 
   const [user] = await db
@@ -163,14 +189,16 @@ export async function completeTeacherOnboardingAction(
     .set({
       role: "enseignant",
       onboardingStep: 4,
-      metadata: JSON.stringify({
-        ...prev,
-        teacherSchoolId,
-        teacherSchoolName,
-        teacherSubject,
-        teacherBio,
-        interests: { creative: interestCreative, training: interestTraining },
-      }),
+      metadata: JSON.stringify(
+        buildTeacherMetadataFields(prev, {
+          teacherSchoolId,
+          teacherSchoolName,
+          subjects,
+          levels,
+          bio: teacherBio,
+          notificationInterests,
+        })
+      ),
       updatedAt: new Date(),
     })
     .where(eq(users.id, user.id));

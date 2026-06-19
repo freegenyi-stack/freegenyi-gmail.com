@@ -35,11 +35,8 @@ export default function CompleteProfileClient({ locale }: { locale: string }) {
   };
 
   return (
-    <div className="mx-auto max-w-lg px-4 py-10" dir={isRTL ? "rtl" : "ltr"}>
-      <h1 className={cn("text-2xl font-extrabold text-black", isRTL && "font-amiri text-right")}>{t("title")}</h1>
-      <p className={cn("mt-2 text-neutral-600", isRTL && "font-lateef text-right")}>{t("subtitle")}</p>
-
-      <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+    <div dir={isRTL ? "rtl" : "ltr"}>
+      <form onSubmit={handleSubmit} className="space-y-4 rounded-3xl border border-orange-100 bg-white p-6 shadow-sm">
         <input
           ref={fileRef}
           type="file"
@@ -52,14 +49,14 @@ export default function CompleteProfileClient({ locale }: { locale: string }) {
           onClick={() => fileRef.current?.click()}
           className={cn(
             "w-full rounded-2xl border-2 border-dashed p-6 text-center transition",
-            file ? "border-emerald-400 bg-emerald-50" : "border-neutral-300 hover:border-orange-300"
+            file ? "border-orange-400 bg-orange-50" : "border-orange-200 bg-[#FFFBF7] hover:border-orange-300"
           )}
         >
           <Upload className="mx-auto mb-2 h-5 w-5 text-neutral-600" />
           <p className="font-bold text-black">{file ? file.name : t("drop")}</p>
         </button>
-        <p className={cn("flex items-center gap-2 text-xs text-neutral-600", isRTL && "flex-row-reverse font-amiri")}>
-          <ShieldCheck className="h-4 w-4 text-emerald-700" />
+        <p className={cn("flex items-center gap-2 text-xs text-neutral-600", isRTL && "flex-row-reverse font-ui-ar")}>
+          <ShieldCheck className="h-4 w-4 text-orange-600" />
           {t("secure")}
         </p>
         <button

@@ -13,6 +13,10 @@ import {
 import { isFamilyAdult } from "@/lib/family/constants";
 import { regenerateSuggestionsForUser, refreshSchoolMessagingGraph } from "@/lib/messaging/suggestions.server";
 import { getMessagingUserById } from "@/lib/messaging/session";
+import {
+  serializeChildLearningProfile,
+  type ChildLearningProfile,
+} from "@/lib/child/learning-profile";
 
 export async function addChildAction(formData: FormData) {
   const session = await auth();
@@ -41,6 +45,13 @@ export async function addChildAction(formData: FormData) {
 
   try {
     const familyId = await ensureUserFamilyId(userId);
+    const defaultProfile = serializeChildLearningProfile({
+      conditionIds: [],
+      questionnaire: {},
+      learningMode: "semi_guided",
+      dailyScreenMinutes: 20,
+      updatedAt: new Date().toISOString(),
+    });
 
     await db.insert(children).values({
       parentId: userId,
@@ -50,6 +61,7 @@ export async function addChildAction(formData: FormData) {
       educationLevel: gradeLevel,
       schoolId: schoolId && !Number.isNaN(schoolId) ? schoolId : null,
       schoolName,
+      learningProfile: defaultProfile,
     });
 
     try {
@@ -101,4 +113,55 @@ export async function deleteChildAction(childId: number) {
     console.error("Error deleting child:", error);
     return { error: "Erreur lors de la suppression." };
   }
+}
+
+export async function updateChildLearningProfileAction(
+  childId: number,
+  profile: ChildLearningProfile
+) {
+  const session = await auth();
+  if (!session?.user?.id) return { error: "Non autorisé" };
+
+  const userId = parseInt(session.user.id, 10);
+  const [user] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+  if (!user || !isFamilyAdult(user.role)) return { error: "Non autorisé." };
+
+  const [child] = await db.select().from(children).where(eq(children.id, childId)).limit(1);
+  if (!child) return { error: "Enfant introuvable." };
+
+  const allowed = await userCanAccessChild(user, child);
+  if (!allowed) return { error: "Accès refusé." };
+
+  try {
+    await db
+      .update(children)
+      .set({
+        learningProfile: serializeChildLearningProfile(profile),
+        updatedAt: new Date(),
+      })
+      .where(eq(children.id, childId));
+
+    revalidatePath("/[locale]/dashboard/children", "page");
+    revalidatePath("/[locale]/dashboard/parent", "page");
+    revalidatePath("/[locale]/dashboard/parent/reglages", "page");
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating child learning profile:", error);
+    return { error: "Erreur lors de la mise à jour." };
+  }
+}
+
+export async function logChildScreenTimeAction(childId: number, minutesToday: number) {
+  const [child] = await db.select().from(children).where(eq(children.id, childId)).limit(1);
+  if (!child) return { error: "Enfant introuvable." };
+
+  const { activityLogs } = await import("@/db/schema");
+  await db.insert(activityLogs).values({
+    userId: child.parentId,
+    category: "child_session",
+    action: "screen_time",
+    metadata: JSON.stringify({ childId, minutesToday, date: new Date().toISOString().slice(0, 10) }),
+  });
+
+  return { success: true };
 }

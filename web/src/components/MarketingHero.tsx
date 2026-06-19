@@ -1,5 +1,9 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
+import { AuroraBackground, DotPattern } from "@/components/magic";
+import { cn } from "@/lib/utils";
 
 interface MarketingHeroProps {
   title: string;
@@ -8,28 +12,55 @@ interface MarketingHeroProps {
   gradient?: string;
 }
 
-export default function MarketingHero({ title, subtitle, badge, gradient = "from-orange-50 to-orange-100/50" }: MarketingHeroProps) {
+export default function MarketingHero({
+  title,
+  subtitle,
+  badge,
+  gradient = "from-orange-50/80 via-white to-teal-50/50",
+}: MarketingHeroProps) {
   return (
-    <div className={`relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-b ${gradient}`}>
-      <div className="absolute inset-0 bg-[url('/assets/img/grid-pattern.svg')] opacity-5"></div>
-      
-      {/* Decorative Blobs */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-orange-400/20 rounded-full blur-[100px] pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-[100px] pointer-events-none transform -translate-x-1/2 translate-y-1/2"></div>
+    <AuroraBackground
+      className={cn(
+        "fg-marketing-hero relative -mt-[var(--header-height,72px)] bg-gradient-to-b pt-[calc(var(--header-height,72px)+6rem)] pb-20 lg:pt-[calc(var(--header-height,72px)+8rem)] lg:pb-28",
+        gradient
+      )}
+    >
+      <DotPattern className="opacity-50" spacing={24} dotColor="rgba(15, 23, 42, 0.08)" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
         {badge && (
-          <div className="inline-block px-4 py-1.5 rounded-full bg-white/60 border border-slate-200/50 text-[10px] font-black text-orange-600 uppercase tracking-widest mb-8 backdrop-blur-sm shadow-sm">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-orange-200/60 bg-white/70 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-orange-700 shadow-sm backdrop-blur-md"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse" />
             {badge}
-          </div>
+          </motion.div>
         )}
-        <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight font-jakarta mb-6 leading-tight max-w-4xl mx-auto">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
+          className="mx-auto mb-5 max-w-4xl font-reem text-4xl font-black leading-[1.08] tracking-tight text-slate-900 md:text-6xl lg:text-7xl"
+        >
           {title}
-        </h1>
-        <p className="text-lg md:text-2xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+        </motion.h1>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 0.15, duration: 0.6 }}
+          className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-orange-500 via-amber-400 to-teal-500"
+        />
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.12 }}
+          className="mx-auto max-w-2xl text-lg font-medium leading-relaxed text-slate-600 md:text-xl"
+        >
           {subtitle}
-        </p>
+        </motion.p>
       </div>
-    </div>
+    </AuroraBackground>
   );
 }

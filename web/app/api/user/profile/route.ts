@@ -3,7 +3,9 @@ import { auth } from "@/auth";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq, and, ne } from "drizzle-orm";
-import { getUnreadNotificationCount } from "@/lib/messaging/notify";
+import { getNotificationBadgeCount } from "@/lib/messaging/notify";
+import { isTeacherProfileComplete } from "@/lib/teacher/profile-complete";
+import { isAdminEmail } from "@/lib/admin/requireAdmin";
 
 export async function GET() {
   try {
@@ -23,6 +25,7 @@ export async function GET() {
         familyId: users.familyId,
         avatarConfig: users.avatarConfig,
         themeSettings: users.themeSettings,
+        metadata: users.metadata,
         lastLoginAt: users.lastLoginAt,
       })
       .from(users)
@@ -32,8 +35,13 @@ export async function GET() {
       return NextResponse.json({ error: "Utilisateur introuvable" }, { status: 404 });
     }
 
-    // Profile completeness check
-    const profileComplete = !!(user.fullName && user.username && user.phone);
+    const profileComplete =
+      user.role === "enseignant"
+        ? isTeacherProfileComplete(user.metadata, {
+            image: user.image,
+            avatarConfig: user.avatarConfig,
+          })
+        : !!(user.fullName && user.username && user.phone);
 
     // Find linked partner (same familyId, different user)
     let partner = null;
@@ -73,7 +81,7 @@ export async function GET() {
     const avatarConfig = user.avatarConfig ? JSON.parse(user.avatarConfig) : null;
     const themeSettings = user.themeSettings ? JSON.parse(user.themeSettings) : null;
 
-    const notifCount = await getUnreadNotificationCount(user.id);
+    const notifCount = await getNotificationBadgeCount(user.id);
 
     return NextResponse.json({
       id: user.id,
@@ -87,6 +95,7 @@ export async function GET() {
       profileComplete,
       partner,
       notifCount,
+      isAdmin: isAdminEmail(session.user.email),
     });
   } catch (error) {
     console.error("Header API error:", error);

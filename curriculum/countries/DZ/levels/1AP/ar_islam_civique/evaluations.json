@@ -1,0 +1,17 @@
+{
+  "metadata": { "moduleId": "FG-DZ-1AP-AR", "version": 1 },
+  "evaluations": [
+    {
+      "evaluationId": "DZ_1AP_AR_EVAL_MQ01_FLASH",
+      "type": "Flash",
+      "maqtaId": "mq01",
+      "durationFr": "10 minutes",
+      "competencyIds": [
+        "DZ_1AP_AR_MQ01_LETTERS_01",
+        "DZ_1AP_AR_MQ01_ISLAM_01",
+        "DZ_1AP_AR_MQ01_CIVIC_01"
+      ],
+      "itemCount": 5
+    }
+  ]
+}

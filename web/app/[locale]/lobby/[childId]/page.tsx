@@ -1,4 +1,5 @@
 import React from "react";
+import { getLatestChildBoost, type ChildBoostRecord } from "@/lib/parent/child-boost.server";
 import { db } from "@/db";
 import { children as childrenTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
@@ -10,6 +11,9 @@ import { userCanAccessChild } from "@/lib/family/server";
 import { getChildSessionFromCookies } from "@/lib/child-session";
 import { childDevicePairings } from "@/db/schema";
 import { and } from "drizzle-orm";
+import { getChildGamificationStats } from "@/lib/child/gamification.server";
+import { getPendingWorksheetsForChild } from "@/lib/parent/parent-worksheets.server";
+import { parseChildLearningProfileJson } from "@/lib/child/learning-profile";
 
 export default async function ChildLobbyPage({
   params,
@@ -60,15 +64,32 @@ export default async function ChildLobbyPage({
     redirect(`/${locale}/child`);
   }
 
-  const stats = {
-    xp: 1250,
-    level: 5,
-    progress: 66,
-  };
+  const stats = await getChildGamificationStats(parsedChildId);
+  const latestBoost = await getLatestChildBoost(parsedChildId);
+
+  const learningProfile = parseChildLearningProfileJson(child.learningProfile);
+  const pendingWorksheets = await getPendingWorksheetsForChild(parsedChildId);
 
   return (
     <div className="min-h-screen bg-[#020617] text-white overflow-hidden relative font-dm-sans">
-      <LobbyClient child={child} locale={locale} stats={stats} isChildMode={!session?.user} />
+      <LobbyClient
+        child={child}
+        locale={locale}
+        latestBoost={latestBoost}
+        stats={{
+          xp: stats.totalXp,
+          level: stats.level,
+          progress: stats.progress,
+          breakdown: stats.breakdown,
+          pendingMissions: stats.pendingMissions,
+          booksRead: stats.booksRead,
+          exercisesDone: stats.exercisesDone,
+        }}
+        isChildMode={!session?.user}
+        learningMode={learningProfile.learningMode}
+        dailyScreenMinutes={learningProfile.dailyScreenMinutes}
+        pendingParentWorksheets={pendingWorksheets.length}
+      />
     </div>
   );
 }

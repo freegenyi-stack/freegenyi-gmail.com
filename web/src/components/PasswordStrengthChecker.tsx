@@ -42,7 +42,7 @@ export default function PasswordStrengthChecker({ password, className, compact }
             className={cn(
               "flex items-center gap-2 text-[11px] font-bold",
               ok ? "text-emerald-600" : "text-slate-400",
-              isRTL && "flex-row-reverse font-amiri"
+              isRTL && "flex-row-reverse font-ui-ar"
             )}
           >
             <span

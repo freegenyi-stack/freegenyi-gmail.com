@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#FFFBF5"/>
+  <path id="shape-sun" d="M200 60c22 0 40 18 40 40s-18 40-40 40-40-18-40-40 18-40 40-40z" stroke="#18181B" stroke-width="3" fill="#FFF"/>
+  <path id="shape-house" d="M80 280V180l120-80 120 80v100H80z" stroke="#18181B" stroke-width="3" fill="#FFF"/>
+  <rect id="shape-door" x="175" y="230" width="50" height="50" stroke="#18181B" stroke-width="3" fill="#FFF"/>
+  <circle id="shape-tree" cx="310" cy="250" r="45" stroke="#18181B" stroke-width="3" fill="#FFF"/>
+  <rect id="shape-trunk" x="300" y="250" width="20" height="60" stroke="#18181B" stroke-width="3" fill="#FFF"/>
+  <path id="shape-cloud" d="M60 120c0-22 18-40 40-40 12 0 23 5 30 14 8-12 22-20 38-20 24 0 44 20 44 44 0 1 0 2-.1 3H60z" stroke="#18181B" stroke-width="3" fill="#FFF"/>
+</svg>

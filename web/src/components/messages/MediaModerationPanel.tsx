@@ -59,7 +59,7 @@ export default function MediaModerationPanel({ open, onClose, isRTL }: Props) {
 
   return (
     <div className="fixed inset-0 z-[300] flex items-end justify-center bg-black/40 p-4 sm:items-center">
-      <div className={cn("flex max-h-[85vh] w-full max-w-lg flex-col rounded-3xl bg-white shadow-2xl", isRTL && "font-amiri")}>
+      <div className={cn("flex max-h-[85vh] w-full max-w-lg flex-col rounded-3xl bg-white shadow-2xl", isRTL && "font-ui-ar")}>
         <div className={cn("flex items-center justify-between border-b border-slate-100 px-5 py-4", isRTL && "flex-row-reverse")}>
           <div className={cn("flex items-center gap-2", isRTL && "flex-row-reverse")}>
             <Shield className="h-5 w-5 text-indigo-600" />

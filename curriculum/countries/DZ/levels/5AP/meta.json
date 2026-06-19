@@ -1,0 +1,14 @@
+{
+  "country": "DZ",
+  "level": "5AP",
+  "labelFr": "5ème année primaire",
+  "labelAr": "السنة الخامسة ابتدائي",
+  "status": "draft",
+  "version": 0,
+  "notesFr": "Généré par scaffold — remplir curriculum/competences/exercise_bank puis curriculum:validate && curriculum:import",
+  "subjects": [
+    "ar_islam_civique",
+    "math_est"
+  ],
+  "scaffoldedAt": "2026-06-19T08:22:28.724Z"
+}

@@ -4,33 +4,41 @@ import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { db } from "@/db";
 import { users } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, ilike } from "drizzle-orm";
 import bcrypt from "bcryptjs";
+import { isAdminEmail } from "@/lib/admin/requireAdmin";
 
 export async function loginAction(formData: FormData) {
   try {
-    const email = (formData.get("email") as string)?.toLowerCase().trim();
+    const loginId = (formData.get("email") as string)?.trim();
     const password = formData.get("password") as string;
 
-    if (!email || !password) {
+    if (!loginId || !password) {
       return { error: "Veuillez remplir tous les champs." };
     }
 
+    const emailForLookup = loginId.toLowerCase();
+
     await signIn("credentials", {
-      email,
+      email: loginId,
       password,
       redirect: false,
     });
 
     const [user] = await db
-      .select({ onboardingStep: users.onboardingStep, role: users.role })
+      .select({ onboardingStep: users.onboardingStep, role: users.role, email: users.email })
       .from(users)
-      .where(eq(users.email, email));
+      .where(
+        emailForLookup.includes("@")
+          ? eq(users.email, emailForLookup)
+          : ilike(users.username, loginId)
+      );
 
     return {
       success: true,
       onboardingStep: user?.onboardingStep || 1,
       role: user?.role || "parent",
+      isAdmin: user?.email ? isAdminEmail(user.email) : isAdminEmail(emailForLookup),
     };
   } catch (error) {
     if (error instanceof AuthError) {

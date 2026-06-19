@@ -1,0 +1,47 @@
+{
+  "metadata": { "platform": "FreeGeny", "moduleId": "FG-DZ-1AP-MATH", "version": 1 },
+  "competencies": [
+    {
+      "competencyId": "DZ_1AP_MATH_NUM_01",
+      "domaine": "math",
+      "nameFr": "Nombres de 1 à 5 — lecture",
+      "nameAr": "الأعداد 1–5 — قراءة",
+      "skillType": "LOGICAL",
+      "indicators": [
+        {
+          "indicatorId": "IND_MATH_N01",
+          "textFr": "Compte jusqu'à 5 objets identiques",
+          "bloomLevel": "2_understand"
+        }
+      ]
+    },
+    {
+      "competencyId": "DZ_1AP_MATH_NUM_02",
+      "domaine": "math",
+      "nameFr": "Comparer des quantités",
+      "nameAr": "مقارنة كميات",
+      "skillType": "LOGICAL",
+      "indicators": [
+        {
+          "indicatorId": "IND_MATH_N02",
+          "textFr": "Utilise « plus que » et « moins que »",
+          "bloomLevel": "3_apply"
+        }
+      ]
+    },
+    {
+      "competencyId": "DZ_1AP_EST_SENSES_01",
+      "domaine": "est",
+      "nameFr": "Les cinq sens",
+      "nameAr": "الحواس الخمس",
+      "skillType": "SCIENTIFIC",
+      "indicators": [
+        {
+          "indicatorId": "IND_EST_S01",
+          "textFr": "Nomme les cinq sens",
+          "bloomLevel": "1_remember"
+        }
+      ]
+    }
+  ]
+}

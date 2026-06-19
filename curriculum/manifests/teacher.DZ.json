@@ -1,0 +1,26 @@
+{
+  "profile": "teacher",
+  "country": "DZ",
+  "labelFr": "Espace enseignant — Programme + Atelier",
+  "modes": {
+    "quickAssign": {
+      "enabled": true,
+      "descriptionFr": "Choisir une compétence officielle → prévisualiser → envoyer (classe, niveau, élève)",
+      "canEditBeforeSend": true,
+      "source": "official_bank"
+    },
+    "atelier": {
+      "enabled": true,
+      "descriptionFr": "Créer une activité riche dans l'Atelier puis assigner",
+      "source": "authoring_resource"
+    }
+  },
+  "assignTargets": ["child", "level", "school"],
+  "exerciseTypesAllowed": "all",
+  "canUseFahmAlMantouk": true,
+  "session": {
+    "itemsMin": 5,
+    "itemsMax": 10,
+    "requireUniqueStatements": true
+  }
+}

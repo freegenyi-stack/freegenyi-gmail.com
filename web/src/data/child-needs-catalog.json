@@ -1,0 +1,90 @@
+{
+  "troubles_et_maladies": {
+    "troubles_apprentissages_dys": [
+      { "id": "dyslexie", "label": "Dyslexie", "description": "Difficultés de lecture et décodage des mots" },
+      { "id": "dysorthographie", "label": "Dysorthographie", "description": "Difficultés en orthographe malgré l'apprentissage" },
+      { "id": "dyscalculie", "label": "Dyscalculie", "description": "Difficultés avec les chiffres et le raisonnement mathématique" },
+      { "id": "dyspraxie_tdc", "label": "Dyspraxie / TDC", "description": "Trouble Développemental de la Coordination, maladresse motrice, difficultés à écrire" },
+      { "id": "dysphasie", "label": "Dysphasie", "description": "Troubles du langage oral" },
+      { "id": "dysgraphie", "label": "Dysgraphie", "description": "Écriture manuscrite difficile ou illisible" }
+    ],
+    "troubles_attention": [
+      { "id": "tdah", "label": "TDAH", "description": "Trouble Déficit de l'Attention avec Hyperactivité" },
+      { "id": "tda", "label": "TDA (sans hyperactivité)", "description": "Enfant rêveur, distrait, sans hyperactivité" },
+      { "id": "impulsivite", "label": "Impulsivité / Agitation", "description": "Difficultés à rester concentré, comportement impulsif" }
+    ],
+    "troubles_neurodeveloppement": [
+      { "id": "tsa", "label": "TSA – Trouble du Spectre de l'Autisme", "description": "Anciennement Asperger inclus" },
+      { "id": "hpi", "label": "HPI / Haut Potentiel Intellectuel", "description": "Surdoué, zèbre" },
+      { "id": "double_exceptionnalite", "label": "Double exceptionnalité", "description": "HPI combiné avec un trouble DYS ou TDAH" },
+      { "id": "deficience_intellectuelle_legere", "label": "Déficience intellectuelle légère", "description": "Trouble du développement intellectuel" }
+    ],
+    "troubles_emotionnels_comportementaux": [
+      { "id": "anxiete_scolaire", "label": "Anxiété scolaire / Phobie scolaire", "description": "Peur ou refus d'aller à l'école" },
+      { "id": "toc", "label": "TOC – Troubles Obsessionnels Compulsifs", "description": "Pensées ou comportements répétitifs et incontrôlables" },
+      { "id": "troubles_humeur", "label": "Troubles de l'humeur", "description": "Dépression infantile, tristesse persistante" },
+      { "id": "top", "label": "TOP – Trouble Oppositionnel avec Provocation", "description": "Comportement défiant et hostile envers les adultes" },
+      { "id": "troubles_comportement", "label": "Troubles du comportement en classe", "description": "Agitation, agressivité, difficultés relationnelles" },
+      { "id": "mutisme_selectif", "label": "Mutisme sélectif", "description": "Incapacité à parler dans certaines situations sociales" }
+    ],
+    "troubles_langage_communication": [
+      { "id": "begaiement", "label": "Bégaiement", "description": "Interruptions involontaires dans la fluidité de la parole" },
+      { "id": "retard_parole", "label": "Retard de parole / Retard de langage", "description": "Développement du langage plus lent que la moyenne" },
+      { "id": "trouble_articulation", "label": "Troubles de l'articulation / Phonologie", "description": "Difficultés à prononcer correctement les sons" },
+      { "id": "trouble_pragmatique", "label": "Trouble pragmatique du langage", "description": "Difficultés de communication sociale" }
+    ],
+    "troubles_sensoriels": [
+      { "id": "deficience_visuelle", "label": "Déficience visuelle", "description": "Malvoyance, strabisme, troubles de la convergence" },
+      { "id": "deficience_auditive", "label": "Déficience auditive", "description": "Hypoacousie, surdité partielle ou totale" },
+      { "id": "ttac", "label": "TTAC – Troubles du Traitement Auditif Central", "description": "Difficultés à traiter et interpréter les sons" },
+      { "id": "hypersensibilite_sensorielle", "label": "Hypersensibilité sensorielle", "description": "Réactions excessives aux sons, lumières ou textures" }
+    ],
+    "troubles_sommeil_fatigue": [
+      { "id": "troubles_sommeil", "label": "Troubles du sommeil chroniques", "description": "Insomnie, réveils nocturnes fréquents" },
+      { "id": "fatigue_chronique", "label": "Fatigue chronique", "description": "Fatigue persistante impactant la concentration scolaire" },
+      { "id": "narcolepsie", "label": "Narcolepsie", "description": "Endormissements soudains et incontrôlables" }
+    ],
+    "maladies_chroniques": [
+      { "id": "epilepsie", "label": "Épilepsie", "description": "Absences, crises, impact cognitif possible" },
+      { "id": "diabete_type1", "label": "Diabète de type 1", "description": "Gestion glycémique en classe, impact sur la concentration" },
+      { "id": "asthme", "label": "Asthme sévère", "description": "Difficultés respiratoires impactant la vie scolaire" },
+      { "id": "maladies_auto_immunes", "label": "Maladies auto-immunes", "description": "Lupus, polyarthrite, etc." },
+      { "id": "troubles_thyroide", "label": "Troubles de la thyroïde", "description": "Hypothyroïdie ou hyperthyroïdie impactant l'énergie et la cognition" },
+      { "id": "traitements_medicamenteux", "label": "Traitements médicamenteux impactant la cognition", "description": "Somnolence, baisse de concentration liées à un traitement" }
+    ],
+    "troubles_moteurs_physiques": [
+      { "id": "paralysie_cerebrale", "label": "Paralysie cérébrale / IMC", "description": "Infirmité Motrice Cérébrale" },
+      { "id": "motricite_fine", "label": "Troubles de la motricité fine", "description": "Impact sur l'écriture et les activités manuelles" },
+      { "id": "handicap_moteur", "label": "Handicap moteur", "description": "Fauteuil roulant, mobilité réduite" }
+    ]
+  },
+  "questions_onboarding": [
+    { "id": "q1", "question": "Votre enfant a-t-il été diagnostiqué avec un trouble de l'apprentissage ?", "type": "boolean" },
+    { "id": "q2", "question": "Votre enfant bénéficie-t-il d'un PAP, PPS ou PPRE à l'école ?", "type": "boolean" },
+    {
+      "id": "q3",
+      "question": "Votre enfant rencontre-t-il des difficultés particulières en lecture, écriture ou calcul ?",
+      "type": "multiple_choice",
+      "options": ["Lecture", "Écriture", "Calcul", "Aucune difficulté particulière"]
+    },
+    {
+      "id": "q4",
+      "question": "Votre enfant est-il suivi par un professionnel de santé ?",
+      "type": "multiple_choice",
+      "options": ["Orthophoniste", "Psychomotricien", "Ergothérapeute", "Psychologue", "Autre", "Non"]
+    },
+    { "id": "q5", "question": "Des aménagements scolaires sont-ils déjà en place pour votre enfant ?", "type": "boolean" },
+    { "id": "q6", "question": "Votre enfant se décourage-t-il facilement face aux exercices scolaires ?", "type": "scale", "min": 1, "max": 5 },
+    { "id": "q7", "question": "Votre enfant a-t-il du mal à rester assis ou à terminer ses tâches ?", "type": "boolean" },
+    {
+      "id": "q8",
+      "question": "Parmi les troubles suivants, lesquels concernent votre enfant ? (sélection multiple)",
+      "type": "multiple_choice",
+      "options": [
+        "Dyslexie", "Dysorthographie", "Dyscalculie", "Dyspraxie", "Dysphasie", "Dysgraphie",
+        "TDAH", "TDA", "TSA", "HPI", "Anxiété scolaire", "Trouble du langage",
+        "Déficience visuelle", "Déficience auditive", "Épilepsie", "Autre", "Aucun"
+      ]
+    }
+  ]
+}

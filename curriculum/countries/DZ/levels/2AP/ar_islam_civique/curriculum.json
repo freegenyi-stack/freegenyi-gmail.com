@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "country": "DZ",
+    "level": "2AP",
+    "subject": "ar_islam_civique",
+    "moduleId": "FG-DZ-2AP-AR",
+    "labelFr": "Arabe, éducation islamique et civique",
+    "labelAr": "اللغة العربية والتربية الإسلامية والمدنية",
+    "version": 0,
+    "status": "draft",
+    "sourceRef": ""
+  },
+  "domaines": [
+    { "code": "arabe", "labelFr": "Langue arabe", "labelAr": "اللغة العربية" },
+    { "code": "islamique", "labelFr": "Éducation islamique", "labelAr": "التربية الإسلامية" },
+    { "code": "civique", "labelFr": "Éducation civique", "labelAr": "التربية المدنية" }
+  ],
+  "maqaate": []
+}

@@ -33,7 +33,7 @@ export default function AuthShell({ children, isRTL, heroImage, sideTitle, sideS
             </span>
           </Link>
           {sideTitle && (
-            <h1 className={cn("text-4xl font-black leading-tight text-slate-900", isRTL && "font-amiri text-5xl")}>
+            <h1 className={cn("text-4xl font-black leading-tight text-slate-900", isRTL && "font-ui-ar text-5xl")}>
               {sideTitle}
             </h1>
           )}

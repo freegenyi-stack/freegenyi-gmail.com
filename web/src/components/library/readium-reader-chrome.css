@@ -1,0 +1,134 @@
+/**
+ * Thorium importe un reset global `button { background:none; color:inherit }`
+ * qui efface Tailwind sur toute la page. Ces règles rétablissent l'UI FreeGeny.
+ */
+.freegeny-reader-chrome button {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.25;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.freegeny-reader-chrome .fg-btn-tts {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.75rem 1.25rem !important;
+  border: none !important;
+  border-radius: 0.875rem !important;
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 100%) !important;
+  color: #ffffff !important;
+  font-size: 0.9375rem !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 18px rgba(234, 88, 12, 0.5) !important;
+}
+
+.freegeny-reader-chrome .fg-btn-tts:hover {
+  background: linear-gradient(135deg, #c2410c 0%, #ea580c 100%) !important;
+}
+
+.freegeny-reader-chrome .fg-btn-tts.is-speaking {
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%) !important;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.55) !important;
+}
+
+.freegeny-reader-chrome .fg-btn-tts svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  flex-shrink: 0;
+}
+
+.freegeny-reader-chrome .fg-reader-bottom-bar {
+  background: #ffffff !important;
+  border-top: 3px solid #ea580c !important;
+  box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.18) !important;
+}
+
+.freegeny-reader-chrome .fg-btn-header,
+.freegeny-reader-chrome a.fg-btn-header {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 0.75rem !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+.freegeny-reader-chrome .fg-btn-header:hover,
+.freegeny-reader-chrome a.fg-btn-header:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+}
+
+.freegeny-reader-chrome .fg-btn-header svg,
+.freegeny-reader-chrome a.fg-btn-header svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.freegeny-reader-chrome--parent .fg-btn-header--parent,
+.freegeny-reader-chrome--parent a.fg-btn-header--parent {
+  border: 1px solid rgba(234, 88, 12, 0.25) !important;
+  background: rgba(255, 251, 247, 0.9) !important;
+  color: #c2410c !important;
+}
+
+.freegeny-reader-chrome--parent .fg-btn-header--parent:hover,
+.freegeny-reader-chrome--parent a.fg-btn-header--parent:hover {
+  background: #fff7ed !important;
+  color: #9a3412 !important;
+}
+
+.freegeny-reader-chrome--parent .fg-btn-header--parent svg,
+.freegeny-reader-chrome--parent a.fg-btn-header--parent svg {
+  color: #c2410c !important;
+  stroke: #c2410c !important;
+}
+
+.freegeny-reader-chrome--parent .fg-btn-tts.is-speaking {
+  background: linear-gradient(135deg, #c2410c 0%, #ea580c 100%) !important;
+  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.45) !important;
+}
+
+.freegeny-reader-chrome .fg-context-menu {
+  background: #ffffff !important;
+  border: 2px solid #ea580c !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28) !important;
+  min-width: 13rem;
+  padding: 0.25rem 0 !important;
+  overflow: hidden;
+}
+
+.freegeny-reader-chrome .fg-context-item {
+  display: flex !important;
+  width: 100% !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding: 0.625rem 1rem !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #0f172a !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+}
+
+.freegeny-reader-chrome .fg-context-item:hover {
+  background: #fff7ed !important;
+  color: #9a3412 !important;
+}
+
+.freegeny-reader-chrome .fg-context-divider {
+  height: 1px;
+  margin: 0.25rem 0;
+  background: #e2e8f0;
+}

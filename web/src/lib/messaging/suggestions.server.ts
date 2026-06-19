@@ -12,6 +12,7 @@ import {
 } from "./session";
 import { notifyUser } from "./notify";
 import { syncSchoolChannels } from "./channels.server";
+import type { MessageSuggestionDto, SuggestionReasonKey } from "./types";
 
 function teacherSchoolId(meta: Record<string, unknown>): number | null {
   const raw = meta.teacherSchoolId ?? meta.schoolId;
@@ -66,7 +67,7 @@ async function upsertSuggestion(
       set: {
         reasonParams: JSON.stringify(params),
         sortOrder,
-        dismissed: false,
+        // Ne pas réinitialiser dismissed — respecter ignore/accepter de l'utilisateur
       },
     });
 }
@@ -221,20 +222,21 @@ export async function refreshSchoolMessagingGraph(schoolId: number, locale = "fr
 }
 
 export async function listSuggestions(user: MessagingUser, locale: string): Promise<MessageSuggestionDto[]> {
-  let rows = await db
+  const [seeded] = await db
+    .select({ id: messageSuggestions.id })
+    .from(messageSuggestions)
+    .where(eq(messageSuggestions.userId, user.id))
+    .limit(1);
+
+  if (!seeded) {
+    await regenerateSuggestionsForUser(user, locale);
+  }
+
+  const rows = await db
     .select()
     .from(messageSuggestions)
     .where(and(eq(messageSuggestions.userId, user.id), eq(messageSuggestions.dismissed, false)))
     .orderBy(messageSuggestions.sortOrder);
-
-  if (rows.length === 0) {
-    await regenerateSuggestionsForUser(user, locale);
-    rows = await db
-      .select()
-      .from(messageSuggestions)
-      .where(and(eq(messageSuggestions.userId, user.id), eq(messageSuggestions.dismissed, false)))
-      .orderBy(messageSuggestions.sortOrder);
-  }
 
   const out: MessageSuggestionDto[] = [];
   for (const row of rows.slice(0, 12)) {
@@ -258,11 +260,18 @@ export async function listSuggestions(user: MessagingUser, locale: string): Prom
 }
 
 export async function dismissSuggestion(userId: number, suggestionId: number): Promise<boolean> {
-  const result = await db
+  await db
     .update(messageSuggestions)
     .set({ dismissed: true })
     .where(and(eq(messageSuggestions.id, suggestionId), eq(messageSuggestions.userId, userId)));
   return true;
+}
+
+export async function dismissSuggestionsForTarget(userId: number, targetUserId: number): Promise<void> {
+  await db
+    .update(messageSuggestions)
+    .set({ dismissed: true })
+    .where(and(eq(messageSuggestions.userId, userId), eq(messageSuggestions.targetUserId, targetUserId)));
 }
 
 /** Notifie l'utilisateur des nouvelles suggestions (max 1/jour par batch). */

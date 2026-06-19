@@ -1,0 +1,88 @@
+{
+  "metadata": { "moduleId": "FG-DZ-1AP-MATH", "totalExercises": 8, "version": 1 },
+  "items": [
+    {
+      "id": "DZ_1AP_MATH_EX001",
+      "competencyId": "DZ_1AP_MATH_NUM_01",
+      "variantGroup": "vg_count_apples",
+      "type": "multiple_choice",
+      "domaine": "math",
+      "difficulty": 1,
+      "points": 10,
+      "profiles": ["parent", "teacher", "official_path"],
+      "statementFr": "{{personnage}} compte des {{objet}}. Il en voit {{count}}. Quel nombre ?",
+      "statementAr": "يعد {{personnage}} {{objet}}. يرى {{count}}. أي عدد؟",
+      "optionsFr": ["3", "4", "5", "2"],
+      "correctAnswer": "{{count}}",
+      "templateVars": {
+        "personnage": ["أحمد", "فاطمة"],
+        "objet": ["pommes", "balles", "crayons"],
+        "count": ["3", "4", "5"]
+      },
+      "explanationFr": "Compte une par une pour vérifier.",
+      "feedback": { "correctFr": "Bravo !", "incorrectFr": "Compte encore lentement." }
+    },
+    {
+      "id": "DZ_1AP_MATH_EX002",
+      "competencyId": "DZ_1AP_MATH_NUM_01",
+      "variantGroup": "vg_count_apples",
+      "type": "calcul_interactif",
+      "domaine": "math",
+      "difficulty": 1,
+      "points": 10,
+      "profiles": ["parent", "teacher", "official_path"],
+      "statementFr": "Combien font 2 + 3 ?",
+      "statementAr": "كم يساوي 2 + 3 ؟",
+      "correctAnswer": "5",
+      "explanationFr": "2 et 3 font 5.",
+      "feedback": { "correctFr": "Exact !", "incorrectFr": "Utilise tes doigts ou des objets." }
+    },
+    {
+      "id": "DZ_1AP_MATH_EX003",
+      "competencyId": "DZ_1AP_MATH_NUM_02",
+      "variantGroup": "vg_compare_01",
+      "type": "true_false",
+      "domaine": "math",
+      "difficulty": 2,
+      "points": 5,
+      "profiles": ["parent", "teacher", "official_path"],
+      "statementFr": "4 est plus grand que 2.",
+      "statementAr": "4 أكبر من 2.",
+      "correctAnswer": true,
+      "explanationFr": "4 > 2.",
+      "feedback": { "correctFr": "Oui !", "incorrectFr": "Compare avec des objets." }
+    },
+    {
+      "id": "DZ_1AP_MATH_EX004",
+      "competencyId": "DZ_1AP_MATH_NUM_02",
+      "variantGroup": "vg_compare_02",
+      "type": "multiple_choice",
+      "domaine": "math",
+      "difficulty": 2,
+      "points": 10,
+      "profiles": ["parent", "teacher", "official_path"],
+      "statementFr": "Où voit-on « autant » (بقدر) ?",
+      "statementAr": "أين نرى « بقدر »؟",
+      "optionsFr": ["3 pommes et 3 pommes", "2 pommes et 5 pommes", "1 pomme et 4 pommes", "0 pomme et 3 pommes"],
+      "correctAnswer": "3 pommes et 3 pommes",
+      "explanationFr": "Autant = même quantité.",
+      "feedback": { "correctFr": "Parfait !", "incorrectFr": "Autant veut dire égal." }
+    },
+    {
+      "id": "DZ_1AP_EST_EX001",
+      "competencyId": "DZ_1AP_EST_SENSES_01",
+      "variantGroup": "vg_senses_01",
+      "type": "multiple_choice",
+      "domaine": "est",
+      "difficulty": 1,
+      "points": 10,
+      "profiles": ["parent", "teacher", "official_path"],
+      "statementFr": "Avec quel sens goûte-t-on ?",
+      "statementAr": "بأي حاسة نتذوق؟",
+      "optionsFr": ["Goût", "Vue", "Ouïe", "Toucher"],
+      "correctAnswer": "Goût",
+      "explanationFr": "La langue sert au goût.",
+      "feedback": { "correctFr": "Super !", "incorrectFr": "Pense à ce que tu utilises en mangeant." }
+    }
+  ]
+}

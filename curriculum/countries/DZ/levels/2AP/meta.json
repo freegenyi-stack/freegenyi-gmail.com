@@ -1,0 +1,14 @@
+{
+  "country": "DZ",
+  "level": "2AP",
+  "labelFr": "2ème année primaire",
+  "labelAr": "السنة الثانية ابتدائي",
+  "status": "draft",
+  "version": 0,
+  "notesFr": "Généré par scaffold — remplir curriculum/competences/exercise_bank puis curriculum:validate && curriculum:import",
+  "subjects": [
+    "ar_islam_civique",
+    "math_est"
+  ],
+  "scaffoldedAt": "2026-06-19T08:21:53.824Z"
+}

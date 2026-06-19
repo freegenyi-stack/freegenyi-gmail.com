@@ -1,0 +1,18 @@
+{
+  "metadata": { "platform": "FreeGeny", "moduleId": "FG-DZ-1AP-AR", "version": 1, "status": "skeleton_mq01" },
+  "competencies": [
+    { "competencyId": "DZ_1AP_AR_MQ01_U01", "domaine": "arabe", "maqtaId": "mq01", "unitId": "u01_ahmad", "nameFr": "Accueil — Ahmad", "nameAr": "أَحْمَدُ يُرَحِّبُ بِكُمْ", "skillType": "LINGUISTIC", "status": "pending_scan", "indicators": [] },
+    { "competencyId": "DZ_1AP_AR_MQ01_U02", "domaine": "arabe", "maqtaId": "mq01", "unitId": "u02_family", "nameFr": "Ma famille", "nameAr": "تعرف على عائلتي", "skillType": "LINGUISTIC", "status": "pending_scan", "indicators": [] },
+    { "competencyId": "DZ_1AP_AR_MQ01_U03", "domaine": "arabe", "maqtaId": "mq01", "unitId": "u03_home", "nameFr": "Notre maison", "nameAr": "في منزلنا", "skillType": "LINGUISTIC", "status": "pending_scan", "indicators": [] },
+    { "competencyId": "DZ_1AP_AR_MQ01_U04", "domaine": "arabe", "maqtaId": "mq01", "unitId": "u04_family_together", "nameFr": "Famille réunie", "nameAr": "العائلة مجتمعة", "skillType": "LINGUISTIC", "status": "pending_scan", "indicators": [] },
+    { "competencyId": "DZ_1AP_AR_MQ01_LETTERS_01", "domaine": "arabe", "maqtaId": "mq01", "unitId": "u05_letters", "nameFr": "Tracer lignes et formes", "nameAr": "رسم الخطوط والأشكال", "skillType": "LINGUISTIC", "status": "pending_scan", "indicators": [{ "indicatorId": "IND_AR_L01", "textFr": "Reproduit un trait horizontal et vertical", "bloomLevel": "2_understand" }] },
+    { "competencyId": "DZ_1AP_AR_MQ01_ISLAM_06", "domaine": "islamique", "maqtaId": "mq01", "unitId": "u06_obey_parents", "nameFr": "Obéir aux parents", "nameAr": "أطيع والدي", "skillType": "ISLAMIC", "status": "pending_scan", "indicators": [] },
+    { "competencyId": "DZ_1AP_AR_MQ01_ISLAM_01", "domaine": "islamique", "maqtaId": "mq01", "unitId": "u07_fatiha", "nameFr": "Sourate Al-Fatiha — début", "nameAr": "سورة الفاتحة — البداية", "skillType": "ISLAMIC", "status": "pending_scan", "indicators": [{ "indicatorId": "IND_ISL_01", "textFr": "Récite « بسم الله الرحمن الرحيم » avec aide", "bloomLevel": "1_remember" }] },
+    { "competencyId": "DZ_1AP_AR_MQ01_ISLAM_08", "domaine": "islamique", "maqtaId": "mq01", "unitId": "u08_ask_permission", "nameFr": "Demander la permission", "nameAr": "استأذن", "skillType": "ISLAMIC", "status": "pending_scan", "indicators": [] },
+    { "competencyId": "DZ_1AP_AR_MQ01_ISLAM_09", "domaine": "islamique", "maqtaId": "mq01", "unitId": "u09_love_family", "nameFr": "Aimer sa famille", "nameAr": "أحب عائلتي", "skillType": "ISLAMIC", "status": "pending_scan", "indicators": [] },
+    { "competencyId": "DZ_1AP_AR_MQ01_CIVIC_01", "domaine": "civique", "maqtaId": "mq01", "unitId": "u10_greeting", "nameFr": "Salutation et réponse", "nameAr": "التحية وردها", "skillType": "CIVIC", "status": "pending_scan", "indicators": [{ "indicatorId": "IND_CIV_01", "textFr": "Utilise « السلام عليكم » et la réponse adaptée", "bloomLevel": "2_understand" }] },
+    { "competencyId": "DZ_1AP_AR_MQ01_MAH_11", "domaine": "mahfoudat", "maqtaId": "mq01", "unitId": "u11_qisma", "nameFr": "Qisma", "nameAr": "قسما", "skillType": "MEMORIZATION", "status": "pending_scan", "indicators": [] },
+    { "competencyId": "DZ_1AP_AR_MQ01_PROJ_12", "domaine": "integration", "maqtaId": "mq01", "unitId": "u12_draw_home", "nameFr": "Dessiner et décrire la maison", "nameAr": "أرسم منزلنا وأصفه", "skillType": "CREATIVE", "status": "pending_scan", "indicators": [] },
+    { "competencyId": "DZ_1AP_AR_MQ01_PROJ_13", "domaine": "integration", "maqtaId": "mq01", "unitId": "u13_family_tree", "nameFr": "Arbre de ma famille", "nameAr": "شجرة عائلتي", "skillType": "CREATIVE", "status": "pending_scan", "indicators": [] }
+  ]
+}

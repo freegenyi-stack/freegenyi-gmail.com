@@ -8,8 +8,7 @@ import Image from "next/image";
 import { signIn } from "next-auth/react";
 import {
   User, Mail, Lock, Smartphone, ArrowRight, ArrowLeft, Eye, EyeOff,
-  ShieldCheck, RefreshCcw, Sparkles, GraduationCap, School, Palette,
-  BookOpen,
+  ShieldCheck, RefreshCcw, Sparkles, GraduationCap, UserSearch,
 } from "lucide-react";
 import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from "react-simple-captcha";
 import { toast } from "sonner";
@@ -17,10 +16,17 @@ import { registerTeacherAction } from "@/lib/actions/teacher_register";
 import { loginAction } from "@/lib/actions/auth";
 import { checkUserAvailability } from "@/lib/actions/auth_elite";
 import SchoolPicker from "@/components/SchoolPicker";
+import InterestPicker from "@/components/onboarding/InterestPicker";
+import TeacherSubjectLevelPicker from "@/components/teacher/TeacherSubjectLevelPicker";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import PasswordStrengthChecker from "@/components/PasswordStrengthChecker";
 import { isPasswordStrong } from "@/lib/passwordPolicy";
+import {
+  appendNotificationInterests,
+  MAX_NOTIFICATION_INTERESTS,
+} from "@/lib/onboarding/interest-topics";
+import { appendTeacherSubjectsLevels } from "@/lib/teacher/form-fields";
 
 const COUNTRIES = [
   { code: "DZ", flag: "🇩🇿", dial: "+213" },
@@ -31,6 +37,7 @@ const COUNTRIES = [
 
 export default function RegisterTeacherClient({ locale }: { locale: string }) {
   const t = useTranslations("TeacherRegister");
+  const tInterest = useTranslations("InterestTopics");
   const router = useRouter();
   const activeLocale = useLocale();
   const isRTL = activeLocale.endsWith("-ar") || activeLocale === "ar";
@@ -46,11 +53,13 @@ export default function RegisterTeacherClient({ locale }: { locale: string }) {
   const [usernameAvailable, setUsernameAvailable] = useState<boolean | null>(null);
   const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0]);
   const [selectedSchool, setSelectedSchool] = useState<{ id: number; name: string } | null>(null);
+  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
+  const [selectedLevels, setSelectedLevels] = useState<string[]>(["3AP"]);
   const [teacherBio, setTeacherBio] = useState("");
-  const [interestCreative, setInterestCreative] = useState(true);
-  const [interestTraining, setInterestTraining] = useState(true);
+  const [notificationInterests, setNotificationInterests] = useState<string[]>([]);
   const [captchaValue, setCaptchaValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const passwordsMismatch = confirmPassword.length > 0 && password !== confirmPassword;
 
   useEffect(() => {
     if (step === 3) {
@@ -90,13 +99,26 @@ export default function RegisterTeacherClient({ locale }: { locale: string }) {
         return;
       }
       if (password !== confirmPassword) {
-        toast.error(t("errPasswordMatch"));
         return;
       }
     }
-    if (step === 2 && !selectedSchool) {
-      toast.error(t("errSchool"));
-      return;
+    if (step === 2) {
+      if (!selectedSchool) {
+        toast.error(t("errSchool"));
+        return;
+      }
+      if (selectedSubjects.length === 0) {
+        toast.error(t("errSubjects"));
+        return;
+      }
+      if (selectedLevels.length === 0) {
+        toast.error(t("errLevels"));
+        return;
+      }
+      if (notificationInterests.length !== MAX_NOTIFICATION_INTERESTS) {
+        toast.error(tInterest("errPickThree"));
+        return;
+      }
     }
     if (step < 3) setStep(step + 1);
   };
@@ -120,10 +142,10 @@ export default function RegisterTeacherClient({ locale }: { locale: string }) {
     fd.set("confirmPassword", confirmPassword);
     fd.set("teacher_school_id", selectedSchool ? String(selectedSchool.id) : "");
     fd.set("teacher_school_name", selectedSchool?.name || "");
+    appendTeacherSubjectsLevels(fd, selectedSubjects, selectedLevels);
     fd.set("teacher_bio", teacherBio);
     fd.set("locale", locale);
-    if (interestCreative) fd.set("interest_creative", "on");
-    if (interestTraining) fd.set("interest_training", "on");
+    appendNotificationInterests(fd, notificationInterests);
     fd.set("captcha", captchaValue);
 
     const result = await registerTeacherAction(fd);
@@ -210,7 +232,32 @@ export default function RegisterTeacherClient({ locale }: { locale: string }) {
                       <input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} placeholder={t("password")} className="w-full border-2 border-slate-100 rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:border-teal-500" />
                       <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute top-1/2 -translate-y-1/2 end-3 text-slate-400">{showPassword ? <EyeOff size={16} /> : <Eye size={16} />}</button>
                     </div>
-                    <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder={t("confirmPassword")} className="w-full border-2 border-slate-100 rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:border-teal-500" />
+                    <div>
+                      <input
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        placeholder={t("confirmPassword")}
+                        className={cn(
+                          "w-full border-2 rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:border-teal-500",
+                          passwordsMismatch
+                            ? "border-rose-300 bg-rose-50/40"
+                            : confirmPassword && password === confirmPassword
+                              ? "border-emerald-400 bg-emerald-50/30"
+                              : "border-slate-100"
+                        )}
+                      />
+                      {passwordsMismatch && (
+                        <p className={cn("text-xs text-red-600 font-bold mt-1", isRTL && "text-right font-ui-ar")}>
+                          Mot de passe erroné — les deux champs doivent être identiques.
+                        </p>
+                      )}
+                      {confirmPassword.length > 0 && !passwordsMismatch && isPasswordStrong(password) && (
+                        <p className={cn("text-xs text-emerald-600 font-bold mt-1", isRTL && "text-right font-ui-ar")}>
+                          Mot de passe identique.
+                        </p>
+                      )}
+                    </div>
                   </div>
                   <PasswordStrengthChecker password={password} compact />
                   {usernameAvailable === false && <p className="text-xs text-red-600 font-bold">{t("errUsername")}</p>}
@@ -222,30 +269,31 @@ export default function RegisterTeacherClient({ locale }: { locale: string }) {
                   <div>
                     <label className="text-[10px] font-black uppercase text-slate-500 mb-2 block">{t("schoolLabel")}</label>
                     <SchoolPicker value={selectedSchool} onChange={setSelectedSchool} country="DZ" placeholder={t("schoolPlaceholder")} />
+                    {selectedSchool && (
+                      <div className="mt-3 flex gap-3 rounded-2xl border-2 border-teal-100 bg-teal-50/80 p-3">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-teal-500 text-white">
+                          <UserSearch className="h-4 w-4" />
+                        </div>
+                        <p className="text-xs font-bold leading-relaxed text-teal-900">
+                          {tInterest("teacherProfileHint")}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                  <textarea value={teacherBio} onChange={(e) => setTeacherBio(e.target.value)} placeholder={t("bioPlaceholder")} rows={3} className="w-full border-2 border-slate-100 rounded-xl px-4 py-3 text-sm font-medium outline-none focus:border-teal-500 resize-none" />
+                  <TeacherSubjectLevelPicker
+                    subjects={selectedSubjects}
+                    levels={selectedLevels}
+                    onSubjectsChange={setSelectedSubjects}
+                    onLevelsChange={setSelectedLevels}
+                    compact
+                  />
+                  <textarea value={teacherBio} onChange={(e) => setTeacherBio(e.target.value)} placeholder={t("bioPlaceholder")} rows={2} className="w-full border-2 border-slate-100 rounded-xl px-4 py-3 text-sm font-medium outline-none focus:border-teal-500 resize-none" />
+                  <InterestPicker value={notificationInterests} onChange={setNotificationInterests} compact />
                 </motion.div>
               )}
 
               {step === 3 && (
                 <motion.div key="s3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
-                  <p className="text-sm font-bold text-slate-600">{t("interestsTitle")}</p>
-                  <label className={cn("flex items-center gap-4 p-4 rounded-2xl border-2 cursor-pointer transition-all", interestCreative ? "border-teal-400 bg-teal-50" : "border-slate-100")}>
-                    <input type="checkbox" checked={interestCreative} onChange={(e) => setInterestCreative(e.target.checked)} className="sr-only" />
-                    <Palette className="w-8 h-8 text-teal-600" />
-                    <div>
-                      <p className="font-black text-slate-900 text-sm">{t("interestCreative")}</p>
-                      <p className="text-xs text-slate-500">{t("interestCreativeDesc")}</p>
-                    </div>
-                  </label>
-                  <label className={cn("flex items-center gap-4 p-4 rounded-2xl border-2 cursor-pointer transition-all", interestTraining ? "border-emerald-400 bg-emerald-50" : "border-slate-100")}>
-                    <input type="checkbox" checked={interestTraining} onChange={(e) => setInterestTraining(e.target.checked)} className="sr-only" />
-                    <BookOpen className="w-8 h-8 text-emerald-600" />
-                    <div>
-                      <p className="font-black text-slate-900 text-sm">{t("interestTraining")}</p>
-                      <p className="text-xs text-slate-500">{t("interestTrainingDesc")}</p>
-                    </div>
-                  </label>
                   <div className="bg-teal-50/50 rounded-2xl p-3 border border-teal-100 flex items-center gap-3">
                     <LoadCanvasTemplateNoReload />
                     <input type="text" value={captchaValue} onChange={(e) => setCaptchaValue(e.target.value)} placeholder={t("captcha")} className="flex-1 border-2 border-white rounded-lg px-3 py-2 text-sm font-bold outline-none focus:border-teal-500" />

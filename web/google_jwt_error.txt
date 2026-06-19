@@ -1,15 +1,15 @@
 Error: Failed query: select "role", "id", "onboarding_step" from "users" where "users"."email" = $1
-params: fk.bahloul@gmail.com
+params: abouch@bibouch.com
 Stack: Error: Failed query: select "role", "id", "onboarding_step" from "users" where "users"."email" = $1
-params: fk.bahloul@gmail.com
+params: abouch@bibouch.com
     at NodePgPreparedQuery.queryWithCache (webpack-internal:///(rsc)/./node_modules/drizzle-orm/pg-core/session.js:53:15)
     at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     at async eval (webpack-internal:///(rsc)/./node_modules/drizzle-orm/node-postgres/session.js:134:22)
-    at async Object.jwt (webpack-internal:///(rsc)/./src/auth.ts:140:38)
+    at async Object.jwt (webpack-internal:///(rsc)/./src/auth.ts:177:38)
     at async Module.session (webpack-internal:///(rsc)/./node_modules/@auth/core/lib/actions/session.js:34:27)
     at async AuthInternal (webpack-internal:///(rsc)/./node_modules/@auth/core/lib/index.js:51:24)
     at async Auth (webpack-internal:///(rsc)/./node_modules/@auth/core/index.js:130:34)
-    at async GET (webpack-internal:///(rsc)/./app/api/chat/ably-auth/route.ts:17:25)
+    at async GET (webpack-internal:///(rsc)/./app/api/notifications/route.ts:24:25)
     at async AppRouteRouteModule.do (C:\Users\Yousr\freegonya\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:10:32804)
     at async AppRouteRouteModule.handle (C:\Users\Yousr\freegonya\web\node_modules\next\dist\compiled\next-server\app-route.runtime.dev.js:10:39698)
     at async doRender (C:\Users\Yousr\freegonya\web\node_modules\next\dist\server\base-server.js:1452:42)

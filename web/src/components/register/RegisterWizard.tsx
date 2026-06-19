@@ -12,6 +12,7 @@ import {
   EyeOff,
   Check,
   X,
+  UserSearch,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
@@ -25,13 +26,30 @@ import { registerTeacherAction } from "@/lib/actions/teacher_register";
 import { completeGoogleOnboardingAction } from "@/lib/actions/onboarding";
 import { loginAction } from "@/lib/actions/auth";
 import CaptchaField, { type CaptchaFieldRef } from "@/components/register/CaptchaField";
+import InterestPicker from "@/components/onboarding/InterestPicker";
+import TeacherSubjectLevelPicker from "@/components/teacher/TeacherSubjectLevelPicker";
+import { appendTeacherSubjectsLevels } from "@/lib/teacher/form-fields";
 import { toast } from "sonner";
 import { LUXURY } from "@/constants/design";
 import PasswordStrengthChecker from "@/components/PasswordStrengthChecker";
 import { isPasswordStrong } from "@/lib/passwordPolicy";
+import {
+  appendNotificationInterests,
+  MAX_NOTIFICATION_INTERESTS,
+} from "@/lib/onboarding/interest-topics";
+import ChildNeedsStep from "@/components/onboarding/ChildNeedsStep";
+import ChildLearningPreferencesStep from "@/components/onboarding/ChildLearningPreferencesStep";
+import type { ChildLearningProfile } from "@/lib/child/learning-profile";
 
 type Role = "parent" | "enseignant";
 const LEVELS = ["1AP", "2AP", "3AP", "4AP", "5AP"] as const;
+const LEVEL_TO_AGE: Record<(typeof LEVELS)[number], string> = {
+  "1AP": "6",
+  "2AP": "7",
+  "3AP": "8",
+  "4AP": "9",
+  "5AP": "10",
+};
 
 type StepId =
   | "role"
@@ -40,17 +58,24 @@ type StepId =
   | "profile"
   | "schooling"
   | "school"
+  | "accompagnement"
+  | "learning"
   | "ally"
   | "identity"
   | "captcha";
 
 function getSteps(role: Role, mode: "register" | "google" = "register"): StepId[] {
   if (mode === "google") {
-    // Rôle déjà choisi avant OAuth — on reprend directement au profil Google
-    const base: StepId[] = ["profile", "schooling", "school"];
+    const base: StepId[] =
+      role === "parent"
+        ? ["profile", "schooling", "school", "accompagnement", "learning"]
+        : ["profile", "school"];
     return role === "parent" ? [...base, "ally", "identity", "captcha"] : [...base, "identity", "captcha"];
   }
-  const base: StepId[] = ["role", "account", "credentials", "schooling", "school"];
+  const base: StepId[] =
+    role === "parent"
+      ? ["role", "account", "credentials", "schooling", "school", "accompagnement", "learning"]
+      : ["role", "account", "credentials", "school"];
   return role === "parent" ? [...base, "ally", "identity", "captcha"] : [...base, "identity", "captcha"];
 }
 
@@ -67,6 +92,8 @@ const MOBILE = {
   label: "text-[13px] font-bold text-black sm:text-xs",
   cta: "min-h-[52px] w-full rounded-2xl border-b-[5px] border-orange-800 bg-orange-500 py-3.5 text-base font-extrabold uppercase tracking-wide text-white transition active:border-b-2 active:translate-y-[2px] disabled:opacity-50 sm:text-sm",
   footer: "shrink-0 border-t border-neutral-200 bg-white px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-5",
+  contentScroll: "overflow-y-auto overscroll-contain",
+  contentFixed: "overflow-hidden sm:justify-center",
 } as const;
 
 /** Navigation hors du cycle React — évite l'erreur RSC « Error in input stream ». */
@@ -85,6 +112,8 @@ type Props = {
 export default function RegisterWizard({ locale, mode = "register", initialRole }: Props) {
   const t = useTranslations("RegisterWizard");
   const tAuth = useTranslations("Auth");
+  const tInterest = useTranslations("InterestTopics");
+  const tTeacher = useTranslations("TeacherRegister");
   const { data: session } = useSession();
   const isGoogle = mode === "google";
   const isRTL = locale === "ar" || locale.endsWith("-ar");
@@ -118,6 +147,16 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
   const [allyEmail, setAllyEmail] = useState("");
   const [level, setLevel] = useState<string>("1AP");
   const [school, setSchool] = useState<SchoolPickerValue | null>(null);
+  const [teacherSubjects, setTeacherSubjects] = useState<string[]>([]);
+  const [teacherLevels, setTeacherLevels] = useState<string[]>(["3AP"]);
+  const [notificationInterests, setNotificationInterests] = useState<string[]>([]);
+  const [childLearningProfile, setChildLearningProfile] = useState<ChildLearningProfile>({
+    conditionIds: [],
+    questionnaire: {},
+    learningMode: "semi_guided",
+    dailyScreenMinutes: 20,
+    updatedAt: new Date().toISOString(),
+  });
 
   const [identityFile, setIdentityFile] = useState<File | null>(null);
   const [captchaValue, setCaptchaValue] = useState("");
@@ -210,6 +249,8 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
   };
 
   const passwordOk = isPasswordStrong(password);
+  const passwordsMismatch = confirmPassword.length > 0 && password !== confirmPassword;
+  const childAge = LEVEL_TO_AGE[level as (typeof LEVELS)[number]] ?? "8";
 
   const goNext = () => {
     setDirection(1);
@@ -240,7 +281,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
         }
         return true;
       case "credentials":
-        if (!username.trim() || !password) {
+        if (!username.trim() || !password || !phone.trim()) {
           toast.error(t("errRequired"));
           return false;
         }
@@ -249,7 +290,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
           return false;
         }
         if (password !== confirmPassword) {
-          toast.error(t("errPasswordMatch"));
+          toast.error(t("passwordMismatch"));
           return false;
         }
         if (usernameOk === false) {
@@ -258,7 +299,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
         }
         return true;
       case "profile":
-        if (!username.trim()) {
+        if (!username.trim() || !phone.trim()) {
           toast.error(t("errRequired"));
           return false;
         }
@@ -268,10 +309,6 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
         }
         return true;
       case "schooling":
-        if (!phone.trim()) {
-          toast.error(t("errRequired"));
-          return false;
-        }
         if (role === "parent" && !childName.trim()) {
           toast.error(t("errRequired"));
           return false;
@@ -282,6 +319,24 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
           toast.error(t("errSchool"));
           return false;
         }
+        if (role === "enseignant") {
+          if (teacherSubjects.length === 0) {
+            toast.error(tTeacher("errSubjects"));
+            return false;
+          }
+          if (teacherLevels.length === 0) {
+            toast.error(tTeacher("errLevels"));
+            return false;
+          }
+        }
+        if (notificationInterests.length !== MAX_NOTIFICATION_INTERESTS) {
+          toast.error(tInterest("errPickThree"));
+          return false;
+        }
+        return true;
+      case "accompagnement":
+        return true;
+      case "learning":
         return true;
       case "ally":
         if (allyEmail.trim() && !allyEmail.includes("@")) {
@@ -394,8 +449,12 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
       fd.set("child_country", "DZ");
       fd.set("child_level", level);
       fd.set("child_region", school?.address || "");
-      fd.set("child_age", "8");
+      fd.set("child_age", childAge);
       fd.set("locale", locale);
+      appendNotificationInterests(fd, notificationInterests);
+      if (role === "parent") {
+        fd.set("child_learning_profile", JSON.stringify(childLearningProfile));
+      }
       if (identityFile && !isDev) fd.set("doc_identity", identityFile);
 
       if (isGoogle) {
@@ -408,7 +467,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
           fd.set("user_type", "enseignant");
           fd.set("teacher_school_id", school ? String(school.id) : "");
           fd.set("teacher_school_name", school?.name || "");
-          fd.set("teacher_subject", "general");
+          appendTeacherSubjectsLevels(fd, teacherSubjects, teacherLevels);
         }
 
         const result = await completeGoogleOnboardingAction(fd);
@@ -441,7 +500,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
       } else {
         fd.set("teacher_school_id", school ? String(school.id) : "");
         fd.set("teacher_school_name", school?.name || "");
-        fd.set("teacher_subject", "general");
+        appendTeacherSubjectsLevels(fd, teacherSubjects, teacherLevels);
 
         const result = await registerTeacherAction(fd);
         if ("error" in result && result.error) {
@@ -473,6 +532,10 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
         return role === "parent" ? t("step3ParentTitle") : t("step3TeacherTitle");
       case "school":
         return t("stepSchoolTitle");
+      case "accompagnement":
+        return t("stepAccompagnementTitle");
+      case "learning":
+        return t("stepLearningTitle");
       case "ally":
         return t("stepAllyQuestion");
       case "identity":
@@ -516,7 +579,10 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
       {/* Contenu — aligné en haut sur mobile (pas centré verticalement) */}
       <div
         className={cn(
-          "mx-auto flex w-full max-w-lg min-h-0 flex-1 flex-col overflow-hidden pt-5 sm:justify-center sm:pt-0",
+          "mx-auto flex w-full max-w-lg min-h-0 flex-1 flex-col pt-5 sm:pt-0",
+          step === "accompagnement" || step === "learning" || step === "credentials"
+            ? MOBILE.contentScroll
+            : MOBILE.contentFixed,
           MOBILE.padX
         )}
       >
@@ -532,9 +598,15 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
             className="shrink-0"
           >
             <div className={cn("mb-5 sm:mb-6", isRTL && "text-right")}>
-              <h1 className={cn(MOBILE.title, isRTL && "font-amiri text-[24px] sm:text-[26px]")}>{title}</h1>
+              <h1 className={cn(MOBILE.title, isRTL && "font-ui-ar text-[24px] sm:text-[26px]")}>{title}</h1>
               {step === "role" && (
                 <p className={cn(MOBILE.subtitle, isRTL && "font-lateef text-base")}>{t("step1Subtitle")}</p>
+              )}
+              {step === "accompagnement" && (
+                <p className={cn(MOBILE.subtitle, isRTL && "font-lateef text-base")}>{t("stepAccompagnementSubtitle")}</p>
+              )}
+              {step === "learning" && (
+                <p className={cn(MOBILE.subtitle, isRTL && "font-lateef text-base")}>{t("stepLearningSubtitle")}</p>
               )}
               {step === "ally" && (
                 <p className={cn(MOBILE.subtitle, isRTL && "font-lateef text-base")}>{t("stepAllyOptional")}</p>
@@ -561,7 +633,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                       className={cn(
                         MOBILE.card,
                         active ? MOBILE.cardActive : MOBILE.cardIdle,
-                        isRTL && "flex-row-reverse text-right font-amiri"
+                        isRTL && "flex-row-reverse text-right font-ui-ar"
                       )}
                     >
                       <Icon className={cn("h-6 w-6 shrink-0", active ? "text-orange-600" : "text-neutral-500")} />
@@ -575,7 +647,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                   <p
                     className={cn(
                       "-mt-3 mb-1 flex items-center justify-center gap-2 rounded-xl bg-neutral-100 py-2.5 text-sm font-bold text-black",
-                      isRTL && "font-amiri flex-row-reverse"
+                      isRTL && "font-ui-ar flex-row-reverse"
                     )}
                   >
                     <img src="https://www.google.com/favicon.ico" className="h-4 w-4 shrink-0" alt="" />
@@ -585,7 +657,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                     <Input
                       value={fullName}
                       readOnly
-                      className={cn(MOBILE.input, "bg-neutral-50 text-neutral-700", isRTL && "text-right font-amiri")}
+                      className={cn(MOBILE.input, "bg-neutral-50 text-neutral-700", isRTL && "text-right font-ui-ar")}
                     />
                   </Field>
                   <Field label={t("email")} isRTL={isRTL}>
@@ -614,6 +686,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                       )}
                     </div>
                   </Field>
+                  <PhoneField label={t("phone")} value={phone} onChange={setPhone} isRTL={isRTL} />
                 </>
               )}
 
@@ -626,7 +699,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                       MOBILE.card,
                       MOBILE.cardIdle,
                       "justify-center font-bold",
-                      isRTL && "font-amiri flex-row-reverse"
+                      isRTL && "font-ui-ar flex-row-reverse"
                     )}
                   >
                     <img src="https://www.google.com/favicon.ico" className="h-5 w-5 shrink-0" alt="" />
@@ -635,7 +708,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                   <p
                     className={cn(
                       "py-1 text-center text-xs font-bold uppercase tracking-wider text-neutral-500",
-                      isRTL && "font-amiri normal-case"
+                      isRTL && "font-ui-ar normal-case"
                     )}
                   >
                     {t("orEmail")}
@@ -645,7 +718,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder={tAuth("Placeholders.FullName")}
-                      className={cn(MOBILE.input, isRTL && "text-right font-amiri")}
+                      className={cn(MOBILE.input, isRTL && "text-right font-ui-ar")}
                     />
                   </Field>
                   <Field label={t("email")} isRTL={isRTL}>
@@ -666,7 +739,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                       )}
                     </div>
                     {emailOk === false && (
-                      <p className={cn("text-sm text-red-600", isRTL && "font-amiri text-right")}>
+                      <p className={cn("text-sm text-red-600", isRTL && "font-ui-ar text-right")}>
                         {t("errEmailExists")}{" "}
                         <Link href="/auth/login" className="font-extrabold underline">
                           {t("emailExistsLogin")}
@@ -721,9 +794,24 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       dir="ltr"
-                      className={MOBILE.input}
+                      className={cn(
+                        MOBILE.input,
+                        confirmPassword &&
+                          (passwordsMismatch ? "border-red-400 bg-red-50/40" : "border-emerald-500 bg-emerald-50/30")
+                      )}
                     />
+                    {passwordsMismatch && (
+                      <p className={cn("text-sm font-bold text-red-600", isRTL && "font-ui-ar text-right")}>
+                        {t("passwordMismatch")}
+                      </p>
+                    )}
+                    {confirmPassword.length > 0 && !passwordsMismatch && passwordOk && (
+                      <p className={cn("text-sm font-bold text-emerald-600", isRTL && "font-ui-ar text-right")}>
+                        {t("passwordMatchOk")}
+                      </p>
+                    )}
                   </Field>
+                  <PhoneField label={t("phone")} value={phone} onChange={setPhone} isRTL={isRTL} />
                 </>
               )}
 
@@ -738,27 +826,10 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                       <Input
                         value={childName}
                         onChange={(e) => setChildName(e.target.value)}
-                        className={cn(MOBILE.input, isRTL && "font-amiri text-right")}
+                        className={cn(MOBILE.input, isRTL && "font-ui-ar text-right")}
                       />
                     </Field>
                   )}
-                  <Field label={t("phone")} isRTL={isRTL}>
-                    <div className="flex gap-2">
-                      <span
-                        className="flex h-12 shrink-0 items-center rounded-xl border border-neutral-300 bg-neutral-100 px-3 text-sm font-bold text-black sm:h-11"
-                        dir="ltr"
-                      >
-                        +213
-                      </span>
-                      <Input
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        inputMode="tel"
-                        className={cn(MOBILE.input, "flex-1")}
-                        dir="ltr"
-                      />
-                    </div>
-                  </Field>
                   {role === "parent" && (
                     <Field label={t("level")} isRTL={isRTL}>
                       <div className={cn("grid grid-cols-3 gap-2 sm:flex sm:flex-wrap", isRTL && "sm:justify-end")}>
@@ -772,7 +843,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                               level === lv
                                 ? "bg-black text-white"
                                 : "bg-neutral-100 text-black ring-1 ring-neutral-300",
-                              isRTL && "font-amiri"
+                              isRTL && "font-ui-ar"
                             )}
                           >
                             {t(`levels.${lv}`)}
@@ -785,14 +856,52 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
               )}
 
               {step === "school" && (
-                <Field label={t("school")} isRTL={isRTL}>
-                  <SchoolPicker
-                    value={school}
-                    onChange={setSchool}
-                    country="DZ"
-                    placeholder={t("schoolPlaceholder")}
+                <>
+                  <Field label={t("school")} isRTL={isRTL}>
+                    <SchoolPicker
+                      value={school}
+                      onChange={setSchool}
+                      country="DZ"
+                      placeholder={t("schoolPlaceholder")}
+                    />
+                  </Field>
+                  {role === "enseignant" && school && (
+                    <div className="flex gap-3 rounded-2xl border-2 border-orange-100 bg-orange-50 p-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-white">
+                        <UserSearch className="h-4 w-4" />
+                      </div>
+                      <p className={cn("text-xs font-bold leading-relaxed text-orange-900", isRTL && "font-ui-ar text-right")}>
+                        {tInterest("teacherProfileHint")}
+                      </p>
+                    </div>
+                  )}
+                  {role === "enseignant" && (
+                    <TeacherSubjectLevelPicker
+                      subjects={teacherSubjects}
+                      levels={teacherLevels}
+                      onSubjectsChange={setTeacherSubjects}
+                      onLevelsChange={setTeacherLevels}
+                      compact
+                    />
+                  )}
+                  <InterestPicker
+                    value={notificationInterests}
+                    onChange={setNotificationInterests}
+                    compact
                   />
-                </Field>
+                </>
+              )}
+
+              {step === "accompagnement" && role === "parent" && (
+                <ChildNeedsStep value={childLearningProfile} onChange={setChildLearningProfile} />
+              )}
+
+              {step === "learning" && role === "parent" && (
+                <ChildLearningPreferencesStep
+                  childAge={childAge}
+                  value={childLearningProfile}
+                  onChange={setChildLearningProfile}
+                />
               )}
 
               {step === "ally" && (
@@ -802,7 +911,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                       value={allyName}
                       onChange={(e) => setAllyName(e.target.value)}
                       placeholder={t("allyNamePlaceholder")}
-                      className={cn(MOBILE.input, isRTL && "font-amiri text-right")}
+                      className={cn(MOBILE.input, isRTL && "font-ui-ar text-right")}
                     />
                   </Field>
                   <Field label={t("allyEmail")} isRTL={isRTL}>
@@ -838,14 +947,14 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
                     )}
                   >
                     <Upload className="mx-auto mb-2 h-5 w-5 text-neutral-600" />
-                    <p className={cn("text-[15px] font-bold text-black", isRTL && "font-amiri")}>
+                    <p className={cn("text-[15px] font-bold text-black", isRTL && "font-ui-ar")}>
                       {identityFile ? identityFile.name : t("identityDrop")}
                     </p>
-                    <p className={cn("mt-1 text-xs font-medium text-neutral-600", isRTL && "font-amiri")}>
+                    <p className={cn("mt-1 text-xs font-medium text-neutral-600", isRTL && "font-ui-ar")}>
                       {t("identityHint")}
                     </p>
                   </button>
-                  <p className={cn("flex items-center gap-2 text-xs font-medium text-neutral-700", isRTL && "font-amiri flex-row-reverse")}>
+                  <p className={cn("flex items-center gap-2 text-xs font-medium text-neutral-700", isRTL && "font-ui-ar flex-row-reverse")}>
                     <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-700" />
                     {t("identitySecure")}
                   </p>
@@ -889,7 +998,7 @@ export default function RegisterWizard({ locale, mode = "register", initialRole 
             type="button"
             disabled={isSubmitting}
             onClick={() => void handleContinue()}
-            className={cn(MOBILE.cta, isRTL && "font-amiri normal-case text-lg")}
+            className={cn(MOBILE.cta, isRTL && "font-ui-ar normal-case text-lg")}
           >
             {isSubmitting ? t("submitting") : isLast ? (isGoogle ? t("submitGoogle") : t("submit")) : t("continue")}
           </button>
@@ -914,12 +1023,45 @@ function Field({ label, children, isRTL }: { label: string; children: React.Reac
         className={cn(
           MOBILE.label,
           "block",
-          isRTL && "font-amiri text-right text-sm"
+          isRTL && "font-ui-ar text-right text-sm"
         )}
       >
         {label}
       </label>
       {children}
     </div>
+  );
+}
+
+function PhoneField({
+  label,
+  value,
+  onChange,
+  isRTL,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  isRTL?: boolean;
+}) {
+  return (
+    <Field label={label} isRTL={isRTL}>
+      <div className="flex gap-2">
+        <span
+          className="flex h-12 shrink-0 items-center rounded-xl border border-neutral-300 bg-neutral-100 px-3 text-sm font-bold text-black sm:h-11"
+          dir="ltr"
+        >
+          +213
+        </span>
+        <Input
+          value={value}
+          onChange={(e) => onChange(e.target.value.replace(/\D/g, ""))}
+          inputMode="tel"
+          placeholder="550 12 34 56"
+          className={cn(MOBILE.input, "flex-1")}
+          dir="ltr"
+        />
+      </div>
+    </Field>
   );
 }

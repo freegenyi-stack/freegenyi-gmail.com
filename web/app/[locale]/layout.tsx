@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { Caveat, Great_Vibes } from "next/font/google";
-import { readexPro, cairo, amiri, reemKufi, outfit, playfair, inter } from "./fonts";
+import { readexPro, cairo, amiri, reemKufi, outfit, playfair, inter, ibmPlexSansArabic } from "./fonts";
 import "./globals.css";
 import { RegionProvider } from "@/context/RegionContext";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { Toaster } from "sonner";
 import ThemeModal from "@/components/ThemeModal";
 import AppShell from "@/components/AppShell";
+import MaintenanceGate from "@/components/admin/MaintenanceGate";
 
 const caveat = Caveat({
   subsets: ["latin"],
@@ -146,6 +148,7 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
+  const session = await auth();
   // Extract country from locale (e.g. "QA-ar" → "QA")
   const initialCountry = locale.includes("-") ? locale.split("-")[0] : locale;
 
@@ -153,15 +156,17 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={(locale === "ar" || locale.endsWith("-ar")) ? "rtl" : "ltr"}
-      className={`${readexPro.variable} ${cairo.variable} ${amiri.variable} ${reemKufi.variable} ${outfit.variable} ${playfair.variable} ${inter.variable} ${caveat.variable} ${greatVibes.variable} h-full antialiased scroll-smooth`}
+      className={`${readexPro.variable} ${cairo.variable} ${ibmPlexSansArabic.variable} ${amiri.variable} ${reemKufi.variable} ${outfit.variable} ${playfair.variable} ${inter.variable} ${caveat.variable} ${greatVibes.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full bg-white">
-        <SessionProvider>
+        <SessionProvider session={session}>
           <NextIntlClientProvider messages={messages}>
             <RegionProvider initialLocale={locale}>
+              <MaintenanceGate>
               <AppShell>
                 {children}
               </AppShell>
+              </MaintenanceGate>
               <ThemeModal />
               <Toaster position="top-right" richColors />
             </RegionProvider>

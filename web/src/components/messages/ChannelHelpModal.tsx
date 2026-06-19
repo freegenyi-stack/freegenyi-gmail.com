@@ -29,7 +29,7 @@ export default function ChannelHelpModal({ open, onClose, isRTL }: Props) {
       <div
         className={cn(
           "max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl",
-          isRTL && "font-amiri text-right"
+          isRTL && "font-ui-ar text-right"
         )}
       >
         <div className={cn("mb-4 flex items-start justify-between gap-3", isRTL && "flex-row-reverse")}>

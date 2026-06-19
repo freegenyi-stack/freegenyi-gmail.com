@@ -13,9 +13,17 @@ import {
   saveVerificationDocument,
 } from "@/lib/orgVerification.server";
 import { generateFamilyId } from "@/lib/family/server";
+import {
+  MAX_NOTIFICATION_INTERESTS,
+  parseNotificationInterestsFromForm,
+} from "@/lib/onboarding/interest-topics";
 import { inviteAllyAtRegistration } from "@/lib/family/invite";
 import { isPasswordStrong } from "@/lib/passwordPolicy";
 import { refreshSchoolMessagingGraph } from "@/lib/messaging/suggestions.server";
+import {
+  parseChildLearningProfileFromForm,
+  serializeChildLearningProfile,
+} from "@/lib/child/learning-profile";
 
 /**
  * Check if an email or username is already taken
@@ -23,7 +31,7 @@ import { refreshSchoolMessagingGraph } from "@/lib/messaging/suggestions.server"
 export async function checkUserAvailability(field: "email" | "username", value: string) {
   const normalized = value?.trim().toLowerCase();
   if (!normalized) return { available: true };
-
+  
   try {
     const existing = await db
       .select({ id: users.id })
@@ -145,6 +153,11 @@ export async function registerEliteAction(
     }
   }
 
+  const notificationInterests = parseNotificationInterestsFromForm(formData);
+  if (userType === "parent" && notificationInterests.length !== MAX_NOTIFICATION_INTERESTS) {
+    return { error: "Choisissez 3 centres d'intérêt pour personnaliser vos notifications." };
+  }
+
   if (isOrg && !email) {
     return { error: "Téléphone et email obligatoires pour les établissements." };
   }
@@ -160,7 +173,7 @@ export async function registerEliteAction(
       return { error: "Cet email ou nom d'utilisateur est déjà utilisé." };
     }
 
-    let metadata: Record<string, string> = {};
+    let metadata: Record<string, unknown> = {};
 
     if (userType === "parent") {
       metadata = {
@@ -170,6 +183,7 @@ export async function registerEliteAction(
         childRegion,
         childLevel,
         verificationStatus: "pending",
+        notificationInterests,
       };
     } else if (userType === "ecole") {
       metadata = {
@@ -197,7 +211,7 @@ export async function registerEliteAction(
     const passwordHash = await bcrypt.hash(password, 12);
     const trackingCode = isOrg ? generateTrackingCode() : undefined;
     const familyId = userType === "parent" ? generateFamilyId() : null;
-
+    
     const [newUser] = await db.insert(users).values({
       email,
       username,
@@ -215,6 +229,7 @@ export async function registerEliteAction(
     if (userType === "parent" && childName) {
       const age = childAge && childAge > 0 ? childAge : 8;
       const birthYear = new Date().getFullYear() - age;
+      const learningProfile = serializeChildLearningProfile(parseChildLearningProfileFromForm(formData));
       await db.insert(children).values({
         parentId: newUser.id,
         familyId: familyId!,
@@ -223,6 +238,7 @@ export async function registerEliteAction(
         educationLevel: childLevel,
         schoolId: childSchoolId,
         schoolName: childSchool,
+        learningProfile,
       });
     }
 

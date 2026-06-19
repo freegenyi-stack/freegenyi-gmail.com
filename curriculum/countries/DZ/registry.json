@@ -1,0 +1,76 @@
+{
+  "country": "DZ",
+  "countryNameFr": "Algérie",
+  "countryNameAr": "الجزائر",
+  "educationSystem": "primary",
+  "levels": [
+    {
+      "code": "1AP",
+      "labelFr": "1ère année primaire",
+      "labelAr": "السنة الأولى ابتدائي",
+      "status": "pilot",
+      "subjects": [
+        {
+          "code": "ar_islam_civique",
+          "labelFr": "Arabe, éducation islamique et civique",
+          "labelAr": "اللغة العربية والتربية الإسلامية والمدنية",
+          "officialCard": true,
+          "status": "pilot"
+        },
+        {
+          "code": "math_est",
+          "labelFr": "Mathématiques et éducation scientifique",
+          "labelAr": "رياضيات وتربية علمية وتكنولوجية",
+          "officialCard": true,
+          "status": "pilot"
+        }
+      ],
+      "enrichmentSubjects": [
+        { "code": "fr", "labelFr": "Français", "status": "planned" },
+        { "code": "en", "labelFr": "Anglais", "status": "planned" },
+        { "code": "code_logic", "labelFr": "Code & logique", "status": "planned" },
+        { "code": "math_sg", "labelFr": "Mathématiques Singapour", "status": "planned" }
+      ]
+    },
+    {
+      "code": "2AP",
+      "labelFr": "2ème année primaire",
+      "labelAr": "السنة الثانية ابتدائي",
+      "status": "planned",
+      "subjects": [
+        { "code": "ar_islam_civique", "status": "planned", "officialCard": true },
+        { "code": "math_est", "status": "planned", "officialCard": true }
+      ]
+    },
+    {
+      "code": "3AP",
+      "labelFr": "3ème année primaire",
+      "labelAr": "السنة الثالثة ابتدائي",
+      "status": "planned",
+      "subjects": [
+        { "code": "ar_islam_civique", "status": "planned", "officialCard": true },
+        { "code": "math_est", "status": "planned", "officialCard": true }
+      ]
+    },
+    {
+      "code": "4AP",
+      "labelFr": "4ème année primaire",
+      "labelAr": "السنة الرابعة ابتدائي",
+      "status": "planned",
+      "subjects": [
+        { "code": "ar_islam_civique", "status": "planned", "officialCard": true },
+        { "code": "math_est", "status": "planned", "officialCard": true }
+      ]
+    },
+    {
+      "code": "5AP",
+      "labelFr": "5ème année primaire",
+      "labelAr": "السنة الخامسة ابتدائي",
+      "status": "planned",
+      "subjects": [
+        { "code": "ar_islam_civique", "status": "planned", "officialCard": true },
+        { "code": "math_est", "status": "planned", "officialCard": true }
+      ]
+    }
+  ]
+}

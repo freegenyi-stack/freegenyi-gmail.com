@@ -23,6 +23,7 @@ export function isUserFullyOnboarded(
   role: string | null | undefined,
   onboardingStep: number | null | undefined
 ): boolean {
+  if (role === "admin") return true;
   const step = onboardingStep ?? 1;
   if (role === "ecole" || role === "school" || role === "ong" || role === "ngo") {
     return step >= 3;

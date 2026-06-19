@@ -4,8 +4,10 @@ import Google from "next-auth/providers/google";
 import authConfig from "./auth.config";
 import { db } from "@/db";
 import { users } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, or, ilike } from "drizzle-orm";
 import bcrypt from "bcryptjs";
+import { getImpersonationCookies } from "@/lib/admin/impersonate";
+import { isAdminEmail } from "@/lib/admin/requireAdmin";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
@@ -16,16 +18,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Credentials({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "email" },
+        email: { label: "Email or username", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
-        const email = (credentials.email as string).toLowerCase();
+        const loginId = (credentials.email as string).trim().toLowerCase();
         const password = credentials.password as string;
 
-        const [user] = await db.select().from(users).where(eq(users.email, email));
+        const [user] = await db
+          .select()
+          .from(users)
+          .where(
+            loginId.includes("@")
+              ? eq(users.email, loginId)
+              : ilike(users.username, loginId)
+          );
 
         if (!user || !user.passwordHash) {
           return null;
@@ -124,6 +133,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (token.onboardingStep && session.user) {
         (session.user as any).onboardingStep = token.onboardingStep;
       }
+      if (token.impersonating) {
+        (session.user as any).impersonating = true;
+        (session.user as any).realAdminId = token.realAdminId;
+      }
       return session;
     },
 
@@ -132,6 +145,33 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.role = (user as any).role || "parent";
         token.onboardingStep = (user as any).onboardingStep || 1;
       }
+
+      const imp = await getImpersonationCookies();
+      if (imp && token.sub === String(imp.adminUserId)) {
+        const [target] = await db
+          .select({ id: users.id, role: users.role, email: users.email, onboardingStep: users.onboardingStep })
+          .from(users)
+          .where(eq(users.id, imp.targetId))
+          .limit(1);
+        const [adminUser] = await db
+          .select({ email: users.email })
+          .from(users)
+          .where(eq(users.id, imp.adminUserId))
+          .limit(1);
+
+        if (target && adminUser && isAdminEmail(adminUser.email)) {
+          token.realAdminId = imp.adminUserId;
+          token.sub = String(target.id);
+          token.email = target.email;
+          token.role = target.role;
+          token.onboardingStep = target.onboardingStep;
+          token.impersonating = true;
+          return token;
+        }
+      }
+
+      token.impersonating = false;
+      delete token.realAdminId;
       // Pour les utilisateurs Google ou rafraîchissement
       if (token.email) {
         try {

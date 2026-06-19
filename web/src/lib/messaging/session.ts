@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { isMessagingRole } from "./messaging-policy";
 
 export type MessagingUser = {
   id: number;
@@ -12,6 +13,7 @@ export type MessagingUser = {
   familyId: string | null;
   image: string | null;
   lastLoginAt: Date | null;
+  lastSeenAt: Date | null;
   metadata: Record<string, unknown>;
 };
 
@@ -38,6 +40,7 @@ export async function requireMessagingUser(): Promise<MessagingUser | null> {
       familyId: users.familyId,
       image: users.image,
       lastLoginAt: users.lastLoginAt,
+      lastSeenAt: users.lastSeenAt,
       metadata: users.metadata,
     })
     .from(users)
@@ -45,6 +48,7 @@ export async function requireMessagingUser(): Promise<MessagingUser | null> {
     .limit(1);
 
   if (!row) return null;
+  if (!isMessagingRole(row.role)) return null;
 
   return {
     ...row,
@@ -63,6 +67,7 @@ export async function getMessagingUserById(userId: number): Promise<MessagingUse
       familyId: users.familyId,
       image: users.image,
       lastLoginAt: users.lastLoginAt,
+      lastSeenAt: users.lastSeenAt,
       metadata: users.metadata,
     })
     .from(users)
@@ -73,9 +78,10 @@ export async function getMessagingUserById(userId: number): Promise<MessagingUse
   return { ...row, metadata: parseUserMetadata(row.metadata) };
 }
 
-export function isOnline(lastLoginAt: Date | null): boolean {
-  if (!lastLoginAt) return false;
-  return Date.now() - new Date(lastLoginAt).getTime() < 5 * 60 * 1000;
+export function isOnline(lastSeenAt: Date | null, lastLoginAt?: Date | null): boolean {
+  const ref = lastSeenAt || lastLoginAt;
+  if (!ref) return false;
+  return Date.now() - new Date(ref).getTime() < 5 * 60 * 1000;
 }
 
 export function toUserPreview(user: MessagingUser): import("./types").ChatUserPreview {
@@ -85,7 +91,8 @@ export function toUserPreview(user: MessagingUser): import("./types").ChatUserPr
     username: user.username,
     role: user.role,
     image: user.image,
-    isOnline: isOnline(user.lastLoginAt),
+    isOnline: isOnline(user.lastSeenAt, user.lastLoginAt),
+    lastSeenAt: user.lastSeenAt?.toISOString() ?? null,
   };
 }
 

@@ -1,0 +1,189 @@
+{
+  "metadata": {
+    "country": "DZ",
+    "level": "1AP",
+    "subject": "ar_islam_civique",
+    "moduleId": "FG-DZ-1AP-AR",
+    "labelFr": "Arabe, éducation islamique et civique",
+    "labelAr": "اللغة العربية والتربية الإسلامية والمدنية",
+    "version": 1,
+    "sourceRef": "Sommaire_arabe_1ap.pdf",
+    "status": "skeleton_mq01"
+  },
+  "domaines": [
+    { "code": "arabe", "labelFr": "Langue arabe", "labelAr": "اللغة العربية" },
+    { "code": "islamique", "labelFr": "Éducation islamique", "labelAr": "التربية الإسلامية" },
+    { "code": "civique", "labelFr": "Éducation civique", "labelAr": "التربية المدنية" },
+    { "code": "mahfoudat", "labelFr": "Mahfoudat", "labelAr": "المحفوظات" },
+    { "code": "integration", "labelFr": "Projet / intégration", "labelAr": "أنجز مشروعي / أدمج" }
+  ],
+  "contentFilters": [
+    { "id": "all", "labelFr": "Tout", "labelAr": "الكل" },
+    { "id": "lesson", "labelFr": "Leçons", "labelAr": "الدروس" },
+    { "id": "surah", "labelFr": "Sourates", "labelAr": "السور" },
+    { "id": "mahfoudat", "labelFr": "Mahfoudat", "labelAr": "المحفوظات" },
+    { "id": "exercise", "labelFr": "Exercices", "labelAr": "التمارين" },
+    { "id": "project", "labelFr": "Projets", "labelAr": "المشاريع" }
+  ],
+  "maqaate": [
+    {
+      "maqtaId": "mq01",
+      "order": 1,
+      "titreFr": "Ma famille",
+      "titreAr": "عائلتي",
+      "worldTheme": {
+        "id": "world_mq01_family",
+        "labelFr": "Monde عائلتي",
+        "status": "pending_design"
+      },
+      "blocks": [
+        {
+          "blockId": "arab_lessons",
+          "domaine": "arabe",
+          "titreFr": "Leçons arabe",
+          "titreAr": "دروس اللغة العربية",
+          "contentKinds": ["lesson"]
+        },
+        {
+          "blockId": "arab_letters",
+          "domaine": "arabe",
+          "titreFr": "Les lettres — الحروف",
+          "titreAr": "الحروف",
+          "contentKinds": ["lesson", "exercise"]
+        },
+        {
+          "blockId": "islamique",
+          "domaine": "islamique",
+          "titreFr": "Éducation islamique",
+          "titreAr": "التربية الإسلامية",
+          "contentKinds": ["lesson", "surah", "exercise"]
+        },
+        {
+          "blockId": "civique",
+          "domaine": "civique",
+          "titreFr": "Éducation civique",
+          "titreAr": "التربية المدنية",
+          "contentKinds": ["lesson", "exercise"]
+        },
+        {
+          "blockId": "mahfoudat",
+          "domaine": "mahfoudat",
+          "titreFr": "Mahfoudat",
+          "titreAr": "المحفوظات",
+          "contentKinds": ["mahfoudat", "audio"]
+        },
+        {
+          "blockId": "integration",
+          "domaine": "integration",
+          "titreFr": "Projet / intégration",
+          "titreAr": "أنجز مشروعي / أدمج",
+          "contentKinds": ["project"]
+        }
+      ],
+      "units": [
+        { "unitId": "u01_ahmad", "blockId": "arab_lessons", "titreFr": "Ahmad te souhaite la bienvenue", "titreAr": "أَحْمَدُ يُرَحِّبُ بِكُمْ", "pageRef": 9, "lessonId": "L_u01_ahmad", "contentKind": "lesson" },
+        { "unitId": "u02_family", "blockId": "arab_lessons", "titreFr": "Découvrir ma famille", "titreAr": "تعرف على عائلتي", "pageRef": 13, "lessonId": "L_u02_family", "contentKind": "lesson" },
+        { "unitId": "u03_home", "blockId": "arab_lessons", "titreFr": "Dans notre maison", "titreAr": "في منزلنا", "pageRef": 17, "lessonId": "L_u03_home", "contentKind": "lesson" },
+        { "unitId": "u04_family_together", "blockId": "arab_lessons", "titreFr": "La famille réunie", "titreAr": "العائلة مجتمعة", "pageRef": 21, "lessonId": "L_u04_family_together", "contentKind": "lesson" },
+        { "unitId": "u05_letters", "blockId": "arab_letters", "titreFr": "Tracer lignes et formes", "titreAr": "رسم الخطوط والأشكال", "lessonId": "L_u05_letters", "contentKind": "lesson" },
+        { "unitId": "u06_obey_parents", "blockId": "islamique", "titreFr": "J'obéis à mes parents", "titreAr": "أطيع والدي", "pageRef": 12, "lessonId": "L_u06_obey_parents", "contentKind": "lesson" },
+        { "unitId": "u07_fatiha", "blockId": "islamique", "titreFr": "Sourate Al-Fatiha (1)", "titreAr": "سورة الفاتحة (1)", "pageRef": 16, "lessonId": "L_u07_fatiha", "contentKind": "surah" },
+        { "unitId": "u08_ask_permission", "blockId": "islamique", "titreFr": "Demander la permission", "titreAr": "استأذن", "pageRef": 20, "lessonId": "L_u08_ask_permission", "contentKind": "lesson" },
+        { "unitId": "u09_love_family", "blockId": "islamique", "titreFr": "J'aime ma famille", "titreAr": "أحب عائلتي", "pageRef": 24, "lessonId": "L_u09_love_family", "contentKind": "lesson" },
+        { "unitId": "u10_greeting", "blockId": "civique", "titreFr": "Salutation et réponse", "titreAr": "التحية وردها", "pageRef": 25, "lessonId": "L_u10_greeting", "contentKind": "lesson" },
+        { "unitId": "u11_qisma", "blockId": "mahfoudat", "titreFr": "Qisma (poème)", "titreAr": "قسما", "pageRef": 26, "lessonId": "L_u11_qisma", "contentKind": "mahfoudat" },
+        { "unitId": "u12_draw_home", "blockId": "integration", "titreFr": "Je dessine notre maison et je la décris", "titreAr": "أرسم منزلنا وأصفه", "pageRef": 27, "lessonId": "L_u12_draw_home", "contentKind": "project" },
+        { "unitId": "u13_family_tree", "blockId": "integration", "titreFr": "Intégration — arbre de ma famille", "titreAr": "أدمج: شجرة عائلتي", "pageRef": 3, "lessonId": "L_u13_family_tree", "contentKind": "project" }
+      ],
+      "nodes": [
+        { "nodeId": "DZ_1AP_AR_MQ01_U01", "unitId": "u01_ahmad", "type": "competency", "domaine": "arabe", "order": 1, "titreFr": "Accueil — Ahmad", "titreAr": "أَحْمَدُ يُرَحِّبُ بِكُمْ", "contentKind": "lesson", "status": "pending_scan" },
+        { "nodeId": "DZ_1AP_AR_MQ01_U02", "unitId": "u02_family", "type": "competency", "domaine": "arabe", "order": 2, "titreFr": "Ma famille", "titreAr": "تعرف على عائلتي", "contentKind": "lesson", "status": "pending_scan" },
+        { "nodeId": "DZ_1AP_AR_MQ01_U03", "unitId": "u03_home", "type": "competency", "domaine": "arabe", "order": 3, "titreFr": "Notre maison", "titreAr": "في منزلنا", "contentKind": "lesson", "status": "pending_scan" },
+        { "nodeId": "DZ_1AP_AR_MQ01_U04", "unitId": "u04_family_together", "type": "competency", "domaine": "arabe", "order": 4, "titreFr": "Famille réunie", "titreAr": "العائلة مجتمعة", "contentKind": "lesson", "status": "pending_scan" },
+        { "nodeId": "DZ_1AP_AR_MQ01_LETTERS_01", "unitId": "u05_letters", "type": "competency", "domaine": "arabe", "order": 5, "titreFr": "Tracer lignes et formes", "titreAr": "رسم الخطوط والأشكال", "contentKind": "lesson", "status": "pending_scan", "parentActivityFr": "Sur une feuille, enfant et parent tracent ensemble des lignes droites et des cercles." },
+        { "nodeId": "DZ_1AP_AR_MQ01_ISLAM_06", "unitId": "u06_obey_parents", "type": "competency", "domaine": "islamique", "order": 6, "titreFr": "Obéir aux parents", "titreAr": "أطيع والدي", "contentKind": "lesson", "status": "pending_scan" },
+        { "nodeId": "DZ_1AP_AR_MQ01_ISLAM_01", "unitId": "u07_fatiha", "type": "competency", "domaine": "islamique", "order": 7, "titreFr": "Sourate Al-Fatiha (1)", "titreAr": "سورة الفاتحة (1)", "contentKind": "surah", "status": "pending_scan", "parentActivityFr": "Écouter et répéter la sourate à voix basse, 5 minutes par jour." },
+        { "nodeId": "DZ_1AP_AR_MQ01_ISLAM_08", "unitId": "u08_ask_permission", "type": "competency", "domaine": "islamique", "order": 8, "titreFr": "Demander la permission", "titreAr": "استأذن", "contentKind": "lesson", "status": "pending_scan" },
+        { "nodeId": "DZ_1AP_AR_MQ01_ISLAM_09", "unitId": "u09_love_family", "type": "competency", "domaine": "islamique", "order": 9, "titreFr": "Aimer sa famille", "titreAr": "أحب عائلتي", "contentKind": "lesson", "status": "pending_scan" },
+        { "nodeId": "DZ_1AP_AR_MQ01_CIVIC_01", "unitId": "u10_greeting", "type": "competency", "domaine": "civique", "order": 10, "titreFr": "Salutation et réponse", "titreAr": "التحية وردها", "contentKind": "lesson", "status": "pending_scan", "parentActivityFr": "Jouer à se saluer en arabe à la maison." },
+        { "nodeId": "DZ_1AP_AR_MQ01_MAH_11", "unitId": "u11_qisma", "type": "competency", "domaine": "mahfoudat", "order": 11, "titreFr": "Qisma", "titreAr": "قسما", "contentKind": "mahfoudat", "status": "pending_scan" },
+        { "nodeId": "DZ_1AP_AR_MQ01_PROJ_12", "unitId": "u12_draw_home", "type": "competency", "domaine": "integration", "order": 12, "titreFr": "Dessiner et décrire la maison", "titreAr": "أرسم منزلنا وأصفه", "contentKind": "project", "status": "pending_scan" },
+        { "nodeId": "DZ_1AP_AR_MQ01_PROJ_13", "unitId": "u13_family_tree", "type": "competency", "domaine": "integration", "order": 13, "titreFr": "Arbre de ma famille", "titreAr": "شجرة عائلتي", "contentKind": "project", "status": "pending_scan" }
+      ]
+    },
+    {
+      "maqtaId": "mq02",
+      "order": 2,
+      "titreFr": "Section 2",
+      "titreAr": "المقطع 2",
+      "status": "planned",
+      "units": [],
+      "nodes": []
+    },
+    {
+      "maqtaId": "mq03",
+      "order": 3,
+      "titreFr": "Section 3",
+      "titreAr": "المقطع 3",
+      "status": "planned",
+      "units": [],
+      "nodes": []
+    },
+    {
+      "maqtaId": "mq04",
+      "order": 4,
+      "titreFr": "Section 4",
+      "titreAr": "المقطع 4",
+      "status": "planned",
+      "units": [],
+      "nodes": []
+    },
+    {
+      "maqtaId": "mq05",
+      "order": 5,
+      "titreFr": "Section 5",
+      "titreAr": "المقطع 5",
+      "status": "planned",
+      "units": [],
+      "nodes": []
+    },
+    {
+      "maqtaId": "mq06",
+      "order": 6,
+      "titreFr": "Section 6",
+      "titreAr": "المقطع 6",
+      "status": "planned",
+      "units": [],
+      "nodes": []
+    },
+    {
+      "maqtaId": "mq07",
+      "order": 7,
+      "titreFr": "Section 7",
+      "titreAr": "المقطع 7",
+      "status": "planned",
+      "units": [],
+      "nodes": []
+    },
+    {
+      "maqtaId": "mq08",
+      "order": 8,
+      "titreFr": "Section 8",
+      "titreAr": "المقطع 8",
+      "status": "planned",
+      "units": [],
+      "nodes": []
+    }
+  ],
+  "enrichment": {
+    "labelFr": "Enrichissement",
+    "labelAr": "إثراء",
+    "modules": [
+      { "code": "en_oxford", "labelFr": "Anglais (Oxford/Cambridge)", "status": "planned" },
+      { "code": "fr", "labelFr": "Français", "status": "planned" },
+      { "code": "math_sg", "labelFr": "Mathématiques Singapour", "status": "planned" },
+      { "code": "soroban", "labelFr": "Soroban", "status": "planned" },
+      { "code": "religion_plus", "labelFr": "Religion approfondie", "status": "planned" }
+    ]
+  }
+}

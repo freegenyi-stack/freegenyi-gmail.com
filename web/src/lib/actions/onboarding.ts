@@ -1,16 +1,29 @@
 "use server";
 
 import { db } from "@/db";
-import { users, children, organizationVerifications } from "@/db/schema";
+import { users, children } from "@/db/schema";
 import { eq, and, ne } from "drizzle-orm";
 import { auth } from "@/auth";
 import {
   generateTrackingCode,
   saveVerificationDocument,
 } from "@/lib/orgVerification.server";
+import { upsertPendingVerification } from "@/lib/actions/org_verification";
 import { generateFamilyId } from "@/lib/family/server";
 import { inviteAllyAtRegistration } from "@/lib/family/invite";
 import { refreshSchoolMessagingGraph } from "@/lib/messaging/suggestions.server";
+import {
+  MAX_NOTIFICATION_INTERESTS,
+  parseNotificationInterestsFromForm,
+} from "@/lib/onboarding/interest-topics";
+import {
+  parseChildLearningProfileFromForm,
+  serializeChildLearningProfile,
+} from "@/lib/child/learning-profile";
+import {
+  buildTeacherMetadataFields,
+  parseTeacherSubjectsLevelsFromForm,
+} from "@/lib/teacher/form-fields";
 
 export async function submitOnboardingAction(formData: FormData) {
   try {
@@ -39,13 +52,23 @@ export async function submitOnboardingAction(formData: FormData) {
     const childSchool = formData.get("child_school") as string;
     const childRegion = formData.get("child_region") as string;
 
+    const prev = user.metadata ? JSON.parse(user.metadata) : {};
+    const notificationInterests =
+      userType === "parent" ? parseNotificationInterestsFromForm(formData) : [];
+
+    if (userType === "parent" && notificationInterests.length !== MAX_NOTIFICATION_INTERESTS) {
+      return { error: "Choisissez 3 centres d'intérêt pour personnaliser vos notifications." };
+    }
+
     const metadata = JSON.stringify({
+      ...prev,
       spouseEmail,
       childRegion,
       childSchool,
       institutionType: childRegion,
       institutionWebsite: childName,
       institutionManager: spouseEmail,
+      ...(userType === "parent" ? { notificationInterests } : {}),
     });
 
     await db
@@ -63,12 +86,14 @@ export async function submitOnboardingAction(formData: FormData) {
     if (userType === "parent" && childName && childAge) {
       const birthYear = new Date().getFullYear() - childAge;
       const birthDate = `${birthYear}-01-01`;
+      const learningProfile = serializeChildLearningProfile(parseChildLearningProfileFromForm(formData));
 
       await db.insert(children).values({
         parentId: user.id,
         fullName: childName,
         birthDate: birthDate,
         educationLevel: childLevel,
+        learningProfile,
       });
     }
 
@@ -119,7 +144,8 @@ export async function completeGoogleOnboardingAction(
 
   const teacherSchoolId = (formData.get("teacher_school_id") as string) || "";
   const teacherSchoolName = (formData.get("teacher_school_name") as string) || "";
-  const teacherSubject = (formData.get("teacher_subject") as string) || "general";
+  const teacherBio = (formData.get("teacher_bio") as string) || "";
+  const { subjects, levels } = parseTeacherSubjectsLevelsFromForm(formData);
 
   if (!username || !fullName) {
     return { error: "Veuillez remplir tous les champs." };
@@ -131,6 +157,14 @@ export async function completeGoogleOnboardingAction(
 
   if (userType === "enseignant" && !teacherSchoolName.trim()) {
     return { error: "Veuillez sélectionner votre établissement." };
+  }
+
+  if (userType === "enseignant" && subjects.length === 0) {
+    return { error: "Choisissez au moins une matière." };
+  }
+
+  if (userType === "enseignant" && levels.length === 0) {
+    return { error: "Choisissez au moins un niveau." };
   }
 
   const identityFile = formData.get("doc_identity") as File | null;
@@ -159,7 +193,13 @@ export async function completeGoogleOnboardingAction(
 
     const trackingCode = generateTrackingCode();
 
+    const notificationInterests = parseNotificationInterestsFromForm(formData);
+
     if (userType === "parent") {
+      if (notificationInterests.length !== MAX_NOTIFICATION_INTERESTS) {
+        return { error: "Choisissez 3 centres d'intérêt pour personnaliser vos notifications." };
+      }
+
       const familyId = user.familyId || generateFamilyId();
       const metadata = {
         spouseFirstName,
@@ -169,6 +209,7 @@ export async function completeGoogleOnboardingAction(
         childLevel,
         verificationStatus: "pending",
         trackingCode,
+        notificationInterests,
       };
 
       await db
@@ -187,6 +228,7 @@ export async function completeGoogleOnboardingAction(
 
       const age = childAge && childAge > 0 ? childAge : 8;
       const birthYear = new Date().getFullYear() - age;
+      const learningProfile = serializeChildLearningProfile(parseChildLearningProfileFromForm(formData));
       await db.insert(children).values({
         parentId: user.id,
         familyId,
@@ -195,6 +237,7 @@ export async function completeGoogleOnboardingAction(
         educationLevel: childLevel,
         schoolId: childSchoolId,
         schoolName: childSchool,
+        learningProfile,
       });
 
       const docs: Record<string, string> =
@@ -204,13 +247,12 @@ export async function completeGoogleOnboardingAction(
               identity: await saveVerificationDocument(user.id, "identity", identityFile as File),
             };
 
-      await db.insert(organizationVerifications).values({
+      await upsertPendingVerification({
         userId: user.id,
         orgType: "parent",
         trackingCode,
         institutionSubtype: "identity",
-        status: "pending",
-        documents: JSON.stringify(docs),
+        documents: docs,
       });
 
       if (spouseEmail && spouseEmail.includes("@")) {
@@ -233,15 +275,21 @@ export async function completeGoogleOnboardingAction(
         }
       }
     } else {
+      if (notificationInterests.length !== MAX_NOTIFICATION_INTERESTS) {
+        return { error: "Choisissez 3 centres d'intérêt pour personnaliser vos notifications." };
+      }
+
       const prev = user.metadata ? JSON.parse(user.metadata) : {};
-      const metadata = {
-        ...prev,
+      const metadata = buildTeacherMetadataFields(prev, {
         teacherSchoolId,
         teacherSchoolName,
-        teacherSubject,
-        verificationStatus: "pending",
-        trackingCode,
-      };
+        subjects,
+        levels,
+        bio: teacherBio,
+        notificationInterests,
+      });
+      metadata.verificationStatus = "pending";
+      metadata.trackingCode = trackingCode;
 
       await db
         .update(users)
@@ -263,13 +311,12 @@ export async function completeGoogleOnboardingAction(
               identity: await saveVerificationDocument(user.id, "identity", identityFile as File),
             };
 
-      await db.insert(organizationVerifications).values({
+      await upsertPendingVerification({
         userId: user.id,
         orgType: "enseignant",
         trackingCode,
         institutionSubtype: "identity",
-        status: "pending",
-        documents: JSON.stringify(docs),
+        documents: docs,
       });
 
       const schoolIdNum = teacherSchoolId ? parseInt(teacherSchoolId, 10) : NaN;

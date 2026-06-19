@@ -38,11 +38,11 @@ export async function createFamilyInvitation(
   email: string,
   inviteRole: string = "coparent",
   locale?: string
-): Promise<{ success: string; inviteUrl: string } | { error: string }> {
+): Promise<{ success: string; inviteUrl: string; emailSent?: boolean } | { error: string }> {
   const result = await createFamilyInvitationWithEmail(email, inviteRole, locale);
   if ("error" in result) return { error: result.error };
   revalidatePath("/[locale]/dashboard/invite", "page");
-  return { success: result.success, inviteUrl: result.inviteUrl };
+  return { success: result.success, inviteUrl: result.inviteUrl, emailSent: result.emailSent };
 }
 
 export async function getInvitePreviewAction(token: string) {

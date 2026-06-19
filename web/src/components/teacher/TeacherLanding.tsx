@@ -44,7 +44,7 @@ export default function TeacherLanding() {
   return (
     <main
       dir={isRTL ? "rtl" : "ltr"}
-      className="min-h-screen font-cairo overflow-hidden bg-gradient-to-b from-teal-50/80 via-white to-emerald-50/50"
+      className="min-h-screen font-ui-ar overflow-hidden bg-gradient-to-b from-teal-50/80 via-white to-emerald-50/50"
     >
       {/* Hero */}
       <section className="relative pt-8 pb-20 lg:pt-12 lg:pb-28">

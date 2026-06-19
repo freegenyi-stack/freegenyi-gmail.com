@@ -1,0 +1,24 @@
+{
+  "profile": "child",
+  "country": "DZ",
+  "platform": "mobile",
+  "practiceOnPc": false,
+  "lobbyPortals": [
+    { "id": "official_path", "labelFr": "Parcours officiel", "duolingoStyle": true },
+    { "id": "geny", "labelFr": "Geny du jour", "source": "parent" },
+    { "id": "missions", "labelFr": "Missions", "source": "teacher" }
+  ],
+  "gamification": {
+    "xpEnabled": true,
+    "streakEnabled": true,
+    "starsPerCompetency": 3,
+    "heartsEnabled": false,
+    "mascot": "fox"
+  },
+  "sessionPayloadVersion": 1,
+  "learningModes": {
+    "guided": { "maxPortals": 1, "pathSequential": true },
+    "semi_guided": { "maxPortals": 2, "pathSequential": true },
+    "explorer": { "maxPortals": 99, "pathSequential": false }
+  }
+}

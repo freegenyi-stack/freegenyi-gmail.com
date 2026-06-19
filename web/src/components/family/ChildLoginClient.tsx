@@ -38,6 +38,7 @@ export default function ChildLoginClient() {
       setLoading(false);
       return;
     }
+    if (!("childId" in result)) return;
     router.push(`/${locale}/lobby/${result.childId}`);
   };
 

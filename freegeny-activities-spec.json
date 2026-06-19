@@ -1,0 +1,672 @@
+{
+  "project": "FreeGeny",
+  "description": "Bibliothèque de 12 types d'activités interactives pour enfants du primaire (4-13 ans), multiplateforme (Next.js 14 App Router + Expo). Chaque activité est un composant React autonome, animé avec Framer Motion, avec intégration du mascotte Fares (fennec) via Rive (.riv), effets sonores via Howler.js, et confettis via canvas-confetti.",
+
+  "stack": {
+    "web": "Next.js 14 App Router + TypeScript + Tailwind CSS + shadcn/ui",
+    "mobile": "Expo (React Native) avec react-native-webview pour les activités partagées",
+    "animations": "Framer Motion 11",
+    "mascotte": "Rive (.riv) — fichier: public/rive/fares.riv — états: idle, celebrate, wrong, encourage, talk",
+    "dragAndDrop": "dnd-kit (@dnd-kit/core + @dnd-kit/sortable + @dnd-kit/utilities)",
+    "son": "Howler.js",
+    "confettis": "canvas-confetti",
+    "icones": "lucide-react",
+    "base_de_donnees": "PostgreSQL + Prisma",
+    "langues": ["fr", "ar"],
+    "direction": "supporte RTL pour l'arabe via dir='rtl' sur le conteneur racine"
+  },
+
+  "design_system": {
+    "description": "Design coloré, chaleureux, inspiré du désert algérien et de la nature méditerranéenne. Pas de look générique EdTech — chaque couleur a une signification liée à l'univers FreeGeny.",
+    "couleurs": {
+      "primary": "#F97316",
+      "primary_label": "Orange sable chaud — couleur principale, boutons CTA, Fares",
+      "primary_hover": "#EA6C0A",
+      "primary_light": "#FEF3C7",
+      "secondary": "#10B981",
+      "secondary_label": "Vert oasis — bonne réponse, succès, XP",
+      "secondary_hover": "#059669",
+      "secondary_light": "#D1FAE5",
+      "danger": "#EF4444",
+      "danger_label": "Rouge mauvaise réponse",
+      "danger_light": "#FEE2E2",
+      "warning": "#F59E0B",
+      "warning_label": "Jaune étoile — timer, avertissement",
+      "neutral_50": "#FAFAFA",
+      "neutral_100": "#F4F4F5",
+      "neutral_200": "#E4E4E7",
+      "neutral_700": "#3F3F46",
+      "neutral_900": "#18181B",
+      "background": "#FFFBF5",
+      "background_label": "Blanc crème chaud — jamais blanc pur",
+      "card_bg": "#FFFFFF",
+      "fares_accent": "#FB923C"
+    },
+    "typographie": {
+      "font_display": "Nunito — titres, questions, boutons (Google Fonts, weights: 700, 800, 900)",
+      "font_body": "Nunito — texte courant (weight: 400, 600)",
+      "font_arabic": "Scheherazade New — tout le texte arabe (Google Fonts, weights: 400, 700)",
+      "font_arabic_alternative": "Amiri — alternative plus classique pour l'arabe",
+      "taille_question": "text-2xl (24px) sur mobile, text-3xl (30px) sur desktop",
+      "taille_choix_bouton": "text-xl (20px)",
+      "taille_label": "text-sm (14px)",
+      "taille_xp": "text-4xl font-black pour l'animation +XP",
+      "note": "Toujours sentence case, jamais ALL CAPS sauf pour les lettres dans ActivityLettresManquantes"
+    },
+    "border_radius": {
+      "bouton": "rounded-2xl (16px)",
+      "carte": "rounded-3xl (24px)",
+      "badge": "rounded-full",
+      "input": "rounded-xl (12px)",
+      "wrapper": "rounded-3xl (24px)"
+    },
+    "ombres": {
+      "carte": "shadow-[0_4px_24px_rgba(0,0,0,0.08)]",
+      "bouton_actif": "shadow-[0_6px_0_#EA6C0A] — effet 3D appuyé pour les boutons enfants",
+      "bouton_presse": "shadow-[0_2px_0_#EA6C0A] translate-y-1 — feedback tactile",
+      "carte_selected": "shadow-[0_0_0_3px_#F97316]"
+    },
+    "spacing": {
+      "padding_activite": "p-4 sur mobile, p-8 sur desktop",
+      "gap_choix": "gap-3 entre les boutons de réponse",
+      "gap_cartes_memory": "gap-2 sur mobile, gap-3 sur desktop"
+    },
+    "icones_lucide": {
+      "bonne_reponse": "CheckCircle2 (color: #10B981, size: 28)",
+      "mauvaise_reponse": "XCircle (color: #EF4444, size: 28)",
+      "audio": "Volume2 (color: #F97316, size: 24)",
+      "timer": "Timer (color: #F59E0B, size: 22)",
+      "etoile_xp": "Star (color: #F59E0B, fill: #F59E0B, size: 20)",
+      "suivant": "ChevronRight (size: 24)",
+      "retour": "ChevronLeft (size: 24)",
+      "aide": "HelpCircle (color: #F97316, size: 22)",
+      "vrai": "ThumbsUp (color: #10B981, size: 32)",
+      "faux": "ThumbsDown (color: #EF4444, size: 32)",
+      "retourner_carte": "RefreshCw (size: 20)",
+      "confetti_trigger": "PartyPopper (size: 28)",
+      "cadenas": "Lock (size: 18)",
+      "debloque": "Unlock (size: 18)"
+    },
+    "boutons": {
+      "primaire": {
+        "classe": "bg-[#F97316] text-white font-bold rounded-2xl px-6 py-4 min-h-[56px] min-w-[56px] shadow-[0_6px_0_#EA6C0A] active:shadow-[0_2px_0_#EA6C0A] active:translate-y-1 transition-all duration-100 text-xl select-none",
+        "usage": "Valider, Suivant, Commencer"
+      },
+      "choix_qcm": {
+        "classe": "w-full bg-white border-2 border-[#E4E4E7] text-[#18181B] font-semibold rounded-2xl px-5 py-4 min-h-[64px] shadow-[0_4px_0_#E4E4E7] active:shadow-[0_1px_0_#E4E4E7] active:translate-y-1 transition-all duration-100 text-xl text-left flex items-center gap-3 select-none",
+        "classe_correct": "border-[#10B981] bg-[#D1FAE5] shadow-[0_4px_0_#059669]",
+        "classe_incorrect": "border-[#EF4444] bg-[#FEE2E2] shadow-[0_4px_0_#DC2626]",
+        "classe_disabled": "opacity-60 cursor-not-allowed"
+      },
+      "vrai_faux": {
+        "vrai": "flex-1 bg-[#10B981] text-white font-black rounded-2xl py-6 text-2xl flex flex-col items-center gap-2 shadow-[0_6px_0_#059669] active:shadow-[0_2px_0_#059669] active:translate-y-1 min-h-[100px]",
+        "faux": "flex-1 bg-[#EF4444] text-white font-black rounded-2xl py-6 text-2xl flex flex-col items-center gap-2 shadow-[0_6px_0_#DC2626] active:shadow-[0_2px_0_#DC2626] active:translate-y-1 min-h-[100px]"
+      },
+      "secondaire": {
+        "classe": "bg-transparent border-2 border-[#E4E4E7] text-[#3F3F46] font-semibold rounded-2xl px-5 py-3 min-h-[48px] transition-all duration-100",
+        "usage": "Passer, Rejouer, Annuler"
+      },
+      "audio": {
+        "classe": "bg-[#FEF3C7] border-2 border-[#F59E0B] text-[#F97316] rounded-full p-3 min-w-[48px] min-h-[48px] flex items-center justify-center shadow-sm active:scale-95 transition-transform",
+        "usage": "Bouton lecture audio de la consigne"
+      }
+    },
+    "animations_framer_motion": {
+      "entree_activite": {
+        "initial": "{ opacity: 0, y: 32 }",
+        "animate": "{ opacity: 1, y: 0 }",
+        "transition": "{ duration: 0.4, ease: 'easeOut' }"
+      },
+      "sortie_activite": {
+        "exit": "{ opacity: 0, y: -32 }",
+        "transition": "{ duration: 0.3, ease: 'easeIn' }"
+      },
+      "bouton_presse": {
+        "whileTap": "{ scale: 0.96 }",
+        "transition": "{ duration: 0.1 }"
+      },
+      "bonne_reponse_flash": {
+        "animate": "{ scale: [1, 1.08, 1] }",
+        "transition": "{ duration: 0.4, ease: 'easeOut' }"
+      },
+      "mauvaise_reponse_shake": {
+        "animate": "{ x: [0, -8, 8, -8, 8, 0] }",
+        "transition": "{ duration: 0.4 }"
+      },
+      "flip_carte_flashcard": {
+        "style": "rotateY: 0 → 180 (recto) / 180 → 360 (verso)",
+        "transition": "{ duration: 0.6, ease: 'easeInOut' }",
+        "note": "Utiliser perspective-1000 sur le conteneur parent, backface-visibility: hidden sur les deux faces"
+      },
+      "flip_carte_memory": {
+        "animate_verso": "{ rotateY: 180 }",
+        "animate_recto": "{ rotateY: 0 }",
+        "transition": "{ duration: 0.35, ease: 'easeOut' }"
+      },
+      "xp_popup": {
+        "initial": "{ opacity: 0, scale: 0.5, y: 0 }",
+        "animate": "{ opacity: [0, 1, 1, 0], scale: [0.5, 1.2, 1, 0.8], y: [0, -60, -80, -100] }",
+        "transition": "{ duration: 1.2, times: [0, 0.2, 0.7, 1] }"
+      },
+      "fares_bounce": {
+        "animate": "{ y: [0, -12, 0] }",
+        "transition": "{ duration: 0.5, repeat: 2 }",
+        "usage": "Quand Fares célèbre sans Rive disponible"
+      },
+      "timer_pulse": {
+        "animate": "{ scale: [1, 1.1, 1] }",
+        "transition": "{ duration: 0.5, repeat: Infinity }",
+        "condition": "Activer seulement quand timer < 10 secondes"
+      },
+      "carte_entree_memory": {
+        "initial": "{ opacity: 0, scale: 0.8 }",
+        "animate": "{ opacity: 1, scale: 1 }",
+        "transition": "{ duration: 0.3, delay: index * 0.05 }"
+      },
+      "ligne_matching_svg": {
+        "pathLength": "0 → 1",
+        "transition": "{ duration: 0.4, ease: 'easeOut' }",
+        "stroke": "#10B981",
+        "strokeWidth": 3,
+        "strokeDasharray": "none"
+      }
+    },
+    "sons_howler": {
+      "fichiers": {
+        "succes": "/sounds/success.mp3 — son joyeux court (0.8s)",
+        "erreur": "/sounds/wrong.mp3 — son doux non-punitif (0.5s)",
+        "flip": "/sounds/flip.mp3 — bruit de carte qui se retourne (0.2s)",
+        "drop": "/sounds/drop.mp3 — son satisfaisant de dépôt drag&drop (0.3s)",
+        "match": "/sounds/match.mp3 — son de paire trouvée memory (0.6s)",
+        "tick": "/sounds/tick.mp3 — tick du timer (0.1s)",
+        "fanfare": "/sounds/fanfare.mp3 — fin de session réussie (2s)",
+        "bouton": "/sounds/tap.mp3 — tap léger sur bouton (0.1s)",
+        "encouragement": "/sounds/encourage.mp3 — son doux après erreur (0.7s)"
+      },
+      "configuration": {
+        "volume_defaut": 0.7,
+        "note": "Respecter prefers-reduced-motion et volume système. Ajouter un bouton mute dans ActivityWrapper."
+      }
+    },
+    "confettis_canvas": {
+      "bonne_reponse": {
+        "particleCount": 60,
+        "spread": 70,
+        "origin": "{ y: 0.8 }",
+        "colors": ["#F97316", "#10B981", "#F59E0B", "#FB923C", "#34D399"]
+      },
+      "fin_session_parfaite": {
+        "particleCount": 200,
+        "spread": 160,
+        "origin": "{ y: 0.6 }",
+        "colors": ["#F97316", "#10B981", "#F59E0B", "#FB923C", "#34D399"],
+        "note": "Lancer 3 fois en sequence avec setTimeout(200ms) pour effet cascade"
+      }
+    },
+    "progression_xp": {
+      "QCM_correct": 10,
+      "VRAI_FAUX_correct": 5,
+      "FLASHCARDS_complete": 8,
+      "MEMORY_GAME_paire": 15,
+      "TEXTE_A_TROUS_correct": 10,
+      "DRAG_DROP_correct": 12,
+      "SEQUENCING_correct": 15,
+      "MATCHING_correct": 12,
+      "IMAGE_HOTSPOT_correct": 10,
+      "COLORIAGE_complete": 20,
+      "LETTRES_MANQUANTES_correct": 10,
+      "CALCUL_INTERACTIF_correct": 10,
+      "bonus_sans_erreur": 20,
+      "bonus_rapide": 10,
+      "affichage": "Badge étoile animé + chiffre +XP en popup Framer Motion couleur orange"
+    },
+    "etats_ecran": {
+      "chargement": {
+        "composant": "Spinner circulaire orange centré + Fares en état idle qui respire",
+        "classe": "flex flex-col items-center justify-center min-h-[300px] gap-4"
+      },
+      "erreur": {
+        "composant": "Fares en état wrong + message d'erreur friendly + bouton Réessayer",
+        "message_fr": "Oups ! Quelque chose s'est mal passé. On réessaie ?",
+        "message_ar": "أوه! حدث خطأ ما. هل نحاول مجدداً؟"
+      },
+      "vide": {
+        "composant": "Fares idle + message + bouton action",
+        "message_fr": "Aucune activité disponible pour l'instant.",
+        "message_ar": "لا توجد أنشطة متاحة في الوقت الحالي."
+      },
+      "fin_session": {
+        "composant": "FaresCelebrate (Rive) + score + étoiles (1-3) + boutons Rejouer / Suivant",
+        "etoiles": {
+          "1_etoile": "score >= 50%",
+          "2_etoiles": "score >= 75%",
+          "3_etoiles": "score = 100% et sans aide"
+        }
+      }
+    }
+  },
+
+  "prisma_schema": {
+    "model_Activity": {
+      "id": "String @id @default(cuid())",
+      "type": "ActivityType (enum)",
+      "titre_fr": "String",
+      "titre_ar": "String",
+      "matiere": "Matiere (enum)",
+      "niveau": "Int (1-6, correspond aux années du primaire algérien)",
+      "contenu": "Json (structure spécifique à chaque type, voir activity_types ci-dessous)",
+      "xp_reward": "Int @default(10)",
+      "duree_estimee_secondes": "Int @default(120)",
+      "actif": "Boolean @default(true)",
+      "createdAt": "DateTime @default(now())",
+      "updatedAt": "DateTime @updatedAt"
+    },
+    "enum_ActivityType": [
+      "QCM", "VRAI_FAUX", "FLASHCARDS", "MEMORY_GAME",
+      "TEXTE_A_TROUS", "DRAG_DROP", "SEQUENCING", "MATCHING",
+      "IMAGE_HOTSPOT", "COLORIAGE", "LETTRES_MANQUANTES", "CALCUL_INTERACTIF"
+    ],
+    "enum_Matiere": [
+      "MATHEMATIQUES", "FRANCAIS", "ARABE", "HISTOIRE",
+      "GEOGRAPHIE", "SCIENCES", "EDUCATION_ISLAMIQUE"
+    ]
+  },
+
+  "activity_types": [
+    {
+      "id": "QCM",
+      "nom": "QCM — Choix Multiple",
+      "composant": "ActivityQCM",
+      "fichier": "components/activities/ActivityQCM.tsx",
+      "matieres": ["MATHEMATIQUES", "FRANCAIS", "ARABE", "HISTOIRE", "GEOGRAPHIE", "SCIENCES", "EDUCATION_ISLAMIQUE"],
+      "description": "Une question avec 2 à 4 choix de réponse. Une seule réponse correcte. Boutons larges pleine largeur avec icône de lettre (A B C D) et texte. Support image dans la question. Après sélection : bouton 'Valider' apparaît. Après validation : feedback couleur + icône + explication + bouton Suivant.",
+      "layout": "Colonne verticale : [zone question + image?] → [boutons choix x4] → [bouton Valider] → [zone feedback]",
+      "icone_lettre_choix": "Cercle coloré avec lettre A/B/C/D — couleur #F97316 par défaut, #10B981 si correct, #EF4444 si incorrect",
+      "json_contenu_exemple": {
+        "question_fr": "Combien font 3 + 4 ?",
+        "question_ar": "كم يساوي 3 + 4 ؟",
+        "question_image_url": null,
+        "question_audio_url": "/audio/fr/math-3plus4.mp3",
+        "choix": [
+          { "id": "a", "texte_fr": "6", "texte_ar": "٦", "correct": false },
+          { "id": "b", "texte_fr": "7", "texte_ar": "٧", "correct": true },
+          { "id": "c", "texte_fr": "8", "texte_ar": "٨", "correct": false },
+          { "id": "d", "texte_fr": "9", "texte_ar": "٩", "correct": false }
+        ],
+        "explication_fr": "3 + 4 = 7. On compte 3 puis on ajoute 4.",
+        "explication_ar": "٣ + ٤ = ٧"
+      }
+    },
+    {
+      "id": "VRAI_FAUX",
+      "nom": "Vrai ou Faux",
+      "composant": "ActivityVraiFaux",
+      "fichier": "components/activities/ActivityVraiFaux.tsx",
+      "matieres": ["MATHEMATIQUES", "FRANCAIS", "HISTOIRE", "SCIENCES", "EDUCATION_ISLAMIQUE"],
+      "description": "Une affirmation, l'enfant choisit Vrai ou Faux. Deux gros boutons côte à côte occupant toute la largeur. Vrai = vert avec ThumbsUp. Faux = rouge avec ThumbsDown. Feedback immédiat sans bouton Valider intermédiaire.",
+      "layout": "Colonne : [affirmation + audio?] → [deux boutons côte à côte Vrai/Faux] → [feedback + explication]",
+      "json_contenu_exemple": {
+        "affirmation_fr": "Le soleil est une étoile.",
+        "affirmation_ar": "الشمس نجمة.",
+        "affirmation_audio_url": "/audio/fr/soleil-etoile.mp3",
+        "reponse_correcte": true,
+        "explication_fr": "Oui ! Le soleil est bien une étoile, la plus proche de la Terre.",
+        "explication_ar": "نعم! الشمس هي نجمة، وهي الأقرب إلى الأرض."
+      }
+    },
+    {
+      "id": "FLASHCARDS",
+      "nom": "Flashcards",
+      "composant": "ActivityFlashcards",
+      "fichier": "components/activities/ActivityFlashcards.tsx",
+      "matieres": ["ARABE", "FRANCAIS", "HISTOIRE", "GEOGRAPHIE", "EDUCATION_ISLAMIQUE"],
+      "description": "Cartes recto/verso flip 3D. Recto = image + mot. Verso = définition ou traduction + audio. Navigation par swipe (framer-motion drag) ou boutons Précédent/Suivant. Compteur de cartes. Bouton audio sur le verso.",
+      "layout": "Centré : [compteur X/N] → [carte flip 3D grande] → [boutons Précédent / Suivant] → [bouton audio verso]",
+      "taille_carte": "w-full max-w-sm h-64 — grande, cliquable facilement",
+      "json_contenu_exemple": {
+        "cartes": [
+          {
+            "id": "c1",
+            "recto_texte_fr": "Chat",
+            "recto_texte_ar": "قطة",
+            "recto_image_url": "/images/animals/cat.png",
+            "verso_texte_fr": "Le chat est un animal domestique.",
+            "verso_texte_ar": "القطة حيوان أليف.",
+            "verso_audio_url": "/audio/ar/qitta.mp3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "MEMORY_GAME",
+      "nom": "Memory Game — Jeu des Paires",
+      "composant": "ActivityMemoryGame",
+      "fichier": "components/activities/ActivityMemoryGame.tsx",
+      "matieres": ["ARABE", "FRANCAIS", "MATHEMATIQUES", "SCIENCES", "EDUCATION_ISLAMIQUE"],
+      "description": "Grille de cartes face cachée. Dos des cartes = motif décoratif avec logo FreeGeny. L'enfant retourne 2 cartes. Si paire = restent visibles + son match + +XP. Si non = se retournent après 1 seconde. Grille 4x3 ou 4x4. Timer optionnel affiché en haut.",
+      "layout": "Colonne : [timer optionnel + score paires] → [grille de cartes] → [message fin si toutes trouvées]",
+      "dos_carte": "bg-gradient-to-br from-[#F97316] to-[#FB923C] rounded-2xl avec logo FreeGeny centré en blanc",
+      "json_contenu_exemple": {
+        "grille": "4x3",
+        "timer_secondes": 60,
+        "paires": [
+          {
+            "id": "p1",
+            "carte_a": { "type": "image", "valeur": "/images/fruits/apple.png" },
+            "carte_b": { "type": "texte_ar", "valeur": "تفاحة" }
+          },
+          {
+            "id": "p2",
+            "carte_a": { "type": "image", "valeur": "/images/fruits/banana.png" },
+            "carte_b": { "type": "texte_ar", "valeur": "موزة" }
+          }
+        ]
+      }
+    },
+    {
+      "id": "TEXTE_A_TROUS",
+      "nom": "Texte à Trous",
+      "composant": "ActivityTexteATrous",
+      "fichier": "components/activities/ActivityTexteATrous.tsx",
+      "matieres": ["FRANCAIS", "ARABE", "SCIENCES", "HISTOIRE"],
+      "description": "Un texte avec des blancs à remplir. Mode 'choix' : word bank de chips cliquables sous le texte à glisser ou taper dans les trous. Mode 'clavier' : input texte dans le trou. Les trous = rectangles pointillés orange avec largeur proportionnelle au mot attendu. Support RTL complet pour l'arabe.",
+      "layout": "Colonne : [texte avec trous inline] → [word bank chips si mode choix] → [bouton Valider]",
+      "style_trou": "inline-block border-b-4 border-dashed border-[#F97316] min-w-[80px] text-center rounded-lg bg-[#FEF3C7] px-2",
+      "style_chip_word_bank": "bg-white border-2 border-[#E4E4E7] rounded-xl px-4 py-2 font-semibold text-lg shadow-sm cursor-pointer select-none active:scale-95",
+      "json_contenu_exemple": {
+        "mode": "choix",
+        "texte_fr": "Le chat mange une ___. Il boit du ___.",
+        "texte_ar": "القطة تأكل ___. وتشرب ___.",
+        "trous": [
+          { "id": "t1", "reponse_correcte": "souris", "position": 1 },
+          { "id": "t2", "reponse_correcte": "lait", "position": 2 }
+        ],
+        "word_bank_fr": ["souris", "lait", "pain", "eau"],
+        "word_bank_ar": ["فأر", "حليب", "خبز", "ماء"]
+      }
+    },
+    {
+      "id": "DRAG_DROP",
+      "nom": "Glisser-Déposer",
+      "composant": "ActivityDragDrop",
+      "fichier": "components/activities/ActivityDragDrop.tsx",
+      "librairie": "dnd-kit (@dnd-kit/core) — utiliser useDraggable et useDroppable",
+      "matieres": ["MATHEMATIQUES", "SCIENCES", "GEOGRAPHIE", "FRANCAIS", "ARABE"],
+      "description": "Des éléments draggables (chips image+texte) à déposer dans des zones cibles colorées. Les zones cibles ont une couleur de fond légère et une bordure pointillée quand elles attendent un élément. Quand un élément est déposé dans la bonne zone : bordure verte + icône check. Mauvaise zone : shake animation + retour à la position initiale. Fonctionne au touch sur mobile (dnd-kit natif touch support).",
+      "layout": "Colonne : [instruction] → [éléments draggables en haut] → [zones cibles en bas avec labels]",
+      "style_element_draggable": "bg-white border-2 border-[#E4E4E7] rounded-2xl p-3 flex items-center gap-2 shadow-md cursor-grab active:cursor-grabbing active:scale-105 active:shadow-lg active:z-50",
+      "style_zone_cible_vide": "border-3 border-dashed border-[#E4E4E7] rounded-2xl p-4 min-h-[80px] flex flex-col items-center justify-center bg-[#FAFAFA]",
+      "style_zone_cible_hover": "border-[#F97316] bg-[#FEF3C7]",
+      "style_zone_cible_correct": "border-[#10B981] bg-[#D1FAE5]",
+      "json_contenu_exemple": {
+        "instruction_fr": "Classe chaque animal dans la bonne catégorie.",
+        "instruction_ar": "صنّف كل حيوان في الخانة الصحيحة.",
+        "elements": [
+          { "id": "e1", "texte_fr": "Lion", "texte_ar": "أسد", "image_url": "/images/animals/lion.png", "zone_correcte": "z1" },
+          { "id": "e2", "texte_fr": "Aigle", "texte_ar": "نسر", "image_url": "/images/animals/eagle.png", "zone_correcte": "z2" },
+          { "id": "e3", "texte_fr": "Requin", "texte_ar": "قرش", "image_url": "/images/animals/shark.png", "zone_correcte": "z3" }
+        ],
+        "zones": [
+          { "id": "z1", "label_fr": "Mammifères", "label_ar": "ثدييات", "couleur_fond": "#FEF3C7", "icone": "🦁" },
+          { "id": "z2", "label_fr": "Oiseaux", "label_ar": "طيور", "couleur_fond": "#EDE9FE", "icone": "🦅" },
+          { "id": "z3", "label_fr": "Poissons", "label_ar": "أسماك", "couleur_fond": "#DBEAFE", "icone": "🦈" }
+        ]
+      }
+    },
+    {
+      "id": "SEQUENCING",
+      "nom": "Remettre dans l'Ordre",
+      "composant": "ActivitySequencing",
+      "fichier": "components/activities/ActivitySequencing.tsx",
+      "librairie": "dnd-kit (@dnd-kit/sortable) — utiliser SortableContext + useSortable",
+      "matieres": ["HISTOIRE", "SCIENCES", "FRANCAIS", "MATHEMATIQUES"],
+      "description": "Des cartes mélangées à réordonner par drag & drop vertical ou horizontal. Chaque carte a une poignée drag (GripVertical icon). Quand l'ordre est correct : flash vert sur toutes les cartes + confettis. Un bouton Vérifier valide l'ordre final.",
+      "layout": "Colonne : [instruction + audio?] → [liste sortable de cartes] → [bouton Vérifier]",
+      "style_carte_sortable": "bg-white border-2 border-[#E4E4E7] rounded-2xl p-4 flex items-center gap-3 shadow-sm cursor-grab — icone GripVertical à gauche en gris",
+      "style_carte_drag_active": "shadow-xl scale-105 border-[#F97316] bg-[#FFFBF5] z-50",
+      "json_contenu_exemple": {
+        "instruction_fr": "Remets les saisons dans le bon ordre, en commençant par le printemps.",
+        "instruction_ar": "رتّب الفصول بالترتيب الصحيح، ابدأ بالربيع.",
+        "elements": [
+          { "id": "s1", "texte_fr": "Printemps", "texte_ar": "الربيع", "image_url": "/images/seasons/spring.png", "ordre_correct": 1 },
+          { "id": "s2", "texte_fr": "Été", "texte_ar": "الصيف", "image_url": "/images/seasons/summer.png", "ordre_correct": 2 },
+          { "id": "s3", "texte_fr": "Automne", "texte_ar": "الخريف", "image_url": "/images/seasons/autumn.png", "ordre_correct": 3 },
+          { "id": "s4", "texte_fr": "Hiver", "texte_ar": "الشتاء", "image_url": "/images/seasons/winter.png", "ordre_correct": 4 }
+        ]
+      }
+    },
+    {
+      "id": "MATCHING",
+      "nom": "Relier — Deux Colonnes",
+      "composant": "ActivityMatching",
+      "fichier": "components/activities/ActivityMatching.tsx",
+      "matieres": ["ARABE", "FRANCAIS", "MATHEMATIQUES", "SCIENCES", "HISTOIRE"],
+      "description": "Deux colonnes d'éléments à relier. L'enfant tape un élément colonne A (il se surligne en orange), puis tape son correspondant colonne B. Une ligne SVG verte animée (pathLength 0→1) se dessine entre les deux. Paire correcte = ligne reste verte. Paire incorrecte = ligne rouge + disparaît après 0.5s. Pas de drag, juste tap/click pour être mobile-friendly.",
+      "layout": "Row : [colonne A à gauche] — [SVG overlay au milieu pour les lignes] — [colonne B à droite]",
+      "style_element_colonne": "bg-white border-2 border-[#E4E4E7] rounded-2xl p-3 min-h-[56px] flex items-center justify-center text-center font-semibold",
+      "style_element_selectionne": "border-[#F97316] bg-[#FEF3C7] shadow-[0_0_0_3px_#F97316]",
+      "style_element_relie": "border-[#10B981] bg-[#D1FAE5] opacity-70",
+      "svg_lignes": "SVG absolu positionné par dessus les deux colonnes, pointer-events: none",
+      "json_contenu_exemple": {
+        "instruction_fr": "Relie chaque mot à son image.",
+        "instruction_ar": "اربط كل كلمة بصورتها.",
+        "paires": [
+          {
+            "id": "m1",
+            "colonne_a": { "type": "texte", "valeur_fr": "Soleil", "valeur_ar": "شمس" },
+            "colonne_b": { "type": "image", "valeur": "/images/nature/sun.png" }
+          },
+          {
+            "id": "m2",
+            "colonne_a": { "type": "texte", "valeur_fr": "Lune", "valeur_ar": "قمر" },
+            "colonne_b": { "type": "image", "valeur": "/images/nature/moon.png" }
+          }
+        ]
+      }
+    },
+    {
+      "id": "IMAGE_HOTSPOT",
+      "nom": "Image Hotspot — Cliquer la Bonne Zone",
+      "composant": "ActivityImageHotspot",
+      "fichier": "components/activities/ActivityImageHotspot.tsx",
+      "matieres": ["SCIENCES", "GEOGRAPHIE", "HISTOIRE"],
+      "description": "Une grande image responsive avec des zones cliquables circulaires invisibles (positionnées en pourcentage). L'enfant clique/tape selon la consigne. Bonne zone : cercle vert pulsé qui apparaît. Mauvaise zone : cercle rouge shake. Les zones sont définies en x_percent/y_percent pour être responsive sur toutes tailles d'écran.",
+      "layout": "Colonne : [instruction + bouton audio] → [image relative avec zones absolues] → [feedback]",
+      "style_zone_invisible": "position: absolute, rounded-full, cursor: pointer, opacity-0 hover:opacity-20 hover:bg-white",
+      "style_zone_correcte_revele": "bg-[#10B981] opacity-60 rounded-full animate-ping",
+      "style_zone_incorrecte_revele": "bg-[#EF4444] opacity-60 rounded-full",
+      "json_contenu_exemple": {
+        "image_url": "/images/maps/algerie.png",
+        "instruction_fr": "Clique sur la capitale de l'Algérie.",
+        "instruction_ar": "انقر على عاصمة الجزائر.",
+        "instruction_audio_url": "/audio/fr/capitale-algerie.mp3",
+        "zones": [
+          {
+            "id": "z1",
+            "label_fr": "Alger",
+            "label_ar": "الجزائر العاصمة",
+            "x_percent": 45,
+            "y_percent": 20,
+            "rayon_percent": 8,
+            "correct": true
+          },
+          {
+            "id": "z2",
+            "label_fr": "Oran",
+            "label_ar": "وهران",
+            "x_percent": 25,
+            "y_percent": 18,
+            "rayon_percent": 7,
+            "correct": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "COLORIAGE",
+      "nom": "Coloriage Interactif",
+      "composant": "ActivityColoriage",
+      "fichier": "components/activities/ActivityColoriage.tsx",
+      "matieres": ["SCIENCES", "ARABE", "FRANCAIS"],
+      "description": "Un SVG avec des zones path identifiées par ID. L'enfant choisit une couleur dans la palette (cercles colorés en bas), puis clique une zone pour la remplir (changer le fill du path SVG). Mode guidé : une flèche animée indique quelle zone colorier et avec quelle couleur. Mode libre : pas de contrainte. Bouton de validation compare les fills aux couleurs correctes.",
+      "layout": "Colonne : [instruction] → [SVG coloriage centré grande taille] → [palette de couleurs] → [bouton Valider]",
+      "style_palette_couleur": "cercle 48x48px border-4 border-transparent selected:border-[#18181B] rounded-full cursor-pointer transition-transform active:scale-90",
+      "style_zone_svg_hover": "opacity sur hover : 0.8, cursor: pointer",
+      "json_contenu_exemple": {
+        "mode": "guide",
+        "svg_url": "/images/coloring/drapeau-algerie.svg",
+        "instruction_fr": "Colorie le drapeau de l'Algérie avec les bonnes couleurs.",
+        "instruction_ar": "لوّن علم الجزائر بالألوان الصحيحة.",
+        "zones_guidees": [
+          { "zone_id": "vert", "couleur_correcte": "#006233", "label_fr": "Vert", "label_ar": "أخضر" },
+          { "zone_id": "blanc", "couleur_correcte": "#FFFFFF", "label_fr": "Blanc", "label_ar": "أبيض" },
+          { "zone_id": "rouge", "couleur_correcte": "#D21034", "label_fr": "Rouge", "label_ar": "أحمر" }
+        ],
+        "palette": ["#006233", "#FFFFFF", "#D21034", "#000000", "#FFD700", "#F97316", "#3B82F6"]
+      }
+    },
+    {
+      "id": "LETTRES_MANQUANTES",
+      "nom": "Compléter un Mot — Lettres Manquantes",
+      "composant": "ActivityLettresManquantes",
+      "fichier": "components/activities/ActivityLettresManquantes.tsx",
+      "matieres": ["ARABE", "FRANCAIS"],
+      "description": "Image du mot en haut. Sous l'image : le mot avec certaines lettres masquées par des cases vides. En bas : clavier de lettres proposées (chips). L'enfant tape sur une lettre pour la placer dans la première case vide. Si correcte : case verte. Si incorrecte : case rouge shake + retour au clavier. Support RTL pour l'arabe (cases de droite à gauche). Bouton audio pour entendre le mot.",
+      "layout": "Colonne : [image du mot + bouton audio] → [cases lettres du mot avec trous] → [clavier lettres chips]",
+      "style_case_lettre": "w-12 h-14 border-b-4 border-[#F97316] rounded-xl bg-[#FEF3C7] flex items-center justify-center text-2xl font-black text-[#18181B]",
+      "style_case_vide": "w-12 h-14 border-b-4 border-dashed border-[#F97316] rounded-xl bg-white",
+      "style_case_correcte": "border-[#10B981] bg-[#D1FAE5] text-[#065F46]",
+      "style_case_incorrecte": "border-[#EF4444] bg-[#FEE2E2]",
+      "style_chip_lettre": "w-12 h-12 bg-white border-2 border-[#E4E4E7] rounded-xl flex items-center justify-center text-xl font-bold shadow-[0_3px_0_#E4E4E7] active:shadow-[0_1px_0_#E4E4E7] active:translate-y-0.5 cursor-pointer",
+      "json_contenu_exemple": {
+        "image_url": "/images/animals/cat.png",
+        "mot_fr": "CHAT",
+        "mot_ar": "قطة",
+        "lettres_masquees_fr": [0, 2],
+        "lettres_masquees_ar": [1],
+        "lettres_disponibles_fr": ["C", "A", "H", "T", "Z", "B"],
+        "lettres_disponibles_ar": ["ق", "ط", "ة", "ب", "ر"],
+        "audio_url_fr": "/audio/fr/chat.mp3",
+        "audio_url_ar": "/audio/ar/qitta.mp3"
+      }
+    },
+    {
+      "id": "CALCUL_INTERACTIF",
+      "nom": "Calcul Interactif",
+      "composant": "ActivityCalculInteractif",
+      "fichier": "components/activities/ActivityCalculInteractif.tsx",
+      "matieres": ["MATHEMATIQUES"],
+      "description": "Affiche une opération mathématique avec une aide visuelle (icônes emoji comptables). Un clavier numérique custom (pas le clavier système) avec les chiffres 0-9 + bouton effacer. L'enfant compose sa réponse et valide. Mauvaise réponse : affiche l'aide visuelle animée. Support des chiffres arabes-indiens (٠١٢٣) quand langue === 'ar'.",
+      "layout": "Colonne : [aide visuelle emoji si activée] → [opération stylisée ex: 3 + 4 = ?] → [affichage réponse saisie] → [clavier numérique custom 3x4]",
+      "style_operation": "text-5xl font-black text-center text-[#18181B] — les chiffres en [#F97316], l'opérateur en [#10B981], le = en [#3F3F46]",
+      "style_clavier": "grille 3 colonnes de boutons 64x64px rounded-2xl bg-white border-2 border-[#E4E4E7] shadow-[0_4px_0_#E4E4E7] font-bold text-2xl",
+      "style_affichage_reponse": "grande zone text-4xl font-black text-center border-b-4 border-[#F97316] min-w-[120px] p-2 bg-[#FEF3C7] rounded-xl",
+      "json_contenu_exemple": {
+        "operation": "addition",
+        "nombre_a": 3,
+        "nombre_b": 4,
+        "icone_visuelle": "🍎",
+        "question_fr": "Combien y a-t-il de pommes en tout ?",
+        "question_ar": "كم عدد التفاحات في المجموع؟",
+        "reponse_correcte": 7,
+        "aide_visuelle": true,
+        "chiffres_arabes": false
+      }
+    }
+  ],
+
+  "composant_base_partage": {
+    "nom": "ActivityWrapper",
+    "fichier": "components/activities/ActivityWrapper.tsx",
+    "description": "Composant parent qui encapsule TOUTES les activités. C'est lui qui gère Fares, les sons, les confettis, le XP et la progression. Chaque ActivityXxx est enfant de ActivityWrapper.",
+    "props": {
+      "activity": "Activity (depuis Prisma, avec champ contenu: Json)",
+      "langue": "'fr' | 'ar'",
+      "onComplete": "(resultat: ActivityResult) => void",
+      "showFares": "boolean — default true",
+      "showTimer": "boolean — default false"
+    },
+    "ActivityResult_type": {
+      "activityId": "string",
+      "score": "number (0-100)",
+      "xpGagne": "number",
+      "nbEtoiles": "1 | 2 | 3",
+      "tempsSecondes": "number",
+      "erreurs": "number"
+    },
+    "structure_html": "div.activity-wrapper (bg-[#FFFBF5] rounded-3xl p-4 relative overflow-hidden) contenant : [header avec titre + timer?] + [zone Fares côté droit ou bas selon viewport] + [composant activité enfant] + [overlay feedback] + [footer progression]",
+    "fares_rive": {
+      "fichier": "public/rive/fares.riv",
+      "import": "import { useRive, useStateMachineInput } from '@rive-app/react-canvas'",
+      "state_machine": "FaresStateMachine",
+      "input_etat": "state (string input)",
+      "etats": {
+        "idle": "Fares respire doucement, oreilles qui bougent",
+        "celebrate": "Fares saute et danse — déclenché sur bonne réponse",
+        "wrong": "Fares secoue doucement la tête — déclenché sur mauvaise réponse",
+        "encourage": "Fares tend la patte vers l'écran — après 2 erreurs consécutives",
+        "talk": "Fares ouvre la bouche en rythme — pendant lecture audio consigne"
+      },
+      "position": "absolute bottom-0 right-0 w-24 h-24 md:w-32 md:h-32 pointer-events-none",
+      "fallback_sans_rive": "Image PNG statique de Fares + animation Framer Motion bounce"
+    },
+    "gestion_feedback": {
+      "delai_avant_suivant_ms": 1500,
+      "overlay_feedback": "div absolute inset-0 bg-[#10B981]/10 ou bg-[#EF4444]/10 rounded-3xl pointer-events-none — flash de 600ms",
+      "son_bonne_reponse": "Howler.play('succes') + Rive state = 'celebrate' + canvas-confetti",
+      "son_mauvaise_reponse": "Howler.play('erreur') + Rive state = 'wrong' + shake animation sur la zone réponse"
+    },
+    "barre_progression": {
+      "style": "h-3 bg-[#E4E4E7] rounded-full overflow-hidden — barre intérieure bg-[#F97316] transition-all duration-500",
+      "position": "En haut du wrapper, sous le header"
+    },
+    "bouton_mute": {
+      "icone_mute": "VolumeX (lucide)",
+      "icone_unmute": "Volume2 (lucide)",
+      "position": "top-right corner du wrapper",
+      "style": "p-2 rounded-full bg-white/80 shadow-sm"
+    }
+  },
+
+  "instructions_cursor": {
+    "contexte": "Tu travailles sur FreeGeny, une plateforme EdTech pour enfants algériens du primaire (4-13 ans), en Next.js 14 App Router + TypeScript + Tailwind CSS. Les activités doivent aussi fonctionner dans Expo via react-native-webview.",
+    "priorite_1": "Crée d'abord ActivityWrapper (components/activities/ActivityWrapper.tsx) avec : Rive pour Fares, Howler.js pour les sons, canvas-confetti, barre de progression, bouton mute, overlay feedback, gestion XP",
+    "priorite_2": "Ensuite ActivityQCM, ActivityVraiFaux, ActivityFlashcards — les plus simples à implémenter",
+    "priorite_3": "Ensuite ActivityMemoryGame, ActivityLettresManquantes, ActivityCalculInteractif",
+    "priorite_4": "Ensuite ActivityTexteATrous, ActivityMatching, ActivitySequencing",
+    "priorite_5": "En dernier ActivityDragDrop (dnd-kit), ActivityImageHotspot, ActivityColoriage",
+    "regles_importantes": [
+      "Chaque composant reçoit son contenu via la prop activity.contenu (type Json Prisma) — NE JAMAIS hardcoder le contenu",
+      "Tous les textes sont bilingues fr/ar — utiliser la prop langue pour afficher le bon texte",
+      "Quand langue === 'ar' : ajouter dir='rtl' sur le conteneur, utiliser font-family Scheherazade New",
+      "Boutons minimum 48x48px — jamais moins pour les enfants",
+      "Utiliser touch events et pointer events, pas mouse-only",
+      "Toutes les animations Framer Motion doivent respecter prefers-reduced-motion",
+      "Le design system est dans la clé design_system de ce fichier — suivre exactement les couleurs, border-radius, ombres et classes Tailwind définies",
+      "Lucide React pour toutes les icônes — noms exacts dans design_system.icones_lucide",
+      "Howler.js pour tous les sons — chemins dans design_system.sons_howler",
+      "canvas-confetti config dans design_system.confettis_canvas",
+      "Framer Motion variants dans design_system.animations_framer_motion"
+    ],
+    "structure_fichiers": {
+      "components/activities/ActivityWrapper.tsx": "Composant parent partagé",
+      "components/activities/ActivityQCM.tsx": "QCM",
+      "components/activities/ActivityVraiFaux.tsx": "Vrai ou Faux",
+      "components/activities/ActivityFlashcards.tsx": "Flashcards",
+      "components/activities/ActivityMemoryGame.tsx": "Memory Game",
+      "components/activities/ActivityTexteATrous.tsx": "Texte à trous",
+      "components/activities/ActivityDragDrop.tsx": "Drag & Drop",
+      "components/activities/ActivitySequencing.tsx": "Séquençage",
+      "components/activities/ActivityMatching.tsx": "Relier colonnes",
+      "components/activities/ActivityImageHotspot.tsx": "Image Hotspot",
+      "components/activities/ActivityColoriage.tsx": "Coloriage",
+      "components/activities/ActivityLettresManquantes.tsx": "Lettres manquantes",
+      "components/activities/ActivityCalculInteractif.tsx": "Calcul interactif",
+      "components/activities/index.ts": "Export barrel de tous les composants",
+      "lib/activities/resolver.ts": "Fonction getActivityComponent(type: ActivityType) qui retourne le bon composant",
+      "public/rive/fares.riv": "Fichier Rive du mascotte Fares",
+      "public/sounds/": "Tous les fichiers audio Howler",
+      "types/activity.ts": "Types TypeScript pour ActivityResult et les contenu Json de chaque type"
+    }
+  }
+}

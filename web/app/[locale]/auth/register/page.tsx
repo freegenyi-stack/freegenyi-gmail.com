@@ -1,11 +1,6 @@
 import React, { Suspense } from "react";
 import { auth } from "@/auth";
-import RegisterClient from "./RegisterClient";
 import RegisterWizard from "@/components/register/RegisterWizard";
-
-function isDzLocale(locale: string) {
-  return locale === "DZ-fr" || locale === "DZ-ar" || locale.startsWith("DZ-");
-}
 
 export default async function RegisterPage({
   params,
@@ -28,15 +23,13 @@ export default async function RegisterPage({
         </div>
       }
     >
-      {isDzLocale(locale) ? (
-        <RegisterWizard
-          locale={locale}
-          mode={isGoogleResume ? "google" : "register"}
-          initialRole={isGoogleResume ? initialRole : undefined}
-        />
-      ) : (
-        <RegisterClient locale={locale} />
-      )}
+      <RegisterWizard
+        locale={locale}
+        mode={isGoogleResume ? "google" : "register"}
+        initialRole={
+          type === "enseignant" ? "enseignant" : type === "parent" ? "parent" : isGoogleResume ? initialRole : undefined
+        }
+      />
     </Suspense>
   );
 }

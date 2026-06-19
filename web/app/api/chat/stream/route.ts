@@ -1,9 +1,9 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { getMessages, userIsMember } from "@/lib/messaging/conversations.server";
+import { getMessagesSince, userIsMember } from "@/lib/messaging/conversations.server";
 import { getTypingUsers } from "@/lib/messaging/typing.server";
 
 export async function GET(req: NextRequest) {
@@ -35,23 +35,23 @@ export async function GET(req: NextRequest) {
         controller.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`));
       };
 
-          send({ type: "connected", typing: getTypingUsers(conversationId, user.id) });
+      const typing = await getTypingUsers(conversationId, user.id);
+      send({ type: "connected", typing });
 
       const interval = setInterval(async () => {
         try {
-          const messages = await getMessages(conversationId, user.id, 30);
-          const newest = messages[messages.length - 1];
-          const typing = getTypingUsers(conversationId, user.id);
-          if (newest && newest.id > lastId) {
-            lastId = newest.id;
-            send({ type: "messages", messages, lastId, typing });
+          const newMessages = await getMessagesSince(conversationId, user.id, lastId);
+          const typingUsers = await getTypingUsers(conversationId, user.id);
+          if (newMessages.length > 0) {
+            lastId = newMessages[newMessages.length - 1].id;
+            send({ type: "messages", messages: newMessages, lastId, typing: typingUsers });
           } else {
-            send({ type: "heartbeat", typing });
+            send({ type: "heartbeat", typing: typingUsers });
           }
         } catch {
           send({ type: "error", message: "poll failed" });
         }
-      }, 2500);
+      }, 2000);
 
       req.signal.addEventListener("abort", () => {
         clearInterval(interval);

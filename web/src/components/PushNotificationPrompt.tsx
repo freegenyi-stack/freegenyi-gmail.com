@@ -149,14 +149,14 @@ export default function PushNotificationPrompt() {
                 </div>
 
                 <div className="min-w-0 flex-1 pe-6">
-                  <h3 className={cn("text-base font-black text-slate-900 leading-snug", isRTL && "font-amiri text-right")}>
+                  <h3 className={cn("text-base font-black text-slate-900 leading-snug", isRTL && "font-ui-ar text-right")}>
                     {t("bannerTitle")}
                   </h3>
                   <p className={cn("mt-1.5 text-sm text-slate-600 leading-relaxed", isRTL && "font-lateef text-right")}>
                     {t("bannerDesc")}
                   </p>
 
-                  <div className={cn("mt-3 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700", isRTL && "flex-row-reverse font-amiri normal-case")}>
+                  <div className={cn("mt-3 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700", isRTL && "flex-row-reverse font-ui-ar normal-case")}>
                     <Shield className="h-3.5 w-3.5 shrink-0" />
                     {t("privacyHint")}
                   </div>
@@ -175,7 +175,7 @@ export default function PushNotificationPrompt() {
                       onClick={handleDismiss}
                       className={cn(
                         "rounded-xl px-4 py-2.5 text-xs font-bold text-slate-500 transition hover:bg-slate-100 hover:text-slate-800",
-                        isRTL && "font-amiri"
+                        isRTL && "font-ui-ar"
                       )}
                     >
                       {t("later")}
@@ -273,7 +273,7 @@ export function PushNotificationToggle({ onStatusChange }: { onStatusChange?: ()
   if (state === "unavailable") {
     return (
       <div className={cn("mx-1 rounded-2xl border border-amber-100 bg-amber-50/80 p-3", isRTL && "text-right")}>
-        <p className={cn("text-xs font-black text-amber-900", isRTL && "font-amiri")}>{t("menuTitle")}</p>
+        <p className={cn("text-xs font-black text-amber-900", isRTL && "font-ui-ar")}>{t("menuTitle")}</p>
         <p className={cn("mt-1 text-[11px] font-medium text-amber-800", isRTL && "font-lateef text-sm")}>
           {t("notConfigured")}
         </p>
@@ -293,7 +293,7 @@ export function PushNotificationToggle({ onStatusChange }: { onStatusChange?: ()
           {state === "on" ? <CheckCircle2 className="h-4 w-4" /> : <BellRing className="h-4 w-4" />}
         </div>
         <div className="min-w-0 flex-1">
-          <p className={cn("text-xs font-black text-slate-900", isRTL && "font-amiri")}>{t("menuTitle")}</p>
+          <p className={cn("text-xs font-black text-slate-900", isRTL && "font-ui-ar")}>{t("menuTitle")}</p>
           <p className={cn("mt-0.5 text-[11px] font-medium text-slate-500 leading-snug", isRTL && "font-lateef text-sm")}>
             {state === "on" ? t("menuOn") : state === "denied" ? t("menuDenied") : t("menuOff")}
           </p>

@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreeGeny — Prototype design mobile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FFFBF7;
+      --cream-warm: #FFF7ED;
+      --orange: #F97316;
+      --orange-dark: #C2410C;
+      --orange-mid: #EA580C;
+      --orange-soft: #FDBA74;
+      --ink: #0F172A;
+      --muted: #64748B;
+      --border: #E7E5E4;
+      --white: #FFFFFF;
+      --child-bg: #070B14;
+      --child-glow: #1E3A5F;
+      --emerald: #10B981;
+      --violet: #8B5CF6;
+      --rose: #F43F5E;
+      --blue: #3B82F6;
+      --radius: 22px;
+      --font-display: "Fredoka", system-ui, sans-serif;
+      --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+      --phone-w: 390px;
+      --phone-h: 844px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      background: #ffffff;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px 48px;
+    }
+
+    .page-header {
+      text-align: center;
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .page-header .badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--cream-warm);
+      border: 1px solid var(--orange-soft);
+      color: var(--orange-dark);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Screen picker */
+    .picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+
+    .picker button {
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 12px 20px;
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      background: var(--white);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 0 #D6D3D1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .picker button .ico { width: 16px; height: 16px; }
+
+    .picker button:hover {
+      background: var(--cream-warm);
+      transform: translateY(-1px);
+    }
+
+    .picker button.active {
+      background: var(--orange);
+      border-color: var(--orange-dark);
+      color: #fff;
+      box-shadow: 0 6px 0 var(--orange-dark);
+    }
+
+    /* Phone frame */
+    .phone-wrap {
+      position: relative;
+      padding: 14px;
+      background: #f5f5f4;
+      border-radius: 48px;
+      box-shadow:
+        0 0 0 2px var(--border),
+        0 24px 48px rgba(15, 23, 42, 0.12);
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 28px;
+      background: #111827;
+      border-radius: 20px;
+      z-index: 100;
+    }
+
+    .phone {
+      width: var(--phone-w);
+      height: var(--phone-h);
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      background: var(--cream);
+    }
+
+    .screen {
+      display: none;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+    }
+
+    .screen.active { display: flex; flex-direction: column; }
+    .screen::-webkit-scrollbar { display: none; }
+
+    /* ===== SHARED ===== */
+    .btn-3d {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 56px;
+      padding: 0 24px;
+      border: none;
+      border-radius: 16px;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .btn-3d.primary {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 6px 0 var(--orange-dark);
+    }
+
+    .btn-3d.primary:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 var(--orange-dark);
+    }
+
+    .btn-3d.secondary {
+      background: #fff;
+      color: var(--orange-mid);
+      border: 2px solid var(--orange-soft);
+      box-shadow: 0 5px 0 var(--orange-mid);
+    }
+
+    .tab-bar {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      padding: 10px 8px 28px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+    }
+
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #94a3b8;
+    }
+
+    .tab-item .icon {
+      width: 44px;
+      height: 36px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .tab-item.active .icon {
+      background: var(--orange);
+      box-shadow: 0 4px 0 var(--orange-dark);
+    }
+
+    .tab-item.active { color: var(--orange-mid); }
+
+    /* ===== ICONS (Lucide SVG) ===== */
+    .ico {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ico svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.25;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .tab-item .icon .ico { width: 20px; height: 20px; color: #94a3b8; }
+    .tab-item.active .icon .ico { color: #fff; }
+
+    .hub-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .hub-icon .ico { width: 22px; height: 22px; }
+
+    .hub.orange .hub-icon { background: rgba(249,115,22,0.18); color: var(--orange); }
+    .hub.emerald .hub-icon { background: rgba(16,185,129,0.18); color: var(--emerald); }
+    .hub.violet .hub-icon { background: rgba(139,92,246,0.18); color: var(--violet); }
+    .hub.blue .hub-icon { background: rgba(59,130,246,0.18); color: var(--blue); }
+
+    .portal-icon .ico { width: 26px; height: 26px; color: #fff; }
+
+    .inline-ico {
+      display: inline-flex;
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+    }
+
+    .brand-fox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-fox svg { width: 70%; height: 70%; }
+
+    .xp-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--orange-soft);
+    }
+
+    .xp-label .ico { width: 16px; height: 16px; color: var(--orange-soft); }
+
+    .timer-pill {
+      position: relative;
+      z-index: 1;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #94A3B8;
+      padding: 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,0.15);
+    }
+
+    .timer-pill .ico { width: 15px; height: 15px; color: #94A3B8; }
+    .timer-pill span { color: var(--orange-soft); }
+
+    /* ===== PARENT HOME ===== */
+    .screen-parent {
+      background: var(--cream);
+    }
+
+    .parent-scroll {
+      flex: 1;
+      padding: 52px 20px 16px;
+      position: relative;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .blob-1 {
+      top: -60px; right: -40px;
+      width: 180px; height: 180px;
+      background: rgba(249,115,22,0.14);
+    }
+
+    .blob-2 {
+      top: 100px; left: -70px;
+      width: 160px; height: 160px;
+      background: rgba(255,237,213,0.7);
+    }
+
+    .hero-dark {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 55%, #334155 100%);
+      border-radius: 28px;
+      padding: 24px;
+      color: #fff;
+      box-shadow: 0 20px 40px rgba(15,23,42,0.35);
+      overflow: hidden;
+    }
+
+    .hero-dark::before {
+      content: "";
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 140px; height: 140px;
+      background: rgba(249,115,22,0.25);
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .hero-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(249,115,22,0.25);
+      color: var(--orange-soft);
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(249,115,22,0.4);
+    }
+
+    .mascot-sm {
+      width: 52px; height: 52px;
+      background: var(--cream-warm);
+      border-radius: 16px;
+      border: 2px solid var(--orange-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 0 var(--orange-mid);
+    }
+
+    .hero-greeting {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .hero-greeting span { color: var(--orange-soft); }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat-box {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 14px 10px;
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .stat-box .lbl {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .section-label {
+      position: relative;
+      z-index: 1;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 22px 0 12px;
+    }
+
+    .hubs {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .hub {
+      background: #fff;
+      border-radius: 20px;
+      padding: 18px 16px;
+      border: 2px solid var(--border);
+      box-shadow: 0 5px 0 #D6D3D1;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .hub:active { transform: translateY(3px); box-shadow: 0 2px 0 #D6D3D1; }
+
+    .hub.orange { background: #FFF7ED; border-color: #FED7AA; box-shadow: 0 5px 0 #FDBA74; }
+    .hub.emerald { background: #ECFDF5; border-color: #A7F3D0; box-shadow: 0 5px 0 #6EE7B7; }
+    .hub.violet { background: #F5F3FF; border-color: #DDD6FE; box-shadow: 0 5px 0 #C4B5FD; }
+    .hub.blue { background: #EFF6FF; border-color: #BFDBFE; box-shadow: 0 5px 0 #93C5FD; }
+
+    .hub-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--ink); }
+    .hub-desc { font-size: 0.72rem; color: var(--muted); margin-top: 4px; font-weight: 600; }
+
+    .child-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 10px;
+      border: 2px solid var(--border);
+      box-shadow: 0 4px 0 #D6D3D1;
+    }
+
+    .child-avatar {
+      width: 48px; height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #FDBA74, #F97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .child-info { flex: 1; }
+    .child-name { font-weight: 800; font-size: 1rem; color: var(--ink); }
+    .child-meta { font-size: 0.78rem; color: var(--orange); font-weight: 700; margin-top: 2px; }
+
+    .progress-mini {
+      height: 8px;
+      background: var(--cream-deep, #FFEDD5);
+      border-radius: 999px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .progress-mini-fill {
+      height: 100%;
+      width: 68%;
+      background: linear-gradient(90deg, var(--orange), #FB923C);
+      border-radius: 999px;
+    }
+
+    .lv-pill {
+      background: var(--orange);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 10px;
+      box-shadow: 0 3px 0 var(--orange-dark);
+    }
+
+    /* ===== CHILD LOBBY ===== */
+    .screen-child {
+      background: var(--child-bg);
+      color: #fff;
+    }
+
+    .child-scroll {
+      flex: 1;
+      padding: 52px 20px 24px;
+      position: relative;
+    }
+
+    .stars {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1.5px 1.5px at 80% 20%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.25), transparent);
+      pointer-events: none;
+    }
+
+    .child-header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .mascot-lg {
+      width: 64px; height: 64px;
+      background: linear-gradient(145deg, #FFF7ED, #FFEDD5);
+      border-radius: 22px;
+      border: 3px solid var(--orange-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 0 var(--orange-mid), 0 0 30px rgba(249,115,22,0.3);
+      animation: float 3s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .speech {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 18px 18px 18px 4px;
+      padding: 14px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: #E2E8F0;
+    }
+
+    .speech strong { color: var(--orange-soft); }
+
+    .xp-bar-wrap {
+      position: relative;
+      z-index: 1;
+      background: rgba(0,0,0,0.35);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .xp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .xp-level {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .xp-track {
+      height: 16px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .xp-fill {
+      height: 100%;
+      width: 72%;
+      background: linear-gradient(90deg, var(--orange), #FBBF24);
+      border-radius: 999px;
+      box-shadow: 0 0 12px rgba(249,115,22,0.6);
+      animation: shimmer 2s ease infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.15); }
+    }
+
+    .portals { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 14px; }
+
+    .portal {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 24px;
+      border: 3px solid;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portal::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .portal:active { transform: scale(0.98); }
+
+    .portal.geny {
+      background: linear-gradient(135deg, #064E3B, #047857);
+      border-color: #34D399;
+      box-shadow: 0 8px 0 #065F46, 0 0 40px rgba(16,185,129,0.25);
+    }
+
+    .portal.missions {
+      background: linear-gradient(135deg, #7C2D12, #C2410C);
+      border-color: #FB923C;
+      box-shadow: 0 8px 0 #9A3412, 0 0 40px rgba(249,115,22,0.25);
+    }
+
+    .portal.library {
+      background: linear-gradient(135deg, #312E81, #4C1D95);
+      border-color: #A78BFA;
+      box-shadow: 0 8px 0 #3730A3, 0 0 40px rgba(139,92,246,0.25);
+    }
+
+    .portal-icon {
+      width: 56px; height: 56px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .portal-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .portal-text p {
+      font-size: 0.78rem;
+      opacity: 0.85;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    .portal-badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 0.7rem;
+      font-weight: 800;
+      min-width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+    }
+
+    /* ===== WELCOME ===== */
+    .screen-welcome {
+      background: var(--cream);
+      justify-content: center;
+      align-items: center;
+      padding: 52px 28px 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .screen-welcome .blob-1 { top: 10%; right: -20%; }
+    .screen-welcome .blob-2 { top: 50%; left: -30%; }
+
+    .welcome-mascot {
+      width: 100px; height: 100px;
+      background: var(--cream-warm);
+      border-radius: 32px;
+      border: 3px solid var(--orange-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 0 var(--orange-mid);
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-mascot .brand-fox svg { width: 62%; height: 62%; }
+
+    .welcome-brand {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-sub {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-actions {
+      width: 100%;
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lang-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      margin-top: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lang-card {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 5px 0 #D6D3D1;
+      transition: transform 0.12s ease;
+    }
+
+    .lang-card.warm {
+      background: var(--cream-warm);
+      border-color: #FED7AA;
+      box-shadow: 0 5px 0 #FDBA74;
+    }
+
+    .lang-card:active { transform: translateY(3px); box-shadow: 0 2px 0 #D6D3D1; }
+    .lang-card h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--ink); }
+    .lang-card p { font-size: 0.85rem; color: var(--muted); margin-top: 4px; font-weight: 600; }
+
+    /* ===== LOGIN ===== */
+    .screen-login {
+      background: var(--cream);
+    }
+
+    .login-scroll {
+      flex: 1;
+      padding: 52px 24px 24px;
+      position: relative;
+    }
+
+    .input-3d {
+      width: 100%;
+      height: 56px;
+      border: 2px solid var(--border);
+      border-bottom: 4px solid #D6D3D1;
+      border-radius: 16px;
+      padding: 0 18px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      background: #fff;
+      color: var(--ink);
+      margin-bottom: 14px;
+      outline: none;
+    }
+
+    .input-3d:focus {
+      border-color: var(--orange-soft);
+      border-bottom-color: var(--orange-mid);
+    }
+
+    .login-title {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .login-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 28px; font-weight: 500; }
+
+    .login-footer {
+      padding: 16px 24px 36px;
+      background: var(--cream);
+      border-top: 2px solid var(--border);
+    }
+
+    .notes {
+      max-width: 640px;
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: var(--cream);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .notes strong { color: var(--ink); }
+    .notes ul { margin: 10px 0 0 18px; }
+    .notes li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+  <!-- Mascotte vectorielle (réutilisée partout) -->
+  <template id="fox-mark">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M10 22L14 6L22 18" fill="#C2410C"/>
+      <path d="M38 22L34 6L26 18" fill="#C2410C"/>
+      <circle cx="24" cy="27" r="17" fill="#F97316"/>
+      <ellipse cx="24" cy="31" rx="11" ry="9" fill="#FFF7ED"/>
+      <circle cx="17.5" cy="25" r="2.8" fill="#0F172A"/>
+      <circle cx="30.5" cy="25" r="2.8" fill="#0F172A"/>
+      <ellipse cx="24" cy="30" rx="3.2" ry="2.2" fill="#0F172A"/>
+      <circle cx="15" cy="28" r="3" fill="#FFEDD5" opacity="0.65"/>
+      <circle cx="33" cy="28" r="3" fill="#FFEDD5" opacity="0.65"/>
+    </svg>
+  </template>
+
+  <header class="page-header">
+    <h1>FreeGeny — Prototype design</h1>
+    <p>Valide le look & feel ici. Une fois OK, on porte exactement ça en React Native — écran par écran.</p>
+    <span class="badge">Draft v1 · Ludique premium</span>
+  </header>
+
+  <nav class="picker" aria-label="Choisir un écran">
+    <button type="button" class="active" data-screen="parent"><span class="ico" data-lucide="layout-dashboard"></span> Parent — Accueil</button>
+    <button type="button" data-screen="child"><span class="ico" data-lucide="sparkles"></span> Enfant — Lobby</button>
+    <button type="button" data-screen="welcome"><span class="ico" data-lucide="languages"></span> Welcome</button>
+    <button type="button" data-screen="login"><span class="ico" data-lucide="log-in"></span> Login</button>
+  </nav>
+
+  <div class="phone-wrap">
+    <div class="phone-notch" aria-hidden="true"></div>
+    <div class="phone">
+
+      <!-- PARENT HOME -->
+      <section class="screen screen-parent active" id="screen-parent">
+        <div class="parent-scroll">
+          <div class="blob blob-1"></div>
+          <div class="blob blob-2"></div>
+
+          <article class="hero-dark">
+            <div class="hero-top">
+              <span class="hero-badge">Espace parent</span>
+              <div class="mascot-sm brand-fox"></div>
+            </div>
+            <h2 class="hero-greeting">Bonjour, <span>Sarah</span></h2>
+            <div class="hero-stats">
+              <div class="stat-box"><div class="num">2</div><div class="lbl">Enfants</div></div>
+              <div class="stat-box"><div class="num">3</div><div class="lbl">Missions</div></div>
+              <div class="stat-box"><div class="num">1</div><div class="lbl">Geny</div></div>
+            </div>
+          </article>
+
+          <p class="section-label">Accès rapide</p>
+          <div class="hubs">
+            <div class="hub orange"><div class="hub-icon"><span class="ico" data-lucide="users"></span></div><div class="hub-title">Mes enfants</div><div class="hub-desc">Profils & codes</div></div>
+            <div class="hub emerald"><div class="hub-icon"><span class="ico" data-lucide="trending-up"></span></div><div class="hub-title">Progrès</div><div class="hub-desc">XP & historique</div></div>
+            <div class="hub violet"><div class="hub-icon"><span class="ico" data-lucide="message-circle"></span></div><div class="hub-title">Messages</div><div class="hub-desc">2 non lus</div></div>
+            <div class="hub blue"><div class="hub-icon"><span class="ico" data-lucide="settings"></span></div><div class="hub-title">Réglages</div><div class="hub-desc">Temps & langue</div></div>
+          </div>
+
+          <p class="section-label">Tes enfants</p>
+          <div class="child-row">
+            <div class="child-avatar">L</div>
+            <div class="child-info">
+              <div class="child-name">Lina · CM2</div>
+              <div class="child-meta">Niv. 7 · 1 240 XP</div>
+              <div class="progress-mini"><div class="progress-mini-fill"></div></div>
+            </div>
+            <span class="lv-pill">Lv.7</span>
+          </div>
+          <div class="child-row">
+            <div class="child-avatar">A</div>
+            <div class="child-info">
+              <div class="child-name">Adam · CE1</div>
+              <div class="child-meta">Niv. 4 · 580 XP</div>
+              <div class="progress-mini"><div class="progress-mini-fill" style="width:42%"></div></div>
+            </div>
+            <span class="lv-pill">Lv.4</span>
+          </div>
+        </div>
+        <nav class="tab-bar">
+          <div class="tab-item active"><span class="icon"><span class="ico" data-lucide="home"></span></span>Accueil</div>
+          <div class="tab-item"><span class="icon"><span class="ico" data-lucide="users"></span></span>Enfants</div>
+          <div class="tab-item"><span class="icon"><span class="ico" data-lucide="bar-chart-3"></span></span>Progrès</div>
+          <div class="tab-item"><span class="icon"><span class="ico" data-lucide="message-square"></span></span>Messages</div>
+          <div class="tab-item"><span class="icon"><span class="ico" data-lucide="settings"></span></span>Réglages</div>
+        </nav>
+      </section>
+
+      <!-- CHILD LOBBY -->
+      <section class="screen screen-child" id="screen-child">
+        <div class="stars"></div>
+        <div class="child-scroll">
+          <header class="child-header">
+            <div class="mascot-lg brand-fox"></div>
+            <div class="speech">Salut <strong>Lina</strong> ! Prête pour l'aventure du jour ?</div>
+          </header>
+
+          <div class="xp-bar-wrap">
+            <div class="xp-top">
+              <span class="xp-label"><span class="ico" data-lucide="zap"></span> 1 240 XP</span>
+              <span class="xp-level">Niveau 7</span>
+            </div>
+            <div class="xp-track"><div class="xp-fill"></div></div>
+          </div>
+
+          <div class="portals">
+            <article class="portal geny">
+              <span class="portal-badge">2</span>
+              <div class="portal-icon"><span class="ico" data-lucide="clipboard-list"></span></div>
+              <div class="portal-text">
+                <h3>Geny du jour</h3>
+                <p>2 fiches à compléter — maths & français</p>
+              </div>
+            </article>
+            <article class="portal missions">
+              <span class="portal-badge">1</span>
+              <div class="portal-icon"><span class="ico" data-lucide="target"></span></div>
+              <div class="portal-text">
+                <h3>Missions</h3>
+                <p>1 mission envoyée par Mme Dubois</p>
+              </div>
+            </article>
+            <article class="portal library">
+              <div class="portal-icon"><span class="ico" data-lucide="book-open"></span></div>
+              <div class="portal-text">
+                <h3>Bibliothèque</h3>
+                <p>12 livres · continue « Le petit prince »</p>
+              </div>
+            </article>
+          </div>
+
+          <p class="timer-pill"><span class="ico" data-lucide="timer"></span> Temps restant aujourd'hui : <span>14 min</span></p>
+        </div>
+      </section>
+
+      <!-- WELCOME -->
+      <section class="screen screen-welcome" id="screen-welcome">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="welcome-mascot brand-fox"></div>
+        <p class="welcome-brand">FreeGeny</p>
+        <h2 class="welcome-title">Choisis ta langue</h2>
+        <p class="welcome-sub">L'app s'adapte — français ou arabe avec interface RTL.</p>
+        <div class="lang-cards">
+          <div class="lang-card"><h3>Français</h3><p>Interface en français</p></div>
+          <div class="lang-card warm"><h3>العربية</h3><p>واجهة بالعربية — RTL</p></div>
+        </div>
+      </section>
+
+      <!-- LOGIN -->
+      <section class="screen screen-login" id="screen-login">
+        <div class="login-scroll">
+          <div class="blob blob-1"></div>
+          <div class="mascot-sm brand-fox" style="margin-bottom:20px; width:56px; height:56px;"></div>
+          <h2 class="login-title">Content de te revoir</h2>
+          <p class="login-sub">Connecte-toi à ton espace parent FreeGeny.</p>
+          <input class="input-3d" type="email" placeholder="Email" value="sarah@exemple.fr" />
+          <input class="input-3d" type="password" placeholder="Mot de passe" value="••••••••" />
+        </div>
+        <div class="login-footer">
+          <button type="button" class="btn-3d primary">Se connecter</button>
+          <button type="button" class="btn-3d secondary" style="margin-top:12px;">Créer un compte</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <aside class="notes">
+    <strong>Ce qu'on valide ensemble :</strong>
+    <ul>
+      <li><strong>Parent</strong> — crème chaleureux + hero sombre premium (pas flat gris)</li>
+      <li><strong>Enfant</strong> — univers sombre « jeu vidéo », portails colorés 3D</li>
+      <li><strong>Icônes</strong> — Lucide SVG (traits modernes, pas emoji)</li>
+      <li><strong>Typo</strong> — Fredoka (titres ludiques) + Plus Jakarta Sans (texte)</li>
+      <li><strong>Boutons</strong> — effet Duolingo (ombre épaisse, pressable)</li>
+    </ul>
+    Dis-moi ce que tu aimes / détestes — on itère ici avant de toucher React Native.
+  </aside>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    function mountFoxMarks() {
+      const tpl = document.getElementById("fox-mark");
+      document.querySelectorAll(".brand-fox").forEach((el) => {
+        el.appendChild(tpl.content.cloneNode(true));
+      });
+    }
+
+    function refreshIcons() {
+      if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.25 } });
+    }
+
+    mountFoxMarks();
+    refreshIcons();
+
+    document.querySelectorAll(".picker button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".picker button").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("screen-" + btn.dataset.screen).classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

@@ -98,11 +98,11 @@ export default function AllyOnboardingWizard({ locale, token, invitedEmail, invi
     return (
       <div className={MOBILE.shell} dir={isRTL ? "rtl" : "ltr"}>
         <div className={cn("mx-auto w-full max-w-lg flex-1 pt-8", MOBILE.padX)}>
-          <h1 className={cn(MOBILE.title, isRTL && "font-amiri text-right")}>{t("title")}</h1>
+          <h1 className={cn(MOBILE.title, isRTL && "font-ui-ar text-right")}>{t("title")}</h1>
           <p className={cn(MOBILE.subtitle, isRTL && "font-lateef text-right")}>
             {t("invitedBy", { name: inviterName })}
           </p>
-          <p className={cn("mt-4 rounded-xl bg-orange-50 px-4 py-3 text-sm font-bold text-orange-900", isRTL && "font-amiri text-right")}>
+          <p className={cn("mt-4 rounded-xl bg-orange-50 px-4 py-3 text-sm font-bold text-orange-900", isRTL && "font-ui-ar text-right")}>
             {t("useEmail", { email: invitedEmail })}
           </p>
 
@@ -110,12 +110,12 @@ export default function AllyOnboardingWizard({ locale, token, invitedEmail, invi
             <button
               type="button"
               onClick={() => signIn("google", { callbackUrl })}
-              className={cn(MOBILE.card, MOBILE.cardIdle, "justify-center font-bold", isRTL && "font-amiri flex-row-reverse")}
+              className={cn(MOBILE.card, MOBILE.cardIdle, "justify-center font-bold", isRTL && "font-ui-ar flex-row-reverse")}
             >
               <img src="https://www.google.com/favicon.ico" className="h-5 w-5 shrink-0" alt="" />
               <span>{t("google")}</span>
             </button>
-            <p className={cn("text-center text-xs text-neutral-500", isRTL && "font-amiri")}>{t("googleHint")}</p>
+            <p className={cn("text-center text-xs text-neutral-500", isRTL && "font-ui-ar")}>{t("googleHint")}</p>
           </div>
         </div>
       </div>
@@ -125,7 +125,7 @@ export default function AllyOnboardingWizard({ locale, token, invitedEmail, invi
   return (
     <div className={MOBILE.shell} dir={isRTL ? "rtl" : "ltr"}>
       <div className={cn("mx-auto w-full max-w-lg flex-1 pt-8", MOBILE.padX)}>
-        <h1 className={cn(MOBILE.title, isRTL && "font-amiri text-right")}>{t("profileTitle")}</h1>
+        <h1 className={cn(MOBILE.title, isRTL && "font-ui-ar text-right")}>{t("profileTitle")}</h1>
         <p className={cn(MOBILE.subtitle, isRTL && "font-lateef text-right")}>{t("profileSubtitle")}</p>
 
         <div className="mt-6 space-y-3">
@@ -133,7 +133,7 @@ export default function AllyOnboardingWizard({ locale, token, invitedEmail, invi
             <Input
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className={cn(MOBILE.input, isRTL && "font-amiri text-right")}
+              className={cn(MOBILE.input, isRTL && "font-ui-ar text-right")}
             />
           </Field>
           <Field label={t("email")} isRTL={isRTL}>
@@ -179,7 +179,7 @@ export default function AllyOnboardingWizard({ locale, token, invitedEmail, invi
             type="button"
             disabled={isSubmitting}
             onClick={() => void handleSubmit()}
-            className={cn(MOBILE.cta, isRTL && "font-amiri normal-case text-lg")}
+            className={cn(MOBILE.cta, isRTL && "font-ui-ar normal-case text-lg")}
           >
             {isSubmitting ? t("submitting") : t("submit")}
           </button>
@@ -192,7 +192,7 @@ export default function AllyOnboardingWizard({ locale, token, invitedEmail, invi
 function Field({ label, children, isRTL }: { label: string; children: React.ReactNode; isRTL?: boolean }) {
   return (
     <div className="space-y-1.5">
-      <label className={cn(MOBILE.label, "block", isRTL && "font-amiri text-right text-sm")}>{label}</label>
+      <label className={cn(MOBILE.label, "block", isRTL && "font-ui-ar text-right text-sm")}>{label}</label>
       {children}
     </div>
   );

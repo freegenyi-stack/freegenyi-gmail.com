@@ -1,0 +1,26 @@
+{
+  "profile": "parent",
+  "country": "DZ",
+  "labelFr": "Espace parent — Geny",
+  "canEditExercises": false,
+  "canGenerate": true,
+  "deliveryChannels": ["mobile", "print"],
+  "exerciseTypesAllowed": [
+    "multiple_choice",
+    "true_false",
+    "fill_blank",
+    "calcul_interactif"
+  ],
+  "session": {
+    "itemsMin": 4,
+    "itemsMax": 6,
+    "requireOfficialCharacters": true,
+    "requireUniqueStatements": true
+  },
+  "notifications": {
+    "defaultIntervalDays": 10,
+    "minDays": 7,
+    "maxDays": 15
+  },
+  "homeCardsOfficial": ["ar_islam_civique", "math_est"]
+}

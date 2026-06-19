@@ -5,6 +5,8 @@
 require("dotenv").config({ path: ".env.local" });
 require("dotenv").config();
 
+const { FREEGENY_EMAILS, freegenyFromAddress } = require("./site-emails.cjs");
+
 async function main() {
   const to = process.argv[2];
   if (!to || !to.includes("@")) {
@@ -14,9 +16,8 @@ async function main() {
 
   const host = process.env.SMTP_HOST || "localhost";
   const port = parseInt(process.env.SMTP_PORT || "25", 10);
-  const user = process.env.SMTP_USER || "contact@freegeny.com";
-  const from =
-    process.env.EMAIL_FROM || "FreeGeny Elite <contact@freegeny.com>";
+  const user = process.env.SMTP_USER || FREEGENY_EMAILS.contact;
+  const from = process.env.EMAIL_FROM || freegenyFromAddress("FreeGeny");
 
   const nodemailer = require("nodemailer");
   const transporter = nodemailer.createTransport({

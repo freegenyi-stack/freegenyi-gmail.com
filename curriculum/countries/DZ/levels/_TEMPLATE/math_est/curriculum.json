@@ -1,0 +1,18 @@
+{
+  "metadata": {
+    "country": "{{COUNTRY}}",
+    "level": "{{LEVEL}}",
+    "subject": "math_est",
+    "moduleId": "{{MODULE_ID}}",
+    "labelFr": "Mathématiques et éducation scientifique",
+    "labelAr": "رياضيات وتربية علمية وتكنولوجية",
+    "version": 0,
+    "status": "draft",
+    "sourceRef": ""
+  },
+  "domaines": [
+    { "code": "math", "labelFr": "Mathématiques", "labelAr": "رياضيات" },
+    { "code": "est", "labelFr": "Éducation scientifique", "labelAr": "تربية علمية" }
+  ],
+  "trimesters": []
+}

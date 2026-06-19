@@ -45,6 +45,6 @@ export async function sendInvitationAction(formData: FormData) {
   return {
     success: result.success,
     inviteUrl: result.inviteUrl,
-    emailSent: result.emailSent,
+    emailSent: "emailSent" in result ? result.emailSent : undefined,
   };
 }

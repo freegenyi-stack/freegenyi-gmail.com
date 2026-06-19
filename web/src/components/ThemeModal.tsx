@@ -100,7 +100,7 @@ export default function ThemeModal() {
     }
   };
 
-  const labelClass = cn("text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3", isRTL && "font-amiri normal-case text-xs");
+  const labelClass = cn("text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3", isRTL && "font-ui-ar normal-case text-xs");
 
   return (
     <AnimatePresence>
@@ -133,8 +133,8 @@ export default function ThemeModal() {
                   <Palette className="w-5 h-5" />
                 </div>
                 <div className={isRTL ? "text-right" : "text-left"}>
-                  <h2 className={cn("text-xl font-black text-slate-900 tracking-tight", isRTL && "font-amiri")}>{t("title")}</h2>
-                  <p className={cn("text-[10px] text-slate-400 font-bold uppercase tracking-widest", isRTL && "font-amiri normal-case text-xs")}>
+                  <h2 className={cn("text-xl font-black text-slate-900 tracking-tight", isRTL && "font-ui-ar")}>{t("title")}</h2>
+                  <p className={cn("text-[10px] text-slate-400 font-bold uppercase tracking-widest", isRTL && "font-ui-ar normal-case text-xs")}>
                     {t("subtitle")}
                   </p>
                 </div>
@@ -151,7 +151,7 @@ export default function ThemeModal() {
                   onClick={() => setTab(tabKey)}
                   className={cn(
                     "px-5 py-2 rounded-xl font-black transition-all",
-                    isRTL ? "text-sm font-amiri" : "text-[11px] uppercase tracking-widest",
+                    isRTL ? "text-sm font-ui-ar" : "text-[11px] uppercase tracking-widest",
                     tab === tabKey ? "text-white shadow-lg" : "bg-slate-100 text-slate-500 hover:bg-slate-200"
                   )}
                   style={tab === tabKey ? { backgroundColor: currentColor } : {}}
@@ -195,7 +195,7 @@ export default function ThemeModal() {
                         >
                           <span className="text-lg">{c.flag}</span>
                           <div>
-                            <p className={cn("text-[10px] font-black text-slate-700 leading-none", isRTL && "font-amiri text-xs")}>{c.name}</p>
+                            <p className={cn("text-[10px] font-black text-slate-700 leading-none", isRTL && "font-ui-ar text-xs")}>{c.name}</p>
                           </div>
                           <div className={cn("w-4 h-4 rounded-full border border-white/50 shadow-sm shrink-0", isRTL ? "mr-auto" : "ml-auto")} style={{ backgroundColor: c.hex }} />
                         </button>
@@ -207,8 +207,8 @@ export default function ThemeModal() {
                     <div className={cn("flex items-center gap-3", isRTL && "flex-row-reverse")}>
                       {darkMode ? <Moon className="w-5 h-5 text-slate-700 shrink-0" /> : <Sun className="w-5 h-5 text-orange-500 shrink-0" />}
                       <div className={isRTL ? "text-right" : "text-left"}>
-                        <p className={cn("text-xs font-black text-slate-900", isRTL && "font-amiri text-sm")}>{t("darkMode")}</p>
-                        <p className={cn("text-[10px] text-slate-400 font-bold", isRTL && "font-amiri text-xs")}>{t("darkModeHint")}</p>
+                        <p className={cn("text-xs font-black text-slate-900", isRTL && "font-ui-ar text-sm")}>{t("darkMode")}</p>
+                        <p className={cn("text-[10px] text-slate-400 font-bold", isRTL && "font-ui-ar text-xs")}>{t("darkModeHint")}</p>
                       </div>
                     </div>
                     <button
@@ -234,7 +234,7 @@ export default function ThemeModal() {
                         <div className={`w-12 h-12 rounded-full ${av.bg} text-white flex items-center justify-center shadow-md transition-transform group-hover:scale-110`}>
                           {av.icon}
                         </div>
-                        <span className={cn("text-[10px] font-black text-slate-700 text-center", isRTL && "font-amiri text-xs")}>{t(av.labelKey as "avatarScientist")}</span>
+                        <span className={cn("text-[10px] font-black text-slate-700 text-center", isRTL && "font-ui-ar text-xs")}>{t(av.labelKey as "avatarScientist")}</span>
                         {currentAvatarId === av.id && (
                           <span className="w-5 h-5 rounded-full bg-slate-900 flex items-center justify-center">
                             <Check className="w-3 h-3 text-white" />
@@ -243,7 +243,7 @@ export default function ThemeModal() {
                       </button>
                     ))}
                   </div>
-                  <p className={cn("text-[10px] text-slate-400 text-center mt-4 font-bold italic", isRTL && "font-amiri text-xs not-italic")}>
+                  <p className={cn("text-[10px] text-slate-400 text-center mt-4 font-bold italic", isRTL && "font-ui-ar text-xs not-italic")}>
                     {t("reloadHint")}
                   </p>
                 </div>
@@ -255,7 +255,7 @@ export default function ThemeModal() {
                 onClick={() => setIsOpen(false)}
                 className={cn(
                   "w-full py-4 font-black text-white rounded-2xl shadow-xl transition-all hover:opacity-90",
-                  isRTL ? "text-sm font-amiri" : "text-[11px] uppercase tracking-widest"
+                  isRTL ? "text-sm font-ui-ar" : "text-[11px] uppercase tracking-widest"
                 )}
                 style={{ backgroundColor: currentColor }}
               >

@@ -4,18 +4,13 @@ import { auth } from "@/auth";
 import { db } from "@/db";
 import { users, children as childrenTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import ClientOnboarding from "./ClientOnboarding";
-import TeacherOnboarding from "@/components/teacher/TeacherOnboarding";
 import RegisterWizard from "@/components/register/RegisterWizard";
 import {
   isUserFullyOnboarded,
   resolveDashboardSegment,
 } from "@/lib/auth/dashboard-route";
 import { isRegisterRoleHidden } from "@/constants/publicNav";
-
-function isDzLocale(locale: string) {
-  return locale === "DZ-fr" || locale === "DZ-ar" || locale.startsWith("DZ-");
-}
+import { isAdminEmail } from "@/lib/admin/requireAdmin";
 
 export default async function OnboardingServerPage({
   params,
@@ -31,6 +26,10 @@ export default async function OnboardingServerPage({
   // Redirection stricte si non connecté
   if (!session?.user?.email) {
     redirect(`/${locale}/auth/login`);
+  }
+
+  if (isAdminEmail(session.user.email)) {
+    redirect(`/${locale}/dashboard/admin`);
   }
 
   // Interroger la base de données EN TEMPS RÉEL pour contourner les jetons obsolètes
@@ -60,19 +59,11 @@ export default async function OnboardingServerPage({
     redirect(`/${locale}/dashboard/${resolveDashboardSegment(user.role)}`);
   }
 
-  if (isDzLocale(locale)) {
-    return (
-      <RegisterWizard
-        locale={locale}
-        mode="google"
-        initialRole={isTeacherFlow ? "enseignant" : "parent"}
-      />
-    );
-  }
-
-  if (isTeacherFlow) {
-    return <TeacherOnboarding locale={locale} />;
-  }
-
-  return <ClientOnboarding locale={locale} />;
+  return (
+    <RegisterWizard
+      locale={locale}
+      mode="google"
+      initialRole={isTeacherFlow ? "enseignant" : "parent"}
+    />
+  );
 }

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "defaultCountry": "DZ",
+  "primaryLevels": ["1AP", "2AP", "3AP", "4AP", "5AP"],
+  "bundleFiles": ["curriculum.json", "competences.json", "exercise_bank.json", "evaluations.json"],
+  "exerciseTypes": [
+    "multiple_choice",
+    "true_false",
+    "fill_blank",
+    "matching",
+    "ordering",
+    "calcul_interactif"
+  ],
+  "profiles": ["parent", "teacher", "official_path", "child"],
+  "sessionDefaults": {
+    "itemsMin": 4,
+    "itemsMax": 8,
+    "xpPerItem": 5,
+    "starsThresholds": [0.5, 0.75, 0.95]
+  },
+  "charactersDZ": ["أحمد", "فاطمة", "ياسين", "سارة"]
+}

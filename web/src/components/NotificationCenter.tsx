@@ -1,11 +1,15 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Bell, Check, Award, MessageCircle, AlertCircle, Info, Sparkles } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { PushNotificationToggle } from "@/components/PushNotificationPrompt";
 import { playNotifySound, unlockChatSounds } from "@/lib/messaging/chat-sounds";
+import {
+  displayMessageNotificationContent,
+  parseMessageNotificationCount,
+} from "@/lib/messaging/notify-utils";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -24,7 +28,55 @@ export interface Notification {
   createdAt: string;
 }
 
+type GroupedNotification = Notification & {
+  unreadMessages: number;
+  groupLink?: string;
+};
+
 let openPanel: (() => void) | null = null;
+
+function groupNotifications(list: Notification[]): GroupedNotification[] {
+  const others: GroupedNotification[] = [];
+  const msgGroups = new Map<string, GroupedNotification>();
+
+  for (const n of list) {
+    if (n.type === "message" && n.link) {
+      const key = n.link;
+      const count = n.isRead ? 0 : parseMessageNotificationCount(n.content);
+      const existing = msgGroups.get(key);
+
+      if (!existing) {
+        msgGroups.set(key, {
+          ...n,
+          unreadMessages: count,
+          groupLink: key,
+        });
+        continue;
+      }
+
+      if (!n.isRead) {
+        existing.unreadMessages += count;
+        existing.isRead = false;
+      }
+      if (new Date(n.createdAt).getTime() > new Date(existing.createdAt).getTime()) {
+        existing.title = n.title;
+        existing.content = n.content;
+        existing.createdAt = n.createdAt;
+        existing.id = n.id;
+      }
+    } else {
+      others.push({ ...n, unreadMessages: n.isRead ? 0 : 1 });
+    }
+  }
+
+  return [...msgGroups.values(), ...others].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+}
+
+function emitNotificationsUpdated() {
+  window.dispatchEvent(new CustomEvent("fg-notifications-updated"));
+}
 
 /** Ouvre le panneau notifications (header, menu profil, etc.) */
 export function openNotificationPanel() {
@@ -39,6 +91,7 @@ export function NotificationPanel() {
   const [open, setOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [unreadMessages, setUnreadMessages] = useState(0);
   const prevUnreadRef = useRef(0);
   const notifyInitRef = useRef(true);
 
@@ -54,9 +107,10 @@ export function NotificationPanel() {
       const res = await fetch("/api/notifications");
       const data = await res.json();
       const list = (data.notifications || []) as Notification[];
-      const unread = list.filter((n) => !n.isRead).length;
+      const unread = typeof data.unreadCount === "number" ? data.unreadCount : list.filter((n) => !n.isRead).length;
       setNotifications(list);
       setUnreadCount(unread);
+      setUnreadMessages(typeof data.unreadMessages === "number" ? data.unreadMessages : 0);
       if (notifyInitRef.current) {
         notifyInitRef.current = false;
         prevUnreadRef.current = unread;
@@ -69,6 +123,8 @@ export function NotificationPanel() {
     }
   }, []);
 
+  const grouped = useMemo(() => groupNotifications(notifications), [notifications]);
+
   useEffect(() => {
     if (open) load();
   }, [open, load]);
@@ -79,14 +135,24 @@ export function NotificationPanel() {
     return () => clearInterval(id);
   }, [load]);
 
-  const markAsRead = async (id: number) => {
+  const markAsRead = async (item: GroupedNotification) => {
+    const body = item.groupLink ? { link: item.groupLink } : { id: item.id };
     await fetch("/api/notifications", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
+      body: JSON.stringify(body),
     });
-    setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, isRead: true } : n)));
-    setUnreadCount((c) => Math.max(0, c - 1));
+    setNotifications((prev) =>
+      prev.map((n) => {
+        if (item.groupLink && n.type === "message" && n.link === item.groupLink) {
+          return { ...n, isRead: true };
+        }
+        if (n.id === item.id) return { ...n, isRead: true };
+        return n;
+      })
+    );
+    setUnreadCount((c) => Math.max(0, c - item.unreadMessages));
+    emitNotificationsUpdated();
   };
 
   const markAllAsRead = async () => {
@@ -97,6 +163,7 @@ export function NotificationPanel() {
     });
     setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })));
     setUnreadCount(0);
+    emitNotificationsUpdated();
   };
 
   const getIcon = (type: string) => {
@@ -122,20 +189,22 @@ export function NotificationPanel() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetContent
         side={isRTL ? "left" : "right"}
-        className="flex w-full max-w-md flex-col gap-0 p-0"
+        className="fg-glass-sheet flex w-full max-w-md flex-col gap-0 p-0 shadow-2xl"
         dir={isRTL ? "rtl" : "ltr"}
       >
-        <div className="border-b border-slate-100 bg-gradient-to-br from-orange-50/80 to-white px-6 pb-4 pt-8">
+        <div className="fg-glass-bar shrink-0 border-b px-6 pb-4 pt-8">
           <div className={cn("flex items-center justify-between gap-3", isRTL && "flex-row-reverse")}>
             <div className={cn("flex items-center gap-3", isRTL && "flex-row-reverse")}>
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-orange-500 text-white shadow-lg shadow-orange-500/25">
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-orange-500/90 text-white shadow-lg shadow-orange-500/25 backdrop-blur-sm">
                 <Bell className="h-5 w-5" />
               </div>
               <div className={isRTL ? "text-right" : ""}>
-                <h2 className={cn("text-lg font-black text-slate-900", isRTL && "font-amiri")}>{t("notifications")}</h2>
+                <h2 className={cn("text-lg font-black text-slate-900", isRTL && "font-ui-ar")}>{t("notifications")}</h2>
                 {unreadCount > 0 && (
-                  <p className={cn("text-xs font-bold text-orange-600", isRTL && "font-amiri")}>
-                    {unreadCount} non lue{unreadCount > 1 ? "s" : ""}
+                  <p className={cn("text-xs font-bold text-orange-600", isRTL && "font-ui-ar")}>
+                    {unreadMessages > 0
+                      ? `${unreadMessages} message${unreadMessages > 1 ? "s" : ""} non lu${unreadMessages > 1 ? "s" : ""}`
+                      : `${unreadCount} non lue${unreadCount > 1 ? "s" : ""}`}
                   </p>
                 )}
               </div>
@@ -144,7 +213,7 @@ export function NotificationPanel() {
               <button
                 type="button"
                 onClick={markAllAsRead}
-                className={cn("text-[10px] font-bold text-orange-600 hover:text-orange-700 shrink-0", isRTL && "font-amiri")}
+                className={cn("text-[10px] font-bold text-orange-600 hover:text-orange-700 shrink-0", isRTL && "font-ui-ar")}
               >
                 {t("markAllRead")}
               </button>
@@ -152,68 +221,88 @@ export function NotificationPanel() {
           </div>
         </div>
 
-        <div className="border-b border-slate-100 px-3 py-3">
+        <div className="fg-glass-bar shrink-0 border-b px-3 py-3">
           <PushNotificationToggle onStatusChange={load} />
         </div>
 
-        <div className="flex-1 overflow-y-auto">
-          {notifications.length > 0 ? (
-            notifications.map((n) => (
-              <div
-                key={n.id}
-                className={cn(
-                  "border-b border-slate-50 p-4 transition-colors",
-                  !n.isRead ? "bg-orange-50/40" : "bg-white hover:bg-slate-50"
-                )}
-              >
-                <div className={cn("flex items-start gap-3", isRTL && "flex-row-reverse")}>
-                  <div className="mt-0.5 shrink-0">{getIcon(n.type)}</div>
-                  <div className="min-w-0 flex-1">
-                    {n.link ? (
-                      <Link
-                        href={n.link}
-                        onClick={() => {
-                          markAsRead(n.id);
-                          setOpen(false);
-                        }}
-                        className={cn(
-                          "block text-sm font-black hover:text-orange-600",
-                          !n.isRead ? "text-slate-900" : "text-slate-700",
-                          isRTL && "font-amiri text-right"
-                        )}
-                      >
-                        {n.title}
-                      </Link>
-                    ) : (
-                      <p className={cn("text-sm font-black", !n.isRead ? "text-slate-900" : "text-slate-700", isRTL && "font-amiri text-right")}>
-                        {n.title}
-                      </p>
-                    )}
-                    {n.content && (
-                      <p className={cn("mt-1 text-xs font-medium leading-relaxed text-slate-500", isRTL && "font-lateef text-sm text-right")}>
-                        {n.content}
-                      </p>
-                    )}
-                    <p className={cn("mt-2 text-[10px] font-bold uppercase tracking-wide text-slate-400", isRTL && "font-amiri normal-case text-right")}>
-                      {new Date(n.createdAt).toLocaleDateString(dateLocale)}
-                    </p>
-                  </div>
-                  {!n.isRead && (
-                    <button
-                      type="button"
-                      onClick={() => markAsRead(n.id)}
-                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-400 transition hover:bg-green-100 hover:text-green-600"
-                    >
-                      <Check className="h-3.5 w-3.5" />
-                    </button>
+        <div className="min-h-0 flex-1 overflow-y-auto custom-scroll">
+          {grouped.length > 0 ? (
+            grouped.map((n) => {
+              const preview =
+                n.type === "message"
+                  ? displayMessageNotificationContent(n.content)
+                  : n.content;
+              const showBadge = !n.isRead && n.unreadMessages > 0;
+
+              return (
+                <div
+                  key={n.groupLink ? `g-${n.groupLink}` : `n-${n.id}`}
+                  className={cn(
+                    "fg-glass-row border-b p-4 transition-colors",
+                    !n.isRead ? "fg-glass-row-active" : "hover:bg-white/20"
                   )}
+                >
+                  <div className={cn("flex items-start gap-3", isRTL && "flex-row-reverse")}>
+                    <div className="relative mt-0.5 shrink-0">
+                      {getIcon(n.type)}
+                      {showBadge && n.unreadMessages === 1 && (
+                        <span className="absolute -end-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-orange-500 ring-2 ring-white/80" />
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className={cn("flex items-start justify-between gap-2", isRTL && "flex-row-reverse")}>
+                        {n.link ? (
+                          <Link
+                            href={n.link}
+                            onClick={() => {
+                              void markAsRead(n);
+                              setOpen(false);
+                            }}
+                            className={cn(
+                              "block text-sm font-black hover:text-orange-600",
+                              !n.isRead ? "text-slate-900" : "text-slate-700",
+                              isRTL && "font-ui-ar text-right"
+                            )}
+                          >
+                            {n.title}
+                          </Link>
+                        ) : (
+                          <p className={cn("text-sm font-black", !n.isRead ? "text-slate-900" : "text-slate-700", isRTL && "font-ui-ar text-right")}>
+                            {n.title}
+                          </p>
+                        )}
+                        {showBadge && n.unreadMessages > 1 && (
+                          <span className="flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-orange-500 px-1.5 text-[10px] font-bold text-white">
+                            {n.unreadMessages > 9 ? "9+" : n.unreadMessages}
+                          </span>
+                        )}
+                      </div>
+                      {preview && (
+                        <p className={cn("mt-1 text-xs font-medium leading-relaxed text-slate-500", isRTL && "font-lateef text-sm text-right")}>
+                          {preview}
+                        </p>
+                      )}
+                      <p className={cn("mt-2 text-[10px] font-bold uppercase tracking-wide text-slate-400", isRTL && "font-ui-ar normal-case text-right")}>
+                        {new Date(n.createdAt).toLocaleDateString(dateLocale)}
+                      </p>
+                    </div>
+                    {!n.isRead && (
+                      <button
+                        type="button"
+                        onClick={() => void markAsRead(n)}
+                        className="fg-glass-icon flex h-7 w-7 shrink-0 items-center justify-center !rounded-full text-slate-400 hover:text-green-600"
+                      >
+                        <Check className="h-3.5 w-3.5" />
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <div className="flex flex-col items-center justify-center px-6 py-16 text-center text-slate-400">
               <Bell className="mb-3 h-10 w-10 opacity-40" />
-              <p className={cn("text-sm font-bold", isRTL && "font-amiri")}>{t("noNotifications")}</p>
+              <p className={cn("text-sm font-bold", isRTL && "font-ui-ar")}>{t("noNotifications")}</p>
             </div>
           )}
         </div>
@@ -231,10 +320,13 @@ export default function NotificationMenuItem() {
   return (
     <button
       type="button"
-      onClick={() => openNotificationPanel()}
+      onClick={() => {
+        unlockChatSounds();
+        openNotificationPanel();
+      }}
       className={cn(
         "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-orange-600",
-        isRTL && "flex-row-reverse font-amiri"
+        isRTL && "flex-row-reverse font-ui-ar"
       )}
     >
       <Bell className="h-4 w-4 opacity-50 shrink-0" />
